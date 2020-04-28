@@ -20,6 +20,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - env:
+          MSBUILDSINGLELOADCONTEXT: 1 # WORKAROUND FOR BUG https://github.com/boogie-org/boogie/pull/213
       - uses: actions/checkout@v1
       - name: Pack nuget package
         run: dotnet pack --configuration Release

@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master # Default release branch
+      - develop
+      - 'releases/**'
 jobs:
   build:
     runs-on: ubuntu-latest

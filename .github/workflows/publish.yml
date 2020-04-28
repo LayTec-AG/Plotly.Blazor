@@ -20,10 +20,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - env:
-          MSBUILDSINGLELOADCONTEXT: 1 # WORKAROUND FOR BUG https://github.com/boogie-org/boogie/pull/213
       - uses: actions/checkout@v1
       - name: Pack nuget package
         run: dotnet pack --configuration Release
+        env:
+          MSBUILDSINGLELOADCONTEXT: 1
       - name: Push package to nuget
         run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json

@@ -95,6 +95,11 @@ private async Task AddData(Scatter trace, int count = 100)
 
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 
+## Known big issues
+### Performance
+Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
+See [here](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-4-release-now-available/#comment-1919) for more information. 
+Nevertheless the performance of the wrapper is still being worked on!
 
 ## Contributing
 

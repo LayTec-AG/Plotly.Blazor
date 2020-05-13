@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Pack nuget package
-        run: dotnet pack --configuration Release
+        run: dotnet pack ./Plotly.Blazor/Plotly.Blazor.csproj --configuration Release
         env:
           MSBUILDSINGLELOADCONTEXT: 1
       - name: Push package to nuget

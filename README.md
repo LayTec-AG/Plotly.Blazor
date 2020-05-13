@@ -26,7 +26,7 @@ dotnet add package Plotly.Blazor --version 0.1.0-alpha.38
 ```
 
 
-**Add the following lines to your index.html below the blazor.webassembly.js**
+**Add the following lines to your index.html or _Host.cshtml below the blazor.webassembly.js**
 
 Info: *These files are already included in the NuGet Package!*
 

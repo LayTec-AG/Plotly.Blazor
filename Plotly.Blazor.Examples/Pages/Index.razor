@@ -1,0 +1,76 @@
+﻿@page "/"
+@using Plotly.Blazor.Traces.Scatter
+@using Plotly.Blazor.Common
+@using System.Diagnostics
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
+<button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
+
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new Config
+    {
+        Responsive = true
+    };
+    Layout layout = new Layout
+    {
+        Title = "Test"
+    };
+
+    List<Scatter> data = new List<Scatter>
+{
+        new Scatter
+        {
+            Name = "Trace1",
+            Mode = ScatterMode.Lines
+        }.GenerateData(0, 100),
+        new Scatter
+        {
+            Name = "Trace2",
+            Mode = ScatterMode.Lines | ScatterMode.Markers
+        }.GenerateData(0, 100, GenerateMethod.Cos)
+    };
+
+    private async Task AddData(int count = 100)
+    {
+        if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
+        if (!(chart.Data.ElementAt(1) is Scatter plot2)) return;
+
+        var (x, y) = Helper.GenerateData(plot.X.Count + 1, plot.X.Count + 1 + count);
+        var (x2, y2) = Helper.GenerateData(plot2.X.Count + 1, plot2.X.Count + 1 + count, GenerateMethod.Cos);
+
+        plot.X.AddRange(x);
+        plot.Y.AddRange(y);
+
+        plot2.X.AddRange(x2);
+        plot2.Y.AddRange(y2);
+
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+        await chart.Update();
+        stopwatch.Stop();
+        Console.WriteLine($"[PERF.] Update took {stopwatch.ElapsedMilliseconds}");
+    }
+
+    private async Task Clear()
+    {
+        if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
+        if (!(chart.Data.ElementAt(1) is Scatter plot2)) return;
+
+        plot.X.Clear();
+        plot.Y.Clear();
+
+        plot2.X.Clear();
+        plot2.Y.Clear();
+
+        await chart.Update();
+    }
+}

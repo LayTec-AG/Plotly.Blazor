@@ -1,10 +1,20 @@
-name: Nuget Package Deploy
+name: Build & Deploy
 on:
   push:
     branches:
       - master # Default release branch
       - develop
       - 'releases/**'
+    paths:
+      - 'Plotly.Blazor/**'
+      
+  pull_request:
+    branches:
+      - master # Default release branch
+      - develop
+      - 'releases/**'
+    paths:
+      - 'Plotly.Blazor/**'
 jobs:
   build:
     runs-on: ubuntu-latest

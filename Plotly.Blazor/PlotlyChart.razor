@@ -33,8 +33,7 @@
 
     private DotNetObjectReference<PlotlyChart> objectReference;
 
-    private bool shouldRender = true;
-    protected override bool ShouldRender() => shouldRender;
+    protected override bool ShouldRender() => false;
 
     /// <inheritdoc />
     protected override Task OnInitializedAsync()
@@ -49,7 +48,6 @@
         if (firstRender)
         {
             await JsRuntime.NewPlot(objectReference);
-            shouldRender = false;
         }
         await base.OnAfterRenderAsync(firstRender);
     }
@@ -60,10 +58,7 @@
     /// <returns></returns>
     public async Task Update()
     {
-        shouldRender = true;
         await JsRuntime.React(objectReference);
-        StateHasChanged();
-        shouldRender = false;
     }
 
     /// <inheritdoc />

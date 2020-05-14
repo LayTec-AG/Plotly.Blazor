@@ -32,6 +32,7 @@
     public Config Config { get; set; }
 
     private DotNetObjectReference<PlotlyChart> objectReference;
+    protected override bool ShouldRender() => false;
 
     /// <inheritdoc />
     protected override Task OnInitializedAsync()

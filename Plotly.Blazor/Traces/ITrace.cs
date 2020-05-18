@@ -5,7 +5,13 @@
     /// </summary>
     public enum TraceType
     {
+        /// <summary>
+        /// The unknown
+        /// </summary>
         Unknown = 0,
+        /// <summary>
+        /// The scatter
+        /// </summary>
         Scatter = 1
     }
 

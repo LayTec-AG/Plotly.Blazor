@@ -4,6 +4,11 @@ using Plotly.Blazor.Common;
 
 namespace Plotly.Blazor.Traces.Scatter
 {
+    /// <summary>
+    /// Class Scatter.
+    /// Implements the <see cref="Plotly.Blazor.Traces.ITrace" />
+    /// </summary>
+    /// <seealso cref="Plotly.Blazor.Traces.ITrace" />
     public class Scatter : ITrace
     {
         /// <inheritdoc />

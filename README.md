@@ -42,9 +42,9 @@ Info: *These files are already included in the NuGet Package!*
 
 ```
 @using Plotly.Blazor
-@using Plotly.Blazor.Common
 @using Plotly.Blazor.Traces
 @using Plotly.Blazor.Traces.Scatter
+@using Plotly.Blazor.Examples.Common
 ```
 
 **Now we're ready to go! :tada:**

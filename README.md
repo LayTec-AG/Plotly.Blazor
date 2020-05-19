@@ -17,12 +17,12 @@ After you have created your Blazor project, you need to do the following steps:
 
 Using Package Manager
 ```
-Install-Package Plotly.Blazor -Version 0.1.0-alpha.38
+Install-Package Plotly.Blazor -AllowPrereleaseVersions
 ```
 
-Using .NET CLI
+Using .NET CLI (e.g. for version 0.1.0-alpha.48)
 ```
-dotnet add package Plotly.Blazor --version 0.1.0-alpha.38
+dotnet add package Plotly.Blazor --version 0.1.0-alpha.48
 ```
 
 

@@ -1,4 +1,4 @@
-# Plotly.Blazor ![Build & Deploy](https://github.com/LayTec-AG/Plotly.Blazor/workflows/Build%20&%20Deploy/badge.svg)
+# Plotly.Blazor (WORK IN PROGRESS!) ![Build & Deploy](https://github.com/LayTec-AG/Plotly.Blazor/workflows/Build%20&%20Deploy/badge.svg)
 This library packages the well-known charting library plotly.js into a component that can be used in a Blazor project. 
 
 ## Getting Started

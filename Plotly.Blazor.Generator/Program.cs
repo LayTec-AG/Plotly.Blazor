@@ -14,7 +14,8 @@ using WeCantSpell.Hunspell;
 namespace Plotly.Blazor.Generator
 {
     /// <summary>
-    ///     This program generates a blazor wrapper for plotly.js library.
+    ///     This program generates a blazor wrapper for the plotly.js library.
+    ///     Currently Supported: Enums for Config, Traces
     /// </summary>
     internal class Program
     {
@@ -25,8 +26,7 @@ namespace Plotly.Blazor.Generator
         private static WordList dictionary;
 
         /// <summary>
-        ///     Defines the entry point of the application. Defines the entry point of the application Defines the entry point of
-        ///     the application
+        ///     Defines the entry point of the application.
         /// </summary>
         /// <param name="args">The arguments.</param>
         private static async Task Main(string[] args)

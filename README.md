@@ -5,7 +5,7 @@ This library packages the well-known charting library plotly.js into a component
 ### Prerequisites
 
 To create Blazor Server Apps, install the latest version of Visual Studio 2019 with the ASP.NET and web development workload.
-For the example with Blazor WebAssembly you need the current preview of Visual Studio 2019.
+For Blazor WebAssembly you need at least Visual Studio 2019 16.6+.
 Another alternative would be to use Visual Studio code. Click [here](https://docs.microsoft.com/en-us/aspnet/core/blazor/get-started?view=aspnetcore-3.1&tabs=visual-studio-code) for more information.
 
 ### Installing
@@ -98,7 +98,7 @@ private async Task AddData(Scatter trace, int count = 100)
 ## Known big issues
 ### Performance
 Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
-See [here](https://devblogs.microsoft.com/aspnet/blazor-webassembly-3-2-0-preview-4-release-now-available/#comment-1919) for more information. 
+This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 Nevertheless the performance of the wrapper is still being worked on!
 
 ## Contributing

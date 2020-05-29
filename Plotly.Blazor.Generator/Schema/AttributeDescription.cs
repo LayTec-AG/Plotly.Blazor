@@ -15,13 +15,6 @@ namespace Plotly.Blazor.Generator.Schema
         /// <value>The type of the value.</value>
         public string ValType { get; set; }
 
-
-        /// <summary>
-        ///     Gets or sets the values.
-        /// </summary>
-        /// <value>The values.</value>
-        public object[] Values { get; set; }
-
         /// <summary>
         ///     Gets or sets the role.
         /// </summary>
@@ -29,17 +22,17 @@ namespace Plotly.Blazor.Generator.Schema
         public string Role { get; set; }
 
 
-        /// <summary>
-        ///     Determines the minimum of the parameters.
-        /// </summary>
-        /// <value>The minimum.</value>
-        public double Min { get; set; }
+        ///// <summary>
+        /////     Determines the minimum of the parameters.
+        ///// </summary>
+        ///// <value>The minimum.</value>
+        //public double Min { get; set; }
 
-        /// <summary>
-        ///     Determines the maximum of the parameters.
-        /// </summary>
-        /// <value>The maximum.</value>
-        public double Max { get; set; }
+        ///// <summary>
+        /////     Determines the maximum of the parameters.
+        ///// </summary>
+        ///// <value>The maximum.</value>
+        //public double Max { get; set; }
 
         /// <summary>
         ///     Gets or sets the default.
@@ -112,13 +105,13 @@ namespace Plotly.Blazor.Generator.Schema
         ///     Gets or sets the dimensions.
         /// </summary>
         /// <value>The dimensions.</value>
-        public string Dimensions { get; set; }
+        public object Dimensions { get; set; }
 
         /// <summary>
         ///     Gets or sets the items.
         /// </summary>
         /// <value>The items.</value>
-        public AttributeDescription[] Items { get; set; }
+        public JsonElement Items { get; set; } = default;
 
         /// <summary>
         ///     Gets or sets a value indicating whether this instance is subplot object.
@@ -159,5 +152,11 @@ namespace Plotly.Blazor.Generator.Schema
         /// <value>The other properties.</value>
         [JsonExtensionData]
         public IDictionary<string, JsonElement> OtherAttributes { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is array.
+        /// </summary>
+        /// <value><c>true</c> if this instance is array; otherwise, <c>false</c>.</value>
+        public bool IsArray => Role == "object" && Items.ValueKind != JsonValueKind.Undefined;
     }
 }

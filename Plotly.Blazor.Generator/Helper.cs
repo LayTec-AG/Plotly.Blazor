@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -10,6 +13,25 @@ namespace Plotly.Blazor.Generator
 {
     public static class Helper
     {
+        /// <summary>
+        /// Gets or sets the unknown words, found while using the dictionary.
+        /// </summary>
+        /// <value>The unknown words.</value>
+        public static List<string> UnknownWords { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Dictionary to customize the pascal casing for specific words.
+        /// </summary>
+        /// <value>The custom words.</value>
+        private static Dictionary<string, string> CustomWords { get; set; } = File.ReadAllLines("CustomDic.txt")
+            .Select(l =>
+            {
+                var keyValue = l.Split('=');
+                return (keyValue[0], keyValue[1]);
+            })
+            .ToDictionary(k => k.Item1, v => v.Item2);
+
+
         /// <summary>
         ///     Converts the input to camelcase. Default: PascalCase
         /// </summary>
@@ -30,9 +52,9 @@ namespace Plotly.Blazor.Generator
             {
                 return input;
             }
-
+            
             // Check if a divider char exists, run recursively if so
-            if (Regex.IsMatch(input, "[_+\\-\\s]"))
+            if (!CustomWords.ContainsKey(input) && Regex.IsMatch(input, "[_+\\-\\s]"))
             {
                 return Regex.Split(input, "[_+\\-\\s]+")
                     .Where(s => !string.IsNullOrWhiteSpace(s))
@@ -43,8 +65,14 @@ namespace Plotly.Blazor.Generator
             // Default is the input
             var suggestion = input;
 
+            // Check for custom dictionary!
+            if (CustomWords.ContainsKey(input))
+            {
+                suggestion = CustomWords[input];
+            }
+
             // Suggest something new if a spell check failed and no uppercase chars are included
-            if (!dic.Check(input) && !input.Any(char.IsUpper))
+            else if (!dic.Check(input) && !input.Any(char.IsUpper))
             {
                 // Get a an array of string[], where one string[] contains extracted words from the input
                 var suggestions = dic
@@ -61,7 +89,8 @@ namespace Plotly.Blazor.Generator
                 {
                     //var suggestions = suggestionList[maxIndex];
                     suggestion = suggestions.Where(s => !string.IsNullOrWhiteSpace(s))
-                        .Select((s,i) => {
+                        .Select((s, i) =>
+                        {
                             if (i == 0)
                             {
                                 return suppressUppercase ? s : $"{char.ToUpper(s[0])}{s.Substring(1)}";
@@ -70,8 +99,12 @@ namespace Plotly.Blazor.Generator
                         })
                         .Aggregate((s, t) => $"{s}{t}");
                 }
+                else
+                {
+                    UnknownWords.Add(input);
+                }
             }
-            return suppressUppercase? suggestion : $"{char.ToUpper(suggestion[0])}{suggestion.Substring(1)}";
+            return suppressUppercase ? suggestion : $"{char.ToUpper(suggestion[0])}{suggestion.Substring(1)}";
         }
 
         /// <summary>
@@ -93,8 +126,9 @@ namespace Plotly.Blazor.Generator
                 .ToCamelCase(dic, suppressUppercase)
                 .Replace(">=", "GreaterThanOrEqual")
                 .Replace("<=", "LessThanOrEqual")
+                .Replace("!=", "NotEqual")
                 .ReplaceSpecialChars(),
-                "(\\d+)", m => int.Parse(m.Value).ConvertNumberToString());
+                "^(\\d+)", m => $"_{m.Value}");
         }
 
         /// <summary>
@@ -166,165 +200,6 @@ namespace Plotly.Blazor.Generator
             return sb.ToString();
         }
 
-        /// <summary>
-        ///     Converts the digit to string.
-        /// </summary>
-        /// <param name="i">The i.</param>
-        /// <returns>System.String.</returns>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        private static string ConvertDigitToString(int i)
-        {
-            return i switch
-            {
-                0 => "",
-                1 => "One",
-                2 => "Two",
-                3 => "Three",
-                4 => "Four",
-                5 => "Five",
-                6 => "Six",
-                7 => "Seven",
-                8 => "Eight",
-                9 => "Nine",
-                _ => throw new IndexOutOfRangeException($"{i} not a digit"),
-            };
-        }
-
-        /// <summary>
-        ///     Converts the teens to string.
-        /// </summary>
-        /// <param name="n">The n.</param>
-        /// <returns>System.String.</returns>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        private static string ConvertTeensToString(int n)
-        {
-            return n switch
-            {
-                10 => "Ten",
-                11 => "Eleven",
-                12 => "Twelve",
-                13 => "Thirteen",
-                14 => "Fourteen",
-                15 => "Fiveteen",
-                16 => "Sixteen",
-                17 => "Seventeen",
-                18 => "Eighteen",
-                19 => "Nineteen",
-                _ => throw new IndexOutOfRangeException($"{n} not a teen"),
-            };
-        }
-
-        /// <summary>
-        ///     Converts the high tens to string.
-        /// </summary>
-        /// <param name="n">The n.</param>
-        /// <returns>System.String.</returns>
-        /// <exception cref="IndexOutOfRangeException"></exception>
-        private static string ConvertHighTensToString(int n)
-        {
-            var tensDigit = (int)Math.Floor(n / 10.0);
-            string tensStr = tensDigit switch
-            {
-                2 => "Twenty",
-                3 => "Thirty",
-                4 => "Forty",
-                5 => "Fifty",
-                6 => "Sixty",
-                7 => "Seventy",
-                8 => "Eighty",
-                9 => "Ninety",
-                _ => throw new IndexOutOfRangeException($"{n} not in range 20-99"),
-            };
-            if (n % 10 == 0)
-            {
-                return tensStr;
-            }
-
-            var onesStr = ConvertDigitToString(n - tensDigit * 10);
-            return tensStr + onesStr;
-        }
-
-        /// <summary>
-        ///     This is the primary conversion method which can convert any integer bigger than 99
-        /// </summary>
-        /// <param name="n">The numeric value of the integer to be translated ("textified")</param>
-        /// <param name="baseNum">Represents the order of magnitude of the number (e.g., 100 or 1000 or 1e6, etc)</param>
-        /// <param name="baseNumStr">The string representation of the base number (e.g. "hundred", "thousand", or "million", etc)</param>
-        /// <returns>Textual representation of any integer</returns>
-        private static string ConvertBigNumberToString(int n, int baseNum, string baseNumStr)
-        {
-            // Strategy: translate the first portion of the number, then recursively translate the remaining sections.
-            // Step 1: strip off first portion, and convert it to string:
-            var bigPart = (int)Math.Floor((double)n / baseNum);
-            var bigPartStr = ConvertNumberToString(bigPart) + baseNumStr;
-            // Step 2: check to see whether we're done:
-            if (n % baseNum == 0)
-            {
-                return bigPartStr;
-            }
-
-            // Step 3: concatenate 1st part of string with recursively generated remainder:
-            var restOfNumber = n - bigPart * baseNum;
-            return bigPartStr + ConvertNumberToString(restOfNumber);
-        }
-
-        /// <summary>
-        ///     Converts the number to string. (source:
-        ///     https://www.codeproject.com/Articles/1164635/Converting-Numbers-to-Text-in-Csharp)
-        /// </summary>
-        /// <param name="n">The n.</param>
-        /// <returns>System.String.</returns>
-        /// <exception cref="NotSupportedException">negative numbers not supported</exception>
-        /// <exception cref="NotSupportedException">Bigger numbers are not supported</exception>
-        public static string ConvertNumberToString(this int n)
-        {
-            if (n < 0)
-            {
-                throw new NotSupportedException("negative numbers not supported");
-            }
-
-            if (n == 0)
-            {
-                return "Zero";
-            }
-
-            if (n < 10)
-            {
-                return ConvertDigitToString(n);
-            }
-
-            if (n < 20)
-            {
-                return ConvertTeensToString(n);
-            }
-
-            if (n < 100)
-            {
-                return ConvertHighTensToString(n);
-            }
-
-            if (n < 1000)
-            {
-                return ConvertBigNumberToString(n, (int)1e2, "Hundred");
-            }
-
-            if (n < 1e6)
-            {
-                return ConvertBigNumberToString(n, (int)1e3, "Thousand");
-            }
-
-            if (n < 1e9)
-            {
-                return ConvertBigNumberToString(n, (int)1e6, "Million");
-            }
-
-            if (n < 1e12)
-            {
-                return ConvertBigNumberToString(n, (int)1e9, "Billion");
-            }
-
-            throw new NotSupportedException("Bigger numbers are not supported");
-        }
 
         /// <summary>
         ///     Splits the given string by character count. Splits only full words.
@@ -332,7 +207,7 @@ namespace Plotly.Blazor.Generator
         /// <param name="input">The input.</param>
         /// <param name="count">The count.</param>
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
-        public static IEnumerable<string> SplitByCharCountIfWhitespace(this string input, int count = 60)
+        public static IEnumerable<string> SplitByCharCountIfWhitespace(this string input, int count = 70)
         {
             if (string.IsNullOrWhiteSpace(input))
             {
@@ -368,7 +243,7 @@ namespace Plotly.Blazor.Generator
         {
             if (nameSpace == refNameSpace)
             {
-                return nameSpace;
+                return @".\src\";
             }
 
             if (!nameSpace.Contains($"{refNameSpace}."))
@@ -412,5 +287,17 @@ namespace Plotly.Blazor.Generator
                 return false;
             }
         }
+
+        /// <summary>
+        /// Escapes the XML special chars.
+        /// </summary>
+        /// <param name="s">The s.</param>
+        /// <returns>System.String.</returns>
+        public static string HtmlEncode(this string s)
+
+        {
+            return WebUtility.HtmlEncode(s);
+        }
+
     }
 }

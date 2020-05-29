@@ -19,7 +19,7 @@ namespace Plotly.Blazor.Generator.Schema.Transforms
         ///     Gets or sets the attributes.
         /// </summary>
         /// <value>The attributes.</value>
-        public IDictionary<string, object> Attributes { get; set; }
+        public IDictionary<string, JsonElement> Attributes { get; set; }
 
         /// <summary>
         ///     Gets or sets the other attributes.

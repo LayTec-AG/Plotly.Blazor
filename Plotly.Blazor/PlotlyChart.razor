@@ -1,0 +1,68 @@
+﻿@inject IJSRuntime JsRuntime
+@using Microsoft.JSInterop
+@implements IDisposable
+
+<div id="@Id"></div>
+
+@code {
+
+    /// <summary>
+    ///     Id of the div element
+    /// </summary>
+    [Parameter]
+    public string Id { get; set; }
+
+    /// <summary>
+    ///     Data of the charts
+    /// </summary>
+    [Parameter]
+    public IEnumerable<ITrace> Data { get; set; }
+
+    /// <summary>
+    ///     Layout of the charts
+    /// </summary>
+    [Parameter]
+    public Layout Layout { get; set; }
+
+    /// <summary>
+    ///     Config of the charts
+    /// </summary>
+    [Parameter]
+    public Config Config { get; set; }
+
+    private DotNetObjectReference<PlotlyChart> objectReference;
+
+    protected override bool ShouldRender() => false;
+
+    /// <inheritdoc />
+    protected override Task OnInitializedAsync()
+    {
+        objectReference = DotNetObjectReference.Create(this);
+        return base.OnInitializedAsync();
+    }
+
+    /// <inheritdoc />
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JsRuntime.NewPlot(objectReference);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    /// <summary>
+    ///     Updates the chart using the current properties
+    /// </summary>
+    /// <returns></returns>
+    public async Task Update()
+    {
+        await JsRuntime.React(objectReference);
+    }
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+        objectReference.Dispose();
+    }
+}

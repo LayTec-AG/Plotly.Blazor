@@ -26,4 +26,14 @@ plotly.js is free and open source and you can view the source, report issues or 
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Content Update="wwwroot\plotly-interop.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\plotly-latest.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

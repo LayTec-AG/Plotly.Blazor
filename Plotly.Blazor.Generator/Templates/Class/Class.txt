@@ -33,7 +33,7 @@ namespace {{Namespace}}
         /// </summary>
         {{/IsInherited}}
         [JsonPropertyName(@"{{DisplayName}}")]
-        {{#IsSubplot}}"
+        {{#IsSubplot}}
         [Subplot]
         {{/IsSubplot}}
         {{#IsPolymorphic}}

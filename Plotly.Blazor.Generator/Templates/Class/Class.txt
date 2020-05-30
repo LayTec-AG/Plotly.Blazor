@@ -15,10 +15,10 @@ namespace {{Namespace}}
     ///     {{.}}
     {{/Description}}
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("{{GeneratorName}}", "{{GeneratorVersion}}")]
     {{#HasSubplotProperty}}
     [JsonConverter(typeof(SubplotConverter))]
     {{/HasSubplotProperty}}
-    [System.CodeDom.Compiler.GeneratedCode("{{GeneratorName}}", "{{GeneratorVersion}}")]
     public class {{Name}} {{#Interface}}: {{.}}{{/Interface}}
     {
         {{#Properties}}

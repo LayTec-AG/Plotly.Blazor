@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Plotly.Blazor.Generator.Templates.Class
 {
@@ -29,6 +29,18 @@ namespace Plotly.Blazor.Generator.Templates.Class
         /// </summary>
         /// <value>The interface.</value>
         public string Interface { get; set; }
+
+        /// <summary>
+        /// Gets the generator name.
+        /// </summary>
+        /// <value>The generator name.</value>
+        public string GeneratorName => Assembly.GetExecutingAssembly().GetName().Name;
+
+        /// <summary>
+        /// Gets the generator version.
+        /// </summary>
+        /// <value>The generator version.</value>
+        public System.Version GeneratorVersion => Assembly.GetExecutingAssembly().GetName().Version;
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance has nested complex attributes.

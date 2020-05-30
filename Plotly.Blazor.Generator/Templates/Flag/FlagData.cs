@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 
 namespace Plotly.Blazor.Generator.Templates.Flag
 {
@@ -22,6 +21,18 @@ namespace Plotly.Blazor.Generator.Templates.Flag
         /// </summary>
         /// <value>The name.</value>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets the generator name.
+        /// </summary>
+        /// <value>The generator name.</value>
+        public string GeneratorName => Assembly.GetExecutingAssembly().GetName().Name;
+
+        /// <summary>
+        /// Gets the generator version.
+        /// </summary>
+        /// <value>The generator version.</value>
+        public System.Version GeneratorVersion => Assembly.GetExecutingAssembly().GetName().Version;
 
         /// <summary>
         /// Gets or sets the description.

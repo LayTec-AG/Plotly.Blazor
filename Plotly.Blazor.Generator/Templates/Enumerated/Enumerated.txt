@@ -12,6 +12,7 @@ namespace {{Namespace}}
     ///     {{.}}
     {{/Description}}
     /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("{{GeneratorName}}", "{{GeneratorVersion}}")]
     [JsonConverter(typeof(EnumConverter))]
     public enum {{Name}}
     {

@@ -18,6 +18,7 @@ namespace {{Namespace}}
     {{#HasSubplotProperty}}
     [JsonConverter(typeof(SubplotConverter))]
     {{/HasSubplotProperty}}
+    [System.CodeDom.Compiler.GeneratedCode("{{GeneratorName}}", "{{GeneratorVersion}}")]
     public class {{Name}} {{#Interface}}: {{.}}{{/Interface}}
     {
         {{#Properties}}
@@ -32,7 +33,7 @@ namespace {{Namespace}}
         /// </summary>
         {{/IsInherited}}
         [JsonPropertyName(@"{{DisplayName}}")]
-        {{#IsSubplot}}
+        {{#IsSubplot}}"
         [Subplot]
         {{/IsSubplot}}
         {{#IsPolymorphic}}

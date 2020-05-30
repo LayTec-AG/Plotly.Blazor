@@ -10,7 +10,7 @@ using Plotly.Blazor.Generator.Schema;
 using Plotly.Blazor.Generator.Templates.Class;
 using Plotly.Blazor.Generator.Templates.Enumerated;
 using Plotly.Blazor.Generator.Templates.Flag;
-using Plotly.Blazor.Generator.Templates.InterfaceData;
+using Plotly.Blazor.Generator.Templates.Interface;
 using Stubble.Core;
 using Stubble.Core.Builders;
 using WeCantSpell.Hunspell;
@@ -123,7 +123,7 @@ namespace Plotly.Blazor.Generator
                 Name = "ITransform",
                 Namespace = $"{Namespace}",
                 Description = new[] { "The transform interface." },
-                Properties = new[]{new Templates.InterfaceData.Property
+                Properties = new[]{new Templates.Interface.Property
                 {
                     PropertyDescription = new []{"The type of the transform."},
                     TypeName = "TransformTypeEnum",
@@ -281,7 +281,7 @@ namespace Plotly.Blazor.Generator
                 Name = "ITrace",
                 Namespace = $"{Namespace}",
                 Description = new[] { "The trace interface." },
-                Properties = new[]{new Templates.InterfaceData.Property
+                Properties = new[]{new Templates.Interface.Property
                 {
                     PropertyDescription = new []{"The type of the trace."},
                     TypeName = "TraceTypeEnum",

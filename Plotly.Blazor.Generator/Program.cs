@@ -356,7 +356,7 @@ namespace Plotly.Blazor.Generator
                                                  || value.ValType == "flaglist" || value.ValType == "enumerated";
                 }
 
-                await GenerateAsync(key, value, $"{customNamespace}.{name.ToDotNetFriendlyName(_dictionary)}Lib");
+                await GenerateAsync(key, value, $"{customNamespace}");
             }
 
             // Call it recursively for all nested attributes if its an object

@@ -129,8 +129,8 @@ namespace Plotly.Blazor.Generator.Templates.Class
         /// Gets a value indicating whether this instance is polymorphic.
         /// </summary>
         /// <value><c>true</c> if this instance is polymorphic; otherwise, <c>false</c>.</value>
-        public bool IsPolymorphic => TypeName == "ITransform" || TypeName == "IEnumerable<ITransform>" ||
-                                     TypeName == "IEnumerable<ITrace>";
+        public bool IsPolymorphic => TypeName == "ITransform" || TypeName == "IList<ITransform>" ||
+                                     TypeName == "IList<ITrace>";
     }
 
 

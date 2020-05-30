@@ -208,7 +208,7 @@ namespace Plotly.Blazor.Generator
                         {
                             continue;
                         }
-                        await GenerateAsync(key, attributeDescription, $"{Namespace}.Transforms.{transformKey.ToCamelCase(_dictionary)}Lib");
+                        await GenerateAsync(key, attributeDescription, $"{Namespace}.Transforms.{transformKey.ToDotNetFriendlyName(_dictionary)}Lib");
                     }
                 }
             }
@@ -253,7 +253,7 @@ namespace Plotly.Blazor.Generator
         {
             foreach (var (key, value) in _schema.Traces)
             {
-                foreach (var (attributeKey, attributeValue) in value.Attributes.OtherAttributes)
+                foreach (var (attributeKey, attributeValue) in value.Attributes)
                 {
                     if (!attributeValue.TryToObject<AttributeDescription>(out var attributeDescription))
                     {
@@ -261,7 +261,7 @@ namespace Plotly.Blazor.Generator
                     }
 
                     await GenerateAsync(attributeKey, attributeDescription,
-                        $"{Namespace}.Traces.{key.ToCamelCase(_dictionary)}Lib");
+                        $"{Namespace}.Traces.{key.ToDotNetFriendlyName(_dictionary)}Lib");
                 }
             }
 
@@ -307,7 +307,7 @@ namespace Plotly.Blazor.Generator
                 Description = new[] { "Determines the type of the trace." },
                 Values = _schema.Traces.Select(keyValue => new EnumeratedValue
                 {
-                    DisplayName = keyValue.Value.Attributes.Type,
+                    DisplayName = keyValue.Value.Attributes.ContainsKey("type") ? keyValue.Value.Attributes["type"].GetString() : keyValue.Key,
                     EnumName = keyValue.Key.ToDotNetFriendlyName(_dictionary)
                 })
             };
@@ -325,7 +325,7 @@ namespace Plotly.Blazor.Generator
             foreach (var (traceKey, traceValue) in _schema.Traces)
             {
                 var friendlyName = traceKey.ToDotNetFriendlyName(_dictionary);
-                await GenerateClassFileAsync(traceKey, traceValue.Attributes.OtherAttributes, $"{Namespace}.Traces",
+                await GenerateClassFileAsync(traceKey, traceValue.Attributes, $"{Namespace}.Traces",
                     "ITrace", new[]
                     {
                         new Property
@@ -349,14 +349,14 @@ namespace Plotly.Blazor.Generator
             // Call it recursively for all nested attributes if its an array
             if (attributeDescription.IsArray)
             {
-                var keyValue = GetArrayType(attributeDescription);
-                if (keyValue.Value != null)
+                var (key, value) = GetArrayType(attributeDescription);
+                if (value != null)
                 {
-                    hasNestedComplexAttributes = keyValue.Value.Role == "object" && !keyValue.Value.IsArray  
-                                                 || keyValue.Value.ValType == "flaglist" || keyValue.Value.ValType == "enumerated";
+                    hasNestedComplexAttributes = value.Role == "object" && !value.IsArray  
+                                                 || value.ValType == "flaglist" || value.ValType == "enumerated";
                 }
 
-                await GenerateAsync(keyValue.Key, keyValue.Value, $"{customNamespace}");
+                await GenerateAsync(key, value, $"{customNamespace}.{name.ToDotNetFriendlyName(_dictionary)}Lib");
             }
 
             // Call it recursively for all nested attributes if its an object
@@ -382,12 +382,13 @@ namespace Plotly.Blazor.Generator
                                 continue;
                             }
                         }
-                        await GenerateAsync(key, otherAttribute, $"{customNamespace}.{name.ToCamelCase(_dictionary)}{(hasNestedComplexAttributes ? "Lib" : "")}");
+
+                        await GenerateAsync(key, otherAttribute, $"{customNamespace}.{name.ToDotNetFriendlyName(_dictionary)}Lib");
                     }
                 }
             }
 
-            // Call the generation exclusively and recursively for flags and enums
+            // Generate files for enums, flags, objects
             if (attributeDescription.ValType == "enumerated")
             {
                 await GenerateEnumFileAsync(name, attributeDescription, $"{customNamespace}");
@@ -401,7 +402,7 @@ namespace Plotly.Blazor.Generator
 
             if (attributeDescription.Role == "object" && !attributeDescription.IsArray)
             {
-                await GenerateClassFileAsync(name, attributeDescription.OtherAttributes, customNamespace, hasNestedComplexAttributes: hasNestedComplexAttributes);
+                await GenerateClassFileAsync(name, attributeDescription.OtherAttributes, $"{customNamespace}", hasNestedComplexAttributes: hasNestedComplexAttributes);
             }
 
         }
@@ -411,7 +412,7 @@ namespace Plotly.Blazor.Generator
         {
             var enumeratedData = new EnumeratedData()
             {
-                Name = $"{name.ToCamelCase(_dictionary)}Enum",
+                Name = $"{name.ToDotNetFriendlyName(_dictionary)}Enum",
                 Namespace = customNamespace,
                 Description = attributeDescription.Description.HtmlEncode().SplitByCharCountIfWhitespace()
             };
@@ -456,7 +457,7 @@ namespace Plotly.Blazor.Generator
         {
             var flagData = new FlagData
             {
-                Name = $"{name.ToCamelCase(_dictionary)}Flag",
+                Name = $"{name.ToDotNetFriendlyName(_dictionary)}Flag",
                 Namespace = customNamespace,
                 Description = attributeDescription.Description.HtmlEncode().SplitByCharCountIfWhitespace()
             };
@@ -525,7 +526,7 @@ namespace Plotly.Blazor.Generator
         private static async Task GenerateClassFileAsync(string name, IDictionary<string, AttributeDescription> attributes,
             string customNamespace, string interfaceName = null, IEnumerable<Property> interfaceProperties = null, bool hasNestedComplexAttributes=false)
         {
-            var friendlyName = name.ToCamelCase(_dictionary);
+            var friendlyName = name.ToDotNetFriendlyName(_dictionary);
 
             var properties = attributes?.Select(pair =>
                 {
@@ -614,9 +615,9 @@ namespace Plotly.Blazor.Generator
                 case "transform":
                     return "ITransform";
                 case "transforms":
-                    return "IEnumerable<ITransform>";
+                    return "IList<ITransform>";
                 case "data":
-                    return "IEnumerable<ITrace>";
+                    return "IList<ITrace>";
             }
 
             // HANDLE REGEX
@@ -632,14 +633,14 @@ namespace Plotly.Blazor.Generator
             // Call it recursively for all nested attributes if its an array
             if (attributeDescription.IsArray)
             {
-                return $"IEnumerable<{GetArrayType(attributeDescription).Key}>";
+                return $"IList<{GetArrayType(attributeDescription).Key}>";
             }
 
             if (!string.IsNullOrWhiteSpace(key))
             {
                 if (attributeDescription.IsSubplotObj)
                 {
-                    return $"IEnumerable<{key.ToDotNetFriendlyName(_dictionary)}>";
+                    return $"IList<{key.ToDotNetFriendlyName(_dictionary)}>";
                 }
 
                 if (attributeDescription.Role == "object")
@@ -661,7 +662,7 @@ namespace Plotly.Blazor.Generator
             switch (attributeDescription.ValType)
             {
                 case "data_array":
-                    return "IEnumerable<object>";
+                    return "IList<object>";
                 case "boolean":
                     return "bool?";
                 case "number":
@@ -673,7 +674,7 @@ namespace Plotly.Blazor.Generator
                 case "color":
                     return "object";
                 case "colorlist":
-                    return "IEnumerable<object>";
+                    return "IList<object>";
                 case "colorscale":
                     return "object";
                 case "subplotid":
@@ -683,7 +684,7 @@ namespace Plotly.Blazor.Generator
                 case "any":
                     return "object";
                 case "info_array":
-                    return "IEnumerable<object>";
+                    return "IList<object>";
 
                 default:
                     throw new ArgumentException($"ValType {attributeDescription.ValType} not supported");

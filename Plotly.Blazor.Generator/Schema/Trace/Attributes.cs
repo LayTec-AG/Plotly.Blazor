@@ -10,12 +10,6 @@ namespace Plotly.Blazor.Generator.Schema.Trace
     public class Attributes
     {
         /// <summary>
-        ///     Gets or sets the type.
-        /// </summary>
-        /// <value>The type.</value>
-        public string Type { get; set; }
-
-        /// <summary>
         ///     Gets or sets the attribute list.
         /// </summary>
         /// <value>The attribute list.</value>

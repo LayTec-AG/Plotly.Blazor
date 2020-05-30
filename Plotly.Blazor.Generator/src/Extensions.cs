@@ -1,25 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
+using System.Linq;
 using System.Text.Json;
 
 
-// ReSharper disable once CheckNamespace
 namespace Plotly.Blazor
 {
     public static class Extensions
     {
-        /// <summary>
-        ///     Converts an element into an IDictionary so that the methods of the IJsRunTime
-        ///     do not affect the desired serialization.
-        /// </summary>
-        /// <typeparam name="T">Type of the element.</typeparam>
-        /// <param name="obj">The object itself.</param>
-        /// <param name="serializerOptions">Custom serialization settings.</param>
-        /// <returns></returns>
-        [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
         public static dynamic PrepareJsInterop<T>(this T obj, JsonSerializerOptions serializerOptions = null)
         {
             var type = obj?.GetType();
@@ -40,51 +30,30 @@ namespace Plotly.Blazor
             // Handle jsonElements
             if (obj is JsonElement asJsonElement)
             {
-                return asJsonElement.PrepareJsonElement(serializerOptions);
+                return asJsonElement.PrepareJsonElement();
             }
 
             // Handle objects if its not an enumerable
             if (!(obj is IEnumerable<dynamic> asEnumerable))
             {
                 return JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize<object>(obj, serializerOptions))
-                    .PrepareJsonElement(serializerOptions);
+                    .PrepareJsonElement();
             }
 
             // Handle dictionaries
-            if (asEnumerable is Dictionary<object, object> dictionary)
+            if (asEnumerable is Dictionary<dynamic, dynamic> dictionary)
             {
-                var currentValues = new Dictionary<object, object>();
-                // Fill new list or dictionary
-                foreach (var item in dictionary)
-                {
-                    currentValues.Add(item.Key, PrepareJsInterop(item.Value, serializerOptions));
-                }
-
-                return currentValues;
+                return dictionary.ToDictionary(keyValue => keyValue.Key,
+                    keyValue => PrepareJsInterop(keyValue.Value, serializerOptions));
             }
 
             // Handle lists
-            else
-            {
-                var currentValues = new List<object>();
-
-                // Fill new list or dictionary
-                foreach (var item in asEnumerable)
-                {
-                    if (item == null && serializerOptions.IgnoreNullValues)
-                    {
-                        continue;
-                    }
-
-                    currentValues.Add(PrepareJsInterop(item, serializerOptions));
-                }
-
-                return currentValues;
-            }
+            return asEnumerable.Where(item => !serializerOptions.IgnoreNullValues || item != null)
+                .Select(item => PrepareJsInterop(item, serializerOptions));
         }
 
 
-        private static dynamic PrepareJsonElement(this JsonElement obj, JsonSerializerOptions serializerOptions)
+        private static dynamic PrepareJsonElement(this JsonElement obj)
         {
             switch (obj.ValueKind)
             {
@@ -92,13 +61,12 @@ namespace Plotly.Blazor
                     IDictionary<string, object> expando = new ExpandoObject();
                     foreach (var property in obj.EnumerateObject())
                     {
-                        expando.Add(property.Name, property.Value.PrepareJsonElement(serializerOptions));
+                        expando.Add(property.Name, property.Value.PrepareJsonElement());
                     }
 
                     return expando;
                 case JsonValueKind.Array:
-                    var json = obj.GetRawText();
-                    return JsonSerializer.Deserialize<IEnumerable<JsonElement>>(json, serializerOptions);
+                    return obj.EnumerateArray().Select(jsonElement => jsonElement.PrepareJsonElement());
                 case JsonValueKind.String:
                     return obj.GetString();
                 case JsonValueKind.Number:
@@ -120,6 +88,31 @@ namespace Plotly.Blazor
         {
             return !type.IsPrimitive && !type.IsEnum && type != typeof(string) ||
                    type != typeof(string) && typeof(IEnumerable).IsAssignableFrom(type);
+        }
+
+        public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            if (list is List<T> asList)
+            {
+                asList.AddRange(items);
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    list.Add(item);
+                }
+            }
         }
     }
 }

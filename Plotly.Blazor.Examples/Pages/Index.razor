@@ -1,6 +1,10 @@
 ﻿@page "/"
-@using Plotly.Blazor.Traces.Scatter
 @using System.Diagnostics
+@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.YAxisLib
+@using Plotly.Blazor.Traces.CandlestickLib
+@using Plotly.Blazor.Traces.ScatterLib
+@using Title = Plotly.Blazor.LayoutLib.Title
 
 
 <h1>Hello, world!</h1>
@@ -22,36 +26,74 @@ Welcome to your new app.
     };
     Layout layout = new Layout
     {
-        Title = "Test"
+        Title = new Title
+        {
+            Text = "Test"
+        },
+        YAxis = new List<YAxis>
+    {
+            new YAxis
+            {
+                Title = new Title
+                {
+                    Text = "Scatter Unit"
+                }
+            },
+            new YAxis
+            {
+                Title = new Title
+                {
+                    Text = "Bar Unit"
+                },
+                Overlaying = "y",
+                Side = SideEnum.Right
+            }
+        }
     };
 
-    List<Scatter> data = new List<Scatter>
+    List<ITrace> data = new List<ITrace>
 {
         new Scatter
         {
-            Name = "Trace1",
-            Mode = ScatterMode.Lines
-        }.GenerateData(0, 100),
-        new Scatter
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            X = new List<object>(),
+            Y = new List<object>()
+        },
+        new Bar
         {
             Name = "Trace2",
-            Mode = ScatterMode.Lines | ScatterMode.Markers
-        }.GenerateData(0, 100, GenerateMethod.Cos)
+            YAxis = "y2",
+            X = new List<object>(),
+            Y = new List<object>()
+        },
+        new Candlestick
+        {
+            X = new List<object>{DateTime.Today},
+            Close = new List<object>{1},
+            Increasing = new Increasing
+            {
+                Line =
+                {
+
+                }
+            }
+        }
     };
 
     private async Task AddData(int count = 100)
     {
-        if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
-        if (!(chart.Data.ElementAt(1) is Scatter plot2)) return;
+        if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
+        if (!(chart.Data.ElementAt(1) is Bar bar)) return;
 
-        var (x, y) = Helper.GenerateData(plot.X.Count + 1, plot.X.Count + 1 + count);
-        var (x2, y2) = Helper.GenerateData(plot2.X.Count + 1, plot2.X.Count + 1 + count, GenerateMethod.Cos);
+        var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
+        var (x2, y2) = Helper.GenerateData(bar.X.Count + 1, bar.X.Count + 1 + count, GenerateMethod.Cos);
 
-        plot.X.AddRange(x);
-        plot.Y.AddRange(y);
+        scatter.X.AddRange(x);
+        scatter.Y.AddRange(y);
 
-        plot2.X.AddRange(x2);
-        plot2.Y.AddRange(y2);
+        bar.X.AddRange(x2);
+        bar.Y.AddRange(y2);
 
         var stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -63,7 +105,7 @@ Welcome to your new app.
     private async Task Clear()
     {
         if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
-        if (!(chart.Data.ElementAt(1) is Scatter plot2)) return;
+        if (!(chart.Data.ElementAt(1) is Bar plot2)) return;
 
         plot.X.Clear();
         plot.Y.Clear();

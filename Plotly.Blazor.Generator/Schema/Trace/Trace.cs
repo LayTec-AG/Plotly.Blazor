@@ -37,7 +37,7 @@ namespace Plotly.Blazor.Generator.Schema.Trace
         ///     Gets or sets the attributes.
         /// </summary>
         /// <value>The attributes.</value>
-        public Attributes Attributes { get; set; }
+        public IDictionary<string, JsonElement> Attributes { get; set; }
 
         /// <summary>
         ///     Gets or sets the other attributes.

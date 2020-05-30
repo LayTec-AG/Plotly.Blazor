@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.Scatter;
+using Plotly.Blazor.Traces;
 
 namespace Plotly.Blazor.Examples
 {
@@ -28,11 +28,11 @@ namespace Plotly.Blazor.Examples
         /// <param name="stopIndex">Index of the stop.</param>
         /// <param name="method">The method.</param>
         /// <returns>System.ValueTuple&lt;List&lt;System.Nullable&lt;System.Double&gt;&gt;, List&lt;System.Nullable&lt;System.Double&gt;&gt;&gt;.</returns>
-        public static (List<double?> X, List<double?> Y) GenerateData(int startIndex, int stopIndex, GenerateMethod method = GenerateMethod.Sin)
+        public static (List<object> X, List<object> Y) GenerateData(int startIndex, int stopIndex, GenerateMethod method = GenerateMethod.Sin)
         {
             var random = new Random();
-            var x = new List<double?>();
-            var y = new List<double?>();
+            var x = new List<object>();
+            var y = new List<object>();
             var a = 0.0;
             var b = 0.0;
             var c = 0.0;

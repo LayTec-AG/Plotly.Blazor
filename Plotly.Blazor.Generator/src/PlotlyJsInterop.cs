@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
@@ -12,6 +15,12 @@ namespace Plotly.Blazor
         // Should be fixed in future blazor wasm releases
         private const string PlotlyInterop = "plotlyInterop";
 
+        private static JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = null,
+            IgnoreNullValues = true
+        };
+
         /// <summary>
         /// Draws a new plot in an div element, overwriting any existing plot.
         /// To update an existing plot in a div, it is much more efficient to use <see cref="React" /> than to overwrite it.
@@ -23,10 +32,9 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.newPlot",
                 objectReference.Value.Id,
-                objectReference.Value
-                    .Data, // Cast is necessary! Otherwise, it would only serialize the properties of the interface
-                objectReference.Value.Layout,
-                objectReference.Value.Config);
+                objectReference.Value.Data.PrepareJsInterop(serializerOptions), // Cast is necessary! Otherwise, it would only serialize the properties of the interface
+                objectReference.Value.Layout.PrepareJsInterop(serializerOptions),
+                objectReference.Value.Config.PrepareJsInterop(serializerOptions));
         }
 
         /// <summary>
@@ -39,10 +47,9 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.react",
                 objectReference.Value.Id,
-                objectReference.Value
-                    .Data, // Cast is necessary! Otherwise, it would only serialize the properties of the interface
-                objectReference.Value.Layout,
-                objectReference.Value.Config);
+                objectReference.Value.Data.PrepareJsInterop(serializerOptions), // Cast is necessary! Otherwise, it would only serialize the properties of the interface
+                objectReference.Value.Layout.PrepareJsInterop(serializerOptions),
+                objectReference.Value.Config.PrepareJsInterop(serializerOptions));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Plotly.Blazor
 {
     public static class Extensions
     {
-        public static dynamic PrepareJsInterop<T>(this T obj, JsonSerializerOptions serializerOptions = null)
+        public static object PrepareJsInterop<T>(this T obj, JsonSerializerOptions serializerOptions = null)
         {
             var type = obj?.GetType();
 
@@ -34,14 +34,14 @@ namespace Plotly.Blazor
             }
 
             // Handle objects if its not an enumerable
-            if (!(obj is IEnumerable<dynamic> asEnumerable))
+            if (!(obj is IEnumerable<object> asEnumerable))
             {
                 return JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize<object>(obj, serializerOptions))
                     .PrepareJsonElement();
             }
 
             // Handle dictionaries
-            if (asEnumerable is Dictionary<dynamic, dynamic> dictionary)
+            if (asEnumerable is Dictionary<object, object> dictionary)
             {
                 return dictionary.ToDictionary(keyValue => keyValue.Key,
                     keyValue => PrepareJsInterop(keyValue.Value, serializerOptions));
@@ -53,7 +53,7 @@ namespace Plotly.Blazor
         }
 
 
-        private static dynamic PrepareJsonElement(this JsonElement obj)
+        private static object PrepareJsonElement(this JsonElement obj)
         {
             switch (obj.ValueKind)
             {

@@ -25,10 +25,10 @@ jobs:
       with:
         dotnet-version: '3.1.300'
 
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
+    - name: Build
+      run: dotnet build ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' --configuration Release
 
-    - name: dotnet publish
+    - name: Publish
       run: dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' 
 
     - name: Deploy to Azure Web App

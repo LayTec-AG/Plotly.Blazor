@@ -83,10 +83,10 @@ Info: *The chart reference is important so that we can update the chart later.*
 private async Task AddData(int count = 100)
 {
     if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
-    var (x, y) = Helper.GenerateData(trace.X.Count + 1, trace.X.Count + 1 + count);
+    var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
 
-    trace.X.AddRange(x);
-    trace.Y.AddRange(y);
+    scatter.X.AddRange(x);
+    scatter.Y.AddRange(y);
 
     await chart.Update();
 }

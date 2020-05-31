@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.SankeyLib.LinkLib;
 
 namespace Plotly.Blazor.Traces.SankeyLib
 {
@@ -21,9 +20,9 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> Label { get; set;} 
 
         /// <summary>
-        ///     Sets the `link` color. It can be a single value, or an array for specifying
-        ///     color for each `link`. If `link.color` is omitted, then by default, a translucent
-        ///     grey link will be used.
+        ///     Sets the <c>link</c> color. It can be a single value, or an array for specifying
+        ///     color for each <c>link</c>. If <c>link.color</c> is omitted, then by default,
+        ///     a translucent grey link will be used.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
@@ -41,13 +40,15 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public Plotly.Blazor.Traces.SankeyLib.LinkLib.Line Line { get; set;} 
 
         /// <summary>
-        ///     An integer number `[0..nodes.length - 1]` that represents the source node.
+        ///     An integer number &#39;[0..nodes.length - 1]&#39; that represents the source
+        ///     node.
         /// </summary>
         [JsonPropertyName(@"source")]
         public IList<object> Source { get; set;} 
 
         /// <summary>
-        ///     An integer number `[0..nodes.length - 1]` that represents the target node.
+        ///     An integer number &#39;[0..nodes.length - 1]&#39; that represents the target
+        ///     node.
         /// </summary>
         [JsonPropertyName(@"target")]
         public IList<object> Target { get; set;} 
@@ -59,9 +60,9 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> Value { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear when hovering links. If `none`
-        ///     or `skip` are set, no information is displayed upon hovering. But, if `none`
-        ///     is set, click and hover events are still fired.
+        ///     Determines which trace information appear when hovering links. If <c>none</c>
+        ///     or <c>skip</c> are set, no information is displayed upon hovering. But,
+        ///     if <c>none</c> is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.SankeyLib.LinkLib.HoverInfoEnum? HoverInfo { get; set;} 
@@ -74,19 +75,20 @@ namespace Plotly.Blazor.Traces.SankeyLib
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available. variables `value` and `label`.
-        ///     Anything contained in tag `<extra>` is displayed in the secondary box, for
-        ///     example "<extra>{fullData.name}</extra>". To hide the secondary box completely,
-        ///     use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
+        ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
+        ///     in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 

@@ -10,9 +10,9 @@ namespace Plotly.Blazor.Traces.HistogramLib.CumulativeLib
     /// <summary>
     ///     Only applies if cumulative is enabled. Sets whether the current bin is included,
     ///     excluded, or has half of its value included in the current cumulative value.
-    ///     *include* is the default for compatibility with various other tools, however
-    ///     it introduces a half-bin bias to the results. *exclude* makes the opposite
-    ///     half-bin bias, and *half* removes it.
+    ///     <c>include</c> is the default for compatibility with various other tools,
+    ///     however it introduces a half-bin bias to the results. <c>exclude</c> makes
+    ///     the opposite half-bin bias, and <c>half</c> removes it.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

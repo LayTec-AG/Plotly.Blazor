@@ -9,7 +9,8 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
 {
     /// <summary>
     ///     Sets the range selector&#39;s vertical position anchor This anchor binds
-    ///     the `y` position to the *top*, *middle* or *bottom* of the range selector.
+    ///     the <c>y</c> position to the <c>top</c>, <c>middle</c> or <c>bottom</c>
+    ///     of the range selector.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

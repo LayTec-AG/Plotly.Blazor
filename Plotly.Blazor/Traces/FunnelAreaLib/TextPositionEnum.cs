@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.FunnelAreaLib
 {
     /// <summary>
-    ///     Specifies the location of the `textinfo`.
+    ///     Specifies the location of the <c>textinfo</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.GridLib
 {
     /// <summary>
-    ///     Sets where the x axis labels and titles go. *bottom* means the very bottom
-    ///     of the grid. *bottom plot* is the lowest plot that each x axis is used in.
-    ///     *top* and *top plot* are similar.
+    ///     Sets where the x axis labels and titles go. <c>bottom</c> means the very
+    ///     bottom of the grid. &#39;bottom plot&#39; is the lowest plot that each x
+    ///     axis is used in. <c>top</c> and &#39;top plot&#39; are similar.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

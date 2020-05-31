@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     public class LonAxis 
     {
         /// <summary>
-        ///     Sets the range of this axis (in degrees), sets the map's clipped coordinates.
+        ///     Sets the range of this axis (in degrees), sets the map&#39;s clipped coordinates.
         /// </summary>
         [JsonPropertyName(@"range")]
         public IList<object> Range { get; set;} 
@@ -26,25 +26,25 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         public bool? ShowGrid { get; set;} 
 
         /// <summary>
-        ///     Sets the graticule's starting tick longitude/latitude.
+        ///     Sets the graticule&#39;s starting tick longitude/latitude.
         /// </summary>
         [JsonPropertyName(@"tick0")]
         public float? Tick0 { get; set;} 
 
         /// <summary>
-        ///     Sets the graticule's longitude/latitude tick step.
+        ///     Sets the graticule&#39;s longitude/latitude tick step.
         /// </summary>
         [JsonPropertyName(@"dtick")]
         public float? DTick { get; set;} 
 
         /// <summary>
-        ///     Sets the graticule's stroke color.
+        ///     Sets the graticule&#39;s stroke color.
         /// </summary>
         [JsonPropertyName(@"gridcolor")]
         public object GridColor { get; set;} 
 
         /// <summary>
-        ///     Sets the graticule's stroke width (in px).
+        ///     Sets the graticule&#39;s stroke width (in px).
         /// </summary>
         [JsonPropertyName(@"gridwidth")]
         public float? GridWidth { get; set;} 

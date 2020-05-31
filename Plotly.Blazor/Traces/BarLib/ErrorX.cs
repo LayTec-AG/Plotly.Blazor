@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.BarLib.ErrorXLib;
 
 namespace Plotly.Blazor.Traces.BarLib
 {
@@ -22,11 +21,11 @@ namespace Plotly.Blazor.Traces.BarLib
 
         /// <summary>
         ///     Determines the rule used to generate the error bars. If *constant`, the
-        ///     bar lengths are of a constant value. Set this constant in `value`. If *percent*,
-        ///     the bar lengths correspond to a percentage of underlying data. Set this
-        ///     percentage in `value`. If *sqrt*, the bar lengths correspond to the sqaure
-        ///     of the underlying data. If *data*, the bar lengths are set with data set
-        ///     `array`.
+        ///     bar lengths are of a constant value. Set this constant in <c>value</c>.
+        ///     If <c>percent</c>, the bar lengths correspond to a percentage of underlying
+        ///     data. Set this percentage in <c>value</c>. If <c>sqrt</c>, the bar lengths
+        ///     correspond to the sqaure of the underlying data. If <c>data</c>, the bar
+        ///     lengths are set with data set <c>array</c>.
         /// </summary>
         [JsonPropertyName(@"type")]
         public Plotly.Blazor.Traces.BarLib.ErrorXLib.TypeEnum? Type { get; set;} 
@@ -54,18 +53,18 @@ namespace Plotly.Blazor.Traces.BarLib
         public IList<object> ArrayMinus { get; set;} 
 
         /// <summary>
-        ///     Sets the value of either the percentage (if `type` is set to *percent*)
-        ///     or the constant (if `type` is set to *constant*) corresponding to the lengths
-        ///     of the error bars.
+        ///     Sets the value of either the percentage (if <c>type</c> is set to <c>percent</c>)
+        ///     or the constant (if <c>type</c> is set to <c>constant</c>) corresponding
+        ///     to the lengths of the error bars.
         /// </summary>
         [JsonPropertyName(@"value")]
         public float? Value { get; set;} 
 
         /// <summary>
-        ///     Sets the value of either the percentage (if `type` is set to *percent*)
-        ///     or the constant (if `type` is set to *constant*) corresponding to the lengths
-        ///     of the error bars in the bottom (left) direction for vertical (horizontal)
-        ///     bars
+        ///     Sets the value of either the percentage (if <c>type</c> is set to <c>percent</c>)
+        ///     or the constant (if <c>type</c> is set to <c>constant</c>) corresponding
+        ///     to the lengths of the error bars in the bottom (left) direction for vertical
+        ///     (horizontal) bars
         /// </summary>
         [JsonPropertyName(@"valueminus")]
         public float? ValueMinus { get; set;} 

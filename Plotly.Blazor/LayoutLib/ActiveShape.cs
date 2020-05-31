@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -14,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib
     public class ActiveShape 
     {
         /// <summary>
-        ///     Sets the color filling the active shape' interior.
+        ///     Sets the color filling the active shape&#39; interior.
         /// </summary>
         [JsonPropertyName(@"fillcolor")]
         public object FillColor { get; set;} 

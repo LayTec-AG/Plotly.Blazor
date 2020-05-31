@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib
 {
     /// <summary>
-    ///     Determines the mode of drag interactions. *select* and *lasso* apply only
-    ///     to scatter traces with markers or text. *orbit* and *turntable* apply only
-    ///     to 3D scenes.
+    ///     Determines the mode of drag interactions. <c>select</c> and <c>lasso</c>
+    ///     apply only to scatter traces with markers or text. <c>orbit</c> and <c>turntable</c>
+    ///     apply only to 3D scenes.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

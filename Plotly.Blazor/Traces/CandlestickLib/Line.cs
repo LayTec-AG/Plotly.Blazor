@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.CandlestickLib
 {
@@ -15,7 +14,8 @@ namespace Plotly.Blazor.Traces.CandlestickLib
     {
         /// <summary>
         ///     Sets the width (in px) of line bounding the box(es). Note that this style
-        ///     setting can also be set per direction via `increasing.line.width` and `decreasing.line.width`.
+        ///     setting can also be set per direction via <c>increasing.line.width</c> and
+        ///     <c>decreasing.line.width</c>.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 

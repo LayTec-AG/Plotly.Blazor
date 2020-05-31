@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.ConfigLib
 {
@@ -16,7 +15,7 @@ namespace Plotly.Blazor.ConfigLib
         /// <summary>
         ///     Determines if the main anchor of the annotation is editable. The main anchor
         ///     corresponds to the text (if no arrow) or the arrow (which drags the whole
-        ///     thing leaving the arrow length & direction unchanged).
+        ///     thing leaving the arrow length &amp; direction unchanged).
         /// </summary>
         [JsonPropertyName(@"annotationPosition")]
         public bool? AnnotationPosition { get; set;} 

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.SceneLib.CameraLib.ProjectionLib;
 
 namespace Plotly.Blazor.LayoutLib.SceneLib.CameraLib
 {
@@ -15,8 +13,8 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.CameraLib
     public class Projection 
     {
         /// <summary>
-        ///     Sets the projection type. The projection type could be either *perspective*
-        ///     or *orthographic*. The default is *perspective*.
+        ///     Sets the projection type. The projection type could be either <c>perspective</c>
+        ///     or <c>orthographic</c>. The default is <c>perspective</c>.
         /// </summary>
         [JsonPropertyName(@"type")]
         public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.ProjectionLib.TypeEnum? Type { get; set;} 

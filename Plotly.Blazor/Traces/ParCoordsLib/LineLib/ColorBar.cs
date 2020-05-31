@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib;
 
 namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
 {
@@ -15,9 +14,9 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
     public class ColorBar 
     {
         /// <summary>
-        ///     Determines whether this color bar's thickness (i.e. the measure in the constant
-        ///     color direction) is set in units of plot *fraction* or in *pixels*. Use
-        ///     `thickness` to set the value.
+        ///     Determines whether this color bar&#39;s thickness (i.e. the measure in the
+        ///     constant color direction) is set in units of plot <c>fraction</c> or in
+        ///     <c>pixels</c>. Use <c>thickness</c> to set the value.
         /// </summary>
         [JsonPropertyName(@"thicknessmode")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.ThicknessModeEnum? ThicknessMode { get; set;} 
@@ -30,9 +29,9 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public float? Thickness { get; set;} 
 
         /// <summary>
-        ///     Determines whether this color bar's length (i.e. the measure in the color
-        ///     variation direction) is set in units of plot *fraction* or in *pixels. Use
-        ///     `len` to set the value.
+        ///     Determines whether this color bar&#39;s length (i.e. the measure in the
+        ///     color variation direction) is set in units of plot <c>fraction</c> or in
+        ///     *pixels. Use <c>len</c> to set the value.
         /// </summary>
         [JsonPropertyName(@"lenmode")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.LenModeEnum? LenMode { get; set;} 
@@ -52,8 +51,9 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public float? X { get; set;} 
 
         /// <summary>
-        ///     Sets this color bar's horizontal position anchor. This anchor binds the
-        ///     `x` position to the *left*, *center* or *right* of the color bar.
+        ///     Sets this color bar&#39;s horizontal position anchor. This anchor binds
+        ///     the <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c>
+        ///     of the color bar.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.XAnchorEnum? XAnchor { get; set;} 
@@ -71,8 +71,9 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public float? Y { get; set;} 
 
         /// <summary>
-        ///     Sets this color bar's vertical position anchor This anchor binds the `y`
-        ///     position to the *top*, *middle* or *bottom* of the color bar.
+        ///     Sets this color bar&#39;s vertical position anchor This anchor binds the
+        ///     <c>y</c> position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the
+        ///     color bar.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.YAnchorEnum? YAnchor { get; set;} 
@@ -114,12 +115,13 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public object BgColor { get; set;} 
 
         /// <summary>
-        ///     Sets the tick mode for this axis. If *auto*, the number of ticks is set
-        ///     via `nticks`. If *linear*, the placement of the ticks is determined by a
-        ///     starting position `tick0` and a tick step `dtick` (*linear* is the default
-        ///     value if `tick0` and `dtick` are provided). If *array*, the placement of
-        ///     the ticks is set via `tickvals` and the tick text is `ticktext`. (*array*
-        ///     is the default value if `tickvals` is provided).
+        ///     Sets the tick mode for this axis. If <c>auto</c>, the number of ticks is
+        ///     set via <c>nticks</c>. If <c>linear</c>, the placement of the ticks is determined
+        ///     by a starting position <c>tick0</c> and a tick step <c>dtick</c> (<c>linear</c>
+        ///     is the default value if <c>tick0</c> and <c>dtick</c> are provided). If
+        ///     <c>array</c>, the placement of the ticks is set via <c>tickvals</c> and
+        ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
+        ///     <c>tickvals</c> is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.TickModeEnum? TickMode { get; set;} 
@@ -127,63 +129,66 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
         ///     number of ticks will be chosen automatically to be less than or equal to
-        ///     `nticks`. Has an effect only if `tickmode` is set to *auto*.
+        ///     <c>nticks</c>. Has an effect only if <c>tickmode</c> is set to <c>auto</c>.
         /// </summary>
         [JsonPropertyName(@"nticks")]
         public int? NTicks { get; set;} 
 
         /// <summary>
-        ///     Sets the placement of the first tick on this axis. Use with `dtick`. If
-        ///     the axis `type` is *log*, then you must take the log of your starting tick
-        ///     (e.g. to set the starting tick to 100, set the `tick0` to 2) except when
-        ///     `dtick`=*L<f>* (see `dtick` for more info). If the axis `type` is *date*,
-        ///     it should be a date string, like date data. If the axis `type` is *category*,
-        ///     it should be a number, using the scale where each category is assigned a
-        ///     serial number from zero in the order it appears.
+        ///     Sets the placement of the first tick on this axis. Use with <c>dtick</c>.
+        ///     If the axis <c>type</c> is <c>log</c>, then you must take the log of your
+        ///     starting tick (e.g. to set the starting tick to 100, set the <c>tick0</c>
+        ///     to 2) except when <c>dtick</c>=<c>L&lt;f&gt;</c> (see <c>dtick</c> for more
+        ///     info). If the axis <c>type</c> is <c>date</c>, it should be a date string,
+        ///     like date data. If the axis <c>type</c> is <c>category</c>, it should be
+        ///     a number, using the scale where each category is assigned a serial number
+        ///     from zero in the order it appears.
         /// </summary>
         [JsonPropertyName(@"tick0")]
         public object Tick0 { get; set;} 
 
         /// <summary>
-        ///     Sets the step in-between ticks on this axis. Use with `tick0`. Must be a
-        ///     positive number, or special strings available to *log* and *date* axes.
-        ///     If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where
-        ///     n is the tick number. For example, to set a tick mark at 1, 10, 100, 1000,
-        ///     ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick to
-        ///     2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5),
-        ///     or 0.69897000433. *log* has several special values; *L<f>*, where `f` is
-        ///     a positive number, gives ticks linearly spaced in value (but not position).
-        ///     For example `tick0` = 0.1, `dtick` = *L0.5* will put ticks at 0.1, 0.6,
-        ///     1.1, 1.6 etc. To show powers of 10 plus small digits between, use *D1* (all
-        ///     digits) or *D2* (only 2 and 5). `tick0` is ignored for *D1* and *D2*. If
-        ///     the axis `type` is *date*, then you must convert the time to milliseconds.
-        ///     For example, to set the interval between ticks to one day, set `dtick` to
-        ///     86400000.0. *date* also has special values *M<n>* gives ticks spaced by
-        ///     a number of months. `n` must be a positive integer. To set ticks on the
-        ///     15th of every third month, set `tick0` to *2000-01-15* and `dtick` to *M3*.
-        ///     To set ticks every 4 years, set `dtick` to *M48*
+        ///     Sets the step in-between ticks on this axis. Use with <c>tick0</c>. Must
+        ///     be a positive number, or special strings available to <c>log</c> and <c>date</c>
+        ///     axes. If the axis <c>type</c> is <c>log</c>, then ticks are set every 10^(n*dtick)
+        ///     where n is the tick number. For example, to set a tick mark at 1, 10, 100,
+        ///     1000, ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick
+        ///     to 2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5),
+        ///     or 0.69897000433. <c>log</c> has several special values; <c>L&lt;f&gt;</c>,
+        ///     where <c>f</c> is a positive number, gives ticks linearly spaced in value
+        ///     (but not position). For example <c>tick0</c> = 0.1, <c>dtick</c> = <c>L0.5</c>
+        ///     will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small
+        ///     digits between, use <c>D1</c> (all digits) or <c>D2</c> (only 2 and 5).
+        ///     <c>tick0</c> is ignored for <c>D1</c> and <c>D2</c>. If the axis <c>type</c>
+        ///     is <c>date</c>, then you must convert the time to milliseconds. For example,
+        ///     to set the interval between ticks to one day, set <c>dtick</c> to 86400000.0.
+        ///     <c>date</c> also has special values <c>M&lt;n&gt;</c> gives ticks spaced
+        ///     by a number of months. <c>n</c> must be a positive integer. To set ticks
+        ///     on the 15th of every third month, set <c>tick0</c> to <c>2000-01-15</c>
+        ///     and <c>dtick</c> to <c>M3</c>. To set ticks every 4 years, set <c>dtick</c>
+        ///     to <c>M48</c>
         /// </summary>
         [JsonPropertyName(@"dtick")]
         public object DTick { get; set;} 
 
         /// <summary>
         ///     Sets the values at which ticks on this axis appear. Only has an effect if
-        ///     `tickmode` is set to *array*. Used with `ticktext`.
+        ///     <c>tickmode</c> is set to <c>array</c>. Used with <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"tickvals")]
         public IList<object> TickVals { get; set;} 
 
         /// <summary>
-        ///     Sets the text displayed at the ticks position via `tickvals`. Only has an
-        ///     effect if `tickmode` is set to *array*. Used with `tickvals`.
+        ///     Sets the text displayed at the ticks position via <c>tickvals</c>. Only
+        ///     has an effect if <c>tickmode</c> is set to <c>array</c>. Used with <c>tickvals</c>.
         /// </summary>
         [JsonPropertyName(@"ticktext")]
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Determines whether ticks are drawn or not. If **, this axis' ticks are not
-        ///     drawn. If *outside* (*inside*), this axis' are drawn outside (inside) the
-        ///     axis lines.
+        ///     Determines whether ticks are drawn or not. If **, this axis&#39; ticks are
+        ///     not drawn. If <c>outside</c> (<c>inside</c>), this axis&#39; are drawn outside
+        ///     (inside) the axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.TicksEnum? Ticks { get; set;} 
@@ -213,14 +218,14 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public bool? ShowTickLabels { get; set;} 
 
         /// <summary>
-        ///     Sets the color bar's tick label font
+        ///     Sets the color bar&#39;s tick label font
         /// </summary>
         [JsonPropertyName(@"tickfont")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
-        ///     a `tickangle` of -90 draws the tick labels vertically.
+        ///     a <c>tickangle</c> of -90 draws the tick labels vertically.
         /// </summary>
         [JsonPropertyName(@"tickangle")]
         public float? TickAngle { get; set;} 
@@ -229,9 +234,9 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3's date formatter: *%{n}f* for fractional seconds with
-        ///     n digits. For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f*
-        ///     would display *09~15~23.46*
+        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
+        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
+        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"tickformat")]
         public string TickFormat { get; set;} 
@@ -249,9 +254,10 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public string TickPrefix { get; set;} 
 
         /// <summary>
-        ///     If *all*, all tick labels are displayed with a prefix. If *first*, only
-        ///     the first tick is displayed with a prefix. If *last*, only the last tick
-        ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
+        ///     If <c>all</c>, all tick labels are displayed with a prefix. If <c>first</c>,
+        ///     only the first tick is displayed with a prefix. If <c>last</c>, only the
+        ///     last tick is displayed with a suffix. If <c>none</c>, tick prefixes are
+        ///     hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
@@ -263,30 +269,30 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib
         public string TickSuffix { get; set;} 
 
         /// <summary>
-        ///     Same as `showtickprefix` but for tick suffixes.
+        ///     Same as <c>showtickprefix</c> but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
-        ///     If "true", even 4-digit integers are separated
+        ///     If <c>true</c>, even 4-digit integers are separated
         /// </summary>
         [JsonPropertyName(@"separatethousands")]
         public bool? SeparateThousands { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
-        ///     the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*,
-        ///     1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
-        ///     1G. If *B*, 1B.
+        ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
+        ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
-        ///     If *all*, all exponents are shown besides their significands. If *first*,
-        ///     only the exponent of the first tick is shown. If *last*, only the exponent
-        ///     of the last tick is shown. If *none*, no exponents appear.
+        ///     If <c>all</c>, all exponents are shown besides their significands. If <c>first</c>,
+        ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
+        ///     of the last tick is shown. If <c>none</c>, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.ShowExponentEnum? ShowExponent { get; set;} 

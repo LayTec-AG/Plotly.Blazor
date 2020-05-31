@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib
 {
     /// <summary>
-    ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
-    ///     the direction corresponding to positive angles in legacy polar charts.
+    ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+    ///     Sets the direction corresponding to positive angles in legacy polar charts.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.ShapeLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -21,13 +19,15 @@ namespace Plotly.Blazor.LayoutLib
         public bool? Visible { get; set;} 
 
         /// <summary>
-        ///     Specifies the shape type to be drawn. If *line*, a line is drawn from (`x0`,`y0`)
-        ///     to (`x1`,`y1`) with respect to the axes' sizing mode. If *circle*, a circle
-        ///     is drawn from ((`x0`+`x1`)/2, (`y0`+`y1`)/2)) with radius (|(`x0`+`x1`)/2
-        ///     - `x0`|, |(`y0`+`y1`)/2 -`y0`)|) with respect to the axes' sizing mode.
-        ///     If *rect*, a rectangle is drawn linking (`x0`,`y0`), (`x1`,`y0`), (`x1`,`y1`),
-        ///     (`x0`,`y1`), (`x0`,`y0`) with respect to the axes' sizing mode. If *path*,
-        ///     draw a custom SVG path using `path`. with respect to the axes' sizing mode.
+        ///     Specifies the shape type to be drawn. If <c>line</c>, a line is drawn from
+        ///     (<c>x0</c>,<c>y0</c>) to (<c>x1</c>,<c>y1</c>) with respect to the axes&#39;
+        ///     sizing mode. If <c>circle</c>, a circle is drawn from ((<c>x0</c>+<c>x1</c>)/2,
+        ///     (<c>y0</c>+<c>y1</c>)/2)) with radius (|(<c>x0</c>+<c>x1</c>)/2 - <c>x0</c>|,
+        ///     |(<c>y0</c>+<c>y1</c>)/2 -<c>y0</c>)|) with respect to the axes&#39; sizing
+        ///     mode. If <c>rect</c>, a rectangle is drawn linking (<c>x0</c>,<c>y0</c>),
+        ///     (<c>x1</c>,<c>y0</c>), (<c>x1</c>,<c>y1</c>), (<c>x0</c>,<c>y1</c>), (<c>x0</c>,<c>y0</c>)
+        ///     with respect to the axes&#39; sizing mode. If <c>path</c>, draw a custom
+        ///     SVG path using <c>path</c>. with respect to the axes&#39; sizing mode.
         /// </summary>
         [JsonPropertyName(@"type")]
         public Plotly.Blazor.LayoutLib.ShapeLib.TypeEnum? Type { get; set;} 
@@ -39,23 +39,24 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
-        ///     Sets the shape's x coordinate axis. If set to an x axis id (e.g. *x* or
-        ///     *x2*), the `x` position refers to an x coordinate. If set to *paper*, the
-        ///     `x` position refers to the distance from the left side of the plotting area
-        ///     in normalized coordinates where *0* (*1*) corresponds to the left (right)
-        ///     side. If the axis `type` is *log*, then you must take the log of your desired
-        ///     range. If the axis `type` is *date*, then you must convert the date to unix
-        ///     time in milliseconds.
+        ///     Sets the shape&#39;s x coordinate axis. If set to an x axis id (e.g. <c>x</c>
+        ///     or <c>x2</c>), the <c>x</c> position refers to an x coordinate. If set to
+        ///     <c>paper</c>, the <c>x</c> position refers to the distance from the left
+        ///     side of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the left (right) side. If the axis <c>type</c> is <c>log</c>,
+        ///     then you must take the log of your desired range. If the axis <c>type</c>
+        ///     is <c>date</c>, then you must convert the date to unix time in milliseconds.
         /// </summary>
         [JsonPropertyName(@"xref")]
         public string Xref { get; set;} 
 
         /// <summary>
-        ///     Sets the shapes's sizing mode along the x axis. If set to *scaled*, `x0`,
-        ///     `x1` and x coordinates within `path` refer to data values on the x axis
-        ///     or a fraction of the plot area's width (`xref` set to *paper*). If set to
-        ///     *pixel*, `xanchor` specifies the x position in terms of data or plot fraction
-        ///     but `x0`, `x1` and x coordinates within `path` are pixels relative to `xanchor`.
+        ///     Sets the shapes&#39;s sizing mode along the x axis. If set to <c>scaled</c>,
+        ///     <c>x0</c>, <c>x1</c> and x coordinates within <c>path</c> refer to data
+        ///     values on the x axis or a fraction of the plot area&#39;s width (<c>xref</c>
+        ///     set to <c>paper</c>). If set to <c>pixel</c>, <c>xanchor</c> specifies the
+        ///     x position in terms of data or plot fraction but <c>x0</c>, <c>x1</c> and
+        ///     x coordinates within <c>path</c> are pixels relative to <c>xanchor</c>.
         ///     This way, the shape can have a fixed width while maintaining a position
         ///     relative to data or plot fraction.
         /// </summary>
@@ -63,87 +64,93 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.XSizeModeEnum? XSizeMode { get; set;} 
 
         /// <summary>
-        ///     Only relevant in conjunction with `xsizemode` set to *pixel*. Specifies
-        ///     the anchor point on the x axis to which `x0`, `x1` and x coordinates within
-        ///     `path` are relative to. E.g. useful to attach a pixel sized shape to a certain
-        ///     data value. No effect when `xsizemode` not set to *pixel*.
+        ///     Only relevant in conjunction with <c>xsizemode</c> set to <c>pixel</c>.
+        ///     Specifies the anchor point on the x axis to which <c>x0</c>, <c>x1</c> and
+        ///     x coordinates within <c>path</c> are relative to. E.g. useful to attach
+        ///     a pixel sized shape to a certain data value. No effect when <c>xsizemode</c>
+        ///     not set to <c>pixel</c>.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public object XAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the shape's starting x position. See `type` and `xsizemode` for more
-        ///     info.
+        ///     Sets the shape&#39;s starting x position. See <c>type</c> and <c>xsizemode</c>
+        ///     for more info.
         /// </summary>
         [JsonPropertyName(@"x0")]
         public object X0 { get; set;} 
 
         /// <summary>
-        ///     Sets the shape's end x position. See `type` and `xsizemode` for more info.
+        ///     Sets the shape&#39;s end x position. See <c>type</c> and <c>xsizemode</c>
+        ///     for more info.
         /// </summary>
         [JsonPropertyName(@"x1")]
         public object X1 { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation's y coordinate axis. If set to an y axis id (e.g. *y*
-        ///     or *y2*), the `y` position refers to an y coordinate If set to *paper*,
-        ///     the `y` position refers to the distance from the bottom of the plotting
-        ///     area in normalized coordinates where *0* (*1*) corresponds to the bottom
-        ///     (top).
+        ///     Sets the annotation&#39;s y coordinate axis. If set to an y axis id (e.g.
+        ///     <c>y</c> or <c>y2</c>), the <c>y</c> position refers to an y coordinate
+        ///     If set to <c>paper</c>, the <c>y</c> position refers to the distance from
+        ///     the bottom of the plotting area in normalized coordinates where <c>0</c>
+        ///     (<c>1</c>) corresponds to the bottom (top).
         /// </summary>
         [JsonPropertyName(@"yref")]
         public string YRef { get; set;} 
 
         /// <summary>
-        ///     Sets the shapes's sizing mode along the y axis. If set to *scaled*, `y0`,
-        ///     `y1` and y coordinates within `path` refer to data values on the y axis
-        ///     or a fraction of the plot area's height (`yref` set to *paper*). If set
-        ///     to *pixel*, `yanchor` specifies the y position in terms of data or plot
-        ///     fraction but `y0`, `y1` and y coordinates within `path` are pixels relative
-        ///     to `yanchor`. This way, the shape can have a fixed height while maintaining
-        ///     a position relative to data or plot fraction.
+        ///     Sets the shapes&#39;s sizing mode along the y axis. If set to <c>scaled</c>,
+        ///     <c>y0</c>, <c>y1</c> and y coordinates within <c>path</c> refer to data
+        ///     values on the y axis or a fraction of the plot area&#39;s height (<c>yref</c>
+        ///     set to <c>paper</c>). If set to <c>pixel</c>, <c>yanchor</c> specifies the
+        ///     y position in terms of data or plot fraction but <c>y0</c>, <c>y1</c> and
+        ///     y coordinates within <c>path</c> are pixels relative to <c>yanchor</c>.
+        ///     This way, the shape can have a fixed height while maintaining a position
+        ///     relative to data or plot fraction.
         /// </summary>
         [JsonPropertyName(@"ysizemode")]
         public Plotly.Blazor.LayoutLib.ShapeLib.YSizeModeEnum? YSizeMode { get; set;} 
 
         /// <summary>
-        ///     Only relevant in conjunction with `ysizemode` set to *pixel*. Specifies
-        ///     the anchor point on the y axis to which `y0`, `y1` and y coordinates within
-        ///     `path` are relative to. E.g. useful to attach a pixel sized shape to a certain
-        ///     data value. No effect when `ysizemode` not set to *pixel*.
+        ///     Only relevant in conjunction with <c>ysizemode</c> set to <c>pixel</c>.
+        ///     Specifies the anchor point on the y axis to which <c>y0</c>, <c>y1</c> and
+        ///     y coordinates within <c>path</c> are relative to. E.g. useful to attach
+        ///     a pixel sized shape to a certain data value. No effect when <c>ysizemode</c>
+        ///     not set to <c>pixel</c>.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public object YAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the shape's starting y position. See `type` and `ysizemode` for more
-        ///     info.
+        ///     Sets the shape&#39;s starting y position. See <c>type</c> and <c>ysizemode</c>
+        ///     for more info.
         /// </summary>
         [JsonPropertyName(@"y0")]
         public object Y0 { get; set;} 
 
         /// <summary>
-        ///     Sets the shape's end y position. See `type` and `ysizemode` for more info.
+        ///     Sets the shape&#39;s end y position. See <c>type</c> and <c>ysizemode</c>
+        ///     for more info.
         /// </summary>
         [JsonPropertyName(@"y1")]
         public object Y1 { get; set;} 
 
         /// <summary>
-        ///     For `type` *path* - a valid SVG path with the pixel values replaced by data
-        ///     values in `xsizemode`/`ysizemode` being *scaled* and taken unmodified as
-        ///     pixels relative to `xanchor` and `yanchor` in case of *pixel* size mode.
-        ///     There are a few restrictions / quirks only absolute instructions, not relative.
-        ///     So the allowed segments are: M, L, H, V, Q, C, T, S, and Z arcs (A) are
-        ///     not allowed because radius rx and ry are relative. In the future we could
-        ///     consider supporting relative commands, but we would have to decide on how
-        ///     to handle date and log axes. Note that even as is, Q and C Bezier paths
-        ///     that are smooth on linear axes may not be smooth on log, and vice versa.
-        ///     no chained "polybezier" commands - specify the segment type for each one.
-        ///     On category axes, values are numbers scaled to the serial numbers of categories
-        ///     because using the categories themselves there would be no way to describe
-        ///     fractional positions On data axes: because space and T are both normal components
-        ///     of path strings, we can't use either to separate date from time parts. Therefore
-        ///     we'll use underscore for this purpose: 2015-02-21_13:45:56.789
+        ///     For <c>type</c> <c>path</c> - a valid SVG path with the pixel values replaced
+        ///     by data values in <c>xsizemode</c>/<c>ysizemode</c> being <c>scaled</c>
+        ///     and taken unmodified as pixels relative to <c>xanchor</c> and <c>yanchor</c>
+        ///     in case of <c>pixel</c> size mode. There are a few restrictions / quirks
+        ///     only absolute instructions, not relative. So the allowed segments are: M,
+        ///     L, H, V, Q, C, T, S, and Z arcs (A) are not allowed because radius rx and
+        ///     ry are relative. In the future we could consider supporting relative commands,
+        ///     but we would have to decide on how to handle date and log axes. Note that
+        ///     even as is, Q and C Bezier paths that are smooth on linear axes may not
+        ///     be smooth on log, and vice versa. no chained <c>polybezier</c> commands
+        ///     - specify the segment type for each one. On category axes, values are numbers
+        ///     scaled to the serial numbers of categories because using the categories
+        ///     themselves there would be no way to describe fractional positions On data
+        ///     axes: because space and T are both normal components of path strings, we
+        ///     can&#39;t use either to separate date from time parts. Therefore we&#39;ll
+        ///     use underscore for this purpose: 2015-02-21_13:45:56.789
         /// </summary>
         [JsonPropertyName(@"path")]
         public string Path { get; set;} 
@@ -161,7 +168,8 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.Line Line { get; set;} 
 
         /// <summary>
-        ///     Sets the color filling the shape's interior. Only applies to closed shapes.
+        ///     Sets the color filling the shape&#39;s interior. Only applies to closed
+        ///     shapes.
         /// </summary>
         [JsonPropertyName(@"fillcolor")]
         public object FillColor { get; set;} 
@@ -175,8 +183,8 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Determines whether the shape could be activated for edit or not. Has no
-        ///     effect when the older editable shapes mode is enabled via `config.editable`
-        ///     or `config.edits.shapePosition`.
+        ///     effect when the older editable shapes mode is enabled via <c>config.editable</c>
+        ///     or <c>config.edits.shapePosition</c>.
         /// </summary>
         [JsonPropertyName(@"editable")]
         public bool? Editable { get; set;} 
@@ -184,9 +192,10 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -194,11 +203,11 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

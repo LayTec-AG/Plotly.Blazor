@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ParCatsLib.LineLib;
 
 namespace Plotly.Blazor.Traces.ParCatsLib
 {
@@ -17,79 +15,82 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         /// <summary>
         ///     Sets thelinecolor. It accepts either a specific color or an array of numbers
         ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to `line.cmin` and `line.cmax` if set.
+        ///     the array or relative to <c>line.cmin</c> and <c>line.cmax</c> if set.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
-        ///     input data (here in `line.color`) or the bounds set in `line.cmin` and `line.cmax`
-        ///      Has an effect only if in `line.color`is set to a numerical array. Defaults
-        ///     to `false` when `line.cmin` and `line.cmax` are set by the user.
+        ///     input data (here in <c>line.color</c>) or the bounds set in <c>line.cmin</c>
+        ///     and <c>line.cmax</c>  Has an effect only if in <c>line.color</c>is set to
+        ///     a numerical array. Defaults to <c>false</c> when <c>line.cmin</c> and <c>line.cmax</c>
+        ///     are set by the user.
         /// </summary>
         [JsonPropertyName(@"cauto")]
         public bool? CAuto { get; set;} 
 
         /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in `line.color`is
-        ///     set to a numerical array. Value should have the same units as in `line.color`
-        ///     and if set, `line.cmax` must be set as well.
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>line.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>line.color</c>
+        ///     and if set, <c>line.cmax</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmin")]
         public float? CMin { get; set;} 
 
         /// <summary>
-        ///     Sets the upper bound of the color domain. Has an effect only if in `line.color`is
-        ///     set to a numerical array. Value should have the same units as in `line.color`
-        ///     and if set, `line.cmin` must be set as well.
+        ///     Sets the upper bound of the color domain. Has an effect only if in <c>line.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>line.color</c>
+        ///     and if set, <c>line.cmin</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmax")]
         public float? CMax { get; set;} 
 
         /// <summary>
-        ///     Sets the mid-point of the color domain by scaling `line.cmin` and/or `line.cmax`
-        ///     to be equidistant to this point. Has an effect only if in `line.color`is
-        ///     set to a numerical array. Value should have the same units as in `line.color`.
-        ///     Has no effect when `line.cauto` is `false`.
+        ///     Sets the mid-point of the color domain by scaling <c>line.cmin</c> and/or
+        ///     <c>line.cmax</c> to be equidistant to this point. Has an effect only if
+        ///     in <c>line.color</c>is set to a numerical array. Value should have the same
+        ///     units as in <c>line.color</c>. Has no effect when <c>line.cauto</c> is <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"cmid")]
         public float? CMid { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. Has an effect only if in `line.color`is set to a numerical
-        ///     array. The colorscale must be an array containing arrays mapping a normalized
-        ///     value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum,
-        ///     a mapping for the lowest (0) and highest (1) values are required. For example,
-        ///     `[[0, 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the bounds of the
-        ///     colorscale in color space, use`line.cmin` and `line.cmax`. Alternatively,
-        ///     `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     Sets the colorscale. Has an effect only if in <c>line.color</c>is set to
+        ///     a numerical array. The colorscale must be an array containing arrays mapping
+        ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
+        ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
+        ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
+        ///     To control the bounds of the colorscale in color space, use<c>line.cmin</c>
+        ///     and <c>line.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
+        ///     name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (`autocolorscale:
-        ///     true`) or the palette determined by `line.colorscale`. Has an effect only
-        ///     if in `line.color`is set to a numerical array. In case `colorscale` is unspecified
-        ///     or `autocolorscale` is true, the default  palette will be chosen according
-        ///     to whether numbers in the `color` array are all positive, all negative or
-        ///     mixed.
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>line.colorscale</c>. Has an effect
+        ///     only if in <c>line.color</c>is set to a numerical array. In case <c>colorscale</c>
+        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     be chosen according to whether numbers in the <c>color</c> array are all
+        ///     positive, all negative or mixed.
         /// </summary>
         [JsonPropertyName(@"autocolorscale")]
         public bool? AutoColorScale { get; set;} 
 
         /// <summary>
-        ///     Reverses the color mapping if true. Has an effect only if in `line.color`is
-        ///     set to a numerical array. If true, `line.cmin` will correspond to the last
-        ///     color in the array and `line.cmax` will correspond to the first color.
+        ///     Reverses the color mapping if true. Has an effect only if in <c>line.color</c>is
+        ///     set to a numerical array. If true, <c>line.cmin</c> will correspond to the
+        ///     last color in the array and <c>line.cmax</c> will correspond to the first
+        ///     color.
         /// </summary>
         [JsonPropertyName(@"reversescale")]
         public bool? ReverseScale { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a colorbar is displayed for this trace. Has an
-        ///     effect only if in `line.color`is set to a numerical array.
+        ///     effect only if in <c>line.color</c>is set to a numerical array.
         /// </summary>
         [JsonPropertyName(@"showscale")]
         public bool? ShowScale { get; set;} 
@@ -102,35 +103,37 @@ namespace Plotly.Blazor.Traces.ParCatsLib
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are *coloraxis*, *coloraxis2*, *coloraxis3*, etc. Settings for these
-        ///     shared color axes are set in the layout, under `layout.coloraxis`, `layout.coloraxis2`,
-        ///     etc. Note that multiple color scales can be linked to the same color axis.
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
         /// </summary>
         [JsonPropertyName(@"coloraxis")]
         public string ColorAxis { get; set;} 
 
         /// <summary>
-        ///     Sets the shape of the paths. If `linear`, paths are composed of straight
-        ///     lines. If `hspline`, paths are composed of horizontal curved splines
+        ///     Sets the shape of the paths. If <c>linear</c>, paths are composed of straight
+        ///     lines. If <c>hspline</c>, paths are composed of horizontal curved splines
         /// </summary>
         [JsonPropertyName(@"shape")]
         public Plotly.Blazor.Traces.ParCatsLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available. variables `count` and `probability`.
-        ///     Anything contained in tag `<extra>` is displayed in the secondary box, for
-        ///     example "<extra>{fullData.name}</extra>". To hide the secondary box completely,
-        ///     use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>count</c>
+        ///     and <c>probability</c>. Anything contained in tag <c>&lt;extra&gt;</c> is
+        ///     displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 

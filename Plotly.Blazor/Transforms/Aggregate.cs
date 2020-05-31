@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Transforms.AggregateLib;
 
 namespace Plotly.Blazor.Transforms
 {
@@ -29,10 +28,11 @@ namespace Plotly.Blazor.Transforms
         ///     Sets the grouping target to which the aggregation is applied. Data points
         ///     with matching group values will be coalesced into one point, using the supplied
         ///     aggregation functions to reduce data in other data arrays. If a string,
-        ///     `groups` is assumed to be a reference to a data array in the parent trace
-        ///     object. To aggregate by nested variables, use *.* to access them. For example,
-        ///     set `groups` to *marker.color* to aggregate about the marker color array.
-        ///     If an array, `groups` is itself the data array by which we aggregate.
+        ///     <c>groups</c> is assumed to be a reference to a data array in the parent
+        ///     trace object. To aggregate by nested variables, use <c>.</c> to access them.
+        ///     For example, set <c>groups</c> to <c>marker.color</c> to aggregate about
+        ///     the marker color array. If an array, <c>groups</c> is itself the data array
+        ///     by which we aggregate.
         /// </summary>
         [JsonPropertyName(@"groups")]
         public string Groups { get; set;} 

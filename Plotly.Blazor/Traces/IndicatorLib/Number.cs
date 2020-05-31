@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.IndicatorLib.NumberLib;
 
 namespace Plotly.Blazor.Traces.IndicatorLib
 {

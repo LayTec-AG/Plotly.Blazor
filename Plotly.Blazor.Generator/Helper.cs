@@ -234,6 +234,28 @@ namespace Plotly.Blazor.Generator
         }
 
         /// <summary>
+        ///     Replaces special highlighted words like `text` and *text*.
+        ///     Values with spaces are not considered. However, * and ` are replaced with '.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ReplaceHighlighting(this string input)
+        {
+            return input
+                .Replace("\\*([^\\*\\s]+)\\*", m => $"<c>{m.Groups[1].Value}</c>")
+                .Replace("&#39;(?!&#39;)([^\\s]+)&#39;", m => $"<c>{m.Groups[1].Value}</c>")
+                .Replace("`([^`\\s]+)`", m => $"<c>{m.Groups[1].Value}</c>")
+                .Replace("&quot;(?!&quot;)([^\\s]+)&quot;", m => $"<c>{m.Groups[1].Value}</c>")
+                .Replace("\\*([^\\*]+)\\*", m => $"&#39;{m.Groups[1].Value}&#39;")
+                .Replace("\\`([^\\`]+)\\`", m => $"&#39;{m.Groups[1].Value}&#39;");
+        }
+
+        private static string Replace(this string input, string pattern, MatchEvaluator evaluator)
+        {
+            return Regex.Replace(input, pattern, evaluator);
+        }
+
+        /// <summary>
         ///     Gets the output path by name space.
         /// </summary>
         /// <param name="nameSpace">The name space.</param>

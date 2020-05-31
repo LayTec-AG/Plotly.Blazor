@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.NewShapeLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -21,15 +19,15 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.NewShapeLib.Line Line { get; set;} 
 
         /// <summary>
-        ///     Sets the color filling new shapes' interior. Please note that if using a
-        ///     fillcolor with alpha greater than half, drag inside the active shape starts
+        ///     Sets the color filling new shapes&#39; interior. Please note that if using
+        ///     a fillcolor with alpha greater than half, drag inside the active shape starts
         ///     moving the shape underneath, otherwise a new shape could be started over.
         /// </summary>
         [JsonPropertyName(@"fillcolor")]
         public object FillColor { get; set;} 
 
         /// <summary>
-        ///     Determines the path's interior. For more info please visit https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
+        ///     Determines the path&#39;s interior. For more info please visit https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
         /// </summary>
         [JsonPropertyName(@"fillrule")]
         public Plotly.Blazor.LayoutLib.NewShapeLib.FillRuleEnum? FillRule { get; set;} 
@@ -47,11 +45,11 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.NewShapeLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
-        ///     When `dragmode` is set to *drawrect*, *drawline* or *drawcircle* this limits
-        ///     the drag to be horizontal, vertical or diagonal. Using *diagonal* there
-        ///     is no limit e.g. in drawing lines in any direction. *ortho* limits the draw
-        ///     to be either horizontal or vertical. *horizontal* allows horizontal extend.
-        ///     *vertical* allows vertical extend.
+        ///     When <c>dragmode</c> is set to <c>drawrect</c>, <c>drawline</c> or <c>drawcircle</c>
+        ///     this limits the drag to be horizontal, vertical or diagonal. Using <c>diagonal</c>
+        ///     there is no limit e.g. in drawing lines in any direction. <c>ortho</c> limits
+        ///     the draw to be either horizontal or vertical. <c>horizontal</c> allows horizontal
+        ///     extend. <c>vertical</c> allows vertical extend.
         /// </summary>
         [JsonPropertyName(@"drawdirection")]
         public Plotly.Blazor.LayoutLib.NewShapeLib.DrawDirectionEnum? DrawDirection { get; set;} 

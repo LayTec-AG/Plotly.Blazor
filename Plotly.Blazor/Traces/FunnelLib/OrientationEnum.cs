@@ -8,11 +8,12 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.FunnelLib
 {
     /// <summary>
-    ///     Sets the orientation of the funnels. With *v* (*h*), the value of the each
-    ///     bar spans along the vertical (horizontal). By default funnels are tend to
-    ///     be oriented horizontally; unless only *y* array is presented or orientation
-    ///     is set to *v*. Also regarding graphs including only &#39;horizontal&#39;
-    ///     funnels, *autorange* on the *y-axis* are set to *reversed*.
+    ///     Sets the orientation of the funnels. With <c>v</c> (<c>h</c>), the value
+    ///     of the each bar spans along the vertical (horizontal). By default funnels
+    ///     are tend to be oriented horizontally; unless only <c>y</c> array is presented
+    ///     or orientation is set to <c>v</c>. Also regarding graphs including only
+    ///     <c>horizontal</c> funnels, <c>autorange</c> on the <c>y-axis</c> are set
+    ///     to <c>reversed</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

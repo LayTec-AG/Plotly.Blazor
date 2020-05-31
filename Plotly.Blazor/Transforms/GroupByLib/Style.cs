@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Transforms.GroupByLib
 {
@@ -20,9 +19,10 @@ namespace Plotly.Blazor.Transforms.GroupByLib
         public string Target { get; set;} 
 
         /// <summary>
-        ///     Sets each group styles. For example, with `groups` set to *['a', 'b', 'a',
-        ///     'b']* and `styles` set to *[{target: 'a', value: { marker: { color: 'red'
-        ///     } }}] marker points in group *'a'* will be drawn in red.
+        ///     Sets each group styles. For example, with <c>groups</c> set to &#39;[<c>a</c>,
+        ///     <c>b</c>, <c>a</c>, <c>b</c>]&#39; and <c>styles</c> set to *[{target: <c>a</c>,
+        ///     value: { marker: { color: <c>red</c> } }}] marker points in group <c><c>a</c></c>
+        ///     will be drawn in red.
         /// </summary>
         [JsonPropertyName(@"value")]
         public object Value { get; set;} 

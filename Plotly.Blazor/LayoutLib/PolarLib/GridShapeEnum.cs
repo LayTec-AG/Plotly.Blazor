@@ -9,10 +9,11 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
 {
     /// <summary>
     ///     Determines if the radial axis grid lines and angular axis line are drawn
-    ///     as *circular* sectors or as *linear* (polygon) sectors. Has an effect only
-    ///     when the angular axis has `type` *category*. Note that `radialaxis.angle`
-    ///     is snapped to the angle of the closest vertex when `gridshape` is *circular*
-    ///     (so that radial axis scale is the same as the data scale).
+    ///     as <c>circular</c> sectors or as <c>linear</c> (polygon) sectors. Has an
+    ///     effect only when the angular axis has <c>type</c> <c>category</c>. Note
+    ///     that <c>radialaxis.angle</c> is snapped to the angle of the closest vertex
+    ///     when <c>gridshape</c> is <c>circular</c> (so that radial axis scale is the
+    ///     same as the data scale).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

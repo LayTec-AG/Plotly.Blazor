@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.BoxLib;
 
 namespace Plotly.Blazor.Traces
 {
@@ -20,8 +19,8 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum Type { get; } = TraceTypeEnum.Box;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-        ///     is not drawn, but can appear as a legend item (provided that the legend
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -64,21 +63,22 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, *scatter* traces also appends customdata
-        ///     items in the markers DOM elements
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
         /// </summary>
         [JsonPropertyName(@"customdata")]
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace `name`, graph, axis
-        ///     and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
-        ///     and `sliders` `label` text all support `meta`. To access the trace `meta`
-        ///     values in an attribute in the same trace, simply use `%{meta[i]}` where
-        ///     `i` is the index or key of the `meta` item in question. To access trace
-        ///     `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index
-        ///     or key of the `meta` and `n` is the trace index.
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
@@ -86,17 +86,17 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Array containing integer indices of selected points. Has an effect only
         ///     for traces that support selections. Note that an empty array means an empty
-        ///     selection where the `unselected` are turned on for all points, whereas,
-        ///     any other non-array values means no selection all where the `selected` and
-        ///     `unselected` styles have no effect.
+        ///     selection where the <c>unselected</c> are turned on for all points, whereas,
+        ///     any other non-array values means no selection all where the <c>selected</c>
+        ///     and <c>unselected</c> styles have no effect.
         /// </summary>
         [JsonPropertyName(@"selectedpoints")]
         public object SelectedPoints { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If `none` or `skip`
-        ///     are set, no information is displayed upon hovering. But, if `none` is set,
-        ///     click and hover events are still fired.
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.BoxLib.HoverInfoFlag? HoverInfo { get; set;} 
@@ -117,22 +117,21 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
-        [JsonConverter(typeof(PolymorphicConverter))]
         public ITransform Transforms { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
-        ///     in `parcoords` traces, as well as some `editable: true` modifications such
-        ///     as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that
-        ///     other user-driven trace attribute changes are controlled by `layout` attributes:
-        ///     `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints`
-        ///     is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible
-        ///     with `config: {editable: true}`) is controlled by `layout.editrevision`.
-        ///     Trace changes are tracked by `uid`, which only falls back on trace index
-        ///     if no `uid` is provided. So if your app can add/remove traces before the
-        ///     end of the `data` array, such that the same trace has a different index,
-        ///     you can still preserve user-driven changes if you give each trace a `uid`
-        ///     that stays with it as it moves.
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
@@ -178,8 +177,8 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
         ///     For box traces, the name will also be used for the position coordinate,
-        ///     if `x` and `x0` (`y` and `y0` if horizontal) are missing and the position
-        ///     axis is categorical
+        ///     if <c>x</c> and <c>x0</c> (<c>y</c> and <c>y0</c> if horizontal) are missing
+        ///     and the position axis is categorical
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -208,9 +207,9 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets the lower fence values. There should be as many items as the number
         ///     of boxes desired. This attribute has effect only under the q1/median/q3
-        ///     signature. If `lowerfence` is not provided but a sample (in `y` or `x`)
-        ///     is set, we compute the lower as the last sample point below 1.5 times the
-        ///     IQR.
+        ///     signature. If <c>lowerfence</c> is not provided but a sample (in <c>y</c>
+        ///     or <c>x</c>) is set, we compute the lower as the last sample point below
+        ///     1.5 times the IQR.
         /// </summary>
         [JsonPropertyName(@"lowerfence")]
         public IList<object> LowerFence { get; set;} 
@@ -218,9 +217,9 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets the upper fence values. There should be as many items as the number
         ///     of boxes desired. This attribute has effect only under the q1/median/q3
-        ///     signature. If `upperfence` is not provided but a sample (in `y` or `x`)
-        ///     is set, we compute the lower as the last sample point above 1.5 times the
-        ///     IQR.
+        ///     signature. If <c>upperfence</c> is not provided but a sample (in <c>y</c>
+        ///     or <c>x</c>) is set, we compute the lower as the last sample point above
+        ///     1.5 times the IQR.
         /// </summary>
         [JsonPropertyName(@"upperfence")]
         public IList<object> UpperFence { get; set;} 
@@ -229,53 +228,54 @@ namespace Plotly.Blazor.Traces
         ///     Determines whether or not notches are drawn. Notches displays a confidence
         ///     interval around the median. We compute the confidence interval as median
         ///     +/- 1.57 * IQR / sqrt(N), where IQR is the interquartile range and N is
-        ///     the sample size. If two boxes' notches do not overlap there is 95% confidence
+        ///     the sample size. If two boxes&#39; notches do not overlap there is 95% confidence
         ///     their medians differ. See https://sites.google.com/site/davidsstatistics/home/notched-box-plots
-        ///     for more info. Defaults to *false* unless `notchwidth` or `notchspan` is
-        ///     set.
+        ///     for more info. Defaults to <c>false</c> unless <c>notchwidth</c> or <c>notchspan</c>
+        ///     is set.
         /// </summary>
         [JsonPropertyName(@"notched")]
         public bool? Notched { get; set;} 
 
         /// <summary>
-        ///     Sets the width of the notches relative to the box' width. For example, with
-        ///     0, the notches are as wide as the box(es).
+        ///     Sets the width of the notches relative to the box&#39; width. For example,
+        ///     with 0, the notches are as wide as the box(es).
         /// </summary>
         [JsonPropertyName(@"notchwidth")]
         public float? NotchWidth { get; set;} 
 
         /// <summary>
-        ///     Sets the notch span from the boxes' `median` values. There should be as
-        ///     many items as the number of boxes desired. This attribute has effect only
-        ///     under the q1/median/q3 signature. If `notchspan` is not provided but a sample
-        ///     (in `y` or `x`) is set, we compute it as 1.57 * IQR / sqrt(N), where N is
-        ///     the sample size.
+        ///     Sets the notch span from the boxes&#39; <c>median</c> values. There should
+        ///     be as many items as the number of boxes desired. This attribute has effect
+        ///     only under the q1/median/q3 signature. If <c>notchspan</c> is not provided
+        ///     but a sample (in <c>y</c> or <c>x</c>) is set, we compute it as 1.57 * IQR
+        ///     / sqrt(N), where N is the sample size.
         /// </summary>
         [JsonPropertyName(@"notchspan")]
         public IList<object> NotchSpan { get; set;} 
 
         /// <summary>
-        ///     If *outliers*, only the sample points lying outside the whiskers are shown
-        ///     If *suspectedoutliers*, the outlier points are shown and points either less
-        ///     than 4*Q1-3*Q3 or greater than 4*Q3-3*Q1 are highlighted (see `outliercolor`)
-        ///     If *all*, all sample points are shown If *false*, only the box(es) are shown
-        ///     with no sample points Defaults to *suspectedoutliers* when `marker.outliercolor`
-        ///     or `marker.line.outliercolor` is set. Defaults to *all* under the q1/median/q3
-        ///     signature. Otherwise defaults to *outliers*.
+        ///     If <c>outliers</c>, only the sample points lying outside the whiskers are
+        ///     shown If <c>suspectedoutliers</c>, the outlier points are shown and points
+        ///     either less than 4<c>Q1-3</c>Q3 or greater than 4<c>Q3-3</c>Q1 are highlighted
+        ///     (see <c>outliercolor</c>) If <c>all</c>, all sample points are shown If
+        ///     <c>false</c>, only the box(es) are shown with no sample points Defaults
+        ///     to <c>suspectedoutliers</c> when <c>marker.outliercolor</c> or <c>marker.line.outliercolor</c>
+        ///     is set. Defaults to <c>all</c> under the q1/median/q3 signature. Otherwise
+        ///     defaults to <c>outliers</c>.
         /// </summary>
         [JsonPropertyName(@"boxpoints")]
         public Plotly.Blazor.Traces.BoxLib.BoxPointsEnum? BoxPoints { get; set;} 
 
         /// <summary>
-        ///     Sets the amount of jitter in the sample points drawn. If *0*, the sample
-        ///     points align along the distribution axis. If *1*, the sample points are
-        ///     drawn in a random jitter of width equal to the width of the box(es).
+        ///     Sets the amount of jitter in the sample points drawn. If <c>0</c>, the sample
+        ///     points align along the distribution axis. If <c>1</c>, the sample points
+        ///     are drawn in a random jitter of width equal to the width of the box(es).
         /// </summary>
         [JsonPropertyName(@"jitter")]
         public float? Jitter { get; set;} 
 
         /// <summary>
-        ///     Sets the position of the sample points in relation to the box(es). If *0*,
+        ///     Sets the position of the sample points in relation to the box(es). If <c>0</c>,
         ///     the sample points are places over the center of the box(es). Positive (negative)
         ///     values correspond to positions to the right (left) for vertical boxes and
         ///     above (below) for horizontal boxes
@@ -284,10 +284,10 @@ namespace Plotly.Blazor.Traces
         public float? PointPos { get; set;} 
 
         /// <summary>
-        ///     If *true*, the mean of the box(es)' underlying distribution is drawn as
-        ///     a dashed line inside the box(es). If *sd* the standard deviation is also
-        ///     drawn. Defaults to *true* when `mean` is set. Defaults to *sd* when `sd`
-        ///     is set Otherwise defaults to *false*.
+        ///     If <c>true</c>, the mean of the box(es)&#39; underlying distribution is
+        ///     drawn as a dashed line inside the box(es). If <c>sd</c> the standard deviation
+        ///     is also drawn. Defaults to <c>true</c> when <c>mean</c> is set. Defaults
+        ///     to <c>sd</c> when <c>sd</c> is set Otherwise defaults to <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"boxmean")]
         public Plotly.Blazor.Traces.BoxLib.BoxMeanEnum? BoxMean { get; set;} 
@@ -295,8 +295,8 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets the mean values. There should be as many items as the number of boxes
         ///     desired. This attribute has effect only under the q1/median/q3 signature.
-        ///     If `mean` is not provided but a sample (in `y` or `x`) is set, we compute
-        ///     the mean for each box using the sample values.
+        ///     If <c>mean</c> is not provided but a sample (in <c>y</c> or <c>x</c>) is
+        ///     set, we compute the mean for each box using the sample values.
         /// </summary>
         [JsonPropertyName(@"mean")]
         public IList<object> Mean { get; set;} 
@@ -304,38 +304,39 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets the standard deviation values. There should be as many items as the
         ///     number of boxes desired. This attribute has effect only under the q1/median/q3
-        ///     signature. If `sd` is not provided but a sample (in `y` or `x`) is set,
-        ///     we compute the standard deviation for each box using the sample values.
+        ///     signature. If <c>sd</c> is not provided but a sample (in <c>y</c> or <c>x</c>)
+        ///     is set, we compute the standard deviation for each box using the sample
+        ///     values.
         /// </summary>
         [JsonPropertyName(@"sd")]
         public IList<object> SD { get; set;} 
 
         /// <summary>
-        ///     Sets the orientation of the box(es). If *v* (*h*), the distribution is visualized
-        ///     along the vertical (horizontal).
+        ///     Sets the orientation of the box(es). If <c>v</c> (<c>h</c>), the distribution
+        ///     is visualized along the vertical (horizontal).
         /// </summary>
         [JsonPropertyName(@"orientation")]
         public Plotly.Blazor.Traces.BoxLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
-        ///     Sets the method used to compute the sample's Q1 and Q3 quartiles. The *linear*
-        ///     method uses the 25th percentile for Q1 and 75th percentile for Q3 as computed
-        ///     using method #10 (listed on http://www.amstat.org/publications/jse/v14n3/langford.html).
-        ///     The *exclusive* method uses the median to divide the ordered dataset into
-        ///     two halves if the sample is odd, it does not include the median in either
-        ///     half - Q1 is then the median of the lower half and Q3 the median of the
-        ///     upper half. The *inclusive* method also uses the median to divide the ordered
-        ///     dataset into two halves but if the sample is odd, it includes the median
-        ///     in both halves - Q1 is then the median of the lower half and Q3 the median
-        ///     of the upper half.
+        ///     Sets the method used to compute the sample&#39;s Q1 and Q3 quartiles. The
+        ///     <c>linear</c> method uses the 25th percentile for Q1 and 75th percentile
+        ///     for Q3 as computed using method #10 (listed on http://www.amstat.org/publications/jse/v14n3/langford.html).
+        ///     The <c>exclusive</c> method uses the median to divide the ordered dataset
+        ///     into two halves if the sample is odd, it does not include the median in
+        ///     either half - Q1 is then the median of the lower half and Q3 the median
+        ///     of the upper half. The <c>inclusive</c> method also uses the median to divide
+        ///     the ordered dataset into two halves but if the sample is odd, it includes
+        ///     the median in both halves - Q1 is then the median of the lower half and
+        ///     Q3 the median of the upper half.
         /// </summary>
         [JsonPropertyName(@"quartilemethod")]
         public Plotly.Blazor.Traces.BoxLib.QuartileMethodEnum? QuartileMethod { get; set;} 
 
         /// <summary>
-        ///     Sets the width of the box in data coordinate If *0* (default value) the
-        ///     width is automatically selected based on the positions of other box traces
-        ///     in the same subplot.
+        ///     Sets the width of the box in data coordinate If <c>0</c> (default value)
+        ///     the width is automatically selected based on the positions of other box
+        ///     traces in the same subplot.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
@@ -360,7 +361,7 @@ namespace Plotly.Blazor.Traces
         public object FillColor { get; set;} 
 
         /// <summary>
-        ///     Sets the width of the whiskers relative to the box' width. For example,
+        ///     Sets the width of the whiskers relative to the box&#39; width. For example,
         ///     with 1, the whiskers are as wide as the box(es).
         /// </summary>
         [JsonPropertyName(@"whiskerwidth")]
@@ -397,32 +398,34 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets the text elements associated with each sample value. If a single string,
         ///     the same string appears over all the data points. If an array of string,
-        ///     the items are mapped in order to the this trace's (x,y) coordinates. To
-        ///     be seen, trace `hoverinfo` must contain a *text* flag.
+        ///     the items are mapped in order to the this trace&#39;s (x,y) coordinates.
+        ///     To be seen, trace <c>hoverinfo</c> must contain a <c>text</c> flag.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Same as `text`.
+        ///     Same as <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"hovertext")]
         public string HoverText { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available.  Anything contained in tag `<extra>`
-        ///     is displayed in the secondary box, for example "<extra>{fullData.name}</extra>".
-        ///     To hide the secondary box completely, use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
+        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
+        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
+        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
@@ -434,29 +437,29 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.BoxLib.HoverOnFlag? HoverOn { get; set;} 
 
         /// <summary>
-        ///     Sets the calendar system to use with `x` date data.
+        ///     Sets the calendar system to use with <c>x</c> date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
         public Plotly.Blazor.Traces.BoxLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
-        ///     Sets the calendar system to use with `y` date data.
+        ///     Sets the calendar system to use with <c>y</c> date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
         public Plotly.Blazor.Traces.BoxLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's x coordinates and a 2D cartesian x
-        ///     axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`.
-        ///     If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
+        ///     Sets a reference between this trace&#39;s x coordinates and a 2D cartesian
+        ///     x axis. If <c>x</c> (the default value), the x coordinates refer to <c>layout.xaxis</c>.
+        ///     If <c>x2</c>, the x coordinates refer to <c>layout.xaxis2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"xaxis")]
         public string XAxis { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's y coordinates and a 2D cartesian y
-        ///     axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`.
-        ///     If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
+        ///     Sets a reference between this trace&#39;s y coordinates and a 2D cartesian
+        ///     y axis. If <c>y</c> (the default value), the y coordinates refer to <c>layout.yaxis</c>.
+        ///     If <c>y2</c>, the y coordinates refer to <c>layout.yaxis2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"yaxis")]
         public string YAxis { get; set;} 

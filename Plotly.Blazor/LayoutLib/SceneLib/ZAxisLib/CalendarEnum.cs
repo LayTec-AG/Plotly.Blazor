@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.SceneLib.ZAxisLib
 {
     /// <summary>
-    ///     Sets the calendar system to use for `range` and `tick0` if this is a date
-    ///     axis. This does not set the calendar for interpreting data on this axis,
-    ///     that&#39;s specified in the trace or via the global `layout.calendar`
+    ///     Sets the calendar system to use for <c>range</c> and <c>tick0</c> if this
+    ///     is a date axis. This does not set the calendar for interpreting data on
+    ///     this axis, that&#39;s specified in the trace or via the global <c>layout.calendar</c>
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

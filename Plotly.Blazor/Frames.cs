@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor
 {
@@ -34,8 +33,8 @@ namespace Plotly.Blazor
         public object Traces { get; set;} 
 
         /// <summary>
-        ///     The name of the frame into which this frame's properties are merged before
-        ///     applying. This is used to unify properties and avoid needing to specify
+        ///     The name of the frame into which this frame&#39;s properties are merged
+        ///     before applying. This is used to unify properties and avoid needing to specify
         ///     the same values for the same properties in multiple frames.
         /// </summary>
         [JsonPropertyName(@"baseframe")]

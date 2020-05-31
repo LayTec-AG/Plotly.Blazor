@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.SankeyLib;
 
 namespace Plotly.Blazor.Traces
 {
@@ -20,8 +19,8 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum Type { get; } = TraceTypeEnum.Sankey;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-        ///     is not drawn, but can appear as a legend item (provided that the legend
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -50,21 +49,22 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, *scatter* traces also appends customdata
-        ///     items in the markers DOM elements
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
         /// </summary>
         [JsonPropertyName(@"customdata")]
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace `name`, graph, axis
-        ///     and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
-        ///     and `sliders` `label` text all support `meta`. To access the trace `meta`
-        ///     values in an attribute in the same trace, simply use `%{meta[i]}` where
-        ///     `i` is the index or key of the `meta` item in question. To access trace
-        ///     `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index
-        ///     or key of the `meta` and `n` is the trace index.
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
@@ -72,9 +72,9 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Array containing integer indices of selected points. Has an effect only
         ///     for traces that support selections. Note that an empty array means an empty
-        ///     selection where the `unselected` are turned on for all points, whereas,
-        ///     any other non-array values means no selection all where the `selected` and
-        ///     `unselected` styles have no effect.
+        ///     selection where the <c>unselected</c> are turned on for all points, whereas,
+        ///     any other non-array values means no selection all where the <c>selected</c>
+        ///     and <c>unselected</c> styles have no effect.
         /// </summary>
         [JsonPropertyName(@"selectedpoints")]
         public object SelectedPoints { get; set;} 
@@ -86,27 +86,28 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.SankeyLib.Stream Stream { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
-        ///     in `parcoords` traces, as well as some `editable: true` modifications such
-        ///     as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that
-        ///     other user-driven trace attribute changes are controlled by `layout` attributes:
-        ///     `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints`
-        ///     is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible
-        ///     with `config: {editable: true}`) is controlled by `layout.editrevision`.
-        ///     Trace changes are tracked by `uid`, which only falls back on trace index
-        ///     if no `uid` is provided. So if your app can add/remove traces before the
-        ///     end of the `data` array, such that the same trace has a different index,
-        ///     you can still preserve user-driven changes if you give each trace a `uid`
-        ///     that stays with it as it moves.
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If `none` or `skip`
-        ///     are set, no information is displayed upon hovering. But, if `none` is set,
-        ///     click and hover events are still fired. Note that this attribute is superseded
-        ///     by `node.hoverinfo` and `node.hoverinfo` for nodes and links respectively.
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired. Note that this attribute
+        ///     is superseded by <c>node.hoverinfo</c> and <c>node.hoverinfo</c> for nodes
+        ///     and links respectively.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.SankeyLib.HoverInfoFlag? HoverInfo { get; set;} 
@@ -144,11 +145,12 @@ namespace Plotly.Blazor.Traces
         public string ValueSuffix { get; set;} 
 
         /// <summary>
-        ///     If value is `snap` (the default), the node arrangement is assisted by automatic
-        ///     snapping of elements to preserve space between nodes specified via `nodepad`.
-        ///     If value is `perpendicular`, the nodes can only move along a line perpendicular
-        ///     to the flow. If value is `freeform`, the nodes can freely move on the plane.
-        ///     If value is `fixed`, the nodes are stationary.
+        ///     If value is <c>snap</c> (the default), the node arrangement is assisted
+        ///     by automatic snapping of elements to preserve space between nodes specified
+        ///     via <c>nodepad</c>. If value is <c>perpendicular</c>, the nodes can only
+        ///     move along a line perpendicular to the flow. If value is <c>freeform</c>,
+        ///     the nodes can freely move on the plane. If value is <c>fixed</c>, the nodes
+        ///     are stationary.
         /// </summary>
         [JsonPropertyName(@"arrangement")]
         public Plotly.Blazor.Traces.SankeyLib.ArrangementEnum? Arrangement { get; set;} 

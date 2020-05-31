@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.BarPolarLib
 {
     /// <summary>
-    ///     Sets the unit of input *theta* values. Has an effect only when on *linear*
+    ///     Sets the unit of input <c>theta</c> values. Has an effect only when on <c>linear</c>
     ///     angular axes.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

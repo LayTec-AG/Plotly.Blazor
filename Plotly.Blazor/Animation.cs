@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.AnimationLib;
 
 namespace Plotly.Blazor
 {
@@ -16,10 +14,10 @@ namespace Plotly.Blazor
     {
         /// <summary>
         ///     Describes how a new animate call interacts with currently-running animations.
-        ///     If `immediate`, current animations are interrupted and the new animation
-        ///     is started. If `next`, the current frame is allowed to complete, after which
-        ///     the new animation is started. If `afterall` all existing frames are animated
-        ///     to completion before the new animation is started.
+        ///     If <c>immediate</c>, current animations are interrupted and the new animation
+        ///     is started. If <c>next</c>, the current frame is allowed to complete, after
+        ///     which the new animation is started. If <c>afterall</c> all existing frames
+        ///     are animated to completion before the new animation is started.
         /// </summary>
         [JsonPropertyName(@"mode")]
         public Plotly.Blazor.AnimationLib.ModeEnum? Mode { get; set;} 

@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.IsoSurfaceLib
 {
@@ -22,11 +21,11 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public bool? Show { get; set;} 
 
         /// <summary>
-        ///     Sets the fill ratio of the `spaceframe` elements. The default fill value
-        ///     is 0.15 meaning that only 15% of the area of every faces of tetras would
-        ///     be shaded. Applying a greater `fill` ratio would allow the creation of stronger
-        ///     elements or could be sued to have entirely closed areas (in case of using
-        ///     1).
+        ///     Sets the fill ratio of the <c>spaceframe</c> elements. The default fill
+        ///     value is 0.15 meaning that only 15% of the area of every faces of tetras
+        ///     would be shaded. Applying a greater <c>fill</c> ratio would allow the creation
+        ///     of stronger elements or could be sued to have entirely closed areas (in
+        ///     case of using 1).
         /// </summary>
         [JsonPropertyName(@"fill")]
         public float? Fill { get; set;} 

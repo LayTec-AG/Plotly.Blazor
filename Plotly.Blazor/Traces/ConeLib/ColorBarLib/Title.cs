@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ConeLib.ColorBarLib.TitleLib;
 
 namespace Plotly.Blazor.Traces.ConeLib.ColorBarLib
 {
@@ -15,24 +13,24 @@ namespace Plotly.Blazor.Traces.ConeLib.ColorBarLib
     public class Title 
     {
         /// <summary>
-        ///     Sets the title of the color bar. Note that before the existence of `title.text`,
-        ///     the title's contents used to be defined as the `title` attribute itself.
-        ///     This behavior has been deprecated.
+        ///     Sets the title of the color bar. Note that before the existence of <c>title.text</c>,
+        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
+        ///     itself. This behavior has been deprecated.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets this color bar's title font. Note that the title's font used to be
-        ///     set by the now deprecated `titlefont` attribute.
+        ///     Sets this color bar&#39;s title font. Note that the title&#39;s font used
+        ///     to be set by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.ConeLib.ColorBarLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Determines the location of color bar's title with respect to the color bar.
-        ///     Note that the title's location used to be set by the now deprecated `titleside`
-        ///     attribute.
+        ///     Determines the location of color bar&#39;s title with respect to the color
+        ///     bar. Note that the title&#39;s location used to be set by the now deprecated
+        ///     <c>titleside</c> attribute.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.Traces.ConeLib.ColorBarLib.TitleLib.SideEnum? Side { get; set;} 

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.SceneLib.CameraLib;
 
 namespace Plotly.Blazor.LayoutLib.SceneLib
 {
@@ -15,24 +13,25 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
     public class Camera 
     {
         /// <summary>
-        ///     Sets the (x,y,z) components of the 'up' camera vector. This vector determines
-        ///     the up direction of this scene with respect to the page. The default is
-        ///     *{x: 0, y: 0, z: 1}* which means that the z axis points up.
+        ///     Sets the (x,y,z) components of the <c>up</c> camera vector. This vector
+        ///     determines the up direction of this scene with respect to the page. The
+        ///     default is &#39;{x: 0, y: 0, z: 1}&#39; which means that the z axis points
+        ///     up.
         /// </summary>
         [JsonPropertyName(@"up")]
         public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Up Up { get; set;} 
 
         /// <summary>
-        ///     Sets the (x,y,z) components of the 'center' camera vector This vector determines
-        ///     the translation (x,y,z) space about the center of this scene. By default,
-        ///     there is no such translation.
+        ///     Sets the (x,y,z) components of the <c>center</c> camera vector This vector
+        ///     determines the translation (x,y,z) space about the center of this scene.
+        ///     By default, there is no such translation.
         /// </summary>
         [JsonPropertyName(@"center")]
         public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Center Center { get; set;} 
 
         /// <summary>
-        ///     Sets the (x,y,z) components of the 'eye' camera vector. This vector determines
-        ///     the view point about the origin of this scene.
+        ///     Sets the (x,y,z) components of the <c>eye</c> camera vector. This vector
+        ///     determines the view point about the origin of this scene.
         /// </summary>
         [JsonPropertyName(@"eye")]
         public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Eye Eye { get; set;} 

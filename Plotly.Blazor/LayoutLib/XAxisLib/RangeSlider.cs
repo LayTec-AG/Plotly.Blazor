@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib;
 
 namespace Plotly.Blazor.LayoutLib.XAxisLib
 {
@@ -35,19 +34,20 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
         /// <summary>
         ///     Determines whether or not the range slider range is computed in relation
-        ///     to the input data. If `range` is provided, then `autorange` is set to *false*.
+        ///     to the input data. If <c>range</c> is provided, then <c>autorange</c> is
+        ///     set to <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"autorange")]
         public bool? AutoRange { get; set;} 
 
         /// <summary>
         ///     Sets the range of the range slider. If not set, defaults to the full xaxis
-        ///     range. If the axis `type` is *log*, then you must take the log of your desired
-        ///     range. If the axis `type` is *date*, it should be date strings, like date
-        ///     data, though Date objects and unix milliseconds will be accepted and converted
-        ///     to strings. If the axis `type` is *category*, it should be numbers, using
-        ///     the scale where each category is assigned a serial number from zero in the
-        ///     order it appears.
+        ///     range. If the axis <c>type</c> is <c>log</c>, then you must take the log
+        ///     of your desired range. If the axis <c>type</c> is <c>date</c>, it should
+        ///     be date strings, like date data, though Date objects and unix milliseconds
+        ///     will be accepted and converted to strings. If the axis <c>type</c> is <c>category</c>,
+        ///     it should be numbers, using the scale where each category is assigned a
+        ///     serial number from zero in the order it appears.
         /// </summary>
         [JsonPropertyName(@"range")]
         public IList<object> Range { get; set;} 
@@ -60,7 +60,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
         /// <summary>
         ///     Determines whether or not the range slider will be visible. If visible,
-        ///     perpendicular axes will be set to `fixedrange`
+        ///     perpendicular axes will be set to <c>fixedrange</c>
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 

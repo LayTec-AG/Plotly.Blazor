@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.Histogram2DContourLib
 {
@@ -14,8 +13,8 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
     public class Line 
     {
         /// <summary>
-        ///     Sets the color of the contour level. Has no effect if `contours.coloring`
-        ///     is set to *lines*.
+        ///     Sets the color of the contour level. Has no effect if <c>contours.coloring</c>
+        ///     is set to <c>lines</c>.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
@@ -27,15 +26,15 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         public float? Width { get; set;} 
 
         /// <summary>
-        ///     Sets the dash style of lines. Set to a dash type string (*solid*, *dot*,
-        ///     *dash*, *longdash*, *dashdot*, or *longdashdot*) or a dash length list in
-        ///     px (eg *5px,10px,2px,2px*).
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
         /// </summary>
         [JsonPropertyName(@"dash")]
         public string Dash { get; set;} 
 
         /// <summary>
-        ///     Sets the amount of smoothing for the contour lines, where *0* corresponds
+        ///     Sets the amount of smoothing for the contour lines, where <c>0</c> corresponds
         ///     to no smoothing.
         /// </summary>
         [JsonPropertyName(@"smoothing")]

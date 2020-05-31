@@ -10,8 +10,8 @@ namespace Plotly.Blazor.Traces.ViolinLib
     /// <summary>
     ///     Determines on which side of the position value the density function making
     ///     up one half of a violin is plotted. Useful when comparing two violin traces
-    ///     under *overlay* mode, where one trace has `side` set to *positive* and the
-    ///     other to *negative*.
+    ///     under <c>overlay</c> mode, where one trace has <c>side</c> set to <c>positive</c>
+    ///     and the other to <c>negative</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

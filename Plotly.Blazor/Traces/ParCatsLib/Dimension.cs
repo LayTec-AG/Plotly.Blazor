@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.ParCatsLib.DimensionLib;
 
 namespace Plotly.Blazor.Traces.ParCatsLib
 {
@@ -22,36 +21,37 @@ namespace Plotly.Blazor.Traces.ParCatsLib
 
         /// <summary>
         ///     Specifies the ordering logic for the categories in the dimension. By default,
-        ///     plotly uses *trace*, which specifies the order that is present in the data
-        ///     supplied. Set `categoryorder` to *category ascending* or *category descending*
-        ///     if order should be determined by the alphanumerical order of the category
-        ///     names. Set `categoryorder` to *array* to derive the ordering from the attribute
-        ///     `categoryarray`. If a category is not found in the `categoryarray` array,
-        ///     the sorting behavior for that attribute will be identical to the *trace*
-        ///     mode. The unspecified categories will follow the categories in `categoryarray`.
+        ///     plotly uses <c>trace</c>, which specifies the order that is present in the
+        ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
+        ///     or &#39;category descending&#39; if order should be determined by the alphanumerical
+        ///     order of the category names. Set <c>categoryorder</c> to <c>array</c> to
+        ///     derive the ordering from the attribute <c>categoryarray</c>. If a category
+        ///     is not found in the <c>categoryarray</c> array, the sorting behavior for
+        ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
+        ///     categories will follow the categories in <c>categoryarray</c>.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
         public Plotly.Blazor.Traces.ParCatsLib.DimensionLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories in this dimension appear. Only has an
-        ///     effect if `categoryorder` is set to *array*. Used with `categoryorder`.
+        ///     effect if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
         /// </summary>
         [JsonPropertyName(@"categoryarray")]
         public IList<object> CategoryArray { get; set;} 
 
         /// <summary>
         ///     Sets alternative tick labels for the categories in this dimension. Only
-        ///     has an effect if `categoryorder` is set to *array*. Should be an array the
-        ///     same length as `categoryarray` Used with `categoryorder`.
+        ///     has an effect if <c>categoryorder</c> is set to <c>array</c>. Should be
+        ///     an array the same length as <c>categoryarray</c> Used with <c>categoryorder</c>.
         /// </summary>
         [JsonPropertyName(@"ticktext")]
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Dimension values. `values[n]` represents the category value of the `n`th
-        ///     point in the dataset, therefore the `values` vector for all dimensions must
-        ///     be the same (longer vectors will be truncated).
+        ///     Dimension values. <c>values[n]</c> represents the category value of the
+        ///     <c>n</c>th point in the dataset, therefore the <c>values</c> vector for
+        ///     all dimensions must be the same (longer vectors will be truncated).
         /// </summary>
         [JsonPropertyName(@"values")]
         public IList<object> Values { get; set;} 
@@ -64,8 +64,8 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public int? DisplayIndex { get; set;} 
 
         /// <summary>
-        ///     Shows the dimension when set to `true` (the default). Hides the dimension
-        ///     for `false`.
+        ///     Shows the dimension when set to <c>true</c> (the default). Hides the dimension
+        ///     for <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 

@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
 {
@@ -14,7 +13,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
     public class Line 
     {
         /// <summary>
-        ///     Sets the color of the line enclosing each sector. Defaults to the `paper_bgcolor`
+        ///     Sets the color of the line enclosing each sector. Defaults to the <c>paper_bgcolor</c>
         ///     value.
         /// </summary>
         [JsonPropertyName(@"color")]

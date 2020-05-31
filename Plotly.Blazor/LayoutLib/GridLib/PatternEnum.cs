@@ -8,11 +8,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.GridLib
 {
     /// <summary>
-    ///     If no `subplots`, `xaxes`, or `yaxes` are given but we do have `rows` and
-    ///     `columns`, we can generate defaults using consecutive axis IDs, in two ways:
-    ///     *coupled* gives one x axis per column and one y axis per row. *independent*
-    ///     uses a new xy pair for each cell, left-to-right across each row then iterating
-    ///     rows according to `roworder`.
+    ///     If no <c>subplots</c>, <c>xaxes</c>, or <c>yaxes</c> are given but we do
+    ///     have <c>rows</c> and <c>columns</c>, we can generate defaults using consecutive
+    ///     axis IDs, in two ways: <c>coupled</c> gives one x axis per column and one
+    ///     y axis per row. <c>independent</c> uses a new xy pair for each cell, left-to-right
+    ///     across each row then iterating rows according to <c>roworder</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
 {
     /// <summary>
-    ///     Sets the angular axis type. If *linear*, set `thetaunit` to determine the
-    ///     unit in which axis value are shown. If *category, use `period` to set the
-    ///     number of integer coordinates around polar axis.
+    ///     Sets the angular axis type. If <c>linear</c>, set <c>thetaunit</c> to determine
+    ///     the unit in which axis value are shown. If *category, use <c>period</c>
+    ///     to set the number of integer coordinates around polar axis.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

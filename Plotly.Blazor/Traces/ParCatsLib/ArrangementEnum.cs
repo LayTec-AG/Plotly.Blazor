@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ParCatsLib
 {
     /// <summary>
-    ///     Sets the drag interaction mode for categories and dimensions. If `perpendicular`,
+    ///     Sets the drag interaction mode for categories and dimensions. If <c>perpendicular</c>,
     ///     the categories can only move along a line perpendicular to the paths. If
-    ///     `freeform`, the categories can freely move on the plane. If `fixed`, the
-    ///     categories and dimensions are stationary.
+    ///     <c>freeform</c>, the categories can freely move on the plane. If <c>fixed</c>,
+    ///     the categories and dimensions are stationary.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

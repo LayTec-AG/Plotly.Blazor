@@ -10,11 +10,11 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.SurfaceLib
 {
     /// <summary>
     ///     Sets the surface pattern of the iso-surface 3-D sections. The default pattern
-    ///     of the surface is `all` meaning that the rest of surface elements would
+    ///     of the surface is <c>all</c> meaning that the rest of surface elements would
     ///     be shaded. The check options (either 1 or 2) could be used to draw half
-    ///     of the squares on the surface. Using various combinations of capital `A`,
-    ///     `B`, `C`, `D` and `E` may also be used to reduce the number of triangles
-    ///     on the iso-surfaces and creating other patterns of interest.
+    ///     of the squares on the surface. Using various combinations of capital <c>A</c>,
+    ///     <c>B</c>, <c>C</c>, <c>D</c> and <c>E</c> may also be used to reduce the
+    ///     number of triangles on the iso-surfaces and creating other patterns of interest.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [Flags]

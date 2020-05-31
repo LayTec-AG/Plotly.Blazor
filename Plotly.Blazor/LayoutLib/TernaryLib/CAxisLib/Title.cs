@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.TitleLib;
 
 namespace Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib
 {
@@ -15,16 +13,16 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib
     public class Title 
     {
         /// <summary>
-        ///     Sets the title of this axis. Note that before the existence of `title.text`,
-        ///     the title's contents used to be defined as the `title` attribute itself.
-        ///     This behavior has been deprecated.
+        ///     Sets the title of this axis. Note that before the existence of <c>title.text</c>,
+        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
+        ///     itself. This behavior has been deprecated.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets this axis' title font. Note that the title's font used to be customized
-        ///     by the now deprecated `titlefont` attribute.
+        ///     Sets this axis&#39; title font. Note that the title&#39;s font used to be
+        ///     customized by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.TitleLib.Font Font { get; set;} 

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib;
 
 namespace Plotly.Blazor.LayoutLib.MapBoxLib
 {
@@ -27,18 +25,18 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SourceTypeEnum? SourceType { get; set;} 
 
         /// <summary>
-        ///     Sets the source data for this layer (mapbox.layer.source). When `sourcetype`
-        ///     is set to *geojson*, `source` can be a URL to a GeoJSON or a GeoJSON object.
-        ///     When `sourcetype` is set to *vector* or *raster*, `source` can be a URL
-        ///     or an array of tile URLs. When `sourcetype` is set to *image*, `source`
-        ///     can be a URL to an image.
+        ///     Sets the source data for this layer (mapbox.layer.source). When <c>sourcetype</c>
+        ///     is set to <c>geojson</c>, <c>source</c> can be a URL to a GeoJSON or a GeoJSON
+        ///     object. When <c>sourcetype</c> is set to <c>vector</c> or <c>raster</c>,
+        ///     <c>source</c> can be a URL or an array of tile URLs. When <c>sourcetype</c>
+        ///     is set to <c>image</c>, <c>source</c> can be a URL to an image.
         /// </summary>
         [JsonPropertyName(@"source")]
         public object Source { get; set;} 
 
         /// <summary>
         ///     Specifies the layer to use from a vector tile source (mapbox.layer.source-layer).
-        ///     Required for *vector* source type that supports multiple layers.
+        ///     Required for <c>vector</c> source type that supports multiple layers.
         /// </summary>
         [JsonPropertyName(@"sourcelayer")]
         public string SourceLayer { get; set;} 
@@ -50,13 +48,14 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         public string SourceAttribution { get; set;} 
 
         /// <summary>
-        ///     Sets the layer type, that is the how the layer data set in `source` will
-        ///     be rendered With `sourcetype` set to *geojson*, the following values are
-        ///     allowed: *circle*, *line*, *fill* and *symbol*. but note that *line* and
-        ///     *fill* are not compatible with Point GeoJSON geometries. With `sourcetype`
-        ///     set to *vector*, the following values are allowed:  *circle*, *line*, *fill*
-        ///     and *symbol*. With `sourcetype` set to *raster* or `*image*`, only the *raster*
-        ///     value is allowed.
+        ///     Sets the layer type, that is the how the layer data set in <c>source</c>
+        ///     will be rendered With <c>sourcetype</c> set to <c>geojson</c>, the following
+        ///     values are allowed: <c>circle</c>, <c>line</c>, <c>fill</c> and <c>symbol</c>.
+        ///     but note that <c>line</c> and <c>fill</c> are not compatible with Point
+        ///     GeoJSON geometries. With <c>sourcetype</c> set to <c>vector</c>, the following
+        ///     values are allowed:  <c>circle</c>, <c>line</c>, <c>fill</c> and <c>symbol</c>.
+        ///     With <c>sourcetype</c> set to <c>raster</c> or <c><c>image</c></c>, only
+        ///     the <c>raster</c> value is allowed.
         /// </summary>
         [JsonPropertyName(@"type")]
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.TypeEnum? Type { get; set;} 
@@ -64,35 +63,36 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         /// <summary>
         ///     Sets the coordinates array contains [longitude, latitude] pairs for the
         ///     image corners listed in clockwise order: top left, top right, bottom right,
-        ///     bottom left. Only has an effect for *image* `sourcetype`.
+        ///     bottom left. Only has an effect for <c>image</c> <c>sourcetype</c>.
         /// </summary>
         [JsonPropertyName(@"coordinates")]
         public object Coordinates { get; set;} 
 
         /// <summary>
         ///     Determines if the layer will be inserted before the layer with the specified
-        ///     ID. If omitted or set to '', the layer will be inserted above every existing
-        ///     layer.
+        ///     ID. If omitted or set to &#39;&#39;, the layer will be inserted above every
+        ///     existing layer.
         /// </summary>
         [JsonPropertyName(@"below")]
         public string Below { get; set;} 
 
         /// <summary>
-        ///     Sets the primary layer color. If `type` is *circle*, color corresponds to
-        ///     the circle color (mapbox.layer.paint.circle-color) If `type` is *line*,
-        ///     color corresponds to the line color (mapbox.layer.paint.line-color) If `type`
-        ///     is *fill*, color corresponds to the fill color (mapbox.layer.paint.fill-color)
-        ///     If `type` is *symbol*, color corresponds to the icon color (mapbox.layer.paint.icon-color)
+        ///     Sets the primary layer color. If <c>type</c> is <c>circle</c>, color corresponds
+        ///     to the circle color (mapbox.layer.paint.circle-color) If <c>type</c> is
+        ///     <c>line</c>, color corresponds to the line color (mapbox.layer.paint.line-color)
+        ///     If <c>type</c> is <c>fill</c>, color corresponds to the fill color (mapbox.layer.paint.fill-color)
+        ///     If <c>type</c> is <c>symbol</c>, color corresponds to the icon color (mapbox.layer.paint.icon-color)
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the opacity of the layer. If `type` is *circle*, opacity corresponds
-        ///     to the circle opacity (mapbox.layer.paint.circle-opacity) If `type` is *line*,
-        ///     opacity corresponds to the line opacity (mapbox.layer.paint.line-opacity)
-        ///     If `type` is *fill*, opacity corresponds to the fill opacity (mapbox.layer.paint.fill-opacity)
-        ///     If `type` is *symbol*, opacity corresponds to the icon/text opacity (mapbox.layer.paint.text-opacity)
+        ///     Sets the opacity of the layer. If <c>type</c> is <c>circle</c>, opacity
+        ///     corresponds to the circle opacity (mapbox.layer.paint.circle-opacity) If
+        ///     <c>type</c> is <c>line</c>, opacity corresponds to the line opacity (mapbox.layer.paint.line-opacity)
+        ///     If <c>type</c> is <c>fill</c>, opacity corresponds to the fill opacity (mapbox.layer.paint.fill-opacity)
+        ///     If <c>type</c> is <c>symbol</c>, opacity corresponds to the icon/text opacity
+        ///     (mapbox.layer.paint.text-opacity)
         /// </summary>
         [JsonPropertyName(@"opacity")]
         public float? Opacity { get; set;} 
@@ -138,9 +138,10 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -148,11 +149,11 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

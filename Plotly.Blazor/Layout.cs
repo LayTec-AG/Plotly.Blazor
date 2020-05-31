@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib;
 
 namespace Plotly.Blazor
 {
@@ -44,13 +43,13 @@ namespace Plotly.Blazor
         public bool? AutoSize { get; set;} 
 
         /// <summary>
-        ///     Sets the plot's width (in px).
+        ///     Sets the plot&#39;s width (in px).
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
 
         /// <summary>
-        ///     Sets the plot's height (in px).
+        ///     Sets the plot&#39;s height (in px).
         /// </summary>
         [JsonPropertyName(@"height")]
         public float? Height { get; set;} 
@@ -74,9 +73,9 @@ namespace Plotly.Blazor
         public object PlotBgColor { get; set;} 
 
         /// <summary>
-        ///     Sets the decimal and thousand separators. For example, *. * puts a '.' before
-        ///     decimals and a space between thousands. In English locales, dflt is *.,*
-        ///     but other locales may alter this default.
+        ///     Sets the decimal and thousand separators. For example, &#39;. &#39; puts
+        ///     a <c>.</c> before decimals and a space between thousands. In English locales,
+        ///     dflt is <c>.,</c> but other locales may alter this default.
         /// </summary>
         [JsonPropertyName(@"separators")]
         public string Separators { get; set;} 
@@ -91,10 +90,10 @@ namespace Plotly.Blazor
         public bool? HideSources { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not a legend is drawn. Default is `true` if there
+        ///     Determines whether or not a legend is drawn. Default is <c>true</c> if there
         ///     is a trace to show and any of these: a) Two or more traces would by default
         ///     be shown in the legend. b) One pie trace is shown in the legend. c) One
-        ///     trace is explicitly given with `showlegend: true`.
+        ///     trace is explicitly given with &#39;showlegend: true&#39;.
         /// </summary>
         [JsonPropertyName(@"showlegend")]
         public bool? ShowLegend { get; set;} 
@@ -106,36 +105,37 @@ namespace Plotly.Blazor
         public IList<object> Colorway { get; set;} 
 
         /// <summary>
-        ///     If provided, a changed value tells `Plotly.react` that one or more data
-        ///     arrays has changed. This way you can modify arrays in-place rather than
-        ///     making a complete new copy for an incremental change. If NOT provided, `Plotly.react`
-        ///     assumes that data arrays are being treated as immutable, thus any data array
-        ///     with a different identity from its predecessor contains new data.
+        ///     If provided, a changed value tells <c>Plotly.react</c> that one or more
+        ///     data arrays has changed. This way you can modify arrays in-place rather
+        ///     than making a complete new copy for an incremental change. If NOT provided,
+        ///     <c>Plotly.react</c> assumes that data arrays are being treated as immutable,
+        ///     thus any data array with a different identity from its predecessor contains
+        ///     new data.
         /// </summary>
         [JsonPropertyName(@"datarevision")]
         public object DataRevision { get; set;} 
 
         /// <summary>
-        ///     Used to allow user interactions with the plot to persist after `Plotly.react`
-        ///     calls that are unaware of these interactions. If `uirevision` is omitted,
-        ///     or if it is given and it changed from the previous `Plotly.react` call,
-        ///     the exact new figure is used. If `uirevision` is truthy and did NOT change,
-        ///     any attribute that has been affected by user interactions and did not receive
-        ///     a different value in the new figure will keep the interaction value. `layout.uirevision`
-        ///     attribute serves as the default for `uirevision` attributes in various sub-containers.
-        ///     For finer control you can set these sub-attributes directly. For example,
-        ///     if your app separately controls the data on the x and y axes you might set
-        ///     `xaxis.uirevision=*time*` and `yaxis.uirevision=*cost*`. Then if only the
-        ///     y data is changed, you can update `yaxis.uirevision=*quantity*` and the
-        ///     y axis range will reset but the x axis range will retain any user-driven
-        ///     zoom.
+        ///     Used to allow user interactions with the plot to persist after <c>Plotly.react</c>
+        ///     calls that are unaware of these interactions. If <c>uirevision</c> is omitted,
+        ///     or if it is given and it changed from the previous <c>Plotly.react</c> call,
+        ///     the exact new figure is used. If <c>uirevision</c> is truthy and did NOT
+        ///     change, any attribute that has been affected by user interactions and did
+        ///     not receive a different value in the new figure will keep the interaction
+        ///     value. <c>layout.uirevision</c> attribute serves as the default for <c>uirevision</c>
+        ///     attributes in various sub-containers. For finer control you can set these
+        ///     sub-attributes directly. For example, if your app separately controls the
+        ///     data on the x and y axes you might set <c>xaxis.uirevision=<c>time</c></c>
+        ///     and <c>yaxis.uirevision=<c>cost</c></c>. Then if only the y data is changed,
+        ///     you can update <c>yaxis.uirevision=<c>quantity</c></c> and the y axis range
+        ///     will reset but the x axis range will retain any user-driven zoom.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of user-driven changes in `editable: true` configuration,
-        ///     other than trace names and axis titles. Defaults to `layout.uirevision`.
+        ///     Controls persistence of user-driven changes in &#39;editable: true&#39;
+        ///     configuration, other than trace names and axis titles. Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"editrevision")]
         public object EditRevision { get; set;} 
@@ -149,19 +149,20 @@ namespace Plotly.Blazor
 
         /// <summary>
         ///     Default attributes to be applied to the plot. Templates can be created from
-        ///     existing plots using `Plotly.makeTemplate`, or created manually. They should
-        ///     be objects with format: `{layout: layoutTemplate, data: {[type]: [traceTemplate,
-        ///     ...]}, ...}` `layoutTemplate` and `traceTemplate` are objects matching the
-        ///     attribute structure of `layout` and a data trace.  Trace templates are applied
-        ///     cyclically to traces of each type. Container arrays (eg `annotations`) have
-        ///     special handling: An object ending in `defaults` (eg `annotationdefaults`)
-        ///     is applied to each array item. But if an item has a `templateitemname` key
-        ///     we look in the template array for an item with matching `name` and apply
-        ///     that instead. If no matching `name` is found we mark the item invisible.
-        ///     Any named template item not referenced is appended to the end of the array,
-        ///     so you can use this for a watermark annotation or a logo image, for example.
-        ///     To omit one of these items on the plot, make an item with matching `templateitemname`
-        ///     and `visible: false`.
+        ///     existing plots using <c>Plotly.makeTemplate</c>, or created manually. They
+        ///     should be objects with format: &#39;{layout: layoutTemplate, data: {[type]:
+        ///     [traceTemplate, ...]}, ...}&#39; <c>layoutTemplate</c> and <c>traceTemplate</c>
+        ///     are objects matching the attribute structure of <c>layout</c> and a data
+        ///     trace.  Trace templates are applied cyclically to traces of each type. Container
+        ///     arrays (eg <c>annotations</c>) have special handling: An object ending in
+        ///     <c>defaults</c> (eg <c>annotationdefaults</c>) is applied to each array
+        ///     item. But if an item has a <c>templateitemname</c> key we look in the template
+        ///     array for an item with matching <c>name</c> and apply that instead. If no
+        ///     matching <c>name</c> is found we mark the item invisible. Any named template
+        ///     item not referenced is appended to the end of the array, so you can use
+        ///     this for a watermark annotation or a logo image, for example. To omit one
+        ///     of these items on the plot, make an item with matching <c>templateitemname</c>
+        ///     and &#39;visible: false&#39;.
         /// </summary>
         [JsonPropertyName(@"template")]
         public object Template { get; set;} 
@@ -185,13 +186,13 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.ActiveShape ActiveShape { get; set;} 
 
         /// <summary>
-        ///     Assigns extra meta information that can be used in various `text` attributes.
-        ///     Attributes such as the graph, axis and colorbar `title.text`, annotation
-        ///     `text` `trace.name` in legend items, `rangeselector`, `updatemenus` and
-        ///     `sliders` `label` text all support `meta`. One can access `meta` fields
-        ///     using template strings: `%{meta[i]}` where `i` is the index of the `meta`
-        ///     item in question. `meta` can also be an object for example `{key: value}`
-        ///     which can be accessed %{meta[key]}.
+        ///     Assigns extra meta information that can be used in various <c>text</c> attributes.
+        ///     Attributes such as the graph, axis and colorbar <c>title.text</c>, annotation
+        ///     <c>text</c> <c>trace.name</c> in legend items, <c>rangeselector</c>, <c>updatemenus</c>
+        ///     and <c>sliders</c> <c>label</c> text all support <c>meta</c>. One can access
+        ///     <c>meta</c> fields using template strings: <c>%{meta[i]}</c> where <c>i</c>
+        ///     is the index of the <c>meta</c> item in question. <c>meta</c> can also be
+        ///     an object for example &#39;{key: value}&#39; which can be accessed %{meta[key]}.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
@@ -203,43 +204,45 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.Transition Transition { get; set;} 
 
         /// <summary>
-        ///     Determines the mode of single click interactions. *event* is the default
-        ///     value and emits the `plotly_click` event. In addition this mode emits the
-        ///     `plotly_selected` event in drag modes *lasso* and *select*, but with no
-        ///     event data attached (kept for compatibility reasons). The *select* flag
-        ///     enables selecting single data points via click. This mode also supports
+        ///     Determines the mode of single click interactions. <c>event</c> is the default
+        ///     value and emits the <c>plotly_click</c> event. In addition this mode emits
+        ///     the <c>plotly_selected</c> event in drag modes <c>lasso</c> and <c>select</c>,
+        ///     but with no event data attached (kept for compatibility reasons). The <c>select</c>
+        ///     flag enables selecting single data points via click. This mode also supports
         ///     persistent selections, meaning that pressing Shift while clicking, adds
-        ///     to / subtracts from an existing selection. *select* with `hovermode`: *x*
-        ///     can be confusing, consider explicitly setting `hovermode`: *closest* when
-        ///     using this feature. Selection events are sent accordingly as long as *event*
-        ///     flag is set as well. When the *event* flag is missing, `plotly_click` and
-        ///     `plotly_selected` events are not fired.
+        ///     to / subtracts from an existing selection. <c>select</c> with <c>hovermode</c>:
+        ///     <c>x</c> can be confusing, consider explicitly setting <c>hovermode</c>:
+        ///     <c>closest</c> when using this feature. Selection events are sent accordingly
+        ///     as long as <c>event</c> flag is set as well. When the <c>event</c> flag
+        ///     is missing, <c>plotly_click</c> and <c>plotly_selected</c> events are not
+        ///     fired.
         /// </summary>
         [JsonPropertyName(@"clickmode")]
         public Plotly.Blazor.LayoutLib.ClickModeFlag? ClickMode { get; set;} 
 
         /// <summary>
-        ///     Determines the mode of drag interactions. *select* and *lasso* apply only
-        ///     to scatter traces with markers or text. *orbit* and *turntable* apply only
-        ///     to 3D scenes.
+        ///     Determines the mode of drag interactions. <c>select</c> and <c>lasso</c>
+        ///     apply only to scatter traces with markers or text. <c>orbit</c> and <c>turntable</c>
+        ///     apply only to 3D scenes.
         /// </summary>
         [JsonPropertyName(@"dragmode")]
         public Plotly.Blazor.LayoutLib.DragModeEnum? DragMode { get; set;} 
 
         /// <summary>
-        ///     Determines the mode of hover interactions. If *closest*, a single hoverlabel
-        ///     will appear for the *closest* point within the `hoverdistance`. If *x* (or
-        ///     *y*), multiple hoverlabels will appear for multiple points at the *closest*
-        ///     x- (or y-) coordinate within the `hoverdistance`, with the caveat that no
-        ///     more than one hoverlabel will appear per trace. If *x unified* (or *y unified*),
-        ///     a single hoverlabel will appear multiple points at the closest x- (or y-)
-        ///     coordinate within the `hoverdistance` with the caveat that no more than
-        ///     one hoverlabel will appear per trace. In this mode, spikelines are enabled
-        ///     by default perpendicular to the specified axis. If false, hover interactions
-        ///     are disabled. If `clickmode` includes the *select* flag, `hovermode` defaults
-        ///     to *closest*. If `clickmode` lacks the *select* flag, it defaults to *x*
-        ///     or *y* (depending on the trace's `orientation` value) for plots based on
-        ///     cartesian coordinates. For anything else the default value is *closest*.
+        ///     Determines the mode of hover interactions. If <c>closest</c>, a single hoverlabel
+        ///     will appear for the <c>closest</c> point within the <c>hoverdistance</c>.
+        ///     If <c>x</c> (or <c>y</c>), multiple hoverlabels will appear for multiple
+        ///     points at the <c>closest</c> x- (or y-) coordinate within the <c>hoverdistance</c>,
+        ///     with the caveat that no more than one hoverlabel will appear per trace.
+        ///     If &#39;x unified&#39; (or &#39;y unified&#39;), a single hoverlabel will
+        ///     appear multiple points at the closest x- (or y-) coordinate within the <c>hoverdistance</c>
+        ///     with the caveat that no more than one hoverlabel will appear per trace.
+        ///     In this mode, spikelines are enabled by default perpendicular to the specified
+        ///     axis. If false, hover interactions are disabled. If <c>clickmode</c> includes
+        ///     the <c>select</c> flag, <c>hovermode</c> defaults to <c>closest</c>. If
+        ///     <c>clickmode</c> lacks the <c>select</c> flag, it defaults to <c>x</c> or
+        ///     <c>y</c> (depending on the trace&#39;s <c>orientation</c> value) for plots
+        ///     based on cartesian coordinates. For anything else the default value is <c>closest</c>.
         /// </summary>
         [JsonPropertyName(@"hovermode")]
         public Plotly.Blazor.LayoutLib.HoverModeEnum? HoverMode { get; set;} 
@@ -271,9 +274,10 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
-        ///     When `dragmode` is set to *select*, this limits the selection of the drag
-        ///     to horizontal, vertical or diagonal. *h* only allows horizontal selection,
-        ///     *v* only vertical, *d* only diagonal and *any* sets no limit.
+        ///     When <c>dragmode</c> is set to <c>select</c>, this limits the selection
+        ///     of the drag to horizontal, vertical or diagonal. <c>h</c> only allows horizontal
+        ///     selection, <c>v</c> only vertical, <c>d</c> only diagonal and <c>any</c>
+        ///     sets no limit.
         /// </summary>
         [JsonPropertyName(@"selectdirection")]
         public Plotly.Blazor.LayoutLib.SelectDirectionEnum? SelectDirection { get; set;} 
@@ -353,15 +357,15 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.AngularAxis AngularAxis { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
-        ///     the direction corresponding to positive angles in legacy polar charts.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Sets the direction corresponding to positive angles in legacy polar charts.
         /// </summary>
         [JsonPropertyName(@"direction")]
         public Plotly.Blazor.LayoutLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Rotates
-        ///     the entire polar by the given angle in legacy polar charts.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Rotates the entire polar by the given angle in legacy polar charts.
         /// </summary>
         [JsonPropertyName(@"orientation")]
         public float? Orientation { get; set;} 

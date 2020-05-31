@@ -8,14 +8,15 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.ShapeLib
 {
     /// <summary>
-    ///     Specifies the shape type to be drawn. If *line*, a line is drawn from (`x0`,`y0`)
-    ///     to (`x1`,`y1`) with respect to the axes&#39; sizing mode. If *circle*, a
-    ///     circle is drawn from ((`x0`+`x1`)/2, (`y0`+`y1`)/2)) with radius (|(`x0`+`x1`)/2
-    ///     - `x0`|, |(`y0`+`y1`)/2 -`y0`)|) with respect to the axes&#39; sizing mode.
-    ///     If *rect*, a rectangle is drawn linking (`x0`,`y0`), (`x1`,`y0`), (`x1`,`y1`),
-    ///     (`x0`,`y1`), (`x0`,`y0`) with respect to the axes&#39; sizing mode. If *path*,
-    ///     draw a custom SVG path using `path`. with respect to the axes&#39; sizing
-    ///     mode.
+    ///     Specifies the shape type to be drawn. If <c>line</c>, a line is drawn from
+    ///     (<c>x0</c>,<c>y0</c>) to (<c>x1</c>,<c>y1</c>) with respect to the axes&#39;
+    ///     sizing mode. If <c>circle</c>, a circle is drawn from ((<c>x0</c>+<c>x1</c>)/2,
+    ///     (<c>y0</c>+<c>y1</c>)/2)) with radius (|(<c>x0</c>+<c>x1</c>)/2 - <c>x0</c>|,
+    ///     |(<c>y0</c>+<c>y1</c>)/2 -<c>y0</c>)|) with respect to the axes&#39; sizing
+    ///     mode. If <c>rect</c>, a rectangle is drawn linking (<c>x0</c>,<c>y0</c>),
+    ///     (<c>x1</c>,<c>y0</c>), (<c>x1</c>,<c>y1</c>), (<c>x0</c>,<c>y1</c>), (<c>x0</c>,<c>y0</c>)
+    ///     with respect to the axes&#39; sizing mode. If <c>path</c>, draw a custom
+    ///     SVG path using <c>path</c>. with respect to the axes&#39; sizing mode.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

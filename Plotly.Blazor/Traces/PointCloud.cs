@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.PointCloudLib;
 
 namespace Plotly.Blazor.Traces
 {
@@ -20,8 +19,8 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum Type { get; } = TraceTypeEnum.PointCloud;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-        ///     is not drawn, but can appear as a legend item (provided that the legend
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -70,29 +69,30 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, *scatter* traces also appends customdata
-        ///     items in the markers DOM elements
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
         /// </summary>
         [JsonPropertyName(@"customdata")]
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace `name`, graph, axis
-        ///     and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
-        ///     and `sliders` `label` text all support `meta`. To access the trace `meta`
-        ///     values in an attribute in the same trace, simply use `%{meta[i]}` where
-        ///     `i` is the index or key of the `meta` item in question. To access trace
-        ///     `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index
-        ///     or key of the `meta` and `n` is the trace index.
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If `none` or `skip`
-        ///     are set, no information is displayed upon hovering. But, if `none` is set,
-        ///     click and hover events are still fired.
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.PointCloudLib.HoverInfoFlag? HoverInfo { get; set;} 
@@ -110,18 +110,18 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.PointCloudLib.Stream Stream { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
-        ///     in `parcoords` traces, as well as some `editable: true` modifications such
-        ///     as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that
-        ///     other user-driven trace attribute changes are controlled by `layout` attributes:
-        ///     `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints`
-        ///     is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible
-        ///     with `config: {editable: true}`) is controlled by `layout.editrevision`.
-        ///     Trace changes are tracked by `uid`, which only falls back on trace index
-        ///     if no `uid` is provided. So if your app can add/remove traces before the
-        ///     end of the `data` array, such that the same trace has a different index,
-        ///     you can still preserve user-driven changes if you give each trace a `uid`
-        ///     that stays with it as it moves.
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
@@ -139,36 +139,36 @@ namespace Plotly.Blazor.Traces
         public IList<object> Y { get; set;} 
 
         /// <summary>
-        ///     Faster alternative to specifying `x` and `y` separately. If supplied, it
-        ///     must be a typed `Float32Array` array that represents points such that `xy[i
-        ///     * 2] = x[i]` and `xy[i * 2 + 1] = y[i]`
+        ///     Faster alternative to specifying <c>x</c> and <c>y</c> separately. If supplied,
+        ///     it must be a typed <c>Float32Array</c> array that represents points such
+        ///     that &#39;xy[i &#39; 2] = x[i]&#39; and &#39;xy[i &#39; 2 + 1] = y[i]&#39;
         /// </summary>
         [JsonPropertyName(@"xy")]
         public IList<object> XY { get; set;} 
 
         /// <summary>
         ///     A sequential value, 0..n, supply it to avoid creating this array inside
-        ///     plotting. If specified, it must be a typed `Int32Array` array. Its length
-        ///     must be equal to or greater than the number of points. For the best performance
-        ///     and memory use, create one large `indices` typed array that is guaranteed
-        ///     to be at least as long as the largest number of points during use, and reuse
-        ///     it on each `Plotly.restyle()` call.
+        ///     plotting. If specified, it must be a typed <c>Int32Array</c> array. Its
+        ///     length must be equal to or greater than the number of points. For the best
+        ///     performance and memory use, create one large <c>indices</c> typed array
+        ///     that is guaranteed to be at least as long as the largest number of points
+        ///     during use, and reuse it on each <c>Plotly.restyle()</c> call.
         /// </summary>
         [JsonPropertyName(@"indices")]
         public IList<object> Indices { get; set;} 
 
         /// <summary>
-        ///     Specify `xbounds` in the shape of `[xMin, xMax] to avoid looping through
-        ///     the `xy` typed array. Use it in conjunction with `xy` and `ybounds` for
-        ///     the performance benefits.
+        ///     Specify <c>xbounds</c> in the shape of `[xMin, xMax] to avoid looping through
+        ///     the <c>xy</c> typed array. Use it in conjunction with <c>xy</c> and <c>ybounds</c>
+        ///     for the performance benefits.
         /// </summary>
         [JsonPropertyName(@"xbounds")]
         public IList<object> XBounds { get; set;} 
 
         /// <summary>
-        ///     Specify `ybounds` in the shape of `[yMin, yMax] to avoid looping through
-        ///     the `xy` typed array. Use it in conjunction with `xy` and `xbounds` for
-        ///     the performance benefits.
+        ///     Specify <c>ybounds</c> in the shape of `[yMin, yMax] to avoid looping through
+        ///     the <c>xy</c> typed array. Use it in conjunction with <c>xy</c> and <c>xbounds</c>
+        ///     for the performance benefits.
         /// </summary>
         [JsonPropertyName(@"ybounds")]
         public IList<object> YBounds { get; set;} 
@@ -176,9 +176,9 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Sets text elements associated with each (x,y) pair. If a single string,
         ///     the same string appears over all the data points. If an array of string,
-        ///     the items are mapped in order to the this trace's (x,y) coordinates. If
-        ///     trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these
-        ///     elements will be seen in the hover labels.
+        ///     the items are mapped in order to the this trace&#39;s (x,y) coordinates.
+        ///     If trace <c>hoverinfo</c> contains a <c>text</c> flag and <c>hovertext</c>
+        ///     is not set, these elements will be seen in the hover labels.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
@@ -190,17 +190,17 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.PointCloudLib.Marker Marker { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's x coordinates and a 2D cartesian x
-        ///     axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`.
-        ///     If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
+        ///     Sets a reference between this trace&#39;s x coordinates and a 2D cartesian
+        ///     x axis. If <c>x</c> (the default value), the x coordinates refer to <c>layout.xaxis</c>.
+        ///     If <c>x2</c>, the x coordinates refer to <c>layout.xaxis2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"xaxis")]
         public string XAxis { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's y coordinates and a 2D cartesian y
-        ///     axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`.
-        ///     If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
+        ///     Sets a reference between this trace&#39;s y coordinates and a 2D cartesian
+        ///     y axis. If <c>y</c> (the default value), the y coordinates refer to <c>layout.yaxis</c>.
+        ///     If <c>y2</c>, the y coordinates refer to <c>layout.yaxis2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"yaxis")]
         public string YAxis { get; set;} 

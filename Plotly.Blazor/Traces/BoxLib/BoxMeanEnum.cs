@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.BoxLib
 {
     /// <summary>
-    ///     If *true*, the mean of the box(es)&#39; underlying distribution is drawn
-    ///     as a dashed line inside the box(es). If *sd* the standard deviation is also
-    ///     drawn. Defaults to *true* when `mean` is set. Defaults to *sd* when `sd`
-    ///     is set Otherwise defaults to *false*.
+    ///     If <c>true</c>, the mean of the box(es)&#39; underlying distribution is
+    ///     drawn as a dashed line inside the box(es). If <c>sd</c> the standard deviation
+    ///     is also drawn. Defaults to <c>true</c> when <c>mean</c> is set. Defaults
+    ///     to <c>sd</c> when <c>sd</c> is set Otherwise defaults to <c>false</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

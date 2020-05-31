@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Transforms.AggregateLib.AggregationLib
 {
     /// <summary>
-    ///     *stddev* supports two formula variants: *sample* (normalize by N-1) and
-    ///     *population* (normalize by N).
+    ///     <c>stddev</c> supports two formula variants: <c>sample</c> (normalize by
+    ///     N-1) and <c>population</c> (normalize by N).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

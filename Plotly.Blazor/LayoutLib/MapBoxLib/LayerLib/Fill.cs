@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 {
@@ -15,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     {
         /// <summary>
         ///     Sets the fill outline color (mapbox.layer.paint.fill-outline-color). Has
-        ///     an effect only when `type` is set to *fill*.
+        ///     an effect only when <c>type</c> is set to <c>fill</c>.
         /// </summary>
         [JsonPropertyName(@"outlinecolor")]
         public object OutlineColor { get; set;} 

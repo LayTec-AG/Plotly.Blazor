@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.PieLib.TitleLib;
 
 namespace Plotly.Blazor.Traces.PieLib
 {
@@ -16,22 +14,23 @@ namespace Plotly.Blazor.Traces.PieLib
     {
         /// <summary>
         ///     Sets the title of the chart. If it is empty, no title is displayed. Note
-        ///     that before the existence of `title.text`, the title's contents used to
-        ///     be defined as the `title` attribute itself. This behavior has been deprecated.
+        ///     that before the existence of <c>title.text</c>, the title&#39;s contents
+        ///     used to be defined as the <c>title</c> attribute itself. This behavior has
+        ///     been deprecated.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets the font used for `title`. Note that the title's font used to be set
-        ///     by the now deprecated `titlefont` attribute.
+        ///     Sets the font used for <c>title</c>. Note that the title&#39;s font used
+        ///     to be set by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.PieLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Specifies the location of the `title`. Note that the title's position used
-        ///     to be set by the now deprecated `titleposition` attribute.
+        ///     Specifies the location of the <c>title</c>. Note that the title&#39;s position
+        ///     used to be set by the now deprecated <c>titleposition</c> attribute.
         /// </summary>
         [JsonPropertyName(@"position")]
         public Plotly.Blazor.Traces.PieLib.TitleLib.PositionEnum? Position { get; set;} 

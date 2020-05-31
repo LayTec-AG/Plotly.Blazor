@@ -8,11 +8,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.AreaLib.MarkerLib
 {
     /// <summary>
-    ///     Area traces are deprecated! Please switch to the *barpolar* trace type.
-    ///     Sets the marker symbol type. Adding 100 is equivalent to appending *-open*
-    ///     to a symbol name. Adding 200 is equivalent to appending *-dot* to a symbol
-    ///     name. Adding 300 is equivalent to appending *-open-dot* or *dot-open* to
-    ///     a symbol name.
+    ///     Area traces are deprecated! Please switch to the <c>barpolar</c> trace type.
+    ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
+    ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
+    ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
+    ///     to a symbol name.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

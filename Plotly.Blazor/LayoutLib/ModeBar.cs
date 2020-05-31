@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.ModeBarLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -40,8 +38,8 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Controls persistence of user-driven changes related to the modebar, including
-        ///     `hovermode`, `dragmode`, and `showspikes` at both the root level and inside
-        ///     subplots. Defaults to `layout.uirevision`.
+        ///     <c>hovermode</c>, <c>dragmode</c>, and <c>showspikes</c> at both the root
+        ///     level and inside subplots. Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 

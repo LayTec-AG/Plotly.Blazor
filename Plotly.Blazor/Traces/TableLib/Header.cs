@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.TableLib.HeaderLib;
 
 namespace Plotly.Blazor.Traces.TableLib
 {
@@ -15,10 +14,10 @@ namespace Plotly.Blazor.Traces.TableLib
     public class Header 
     {
         /// <summary>
-        ///     Header cell values. `values[m][n]` represents the value of the `n`th point
-        ///     in column `m`, therefore the `values[m]` vector length for all columns must
-        ///     be the same (longer vectors will be truncated). Each value must be a finite
-        ///     number or a string.
+        ///     Header cell values. <c>values[m][n]</c> represents the value of the <c>n</c>th
+        ///     point in column <c>m</c>, therefore the <c>values[m]</c> vector length for
+        ///     all columns must be the same (longer vectors will be truncated). Each value
+        ///     must be a finite number or a string.
         /// </summary>
         [JsonPropertyName(@"values")]
         public IList<object> Values { get; set;} 
@@ -49,9 +48,10 @@ namespace Plotly.Blazor.Traces.TableLib
         public float? Height { get; set;} 
 
         /// <summary>
-        ///     Sets the horizontal alignment of the `text` within the box. Has an effect
-        ///     only if `text` spans two or more lines (i.e. `text` contains one or more
-        ///     <br> HTML tags) or if an explicit width is set to override the text width.
+        ///     Sets the horizontal alignment of the <c>text</c> within the box. Has an
+        ///     effect only if <c>text</c> spans two or more lines (i.e. <c>text</c> contains
+        ///     one or more &lt;br&gt; HTML tags) or if an explicit width is set to override
+        ///     the text width.
         /// </summary>
         [JsonPropertyName(@"align")]
         public Plotly.Blazor.Traces.TableLib.HeaderLib.AlignEnum? Align { get; set;} 

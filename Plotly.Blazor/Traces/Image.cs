@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.ImageLib;
 
 namespace Plotly.Blazor.Traces
 {
@@ -20,8 +19,8 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum Type { get; } = TraceTypeEnum.Image;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-        ///     is not drawn, but can appear as a legend item (provided that the legend
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -56,21 +55,22 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, *scatter* traces also appends customdata
-        ///     items in the markers DOM elements
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
         /// </summary>
         [JsonPropertyName(@"customdata")]
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace `name`, graph, axis
-        ///     and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
-        ///     and `sliders` `label` text all support `meta`. To access the trace `meta`
-        ///     values in an attribute in the same trace, simply use `%{meta[i]}` where
-        ///     `i` is the index or key of the `meta` item in question. To access trace
-        ///     `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index
-        ///     or key of the `meta` and `n` is the trace index.
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
@@ -88,18 +88,18 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ImageLib.Stream Stream { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
-        ///     in `parcoords` traces, as well as some `editable: true` modifications such
-        ///     as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that
-        ///     other user-driven trace attribute changes are controlled by `layout` attributes:
-        ///     `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints`
-        ///     is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible
-        ///     with `config: {editable: true}`) is controlled by `layout.editrevision`.
-        ///     Trace changes are tracked by `uid`, which only falls back on trace index
-        ///     if no `uid` is provided. So if your app can add/remove traces before the
-        ///     end of the `data` array, such that the same trace has a different index,
-        ///     you can still preserve user-driven changes if you give each trace a `uid`
-        ///     that stays with it as it moves.
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
@@ -112,7 +112,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Z { get; set;} 
 
         /// <summary>
-        ///     Color model used to map the numerical color components described in `z`
+        ///     Color model used to map the numerical color components described in <c>z</c>
         ///     into colors.
         /// </summary>
         [JsonPropertyName(@"colormodel")]
@@ -120,43 +120,44 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Array defining the lower bound for each color component. Note that the default
-        ///     value will depend on the colormodel. For the `rgb` colormodel, it is [0,
-        ///     0, 0]. For the `rgba` colormodel, it is [0, 0, 0, 0]. For the `hsl` colormodel,
-        ///     it is [0, 0, 0]. For the `hsla` colormodel, it is [0, 0, 0, 0].
+        ///     value will depend on the colormodel. For the <c>rgb</c> colormodel, it is
+        ///     [0, 0, 0]. For the <c>rgba</c> colormodel, it is [0, 0, 0, 0]. For the <c>hsl</c>
+        ///     colormodel, it is [0, 0, 0]. For the <c>hsla</c> colormodel, it is [0, 0,
+        ///     0, 0].
         /// </summary>
         [JsonPropertyName(@"zmin")]
         public IList<object> ZMin { get; set;} 
 
         /// <summary>
         ///     Array defining the higher bound for each color component. Note that the
-        ///     default value will depend on the colormodel. For the `rgb` colormodel, it
-        ///     is [255, 255, 255]. For the `rgba` colormodel, it is [255, 255, 255, 1].
-        ///     For the `hsl` colormodel, it is [360, 100, 100]. For the `hsla` colormodel,
-        ///     it is [360, 100, 100, 1].
+        ///     default value will depend on the colormodel. For the <c>rgb</c> colormodel,
+        ///     it is [255, 255, 255]. For the <c>rgba</c> colormodel, it is [255, 255,
+        ///     255, 1]. For the <c>hsl</c> colormodel, it is [360, 100, 100]. For the <c>hsla</c>
+        ///     colormodel, it is [360, 100, 100, 1].
         /// </summary>
         [JsonPropertyName(@"zmax")]
         public IList<object> ZMax { get; set;} 
 
         /// <summary>
-        ///     Set the image's x position.
+        ///     Set the image&#39;s x position.
         /// </summary>
         [JsonPropertyName(@"x0")]
         public object X0 { get; set;} 
 
         /// <summary>
-        ///     Set the image's y position.
+        ///     Set the image&#39;s y position.
         /// </summary>
         [JsonPropertyName(@"y0")]
         public object Y0 { get; set;} 
 
         /// <summary>
-        ///     Set the pixel's horizontal size.
+        ///     Set the pixel&#39;s horizontal size.
         /// </summary>
         [JsonPropertyName(@"dx")]
         public float? DX { get; set;} 
 
         /// <summary>
-        ///     Set the pixel's vertical size
+        ///     Set the pixel&#39;s vertical size
         /// </summary>
         [JsonPropertyName(@"dy")]
         public float? Dy { get; set;} 
@@ -168,50 +169,51 @@ namespace Plotly.Blazor.Traces
         public IList<object> Text { get; set;} 
 
         /// <summary>
-        ///     Same as `text`.
+        ///     Same as <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"hovertext")]
         public IList<object> HoverText { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If `none` or `skip`
-        ///     are set, no information is displayed upon hovering. But, if `none` is set,
-        ///     click and hover events are still fired.
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.ImageLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available. variables `z`, `color` and `colormodel`.
-        ///     Anything contained in tag `<extra>` is displayed in the secondary box, for
-        ///     example "<extra>{fullData.name}</extra>". To hide the secondary box completely,
-        ///     use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>z</c>, <c>color</c>
+        ///     and <c>colormodel</c>. Anything contained in tag <c>&lt;extra&gt;</c> is
+        ///     displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's x coordinates and a 2D cartesian x
-        ///     axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`.
-        ///     If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
+        ///     Sets a reference between this trace&#39;s x coordinates and a 2D cartesian
+        ///     x axis. If <c>x</c> (the default value), the x coordinates refer to <c>layout.xaxis</c>.
+        ///     If <c>x2</c>, the x coordinates refer to <c>layout.xaxis2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"xaxis")]
         public string XAxis { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's y coordinates and a 2D cartesian y
-        ///     axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`.
-        ///     If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
+        ///     Sets a reference between this trace&#39;s y coordinates and a 2D cartesian
+        ///     y axis. If <c>y</c> (the default value), the y coordinates refer to <c>layout.yaxis</c>.
+        ///     If <c>y2</c>, the y coordinates refer to <c>layout.yaxis2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"yaxis")]
         public string YAxis { get; set;} 

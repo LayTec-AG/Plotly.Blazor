@@ -15,14 +15,14 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     {
         /// <summary>
         ///     Sets the line width (mapbox.layer.paint.line-width). Has an effect only
-        ///     when `type` is set to *line*.
+        ///     when <c>type</c> is set to <c>line</c>.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
 
         /// <summary>
         ///     Sets the length of dashes and gaps (mapbox.layer.paint.line-dasharray).
-        ///     Has an effect only when `type` is set to *line*.
+        ///     Has an effect only when <c>type</c> is set to <c>line</c>.
         /// </summary>
         [JsonPropertyName(@"dash")]
         public IList<object> Dash { get; set;} 

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib;
 
 namespace Plotly.Blazor.LayoutLib.SliderLib
 {

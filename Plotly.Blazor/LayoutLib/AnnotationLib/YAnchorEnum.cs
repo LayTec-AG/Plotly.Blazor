@@ -8,13 +8,14 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.AnnotationLib
 {
     /// <summary>
-    ///     Sets the text box&#39;s vertical position anchor This anchor binds the `y`
-    ///     position to the *top*, *middle* or *bottom* of the annotation. For example,
-    ///     if `y` is set to 1, `yref` to *paper* and `yanchor` to *top* then the top-most
-    ///     portion of the annotation lines up with the top-most edge of the plotting
-    ///     area. If *auto*, the anchor is equivalent to *middle* for data-referenced
-    ///     annotations or if there is an arrow, whereas for paper-referenced with no
-    ///     arrow, the anchor picked corresponds to the closest side.
+    ///     Sets the text box&#39;s vertical position anchor This anchor binds the <c>y</c>
+    ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the annotation.
+    ///     For example, if <c>y</c> is set to 1, <c>yref</c> to <c>paper</c> and <c>yanchor</c>
+    ///     to <c>top</c> then the top-most portion of the annotation lines up with
+    ///     the top-most edge of the plotting area. If <c>auto</c>, the anchor is equivalent
+    ///     to <c>middle</c> for data-referenced annotations or if there is an arrow,
+    ///     whereas for paper-referenced with no arrow, the anchor picked corresponds
+    ///     to the closest side.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

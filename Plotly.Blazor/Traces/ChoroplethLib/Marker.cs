@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ChoroplethLib.MarkerLib;
 
 namespace Plotly.Blazor.Traces.ChoroplethLib
 {

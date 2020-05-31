@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.AnimationLib.TransitionLib;
 
 namespace Plotly.Blazor.AnimationLib
 {
@@ -28,8 +26,8 @@ namespace Plotly.Blazor.AnimationLib
         public Plotly.Blazor.AnimationLib.TransitionLib.EasingEnum? Easing { get; set;} 
 
         /// <summary>
-        ///     Determines whether the figure's layout or traces smoothly transitions during
-        ///     updates that make both traces and layout change.
+        ///     Determines whether the figure&#39;s layout or traces smoothly transitions
+        ///     during updates that make both traces and layout change.
         /// </summary>
         [JsonPropertyName(@"ordering")]
         public Plotly.Blazor.AnimationLib.TransitionLib.OrderingEnum? Ordering { get; set;} 

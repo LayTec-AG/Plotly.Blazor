@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.TernaryLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -51,8 +49,8 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.TernaryLib.CAxis CAxis { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of user-driven changes in axis `min` and `title`, if
-        ///     not overridden in the individual axes. Defaults to `layout.uirevision`.
+        ///     Controls persistence of user-driven changes in axis <c>min</c> and <c>title</c>,
+        ///     if not overridden in the individual axes. Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 

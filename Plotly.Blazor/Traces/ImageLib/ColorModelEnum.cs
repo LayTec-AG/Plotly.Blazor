@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ImageLib
 {
     /// <summary>
-    ///     Color model used to map the numerical color components described in `z`
+    ///     Color model used to map the numerical color components described in <c>z</c>
     ///     into colors.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

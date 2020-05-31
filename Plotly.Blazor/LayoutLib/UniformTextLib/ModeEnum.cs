@@ -10,10 +10,10 @@ namespace Plotly.Blazor.LayoutLib.UniformTextLib
     /// <summary>
     ///     Determines how the font size for various text elements are uniformed between
     ///     each trace type. If the computed text sizes were smaller than the minimum
-    ///     size defined by `uniformtext.minsize` using *hide* option hides the text;
-    ///     and using *show* option shows the text without further downscaling. Please
-    ///     note that if the size defined by `minsize` is greater than the font size
-    ///     defined by trace, then the `minsize` is used.
+    ///     size defined by <c>uniformtext.minsize</c> using <c>hide</c> option hides
+    ///     the text; and using <c>show</c> option shows the text without further downscaling.
+    ///     Please note that if the size defined by <c>minsize</c> is greater than the
+    ///     font size defined by trace, then the <c>minsize</c> is used.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

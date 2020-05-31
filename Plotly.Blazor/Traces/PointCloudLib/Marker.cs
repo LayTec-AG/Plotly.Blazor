@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.PointCloudLib.MarkerLib;
 
 namespace Plotly.Blazor.Traces.PointCloudLib
 {
@@ -23,33 +21,33 @@ namespace Plotly.Blazor.Traces.PointCloudLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the marker opacity. The default value is `1` (fully opaque). If the
-        ///     markers are not fully opaque and there are hundreds of thousands of points,
-        ///     it may cause slower zooming and panning. Opacity fades the color even if
-        ///     `blend` is left on `false` even if there is no translucency effect in that
-        ///     case.
+        ///     Sets the marker opacity. The default value is <c>1</c> (fully opaque). If
+        ///     the markers are not fully opaque and there are hundreds of thousands of
+        ///     points, it may cause slower zooming and panning. Opacity fades the color
+        ///     even if <c>blend</c> is left on <c>false</c> even if there is no translucency
+        ///     effect in that case.
         /// </summary>
         [JsonPropertyName(@"opacity")]
         public float? Opacity { get; set;} 
 
         /// <summary>
         ///     Determines if colors are blended together for a translucency effect in case
-        ///     `opacity` is specified as a value less then `1`. Setting `blend` to `true`
-        ///     reduces zoom/pan speed if used with large numbers of points.
+        ///     <c>opacity</c> is specified as a value less then <c>1</c>. Setting <c>blend</c>
+        ///     to <c>true</c> reduces zoom/pan speed if used with large numbers of points.
         /// </summary>
         [JsonPropertyName(@"blend")]
         public bool? Blend { get; set;} 
 
         /// <summary>
         ///     Sets the minimum size (in px) of the rendered marker points, effective when
-        ///     the `pointcloud` shows a million or more points.
+        ///     the <c>pointcloud</c> shows a million or more points.
         /// </summary>
         [JsonPropertyName(@"sizemin")]
         public float? SizeMin { get; set;} 
 
         /// <summary>
         ///     Sets the maximum size (in px) of the rendered marker points. Effective when
-        ///     the `pointcloud` shows only few points.
+        ///     the <c>pointcloud</c> shows only few points.
         /// </summary>
         [JsonPropertyName(@"sizemax")]
         public float? SizeMax { get; set;} 

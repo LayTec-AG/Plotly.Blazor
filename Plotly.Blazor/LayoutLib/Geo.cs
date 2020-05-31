@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.GeoLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -21,16 +19,18 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.GeoLib.Domain Domain { get; set;} 
 
         /// <summary>
-        ///     Determines if this subplot's view settings are auto-computed to fit trace
-        ///     data. On scoped maps, setting `fitbounds` leads to `center.lon` and `center.lat`
-        ///     getting auto-filled. On maps with a non-clipped projection, setting `fitbounds`
-        ///     leads to `center.lon`, `center.lat`, and `projection.rotation.lon` getting
-        ///     auto-filled. On maps with a clipped projection, setting `fitbounds` leads
-        ///     to `center.lon`, `center.lat`, `projection.rotation.lon`, `projection.rotation.lat`,
-        ///     `lonaxis.range` and `lonaxis.range` getting auto-filled. If *locations*,
-        ///     only the trace's visible locations are considered in the `fitbounds` computations.
-        ///     If *geojson*, the entire trace input `geojson` (if provided) is considered
-        ///     in the `fitbounds` computations, Defaults to *false*.
+        ///     Determines if this subplot&#39;s view settings are auto-computed to fit
+        ///     trace data. On scoped maps, setting <c>fitbounds</c> leads to <c>center.lon</c>
+        ///     and <c>center.lat</c> getting auto-filled. On maps with a non-clipped projection,
+        ///     setting <c>fitbounds</c> leads to <c>center.lon</c>, <c>center.lat</c>,
+        ///     and <c>projection.rotation.lon</c> getting auto-filled. On maps with a clipped
+        ///     projection, setting <c>fitbounds</c> leads to <c>center.lon</c>, <c>center.lat</c>,
+        ///     <c>projection.rotation.lon</c>, <c>projection.rotation.lat</c>, <c>lonaxis.range</c>
+        ///     and <c>lonaxis.range</c> getting auto-filled. If <c>locations</c>, only
+        ///     the trace&#39;s visible locations are considered in the <c>fitbounds</c>
+        ///     computations. If <c>geojson</c>, the entire trace input <c>geojson</c> (if
+        ///     provided) is considered in the <c>fitbounds</c> computations, Defaults to
+        ///     <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"fitbounds")]
         public Plotly.Blazor.LayoutLib.GeoLib.FitBoundsEnum? FitBounds { get; set;} 
@@ -213,7 +213,7 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Controls persistence of user-driven changes in the view (projection and
-        ///     center). Defaults to `layout.uirevision`.
+        ///     center). Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 

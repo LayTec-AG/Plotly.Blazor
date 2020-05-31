@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="src\DateTimeConverter.cs" />
     <Compile Remove="src\EnumConverter.cs" />
     <Compile Remove="src\Extensions.cs" />
     <Compile Remove="src\PlotlyJsInterop.cs" />
@@ -27,6 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="src\DateTimeConverter.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="src\EnumConverter.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

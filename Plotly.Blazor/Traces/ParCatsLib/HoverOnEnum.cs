@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ParCatsLib
 {
     /// <summary>
-    ///     Sets the hover interaction mode for the parcats diagram. If `category`,
-    ///     hover interaction take place per category. If `color`, hover interactions
-    ///     take place per color per category. If `dimension`, hover interactions take
-    ///     place across all categories per dimension.
+    ///     Sets the hover interaction mode for the parcats diagram. If <c>category</c>,
+    ///     hover interaction take place per category. If <c>color</c>, hover interactions
+    ///     take place per color per category. If <c>dimension</c>, hover interactions
+    ///     take place across all categories per dimension.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.Mesh3DLib
 {
     /// <summary>
-    ///     Determines the source of `intensity` values.
+    ///     Determines the source of <c>intensity</c> values.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -10,7 +10,7 @@ namespace Plotly.Blazor.Traces.HistogramLib.MarkerLib.ColorBarLib.TitleLib
     /// <summary>
     ///     Determines the location of color bar&#39;s title with respect to the color
     ///     bar. Note that the title&#39;s location used to be set by the now deprecated
-    ///     `titleside` attribute.
+    ///     <c>titleside</c> attribute.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

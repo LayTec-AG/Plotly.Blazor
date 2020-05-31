@@ -27,10 +27,10 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
         public IList<object> Locations { get; set;} 
 
         /// <summary>
-        ///     Sets the fill ratio of the `slices`. The default fill value of the `slices`
-        ///     is 1 meaning that they are entirely shaded. On the other hand Applying a
-        ///     `fill` ratio less than one would allow the creation of openings parallel
-        ///     to the edges.
+        ///     Sets the fill ratio of the <c>slices</c>. The default fill value of the
+        ///     <c>slices</c> is 1 meaning that they are entirely shaded. On the other hand
+        ///     Applying a <c>fill</c> ratio less than one would allow the creation of openings
+        ///     parallel to the edges.
         /// </summary>
         [JsonPropertyName(@"fill")]
         public float? Fill { get; set;} 

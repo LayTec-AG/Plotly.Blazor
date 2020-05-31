@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.ColorAxisLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -17,32 +15,32 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
         ///     input data (here corresponding trace color array(s)) or the bounds set in
-        ///     `cmin` and `cmax`  Defaults to `false` when `cmin` and `cmax` are set by
-        ///     the user.
+        ///     <c>cmin</c> and <c>cmax</c>  Defaults to <c>false</c> when <c>cmin</c> and
+        ///     <c>cmax</c> are set by the user.
         /// </summary>
         [JsonPropertyName(@"cauto")]
         public bool? CAuto { get; set;} 
 
         /// <summary>
         ///     Sets the lower bound of the color domain. Value should have the same units
-        ///     as corresponding trace color array(s) and if set, `cmax` must be set as
-        ///     well.
+        ///     as corresponding trace color array(s) and if set, <c>cmax</c> must be set
+        ///     as well.
         /// </summary>
         [JsonPropertyName(@"cmin")]
         public float? CMin { get; set;} 
 
         /// <summary>
         ///     Sets the upper bound of the color domain. Value should have the same units
-        ///     as corresponding trace color array(s) and if set, `cmin` must be set as
-        ///     well.
+        ///     as corresponding trace color array(s) and if set, <c>cmin</c> must be set
+        ///     as well.
         /// </summary>
         [JsonPropertyName(@"cmax")]
         public float? CMax { get; set;} 
 
         /// <summary>
-        ///     Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to
-        ///     be equidistant to this point. Value should have the same units as corresponding
-        ///     trace color array(s). Has no effect when `cauto` is `false`.
+        ///     Sets the mid-point of the color domain by scaling <c>cmin</c> and/or <c>cmax</c>
+        ///     to be equidistant to this point. Value should have the same units as corresponding
+        ///     trace color array(s). Has no effect when <c>cauto</c> is <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"cmid")]
         public float? CMid { get; set;} 
@@ -51,26 +49,28 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the colorscale. The colorscale must be an array containing arrays mapping
         ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
         ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
-        ///     For example, `[[0, 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`. To control the
-        ///     bounds of the colorscale in color space, use`cmin` and `cmax`. Alternatively,
-        ///     `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
+        ///     To control the bounds of the colorscale in color space, use<c>cmin</c> and
+        ///     <c>cmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
+        ///     of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (`autocolorscale:
-        ///     true`) or the palette determined by `colorscale`. In case `colorscale` is
-        ///     unspecified or `autocolorscale` is true, the default  palette will be chosen
-        ///     according to whether numbers in the `color` array are all positive, all
-        ///     negative or mixed.
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>colorscale</c>. In case <c>colorscale</c>
+        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     be chosen according to whether numbers in the <c>color</c> array are all
+        ///     positive, all negative or mixed.
         /// </summary>
         [JsonPropertyName(@"autocolorscale")]
         public bool? AutoColorScale { get; set;} 
 
         /// <summary>
-        ///     Reverses the color mapping if true. If true, `cmin` will correspond to the
-        ///     last color in the array and `cmax` will correspond to the first color.
+        ///     Reverses the color mapping if true. If true, <c>cmin</c> will correspond
+        ///     to the last color in the array and <c>cmax</c> will correspond to the first
+        ///     color.
         /// </summary>
         [JsonPropertyName(@"reversescale")]
         public bool? ReverseScale { get; set;} 

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.BarPolarLib.UnselectedLib;
 
 namespace Plotly.Blazor.Traces.BarPolarLib
 {

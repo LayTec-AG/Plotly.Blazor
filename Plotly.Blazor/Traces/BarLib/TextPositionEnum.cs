@@ -8,12 +8,12 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.BarLib
 {
     /// <summary>
-    ///     Specifies the location of the `text`. *inside* positions `text` inside,
-    ///     next to the bar end (rotated and scaled if needed). *outside* positions
-    ///     `text` outside, next to the bar end (scaled if needed), unless there is
-    ///     another bar stacked on this one, then the text gets pushed inside. *auto*
-    ///     tries to position `text` inside the bar, but if the bar is too small and
-    ///     no bar is stacked on this one the text is moved outside.
+    ///     Specifies the location of the <c>text</c>. <c>inside</c> positions <c>text</c>
+    ///     inside, next to the bar end (rotated and scaled if needed). <c>outside</c>
+    ///     positions <c>text</c> outside, next to the bar end (scaled if needed), unless
+    ///     there is another bar stacked on this one, then the text gets pushed inside.
+    ///     <c>auto</c> tries to position <c>text</c> inside the bar, but if the bar
+    ///     is too small and no bar is stacked on this one the text is moved outside.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

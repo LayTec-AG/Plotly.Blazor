@@ -9,10 +9,10 @@ namespace Plotly.Blazor.LayoutLib.TitleLib
 {
     /// <summary>
     ///     Sets the title&#39;s horizontal alignment with respect to its x position.
-    ///     *left* means that the title starts at x, *right* means that the title ends
-    ///     at x and *center* means that the title&#39;s center is at x. *auto* divides
-    ///     `xref` by three and calculates the `xanchor` value automatically based on
-    ///     the value of `x`.
+    ///     <c>left</c> means that the title starts at x, <c>right</c> means that the
+    ///     title ends at x and <c>center</c> means that the title&#39;s center is at
+    ///     x. <c>auto</c> divides <c>xref</c> by three and calculates the <c>xanchor</c>
+    ///     value automatically based on the value of <c>x</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

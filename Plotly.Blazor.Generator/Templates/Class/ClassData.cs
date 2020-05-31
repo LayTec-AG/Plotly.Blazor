@@ -52,8 +52,13 @@ namespace Plotly.Blazor.Generator.Templates.Class
         /// Gets or sets a value indicating whether this instance has a subplot property.
         /// </summary>
         /// <value><c>true</c> if this instance has a subplot property; otherwise, <c>false</c>.</value>
-
         public bool HasSubplotProperty => Properties.Any(p => p.IsSubplot);
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance has a property of type IList.
+        /// </summary>
+        /// <value><c>true</c> if this instance has a property of type IList; otherwise, <c>false</c>.</value>
+        public bool HasList => Properties.Any(p => p.TypeName.StartsWith("IList"));
 
         /// <summary>
         /// Gets or sets a value indicating whether [references transform].
@@ -136,13 +141,6 @@ namespace Plotly.Blazor.Generator.Templates.Class
         /// </summary>
         /// <value>The default value.</value>
         public string DefaultValue { get; set; }
-
-        /// <summary>
-        /// Gets a value indicating whether this instance is polymorphic.
-        /// </summary>
-        /// <value><c>true</c> if this instance is polymorphic; otherwise, <c>false</c>.</value>
-        public bool IsPolymorphic => TypeName == "ITransform" || TypeName == "IList<ITransform>" ||
-                                     TypeName == "IList<ITrace>";
     }
 
 

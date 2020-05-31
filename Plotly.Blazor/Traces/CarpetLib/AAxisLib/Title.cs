@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.CarpetLib.AAxisLib.TitleLib;
 
 namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
 {
@@ -15,23 +13,23 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
     public class Title 
     {
         /// <summary>
-        ///     Sets the title of this axis. Note that before the existence of `title.text`,
-        ///     the title's contents used to be defined as the `title` attribute itself.
-        ///     This behavior has been deprecated.
+        ///     Sets the title of this axis. Note that before the existence of <c>title.text</c>,
+        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
+        ///     itself. This behavior has been deprecated.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets this axis' title font. Note that the title's font used to be set by
-        ///     the now deprecated `titlefont` attribute.
+        ///     Sets this axis&#39; title font. Note that the title&#39;s font used to be
+        ///     set by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.CarpetLib.AAxisLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     An additional amount by which to offset the title from the tick labels,
-        ///     given in pixels. Note that this used to be set by the now deprecated `titleoffset`
+        ///     given in pixels. Note that this used to be set by the now deprecated <c>titleoffset</c>
         ///     attribute.
         /// </summary>
         [JsonPropertyName(@"offset")]

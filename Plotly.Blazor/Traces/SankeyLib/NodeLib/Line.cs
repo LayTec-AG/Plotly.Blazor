@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.SankeyLib.NodeLib
 {
@@ -14,13 +13,13 @@ namespace Plotly.Blazor.Traces.SankeyLib.NodeLib
     public class Line 
     {
         /// <summary>
-        ///     Sets the color of the `line` around each `node`.
+        ///     Sets the color of the <c>line</c> around each <c>node</c>.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the `line` around each `node`.
+        ///     Sets the width (in px) of the <c>line</c> around each <c>node</c>.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 

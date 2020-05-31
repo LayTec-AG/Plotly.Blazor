@@ -8,9 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib
 {
     /// <summary>
-    ///     When `dragmode` is set to *select*, this limits the selection of the drag
-    ///     to horizontal, vertical or diagonal. *h* only allows horizontal selection,
-    ///     *v* only vertical, *d* only diagonal and *any* sets no limit.
+    ///     When <c>dragmode</c> is set to <c>select</c>, this limits the selection
+    ///     of the drag to horizontal, vertical or diagonal. <c>h</c> only allows horizontal
+    ///     selection, <c>v</c> only vertical, <c>d</c> only diagonal and <c>any</c>
+    ///     sets no limit.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

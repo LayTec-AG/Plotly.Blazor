@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ParCoordsLib
 {
     /// <summary>
-    ///     Specifies the location of the `label`. *top* positions labels above, next
-    ///     to the title *bottom* positions labels below the graph Tilted labels with
-    ///     *labelangle* may be positioned better inside margins when `labelposition`
-    ///     is set to *bottom*.
+    ///     Specifies the location of the <c>label</c>. <c>top</c> positions labels
+    ///     above, next to the title <c>bottom</c> positions labels below the graph
+    ///     Tilted labels with <c>labelangle</c> may be positioned better inside margins
+    ///     when <c>labelposition</c> is set to <c>bottom</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

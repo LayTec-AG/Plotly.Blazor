@@ -8,13 +8,14 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.ShapeLib
 {
     /// <summary>
-    ///     Sets the shapes&#39;s sizing mode along the y axis. If set to *scaled*,
-    ///     `y0`, `y1` and y coordinates within `path` refer to data values on the y
-    ///     axis or a fraction of the plot area&#39;s height (`yref` set to *paper*).
-    ///     If set to *pixel*, `yanchor` specifies the y position in terms of data or
-    ///     plot fraction but `y0`, `y1` and y coordinates within `path` are pixels
-    ///     relative to `yanchor`. This way, the shape can have a fixed height while
-    ///     maintaining a position relative to data or plot fraction.
+    ///     Sets the shapes&#39;s sizing mode along the y axis. If set to <c>scaled</c>,
+    ///     <c>y0</c>, <c>y1</c> and y coordinates within <c>path</c> refer to data
+    ///     values on the y axis or a fraction of the plot area&#39;s height (<c>yref</c>
+    ///     set to <c>paper</c>). If set to <c>pixel</c>, <c>yanchor</c> specifies the
+    ///     y position in terms of data or plot fraction but <c>y0</c>, <c>y1</c> and
+    ///     y coordinates within <c>path</c> are pixels relative to <c>yanchor</c>.
+    ///     This way, the shape can have a fixed height while maintaining a position
+    ///     relative to data or plot fraction.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

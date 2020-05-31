@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.MapBoxLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -22,31 +21,31 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Sets the mapbox access token to be used for this mapbox map. Alternatively,
-        ///     the mapbox access token can be set in the configuration options under `mapboxAccessToken`.
-        ///     Note that accessToken are only required when `style` (e.g with values :
-        ///     basic, streets, outdoors, light, dark, satellite, satellite-streets ) and/or
-        ///     a layout layer references the Mapbox server.
+        ///     the mapbox access token can be set in the configuration options under <c>mapboxAccessToken</c>.
+        ///     Note that accessToken are only required when <c>style</c> (e.g with values
+        ///     : basic, streets, outdoors, light, dark, satellite, satellite-streets )
+        ///     and/or a layout layer references the Mapbox server.
         /// </summary>
         [JsonPropertyName(@"accesstoken")]
         public string AccessToken { get; set;} 
 
         /// <summary>
         ///     Defines the map layers that are rendered by default below the trace layers
-        ///     defined in `data`, which are themselves by default rendered below the layers
-        ///     defined in `layout.mapbox.layers`.  These layers can be defined either explicitly
-        ///     as a Mapbox Style object which can contain multiple layer definitions that
-        ///     load data from any public or private Tile Map Service (TMS or XYZ) or Web
-        ///     Map Service (WMS) or implicitly by using one of the built-in style objects
-        ///     which use WMSes which do not require any access tokens, or by using a default
-        ///     Mapbox style or custom Mapbox style URL, both of which require a Mapbox
-        ///     access token  Note that Mapbox access token can be set in the `accesstoken`
-        ///     attribute or in the `mapboxAccessToken` config option.  Mapbox Style objects
-        ///     are of the form described in the Mapbox GL JS documentation available at
-        ///     https://docs.mapbox.com/mapbox-gl-js/style-spec  The built-in plotly.js
-        ///     styles objects are: open-street-map, white-bg, carto-positron, carto-darkmatter,
-        ///     stamen-terrain, stamen-toner, stamen-watercolor  The built-in Mapbox styles
-        ///     are: basic, streets, outdoors, light, dark, satellite, satellite-streets
-        ///      Mapbox style URLs are of the form: mapbox://mapbox.mapbox-<name>-<version>
+        ///     defined in <c>data</c>, which are themselves by default rendered below the
+        ///     layers defined in <c>layout.mapbox.layers</c>.  These layers can be defined
+        ///     either explicitly as a Mapbox Style object which can contain multiple layer
+        ///     definitions that load data from any public or private Tile Map Service (TMS
+        ///     or XYZ) or Web Map Service (WMS) or implicitly by using one of the built-in
+        ///     style objects which use WMSes which do not require any access tokens, or
+        ///     by using a default Mapbox style or custom Mapbox style URL, both of which
+        ///     require a Mapbox access token  Note that Mapbox access token can be set
+        ///     in the <c>accesstoken</c> attribute or in the <c>mapboxAccessToken</c> config
+        ///     option.  Mapbox Style objects are of the form described in the Mapbox GL
+        ///     JS documentation available at https://docs.mapbox.com/mapbox-gl-js/style-spec
+        ///      The built-in plotly.js styles objects are: open-street-map, white-bg, carto-positron,
+        ///     carto-darkmatter, stamen-terrain, stamen-toner, stamen-watercolor  The built-in
+        ///     Mapbox styles are: basic, streets, outdoors, light, dark, satellite, satellite-streets
+        ///      Mapbox style URLs are of the form: mapbox://mapbox.mapbox-&lt;name&gt;-&lt;version&gt;
         /// </summary>
         [JsonPropertyName(@"style")]
         public object Style { get; set;} 
@@ -71,7 +70,7 @@ namespace Plotly.Blazor.LayoutLib
         public float? Bearing { get; set;} 
 
         /// <summary>
-        ///     Sets the pitch angle of the map (in degrees, where *0* means perpendicular
+        ///     Sets the pitch angle of the map (in degrees, where <c>0</c> means perpendicular
         ///     to the surface of the map) (mapbox.pitch).
         /// </summary>
         [JsonPropertyName(@"pitch")]
@@ -84,8 +83,8 @@ namespace Plotly.Blazor.LayoutLib
         public IList<Plotly.Blazor.LayoutLib.MapBoxLib.Layer> Layers { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of user-driven changes in the view: `center`, `zoom`,
-        ///     `bearing`, `pitch`. Defaults to `layout.uirevision`.
+        ///     Controls persistence of user-driven changes in the view: <c>center</c>,
+        ///     <c>zoom</c>, <c>bearing</c>, <c>pitch</c>. Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 

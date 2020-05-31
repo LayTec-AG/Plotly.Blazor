@@ -3,10 +3,9 @@
 */
 
 using System.Text.Json.Serialization;
+{{#HasList}}
 using System.Collections.Generic;
-{{#HasNestedComplexAttributes}}
-using {{Namespace}}.{{Name}}Lib;
-{{/HasNestedComplexAttributes}}
+{{/HasList}}
 
 namespace {{Namespace}}
 {
@@ -36,9 +35,6 @@ namespace {{Namespace}}
         {{#IsSubplot}}
         [Subplot]
         {{/IsSubplot}}
-        {{#IsPolymorphic}}
-        [JsonConverter(typeof(PolymorphicConverter))]
-        {{/IsPolymorphic}}
         public {{TypeName}} {{PropertyName}} { get; {{^IsReadOnly}}set;{{/IsReadOnly}}} {{#DefaultValue}}= {{.}};{{/DefaultValue}}
 
         {{/Properties}}

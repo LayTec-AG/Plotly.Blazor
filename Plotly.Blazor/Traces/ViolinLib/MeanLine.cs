@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.ViolinLib
 {
@@ -14,10 +13,10 @@ namespace Plotly.Blazor.Traces.ViolinLib
     public class MeanLine 
     {
         /// <summary>
-        ///     Determines if a line corresponding to the sample's mean is shown inside
-        ///     the violins. If `box.visible` is turned on, the mean line is drawn inside
-        ///     the inner box. Otherwise, the mean line is drawn from one side of the violin
-        ///     to other.
+        ///     Determines if a line corresponding to the sample&#39;s mean is shown inside
+        ///     the violins. If <c>box.visible</c> is turned on, the mean line is drawn
+        ///     inside the inner box. Otherwise, the mean line is drawn from one side of
+        ///     the violin to other.
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 

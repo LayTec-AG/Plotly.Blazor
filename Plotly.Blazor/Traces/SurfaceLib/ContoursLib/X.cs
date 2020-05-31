@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.SurfaceLib.ContoursLib.XLib;
 
 namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
 {
@@ -21,13 +19,13 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
         public bool? Show { get; set;} 
 
         /// <summary>
-        ///     Sets the starting contour level value. Must be less than `contours.end`
+        ///     Sets the starting contour level value. Must be less than <c>contours.end</c>
         /// </summary>
         [JsonPropertyName(@"start")]
         public float? Start { get; set;} 
 
         /// <summary>
-        ///     Sets the end contour level value. Must be more than `contours.start`
+        ///     Sets the end contour level value. Must be more than <c>contours.start</c>
         /// </summary>
         [JsonPropertyName(@"end")]
         public float? End { get; set;} 
@@ -51,8 +49,8 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     An alternate to *color*. Determines whether or not the contour lines are
-        ///     colored using the trace *colorscale*.
+        ///     An alternate to <c>color</c>. Determines whether or not the contour lines
+        ///     are colored using the trace <c>colorscale</c>.
         /// </summary>
         [JsonPropertyName(@"usecolormap")]
         public bool? UseColorMap { get; set;} 

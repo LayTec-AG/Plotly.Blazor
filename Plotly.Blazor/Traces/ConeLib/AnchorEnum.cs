@@ -9,8 +9,8 @@ namespace Plotly.Blazor.Traces.ConeLib
 {
     /// <summary>
     ///     Sets the cones&#39; anchor with respect to their x/y/z positions. Note that
-    ///     *cm* denote the cone&#39;s center of mass which corresponds to 1/4 from
-    ///     the tail to tip.
+    ///     <c>cm</c> denote the cone&#39;s center of mass which corresponds to 1/4
+    ///     from the tail to tip.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

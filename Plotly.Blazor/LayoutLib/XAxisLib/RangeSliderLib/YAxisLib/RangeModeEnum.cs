@@ -9,9 +9,10 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib.YAxisLib
 {
     /// <summary>
     ///     Determines whether or not the range of this axis in the rangeslider use
-    ///     the same value than in the main plot when zooming in/out. If *auto*, the
-    ///     autorange will be used. If *fixed*, the `range` is used. If *match*, the
-    ///     current range of the corresponding y-axis on the main subplot is used.
+    ///     the same value than in the main plot when zooming in/out. If <c>auto</c>,
+    ///     the autorange will be used. If <c>fixed</c>, the <c>range</c> is used. If
+    ///     <c>match</c>, the current range of the corresponding y-axis on the main
+    ///     subplot is used.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

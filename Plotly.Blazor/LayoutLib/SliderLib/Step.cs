@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.SliderLib.StepLib;
 
 namespace Plotly.Blazor.LayoutLib.SliderLib
 {
@@ -22,16 +21,16 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
         /// <summary>
         ///     Sets the Plotly method to be called when the slider value is changed. If
-        ///     the `skip` method is used, the API slider will function as normal but will
-        ///     perform no API calls and will not bind automatically to state updates. This
-        ///     may be used to create a component interface and attach to slider events
+        ///     the <c>skip</c> method is used, the API slider will function as normal but
+        ///     will perform no API calls and will not bind automatically to state updates.
+        ///     This may be used to create a component interface and attach to slider events
         ///     manually via JavaScript.
         /// </summary>
         [JsonPropertyName(@"method")]
         public Plotly.Blazor.LayoutLib.SliderLib.StepLib.MethodEnum? Method { get; set;} 
 
         /// <summary>
-        ///     Sets the arguments values to be passed to the Plotly method set in `method`
+        ///     Sets the arguments values to be passed to the Plotly method set in <c>method</c>
         ///     on slide.
         /// </summary>
         [JsonPropertyName(@"args")]
@@ -53,10 +52,10 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// <summary>
         ///     When true, the API method is executed. When false, all other behaviors are
         ///     the same and command execution is skipped. This may be useful when hooking
-        ///     into, for example, the `plotly_sliderchange` method and executing the API
-        ///     command manually without losing the benefit of the slider automatically
-        ///     binding to the state of the plot through the specification of `method` and
-        ///     `args`.
+        ///     into, for example, the <c>plotly_sliderchange</c> method and executing the
+        ///     API command manually without losing the benefit of the slider automatically
+        ///     binding to the state of the plot through the specification of <c>method</c>
+        ///     and <c>args</c>.
         /// </summary>
         [JsonPropertyName(@"execute")]
         public bool? Execute { get; set;} 
@@ -64,9 +63,10 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -74,11 +74,11 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.IndicatorLib.TitleLib;
 
 namespace Plotly.Blazor.Traces.IndicatorLib
 {
@@ -21,8 +19,8 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets the horizontal alignment of the title. It defaults to `center` except
-        ///     for bullet charts for which it defaults to right.
+        ///     Sets the horizontal alignment of the title. It defaults to <c>center</c>
+        ///     except for bullet charts for which it defaults to right.
         /// </summary>
         [JsonPropertyName(@"align")]
         public Plotly.Blazor.Traces.IndicatorLib.TitleLib.AlignEnum? Align { get; set;} 

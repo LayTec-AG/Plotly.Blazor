@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.BoxLib.MarkerLib;
 
 namespace Plotly.Blazor.Traces.BoxLib
 {
@@ -21,10 +19,10 @@ namespace Plotly.Blazor.Traces.BoxLib
         public object OutlierColor { get; set;} 
 
         /// <summary>
-        ///     Sets the marker symbol type. Adding 100 is equivalent to appending *-open*
-        ///     to a symbol name. Adding 200 is equivalent to appending *-dot* to a symbol
-        ///     name. Adding 300 is equivalent to appending *-open-dot* or *dot-open* to
-        ///     a symbol name.
+        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
+        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
+        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
+        ///     to a symbol name.
         /// </summary>
         [JsonPropertyName(@"symbol")]
         public Plotly.Blazor.Traces.BoxLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
@@ -44,7 +42,7 @@ namespace Plotly.Blazor.Traces.BoxLib
         /// <summary>
         ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
         ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to `marker.cmin` and `marker.cmax` if set.
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 

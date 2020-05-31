@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.FunnelAreaLib.MarkerLib;
 
 namespace Plotly.Blazor.Traces.FunnelAreaLib
 {

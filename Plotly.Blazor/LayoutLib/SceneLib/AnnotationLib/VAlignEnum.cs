@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib
 {
     /// <summary>
-    ///     Sets the vertical alignment of the `text` within the box. Has an effect
+    ///     Sets the vertical alignment of the <c>text</c> within the box. Has an effect
     ///     only if an explicit height is set to override the text height.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

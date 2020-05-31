@@ -9,8 +9,8 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib.ColorBarLib
 {
     /// <summary>
     ///     Determines whether this color bar&#39;s length (i.e. the measure in the
-    ///     color variation direction) is set in units of plot *fraction* or in *pixels.
-    ///     Use `len` to set the value.
+    ///     color variation direction) is set in units of plot <c>fraction</c> or in
+    ///     *pixels. Use <c>len</c> to set the value.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

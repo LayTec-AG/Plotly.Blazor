@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 {
@@ -15,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     {
         /// <summary>
         ///     Sets the circle radius (mapbox.layer.paint.circle-radius). Has an effect
-        ///     only when `type` is set to *circle*.
+        ///     only when <c>type</c> is set to <c>circle</c>.
         /// </summary>
         [JsonPropertyName(@"radius")]
         public float? Radius { get; set;} 

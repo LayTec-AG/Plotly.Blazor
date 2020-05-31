@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib
 {
     /// <summary>
-    ///     If *tozero*`, the range extends to 0, regardless of the input data If *nonnegative*,
-    ///     the range is non-negative, regardless of the input data. If *normal*, the
-    ///     range is computed in relation to the extrema of the input data (same behavior
-    ///     as for cartesian axes).
+    ///     If <c>tozero</c>`, the range extends to 0, regardless of the input data
+    ///     If <c>nonnegative</c>, the range is non-negative, regardless of the input
+    ///     data. If <c>normal</c>, the range is computed in relation to the extrema
+    ///     of the input data (same behavior as for cartesian axes).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.TreeMapLib.PathBarLib;
 
 namespace Plotly.Blazor.Traces.TreeMapLib
 {
@@ -15,33 +13,34 @@ namespace Plotly.Blazor.Traces.TreeMapLib
     public class PathBar 
     {
         /// <summary>
-        ///     Determines if the path bar is drawn i.e. outside the trace `domain` and
-        ///     with one pixel gap.
+        ///     Determines if the path bar is drawn i.e. outside the trace <c>domain</c>
+        ///     and with one pixel gap.
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 
 
         /// <summary>
-        ///     Determines on which side of the the treemap the `pathbar` should be presented.
+        ///     Determines on which side of the the treemap the <c>pathbar</c> should be
+        ///     presented.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.SideEnum? Side { get; set;} 
 
         /// <summary>
-        ///     Determines which shape is used for edges between `barpath` labels.
+        ///     Determines which shape is used for edges between <c>barpath</c> labels.
         /// </summary>
         [JsonPropertyName(@"edgeshape")]
         public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.EdgeShapeEnum? EdgeShape { get; set;} 
 
         /// <summary>
-        ///     Sets the thickness of `pathbar` (in px). If not specified the `pathbar.textfont.size`
+        ///     Sets the thickness of <c>pathbar</c> (in px). If not specified the <c>pathbar.textfont.size</c>
         ///     is used with 3 pixles extra padding on each side.
         /// </summary>
         [JsonPropertyName(@"thickness")]
         public float? Thickness { get; set;} 
 
         /// <summary>
-        ///     Sets the font used inside `pathbar`.
+        ///     Sets the font used inside <c>pathbar</c>.
         /// </summary>
         [JsonPropertyName(@"textfont")]
         public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.TextFont TextFont { get; set;} 

@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
 {
@@ -14,18 +13,18 @@ namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
     public class X 
     {
         /// <summary>
-        ///     Sets the fill ratio of the `slices`. The default fill value of the x `slices`
-        ///     is 1 meaning that they are entirely shaded. On the other hand Applying a
-        ///     `fill` ratio less than one would allow the creation of openings parallel
-        ///     to the edges.
+        ///     Sets the fill ratio of the <c>slices</c>. The default fill value of the
+        ///     x <c>slices</c> is 1 meaning that they are entirely shaded. On the other
+        ///     hand Applying a <c>fill</c> ratio less than one would allow the creation
+        ///     of openings parallel to the edges.
         /// </summary>
         [JsonPropertyName(@"show")]
         public bool? Show { get; set;} 
 
         /// <summary>
-        ///     Sets the fill ratio of the `caps`. The default fill value of the `caps`
+        ///     Sets the fill ratio of the <c>caps</c>. The default fill value of the <c>caps</c>
         ///     is 1 meaning that they are entirely shaded. On the other hand Applying a
-        ///     `fill` ratio less than one would allow the creation of openings parallel
+        ///     <c>fill</c> ratio less than one would allow the creation of openings parallel
         ///     to the edges.
         /// </summary>
         [JsonPropertyName(@"fill")]

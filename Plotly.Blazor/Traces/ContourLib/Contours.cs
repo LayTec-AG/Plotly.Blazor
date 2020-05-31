@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ContourLib.ContoursLib;
 
 namespace Plotly.Blazor.Traces.ContourLib
 {
@@ -15,21 +13,22 @@ namespace Plotly.Blazor.Traces.ContourLib
     public class Contours 
     {
         /// <summary>
-        ///     If `levels`, the data is represented as a contour plot with multiple levels
-        ///     displayed. If `constraint`, the data is represented as constraints with
-        ///     the invalid region shaded as specified by the `operation` and `value` parameters.
+        ///     If <c>levels</c>, the data is represented as a contour plot with multiple
+        ///     levels displayed. If <c>constraint</c>, the data is represented as constraints
+        ///     with the invalid region shaded as specified by the <c>operation</c> and
+        ///     <c>value</c> parameters.
         /// </summary>
         [JsonPropertyName(@"type")]
         public Plotly.Blazor.Traces.ContourLib.ContoursLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
-        ///     Sets the starting contour level value. Must be less than `contours.end`
+        ///     Sets the starting contour level value. Must be less than <c>contours.end</c>
         /// </summary>
         [JsonPropertyName(@"start")]
         public float? Start { get; set;} 
 
         /// <summary>
-        ///     Sets the end contour level value. Must be more than `contours.start`
+        ///     Sets the end contour level value. Must be more than <c>contours.start</c>
         /// </summary>
         [JsonPropertyName(@"end")]
         public float? End { get; set;} 
@@ -41,17 +40,18 @@ namespace Plotly.Blazor.Traces.ContourLib
         public float? Size { get; set;} 
 
         /// <summary>
-        ///     Determines the coloring method showing the contour values. If *fill*, coloring
-        ///     is done evenly between each contour level If *heatmap*, a heatmap gradient
-        ///     coloring is applied between each contour level. If *lines*, coloring is
-        ///     done on the contour lines. If *none*, no coloring is applied on this trace.
+        ///     Determines the coloring method showing the contour values. If <c>fill</c>,
+        ///     coloring is done evenly between each contour level If <c>heatmap</c>, a
+        ///     heatmap gradient coloring is applied between each contour level. If <c>lines</c>,
+        ///     coloring is done on the contour lines. If <c>none</c>, no coloring is applied
+        ///     on this trace.
         /// </summary>
         [JsonPropertyName(@"coloring")]
         public Plotly.Blazor.Traces.ContourLib.ContoursLib.ColoringEnum? Coloring { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the contour lines are drawn. Has an effect only
-        ///     if `contours.coloring` is set to *fill*.
+        ///     if <c>contours.coloring</c> is set to <c>fill</c>.
         /// </summary>
         [JsonPropertyName(@"showlines")]
         public bool? ShowLines { get; set;} 
@@ -64,7 +64,7 @@ namespace Plotly.Blazor.Traces.ContourLib
 
         /// <summary>
         ///     Sets the font used for labeling the contour levels. The default color comes
-        ///     from the lines, if shown. The default family and size come from `layout.font`.
+        ///     from the lines, if shown. The default family and size come from <c>layout.font</c>.
         /// </summary>
         [JsonPropertyName(@"labelfont")]
         public Plotly.Blazor.Traces.ContourLib.ContoursLib.LabelFont LabelFont { get; set;} 
@@ -77,22 +77,24 @@ namespace Plotly.Blazor.Traces.ContourLib
         public string LabelFormat { get; set;} 
 
         /// <summary>
-        ///     Sets the constraint operation. *=* keeps regions equal to `value` *<* and
-        ///     *<=* keep regions less than `value` *>* and *>=* keep regions greater than
-        ///     `value` *[]*, *()*, *[)*, and *(]* keep regions inside `value[0]` to `value[1]`
-        ///     *][*, *)(*, *](*, *)[* keep regions outside `value[0]` to value[1]` Open
-        ///     vs. closed intervals make no difference to constraint display, but all versions
-        ///     are allowed for consistency with filter transforms.
+        ///     Sets the constraint operation. <c>=</c> keeps regions equal to <c>value</c>
+        ///     <c>&lt;</c> and <c>&lt;=</c> keep regions less than <c>value</c> <c>&gt;</c>
+        ///     and <c>&gt;=</c> keep regions greater than <c>value</c> <c>[]</c>, <c>()</c>,
+        ///     <c>[)</c>, and <c>(]</c> keep regions inside <c>value[0]</c> to <c>value[1]</c>
+        ///     <c>][</c>, <c>)(</c>, <c>](</c>, <c>)[</c> keep regions outside <c>value[0]</c>
+        ///     to value[1]` Open vs. closed intervals make no difference to constraint
+        ///     display, but all versions are allowed for consistency with filter transforms.
         /// </summary>
         [JsonPropertyName(@"operation")]
         public Plotly.Blazor.Traces.ContourLib.ContoursLib.OperationEnum? Operation { get; set;} 
 
         /// <summary>
-        ///     Sets the value or values of the constraint boundary. When `operation` is
-        ///     set to one of the comparison values (=,<,>=,>,<=) *value* is expected to
-        ///     be a number. When `operation` is set to one of the interval values ([],(),[),(],][,)(,](,)[)
-        ///     *value* is expected to be an array of two numbers where the first is the
-        ///     lower bound and the second is the upper bound.
+        ///     Sets the value or values of the constraint boundary. When <c>operation</c>
+        ///     is set to one of the comparison values (=,&lt;,&gt;=,&gt;,&lt;=) <c>value</c>
+        ///     is expected to be a number. When <c>operation</c> is set to one of the interval
+        ///     values ([],(),[),(],][,)(,](,)[) <c>value</c> is expected to be an array
+        ///     of two numbers where the first is the lower bound and the second is the
+        ///     upper bound.
         /// </summary>
         [JsonPropertyName(@"value")]
         public object Value { get; set;} 

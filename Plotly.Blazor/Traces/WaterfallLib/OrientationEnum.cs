@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.WaterfallLib
 {
     /// <summary>
-    ///     Sets the orientation of the bars. With *v* (*h*), the value of the each
-    ///     bar spans along the vertical (horizontal).
+    ///     Sets the orientation of the bars. With <c>v</c> (<c>h</c>), the value of
+    ///     the each bar spans along the vertical (horizontal).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

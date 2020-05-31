@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     {
         /// <summary>
         ///     Sets the horizontal domain of this geo subplot (in plot fraction). Note
-        ///     that geo subplots are constrained by domain. In general, when `projection.scale`
+        ///     that geo subplots are constrained by domain. In general, when <c>projection.scale</c>
         ///     is set to 1. a map will fit either its x or y domain, but not both.
         /// </summary>
         [JsonPropertyName(@"x")]
@@ -23,7 +23,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
 
         /// <summary>
         ///     Sets the vertical domain of this geo subplot (in plot fraction). Note that
-        ///     geo subplots are constrained by domain. In general, when `projection.scale`
+        ///     geo subplots are constrained by domain. In general, when <c>projection.scale</c>
         ///     is set to 1. a map will fit either its x or y domain, but not both.
         /// </summary>
         [JsonPropertyName(@"y")]
@@ -32,8 +32,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         /// <summary>
         ///     If there is a layout grid, use the domain for this row in the grid for this
         ///     geo subplot . Note that geo subplots are constrained by domain. In general,
-        ///     when `projection.scale` is set to 1. a map will fit either its x or y domain,
-        ///     but not both.
+        ///     when <c>projection.scale</c> is set to 1. a map will fit either its x or
+        ///     y domain, but not both.
         /// </summary>
         [JsonPropertyName(@"row")]
         public int? Row { get; set;} 
@@ -41,8 +41,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         /// <summary>
         ///     If there is a layout grid, use the domain for this column in the grid for
         ///     this geo subplot . Note that geo subplots are constrained by domain. In
-        ///     general, when `projection.scale` is set to 1. a map will fit either its
-        ///     x or y domain, but not both.
+        ///     general, when <c>projection.scale</c> is set to 1. a map will fit either
+        ///     its x or y domain, but not both.
         /// </summary>
         [JsonPropertyName(@"column")]
         public int? Column { get; set;} 

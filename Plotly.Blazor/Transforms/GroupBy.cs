@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Transforms.GroupByLib;
 
 namespace Plotly.Blazor.Transforms
 {
@@ -27,21 +26,21 @@ namespace Plotly.Blazor.Transforms
 
         /// <summary>
         ///     Sets the groups in which the trace data will be split. For example, with
-        ///     `x` set to *[1, 2, 3, 4]* and `groups` set to *['a', 'b', 'a', 'b']*, the
-        ///     groupby transform with split in one trace with `x` [1, 3] and one trace
-        ///     with `x` [2, 4].
+        ///     <c>x</c> set to &#39;[1, 2, 3, 4]&#39; and <c>groups</c> set to &#39;[<c>a</c>,
+        ///     <c>b</c>, <c>a</c>, <c>b</c>]&#39;, the groupby transform with split in
+        ///     one trace with <c>x</c> [1, 3] and one trace with <c>x</c> [2, 4].
         /// </summary>
         [JsonPropertyName(@"groups")]
         public IList<object> Groups { get; set;} 
 
         /// <summary>
         ///     Pattern by which grouped traces are named. If only one trace is present,
-        ///     defaults to the group name (`"%{group}"`), otherwise defaults to the group
-        ///     name with trace name (`"%{group} (%{trace})"`). Available escape sequences
-        ///     are `%{group}`, which inserts the group name, and `%{trace}`, which inserts
-        ///     the trace name. If grouping GDP data by country when more than one trace
-        ///     is present, for example, the default "%{group} (%{trace})" would return
-        ///     "Monaco (GDP per capita)".
+        ///     defaults to the group name (<c><c>%{group}</c></c>), otherwise defaults
+        ///     to the group name with trace name (&#39;&quot;%{group} (%{trace})&quot;&#39;).
+        ///     Available escape sequences are <c>%{group}</c>, which inserts the group
+        ///     name, and <c>%{trace}</c>, which inserts the trace name. If grouping GDP
+        ///     data by country when more than one trace is present, for example, the default
+        ///     &quot;%{group} (%{trace})&quot; would return &quot;Monaco (GDP per capita)&quot;.
         /// </summary>
         [JsonPropertyName(@"nameformat")]
         public string NameFormat { get; set;} 

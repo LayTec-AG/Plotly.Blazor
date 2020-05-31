@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.XAxisLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -44,29 +43,29 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
-        ///     to the input data. See `rangemode` for more info. If `range` is provided,
-        ///     then `autorange` is set to *false*.
+        ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
+        ///     provided, then <c>autorange</c> is set to <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"autorange")]
         public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
-        ///     If *normal*, the range is computed in relation to the extrema of the input
-        ///     data. If *tozero*`, the range extends to 0, regardless of the input data
-        ///     If *nonnegative*, the range is non-negative, regardless of the input data.
-        ///     Applies only to linear axes.
+        ///     If <c>normal</c>, the range is computed in relation to the extrema of the
+        ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
+        ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
+        ///     of the input data. Applies only to linear axes.
         /// </summary>
         [JsonPropertyName(@"rangemode")]
         public Plotly.Blazor.LayoutLib.XAxisLib.RangeModeEnum? RangeMode { get; set;} 
 
         /// <summary>
-        ///     Sets the range of this axis. If the axis `type` is *log*, then you must
-        ///     take the log of your desired range (e.g. to set the range from 1 to 100,
-        ///     set the range from 0 to 2). If the axis `type` is *date*, it should be date
-        ///     strings, like date data, though Date objects and unix milliseconds will
-        ///     be accepted and converted to strings. If the axis `type` is *category*,
-        ///     it should be numbers, using the scale where each category is assigned a
-        ///     serial number from zero in the order it appears.
+        ///     Sets the range of this axis. If the axis <c>type</c> is <c>log</c>, then
+        ///     you must take the log of your desired range (e.g. to set the range from
+        ///     1 to 100, set the range from 0 to 2). If the axis <c>type</c> is <c>date</c>,
+        ///     it should be date strings, like date data, though Date objects and unix
+        ///     milliseconds will be accepted and converted to strings. If the axis <c>type</c>
+        ///     is <c>category</c>, it should be numbers, using the scale where each category
+        ///     is assigned a serial number from zero in the order it appears.
         /// </summary>
         [JsonPropertyName(@"range")]
         public IList<object> Range { get; set;} 
@@ -79,26 +78,27 @@ namespace Plotly.Blazor.LayoutLib
         public bool? FixedRange { get; set;} 
 
         /// <summary>
-        ///     If set to another axis id (e.g. `x2`, `y`), the range of this axis changes
-        ///     together with the range of the corresponding axis such that the scale of
-        ///     pixels per unit is in a constant ratio. Both axes are still zoomable, but
-        ///     when you zoom one, the other will zoom the same amount, keeping a fixed
-        ///     midpoint. `constrain` and `constraintoward` determine how we enforce the
-        ///     constraint. You can chain these, ie `yaxis: {scaleanchor: *x*}, xaxis2:
-        ///     {scaleanchor: *y*}` but you can only link axes of the same `type`. The linked
-        ///     axis can have the opposite letter (to constrain the aspect ratio) or the
-        ///     same letter (to match scales across subplots). Loops (`yaxis: {scaleanchor:
-        ///     *x*}, xaxis: {scaleanchor: *y*}` or longer) are redundant and the last constraint
-        ///     encountered will be ignored to avoid possible inconsistent constraints via
-        ///     `scaleratio`. Note that setting axes simultaneously in both a `scaleanchor`
-        ///     and a `matches` constraint is currently forbidden.
+        ///     If set to another axis id (e.g. <c>x2</c>, <c>y</c>), the range of this
+        ///     axis changes together with the range of the corresponding axis such that
+        ///     the scale of pixels per unit is in a constant ratio. Both axes are still
+        ///     zoomable, but when you zoom one, the other will zoom the same amount, keeping
+        ///     a fixed midpoint. <c>constrain</c> and <c>constraintoward</c> determine
+        ///     how we enforce the constraint. You can chain these, ie &#39;yaxis: {scaleanchor:
+        ///     <c>x</c>}, xaxis2: {scaleanchor: <c>y</c>}&#39; but you can only link axes
+        ///     of the same <c>type</c>. The linked axis can have the opposite letter (to
+        ///     constrain the aspect ratio) or the same letter (to match scales across subplots).
+        ///     Loops (&#39;yaxis: {scaleanchor: <c>x</c>}, xaxis: {scaleanchor: <c>y</c>}&#39;
+        ///     or longer) are redundant and the last constraint encountered will be ignored
+        ///     to avoid possible inconsistent constraints via <c>scaleratio</c>. Note that
+        ///     setting axes simultaneously in both a <c>scaleanchor</c> and a <c>matches</c>
+        ///     constraint is currently forbidden.
         /// </summary>
         [JsonPropertyName(@"scaleanchor")]
         public string ScaleAnchor { get; set;} 
 
         /// <summary>
-        ///     If this axis is linked to another by `scaleanchor`, this determines the
-        ///     pixel to unit scale ratio. For example, if this value is 10, then every
+        ///     If this axis is linked to another by <c>scaleanchor</c>, this determines
+        ///     the pixel to unit scale ratio. For example, if this value is 10, then every
         ///     unit on this axis spans 10 times the number of pixels as a unit on the linked
         ///     axis. Use this for example to create an elevation profile where the vertical
         ///     scale is exaggerated a fixed amount with respect to the horizontal.
@@ -107,30 +107,30 @@ namespace Plotly.Blazor.LayoutLib
         public float? ScaleRatio { get; set;} 
 
         /// <summary>
-        ///     If this axis needs to be compressed (either due to its own `scaleanchor`
-        ///     and `scaleratio` or those of the other axis), determines how that happens:
-        ///     by increasing the *range* (default), or by decreasing the *domain*.
+        ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
+        ///     and <c>scaleratio</c> or those of the other axis), determines how that happens:
+        ///     by increasing the <c>range</c> (default), or by decreasing the <c>domain</c>.
         /// </summary>
         [JsonPropertyName(@"constrain")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainEnum? Constrain { get; set;} 
 
         /// <summary>
-        ///     If this axis needs to be compressed (either due to its own `scaleanchor`
-        ///     and `scaleratio` or those of the other axis), determines which direction
-        ///     we push the originally specified plot area. Options are *left*, *center*
-        ///     (default), and *right* for x axes, and *top*, *middle* (default), and *bottom*
-        ///     for y axes.
+        ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
+        ///     and <c>scaleratio</c> or those of the other axis), determines which direction
+        ///     we push the originally specified plot area. Options are <c>left</c>, <c>center</c>
+        ///     (default), and <c>right</c> for x axes, and <c>top</c>, <c>middle</c> (default),
+        ///     and <c>bottom</c> for y axes.
         /// </summary>
         [JsonPropertyName(@"constraintoward")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainTowardEnum? ConstrainToward { get; set;} 
 
         /// <summary>
-        ///     If set to another axis id (e.g. `x2`, `y`), the range of this axis will
-        ///     match the range of the corresponding axis in data-coordinates space. Moreover,
-        ///     matching axes share auto-range values, category lists and histogram auto-bins.
-        ///     Note that setting axes simultaneously in both a `scaleanchor` and a `matches`
-        ///     constraint is currently forbidden. Moreover, note that matching axes must
-        ///     have the same `type`.
+        ///     If set to another axis id (e.g. <c>x2</c>, <c>y</c>), the range of this
+        ///     axis will match the range of the corresponding axis in data-coordinates
+        ///     space. Moreover, matching axes share auto-range values, category lists and
+        ///     histogram auto-bins. Note that setting axes simultaneously in both a <c>scaleanchor</c>
+        ///     and a <c>matches</c> constraint is currently forbidden. Moreover, note that
+        ///     matching axes must have the same <c>type</c>.
         /// </summary>
         [JsonPropertyName(@"matches")]
         public string Matches { get; set;} 
@@ -142,12 +142,13 @@ namespace Plotly.Blazor.LayoutLib
         public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeBreak> RangeBreaks { get; set;} 
 
         /// <summary>
-        ///     Sets the tick mode for this axis. If *auto*, the number of ticks is set
-        ///     via `nticks`. If *linear*, the placement of the ticks is determined by a
-        ///     starting position `tick0` and a tick step `dtick` (*linear* is the default
-        ///     value if `tick0` and `dtick` are provided). If *array*, the placement of
-        ///     the ticks is set via `tickvals` and the tick text is `ticktext`. (*array*
-        ///     is the default value if `tickvals` is provided).
+        ///     Sets the tick mode for this axis. If <c>auto</c>, the number of ticks is
+        ///     set via <c>nticks</c>. If <c>linear</c>, the placement of the ticks is determined
+        ///     by a starting position <c>tick0</c> and a tick step <c>dtick</c> (<c>linear</c>
+        ///     is the default value if <c>tick0</c> and <c>dtick</c> are provided). If
+        ///     <c>array</c>, the placement of the ticks is set via <c>tickvals</c> and
+        ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
+        ///     <c>tickvals</c> is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
         public Plotly.Blazor.LayoutLib.XAxisLib.TickModeEnum? TickMode { get; set;} 
@@ -155,81 +156,84 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
         ///     number of ticks will be chosen automatically to be less than or equal to
-        ///     `nticks`. Has an effect only if `tickmode` is set to *auto*.
+        ///     <c>nticks</c>. Has an effect only if <c>tickmode</c> is set to <c>auto</c>.
         /// </summary>
         [JsonPropertyName(@"nticks")]
         public int? NTicks { get; set;} 
 
         /// <summary>
-        ///     Sets the placement of the first tick on this axis. Use with `dtick`. If
-        ///     the axis `type` is *log*, then you must take the log of your starting tick
-        ///     (e.g. to set the starting tick to 100, set the `tick0` to 2) except when
-        ///     `dtick`=*L<f>* (see `dtick` for more info). If the axis `type` is *date*,
-        ///     it should be a date string, like date data. If the axis `type` is *category*,
-        ///     it should be a number, using the scale where each category is assigned a
-        ///     serial number from zero in the order it appears.
+        ///     Sets the placement of the first tick on this axis. Use with <c>dtick</c>.
+        ///     If the axis <c>type</c> is <c>log</c>, then you must take the log of your
+        ///     starting tick (e.g. to set the starting tick to 100, set the <c>tick0</c>
+        ///     to 2) except when <c>dtick</c>=<c>L&lt;f&gt;</c> (see <c>dtick</c> for more
+        ///     info). If the axis <c>type</c> is <c>date</c>, it should be a date string,
+        ///     like date data. If the axis <c>type</c> is <c>category</c>, it should be
+        ///     a number, using the scale where each category is assigned a serial number
+        ///     from zero in the order it appears.
         /// </summary>
         [JsonPropertyName(@"tick0")]
         public object Tick0 { get; set;} 
 
         /// <summary>
-        ///     Sets the step in-between ticks on this axis. Use with `tick0`. Must be a
-        ///     positive number, or special strings available to *log* and *date* axes.
-        ///     If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where
-        ///     n is the tick number. For example, to set a tick mark at 1, 10, 100, 1000,
-        ///     ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick to
-        ///     2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5),
-        ///     or 0.69897000433. *log* has several special values; *L<f>*, where `f` is
-        ///     a positive number, gives ticks linearly spaced in value (but not position).
-        ///     For example `tick0` = 0.1, `dtick` = *L0.5* will put ticks at 0.1, 0.6,
-        ///     1.1, 1.6 etc. To show powers of 10 plus small digits between, use *D1* (all
-        ///     digits) or *D2* (only 2 and 5). `tick0` is ignored for *D1* and *D2*. If
-        ///     the axis `type` is *date*, then you must convert the time to milliseconds.
-        ///     For example, to set the interval between ticks to one day, set `dtick` to
-        ///     86400000.0. *date* also has special values *M<n>* gives ticks spaced by
-        ///     a number of months. `n` must be a positive integer. To set ticks on the
-        ///     15th of every third month, set `tick0` to *2000-01-15* and `dtick` to *M3*.
-        ///     To set ticks every 4 years, set `dtick` to *M48*
+        ///     Sets the step in-between ticks on this axis. Use with <c>tick0</c>. Must
+        ///     be a positive number, or special strings available to <c>log</c> and <c>date</c>
+        ///     axes. If the axis <c>type</c> is <c>log</c>, then ticks are set every 10^(n*dtick)
+        ///     where n is the tick number. For example, to set a tick mark at 1, 10, 100,
+        ///     1000, ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick
+        ///     to 2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5),
+        ///     or 0.69897000433. <c>log</c> has several special values; <c>L&lt;f&gt;</c>,
+        ///     where <c>f</c> is a positive number, gives ticks linearly spaced in value
+        ///     (but not position). For example <c>tick0</c> = 0.1, <c>dtick</c> = <c>L0.5</c>
+        ///     will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small
+        ///     digits between, use <c>D1</c> (all digits) or <c>D2</c> (only 2 and 5).
+        ///     <c>tick0</c> is ignored for <c>D1</c> and <c>D2</c>. If the axis <c>type</c>
+        ///     is <c>date</c>, then you must convert the time to milliseconds. For example,
+        ///     to set the interval between ticks to one day, set <c>dtick</c> to 86400000.0.
+        ///     <c>date</c> also has special values <c>M&lt;n&gt;</c> gives ticks spaced
+        ///     by a number of months. <c>n</c> must be a positive integer. To set ticks
+        ///     on the 15th of every third month, set <c>tick0</c> to <c>2000-01-15</c>
+        ///     and <c>dtick</c> to <c>M3</c>. To set ticks every 4 years, set <c>dtick</c>
+        ///     to <c>M48</c>
         /// </summary>
         [JsonPropertyName(@"dtick")]
         public object DTick { get; set;} 
 
         /// <summary>
         ///     Sets the values at which ticks on this axis appear. Only has an effect if
-        ///     `tickmode` is set to *array*. Used with `ticktext`.
+        ///     <c>tickmode</c> is set to <c>array</c>. Used with <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"tickvals")]
         public IList<object> TickVals { get; set;} 
 
         /// <summary>
-        ///     Sets the text displayed at the ticks position via `tickvals`. Only has an
-        ///     effect if `tickmode` is set to *array*. Used with `tickvals`.
+        ///     Sets the text displayed at the ticks position via <c>tickvals</c>. Only
+        ///     has an effect if <c>tickmode</c> is set to <c>array</c>. Used with <c>tickvals</c>.
         /// </summary>
         [JsonPropertyName(@"ticktext")]
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Determines whether ticks are drawn or not. If **, this axis' ticks are not
-        ///     drawn. If *outside* (*inside*), this axis' are drawn outside (inside) the
-        ///     axis lines.
+        ///     Determines whether ticks are drawn or not. If **, this axis&#39; ticks are
+        ///     not drawn. If <c>outside</c> (<c>inside</c>), this axis&#39; are drawn outside
+        ///     (inside) the axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
         public Plotly.Blazor.LayoutLib.XAxisLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
         ///     Determines where ticks and grid lines are drawn with respect to their corresponding
-        ///     tick labels. Only has an effect for axes of `type` *category* or *multicategory*.
-        ///     When set to *boundaries*, ticks and grid lines are drawn half a category
-        ///     to the left/bottom of labels.
+        ///     tick labels. Only has an effect for axes of <c>type</c> <c>category</c>
+        ///     or <c>multicategory</c>. When set to <c>boundaries</c>, ticks and grid lines
+        ///     are drawn half a category to the left/bottom of labels.
         /// </summary>
         [JsonPropertyName(@"tickson")]
         public Plotly.Blazor.LayoutLib.XAxisLib.TickSonEnum? TickSon { get; set;} 
 
         /// <summary>
         ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
-        ///     of the plotting area. If *true*, the axis lines are mirrored. If *ticks*,
-        ///     the axis lines and ticks are mirrored. If *false*, mirroring is disable.
-        ///     If *all*, axis lines are mirrored on all shared-axes subplots. If *allticks*,
+        ///     of the plotting area. If <c>true</c>, the axis lines are mirrored. If <c>ticks</c>,
+        ///     the axis lines and ticks are mirrored. If <c>false</c>, mirroring is disable.
+        ///     If <c>all</c>, axis lines are mirrored on all shared-axes subplots. If <c>allticks</c>,
         ///     axis lines and ticks are mirrored on all shared-axes subplots.
         /// </summary>
         [JsonPropertyName(@"mirror")]
@@ -285,18 +289,18 @@ namespace Plotly.Blazor.LayoutLib
         public float? SpikeThickness { get; set;} 
 
         /// <summary>
-        ///     Sets the dash style of lines. Set to a dash type string (*solid*, *dot*,
-        ///     *dash*, *longdash*, *dashdot*, or *longdashdot*) or a dash length list in
-        ///     px (eg *5px,10px,2px,2px*).
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
         /// </summary>
         [JsonPropertyName(@"spikedash")]
         public string SpikeDash { get; set;} 
 
         /// <summary>
-        ///     Determines the drawing mode for the spike line If *toaxis*, the line is
-        ///     drawn from the data point to the axis the  series is plotted on. If *across*,
-        ///     the line is drawn across the entire plot area, and supercedes *toaxis*.
-        ///     If *marker*, then a marker dot is drawn on the axis the series is plotted
+        ///     Determines the drawing mode for the spike line If <c>toaxis</c>, the line
+        ///     is drawn from the data point to the axis the  series is plotted on. If <c>across</c>,
+        ///     the line is drawn across the entire plot area, and supercedes <c>toaxis</c>.
+        ///     If <c>marker</c>, then a marker dot is drawn on the axis the series is plotted
         ///     on
         /// </summary>
         [JsonPropertyName(@"spikemode")]
@@ -317,7 +321,7 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
-        ///     a `tickangle` of -90 draws the tick labels vertically.
+        ///     a <c>tickangle</c> of -90 draws the tick labels vertically.
         /// </summary>
         [JsonPropertyName(@"tickangle")]
         public float? TickAngle { get; set;} 
@@ -329,9 +333,10 @@ namespace Plotly.Blazor.LayoutLib
         public string TickPrefix { get; set;} 
 
         /// <summary>
-        ///     If *all*, all tick labels are displayed with a prefix. If *first*, only
-        ///     the first tick is displayed with a prefix. If *last*, only the last tick
-        ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
+        ///     If <c>all</c>, all tick labels are displayed with a prefix. If <c>first</c>,
+        ///     only the first tick is displayed with a prefix. If <c>last</c>, only the
+        ///     last tick is displayed with a suffix. If <c>none</c>, tick prefixes are
+        ///     hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
@@ -343,30 +348,30 @@ namespace Plotly.Blazor.LayoutLib
         public string TickSuffix { get; set;} 
 
         /// <summary>
-        ///     Same as `showtickprefix` but for tick suffixes.
+        ///     Same as <c>showtickprefix</c> but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
-        ///     If *all*, all exponents are shown besides their significands. If *first*,
-        ///     only the exponent of the first tick is shown. If *last*, only the exponent
-        ///     of the last tick is shown. If *none*, no exponents appear.
+        ///     If <c>all</c>, all exponents are shown besides their significands. If <c>first</c>,
+        ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
+        ///     of the last tick is shown. If <c>none</c>, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
-        ///     the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*,
-        ///     1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
-        ///     1G. If *B*, 1B.
+        ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
+        ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
-        ///     If "true", even 4-digit integers are separated
+        ///     If <c>true</c>, even 4-digit integers are separated
         /// </summary>
         [JsonPropertyName(@"separatethousands")]
         public bool? SeparateThousands { get; set;} 
@@ -375,9 +380,9 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3's date formatter: *%{n}f* for fractional seconds with
-        ///     n digits. For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f*
-        ///     would display *09~15~23.46*
+        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
+        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
+        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"tickformat")]
         public string TickFormat { get; set;} 
@@ -392,9 +397,9 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3's date formatter: *%{n}f* for fractional seconds with
-        ///     n digits. For example, *2016-10-13 09:15:23.456* with tickformat *%H~%M~%S.%2f*
-        ///     would display *09~15~23.46*
+        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
+        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
+        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"hoverformat")]
         public string HoverFormat { get; set;} 
@@ -418,8 +423,8 @@ namespace Plotly.Blazor.LayoutLib
         public float? LineWidth { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not grid lines are drawn. If *true*, the grid lines
-        ///     are drawn at every tick mark.
+        ///     Determines whether or not grid lines are drawn. If <c>true</c>, the grid
+        ///     lines are drawn at every tick mark.
         /// </summary>
         [JsonPropertyName(@"showgrid")]
         public bool? ShowGrid { get; set;} 
@@ -438,7 +443,7 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Determines whether or not a line is drawn at along the 0 value of this axis.
-        ///     If *true*, the zero line is drawn on top of the grid lines.
+        ///     If <c>true</c>, the zero line is drawn on top of the grid lines.
         /// </summary>
         [JsonPropertyName(@"zeroline")]
         public bool? ZeroLine { get; set;} 
@@ -457,42 +462,43 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Determines whether or not a dividers are drawn between the category levels
-        ///     of this axis. Only has an effect on *multicategory* axes.
+        ///     of this axis. Only has an effect on <c>multicategory</c> axes.
         /// </summary>
         [JsonPropertyName(@"showdividers")]
         public bool? ShowDividers { get; set;} 
 
         /// <summary>
-        ///     Sets the color of the dividers Only has an effect on *multicategory* axes.
+        ///     Sets the color of the dividers Only has an effect on <c>multicategory</c>
+        ///     axes.
         /// </summary>
         [JsonPropertyName(@"dividercolor")]
         public object DividerColor { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the dividers Only has an effect on *multicategory*
+        ///     Sets the width (in px) of the dividers Only has an effect on <c>multicategory</c>
         ///     axes.
         /// </summary>
         [JsonPropertyName(@"dividerwidth")]
         public float? DividerWidth { get; set;} 
 
         /// <summary>
-        ///     If set to an opposite-letter axis id (e.g. `x2`, `y`), this axis is bound
-        ///     to the corresponding opposite-letter axis. If set to *free*, this axis'
-        ///     position is determined by `position`.
+        ///     If set to an opposite-letter axis id (e.g. <c>x2</c>, <c>y</c>), this axis
+        ///     is bound to the corresponding opposite-letter axis. If set to <c>free</c>,
+        ///     this axis&#39; position is determined by <c>position</c>.
         /// </summary>
         [JsonPropertyName(@"anchor")]
         public string Anchor { get; set;} 
 
         /// <summary>
-        ///     Determines whether a x (y) axis is positioned at the *bottom* (*left*) or
-        ///     *top* (*right*) of the plotting area.
+        ///     Determines whether a x (y) axis is positioned at the <c>bottom</c> (<c>left</c>)
+        ///     or <c>top</c> (<c>right</c>) of the plotting area.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.LayoutLib.XAxisLib.SideEnum? Side { get; set;} 
 
         /// <summary>
         ///     If set a same-letter axis id, this axis is overlaid on top of the corresponding
-        ///     same-letter axis, with traces and axes visible for both axes. If *false*,
+        ///     same-letter axis, with traces and axes visible for both axes. If <c>false</c>,
         ///     this axis does not overlay any same-letter axes. In this case, for axes
         ///     with overlapping domains only the highest-numbered axis will be visible.
         /// </summary>
@@ -500,11 +506,12 @@ namespace Plotly.Blazor.LayoutLib
         public string Overlaying { get; set;} 
 
         /// <summary>
-        ///     Sets the layer on which this axis is displayed. If *above traces*, this
-        ///     axis is displayed above all the subplot's traces If *below traces*, this
-        ///     axis is displayed below all the subplot's traces, but above the grid lines.
-        ///     Useful when used together with scatter-like traces with `cliponaxis` set
-        ///     to *false* to show markers and/or text nodes above this axis.
+        ///     Sets the layer on which this axis is displayed. If &#39;above traces&#39;,
+        ///     this axis is displayed above all the subplot&#39;s traces If &#39;below
+        ///     traces&#39;, this axis is displayed below all the subplot&#39;s traces,
+        ///     but above the grid lines. Useful when used together with scatter-like traces
+        ///     with <c>cliponaxis</c> set to <c>false</c> to show markers and/or text nodes
+        ///     above this axis.
         /// </summary>
         [JsonPropertyName(@"layer")]
         public Plotly.Blazor.LayoutLib.XAxisLib.LayerEnum? Layer { get; set;} 
@@ -517,38 +524,39 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Sets the position of this axis in the plotting space (in normalized coordinates).
-        ///     Only has an effect if `anchor` is set to *free*.
+        ///     Only has an effect if <c>anchor</c> is set to <c>free</c>.
         /// </summary>
         [JsonPropertyName(@"position")]
         public float? Position { get; set;} 
 
         /// <summary>
         ///     Specifies the ordering logic for the case of categorical variables. By default,
-        ///     plotly uses *trace*, which specifies the order that is present in the data
-        ///     supplied. Set `categoryorder` to *category ascending* or *category descending*
-        ///     if order should be determined by the alphanumerical order of the category
-        ///     names. Set `categoryorder` to *array* to derive the ordering from the attribute
-        ///     `categoryarray`. If a category is not found in the `categoryarray` array,
-        ///     the sorting behavior for that attribute will be identical to the *trace*
-        ///     mode. The unspecified categories will follow the categories in `categoryarray`.
-        ///     Set `categoryorder` to *total ascending* or *total descending* if order
-        ///     should be determined by the numerical order of the values. Similarly, the
-        ///     order can be determined by the min, max, sum, mean or median of all the
-        ///     values.
+        ///     plotly uses <c>trace</c>, which specifies the order that is present in the
+        ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
+        ///     or &#39;category descending&#39; if order should be determined by the alphanumerical
+        ///     order of the category names. Set <c>categoryorder</c> to <c>array</c> to
+        ///     derive the ordering from the attribute <c>categoryarray</c>. If a category
+        ///     is not found in the <c>categoryarray</c> array, the sorting behavior for
+        ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
+        ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
+        ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
+        ///     be determined by the numerical order of the values. Similarly, the order
+        ///     can be determined by the min, max, sum, mean or median of all the values.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
         public Plotly.Blazor.LayoutLib.XAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories on this axis appear. Only has an effect
-        ///     if `categoryorder` is set to *array*. Used with `categoryorder`.
+        ///     if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
         /// </summary>
         [JsonPropertyName(@"categoryarray")]
         public IList<object> CategoryArray { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of user-driven changes in axis `range`, `autorange`,
-        ///     and `title` if in `editable: true` configuration. Defaults to `layout.uirevision`.
+        ///     Controls persistence of user-driven changes in axis <c>range</c>, <c>autorange</c>,
+        ///     and <c>title</c> if in &#39;editable: true&#39; configuration. Defaults
+        ///     to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
@@ -566,9 +574,9 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelector RangeSelector { get; set;} 
 
         /// <summary>
-        ///     Sets the calendar system to use for `range` and `tick0` if this is a date
-        ///     axis. This does not set the calendar for interpreting data on this axis,
-        ///     that's specified in the trace or via the global `layout.calendar`
+        ///     Sets the calendar system to use for <c>range</c> and <c>tick0</c> if this
+        ///     is a date axis. This does not set the calendar for interpreting data on
+        ///     this axis, that&#39;s specified in the trace or via the global <c>layout.calendar</c>
         /// </summary>
         [JsonPropertyName(@"calendar")]
         public Plotly.Blazor.LayoutLib.XAxisLib.CalendarEnum? Calendar { get; set;} 

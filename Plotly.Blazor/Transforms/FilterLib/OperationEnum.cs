@@ -8,19 +8,22 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Transforms.FilterLib
 {
     /// <summary>
-    ///     Sets the filter operation. *=* keeps items equal to `value` *!=* keeps items
-    ///     not equal to `value` *&lt;* keeps items less than `value` *&lt;=* keeps
-    ///     items less than or equal to `value` *&gt;* keeps items greater than `value`
-    ///     *&gt;=* keeps items greater than or equal to `value` *[]* keeps items inside
-    ///     `value[0]` to `value[1]` including both bounds *()* keeps items inside `value[0]`
-    ///     to `value[1]` excluding both bounds *[)* keeps items inside `value[0]` to
-    ///     `value[1]` including `value[0]` but excluding `value[1] *(]* keeps items
-    ///     inside `value[0]` to `value[1]` excluding `value[0]` but including `value[1]
-    ///     *][* keeps items outside `value[0]` to `value[1]` and equal to both bounds
-    ///     *)(* keeps items outside `value[0]` to `value[1]` *](* keeps items outside
-    ///     `value[0]` to `value[1]` and equal to `value[0]` *)[* keeps items outside
-    ///     `value[0]` to `value[1]` and equal to `value[1]` *{}* keeps items present
-    ///     in a set of values *}{* keeps items not present in a set of values
+    ///     Sets the filter operation. <c>=</c> keeps items equal to <c>value</c> <c>!=</c>
+    ///     keeps items not equal to <c>value</c> <c>&lt;</c> keeps items less than
+    ///     <c>value</c> <c>&lt;=</c> keeps items less than or equal to <c>value</c>
+    ///     <c>&gt;</c> keeps items greater than <c>value</c> <c>&gt;=</c> keeps items
+    ///     greater than or equal to <c>value</c> <c>[]</c> keeps items inside <c>value[0]</c>
+    ///     to <c>value[1]</c> including both bounds <c>()</c> keeps items inside <c>value[0]</c>
+    ///     to <c>value[1]</c> excluding both bounds <c>[)</c> keeps items inside <c>value[0]</c>
+    ///     to <c>value[1]</c> including <c>value[0]</c> but excluding &#39;value[1]
+    ///     <c>(]</c> keeps items inside <c>value[0]</c> to <c>value[1]</c> excluding
+    ///     <c>value[0]</c> but including &#39;value[1] <c>][</c> keeps items outside
+    ///     <c>value[0]</c> to <c>value[1]</c> and equal to both bounds <c>)(</c> keeps
+    ///     items outside <c>value[0]</c> to <c>value[1]</c> <c>](</c> keeps items outside
+    ///     <c>value[0]</c> to <c>value[1]</c> and equal to <c>value[0]</c> <c>)[</c>
+    ///     keeps items outside <c>value[0]</c> to <c>value[1]</c> and equal to <c>value[1]</c>
+    ///     <c>{}</c> keeps items present in a set of values <c>}{</c> keeps items not
+    ///     present in a set of values
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

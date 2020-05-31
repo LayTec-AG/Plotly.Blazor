@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ParCatsLib
 {
     /// <summary>
-    ///     Sets the path sorting algorithm. If `forward`, sort paths based on dimension
-    ///     categories from left to right. If `backward`, sort paths based on dimensions
-    ///     categories from right to left.
+    ///     Sets the path sorting algorithm. If <c>forward</c>, sort paths based on
+    ///     dimension categories from left to right. If <c>backward</c>, sort paths
+    ///     based on dimensions categories from right to left.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

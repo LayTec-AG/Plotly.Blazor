@@ -9,8 +9,8 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.ColorBarLib
 {
     /// <summary>
     ///     Determines whether ticks are drawn or not. If **, this axis&#39; ticks are
-    ///     not drawn. If *outside* (*inside*), this axis&#39; are drawn outside (inside)
-    ///     the axis lines.
+    ///     not drawn. If <c>outside</c> (<c>inside</c>), this axis&#39; are drawn outside
+    ///     (inside) the axis lines.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

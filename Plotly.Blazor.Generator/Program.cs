@@ -414,7 +414,7 @@ namespace Plotly.Blazor.Generator
             {
                 Name = $"{name.ToDotNetFriendlyName(_dictionary)}Enum",
                 Namespace = customNamespace,
-                Description = attributeDescription.Description.HtmlEncode().SplitByCharCountIfWhitespace()
+                Description = attributeDescription.Description.HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace()
             };
 
             if (attributeDescription.Default != null)
@@ -459,7 +459,7 @@ namespace Plotly.Blazor.Generator
             {
                 Name = $"{name.ToDotNetFriendlyName(_dictionary)}Flag",
                 Namespace = customNamespace,
-                Description = attributeDescription.Description.HtmlEncode().SplitByCharCountIfWhitespace()
+                Description = attributeDescription.Description.HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace()
             };
 
             // Get values as string representation (casting does not work!)
@@ -559,7 +559,7 @@ namespace Plotly.Blazor.Generator
                         TypeName = typeName,
                         PropertyDescription = string.IsNullOrWhiteSpace(pair.Value.Description)
                             ? new[] { $"Gets or sets the {propertyFriendlyName}." }
-                            : pair.Value.Description.SplitByCharCountIfWhitespace(),
+                            : pair.Value.Description.HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace(),
                         IsSubplot = pair.Value.IsSubplotObj
                     };
                 })

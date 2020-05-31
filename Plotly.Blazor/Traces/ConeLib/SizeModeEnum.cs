@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ConeLib
 {
     /// <summary>
-    ///     Determines whether `sizeref` is set as a *scaled* (i.e unitless) scalar
-    ///     (normalized by the max u/v/w norm in the vector field) or as *absolute*
+    ///     Determines whether <c>sizeref</c> is set as a <c>scaled</c> (i.e unitless)
+    ///     scalar (normalized by the max u/v/w norm in the vector field) or as <c>absolute</c>
     ///     value (in the same units as the vector field).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

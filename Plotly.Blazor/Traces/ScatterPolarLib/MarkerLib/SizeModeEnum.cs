@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib
 {
     /// <summary>
-    ///     Has an effect only if `marker.size` is set to a numerical array. Sets the
-    ///     rule for which the data in `size` is converted to pixels.
+    ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
+    ///     the rule for which the data in <c>size</c> is converted to pixels.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

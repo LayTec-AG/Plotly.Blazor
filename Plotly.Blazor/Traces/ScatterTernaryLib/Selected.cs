@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ScatterTernaryLib.SelectedLib;
 
 namespace Plotly.Blazor.Traces.ScatterTernaryLib
 {

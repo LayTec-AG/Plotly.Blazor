@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.ConfigLib
 {
     /// <summary>
-    ///     Determines the mode bar display mode. If *true*, the mode bar is always
-    ///     visible. If *false*, the mode bar is always hidden. If *hover*, the mode
-    ///     bar is visible while the mouse cursor is on the graph container.
+    ///     Determines the mode bar display mode. If <c>true</c>, the mode bar is always
+    ///     visible. If <c>false</c>, the mode bar is always hidden. If <c>hover</c>,
+    ///     the mode bar is visible while the mouse cursor is on the graph container.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

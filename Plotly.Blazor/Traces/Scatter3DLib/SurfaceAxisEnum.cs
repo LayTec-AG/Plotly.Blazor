@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.Scatter3DLib
 {
     /// <summary>
-    ///     If *-1*, the scatter points are not fill with a surface If *0*, *1*, *2*,
-    ///     the scatter points are filled with a Delaunay surface about the x, y, z
-    ///     respectively.
+    ///     If <c>-1</c>, the scatter points are not fill with a surface If <c>0</c>,
+    ///     <c>1</c>, <c>2</c>, the scatter points are filled with a Delaunay surface
+    ///     about the x, y, z respectively.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

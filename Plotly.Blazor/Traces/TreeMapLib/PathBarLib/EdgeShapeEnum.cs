@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.TreeMapLib.PathBarLib
 {
     /// <summary>
-    ///     Determines which shape is used for edges between `barpath` labels.
+    ///     Determines which shape is used for edges between <c>barpath</c> labels.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

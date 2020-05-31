@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib;
 
 namespace Plotly.Blazor.LayoutLib.XAxisLib
 {
@@ -16,8 +15,8 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     {
         /// <summary>
         ///     Determines whether or not this range selector is visible. Note that range
-        ///     selectors are only available for x axes of `type` set to or auto-typed to
-        ///     *date*.
+        ///     selectors are only available for x axes of <c>type</c> set to or auto-typed
+        ///     to <c>date</c>.
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 
@@ -35,8 +34,9 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         public float? X { get; set;} 
 
         /// <summary>
-        ///     Sets the range selector's horizontal position anchor. This anchor binds
-        ///     the `x` position to the *left*, *center* or *right* of the range selector.
+        ///     Sets the range selector&#39;s horizontal position anchor. This anchor binds
+        ///     the <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c>
+        ///     of the range selector.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.XAnchorEnum? XAnchor { get; set;} 
@@ -48,8 +48,9 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         public float? Y { get; set;} 
 
         /// <summary>
-        ///     Sets the range selector's vertical position anchor This anchor binds the
-        ///     `y` position to the *top*, *middle* or *bottom* of the range selector.
+        ///     Sets the range selector&#39;s vertical position anchor This anchor binds
+        ///     the <c>y</c> position to the <c>top</c>, <c>middle</c> or <c>bottom</c>
+        ///     of the range selector.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.YAnchorEnum? YAnchor { get; set;} 

@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.FunnelLib.MarkerLib
 {
@@ -22,7 +21,7 @@ namespace Plotly.Blazor.Traces.FunnelLib.MarkerLib
         /// <summary>
         ///     Sets themarker.linecolor. It accepts either a specific color or an array
         ///     of numbers that are mapped to the colorscale relative to the max and min
-        ///     values of the array or relative to `marker.line.cmin` and `marker.line.cmax`
+        ///     values of the array or relative to <c>marker.line.cmin</c> and <c>marker.line.cmax</c>
         ///     if set.
         /// </summary>
         [JsonPropertyName(@"color")]
@@ -30,78 +29,79 @@ namespace Plotly.Blazor.Traces.FunnelLib.MarkerLib
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
-        ///     input data (here in `marker.line.color`) or the bounds set in `marker.line.cmin`
-        ///     and `marker.line.cmax`  Has an effect only if in `marker.line.color`is set
-        ///     to a numerical array. Defaults to `false` when `marker.line.cmin` and `marker.line.cmax`
-        ///     are set by the user.
+        ///     input data (here in <c>marker.line.color</c>) or the bounds set in <c>marker.line.cmin</c>
+        ///     and <c>marker.line.cmax</c>  Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. Defaults to <c>false</c> when <c>marker.line.cmin</c>
+        ///     and <c>marker.line.cmax</c> are set by the user.
         /// </summary>
         [JsonPropertyName(@"cauto")]
         public bool? CAuto { get; set;} 
 
         /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in `marker.line.color`is
-        ///     set to a numerical array. Value should have the same units as in `marker.line.color`
-        ///     and if set, `marker.line.cmax` must be set as well.
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>marker.line.color</c>
+        ///     and if set, <c>marker.line.cmax</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmin")]
         public float? CMin { get; set;} 
 
         /// <summary>
-        ///     Sets the upper bound of the color domain. Has an effect only if in `marker.line.color`is
-        ///     set to a numerical array. Value should have the same units as in `marker.line.color`
-        ///     and if set, `marker.line.cmin` must be set as well.
+        ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>marker.line.color</c>
+        ///     and if set, <c>marker.line.cmin</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmax")]
         public float? CMax { get; set;} 
 
         /// <summary>
-        ///     Sets the mid-point of the color domain by scaling `marker.line.cmin` and/or
-        ///     `marker.line.cmax` to be equidistant to this point. Has an effect only if
-        ///     in `marker.line.color`is set to a numerical array. Value should have the
-        ///     same units as in `marker.line.color`. Has no effect when `marker.line.cauto`
-        ///     is `false`.
+        ///     Sets the mid-point of the color domain by scaling <c>marker.line.cmin</c>
+        ///     and/or <c>marker.line.cmax</c> to be equidistant to this point. Has an effect
+        ///     only if in <c>marker.line.color</c>is set to a numerical array. Value should
+        ///     have the same units as in <c>marker.line.color</c>. Has no effect when <c>marker.line.cauto</c>
+        ///     is <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"cmid")]
         public float? CMid { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. Has an effect only if in `marker.line.color`is set
-        ///     to a numerical array. The colorscale must be an array containing arrays
+        ///     Sets the colorscale. Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. The colorscale must be an array containing arrays
         ///     mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
         ///     string. At minimum, a mapping for the lowest (0) and highest (1) values
-        ///     are required. For example, `[[0, 'rgb(0,0,255)'], [1, 'rgb(255,0,0)']]`.
-        ///     To control the bounds of the colorscale in color space, use`marker.line.cmin`
-        ///     and `marker.line.cmax`. Alternatively, `colorscale` may be a palette name
-        ///     string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     are required. For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
+        ///     To control the bounds of the colorscale in color space, use<c>marker.line.cmin</c>
+        ///     and <c>marker.line.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
+        ///     name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (`autocolorscale:
-        ///     true`) or the palette determined by `marker.line.colorscale`. Has an effect
-        ///     only if in `marker.line.color`is set to a numerical array. In case `colorscale`
-        ///     is unspecified or `autocolorscale` is true, the default  palette will be
-        ///     chosen according to whether numbers in the `color` array are all positive,
-        ///     all negative or mixed.
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>marker.line.colorscale</c>. Has
+        ///     an effect only if in <c>marker.line.color</c>is set to a numerical array.
+        ///     In case <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true,
+        ///     the default  palette will be chosen according to whether numbers in the
+        ///     <c>color</c> array are all positive, all negative or mixed.
         /// </summary>
         [JsonPropertyName(@"autocolorscale")]
         public bool? AutoColorScale { get; set;} 
 
         /// <summary>
-        ///     Reverses the color mapping if true. Has an effect only if in `marker.line.color`is
-        ///     set to a numerical array. If true, `marker.line.cmin` will correspond to
-        ///     the last color in the array and `marker.line.cmax` will correspond to the
-        ///     first color.
+        ///     Reverses the color mapping if true. Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. If true, <c>marker.line.cmin</c> will correspond
+        ///     to the last color in the array and <c>marker.line.cmax</c> will correspond
+        ///     to the first color.
         /// </summary>
         [JsonPropertyName(@"reversescale")]
         public bool? ReverseScale { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are *coloraxis*, *coloraxis2*, *coloraxis3*, etc. Settings for these
-        ///     shared color axes are set in the layout, under `layout.coloraxis`, `layout.coloraxis2`,
-        ///     etc. Note that multiple color scales can be linked to the same color axis.
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
         /// </summary>
         [JsonPropertyName(@"coloraxis")]
         public string ColorAxis { get; set;} 

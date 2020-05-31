@@ -8,9 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Transforms.FilterLib
 {
     /// <summary>
-    ///     Sets the calendar system to use for `target`, if it is an array of dates.
-    ///     If `target` is a string (eg *x*) we use the corresponding trace attribute
-    ///     (eg `xcalendar`) if it exists, even if `targetcalendar` is provided.
+    ///     Sets the calendar system to use for <c>target</c>, if it is an array of
+    ///     dates. If <c>target</c> is a string (eg <c>x</c>) we use the corresponding
+    ///     trace attribute (eg <c>xcalendar</c>) if it exists, even if <c>targetcalendar</c>
+    ///     is provided.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

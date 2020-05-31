@@ -8,13 +8,13 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterLib
 {
     /// <summary>
-    ///     Only relevant when `stackgroup` is used, and only the first `stackgaps`
-    ///     found in the `stackgroup` will be used - including if `visible` is *legendonly*
-    ///     but not if it is `false`. Determines how we handle locations at which other
-    ///     traces in this group have data but this one does not. With *infer zero*
-    ///     we insert a zero at these locations. With *interpolate* we linearly interpolate
-    ///     between existing values, and extrapolate a constant beyond the existing
-    ///     values.
+    ///     Only relevant when <c>stackgroup</c> is used, and only the first <c>stackgaps</c>
+    ///     found in the <c>stackgroup</c> will be used - including if <c>visible</c>
+    ///     is <c>legendonly</c> but not if it is <c>false</c>. Determines how we handle
+    ///     locations at which other traces in this group have data but this one does
+    ///     not. With &#39;infer zero&#39; we insert a zero at these locations. With
+    ///     <c>interpolate</c> we linearly interpolate between existing values, and
+    ///     extrapolate a constant beyond the existing values.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -9,9 +9,9 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib
 {
     /// <summary>
     ///     Determines a formatting rule for the tick exponents. For example, consider
-    ///     the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*,
-    ///     1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
-    ///     1G. If *B*, 1B.
+    ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
+    ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
+    ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

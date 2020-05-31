@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.AnnotationLib.HoverLabelLib;
 
 namespace Plotly.Blazor.LayoutLib.AnnotationLib
 {
@@ -15,22 +13,22 @@ namespace Plotly.Blazor.LayoutLib.AnnotationLib
     public class HoverLabel 
     {
         /// <summary>
-        ///     Sets the background color of the hover label. By default uses the annotation's
-        ///     `bgcolor` made opaque, or white if it was transparent.
+        ///     Sets the background color of the hover label. By default uses the annotation&#39;s
+        ///     <c>bgcolor</c> made opaque, or white if it was transparent.
         /// </summary>
         [JsonPropertyName(@"bgcolor")]
         public object BgColor { get; set;} 
 
         /// <summary>
         ///     Sets the border color of the hover label. By default uses either dark grey
-        ///     or white, for maximum contrast with `hoverlabel.bgcolor`.
+        ///     or white, for maximum contrast with <c>hoverlabel.bgcolor</c>.
         /// </summary>
         [JsonPropertyName(@"bordercolor")]
         public object BorderColor { get; set;} 
 
         /// <summary>
         ///     Sets the hover label text font. By default uses the global hover font and
-        ///     size, with color from `hoverlabel.bordercolor`.
+        ///     size, with color from <c>hoverlabel.bordercolor</c>.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.AnnotationLib.HoverLabelLib.Font Font { get; set;} 

@@ -8,15 +8,15 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.HistogramLib
 {
     /// <summary>
-    ///     Specifies the type of normalization used for this histogram trace. If **,
+    ///     Specifies the type of normalization used for this histogram trace. If *&#39;,
     ///     the span of each bar corresponds to the number of occurrences (i.e. the
-    ///     number of data points lying inside the bins). If *percent* / *probability*,
+    ///     number of data points lying inside the bins). If <c>percent</c> / <c>probability</c>,
     ///     the span of each bar corresponds to the percentage / fraction of occurrences
     ///     with respect to the total number of sample points (here, the sum of all
-    ///     bin HEIGHTS equals 100% / 1). If *density*, the span of each bar corresponds
+    ///     bin HEIGHTS equals 100% / 1). If <c>density</c>, the span of each bar corresponds
     ///     to the number of occurrences in a bin divided by the size of the bin interval
     ///     (here, the sum of all bin AREAS equals the total number of sample points).
-    ///     If *probability density*, the area of each bar corresponds to the probability
+    ///     If &#39;probability density*, the area of each bar corresponds to the probability
     ///     that an event will fall into the corresponding bin (here, the sum of all
     ///     bin AREAS equals 1).
     /// </summary>

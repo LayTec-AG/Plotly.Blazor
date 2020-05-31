@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib;
 
 namespace Plotly.Blazor.LayoutLib.SceneLib
 {
@@ -21,19 +19,19 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public bool? Visible { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation's x position.
+        ///     Sets the annotation&#39;s x position.
         /// </summary>
         [JsonPropertyName(@"x")]
         public object X { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation's y position.
+        ///     Sets the annotation&#39;s y position.
         /// </summary>
         [JsonPropertyName(@"y")]
         public object Y { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation's z position.
+        ///     Sets the annotation&#39;s z position.
         /// </summary>
         [JsonPropertyName(@"z")]
         public object Z { get; set;} 
@@ -51,13 +49,14 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public float? Ay { get; set;} 
 
         /// <summary>
-        ///     Sets the text box's horizontal position anchor This anchor binds the `x`
-        ///     position to the *left*, *center* or *right* of the annotation. For example,
-        ///     if `x` is set to 1, `xref` to *paper* and `xanchor` to *right* then the
-        ///     right-most portion of the annotation lines up with the right-most edge of
-        ///     the plotting area. If *auto*, the anchor is equivalent to *center* for data-referenced
-        ///     annotations or if there is an arrow, whereas for paper-referenced with no
-        ///     arrow, the anchor picked corresponds to the closest side.
+        ///     Sets the text box&#39;s horizontal position anchor This anchor binds the
+        ///     <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c> of the
+        ///     annotation. For example, if <c>x</c> is set to 1, <c>xref</c> to <c>paper</c>
+        ///     and <c>xanchor</c> to <c>right</c> then the right-most portion of the annotation
+        ///     lines up with the right-most edge of the plotting area. If <c>auto</c>,
+        ///     the anchor is equivalent to <c>center</c> for data-referenced annotations
+        ///     or if there is an arrow, whereas for paper-referenced with no arrow, the
+        ///     anchor picked corresponds to the closest side.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib.XAnchorEnum? XAnchor { get; set;} 
@@ -70,13 +69,14 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public float? XShift { get; set;} 
 
         /// <summary>
-        ///     Sets the text box's vertical position anchor This anchor binds the `y` position
-        ///     to the *top*, *middle* or *bottom* of the annotation. For example, if `y`
-        ///     is set to 1, `yref` to *paper* and `yanchor` to *top* then the top-most
-        ///     portion of the annotation lines up with the top-most edge of the plotting
-        ///     area. If *auto*, the anchor is equivalent to *middle* for data-referenced
-        ///     annotations or if there is an arrow, whereas for paper-referenced with no
-        ///     arrow, the anchor picked corresponds to the closest side.
+        ///     Sets the text box&#39;s vertical position anchor This anchor binds the <c>y</c>
+        ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the annotation.
+        ///     For example, if <c>y</c> is set to 1, <c>yref</c> to <c>paper</c> and <c>yanchor</c>
+        ///     to <c>top</c> then the top-most portion of the annotation lines up with
+        ///     the top-most edge of the plotting area. If <c>auto</c>, the anchor is equivalent
+        ///     to <c>middle</c> for data-referenced annotations or if there is an arrow,
+        ///     whereas for paper-referenced with no arrow, the anchor picked corresponds
+        ///     to the closest side.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib.YAnchorEnum? YAnchor { get; set;} 
@@ -90,15 +90,15 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
 
         /// <summary>
         ///     Sets the text associated with this annotation. Plotly uses a subset of HTML
-        ///     tags to do things like newline (<br>), bold (<b></b>), italics (<i></i>),
-        ///     hyperlinks (<a href='...'></a>). Tags <em>, <sup>, <sub> <span> are also
-        ///     supported.
+        ///     tags to do things like newline (&lt;br&gt;), bold (&lt;b&gt;&lt;/b&gt;),
+        ///     italics (&lt;i&gt;&lt;/i&gt;), hyperlinks (&lt;a href=<c>...</c>&gt;&lt;/a&gt;).
+        ///     Tags &lt;em&gt;, &lt;sup&gt;, &lt;sub&gt; &lt;span&gt; are also supported.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets the angle at which the `text` is drawn with respect to the horizontal.
+        ///     Sets the angle at which the <c>text</c> is drawn with respect to the horizontal.
         /// </summary>
         [JsonPropertyName(@"textangle")]
         public float? TextAngle { get; set;} 
@@ -112,7 +112,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Sets an explicit width for the text box. null (default) lets the text set
         ///     the box width. Wider text will be clipped. There is no automatic wrapping;
-        ///     use <br> to start a new line.
+        ///     use &lt;br&gt; to start a new line.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
@@ -131,15 +131,16 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public float? Opacity { get; set;} 
 
         /// <summary>
-        ///     Sets the horizontal alignment of the `text` within the box. Has an effect
-        ///     only if `text` spans two or more lines (i.e. `text` contains one or more
-        ///     <br> HTML tags) or if an explicit width is set to override the text width.
+        ///     Sets the horizontal alignment of the <c>text</c> within the box. Has an
+        ///     effect only if <c>text</c> spans two or more lines (i.e. <c>text</c> contains
+        ///     one or more &lt;br&gt; HTML tags) or if an explicit width is set to override
+        ///     the text width.
         /// </summary>
         [JsonPropertyName(@"align")]
         public Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
-        ///     Sets the vertical alignment of the `text` within the box. Has an effect
+        ///     Sets the vertical alignment of the <c>text</c> within the box. Has an effect
         ///     only if an explicit height is set to override the text height.
         /// </summary>
         [JsonPropertyName(@"valign")]
@@ -152,27 +153,27 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public object BgColor { get; set;} 
 
         /// <summary>
-        ///     Sets the color of the border enclosing the annotation `text`.
+        ///     Sets the color of the border enclosing the annotation <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"bordercolor")]
         public object BorderColor { get; set;} 
 
         /// <summary>
-        ///     Sets the padding (in px) between the `text` and the enclosing border.
+        ///     Sets the padding (in px) between the <c>text</c> and the enclosing border.
         /// </summary>
         [JsonPropertyName(@"borderpad")]
         public float? BorderPad { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the border enclosing the annotation `text`.
+        ///     Sets the width (in px) of the border enclosing the annotation <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"borderwidth")]
         public float? BorderWidth { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not the annotation is drawn with an arrow. If *true*,
-        ///     `text` is placed near the arrow's tail. If *false*, `text` lines up with
-        ///     the `x` and `y` provided.
+        ///     Determines whether or not the annotation is drawn with an arrow. If <c>true</c>,
+        ///     <c>text</c> is placed near the arrow&#39;s tail. If <c>false</c>, <c>text</c>
+        ///     lines up with the <c>x</c> and <c>y</c> provided.
         /// </summary>
         [JsonPropertyName(@"showarrow")]
         public bool? ShowArrow { get; set;} 
@@ -202,14 +203,14 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib.ArrowSideFlag? ArrowSide { get; set;} 
 
         /// <summary>
-        ///     Sets the size of the end annotation arrow head, relative to `arrowwidth`.
+        ///     Sets the size of the end annotation arrow head, relative to <c>arrowwidth</c>.
         ///     A value of 1 (default) gives a head about 3x as wide as the line.
         /// </summary>
         [JsonPropertyName(@"arrowsize")]
         public float? ArrowSize { get; set;} 
 
         /// <summary>
-        ///     Sets the size of the start annotation arrow head, relative to `arrowwidth`.
+        ///     Sets the size of the start annotation arrow head, relative to <c>arrowwidth</c>.
         ///     A value of 1 (default) gives a head about 3x as wide as the line.
         /// </summary>
         [JsonPropertyName(@"startarrowsize")]
@@ -224,8 +225,9 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Sets a distance, in pixels, to move the end arrowhead away from the position
         ///     it is pointing at, for example to point at the edge of a marker independent
-        ///     of zoom. Note that this shortens the arrow from the `ax` / `ay` vector,
-        ///     in contrast to `xshift` / `yshift` which moves everything by this amount.
+        ///     of zoom. Note that this shortens the arrow from the <c>ax</c> / <c>ay</c>
+        ///     vector, in contrast to <c>xshift</c> / <c>yshift</c> which moves everything
+        ///     by this amount.
         /// </summary>
         [JsonPropertyName(@"standoff")]
         public float? Standoff { get; set;} 
@@ -233,8 +235,9 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Sets a distance, in pixels, to move the start arrowhead away from the position
         ///     it is pointing at, for example to point at the edge of a marker independent
-        ///     of zoom. Note that this shortens the arrow from the `ax` / `ay` vector,
-        ///     in contrast to `xshift` / `yshift` which moves everything by this amount.
+        ///     of zoom. Note that this shortens the arrow from the <c>ax</c> / <c>ay</c>
+        ///     vector, in contrast to <c>xshift</c> / <c>yshift</c> which moves everything
+        ///     by this amount.
         /// </summary>
         [JsonPropertyName(@"startstandoff")]
         public float? StartStandoff { get; set;} 
@@ -255,9 +258,9 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Determines whether the annotation text box captures mouse move and click
         ///     events, or allows those events to pass through to data points in the plot
-        ///     that may be behind the annotation. By default `captureevents` is *false*
-        ///     unless `hovertext` is provided. If you use the event `plotly_clickannotation`
-        ///     without `hovertext` you must explicitly enable `captureevents`.
+        ///     that may be behind the annotation. By default <c>captureevents</c> is <c>false</c>
+        ///     unless <c>hovertext</c> is provided. If you use the event <c>plotly_clickannotation</c>
+        ///     without <c>hovertext</c> you must explicitly enable <c>captureevents</c>.
         /// </summary>
         [JsonPropertyName(@"captureevents")]
         public bool? CaptureEvents { get; set;} 
@@ -265,9 +268,10 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -275,11 +279,11 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

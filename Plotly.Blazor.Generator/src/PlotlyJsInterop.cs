@@ -18,7 +18,12 @@ namespace Plotly.Blazor
         {
             PropertyNamingPolicy = null,
             IgnoreNullValues = true,
-            Converters = { new PolymorphicConverter<ITrace>() }
+            Converters = {
+                new PolymorphicConverter<ITrace>(),
+                new PolymorphicConverter<ITransform>(),
+                new DateTimeConverter(),
+                new DateTimeOffsetConverter()
+            }
         };
 
         /// <summary>

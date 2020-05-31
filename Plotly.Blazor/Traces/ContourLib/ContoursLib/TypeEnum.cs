@@ -8,9 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ContourLib.ContoursLib
 {
     /// <summary>
-    ///     If `levels`, the data is represented as a contour plot with multiple levels
-    ///     displayed. If `constraint`, the data is represented as constraints with
-    ///     the invalid region shaded as specified by the `operation` and `value` parameters.
+    ///     If <c>levels</c>, the data is represented as a contour plot with multiple
+    ///     levels displayed. If <c>constraint</c>, the data is represented as constraints
+    ///     with the invalid region shaded as specified by the <c>operation</c> and
+    ///     <c>value</c> parameters.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

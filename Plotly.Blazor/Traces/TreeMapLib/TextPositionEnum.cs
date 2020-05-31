@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.TreeMapLib
 {
     /// <summary>
-    ///     Sets the positions of the `text` elements.
+    ///     Sets the positions of the <c>text</c> elements.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

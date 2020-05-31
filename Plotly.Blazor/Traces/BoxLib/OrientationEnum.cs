@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.BoxLib
 {
     /// <summary>
-    ///     Sets the orientation of the box(es). If *v* (*h*), the distribution is visualized
-    ///     along the vertical (horizontal).
+    ///     Sets the orientation of the box(es). If <c>v</c> (<c>h</c>), the distribution
+    ///     is visualized along the vertical (horizontal).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

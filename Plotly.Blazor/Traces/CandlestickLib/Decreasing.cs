@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.CandlestickLib.DecreasingLib;
 
 namespace Plotly.Blazor.Traces.CandlestickLib
 {

@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -14,22 +13,22 @@ namespace Plotly.Blazor.LayoutLib
     public class ColorScale 
     {
         /// <summary>
-        ///     Sets the default sequential colorscale for positive values. Note that `autocolorscale`
+        ///     Sets the default sequential colorscale for positive values. Note that <c>autocolorscale</c>
         ///     must be true for this attribute to work.
         /// </summary>
         [JsonPropertyName(@"sequential")]
         public object Sequential { get; set;} 
 
         /// <summary>
-        ///     Sets the default sequential colorscale for negative values. Note that `autocolorscale`
+        ///     Sets the default sequential colorscale for negative values. Note that <c>autocolorscale</c>
         ///     must be true for this attribute to work.
         /// </summary>
         [JsonPropertyName(@"sequentialminus")]
         public object SequentialMinus { get; set;} 
 
         /// <summary>
-        ///     Sets the default diverging colorscale. Note that `autocolorscale` must be
-        ///     true for this attribute to work.
+        ///     Sets the default diverging colorscale. Note that <c>autocolorscale</c> must
+        ///     be true for this attribute to work.
         /// </summary>
         [JsonPropertyName(@"diverging")]
         public object Diverging { get; set;} 

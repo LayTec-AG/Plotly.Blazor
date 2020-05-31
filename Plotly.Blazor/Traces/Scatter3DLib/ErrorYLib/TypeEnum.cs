@@ -9,11 +9,11 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ErrorYLib
 {
     /// <summary>
     ///     Determines the rule used to generate the error bars. If *constant`, the
-    ///     bar lengths are of a constant value. Set this constant in `value`. If *percent*,
-    ///     the bar lengths correspond to a percentage of underlying data. Set this
-    ///     percentage in `value`. If *sqrt*, the bar lengths correspond to the sqaure
-    ///     of the underlying data. If *data*, the bar lengths are set with data set
-    ///     `array`.
+    ///     bar lengths are of a constant value. Set this constant in <c>value</c>.
+    ///     If <c>percent</c>, the bar lengths correspond to a percentage of underlying
+    ///     data. Set this percentage in <c>value</c>. If <c>sqrt</c>, the bar lengths
+    ///     correspond to the sqaure of the underlying data. If <c>data</c>, the bar
+    ///     lengths are set with data set <c>array</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

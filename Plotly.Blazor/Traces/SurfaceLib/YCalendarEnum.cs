@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.SurfaceLib
 {
     /// <summary>
-    ///     Sets the calendar system to use with `y` date data.
+    ///     Sets the calendar system to use with <c>y</c> date data.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

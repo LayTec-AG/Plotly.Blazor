@@ -8,11 +8,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterLib
 {
     /// <summary>
-    ///     Only relevant when `stackgroup` is used, and only the first `orientation`
-    ///     found in the `stackgroup` will be used - including if `visible` is *legendonly*
-    ///     but not if it is `false`. Sets the stacking direction. With *v* (*h*), the
-    ///     y (x) values of subsequent traces are added. Also affects the default value
-    ///     of `fill`.
+    ///     Only relevant when <c>stackgroup</c> is used, and only the first <c>orientation</c>
+    ///     found in the <c>stackgroup</c> will be used - including if <c>visible</c>
+    ///     is <c>legendonly</c> but not if it is <c>false</c>. Sets the stacking direction.
+    ///     With <c>v</c> (<c>h</c>), the y (x) values of subsequent traces are added.
+    ///     Also affects the default value of <c>fill</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

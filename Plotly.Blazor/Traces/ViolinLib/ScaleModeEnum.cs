@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ViolinLib
 {
     /// <summary>
-    ///     Sets the metric by which the width of each violin is determined.*width*
-    ///     means each violin has the same (max) width*count* means the violins are
-    ///     scaled by the number of sample points makingup each violin.
+    ///     Sets the metric by which the width of each violin is determined.<c>width</c>
+    ///     means each violin has the same (max) width<c>count</c> means the violins
+    ///     are scaled by the number of sample points makingup each violin.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

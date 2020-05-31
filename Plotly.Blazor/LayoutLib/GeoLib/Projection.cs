@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib;
 
 namespace Plotly.Blazor.LayoutLib.GeoLib
 {
@@ -34,8 +33,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         public IList<object> Parallels { get; set;} 
 
         /// <summary>
-        ///     Zooms in or out on the map view. A scale of *1* corresponds to the largest
-        ///     zoom level that fits the map's lon and lat ranges. 
+        ///     Zooms in or out on the map view. A scale of <c>1</c> corresponds to the
+        ///     largest zoom level that fits the map&#39;s lon and lat ranges. 
         /// </summary>
         [JsonPropertyName(@"scale")]
         public float? Scale { get; set;} 

@@ -8,10 +8,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ContourLib.ContoursLib
 {
     /// <summary>
-    ///     Determines the coloring method showing the contour values. If *fill*, coloring
-    ///     is done evenly between each contour level If *heatmap*, a heatmap gradient
-    ///     coloring is applied between each contour level. If *lines*, coloring is
-    ///     done on the contour lines. If *none*, no coloring is applied on this trace.
+    ///     Determines the coloring method showing the contour values. If <c>fill</c>,
+    ///     coloring is done evenly between each contour level If <c>heatmap</c>, a
+    ///     heatmap gradient coloring is applied between each contour level. If <c>lines</c>,
+    ///     coloring is done on the contour lines. If <c>none</c>, no coloring is applied
+    ///     on this trace.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

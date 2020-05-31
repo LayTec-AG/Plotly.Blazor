@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.CarpetLib.BAxisLib
 {
     /// <summary>
-    ///     TODO
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

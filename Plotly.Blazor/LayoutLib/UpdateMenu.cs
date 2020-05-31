@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.UpdateMenuLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -29,8 +28,8 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Determines the direction in which the buttons are laid out, whether in a
-        ///     dropdown menu or a row/column of buttons. For `left` and `up`, the buttons
-        ///     will still appear in left-to-right or top-to-bottom order respectively.
+        ///     dropdown menu or a row/column of buttons. For <c>left</c> and <c>up</c>,
+        ///     the buttons will still appear in left-to-right or top-to-bottom order respectively.
         /// </summary>
         [JsonPropertyName(@"direction")]
         public Plotly.Blazor.LayoutLib.UpdateMenuLib.DirectionEnum? Direction { get; set;} 
@@ -60,8 +59,9 @@ namespace Plotly.Blazor.LayoutLib
         public float? X { get; set;} 
 
         /// <summary>
-        ///     Sets the update menu's horizontal position anchor. This anchor binds the
-        ///     `x` position to the *left*, *center* or *right* of the range selector.
+        ///     Sets the update menu&#39;s horizontal position anchor. This anchor binds
+        ///     the <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c>
+        ///     of the range selector.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.UpdateMenuLib.XAnchorEnum? XAnchor { get; set;} 
@@ -73,8 +73,9 @@ namespace Plotly.Blazor.LayoutLib
         public float? Y { get; set;} 
 
         /// <summary>
-        ///     Sets the update menu's vertical position anchor This anchor binds the `y`
-        ///     position to the *top*, *middle* or *bottom* of the range selector.
+        ///     Sets the update menu&#39;s vertical position anchor This anchor binds the
+        ///     <c>y</c> position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the
+        ///     range selector.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.UpdateMenuLib.YAnchorEnum? YAnchor { get; set;} 
@@ -112,9 +113,10 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -122,11 +124,11 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

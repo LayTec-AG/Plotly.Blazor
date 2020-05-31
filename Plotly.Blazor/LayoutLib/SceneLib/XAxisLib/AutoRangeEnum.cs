@@ -9,8 +9,8 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.XAxisLib
 {
     /// <summary>
     ///     Determines whether or not the range of this axis is computed in relation
-    ///     to the input data. See `rangemode` for more info. If `range` is provided,
-    ///     then `autorange` is set to *false*.
+    ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
+    ///     provided, then <c>autorange</c> is set to <c>false</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

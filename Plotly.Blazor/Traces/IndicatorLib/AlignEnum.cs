@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.IndicatorLib
 {
     /// <summary>
-    ///     Sets the horizontal alignment of the `text` within the box. Note that this
-    ///     attribute has no effect if an angular gauge is displayed: in this case,
+    ///     Sets the horizontal alignment of the <c>text</c> within the box. Note that
+    ///     this attribute has no effect if an angular gauge is displayed: in this case,
     ///     it is always centered
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

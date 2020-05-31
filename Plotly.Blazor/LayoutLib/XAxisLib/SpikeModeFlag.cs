@@ -9,10 +9,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.XAxisLib
 {
     /// <summary>
-    ///     Determines the drawing mode for the spike line If *toaxis*, the line is
-    ///     drawn from the data point to the axis the  series is plotted on. If *across*,
-    ///     the line is drawn across the entire plot area, and supercedes *toaxis*.
-    ///     If *marker*, then a marker dot is drawn on the axis the series is plotted
+    ///     Determines the drawing mode for the spike line If <c>toaxis</c>, the line
+    ///     is drawn from the data point to the axis the  series is plotted on. If <c>across</c>,
+    ///     the line is drawn across the entire plot area, and supercedes <c>toaxis</c>.
+    ///     If <c>marker</c>, then a marker dot is drawn on the axis the series is plotted
     ///     on
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

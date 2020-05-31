@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.ParCatsLib;
 
 namespace Plotly.Blazor.Traces
 {
@@ -20,8 +19,8 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum Type { get; } = TraceTypeEnum.ParCats;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-        ///     is not drawn, but can appear as a legend item (provided that the legend
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -42,13 +41,14 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace `name`, graph, axis
-        ///     and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
-        ///     and `sliders` `label` text all support `meta`. To access the trace `meta`
-        ///     values in an attribute in the same trace, simply use `%{meta[i]}` where
-        ///     `i` is the index or key of the `meta` item in question. To access trace
-        ///     `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index
-        ///     or key of the `meta` and `n` is the trace index.
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
@@ -63,22 +63,21 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
-        [JsonConverter(typeof(PolymorphicConverter))]
         public ITransform Transforms { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
-        ///     in `parcoords` traces, as well as some `editable: true` modifications such
-        ///     as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that
-        ///     other user-driven trace attribute changes are controlled by `layout` attributes:
-        ///     `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints`
-        ///     is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible
-        ///     with `config: {editable: true}`) is controlled by `layout.editrevision`.
-        ///     Trace changes are tracked by `uid`, which only falls back on trace index
-        ///     if no `uid` is provided. So if your app can add/remove traces before the
-        ///     end of the `data` array, such that the same trace has a different index,
-        ///     you can still preserve user-driven changes if you give each trace a `uid`
-        ///     that stays with it as it moves.
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
@@ -90,47 +89,48 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ParCatsLib.Domain Domain { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If `none` or `skip`
-        ///     are set, no information is displayed upon hovering. But, if `none` is set,
-        ///     click and hover events are still fired.
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.ParCatsLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
-        ///     Sets the hover interaction mode for the parcats diagram. If `category`,
-        ///     hover interaction take place per category. If `color`, hover interactions
-        ///     take place per color per category. If `dimension`, hover interactions take
-        ///     place across all categories per dimension.
+        ///     Sets the hover interaction mode for the parcats diagram. If <c>category</c>,
+        ///     hover interaction take place per category. If <c>color</c>, hover interactions
+        ///     take place per color per category. If <c>dimension</c>, hover interactions
+        ///     take place across all categories per dimension.
         /// </summary>
         [JsonPropertyName(@"hoveron")]
         public Plotly.Blazor.Traces.ParCatsLib.HoverOnEnum? HoverOn { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available. variables `count`, `probability`,
-        ///     `category`, `categorycount`, `colorcount` and `bandcolorcount`. Anything
-        ///     contained in tag `<extra>` is displayed in the secondary box, for example
-        ///     "<extra>{fullData.name}</extra>". To hide the secondary box completely,
-        ///     use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>count</c>,
+        ///     <c>probability</c>, <c>category</c>, <c>categorycount</c>, <c>colorcount</c>
+        ///     and <c>bandcolorcount</c>. Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
 
         /// <summary>
-        ///     Sets the drag interaction mode for categories and dimensions. If `perpendicular`,
+        ///     Sets the drag interaction mode for categories and dimensions. If <c>perpendicular</c>,
         ///     the categories can only move along a line perpendicular to the paths. If
-        ///     `freeform`, the categories can freely move on the plane. If `fixed`, the
-        ///     categories and dimensions are stationary.
+        ///     <c>freeform</c>, the categories can freely move on the plane. If <c>fixed</c>,
+        ///     the categories and dimensions are stationary.
         /// </summary>
         [JsonPropertyName(@"arrangement")]
         public Plotly.Blazor.Traces.ParCatsLib.ArrangementEnum? Arrangement { get; set;} 
@@ -142,21 +142,21 @@ namespace Plotly.Blazor.Traces
         public bool? BundleColors { get; set;} 
 
         /// <summary>
-        ///     Sets the path sorting algorithm. If `forward`, sort paths based on dimension
-        ///     categories from left to right. If `backward`, sort paths based on dimensions
-        ///     categories from right to left.
+        ///     Sets the path sorting algorithm. If <c>forward</c>, sort paths based on
+        ///     dimension categories from left to right. If <c>backward</c>, sort paths
+        ///     based on dimensions categories from right to left.
         /// </summary>
         [JsonPropertyName(@"sortpaths")]
         public Plotly.Blazor.Traces.ParCatsLib.SortPathsEnum? SortPaths { get; set;} 
 
         /// <summary>
-        ///     Sets the font for the `dimension` labels.
+        ///     Sets the font for the <c>dimension</c> labels.
         /// </summary>
         [JsonPropertyName(@"labelfont")]
         public Plotly.Blazor.Traces.ParCatsLib.LabelFont LabelFont { get; set;} 
 
         /// <summary>
-        ///     Sets the font for the `category` labels.
+        ///     Sets the font for the <c>category</c> labels.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
         public Plotly.Blazor.Traces.ParCatsLib.TickFont TickFont { get; set;} 

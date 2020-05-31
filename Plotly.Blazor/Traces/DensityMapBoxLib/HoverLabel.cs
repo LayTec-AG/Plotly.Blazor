@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.DensityMapBoxLib.HoverLabelLib;
 
 namespace Plotly.Blazor.Traces.DensityMapBoxLib
 {
@@ -42,9 +40,9 @@ namespace Plotly.Blazor.Traces.DensityMapBoxLib
         /// <summary>
         ///     Sets the default length (in number of characters) of the trace name in the
         ///     hover labels for all traces. -1 shows the whole name regardless of length.
-        ///     0-3 shows the first 0-3 characters, and an integer >3 will show the whole
+        ///     0-3 shows the first 0-3 characters, and an integer &gt;3 will show the whole
         ///     name if it is less than that many characters, but if it is longer, will
-        ///     truncate to `namelength - 3` characters and add an ellipsis.
+        ///     truncate to &#39;namelength - 3&#39; characters and add an ellipsis.
         /// </summary>
         [JsonPropertyName(@"namelength")]
         public int? NameLength { get; set;} 

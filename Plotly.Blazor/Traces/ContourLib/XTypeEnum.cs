@@ -8,9 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ContourLib
 {
     /// <summary>
-    ///     If *array*, the heatmap&#39;s x coordinates are given by *x* (the default
-    ///     behavior when `x` is provided). If *scaled*, the heatmap&#39;s x coordinates
-    ///     are given by *x0* and *dx* (the default behavior when `x` is not provided).
+    ///     If <c>array</c>, the heatmap&#39;s x coordinates are given by <c>x</c> (the
+    ///     default behavior when <c>x</c> is provided). If <c>scaled</c>, the heatmap&#39;s
+    ///     x coordinates are given by <c>x0</c> and <c>dx</c> (the default behavior
+    ///     when <c>x</c> is not provided).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

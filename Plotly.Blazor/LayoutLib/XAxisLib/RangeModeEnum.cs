@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.XAxisLib
 {
     /// <summary>
-    ///     If *normal*, the range is computed in relation to the extrema of the input
-    ///     data. If *tozero*`, the range extends to 0, regardless of the input data
-    ///     If *nonnegative*, the range is non-negative, regardless of the input data.
-    ///     Applies only to linear axes.
+    ///     If <c>normal</c>, the range is computed in relation to the extrema of the
+    ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
+    ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
+    ///     of the input data. Applies only to linear axes.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

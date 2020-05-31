@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.LayoutLib.GeoLib
 {
@@ -14,16 +13,16 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     public class Center 
     {
         /// <summary>
-        ///     Sets the longitude of the map's center. By default, the map's longitude
+        ///     Sets the longitude of the map&#39;s center. By default, the map&#39;s longitude
         ///     center lies at the middle of the longitude range for scoped projection and
-        ///     above `projection.rotation.lon` otherwise.
+        ///     above <c>projection.rotation.lon</c> otherwise.
         /// </summary>
         [JsonPropertyName(@"lon")]
         public float? Lon { get; set;} 
 
         /// <summary>
-        ///     Sets the latitude of the map's center. For all projection types, the map's
-        ///     latitude center lies at the middle of the latitude range by default.
+        ///     Sets the latitude of the map&#39;s center. For all projection types, the
+        ///     map&#39;s latitude center lies at the middle of the latitude range by default.
         /// </summary>
         [JsonPropertyName(@"lat")]
         public float? Lat { get; set;} 

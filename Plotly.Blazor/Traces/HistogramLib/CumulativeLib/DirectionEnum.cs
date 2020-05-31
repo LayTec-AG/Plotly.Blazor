@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.HistogramLib.CumulativeLib
 {
     /// <summary>
-    ///     Only applies if cumulative is enabled. If *increasing* (default) we sum
-    ///     all prior bins, so the result increases from left to right. If *decreasing*
+    ///     Only applies if cumulative is enabled. If <c>increasing</c> (default) we
+    ///     sum all prior bins, so the result increases from left to right. If <c>decreasing</c>
     ///     we sum later bins so the result decreases from left to right.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

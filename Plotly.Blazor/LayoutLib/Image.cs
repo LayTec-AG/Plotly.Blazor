@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.ImageLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -28,24 +26,25 @@ namespace Plotly.Blazor.LayoutLib
         public string Source { get; set;} 
 
         /// <summary>
-        ///     Specifies whether images are drawn below or above traces. When `xref` and
-        ///     `yref` are both set to `paper`, image is drawn below the entire plot area.
+        ///     Specifies whether images are drawn below or above traces. When <c>xref</c>
+        ///     and <c>yref</c> are both set to <c>paper</c>, image is drawn below the entire
+        ///     plot area.
         /// </summary>
         [JsonPropertyName(@"layer")]
         public Plotly.Blazor.LayoutLib.ImageLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     Sets the image container size horizontally. The image will be sized based
-        ///     on the `position` value. When `xref` is set to `paper`, units are sized
-        ///     relative to the plot width.
+        ///     on the <c>position</c> value. When <c>xref</c> is set to <c>paper</c>, units
+        ///     are sized relative to the plot width.
         /// </summary>
         [JsonPropertyName(@"sizex")]
         public float? SizeX { get; set;} 
 
         /// <summary>
         ///     Sets the image container size vertically. The image will be sized based
-        ///     on the `position` value. When `yref` is set to `paper`, units are sized
-        ///     relative to the plot height.
+        ///     on the <c>position</c> value. When <c>yref</c> is set to <c>paper</c>, units
+        ///     are sized relative to the plot height.
         /// </summary>
         [JsonPropertyName(@"sizey")]
         public float? SizeY { get; set;} 
@@ -63,15 +62,15 @@ namespace Plotly.Blazor.LayoutLib
         public float? Opacity { get; set;} 
 
         /// <summary>
-        ///     Sets the image's x position. When `xref` is set to `paper`, units are sized
-        ///     relative to the plot height. See `xref` for more info
+        ///     Sets the image&#39;s x position. When <c>xref</c> is set to <c>paper</c>,
+        ///     units are sized relative to the plot height. See <c>xref</c> for more info
         /// </summary>
         [JsonPropertyName(@"x")]
         public object X { get; set;} 
 
         /// <summary>
-        ///     Sets the image's y position. When `yref` is set to `paper`, units are sized
-        ///     relative to the plot height. See `yref` for more info
+        ///     Sets the image&#39;s y position. When <c>yref</c> is set to <c>paper</c>,
+        ///     units are sized relative to the plot height. See <c>yref</c> for more info
         /// </summary>
         [JsonPropertyName(@"y")]
         public object Y { get; set;} 
@@ -89,19 +88,21 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ImageLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the images's x coordinate axis. If set to a x axis id (e.g. *x* or
-        ///     *x2*), the `x` position refers to an x data coordinate If set to *paper*,
-        ///     the `x` position refers to the distance from the left of plot in normalized
-        ///     coordinates where *0* (*1*) corresponds to the left (right).
+        ///     Sets the images&#39;s x coordinate axis. If set to a x axis id (e.g. <c>x</c>
+        ///     or <c>x2</c>), the <c>x</c> position refers to an x data coordinate If set
+        ///     to <c>paper</c>, the <c>x</c> position refers to the distance from the left
+        ///     of plot in normalized coordinates where <c>0</c> (<c>1</c>) corresponds
+        ///     to the left (right).
         /// </summary>
         [JsonPropertyName(@"xref")]
         public string Xref { get; set;} 
 
         /// <summary>
-        ///     Sets the images's y coordinate axis. If set to a y axis id (e.g. *y* or
-        ///     *y2*), the `y` position refers to a y data coordinate. If set to *paper*,
-        ///     the `y` position refers to the distance from the bottom of the plot in normalized
-        ///     coordinates where *0* (*1*) corresponds to the bottom (top).
+        ///     Sets the images&#39;s y coordinate axis. If set to a y axis id (e.g. <c>y</c>
+        ///     or <c>y2</c>), the <c>y</c> position refers to a y data coordinate. If set
+        ///     to <c>paper</c>, the <c>y</c> position refers to the distance from the bottom
+        ///     of the plot in normalized coordinates where <c>0</c> (<c>1</c>) corresponds
+        ///     to the bottom (top).
         /// </summary>
         [JsonPropertyName(@"yref")]
         public string YRef { get; set;} 
@@ -109,9 +110,10 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -119,11 +121,11 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

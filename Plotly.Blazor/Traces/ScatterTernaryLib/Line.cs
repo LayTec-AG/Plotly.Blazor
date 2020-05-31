@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ScatterTernaryLib.LineLib;
 
 namespace Plotly.Blazor.Traces.ScatterTernaryLib
 {
@@ -27,23 +25,25 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib
         public float? Width { get; set;} 
 
         /// <summary>
-        ///     Sets the dash style of lines. Set to a dash type string (*solid*, *dot*,
-        ///     *dash*, *longdash*, *dashdot*, or *longdashdot*) or a dash length list in
-        ///     px (eg *5px,10px,2px,2px*).
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
         /// </summary>
         [JsonPropertyName(@"dash")]
         public string Dash { get; set;} 
 
         /// <summary>
-        ///     Determines the line shape. With *spline* the lines are drawn using spline
-        ///     interpolation. The other available values correspond to step-wise line shapes.
+        ///     Determines the line shape. With <c>spline</c> the lines are drawn using
+        ///     spline interpolation. The other available values correspond to step-wise
+        ///     line shapes.
         /// </summary>
         [JsonPropertyName(@"shape")]
         public Plotly.Blazor.Traces.ScatterTernaryLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
-        ///     Has an effect only if `shape` is set to *spline* Sets the amount of smoothing.
-        ///     *0* corresponds to no smoothing (equivalent to a *linear* shape).
+        ///     Has an effect only if <c>shape</c> is set to <c>spline</c> Sets the amount
+        ///     of smoothing. <c>0</c> corresponds to no smoothing (equivalent to a <c>linear</c>
+        ///     shape).
         /// </summary>
         [JsonPropertyName(@"smoothing")]
         public float? Smoothing { get; set;} 

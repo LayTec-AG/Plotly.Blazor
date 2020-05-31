@@ -8,13 +8,14 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 {
     /// <summary>
-    ///     Sets the layer type, that is the how the layer data set in `source` will
-    ///     be rendered With `sourcetype` set to *geojson*, the following values are
-    ///     allowed: *circle*, *line*, *fill* and *symbol*. but note that *line* and
-    ///     *fill* are not compatible with Point GeoJSON geometries. With `sourcetype`
-    ///     set to *vector*, the following values are allowed:  *circle*, *line*, *fill*
-    ///     and *symbol*. With `sourcetype` set to *raster* or `*image*`, only the *raster*
-    ///     value is allowed.
+    ///     Sets the layer type, that is the how the layer data set in <c>source</c>
+    ///     will be rendered With <c>sourcetype</c> set to <c>geojson</c>, the following
+    ///     values are allowed: <c>circle</c>, <c>line</c>, <c>fill</c> and <c>symbol</c>.
+    ///     but note that <c>line</c> and <c>fill</c> are not compatible with Point
+    ///     GeoJSON geometries. With <c>sourcetype</c> set to <c>vector</c>, the following
+    ///     values are allowed:  <c>circle</c>, <c>line</c>, <c>fill</c> and <c>symbol</c>.
+    ///     With <c>sourcetype</c> set to <c>raster</c> or <c><c>image</c></c>, only
+    ///     the <c>raster</c> value is allowed.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

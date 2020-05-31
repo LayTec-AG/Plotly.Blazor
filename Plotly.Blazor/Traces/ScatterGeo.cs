@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.ScatterGeoLib;
 
 namespace Plotly.Blazor.Traces
 {
@@ -20,8 +19,8 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum Type { get; } = TraceTypeEnum.ScatterGeo;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-        ///     is not drawn, but can appear as a legend item (provided that the legend
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -70,21 +69,22 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, *scatter* traces also appends customdata
-        ///     items in the markers DOM elements
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
         /// </summary>
         [JsonPropertyName(@"customdata")]
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace `name`, graph, axis
-        ///     and colorbar `title.text`, annotation `text` `rangeselector`, `updatemenues`
-        ///     and `sliders` `label` text all support `meta`. To access the trace `meta`
-        ///     values in an attribute in the same trace, simply use `%{meta[i]}` where
-        ///     `i` is the index or key of the `meta` item in question. To access trace
-        ///     `meta` in layout attributes, use `%{data[n[.meta[i]}` where `i` is the index
-        ///     or key of the `meta` and `n` is the trace index.
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
@@ -92,9 +92,9 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Array containing integer indices of selected points. Has an effect only
         ///     for traces that support selections. Note that an empty array means an empty
-        ///     selection where the `unselected` are turned on for all points, whereas,
-        ///     any other non-array values means no selection all where the `selected` and
-        ///     `unselected` styles have no effect.
+        ///     selection where the <c>unselected</c> are turned on for all points, whereas,
+        ///     any other non-array values means no selection all where the <c>selected</c>
+        ///     and <c>unselected</c> styles have no effect.
         /// </summary>
         [JsonPropertyName(@"selectedpoints")]
         public object SelectedPoints { get; set;} 
@@ -115,22 +115,21 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
-        [JsonConverter(typeof(PolymorphicConverter))]
         public ITransform Transforms { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
-        ///     in `parcoords` traces, as well as some `editable: true` modifications such
-        ///     as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that
-        ///     other user-driven trace attribute changes are controlled by `layout` attributes:
-        ///     `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints`
-        ///     is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible
-        ///     with `config: {editable: true}`) is controlled by `layout.editrevision`.
-        ///     Trace changes are tracked by `uid`, which only falls back on trace index
-        ///     if no `uid` is provided. So if your app can add/remove traces before the
-        ///     end of the `data` array, such that the same trace has a different index,
-        ///     you can still preserve user-driven changes if you give each trace a `uid`
-        ///     that stays with it as it moves.
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
@@ -149,79 +148,82 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Sets the coordinates via location IDs or names. Coordinates correspond to
-        ///     the centroid of each location given. See `locationmode` for more info.
+        ///     the centroid of each location given. See <c>locationmode</c> for more info.
         /// </summary>
         [JsonPropertyName(@"locations")]
         public IList<object> Locations { get; set;} 
 
         /// <summary>
-        ///     Determines the set of locations used to match entries in `locations` to
-        ///     regions on the map. Values *ISO-3*, *USA-states*, *country names* correspond
-        ///     to features on the base map and value *geojson-id* corresponds to features
-        ///     from a custom GeoJSON linked to the `geojson` attribute.
+        ///     Determines the set of locations used to match entries in <c>locations</c>
+        ///     to regions on the map. Values <c>ISO-3</c>, <c>USA-states</c>, &#39;country
+        ///     names&#39; correspond to features on the base map and value <c>geojson-id</c>
+        ///     corresponds to features from a custom GeoJSON linked to the <c>geojson</c>
+        ///     attribute.
         /// </summary>
         [JsonPropertyName(@"locationmode")]
         public Plotly.Blazor.Traces.ScatterGeoLib.LocationModeEnum? LocationMode { get; set;} 
 
         /// <summary>
         ///     Sets optional GeoJSON data associated with this trace. If not given, the
-        ///     features on the base map are used when `locations` is set. It can be set
-        ///     as a valid GeoJSON object or as a URL string. Note that we only accept GeoJSONs
-        ///     of type *FeatureCollection* or *Feature* with geometries of type *Polygon*
-        ///     or *MultiPolygon*.
+        ///     features on the base map are used when <c>locations</c> is set. It can be
+        ///     set as a valid GeoJSON object or as a URL string. Note that we only accept
+        ///     GeoJSONs of type <c>FeatureCollection</c> or <c>Feature</c> with geometries
+        ///     of type <c>Polygon</c> or <c>MultiPolygon</c>.
         /// </summary>
         [JsonPropertyName(@"geojson")]
         public object GeoJson { get; set;} 
 
         /// <summary>
         ///     Sets the key in GeoJSON features which is used as id to match the items
-        ///     included in the `locations` array. Only has an effect when `geojson` is
-        ///     set. Support nested property, for example *properties.name*.
+        ///     included in the <c>locations</c> array. Only has an effect when <c>geojson</c>
+        ///     is set. Support nested property, for example <c>properties.name</c>.
         /// </summary>
         [JsonPropertyName(@"featureidkey")]
         public string FeatureIdKey { get; set;} 
 
         /// <summary>
-        ///     Determines the drawing mode for this scatter trace. If the provided `mode`
-        ///     includes *text* then the `text` elements appear at the coordinates. Otherwise,
-        ///     the `text` elements appear on hover. If there are less than 20 points and
-        ///     the trace is not stacked then the default is *lines+markers*. Otherwise,
-        ///     *lines*.
+        ///     Determines the drawing mode for this scatter trace. If the provided <c>mode</c>
+        ///     includes <c>text</c> then the <c>text</c> elements appear at the coordinates.
+        ///     Otherwise, the <c>text</c> elements appear on hover. If there are less than
+        ///     20 points and the trace is not stacked then the default is <c>lines+markers</c>.
+        ///     Otherwise, <c>lines</c>.
         /// </summary>
         [JsonPropertyName(@"mode")]
         public Plotly.Blazor.Traces.ScatterGeoLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
-        ///     Sets text elements associated with each (lon,lat) pair or item in `locations`.
+        ///     Sets text elements associated with each (lon,lat) pair or item in <c>locations</c>.
         ///     If a single string, the same string appears over all the data points. If
-        ///     an array of string, the items are mapped in order to the this trace's (lon,lat)
-        ///     or `locations` coordinates. If trace `hoverinfo` contains a *text* flag
-        ///     and *hovertext* is not set, these elements will be seen in the hover labels.
+        ///     an array of string, the items are mapped in order to the this trace&#39;s
+        ///     (lon,lat) or <c>locations</c> coordinates. If trace <c>hoverinfo</c> contains
+        ///     a <c>text</c> flag and <c>hovertext</c> is not set, these elements will
+        ///     be seen in the hover labels.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information text that appear on points.
-        ///     Note that this will override `textinfo`. Variables are inserted using %{variable},
-        ///     for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format},
-        ///     for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     Note that this will override <c>textinfo</c>. Variables are inserted using
+        ///     %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted using
+        ///     d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price: %{y:$.2f}&quot;.
+        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
         ///     for details on the date formatting syntax. Every attributes that can be
-        ///     specified per-point (the ones that are `arrayOk: true`) are available. variables
-        ///     `lat`, `lon`, `location` and `text`.
+        ///     specified per-point (the ones that are &#39;arrayOk: true&#39;) are available.
+        ///     variables <c>lat</c>, <c>lon</c>, <c>location</c> and <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         public string TextTemplate { get; set;} 
 
         /// <summary>
         ///     Sets hover text elements associated with each (lon,lat) pair or item in
-        ///     `locations`. If a single string, the same string appears over all the data
-        ///     points. If an array of string, the items are mapped in order to the this
-        ///     trace's (lon,lat) or `locations` coordinates. To be seen, trace `hoverinfo`
-        ///     must contain a *text* flag.
+        ///     <c>locations</c>. If a single string, the same string appears over all the
+        ///     data points. If an array of string, the items are mapped in order to the
+        ///     this trace&#39;s (lon,lat) or <c>locations</c> coordinates. To be seen,
+        ///     trace <c>hoverinfo</c> must contain a <c>text</c> flag.
         /// </summary>
         [JsonPropertyName(@"hovertext")]
         public string HoverText { get; set;} 
@@ -233,7 +235,8 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ScatterGeoLib.TextFont TextFont { get; set;} 
 
         /// <summary>
-        ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
+        ///     Sets the positions of the <c>text</c> elements with respects to the (x,y)
+        ///     coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
         public Plotly.Blazor.Traces.ScatterGeoLib.TextPositionEnum? TextPosition { get; set;} 
@@ -258,9 +261,9 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ScatterGeoLib.Marker Marker { get; set;} 
 
         /// <summary>
-        ///     Sets the area to fill with a solid color. Use with `fillcolor` if not *none*.
-        ///     *toself* connects the endpoints of the trace (or each segment of the trace
-        ///     if it has gaps) into a closed shape.
+        ///     Sets the area to fill with a solid color. Use with <c>fillcolor</c> if not
+        ///     <c>none</c>. <c>toself</c> connects the endpoints of the trace (or each
+        ///     segment of the trace if it has gaps) into a closed shape.
         /// </summary>
         [JsonPropertyName(@"fill")]
         public Plotly.Blazor.Traces.ScatterGeoLib.FillEnum? Fill { get; set;} 
@@ -285,35 +288,38 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ScatterGeoLib.Unselected Unselected { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If `none` or `skip`
-        ///     are set, no information is displayed upon hovering. But, if `none` is set,
-        ///     click and hover events are still fired.
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.ScatterGeoLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available.  Anything contained in tag `<extra>`
-        ///     is displayed in the secondary box, for example "<extra>{fullData.name}</extra>".
-        ///     To hide the secondary box completely, use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
+        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
+        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
+        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
 
         /// <summary>
-        ///     Sets a reference between this trace's geospatial coordinates and a geographic
-        ///     map. If *geo* (the default value), the geospatial coordinates refer to `layout.geo`.
-        ///     If *geo2*, the geospatial coordinates refer to `layout.geo2`, and so on.
+        ///     Sets a reference between this trace&#39;s geospatial coordinates and a geographic
+        ///     map. If <c>geo</c> (the default value), the geospatial coordinates refer
+        ///     to <c>layout.geo</c>. If <c>geo2</c>, the geospatial coordinates refer to
+        ///     <c>layout.geo2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"geo")]
         public string Geo { get; set;} 

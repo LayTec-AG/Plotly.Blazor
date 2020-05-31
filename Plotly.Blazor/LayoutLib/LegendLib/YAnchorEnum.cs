@@ -8,11 +8,12 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.LegendLib
 {
     /// <summary>
-    ///     Sets the legend&#39;s vertical position anchor This anchor binds the `y`
-    ///     position to the *top*, *middle* or *bottom* of the legend. Value *auto*
-    ///     anchors legends at their bottom for `y` values less than or equal to 1/3,
-    ///     anchors legends to at their top for `y` values greater than or equal to
-    ///     2/3 and anchors legends with respect to their middle otherwise.
+    ///     Sets the legend&#39;s vertical position anchor This anchor binds the <c>y</c>
+    ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the legend.
+    ///     Value <c>auto</c> anchors legends at their bottom for <c>y</c> values less
+    ///     than or equal to 1/3, anchors legends to at their top for <c>y</c> values
+    ///     greater than or equal to 2/3 and anchors legends with respect to their middle
+    ///     otherwise.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

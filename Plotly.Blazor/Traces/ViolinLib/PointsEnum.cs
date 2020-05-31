@@ -8,12 +8,13 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ViolinLib
 {
     /// <summary>
-    ///     If *outliers*, only the sample points lying outside the whiskers are shown
-    ///     If *suspectedoutliers*, the outlier points are shown and points either less
-    ///     than 4*Q1-3*Q3 or greater than 4*Q3-3*Q1 are highlighted (see `outliercolor`)
-    ///     If *all*, all sample points are shown If *false*, only the violins are shown
-    ///     with no sample points. Defaults to *suspectedoutliers* when `marker.outliercolor`
-    ///     or `marker.line.outliercolor` is set, otherwise defaults to *outliers*.
+    ///     If <c>outliers</c>, only the sample points lying outside the whiskers are
+    ///     shown If <c>suspectedoutliers</c>, the outlier points are shown and points
+    ///     either less than 4<c>Q1-3</c>Q3 or greater than 4<c>Q3-3</c>Q1 are highlighted
+    ///     (see <c>outliercolor</c>) If <c>all</c>, all sample points are shown If
+    ///     <c>false</c>, only the violins are shown with no sample points. Defaults
+    ///     to <c>suspectedoutliers</c> when <c>marker.outliercolor</c> or <c>marker.line.outliercolor</c>
+    ///     is set, otherwise defaults to <c>outliers</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

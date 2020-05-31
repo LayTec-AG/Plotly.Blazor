@@ -9,17 +9,17 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 {
     /// <summary>
     ///     Specifies the ordering logic for the case of categorical variables. By default,
-    ///     plotly uses *trace*, which specifies the order that is present in the data
-    ///     supplied. Set `categoryorder` to *category ascending* or *category descending*
-    ///     if order should be determined by the alphanumerical order of the category
-    ///     names. Set `categoryorder` to *array* to derive the ordering from the attribute
-    ///     `categoryarray`. If a category is not found in the `categoryarray` array,
-    ///     the sorting behavior for that attribute will be identical to the *trace*
-    ///     mode. The unspecified categories will follow the categories in `categoryarray`.
-    ///     Set `categoryorder` to *total ascending* or *total descending* if order
-    ///     should be determined by the numerical order of the values. Similarly, the
-    ///     order can be determined by the min, max, sum, mean or median of all the
-    ///     values.
+    ///     plotly uses <c>trace</c>, which specifies the order that is present in the
+    ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
+    ///     or &#39;category descending&#39; if order should be determined by the alphanumerical
+    ///     order of the category names. Set <c>categoryorder</c> to <c>array</c> to
+    ///     derive the ordering from the attribute <c>categoryarray</c>. If a category
+    ///     is not found in the <c>categoryarray</c> array, the sorting behavior for
+    ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
+    ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
+    ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
+    ///     be determined by the numerical order of the values. Similarly, the order
+    ///     can be determined by the min, max, sum, mean or median of all the values.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

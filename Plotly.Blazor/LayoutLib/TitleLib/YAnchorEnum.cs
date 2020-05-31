@@ -9,10 +9,10 @@ namespace Plotly.Blazor.LayoutLib.TitleLib
 {
     /// <summary>
     ///     Sets the title&#39;s vertical alignment with respect to its y position.
-    ///     *top* means that the title&#39;s cap line is at y, *bottom* means that the
-    ///     title&#39;s baseline is at y and *middle* means that the title&#39;s midline
-    ///     is at y. *auto* divides `yref` by three and calculates the `yanchor` value
-    ///     automatically based on the value of `y`.
+    ///     <c>top</c> means that the title&#39;s cap line is at y, <c>bottom</c> means
+    ///     that the title&#39;s baseline is at y and <c>middle</c> means that the title&#39;s
+    ///     midline is at y. <c>auto</c> divides <c>yref</c> by three and calculates
+    ///     the <c>yanchor</c> value automatically based on the value of <c>y</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

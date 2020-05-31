@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.CarpetLib.BAxisLib;
 
 namespace Plotly.Blazor.Traces.CarpetLib
 {
@@ -43,28 +42,29 @@ namespace Plotly.Blazor.Traces.CarpetLib
 
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
-        ///     to the input data. See `rangemode` for more info. If `range` is provided,
-        ///     then `autorange` is set to *false*.
+        ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
+        ///     provided, then <c>autorange</c> is set to <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"autorange")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
-        ///     If *normal*, the range is computed in relation to the extrema of the input
-        ///     data. If *tozero*`, the range extends to 0, regardless of the input data
-        ///     If *nonnegative*, the range is non-negative, regardless of the input data.
+        ///     If <c>normal</c>, the range is computed in relation to the extrema of the
+        ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
+        ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
+        ///     of the input data.
         /// </summary>
         [JsonPropertyName(@"rangemode")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.RangeModeEnum? RangeMode { get; set;} 
 
         /// <summary>
-        ///     Sets the range of this axis. If the axis `type` is *log*, then you must
-        ///     take the log of your desired range (e.g. to set the range from 1 to 100,
-        ///     set the range from 0 to 2). If the axis `type` is *date*, it should be date
-        ///     strings, like date data, though Date objects and unix milliseconds will
-        ///     be accepted and converted to strings. If the axis `type` is *category*,
-        ///     it should be numbers, using the scale where each category is assigned a
-        ///     serial number from zero in the order it appears.
+        ///     Sets the range of this axis. If the axis <c>type</c> is <c>log</c>, then
+        ///     you must take the log of your desired range (e.g. to set the range from
+        ///     1 to 100, set the range from 0 to 2). If the axis <c>type</c> is <c>date</c>,
+        ///     it should be date strings, like date data, though Date objects and unix
+        ///     milliseconds will be accepted and converted to strings. If the axis <c>type</c>
+        ///     is <c>category</c>, it should be numbers, using the scale where each category
+        ///     is assigned a serial number from zero in the order it appears.
         /// </summary>
         [JsonPropertyName(@"range")]
         public IList<object> Range { get; set;} 
@@ -91,21 +91,21 @@ namespace Plotly.Blazor.Traces.CarpetLib
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
         ///     number of ticks will be chosen automatically to be less than or equal to
-        ///     `nticks`. Has an effect only if `tickmode` is set to *auto*.
+        ///     <c>nticks</c>. Has an effect only if <c>tickmode</c> is set to <c>auto</c>.
         /// </summary>
         [JsonPropertyName(@"nticks")]
         public int? NTicks { get; set;} 
 
         /// <summary>
         ///     Sets the values at which ticks on this axis appear. Only has an effect if
-        ///     `tickmode` is set to *array*. Used with `ticktext`.
+        ///     <c>tickmode</c> is set to <c>array</c>. Used with <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"tickvals")]
         public IList<object> TickVals { get; set;} 
 
         /// <summary>
-        ///     Sets the text displayed at the ticks position via `tickvals`. Only has an
-        ///     effect if `tickmode` is set to *array*. Used with `tickvals`.
+        ///     Sets the text displayed at the ticks position via <c>tickvals</c>. Only
+        ///     has an effect if <c>tickmode</c> is set to <c>array</c>. Used with <c>tickvals</c>.
         /// </summary>
         [JsonPropertyName(@"ticktext")]
         public IList<object> TickText { get; set;} 
@@ -125,7 +125,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
-        ///     a `tickangle` of -90 draws the tick labels vertically.
+        ///     a <c>tickangle</c> of -90 draws the tick labels vertically.
         /// </summary>
         [JsonPropertyName(@"tickangle")]
         public float? TickAngle { get; set;} 
@@ -137,9 +137,10 @@ namespace Plotly.Blazor.Traces.CarpetLib
         public string TickPrefix { get; set;} 
 
         /// <summary>
-        ///     If *all*, all tick labels are displayed with a prefix. If *first*, only
-        ///     the first tick is displayed with a prefix. If *last*, only the last tick
-        ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
+        ///     If <c>all</c>, all tick labels are displayed with a prefix. If <c>first</c>,
+        ///     only the first tick is displayed with a prefix. If <c>last</c>, only the
+        ///     last tick is displayed with a suffix. If <c>none</c>, tick prefixes are
+        ///     hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
@@ -151,30 +152,30 @@ namespace Plotly.Blazor.Traces.CarpetLib
         public string TickSuffix { get; set;} 
 
         /// <summary>
-        ///     Same as `showtickprefix` but for tick suffixes.
+        ///     Same as <c>showtickprefix</c> but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
-        ///     If *all*, all exponents are shown besides their significands. If *first*,
-        ///     only the exponent of the first tick is shown. If *last*, only the exponent
-        ///     of the last tick is shown. If *none*, no exponents appear.
+        ///     If <c>all</c>, all exponents are shown besides their significands. If <c>first</c>,
+        ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
+        ///     of the last tick is shown. If <c>none</c>, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
-        ///     the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*,
-        ///     1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*,
-        ///     1G. If *B*, 1B.
+        ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
+        ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
-        ///     If "true", even 4-digit integers are separated
+        ///     If <c>true</c>, even 4-digit integers are separated
         /// </summary>
         [JsonPropertyName(@"separatethousands")]
         public bool? SeparateThousands { get; set;} 
@@ -182,9 +183,9 @@ namespace Plotly.Blazor.Traces.CarpetLib
         /// <summary>
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see:  We add one item to d3's date formatter: *%{n}f* for
-        ///     fractional seconds with n digits. For example, *2016-10-13 09:15:23.456*
-        ///     with tickformat *%H~%M~%S.%2f* would display *09~15~23.46*
+        ///     And for dates see:  We add one item to d3&#39;s date formatter: <c>%{n}f</c>
+        ///     for fractional seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39;
+        ///     with tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"tickformat")]
         public string TickFormat { get; set;} 
@@ -197,20 +198,21 @@ namespace Plotly.Blazor.Traces.CarpetLib
 
         /// <summary>
         ///     Specifies the ordering logic for the case of categorical variables. By default,
-        ///     plotly uses *trace*, which specifies the order that is present in the data
-        ///     supplied. Set `categoryorder` to *category ascending* or *category descending*
-        ///     if order should be determined by the alphanumerical order of the category
-        ///     names. Set `categoryorder` to *array* to derive the ordering from the attribute
-        ///     `categoryarray`. If a category is not found in the `categoryarray` array,
-        ///     the sorting behavior for that attribute will be identical to the *trace*
-        ///     mode. The unspecified categories will follow the categories in `categoryarray`.
+        ///     plotly uses <c>trace</c>, which specifies the order that is present in the
+        ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
+        ///     or &#39;category descending&#39; if order should be determined by the alphanumerical
+        ///     order of the category names. Set <c>categoryorder</c> to <c>array</c> to
+        ///     derive the ordering from the attribute <c>categoryarray</c>. If a category
+        ///     is not found in the <c>categoryarray</c> array, the sorting behavior for
+        ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
+        ///     categories will follow the categories in <c>categoryarray</c>.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
         public Plotly.Blazor.Traces.CarpetLib.BAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories on this axis appear. Only has an effect
-        ///     if `categoryorder` is set to *array*. Used with `categoryorder`.
+        ///     if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
         /// </summary>
         [JsonPropertyName(@"categoryarray")]
         public IList<object> CategoryArray { get; set;} 
@@ -264,8 +266,8 @@ namespace Plotly.Blazor.Traces.CarpetLib
         public float? GridWidth { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not grid lines are drawn. If *true*, the grid lines
-        ///     are drawn at every tick mark.
+        ///     Determines whether or not grid lines are drawn. If <c>true</c>, the grid
+        ///     lines are drawn at every tick mark.
         /// </summary>
         [JsonPropertyName(@"showgrid")]
         public bool? ShowGrid { get; set;} 
@@ -290,7 +292,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
 
         /// <summary>
         ///     Determines whether or not a line is drawn at along the starting value of
-        ///     this axis. If *true*, the start line is drawn on top of the grid lines.
+        ///     this axis. If <c>true</c>, the start line is drawn on top of the grid lines.
         /// </summary>
         [JsonPropertyName(@"startline")]
         public bool? StartLine { get; set;} 
@@ -309,7 +311,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
 
         /// <summary>
         ///     Determines whether or not a line is drawn at along the final value of this
-        ///     axis. If *true*, the end line is drawn on top of the grid lines.
+        ///     axis. If <c>true</c>, the end line is drawn on top of the grid lines.
         /// </summary>
         [JsonPropertyName(@"endline")]
         public bool? EndLine { get; set;} 

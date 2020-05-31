@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.SankeyLib.NodeLib;
 
 namespace Plotly.Blazor.Traces.SankeyLib
 {
@@ -40,11 +39,11 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> Y { get; set;} 
 
         /// <summary>
-        ///     Sets the `node` color. It can be a single value, or an array for specifying
-        ///     color for each `node`. If `node.color` is omitted, then the default `Plotly`
-        ///     color palette will be cycled through to have a variety of colors. These
-        ///     defaults are not fully opaque, to allow some visibility of what is beneath
-        ///     the node.
+        ///     Sets the <c>node</c> color. It can be a single value, or an array for specifying
+        ///     color for each <c>node</c>. If <c>node.color</c> is omitted, then the default
+        ///     <c>Plotly</c> color palette will be cycled through to have a variety of
+        ///     colors. These defaults are not fully opaque, to allow some visibility of
+        ///     what is beneath the node.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
@@ -62,21 +61,21 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public Plotly.Blazor.Traces.SankeyLib.NodeLib.Line Line { get; set;} 
 
         /// <summary>
-        ///     Sets the padding (in px) between the `nodes`.
+        ///     Sets the padding (in px) between the <c>nodes</c>.
         /// </summary>
         [JsonPropertyName(@"pad")]
         public float? Pad { get; set;} 
 
         /// <summary>
-        ///     Sets the thickness (in px) of the `nodes`.
+        ///     Sets the thickness (in px) of the <c>nodes</c>.
         /// </summary>
         [JsonPropertyName(@"thickness")]
         public float? Thickness { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear when hovering nodes. If `none`
-        ///     or `skip` are set, no information is displayed upon hovering. But, if `none`
-        ///     is set, click and hover events are still fired.
+        ///     Determines which trace information appear when hovering nodes. If <c>none</c>
+        ///     or <c>skip</c> are set, no information is displayed upon hovering. But,
+        ///     if <c>none</c> is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.SankeyLib.NodeLib.HoverInfoEnum? HoverInfo { get; set;} 
@@ -89,19 +88,20 @@ namespace Plotly.Blazor.Traces.SankeyLib
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override `hoverinfo`. Variables are inserted using
-        ///     %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's
-        ///     syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format's
-        ///     syntax %{variable|d3-time-format}, for example "Day: %{2019-01-01|%A}".
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in `hovertemplate`
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are `arrayOk: true`) are available. variables `value` and `label`.
-        ///     Anything contained in tag `<extra>` is displayed in the secondary box, for
-        ///     example "<extra>{fullData.name}</extra>". To hide the secondary box completely,
-        ///     use an empty tag `<extra></extra>`.
+        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
+        ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
+        ///     in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 

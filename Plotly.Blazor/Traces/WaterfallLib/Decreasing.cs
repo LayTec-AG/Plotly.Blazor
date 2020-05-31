@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.WaterfallLib.DecreasingLib;
 
 namespace Plotly.Blazor.Traces.WaterfallLib
 {

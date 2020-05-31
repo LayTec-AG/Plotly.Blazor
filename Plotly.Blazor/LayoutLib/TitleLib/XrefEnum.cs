@@ -8,8 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.TitleLib
 {
     /// <summary>
-    ///     Sets the container `x` refers to. *container* spans the entire `width` of
-    ///     the plot. *paper* refers to the width of the plotting area only.
+    ///     Sets the container <c>x</c> refers to. <c>container</c> spans the entire
+    ///     <c>width</c> of the plot. <c>paper</c> refers to the width of the plotting
+    ///     area only.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -9,8 +9,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.SunburstLib
 {
     /// <summary>
-    ///     Determines default for `values` when it is not provided, by inferring a
-    ///     1 for each of the *leaves* and/or *branches*, otherwise 0.
+    ///     Determines default for <c>values</c> when it is not provided, by inferring
+    ///     a 1 for each of the <c>leaves</c> and/or <c>branches</c>, otherwise 0.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [Flags]

@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.HeatMapLib
 {
     /// <summary>
-    ///     Picks a smoothing algorithm use to smooth `z` data.
+    ///     Picks a smoothing algorithm use to smooth <c>z</c> data.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

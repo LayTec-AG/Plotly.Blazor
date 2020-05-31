@@ -9,9 +9,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.SunburstLib
 {
     /// <summary>
-    ///     Determines which trace information appear on hover. If `none` or `skip`
-    ///     are set, no information is displayed upon hovering. But, if `none` is set,
-    ///     click and hover events are still fired.
+    ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+    ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+    ///     is set, click and hover events are still fired.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [Flags]

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ViolinLib.BoxLib;
 
 namespace Plotly.Blazor.Traces.ViolinLib
 {
@@ -21,8 +19,8 @@ namespace Plotly.Blazor.Traces.ViolinLib
         public bool? Visible { get; set;} 
 
         /// <summary>
-        ///     Sets the width of the inner box plots relative to the violins' width. For
-        ///     example, with 1, the inner box plots are as wide as the violins.
+        ///     Sets the width of the inner box plots relative to the violins&#39; width.
+        ///     For example, with 1, the inner box plots are as wide as the violins.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 

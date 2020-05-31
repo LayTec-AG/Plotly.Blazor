@@ -8,11 +8,12 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.SankeyLib
 {
     /// <summary>
-    ///     If value is `snap` (the default), the node arrangement is assisted by automatic
-    ///     snapping of elements to preserve space between nodes specified via `nodepad`.
-    ///     If value is `perpendicular`, the nodes can only move along a line perpendicular
-    ///     to the flow. If value is `freeform`, the nodes can freely move on the plane.
-    ///     If value is `fixed`, the nodes are stationary.
+    ///     If value is <c>snap</c> (the default), the node arrangement is assisted
+    ///     by automatic snapping of elements to preserve space between nodes specified
+    ///     via <c>nodepad</c>. If value is <c>perpendicular</c>, the nodes can only
+    ///     move along a line perpendicular to the flow. If value is <c>freeform</c>,
+    ///     the nodes can freely move on the plane. If value is <c>fixed</c>, the nodes
+    ///     are stationary.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

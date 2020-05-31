@@ -9,8 +9,8 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.LineLib.ColorBarLib
 {
     /// <summary>
     ///     Determines whether this color bar&#39;s thickness (i.e. the measure in the
-    ///     constant color direction) is set in units of plot *fraction* or in *pixels*.
-    ///     Use `thickness` to set the value.
+    ///     constant color direction) is set in units of plot <c>fraction</c> or in
+    ///     <c>pixels</c>. Use <c>thickness</c> to set the value.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

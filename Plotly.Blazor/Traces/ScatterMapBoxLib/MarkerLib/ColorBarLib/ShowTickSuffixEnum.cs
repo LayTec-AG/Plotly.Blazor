@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterMapBoxLib.MarkerLib.ColorBarLib
 {
     /// <summary>
-    ///     Same as `showtickprefix` but for tick suffixes.
+    ///     Same as <c>showtickprefix</c> but for tick suffixes.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.Traces.IndicatorLib.GaugeLib;
 
 namespace Plotly.Blazor.Traces.IndicatorLib
 {
@@ -21,7 +20,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
-        ///     Set the appearance of the gauge's value
+        ///     Set the appearance of the gauge&#39;s value
         /// </summary>
         [JsonPropertyName(@"bar")]
         public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Bar Bar { get; set;} 

@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.YAxisLib
 {
     /// <summary>
-    ///     If this axis needs to be compressed (either due to its own `scaleanchor`
-    ///     and `scaleratio` or those of the other axis), determines how that happens:
-    ///     by increasing the *range* (default), or by decreasing the *domain*.
+    ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
+    ///     and <c>scaleratio</c> or those of the other axis), determines how that happens:
+    ///     by increasing the <c>range</c> (default), or by decreasing the <c>domain</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

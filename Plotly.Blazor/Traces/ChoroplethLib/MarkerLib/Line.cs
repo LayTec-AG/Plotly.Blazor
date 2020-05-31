@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.ChoroplethLib.MarkerLib
 {
@@ -16,7 +15,7 @@ namespace Plotly.Blazor.Traces.ChoroplethLib.MarkerLib
         /// <summary>
         ///     Sets themarker.linecolor. It accepts either a specific color or an array
         ///     of numbers that are mapped to the colorscale relative to the max and min
-        ///     values of the array or relative to `marker.line.cmin` and `marker.line.cmax`
+        ///     values of the array or relative to <c>marker.line.cmin</c> and <c>marker.line.cmax</c>
         ///     if set.
         /// </summary>
         [JsonPropertyName(@"color")]

@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
 {
@@ -15,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
     {
         /// <summary>
         ///     Rotates the map along parallels (in degrees East). Defaults to the center
-        ///     of the `lonaxis.range` values.
+        ///     of the <c>lonaxis.range</c> values.
         /// </summary>
         [JsonPropertyName(@"lon")]
         public float? Lon { get; set;} 
@@ -27,8 +26,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
         public float? Lat { get; set;} 
 
         /// <summary>
-        ///     Roll the map (in degrees) For example, a roll of *180* makes the map appear
-        ///     upside down.
+        ///     Roll the map (in degrees) For example, a roll of <c>180</c> makes the map
+        ///     appear upside down.
         /// </summary>
         [JsonPropertyName(@"roll")]
         public float? Roll { get; set;} 

@@ -8,8 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.LegendLib
 {
     /// <summary>
-    ///     Determines if the legend items symbols scale with their corresponding *trace*
-    ///     attributes or remain *constant* independent of the symbol size on the graph.
+    ///     Determines if the legend items symbols scale with their corresponding <c>trace</c>
+    ///     attributes or remain <c>constant</c> independent of the symbol size on the
+    ///     graph.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

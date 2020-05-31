@@ -8,12 +8,13 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.Histogram2DContourLib.ContoursLib
 {
     /// <summary>
-    ///     Sets the constraint operation. *=* keeps regions equal to `value` *&lt;*
-    ///     and *&lt;=* keep regions less than `value` *&gt;* and *&gt;=* keep regions
-    ///     greater than `value` *[]*, *()*, *[)*, and *(]* keep regions inside `value[0]`
-    ///     to `value[1]` *][*, *)(*, *](*, *)[* keep regions outside `value[0]` to
-    ///     value[1]` Open vs. closed intervals make no difference to constraint display,
-    ///     but all versions are allowed for consistency with filter transforms.
+    ///     Sets the constraint operation. <c>=</c> keeps regions equal to <c>value</c>
+    ///     <c>&lt;</c> and <c>&lt;=</c> keep regions less than <c>value</c> <c>&gt;</c>
+    ///     and <c>&gt;=</c> keep regions greater than <c>value</c> <c>[]</c>, <c>()</c>,
+    ///     <c>[)</c>, and <c>(]</c> keep regions inside <c>value[0]</c> to <c>value[1]</c>
+    ///     <c>][</c>, <c>)(</c>, <c>](</c>, <c>)[</c> keep regions outside <c>value[0]</c>
+    ///     to value[1]` Open vs. closed intervals make no difference to constraint
+    ///     display, but all versions are allowed for consistency with filter transforms.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

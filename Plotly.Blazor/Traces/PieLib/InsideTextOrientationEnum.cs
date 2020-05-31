@@ -8,13 +8,13 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.PieLib
 {
     /// <summary>
-    ///     Controls the orientation of the text inside chart sectors. When set to *auto*,
+    ///     Controls the orientation of the text inside chart sectors. When set to <c>auto</c>,
     ///     text may be oriented in any direction in order to be as big as possible
-    ///     in the middle of a sector. The *horizontal* option orients text to be parallel
-    ///     with the bottom of the chart, and may make text smaller in order to achieve
-    ///     that goal. The *radial* option orients text along the radius of the sector.
-    ///     The *tangential* option orients text perpendicular to the radius of the
-    ///     sector.
+    ///     in the middle of a sector. The <c>horizontal</c> option orients text to
+    ///     be parallel with the bottom of the chart, and may make text smaller in order
+    ///     to achieve that goal. The <c>radial</c> option orients text along the radius
+    ///     of the sector. The <c>tangential</c> option orients text perpendicular to
+    ///     the radius of the sector.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

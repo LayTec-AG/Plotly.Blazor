@@ -8,12 +8,13 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.HeatMapLib.ColorBarLib
 {
     /// <summary>
-    ///     Sets the tick mode for this axis. If *auto*, the number of ticks is set
-    ///     via `nticks`. If *linear*, the placement of the ticks is determined by a
-    ///     starting position `tick0` and a tick step `dtick` (*linear* is the default
-    ///     value if `tick0` and `dtick` are provided). If *array*, the placement of
-    ///     the ticks is set via `tickvals` and the tick text is `ticktext`. (*array*
-    ///     is the default value if `tickvals` is provided).
+    ///     Sets the tick mode for this axis. If <c>auto</c>, the number of ticks is
+    ///     set via <c>nticks</c>. If <c>linear</c>, the placement of the ticks is determined
+    ///     by a starting position <c>tick0</c> and a tick step <c>dtick</c> (<c>linear</c>
+    ///     is the default value if <c>tick0</c> and <c>dtick</c> are provided). If
+    ///     <c>array</c>, the placement of the ticks is set via <c>tickvals</c> and
+    ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
+    ///     <c>tickvals</c> is provided).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

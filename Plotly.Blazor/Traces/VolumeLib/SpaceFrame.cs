@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.VolumeLib
 {
@@ -22,9 +21,10 @@ namespace Plotly.Blazor.Traces.VolumeLib
         public bool? Show { get; set;} 
 
         /// <summary>
-        ///     Sets the fill ratio of the `spaceframe` elements. The default fill value
-        ///     is 1 meaning that they are entirely shaded. Applying a `fill` ratio less
-        ///     than one would allow the creation of openings parallel to the edges.
+        ///     Sets the fill ratio of the <c>spaceframe</c> elements. The default fill
+        ///     value is 1 meaning that they are entirely shaded. Applying a <c>fill</c>
+        ///     ratio less than one would allow the creation of openings parallel to the
+        ///     edges.
         /// </summary>
         [JsonPropertyName(@"fill")]
         public float? Fill { get; set;} 

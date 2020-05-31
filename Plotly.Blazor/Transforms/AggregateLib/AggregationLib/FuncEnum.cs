@@ -8,19 +8,20 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Transforms.AggregateLib.AggregationLib
 {
     /// <summary>
-    ///     Sets the aggregation function. All values from the linked `target`, corresponding
-    ///     to the same value in the `groups` array, are collected and reduced by this
-    ///     function. *count* is simply the number of values in the `groups` array,
-    ///     so does not even require the linked array to exist. *first* (*last*) is
-    ///     just the first (last) linked value. Invalid values are ignored, so for example
-    ///     in *avg* they do not contribute to either the numerator or the denominator.
-    ///     Any data type (numeric, date, category) may be aggregated with any function,
-    ///     even though in certain cases it is unlikely to make sense, for example a
-    ///     sum of dates or average of categories. *median* will return the average
-    ///     of the two central values if there is an even count. *mode* will return
-    ///     the first value to reach the maximum count, in case of a tie. *change* will
-    ///     return the difference between the first and last linked values. *range*
-    ///     will return the difference between the min and max linked values.
+    ///     Sets the aggregation function. All values from the linked <c>target</c>,
+    ///     corresponding to the same value in the <c>groups</c> array, are collected
+    ///     and reduced by this function. <c>count</c> is simply the number of values
+    ///     in the <c>groups</c> array, so does not even require the linked array to
+    ///     exist. <c>first</c> (<c>last</c>) is just the first (last) linked value.
+    ///     Invalid values are ignored, so for example in <c>avg</c> they do not contribute
+    ///     to either the numerator or the denominator. Any data type (numeric, date,
+    ///     category) may be aggregated with any function, even though in certain cases
+    ///     it is unlikely to make sense, for example a sum of dates or average of categories.
+    ///     <c>median</c> will return the average of the two central values if there
+    ///     is an even count. <c>mode</c> will return the first value to reach the maximum
+    ///     count, in case of a tie. <c>change</c> will return the difference between
+    ///     the first and last linked values. <c>range</c> will return the difference
+    ///     between the min and max linked values.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.ConfigLib;
 
 namespace Plotly.Blazor
 {
@@ -15,24 +13,25 @@ namespace Plotly.Blazor
     public class Config 
     {
         /// <summary>
-        ///     Determines whether the graphs are interactive or not. If *false*, no interactivity,
-        ///     for export or image generation.
+        ///     Determines whether the graphs are interactive or not. If <c>false</c>, no
+        ///     interactivity, for export or image generation.
         /// </summary>
         [JsonPropertyName(@"staticPlot")]
         public bool? StaticPlot { get; set;} 
 
         /// <summary>
-        ///     When set it determines base URL for the 'Edit in Chart Studio' `showEditInChartStudio`/`showSendToCloud`
+        ///     When set it determines base URL for the &#39;Edit in Chart Studio&#39; <c>showEditInChartStudio</c>/<c>showSendToCloud</c>
         ///     mode bar button and the showLink/sendData on-graph link. To enable sending
-        ///     your data to Chart Studio Cloud, you need to set both `plotlyServerURL`
-        ///     to 'https://chart-studio.plotly.com' and also set `showSendToCloud` to true.
+        ///     your data to Chart Studio Cloud, you need to set both <c>plotlyServerURL</c>
+        ///     to <c>https://chart-studio.plotly.com</c> and also set <c>showSendToCloud</c>
+        ///     to true.
         /// </summary>
         [JsonPropertyName(@"plotlyServerURL")]
         public string PlotlyServerURL { get; set;} 
 
         /// <summary>
-        ///     Determines whether the graph is editable or not. Sets all pieces of `edits`
-        ///     unless a separate `edits` config item overrides individual parts.
+        ///     Determines whether the graph is editable or not. Sets all pieces of <c>edits</c>
+        ///     unless a separate <c>edits</c> config item overrides individual parts.
         /// </summary>
         [JsonPropertyName(@"editable")]
         public bool? Editable { get; set;} 
@@ -58,15 +57,15 @@ namespace Plotly.Blazor
         public bool? Responsive { get; set;} 
 
         /// <summary>
-        ///     When `layout.autosize` is turned on, determines whether the graph fills
-        ///     the container (the default) or the screen (if set to *true*).
+        ///     When <c>layout.autosize</c> is turned on, determines whether the graph fills
+        ///     the container (the default) or the screen (if set to <c>true</c>).
         /// </summary>
         [JsonPropertyName(@"fillFrame")]
         public bool? FillFrame { get; set;} 
 
         /// <summary>
-        ///     When `layout.autosize` is turned on, set the frame margins in fraction of
-        ///     the graph size.
+        ///     When <c>layout.autosize</c> is turned on, set the frame margins in fraction
+        ///     of the graph size.
         /// </summary>
         [JsonPropertyName(@"frameMargins")]
         public float? FrameMargins { get; set;} 
@@ -75,18 +74,18 @@ namespace Plotly.Blazor
         ///     Determines whether mouse wheel or two-finger scroll zooms is enable. Turned
         ///     on by default for gl3d, geo and mapbox subplots (as these subplot types
         ///     do not have zoombox via pan), but turned off by default for cartesian subplots.
-        ///     Set `scrollZoom` to *false* to disable scrolling for all subplots.
+        ///     Set <c>scrollZoom</c> to <c>false</c> to disable scrolling for all subplots.
         /// </summary>
         [JsonPropertyName(@"scrollZoom")]
         public Plotly.Blazor.ConfigLib.ScrollZoomFlag? ScrollZoom { get; set;} 
 
         /// <summary>
         ///     Sets the double click interaction mode. Has an effect only in cartesian
-        ///     plots. If *false*, double click is disable. If *reset*, double click resets
-        ///     the axis ranges to their initial values. If *autosize*, double click set
-        ///     the axis ranges to their autorange values. If *reset+autosize*, the odd
-        ///     double clicks resets the axis ranges to their initial values and even double
-        ///     clicks set the axis ranges to their autorange values.
+        ///     plots. If <c>false</c>, double click is disable. If <c>reset</c>, double
+        ///     click resets the axis ranges to their initial values. If <c>autosize</c>,
+        ///     double click set the axis ranges to their autorange values. If <c>reset+autosize</c>,
+        ///     the odd double clicks resets the axis ranges to their initial values and
+        ///     even double clicks set the axis ranges to their autorange values.
         /// </summary>
         [JsonPropertyName(@"doubleClick")]
         public Plotly.Blazor.ConfigLib.DoubleClickEnum? DoubleClick { get; set;} 
@@ -101,14 +100,14 @@ namespace Plotly.Blazor
         public float? DoubleClickDelay { get; set;} 
 
         /// <summary>
-        ///     Set to *false* to omit cartesian axis pan/zoom drag handles.
+        ///     Set to <c>false</c> to omit cartesian axis pan/zoom drag handles.
         /// </summary>
         [JsonPropertyName(@"showAxisDragHandles")]
         public bool? ShowAxisDragHandles { get; set;} 
 
         /// <summary>
-        ///     Set to *false* to omit direct range entry at the pan/zoom drag points, note
-        ///     that `showAxisDragHandles` must be enabled to have an effect.
+        ///     Set to <c>false</c> to omit direct range entry at the pan/zoom drag points,
+        ///     note that <c>showAxisDragHandles</c> must be enabled to have an effect.
         /// </summary>
         [JsonPropertyName(@"showAxisRangeEntryBoxes")]
         public bool? ShowAxisRangeEntryBoxes { get; set;} 
@@ -122,19 +121,19 @@ namespace Plotly.Blazor
 
         /// <summary>
         ///     Determines whether a link to Chart Studio Cloud is displayed at the bottom
-        ///     right corner of resulting graphs. Use with `sendData` and `linkText`.
+        ///     right corner of resulting graphs. Use with <c>sendData</c> and <c>linkText</c>.
         /// </summary>
         [JsonPropertyName(@"showLink")]
         public bool? ShowLink { get; set;} 
 
         /// <summary>
-        ///     Sets the text appearing in the `showLink` link.
+        ///     Sets the text appearing in the <c>showLink</c> link.
         /// </summary>
         [JsonPropertyName(@"linkText")]
         public string LinkText { get; set;} 
 
         /// <summary>
-        ///     If *showLink* is true, does it contain data just link to a Chart Studio
+        ///     If <c>showLink</c> is true, does it contain data just link to a Chart Studio
         ///     Cloud file?
         /// </summary>
         [JsonPropertyName(@"sendData")]
@@ -147,30 +146,30 @@ namespace Plotly.Blazor
         public object ShowSources { get; set;} 
 
         /// <summary>
-        ///     Determines the mode bar display mode. If *true*, the mode bar is always
-        ///     visible. If *false*, the mode bar is always hidden. If *hover*, the mode
-        ///     bar is visible while the mouse cursor is on the graph container.
+        ///     Determines the mode bar display mode. If <c>true</c>, the mode bar is always
+        ///     visible. If <c>false</c>, the mode bar is always hidden. If <c>hover</c>,
+        ///     the mode bar is visible while the mouse cursor is on the graph container.
         /// </summary>
         [JsonPropertyName(@"displayModeBar")]
         public Plotly.Blazor.ConfigLib.DisplayModeBarEnum? DisplayModeBar { get; set;} 
 
         /// <summary>
-        ///     Should we include a ModeBar button, labeled "Edit in Chart Studio", that
-        ///     sends this chart to chart-studio.plotly.com (formerly plot.ly) or another
-        ///     plotly server as specified by `plotlyServerURL` for editing, export, etc?
-        ///     Prior to version 1.43.0 this button was included by default, now it is opt-in
-        ///     using this flag. Note that this button can (depending on `plotlyServerURL`
+        ///     Should we include a ModeBar button, labeled &quot;Edit in Chart Studio&quot;,
+        ///     that sends this chart to chart-studio.plotly.com (formerly plot.ly) or another
+        ///     plotly server as specified by <c>plotlyServerURL</c> for editing, export,
+        ///     etc? Prior to version 1.43.0 this button was included by default, now it
+        ///     is opt-in using this flag. Note that this button can (depending on <c>plotlyServerURL</c>
         ///     being set) send your data to an external server. However that server does
         ///     not persist your data until you arrive at the Chart Studio and explicitly
-        ///     click "Save".
+        ///     click <c>Save</c>.
         /// </summary>
         [JsonPropertyName(@"showSendToCloud")]
         public bool? ShowSendToCloud { get; set;} 
 
         /// <summary>
-        ///     Same as `showSendToCloud`, but use a pencil icon instead of a floppy-disk.
-        ///     Note that if both `showSendToCloud` and `showEditInChartStudio` are turned,
-        ///     only `showEditInChartStudio` will be honored.
+        ///     Same as <c>showSendToCloud</c>, but use a pencil icon instead of a floppy-disk.
+        ///     Note that if both <c>showSendToCloud</c> and <c>showEditInChartStudio</c>
+        ///     are turned, only <c>showEditInChartStudio</c> will be honored.
         /// </summary>
         [JsonPropertyName(@"showEditInChartStudio")]
         public bool? ShowEditInChartStudio { get; set;} 
@@ -213,30 +212,30 @@ namespace Plotly.Blazor
         public bool? DisplayLogo { get; set;} 
 
         /// <summary>
-        ///     watermark the images with the company's logo
+        ///     watermark the images with the company&#39;s logo
         /// </summary>
         [JsonPropertyName(@"watermark")]
         public bool? Watermark { get; set;} 
 
         /// <summary>
         ///     Set the pixel ratio during WebGL image export. This config option was formerly
-        ///     named `plot3dPixelRatio` which is now deprecated.
+        ///     named <c>plot3dPixelRatio</c> which is now deprecated.
         /// </summary>
         [JsonPropertyName(@"plotGlPixelRatio")]
         public float? PlotGlPixelRatio { get; set;} 
 
         /// <summary>
-        ///     Set function to add the background color (i.e. `layout.paper_color`) to
-        ///     a different container. This function take the graph div as first argument
+        ///     Set function to add the background color (i.e. <c>layout.paper_color</c>)
+        ///     to a different container. This function take the graph div as first argument
         ///     and the current background color as second argument. Alternatively, set
-        ///     to string *opaque* to ensure there is white behind it.
+        ///     to string <c>opaque</c> to ensure there is white behind it.
         /// </summary>
         [JsonPropertyName(@"setBackground")]
         public object SetBackground { get; set;} 
 
         /// <summary>
         ///     Set the URL to topojson used in geo charts. By default, the topojson files
-        ///     are fetched from cdn.plot.ly. For example, set this option to: <path-to-plotly.js>/dist/topojson/
+        ///     are fetched from cdn.plot.ly. For example, set this option to: &lt;path-to-plotly.js&gt;/dist/topojson/
         ///     to render geographical feature using the topojson files that ship with the
         ///     plotly.js module.
         /// </summary>
@@ -245,8 +244,8 @@ namespace Plotly.Blazor
 
         /// <summary>
         ///     Mapbox access token (required to plot mapbox trace types) If using an Mapbox
-        ///     Atlas server, set this option to '' so that plotly.js won't attempt to authenticate
-        ///     to the public Mapbox server.
+        ///     Atlas server, set this option to &#39;&#39; so that plotly.js won&#39;t
+        ///     attempt to authenticate to the public Mapbox server.
         /// </summary>
         [JsonPropertyName(@"mapboxAccessToken")]
         public string MapboxAccessToken { get; set;} 
@@ -280,7 +279,7 @@ namespace Plotly.Blazor
         public object GlobalTransforms { get; set;} 
 
         /// <summary>
-        ///     Which localization should we use? Should be a string like 'en' or 'en-US'.
+        ///     Which localization should we use? Should be a string like <c>en</c> or <c>en-US</c>.
         /// </summary>
         [JsonPropertyName(@"locale")]
         public string Locale { get; set;} 
@@ -289,16 +288,16 @@ namespace Plotly.Blazor
         ///     Localization definitions Locales can be provided either here (specific to
         ///     one chart) or globally by registering them as modules. Should be an object
         ///     of objects {locale: {dictionary: {...}, format: {...}}} {   da: {      
-        ///     dictionary: {'Reset axes': 'Nulstil aksler', ...},       format: {months:
-        ///     [...], shortMonths: [...]}   },   ... } All parts are optional. When looking
-        ///     for translation or format fields, we look first for an exact match in a
-        ///     config locale, then in a registered module. If those fail, we strip off
-        ///     any regionalization ('en-US' -> 'en') and try each (config, registry) again.
-        ///     The final fallback for translation is untranslated (which is US English)
-        ///     and for formats is the base English (the only consequence being the last
-        ///     fallback date format %x is DD/MM/YYYY instead of MM/DD/YYYY). Currently
-        ///     `grouping` and `currency` are ignored for our automatic number formatting,
-        ///     but can be used in custom formats.
+        ///     dictionary: {&#39;Reset axes&#39;: &#39;Nulstil aksler&#39;, ...},     
+        ///      format: {months: [...], shortMonths: [...]}   },   ... } All parts are
+        ///     optional. When looking for translation or format fields, we look first for
+        ///     an exact match in a config locale, then in a registered module. If those
+        ///     fail, we strip off any regionalization (<c>en-US</c> -&gt; <c>en</c>) and
+        ///     try each (config, registry) again. The final fallback for translation is
+        ///     untranslated (which is US English) and for formats is the base English (the
+        ///     only consequence being the last fallback date format %x is DD/MM/YYYY instead
+        ///     of MM/DD/YYYY). Currently <c>grouping</c> and <c>currency</c> are ignored
+        ///     for our automatic number formatting, but can be used in custom formats.
         /// </summary>
         [JsonPropertyName(@"locales")]
         public object Locales { get; set;} 

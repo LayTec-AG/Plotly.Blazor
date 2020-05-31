@@ -9,15 +9,16 @@ namespace Plotly.Blazor.LayoutLib.AnnotationLib
 {
     /// <summary>
     ///     Makes this annotation respond to clicks on the plot. If you click a data
-    ///     point that exactly matches the `x` and `y` values of this annotation, and
-    ///     it is hidden (visible: false), it will appear. In *onoff* mode, you must
-    ///     click the same point again to make it disappear, so if you click multiple
-    ///     points, you can show multiple annotations. In *onout* mode, a click anywhere
-    ///     else in the plot (on another data point or not) will hide this annotation.
-    ///     If you need to show/hide this annotation in response to different `x` or
-    ///     `y` values, you can set `xclick` and/or `yclick`. This is useful for example
-    ///     to label the side of a bar. To label markers though, `standoff` is preferred
-    ///     over `xclick` and `yclick`.
+    ///     point that exactly matches the <c>x</c> and <c>y</c> values of this annotation,
+    ///     and it is hidden (visible: false), it will appear. In <c>onoff</c> mode,
+    ///     you must click the same point again to make it disappear, so if you click
+    ///     multiple points, you can show multiple annotations. In <c>onout</c> mode,
+    ///     a click anywhere else in the plot (on another data point or not) will hide
+    ///     this annotation. If you need to show/hide this annotation in response to
+    ///     different <c>x</c> or <c>y</c> values, you can set <c>xclick</c> and/or
+    ///     <c>yclick</c>. This is useful for example to label the side of a bar. To
+    ///     label markers though, <c>standoff</c> is preferred over <c>xclick</c> and
+    ///     <c>yclick</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

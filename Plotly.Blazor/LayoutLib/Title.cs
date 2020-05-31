@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.TitleLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -15,75 +13,77 @@ namespace Plotly.Blazor.LayoutLib
     public class Title 
     {
         /// <summary>
-        ///     Sets the plot's title. Note that before the existence of `title.text`, the
-        ///     title's contents used to be defined as the `title` attribute itself. This
-        ///     behavior has been deprecated.
+        ///     Sets the plot&#39;s title. Note that before the existence of <c>title.text</c>,
+        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
+        ///     itself. This behavior has been deprecated.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets the title font. Note that the title's font used to be customized by
-        ///     the now deprecated `titlefont` attribute.
+        ///     Sets the title font. Note that the title&#39;s font used to be customized
+        ///     by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Sets the container `x` refers to. *container* spans the entire `width` of
-        ///     the plot. *paper* refers to the width of the plotting area only.
+        ///     Sets the container <c>x</c> refers to. <c>container</c> spans the entire
+        ///     <c>width</c> of the plot. <c>paper</c> refers to the width of the plotting
+        ///     area only.
         /// </summary>
         [JsonPropertyName(@"xref")]
         public Plotly.Blazor.LayoutLib.TitleLib.XrefEnum? Xref { get; set;} 
 
         /// <summary>
-        ///     Sets the container `y` refers to. *container* spans the entire `height`
-        ///     of the plot. *paper* refers to the height of the plotting area only.
+        ///     Sets the container <c>y</c> refers to. <c>container</c> spans the entire
+        ///     <c>height</c> of the plot. <c>paper</c> refers to the height of the plotting
+        ///     area only.
         /// </summary>
         [JsonPropertyName(@"yref")]
         public Plotly.Blazor.LayoutLib.TitleLib.YRefEnum? YRef { get; set;} 
 
         /// <summary>
-        ///     Sets the x position with respect to `xref` in normalized coordinates from
-        ///     *0* (left) to *1* (right).
+        ///     Sets the x position with respect to <c>xref</c> in normalized coordinates
+        ///     from <c>0</c> (left) to <c>1</c> (right).
         /// </summary>
         [JsonPropertyName(@"x")]
         public float? X { get; set;} 
 
         /// <summary>
-        ///     Sets the y position with respect to `yref` in normalized coordinates from
-        ///     *0* (bottom) to *1* (top). *auto* places the baseline of the title onto
-        ///     the vertical center of the top margin.
+        ///     Sets the y position with respect to <c>yref</c> in normalized coordinates
+        ///     from <c>0</c> (bottom) to <c>1</c> (top). <c>auto</c> places the baseline
+        ///     of the title onto the vertical center of the top margin.
         /// </summary>
         [JsonPropertyName(@"y")]
         public float? Y { get; set;} 
 
         /// <summary>
-        ///     Sets the title's horizontal alignment with respect to its x position. *left*
-        ///     means that the title starts at x, *right* means that the title ends at x
-        ///     and *center* means that the title's center is at x. *auto* divides `xref`
-        ///     by three and calculates the `xanchor` value automatically based on the value
-        ///     of `x`.
+        ///     Sets the title&#39;s horizontal alignment with respect to its x position.
+        ///     <c>left</c> means that the title starts at x, <c>right</c> means that the
+        ///     title ends at x and <c>center</c> means that the title&#39;s center is at
+        ///     x. <c>auto</c> divides <c>xref</c> by three and calculates the <c>xanchor</c>
+        ///     value automatically based on the value of <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.TitleLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the title's vertical alignment with respect to its y position. *top*
-        ///     means that the title's cap line is at y, *bottom* means that the title's
-        ///     baseline is at y and *middle* means that the title's midline is at y. *auto*
-        ///     divides `yref` by three and calculates the `yanchor` value automatically
-        ///     based on the value of `y`.
+        ///     Sets the title&#39;s vertical alignment with respect to its y position.
+        ///     <c>top</c> means that the title&#39;s cap line is at y, <c>bottom</c> means
+        ///     that the title&#39;s baseline is at y and <c>middle</c> means that the title&#39;s
+        ///     midline is at y. <c>auto</c> divides <c>yref</c> by three and calculates
+        ///     the <c>yanchor</c> value automatically based on the value of <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.TitleLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the padding of the title. Each padding value only applies when the
-        ///     corresponding `xanchor`/`yanchor` value is set accordingly. E.g. for left
-        ///     padding to take effect, `xanchor` must be set to *left*. The same rule applies
-        ///     if `xanchor`/`yanchor` is determined automatically. Padding is muted if
-        ///     the respective anchor value is *middle*/*center*.
+        ///     corresponding <c>xanchor</c>/<c>yanchor</c> value is set accordingly. E.g.
+        ///     for left padding to take effect, <c>xanchor</c> must be set to <c>left</c>.
+        ///     The same rule applies if <c>xanchor</c>/<c>yanchor</c> is determined automatically.
+        ///     Padding is muted if the respective anchor value is <c>middle</c>/<c>center</c>.
         /// </summary>
         [JsonPropertyName(@"pad")]
         public Plotly.Blazor.LayoutLib.TitleLib.Pad Pad { get; set;} 

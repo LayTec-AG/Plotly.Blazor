@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.ViolinLib.UnselectedLib;
 
 namespace Plotly.Blazor.Traces.ViolinLib
 {

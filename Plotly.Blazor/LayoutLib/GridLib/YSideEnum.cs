@@ -8,9 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.GridLib
 {
     /// <summary>
-    ///     Sets where the y axis labels and titles go. *left* means the very left edge
-    ///     of the grid. *left plot* is the leftmost plot that each y axis is used in.
-    ///     *right* and *right plot* are similar.
+    ///     Sets where the y axis labels and titles go. <c>left</c> means the very left
+    ///     edge of the grid. &#39;left plot&#39; is the leftmost plot that each y axis
+    ///     is used in. <c>right</c> and &#39;right plot&#39; are similar.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

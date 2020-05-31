@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.PolarLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -22,8 +21,8 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Sets angular span of this polar subplot with two angles (in degrees). Sector
-        ///     are assumed to be spanned in the counterclockwise direction with *0* corresponding
-        ///     to rightmost limit of the polar subplot.
+        ///     are assumed to be spanned in the counterclockwise direction with <c>0</c>
+        ///     corresponding to rightmost limit of the polar subplot.
         /// </summary>
         [JsonPropertyName(@"sector")]
         public IList<object> Sector { get; set;} 
@@ -54,17 +53,18 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Determines if the radial axis grid lines and angular axis line are drawn
-        ///     as *circular* sectors or as *linear* (polygon) sectors. Has an effect only
-        ///     when the angular axis has `type` *category*. Note that `radialaxis.angle`
-        ///     is snapped to the angle of the closest vertex when `gridshape` is *circular*
-        ///     (so that radial axis scale is the same as the data scale).
+        ///     as <c>circular</c> sectors or as <c>linear</c> (polygon) sectors. Has an
+        ///     effect only when the angular axis has <c>type</c> <c>category</c>. Note
+        ///     that <c>radialaxis.angle</c> is snapped to the angle of the closest vertex
+        ///     when <c>gridshape</c> is <c>circular</c> (so that radial axis scale is the
+        ///     same as the data scale).
         /// </summary>
         [JsonPropertyName(@"gridshape")]
         public Plotly.Blazor.LayoutLib.PolarLib.GridShapeEnum? GridShape { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in axis attributes, if not overridden
-        ///     in the individual axes. Defaults to `layout.uirevision`.
+        ///     in the individual axes. Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 

@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ParCoordsLib
 {
     /// <summary>
-    ///     Determines whether or not this trace is visible. If *legendonly*, the trace
-    ///     is not drawn, but can appear as a legend item (provided that the legend
+    ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+    ///     trace is not drawn, but can appear as a legend item (provided that the legend
     ///     itself is visible).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

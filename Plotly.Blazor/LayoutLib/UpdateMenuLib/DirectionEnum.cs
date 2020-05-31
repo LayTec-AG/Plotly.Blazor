@@ -9,8 +9,8 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
 {
     /// <summary>
     ///     Determines the direction in which the buttons are laid out, whether in a
-    ///     dropdown menu or a row/column of buttons. For `left` and `up`, the buttons
-    ///     will still appear in left-to-right or top-to-bottom order respectively.
+    ///     dropdown menu or a row/column of buttons. For <c>left</c> and <c>up</c>,
+    ///     the buttons will still appear in left-to-right or top-to-bottom order respectively.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -8,10 +8,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.TreeMapLib
 {
     /// <summary>
-    ///     Determines how the items in `values` are summed. When set to *total*, items
-    ///     in `values` are taken to be value of all its descendants. When set to *remainder*,
-    ///     items in `values` corresponding to the root and the branches sectors are
-    ///     taken to be the extra part not part of the sum of the values at their leaves.
+    ///     Determines how the items in <c>values</c> are summed. When set to <c>total</c>,
+    ///     items in <c>values</c> are taken to be value of all its descendants. When
+    ///     set to <c>remainder</c>, items in <c>values</c> corresponding to the root
+    ///     and the branches sectors are taken to be the extra part not part of the
+    ///     sum of the values at their leaves.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

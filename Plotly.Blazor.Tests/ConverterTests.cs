@@ -102,7 +102,8 @@ namespace Plotly.Blazor.Tests
             serializerOptions = new JsonSerializerOptions
             {
                 IgnoreNullValues = true,
-                PropertyNamingPolicy = null
+                PropertyNamingPolicy = null,
+                Converters = { new DateTimeConverter(), new DateTimeOffsetConverter()}
             };
         }
 
@@ -186,6 +187,21 @@ namespace Plotly.Blazor.Tests
 
             Assert.IsNotNull(abstractProperty.GetProperty("testProperty"));
             Assert.IsNotNull(abstractProperty.GetProperty("testProperty2"));
+        }
+
+        [Test]
+        public void DateTimeConverterTest()
+        {
+            Assert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31), serializerOptions));
+            Assert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31, 12, 0, 0), serializerOptions));
+        }
+
+
+        [Test]
+        public void DateTimeOffsetConverterTest()
+        {
+            Assert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31)), serializerOptions));
+            Assert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31, 12, 0, 0)), serializerOptions));
         }
     }
 }

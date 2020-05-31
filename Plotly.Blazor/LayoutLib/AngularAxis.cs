@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.AngularAxisLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -15,8 +14,8 @@ namespace Plotly.Blazor.LayoutLib
     public class AngularAxis 
     {
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Defines
-        ///     the start and end point of this angular axis.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Defines the start and end point of this angular axis.
         /// </summary>
         [JsonPropertyName(@"range")]
         public IList<object> Range { get; set;} 
@@ -28,57 +27,58 @@ namespace Plotly.Blazor.LayoutLib
         public IList<object> Domain { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Determines
-        ///     whether or not the line bounding this angular axis will be shown on the
-        ///     figure.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Determines whether or not the line bounding this angular axis will be shown
+        ///     on the figure.
         /// </summary>
         [JsonPropertyName(@"showline")]
         public bool? ShowLine { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Determines
-        ///     whether or not the angular axis ticks will feature tick labels.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Determines whether or not the angular axis ticks will feature tick labels.
         /// </summary>
         [JsonPropertyName(@"showticklabels")]
         public bool? ShowTickLabels { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
-        ///     the orientation (from the paper perspective) of the angular axis tick labels.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Sets the orientation (from the paper perspective) of the angular axis tick
+        ///     labels.
         /// </summary>
         [JsonPropertyName(@"tickorientation")]
         public Plotly.Blazor.LayoutLib.AngularAxisLib.TickOrientationEnum? TickOrientation { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
-        ///     the length of the tick lines on this angular axis.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Sets the length of the tick lines on this angular axis.
         /// </summary>
         [JsonPropertyName(@"ticklen")]
         public float? TickleN { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
-        ///     the color of the tick lines on this angular axis.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Sets the color of the tick lines on this angular axis.
         /// </summary>
         [JsonPropertyName(@"tickcolor")]
         public object TickColor { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
-        ///     the length of the tick lines on this angular axis.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Sets the length of the tick lines on this angular axis.
         /// </summary>
         [JsonPropertyName(@"ticksuffix")]
         public string TickSuffix { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
         /// </summary>
         [JsonPropertyName(@"endpadding")]
         public float? EndPadding { get; set;} 
 
         /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Determines
-        ///     whether or not this axis will be visible.
+        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
+        ///     Determines whether or not this axis will be visible.
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 

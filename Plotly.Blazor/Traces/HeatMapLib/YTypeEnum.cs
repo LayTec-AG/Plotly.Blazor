@@ -8,9 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.HeatMapLib
 {
     /// <summary>
-    ///     If *array*, the heatmap&#39;s y coordinates are given by *y* (the default
-    ///     behavior when `y` is provided) If *scaled*, the heatmap&#39;s y coordinates
-    ///     are given by *y0* and *dy* (the default behavior when `y` is not provided)
+    ///     If <c>array</c>, the heatmap&#39;s y coordinates are given by <c>y</c> (the
+    ///     default behavior when <c>y</c> is provided) If <c>scaled</c>, the heatmap&#39;s
+    ///     y coordinates are given by <c>y0</c> and <c>dy</c> (the default behavior
+    ///     when <c>y</c> is not provided)
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

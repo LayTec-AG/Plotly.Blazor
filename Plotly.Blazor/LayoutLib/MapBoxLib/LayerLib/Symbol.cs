@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib;
 
 namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 {
@@ -23,7 +21,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
         /// <summary>
         ///     Sets the symbol icon size (mapbox.layer.layout.icon-size). Has an effect
-        ///     only when `type` is set to *symbol*.
+        ///     only when <c>type</c> is set to <c>symbol</c>.
         /// </summary>
         [JsonPropertyName(@"iconsize")]
         public float? IconSize { get; set;} 
@@ -36,23 +34,24 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
         /// <summary>
         ///     Sets the symbol and/or text placement (mapbox.layer.layout.symbol-placement).
-        ///     If `placement` is *point*, the label is placed where the geometry is located
-        ///     If `placement` is *line*, the label is placed along the line of the geometry
-        ///     If `placement` is *line-center*, the label is placed on the center of the
-        ///     geometry
+        ///     If <c>placement</c> is <c>point</c>, the label is placed where the geometry
+        ///     is located If <c>placement</c> is <c>line</c>, the label is placed along
+        ///     the line of the geometry If <c>placement</c> is <c>line-center</c>, the
+        ///     label is placed on the center of the geometry
         /// </summary>
         [JsonPropertyName(@"placement")]
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.PlacementEnum? Placement { get; set;} 
 
         /// <summary>
         ///     Sets the icon text font (color=mapbox.layer.paint.text-color, size=mapbox.layer.layout.text-size).
-        ///     Has an effect only when `type` is set to *symbol*.
+        ///     Has an effect only when <c>type</c> is set to <c>symbol</c>.
         /// </summary>
         [JsonPropertyName(@"textfont")]
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.TextFont TextFont { get; set;} 
 
         /// <summary>
-        ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
+        ///     Sets the positions of the <c>text</c> elements with respects to the (x,y)
+        ///     coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.TextPositionEnum? TextPosition { get; set;} 

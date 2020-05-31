@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.SliderLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -33,16 +32,16 @@ namespace Plotly.Blazor.LayoutLib
         public IList<Plotly.Blazor.LayoutLib.SliderLib.Step> Steps { get; set;} 
 
         /// <summary>
-        ///     Determines whether this slider length is set in units of plot *fraction*
-        ///     or in *pixels. Use `len` to set the value.
+        ///     Determines whether this slider length is set in units of plot <c>fraction</c>
+        ///     or in *pixels. Use <c>len</c> to set the value.
         /// </summary>
         [JsonPropertyName(@"lenmode")]
         public Plotly.Blazor.LayoutLib.SliderLib.LenModeEnum? LenMode { get; set;} 
 
         /// <summary>
         ///     Sets the length of the slider This measure excludes the padding of both
-        ///     ends. That is, the slider's length is this length minus the padding on both
-        ///     ends.
+        ///     ends. That is, the slider&#39;s length is this length minus the padding
+        ///     on both ends.
         /// </summary>
         [JsonPropertyName(@"len")]
         public float? Len { get; set;} 
@@ -60,8 +59,9 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.SliderLib.Pad Pad { get; set;} 
 
         /// <summary>
-        ///     Sets the slider's horizontal position anchor. This anchor binds the `x`
-        ///     position to the *left*, *center* or *right* of the range selector.
+        ///     Sets the slider&#39;s horizontal position anchor. This anchor binds the
+        ///     <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c> of the
+        ///     range selector.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.SliderLib.XAnchorEnum? XAnchor { get; set;} 
@@ -73,8 +73,9 @@ namespace Plotly.Blazor.LayoutLib
         public float? Y { get; set;} 
 
         /// <summary>
-        ///     Sets the slider's vertical position anchor This anchor binds the `y` position
-        ///     to the *top*, *middle* or *bottom* of the range selector.
+        ///     Sets the slider&#39;s vertical position anchor This anchor binds the <c>y</c>
+        ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the range
+        ///     selector.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.SliderLib.YAnchorEnum? YAnchor { get; set;} 
@@ -148,9 +149,10 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with `templateitemname`
-        ///     matching this `name` alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). Has no effect outside of a template.
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -158,11 +160,11 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with `templateitemname`
-        ///     matching its `name`, alongside your modifications (including `visible: false`
-        ///     or `enabled: false` to hide it). If there is no template or no matching
-        ///     item, this item will be hidden unless you explicitly show it with `visible:
-        ///     true`.
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 

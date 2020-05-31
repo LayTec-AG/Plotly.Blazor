@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.Traces.HistogramLib.CumulativeLib;
 
 namespace Plotly.Blazor.Traces.HistogramLib
 {
@@ -16,18 +14,18 @@ namespace Plotly.Blazor.Traces.HistogramLib
     {
         /// <summary>
         ///     If true, display the cumulative distribution by summing the binned values.
-        ///     Use the `direction` and `centralbin` attributes to tune the accumulation
-        ///     method. Note: in this mode, the *density* `histnorm` settings behave the
-        ///     same as their equivalents without *density*: ** and *density* both rise
-        ///     to the number of data points, and *probability* and *probability density*
-        ///     both rise to the number of sample points.
+        ///     Use the <c>direction</c> and <c>centralbin</c> attributes to tune the accumulation
+        ///     method. Note: in this mode, the <c>density</c> <c>histnorm</c> settings
+        ///     behave the same as their equivalents without <c>density</c>: *&#39; and
+        ///     <c>density</c> both rise to the number of data points, and <c>probability</c>
+        ///     and &#39;probability density* both rise to the number of sample points.
         /// </summary>
         [JsonPropertyName(@"enabled")]
         public bool? Enabled { get; set;} 
 
         /// <summary>
-        ///     Only applies if cumulative is enabled. If *increasing* (default) we sum
-        ///     all prior bins, so the result increases from left to right. If *decreasing*
+        ///     Only applies if cumulative is enabled. If <c>increasing</c> (default) we
+        ///     sum all prior bins, so the result increases from left to right. If <c>decreasing</c>
         ///     we sum later bins so the result decreases from left to right.
         /// </summary>
         [JsonPropertyName(@"direction")]
@@ -36,9 +34,9 @@ namespace Plotly.Blazor.Traces.HistogramLib
         /// <summary>
         ///     Only applies if cumulative is enabled. Sets whether the current bin is included,
         ///     excluded, or has half of its value included in the current cumulative value.
-        ///     *include* is the default for compatibility with various other tools, however
-        ///     it introduces a half-bin bias to the results. *exclude* makes the opposite
-        ///     half-bin bias, and *half* removes it.
+        ///     <c>include</c> is the default for compatibility with various other tools,
+        ///     however it introduces a half-bin bias to the results. <c>exclude</c> makes
+        ///     the opposite half-bin bias, and <c>half</c> removes it.
         /// </summary>
         [JsonPropertyName(@"currentbin")]
         public Plotly.Blazor.Traces.HistogramLib.CumulativeLib.CurrentBinEnum? CurrentBin { get; set;} 

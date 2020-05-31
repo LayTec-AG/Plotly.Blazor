@@ -9,11 +9,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterPolarGlLib
 {
     /// <summary>
-    ///     Determines the drawing mode for this scatter trace. If the provided `mode`
-    ///     includes *text* then the `text` elements appear at the coordinates. Otherwise,
-    ///     the `text` elements appear on hover. If there are less than 20 points and
-    ///     the trace is not stacked then the default is *lines+markers*. Otherwise,
-    ///     *lines*.
+    ///     Determines the drawing mode for this scatter trace. If the provided <c>mode</c>
+    ///     includes <c>text</c> then the <c>text</c> elements appear at the coordinates.
+    ///     Otherwise, the <c>text</c> elements appear on hover. If there are less than
+    ///     20 points and the trace is not stacked then the default is <c>lines+markers</c>.
+    ///     Otherwise, <c>lines</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [Flags]

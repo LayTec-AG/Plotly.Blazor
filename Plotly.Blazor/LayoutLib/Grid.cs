@@ -4,7 +4,6 @@
 
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.GridLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -15,10 +14,10 @@ namespace Plotly.Blazor.LayoutLib
     public class Grid 
     {
         /// <summary>
-        ///     The number of rows in the grid. If you provide a 2D `subplots` array or
-        ///     a `yaxes` array, its length is used as the default. But it's also possible
-        ///     to have a different length, if you want to leave a row at the end for non-cartesian
-        ///     subplots.
+        ///     The number of rows in the grid. If you provide a 2D <c>subplots</c> array
+        ///     or a <c>yaxes</c> array, its length is used as the default. But it&#39;s
+        ///     also possible to have a different length, if you want to leave a row at
+        ///     the end for non-cartesian subplots.
         /// </summary>
         [JsonPropertyName(@"rows")]
         public int? Rows { get; set;} 
@@ -31,10 +30,10 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.GridLib.RowOrderEnum? RowOrder { get; set;} 
 
         /// <summary>
-        ///     The number of columns in the grid. If you provide a 2D `subplots` array,
-        ///     the length of its longest row is used as the default. If you give an `xaxes`
-        ///     array, its length is used as the default. But it's also possible to have
-        ///     a different length, if you want to leave a row at the end for non-cartesian
+        ///     The number of columns in the grid. If you provide a 2D <c>subplots</c> array,
+        ///     the length of its longest row is used as the default. If you give an <c>xaxes</c>
+        ///     array, its length is used as the default. But it&#39;s also possible to
+        ///     have a different length, if you want to leave a row at the end for non-cartesian
         ///     subplots.
         /// </summary>
         [JsonPropertyName(@"columns")]
@@ -42,41 +41,41 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Used for freeform grids, where some axes may be shared across subplots but
-        ///     others are not. Each entry should be a cartesian subplot id, like *xy* or
-        ///     *x3y2*, or ** to leave that cell empty. You may reuse x axes within the
-        ///     same column, and y axes within the same row. Non-cartesian subplots and
-        ///     traces that support `domain` can place themselves in this grid separately
-        ///     using the `gridcell` attribute.
+        ///     others are not. Each entry should be a cartesian subplot id, like <c>xy</c>
+        ///     or <c>x3y2</c>, or ** to leave that cell empty. You may reuse x axes within
+        ///     the same column, and y axes within the same row. Non-cartesian subplots
+        ///     and traces that support <c>domain</c> can place themselves in this grid
+        ///     separately using the <c>gridcell</c> attribute.
         /// </summary>
         [JsonPropertyName(@"subplots")]
         public IList<object> Subplots { get; set;} 
 
         /// <summary>
-        ///     Used with `yaxes` when the x and y axes are shared across columns and rows.
-        ///     Each entry should be an x axis id like *x*, *x2*, etc., or ** to not put
-        ///     an x axis in that column. Entries other than ** must be unique. Ignored
-        ///     if `subplots` is present. If missing but `yaxes` is present, will generate
-        ///     consecutive IDs.
+        ///     Used with <c>yaxes</c> when the x and y axes are shared across columns and
+        ///     rows. Each entry should be an x axis id like <c>x</c>, <c>x2</c>, etc.,
+        ///     or *&#39; to not put an x axis in that column. Entries other than &#39;*
+        ///     must be unique. Ignored if <c>subplots</c> is present. If missing but <c>yaxes</c>
+        ///     is present, will generate consecutive IDs.
         /// </summary>
         [JsonPropertyName(@"xaxes")]
         public IList<object> XAxes { get; set;} 
 
         /// <summary>
-        ///     Used with `yaxes` when the x and y axes are shared across columns and rows.
-        ///     Each entry should be an y axis id like *y*, *y2*, etc., or ** to not put
-        ///     a y axis in that row. Entries other than ** must be unique. Ignored if `subplots`
-        ///     is present. If missing but `xaxes` is present, will generate consecutive
-        ///     IDs.
+        ///     Used with <c>yaxes</c> when the x and y axes are shared across columns and
+        ///     rows. Each entry should be an y axis id like <c>y</c>, <c>y2</c>, etc.,
+        ///     or *&#39; to not put a y axis in that row. Entries other than &#39;* must
+        ///     be unique. Ignored if <c>subplots</c> is present. If missing but <c>xaxes</c>
+        ///     is present, will generate consecutive IDs.
         /// </summary>
         [JsonPropertyName(@"yaxes")]
         public IList<object> YAxes { get; set;} 
 
         /// <summary>
-        ///     If no `subplots`, `xaxes`, or `yaxes` are given but we do have `rows` and
-        ///     `columns`, we can generate defaults using consecutive axis IDs, in two ways:
-        ///     *coupled* gives one x axis per column and one y axis per row. *independent*
-        ///     uses a new xy pair for each cell, left-to-right across each row then iterating
-        ///     rows according to `roworder`.
+        ///     If no <c>subplots</c>, <c>xaxes</c>, or <c>yaxes</c> are given but we do
+        ///     have <c>rows</c> and <c>columns</c>, we can generate defaults using consecutive
+        ///     axis IDs, in two ways: <c>coupled</c> gives one x axis per column and one
+        ///     y axis per row. <c>independent</c> uses a new xy pair for each cell, left-to-right
+        ///     across each row then iterating rows according to <c>roworder</c>.
         /// </summary>
         [JsonPropertyName(@"pattern")]
         public Plotly.Blazor.LayoutLib.GridLib.PatternEnum? Pattern { get; set;} 
@@ -104,17 +103,17 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.GridLib.Domain Domain { get; set;} 
 
         /// <summary>
-        ///     Sets where the x axis labels and titles go. *bottom* means the very bottom
-        ///     of the grid. *bottom plot* is the lowest plot that each x axis is used in.
-        ///     *top* and *top plot* are similar.
+        ///     Sets where the x axis labels and titles go. <c>bottom</c> means the very
+        ///     bottom of the grid. &#39;bottom plot&#39; is the lowest plot that each x
+        ///     axis is used in. <c>top</c> and &#39;top plot&#39; are similar.
         /// </summary>
         [JsonPropertyName(@"xside")]
         public Plotly.Blazor.LayoutLib.GridLib.XSideEnum? XSide { get; set;} 
 
         /// <summary>
-        ///     Sets where the y axis labels and titles go. *left* means the very left edge
-        ///     of the grid. *left plot* is the leftmost plot that each y axis is used in.
-        ///     *right* and *right plot* are similar.
+        ///     Sets where the y axis labels and titles go. <c>left</c> means the very left
+        ///     edge of the grid. &#39;left plot&#39; is the leftmost plot that each y axis
+        ///     is used in. <c>right</c> and &#39;right plot&#39; are similar.
         /// </summary>
         [JsonPropertyName(@"yside")]
         public Plotly.Blazor.LayoutLib.GridLib.YSideEnum? YSide { get; set;} 

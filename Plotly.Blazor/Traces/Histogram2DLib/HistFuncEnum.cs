@@ -8,11 +8,11 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.Histogram2DLib
 {
     /// <summary>
-    ///     Specifies the binning function used for this histogram trace. If *count*,
+    ///     Specifies the binning function used for this histogram trace. If <c>count</c>,
     ///     the histogram values are computed by counting the number of values lying
-    ///     inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are
-    ///     computed using the sum, the average, the minimum or the maximum of the values
-    ///     lying inside each bin respectively.
+    ///     inside each bin. If <c>sum</c>, <c>avg</c>, <c>min</c>, <c>max</c>, the
+    ///     histogram values are computed using the sum, the average, the minimum or
+    ///     the maximum of the values lying inside each bin respectively.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

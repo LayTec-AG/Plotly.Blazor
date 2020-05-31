@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
 {
     /// <summary>
-    ///     Sets the format unit of the formatted *theta* values. Has an effect only
-    ///     when `angularaxis.type` is *linear*.
+    ///     Sets the format unit of the formatted <c>theta</c> values. Has an effect
+    ///     only when <c>angularaxis.type</c> is <c>linear</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

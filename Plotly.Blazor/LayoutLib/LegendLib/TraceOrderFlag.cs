@@ -9,12 +9,12 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.LegendLib
 {
     /// <summary>
-    ///     Determines the order at which the legend items are displayed. If *normal*,
+    ///     Determines the order at which the legend items are displayed. If <c>normal</c>,
     ///     the items are displayed top-to-bottom in the same order as the input data.
-    ///     If *reversed*, the items are displayed in the opposite order as *normal*.
-    ///     If *grouped*, the items are displayed in groups (when a trace `legendgroup`
-    ///     is provided). if *grouped+reversed*, the items are displayed in the opposite
-    ///     order as *grouped*.
+    ///     If <c>reversed</c>, the items are displayed in the opposite order as <c>normal</c>.
+    ///     If <c>grouped</c>, the items are displayed in groups (when a trace <c>legendgroup</c>
+    ///     is provided). if <c>grouped+reversed</c>, the items are displayed in the
+    ///     opposite order as <c>grouped</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [Flags]

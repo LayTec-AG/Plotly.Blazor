@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.LegendLib.TitleLib;
 
 namespace Plotly.Blazor.LayoutLib.LegendLib
 {
@@ -21,16 +19,16 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets this legend's title font.
+        ///     Sets this legend&#39;s title font.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Determines the location of legend's title with respect to the legend items.
-        ///     Defaulted to *top* with `orientation` is *h*. Defaulted to *left* with `orientation`
-        ///     is *v*. The *top left* options could be used to expand legend area in both
-        ///     x and y sides.
+        ///     Determines the location of legend&#39;s title with respect to the legend
+        ///     items. Defaulted to <c>top</c> with <c>orientation</c> is <c>h</c>. Defaulted
+        ///     to <c>left</c> with <c>orientation</c> is <c>v</c>. The &#39;top left&#39;
+        ///     options could be used to expand legend area in both x and y sides.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.SideEnum? Side { get; set;} 

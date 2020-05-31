@@ -3,7 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.OhlcLib
 {
@@ -15,16 +14,17 @@ namespace Plotly.Blazor.Traces.OhlcLib
     {
         /// <summary>
         ///     [object Object] Note that this style setting can also be set per direction
-        ///     via `increasing.line.width` and `decreasing.line.width`.
+        ///     via <c>increasing.line.width</c> and <c>decreasing.line.width</c>.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
 
         /// <summary>
-        ///     Sets the dash style of lines. Set to a dash type string (*solid*, *dot*,
-        ///     *dash*, *longdash*, *dashdot*, or *longdashdot*) or a dash length list in
-        ///     px (eg *5px,10px,2px,2px*). Note that this style setting can also be set
-        ///     per direction via `increasing.line.dash` and `decreasing.line.dash`.
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>). Note that this style
+        ///     setting can also be set per direction via <c>increasing.line.dash</c> and
+        ///     <c>decreasing.line.dash</c>.
         /// </summary>
         [JsonPropertyName(@"dash")]
         public string Dash { get; set;} 

@@ -8,8 +8,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterCarpetLib.LineLib
 {
     /// <summary>
-    ///     Determines the line shape. With *spline* the lines are drawn using spline
-    ///     interpolation. The other available values correspond to step-wise line shapes.
+    ///     Determines the line shape. With <c>spline</c> the lines are drawn using
+    ///     spline interpolation. The other available values correspond to step-wise
+    ///     line shapes.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

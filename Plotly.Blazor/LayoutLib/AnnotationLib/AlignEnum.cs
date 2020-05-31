@@ -8,10 +8,10 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.AnnotationLib
 {
     /// <summary>
-    ///     Sets the horizontal alignment of the `text` within the box. Has an effect
-    ///     only if `text` spans two or more lines (i.e. `text` contains one or more
-    ///     &lt;br&gt; HTML tags) or if an explicit width is set to override the text
-    ///     width.
+    ///     Sets the horizontal alignment of the <c>text</c> within the box. Has an
+    ///     effect only if <c>text</c> spans two or more lines (i.e. <c>text</c> contains
+    ///     one or more &lt;br&gt; HTML tags) or if an explicit width is set to override
+    ///     the text width.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

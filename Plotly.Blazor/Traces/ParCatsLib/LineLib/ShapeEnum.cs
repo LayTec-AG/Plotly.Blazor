@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ParCatsLib.LineLib
 {
     /// <summary>
-    ///     Sets the shape of the paths. If `linear`, paths are composed of straight
-    ///     lines. If `hspline`, paths are composed of horizontal curved splines
+    ///     Sets the shape of the paths. If <c>linear</c>, paths are composed of straight
+    ///     lines. If <c>hspline</c>, paths are composed of horizontal curved splines
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

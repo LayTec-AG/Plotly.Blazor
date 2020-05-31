@@ -10,9 +10,9 @@ namespace Plotly.Blazor.Traces.ScatterLib
 {
     /// <summary>
     ///     Do the hover effects highlight individual points (markers or line points)
-    ///     or do they highlight filled regions? If the fill is *toself* or *tonext*
-    ///     and there are no markers or text, then the default is *fills*, otherwise
-    ///     it is *points*.
+    ///     or do they highlight filled regions? If the fill is <c>toself</c> or <c>tonext</c>
+    ///     and there are no markers or text, then the default is <c>fills</c>, otherwise
+    ///     it is <c>points</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [Flags]

@@ -3,8 +3,6 @@
 */
 
 using System.Text.Json.Serialization;
-using System.Collections.Generic;
-using Plotly.Blazor.LayoutLib.LegendLib;
 
 namespace Plotly.Blazor.LayoutLib
 {
@@ -15,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib
     public class Legend 
     {
         /// <summary>
-        ///     Sets the legend background color. Defaults to `layout.paper_bgcolor`.
+        ///     Sets the legend background color. Defaults to <c>layout.paper_bgcolor</c>.
         /// </summary>
         [JsonPropertyName(@"bgcolor")]
         public object BgColor { get; set;} 
@@ -45,12 +43,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
-        ///     Determines the order at which the legend items are displayed. If *normal*,
+        ///     Determines the order at which the legend items are displayed. If <c>normal</c>,
         ///     the items are displayed top-to-bottom in the same order as the input data.
-        ///     If *reversed*, the items are displayed in the opposite order as *normal*.
-        ///     If *grouped*, the items are displayed in groups (when a trace `legendgroup`
-        ///     is provided). if *grouped+reversed*, the items are displayed in the opposite
-        ///     order as *grouped*.
+        ///     If <c>reversed</c>, the items are displayed in the opposite order as <c>normal</c>.
+        ///     If <c>grouped</c>, the items are displayed in groups (when a trace <c>legendgroup</c>
+        ///     is provided). if <c>grouped+reversed</c>, the items are displayed in the
+        ///     opposite order as <c>grouped</c>.
         /// </summary>
         [JsonPropertyName(@"traceorder")]
         public Plotly.Blazor.LayoutLib.LegendLib.TraceOrderFlag? TraceOrder { get; set;} 
@@ -62,68 +60,73 @@ namespace Plotly.Blazor.LayoutLib
         public float? TraceGroupGap { get; set;} 
 
         /// <summary>
-        ///     Determines if the legend items symbols scale with their corresponding *trace*
-        ///     attributes or remain *constant* independent of the symbol size on the graph.
+        ///     Determines if the legend items symbols scale with their corresponding <c>trace</c>
+        ///     attributes or remain <c>constant</c> independent of the symbol size on the
+        ///     graph.
         /// </summary>
         [JsonPropertyName(@"itemsizing")]
         public Plotly.Blazor.LayoutLib.LegendLib.ItemSizingEnum? ItemSizing { get; set;} 
 
         /// <summary>
-        ///     Determines the behavior on legend item click. *toggle* toggles the visibility
-        ///     of the item clicked on the graph. *toggleothers* makes the clicked item
-        ///     the sole visible item on the graph. *false* disable legend item click interactions.
+        ///     Determines the behavior on legend item click. <c>toggle</c> toggles the
+        ///     visibility of the item clicked on the graph. <c>toggleothers</c> makes the
+        ///     clicked item the sole visible item on the graph. <c>false</c> disable legend
+        ///     item click interactions.
         /// </summary>
         [JsonPropertyName(@"itemclick")]
         public Plotly.Blazor.LayoutLib.LegendLib.ItemClickEnum? ItemClick { get; set;} 
 
         /// <summary>
-        ///     Determines the behavior on legend item double-click. *toggle* toggles the
-        ///     visibility of the item clicked on the graph. *toggleothers* makes the clicked
-        ///     item the sole visible item on the graph. *false* disable legend item double-click
-        ///     interactions.
+        ///     Determines the behavior on legend item double-click. <c>toggle</c> toggles
+        ///     the visibility of the item clicked on the graph. <c>toggleothers</c> makes
+        ///     the clicked item the sole visible item on the graph. <c>false</c> disable
+        ///     legend item double-click interactions.
         /// </summary>
         [JsonPropertyName(@"itemdoubleclick")]
         public Plotly.Blazor.LayoutLib.LegendLib.ItemDoubleClickEnum? ItemDoubleClick { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the legend. Defaults
-        ///     to *1.02* for vertical legends and defaults to *0* for horizontal legends.
+        ///     to <c>1.02</c> for vertical legends and defaults to <c>0</c> for horizontal
+        ///     legends.
         /// </summary>
         [JsonPropertyName(@"x")]
         public float? X { get; set;} 
 
         /// <summary>
-        ///     Sets the legend's horizontal position anchor. This anchor binds the `x`
-        ///     position to the *left*, *center* or *right* of the legend. Value *auto*
-        ///     anchors legends to the right for `x` values greater than or equal to 2/3,
-        ///     anchors legends to the left for `x` values less than or equal to 1/3 and
-        ///     anchors legends with respect to their center otherwise.
+        ///     Sets the legend&#39;s horizontal position anchor. This anchor binds the
+        ///     <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c> of the
+        ///     legend. Value <c>auto</c> anchors legends to the right for <c>x</c> values
+        ///     greater than or equal to 2/3, anchors legends to the left for <c>x</c> values
+        ///     less than or equal to 1/3 and anchors legends with respect to their center
+        ///     otherwise.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.LegendLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the y position (in normalized coordinates) of the legend. Defaults
-        ///     to *1* for vertical legends, defaults to *-0.1* for horizontal legends on
-        ///     graphs w/o range sliders and defaults to *1.1* for horizontal legends on
-        ///     graph with one or multiple range sliders.
+        ///     to <c>1</c> for vertical legends, defaults to <c>-0.1</c> for horizontal
+        ///     legends on graphs w/o range sliders and defaults to <c>1.1</c> for horizontal
+        ///     legends on graph with one or multiple range sliders.
         /// </summary>
         [JsonPropertyName(@"y")]
         public float? Y { get; set;} 
 
         /// <summary>
-        ///     Sets the legend's vertical position anchor This anchor binds the `y` position
-        ///     to the *top*, *middle* or *bottom* of the legend. Value *auto* anchors legends
-        ///     at their bottom for `y` values less than or equal to 1/3, anchors legends
-        ///     to at their top for `y` values greater than or equal to 2/3 and anchors
-        ///     legends with respect to their middle otherwise.
+        ///     Sets the legend&#39;s vertical position anchor This anchor binds the <c>y</c>
+        ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the legend.
+        ///     Value <c>auto</c> anchors legends at their bottom for <c>y</c> values less
+        ///     than or equal to 1/3, anchors legends to at their top for <c>y</c> values
+        ///     greater than or equal to 2/3 and anchors legends with respect to their middle
+        ///     otherwise.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.LegendLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Controls persistence of legend-driven changes in trace and pie label visibility.
-        ///     Defaults to `layout.uirevision`.
+        ///     Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 

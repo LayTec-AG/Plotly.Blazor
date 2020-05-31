@@ -1,4 +1,4 @@
-# Plotly.Blazor (WORK IN PROGRESS!) ![Build & Deploy](https://github.com/LayTec-AG/Plotly.Blazor/workflows/Build%20&%20Deploy/badge.svg)
+# Plotly.Blazor ![Build & Deploy](https://github.com/LayTec-AG/Plotly.Blazor/workflows/Build%20&%20Deploy/badge.svg)
 This library packages the well-known charting library plotly.js into a component that can be used in a Blazor project. 
 
 ## Getting Started
@@ -20,13 +20,13 @@ Using Package Manager
 Install-Package Plotly.Blazor -AllowPrereleaseVersions
 ```
 
-Using .NET CLI (e.g. for version 0.1.0-alpha.48)
+Using .NET CLI (e.g. for version 0.1.0-alpha.64)
 ```
-dotnet add package Plotly.Blazor --version 0.1.0-alpha.48
+dotnet add package Plotly.Blazor --version 0.1.0-alpha.64
 ```
 
 
-**Add the following lines to your index.html or _Host.cshtml below the blazor.webassembly.js**
+**Add the following lines to your index.html or _Host.cshtml below or above the blazor.webassembly.js**
 
 Info: *These files are already included in the NuGet Package!*
 
@@ -43,8 +43,6 @@ Info: *These files are already included in the NuGet Package!*
 ```
 @using Plotly.Blazor
 @using Plotly.Blazor.Traces
-@using Plotly.Blazor.Traces.Scatter
-@using Plotly.Blazor.Examples.Common
 ```
 
 **Now we're ready to go! :tada:**
@@ -66,13 +64,15 @@ Info: *The chart reference is important so that we can update the chart later.*
     PlotlyChart chart;
     Config config = new Config();
     Layout layout = new Layout();
-    List<Scatter> data = new List<Scatter>
+    List<ITrace> data = new List<ITrace>
     {
         new Scatter
         {
-            Name = "Trace1",
-            Mode = ScatterMode.Lines
-        }.GenerateData(0, 100)
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            X = new object[]{1,2,3},
+            Y = new object[]{1,2,3}
+        }
     };
 }
 ```
@@ -80,8 +80,9 @@ Info: *The chart reference is important so that we can update the chart later.*
 **Generate some additional data for your plot.**
 
 ```
-private async Task AddData(Scatter trace, int count = 100)
+private async Task AddData(int count = 100)
 {
+    if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
     var (x, y) = Helper.GenerateData(trace.X.Count + 1, trace.X.Count + 1 + count);
 
     trace.X.AddRange(x);
@@ -91,7 +92,7 @@ private async Task AddData(Scatter trace, int count = 100)
 }
 ```
 
-**What it might look like!  (example from the repository)**
+**What it might look like!**
 
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 

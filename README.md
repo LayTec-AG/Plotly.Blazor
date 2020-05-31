@@ -1,4 +1,4 @@
-# Plotly.Blazor ![Build & Deploy](https://github.com/LayTec-AG/Plotly.Blazor/workflows/Build%20&%20Deploy/badge.svg)
+# Plotly.Blazor [![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build%20&%20Deploy)](https://www.nuget.org/packages/Plotly.Blazor/) [![NuGet Status](https://img.shields.io/nuget/vpre/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
 This library packages the well-known charting library plotly.js into a component that can be used in a Blazor project. 
 
 ## Getting Started
@@ -20,9 +20,9 @@ Using Package Manager
 Install-Package Plotly.Blazor -AllowPrereleaseVersions
 ```
 
-Using .NET CLI (e.g. for version 0.1.0-alpha.64)
+Using .NET CLI (e.g. for version 0.1.0-alpha.71)
 ```
-dotnet add package Plotly.Blazor --version 0.1.0-alpha.64
+dotnet add package Plotly.Blazor --version 0.1.0-alpha.71
 ```
 
 

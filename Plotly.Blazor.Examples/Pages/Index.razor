@@ -1,11 +1,11 @@
 ﻿@page "/"
-@using Plotly.Blazor.Traces.Scatter
 @using System.Diagnostics
+@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.YAxisLib
+@using Plotly.Blazor.Traces.ScatterLib
+@using Title = Plotly.Blazor.LayoutLib.YAxisLib.Title
 
-
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<h1>Scatter Chart</h1>
 
 <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
 <button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
@@ -22,36 +22,41 @@ Welcome to your new app.
     };
     Layout layout = new Layout
     {
-        Title = "Test"
+        Title = new LayoutLib.Title()
+        {
+            Text = "Test"
+        },
+        YAxis = new List<YAxis>
+{
+            new YAxis
+            {
+                Title = new Title
+                {
+                    Text = "Scatter Unit"
+                }
+            }
+        }
     };
 
-    List<Scatter> data = new List<Scatter>
+    List<ITrace> data = new List<ITrace>
 {
-        new Scatter
-        {
-            Name = "Trace1",
-            Mode = ScatterMode.Lines
-        }.GenerateData(0, 100),
-        new Scatter
-        {
-            Name = "Trace2",
-            Mode = ScatterMode.Lines | ScatterMode.Markers
-        }.GenerateData(0, 100, GenerateMethod.Cos)
-    };
+    new Scatter
+    {
+        Name = "ScatterTrace",
+        Mode = ModeFlag.Lines | ModeFlag.Markers,
+        X = new List<object>(),
+        Y = new List<object>()
+    }
+};
 
     private async Task AddData(int count = 100)
     {
-        if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
-        if (!(chart.Data.ElementAt(1) is Scatter plot2)) return;
+        if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
 
-        var (x, y) = Helper.GenerateData(plot.X.Count + 1, plot.X.Count + 1 + count);
-        var (x2, y2) = Helper.GenerateData(plot2.X.Count + 1, plot2.X.Count + 1 + count, GenerateMethod.Cos);
+        var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
 
-        plot.X.AddRange(x);
-        plot.Y.AddRange(y);
-
-        plot2.X.AddRange(x2);
-        plot2.Y.AddRange(y2);
+        scatter.X.AddRange(x);
+        scatter.Y.AddRange(y);
 
         var stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -63,14 +68,18 @@ Welcome to your new app.
     private async Task Clear()
     {
         if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
-        if (!(chart.Data.ElementAt(1) is Scatter plot2)) return;
 
         plot.X.Clear();
         plot.Y.Clear();
 
-        plot2.X.Clear();
-        plot2.Y.Clear();
-
         await chart.Update();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await AddData();
+        }
     }
 }

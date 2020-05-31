@@ -1,8 +1,8 @@
 ﻿@page "/candlestick"
-@using Plotly.Blazor.Traces.CandlestickLib
-@using Title = Plotly.Blazor.LayoutLib.Title
 @using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.XAxisLib
+@using Title = Plotly.Blazor.LayoutLib.Title
+@using Plotly.Blazor.Traces.CandlestickLib
 
 <h1>Candlestick Chart</h1>
 
@@ -33,7 +33,7 @@
             Text = "Candlestick"
         },
         XAxis = new List<XAxis>
-    {
+{
             new XAxis
             {
                 AutoRange = AutoRangeEnum.True,
@@ -43,7 +43,7 @@
                 {
                     Range = new object[]{ "2017-01-03 12:00", "2017-02-15 12:00" }
                 },
-                Title = new LayoutLib.XAxisLib.Title
+                Title = new Plotly.Blazor.LayoutLib.XAxisLib.Title
                 {
                     Text = "Date"
                 },
@@ -51,13 +51,13 @@
             }
         },
         YAxis = new List<YAxis>()
-    {
+{
             new YAxis
             {
-                AutoRange = LayoutLib.YAxisLib.AutoRangeEnum.True,
+                AutoRange = Plotly.Blazor.LayoutLib.YAxisLib.AutoRangeEnum.True,
                 Domain = new object[]{0, 1},
                 Range = new object[]{ 114.609999778, 137.410004222 },
-                Type = LayoutLib.YAxisLib.TypeEnum.Linear
+                Type = Plotly.Blazor.LayoutLib.YAxisLib.TypeEnum.Linear
             }
         }
     };
@@ -78,7 +78,7 @@
             High = new object[]{ 116.510002, 116.860001, 118.160004, 119.43, 119.379997, 119.93, 119.300003, 119.620003, 120.239998, 120.5, 120.089996, 120.449997, 120.809998, 120.099998, 122.099998, 122.440002, 122.349998, 121.629997, 121.389999, 130.490005, 129.389999, 129.190002, 130.5, 132.089996, 132.220001, 132.449997, 132.940002, 133.820007, 135.089996, 136.270004 },
             Increasing = new Increasing
             {
-                Line = new Traces.CandlestickLib.IncreasingLib.Line
+                Line = new Plotly.Blazor.Traces.CandlestickLib.IncreasingLib.Line
                 {
                     Color = "rgba(31,119,180,1)"
                 }

@@ -70,8 +70,8 @@ Info: *The chart reference is important so that we can update the chart later.*
         {
             Name = "ScatterTrace",
             Mode = ModeFlag.Lines | ModeFlag.Markers,
-            X = new object[]{1,2,3},
-            Y = new object[]{1,2,3}
+            X = new List<object>{1,2,3},
+            Y = new List<object>{1,2,3}
         }
     };
 }

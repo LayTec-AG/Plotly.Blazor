@@ -9,7 +9,7 @@ on:
       - develop
     paths:
       - 'Plotly.Blazor/**'
-      - 'Plotly.Blazor.Example/**'
+      - 'Plotly.Blazor.Examples/**'
     
 env:
   AZURE_WEBAPP_PACKAGE_PATH: 'Plotly.Blazor.Examples'      # set this to the path to your web app project, defaults to the repository root

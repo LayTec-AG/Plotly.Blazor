@@ -58,7 +58,7 @@ namespace Plotly.Blazor.Traces.PointCloudLib
         ///     Gets or sets the Border.
         /// </summary>
         [JsonPropertyName(@"border")]
-        public Border Border { get; set;} 
+        public Plotly.Blazor.Traces.PointCloudLib.MarkerLib.Border Border { get; set;} 
 
     }
 }

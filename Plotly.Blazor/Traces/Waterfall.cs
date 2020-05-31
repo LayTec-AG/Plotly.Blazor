@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -103,20 +103,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -222,14 +222,14 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on the graph. In the case of having
         ///     multiple waterfalls, totals are computed separately (per trace).
         /// </summary>
         [JsonPropertyName(@"textinfo")]
-        public TextInfoFlag? TextInfo { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.TextInfoFlag? TextInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information text that appear on points.
@@ -265,14 +265,14 @@ namespace Plotly.Blazor.Traces
         ///     no bar is stacked on this one the text is moved outside.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Determines if texts are kept at center or start/end points in `textposition`
         ///     *inside* mode.
         /// </summary>
         [JsonPropertyName(@"insidetextanchor")]
-        public InsideTextAnchorEnum? InsideTextAnchor { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.InsideTextAnchorEnum? InsideTextAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the bar. For example,
@@ -286,26 +286,26 @@ namespace Plotly.Blazor.Traces
         ///     Sets the font used for `text`.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `text` lying inside the bar.
         /// </summary>
         [JsonPropertyName(@"insidetextfont")]
-        public InsideTextFont InsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.InsideTextFont InsideTextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `text` lying outside the bar.
         /// </summary>
         [JsonPropertyName(@"outsidetextfont")]
-        public OutsideTextFont OutsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.OutsideTextFont OutsideTextFont { get; set;} 
 
         /// <summary>
         ///     Constrain the size of text inside or outside a bar to be no larger than
         ///     the bar itself.
         /// </summary>
         [JsonPropertyName(@"constraintext")]
-        public ConstrainTextEnum? ConstrainText { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.ConstrainTextEnum? ConstrainText { get; set;} 
 
         /// <summary>
         ///     Determines whether the text nodes are clipped about the subplot axes. To
@@ -320,7 +320,7 @@ namespace Plotly.Blazor.Traces
         ///     bar spans along the vertical (horizontal).
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Shifts the position where the bar is drawn (in position axis units). In
@@ -340,25 +340,25 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Increasing.
         /// </summary>
         [JsonPropertyName(@"increasing")]
-        public Increasing Increasing { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.Increasing Increasing { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Decreasing.
         /// </summary>
         [JsonPropertyName(@"decreasing")]
-        public Decreasing Decreasing { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.Decreasing Decreasing { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Totals.
         /// </summary>
         [JsonPropertyName(@"totals")]
-        public Totals Totals { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.Totals Totals { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Connector.
         /// </summary>
         [JsonPropertyName(@"connector")]
-        public Connector Connector { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.Connector Connector { get; set;} 
 
         /// <summary>
         ///     Set several traces linked to the same position axis or matching axes to

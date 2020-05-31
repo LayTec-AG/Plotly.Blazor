@@ -38,7 +38,7 @@ namespace Plotly.Blazor.Traces.AreaLib
         ///     a symbol name.
         /// </summary>
         [JsonPropertyName(@"symbol")]
-        public SymbolEnum? Symbol { get; set;} 
+        public Plotly.Blazor.Traces.AreaLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
         ///     Area traces are deprecated! Please switch to the *barpolar* trace type.

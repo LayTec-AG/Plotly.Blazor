@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -103,20 +103,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -179,7 +179,7 @@ namespace Plotly.Blazor.Traces
         ///     angular axes.
         /// </summary>
         [JsonPropertyName(@"thetaunit")]
-        public ThetaUnitEnum? ThetaUnit { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.ThetaUnitEnum? ThetaUnit { get; set;} 
 
         /// <summary>
         ///     Sets where the bar base is drawn (in radial axis units). In *stack* barmode,
@@ -218,7 +218,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -226,7 +226,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -250,13 +250,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.BarPolarLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's data coordinates and a polar subplot.

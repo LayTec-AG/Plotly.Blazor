@@ -24,7 +24,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         ///     Sets the easing function of the slider transition
         /// </summary>
         [JsonPropertyName(@"easing")]
-        public EasingEnum? Easing { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.TransitionLib.EasingEnum? Easing { get; set;} 
 
     }
 }

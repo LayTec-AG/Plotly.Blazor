@@ -27,7 +27,7 @@ namespace Plotly.Blazor.Traces.BoxLib
         ///     a symbol name.
         /// </summary>
         [JsonPropertyName(@"symbol")]
-        public SymbolEnum? Symbol { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
         ///     Sets the marker opacity.
@@ -53,7 +53,7 @@ namespace Plotly.Blazor.Traces.BoxLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.MarkerLib.Line Line { get; set;} 
 
     }
 }

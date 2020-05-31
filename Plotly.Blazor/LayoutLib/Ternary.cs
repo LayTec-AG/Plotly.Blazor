@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Set the background color of the subplot
@@ -36,19 +36,19 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the AAxis.
         /// </summary>
         [JsonPropertyName(@"aaxis")]
-        public AAxis AAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.AAxis AAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the BAxis.
         /// </summary>
         [JsonPropertyName(@"baxis")]
-        public BAxis BAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.BAxis BAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the CAxis.
         /// </summary>
         [JsonPropertyName(@"caxis")]
-        public CAxis CAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxis CAxis { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in axis `min` and `title`, if

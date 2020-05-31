@@ -27,14 +27,14 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
         ///     by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Specifies the location of the `title`. Note that the title's position used
         ///     to be set by the now deprecated `titleposition` attribute.
         /// </summary>
         [JsonPropertyName(@"position")]
-        public PositionEnum? Position { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.TitleLib.PositionEnum? Position { get; set;} 
 
     }
 }

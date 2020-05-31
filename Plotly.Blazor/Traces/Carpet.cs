@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the trace.
@@ -79,7 +79,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -167,19 +167,19 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the AAxis.
         /// </summary>
         [JsonPropertyName(@"aaxis")]
-        public AAxis AAxis { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.AAxis AAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the BAxis.
         /// </summary>
         [JsonPropertyName(@"baxis")]
-        public BAxis BAxis { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxis BAxis { get; set;} 
 
         /// <summary>
         ///     The default font used for axis & tick labels on this carpet
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets default for all colors associated with this axis all at once: line,

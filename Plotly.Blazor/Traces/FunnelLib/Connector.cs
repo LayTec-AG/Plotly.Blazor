@@ -24,7 +24,7 @@ namespace Plotly.Blazor.Traces.FunnelLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.FunnelLib.ConnectorLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines if connector regions and lines are drawn.

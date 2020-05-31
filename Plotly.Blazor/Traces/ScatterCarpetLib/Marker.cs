@@ -21,7 +21,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         ///     a symbol name.
         /// </summary>
         [JsonPropertyName(@"symbol")]
-        public SymbolEnum? Symbol { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
         ///     Sets the marker opacity.
@@ -62,19 +62,19 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         ///     rule for which the data in `size` is converted to pixels.
         /// </summary>
         [JsonPropertyName(@"sizemode")]
-        public SizeModeEnum? SizeMode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.SizeModeEnum? SizeMode { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Gradient.
         /// </summary>
         [JsonPropertyName(@"gradient")]
-        public Gradient Gradient { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.Gradient Gradient { get; set;} 
 
         /// <summary>
         ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
@@ -162,7 +162,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color

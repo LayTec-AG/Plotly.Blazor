@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.SelectedLib.Marker Marker { get; set;} 
 
     }
 }

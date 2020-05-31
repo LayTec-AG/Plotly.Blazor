@@ -33,14 +33,14 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Sets the axis type. By default, plotly attempts to determined the axis type
         ///     by looking into the data of the traces that referenced the axis in question.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
@@ -48,7 +48,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     then `autorange` is set to *false*.
         /// </summary>
         [JsonPropertyName(@"autorange")]
-        public AutoRangeEnum? AutoRange { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
         ///     If *normal*, the range is computed in relation to the extrema of the input
@@ -57,7 +57,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Applies only to linear axes.
         /// </summary>
         [JsonPropertyName(@"rangemode")]
-        public RangeModeEnum? RangeMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeModeEnum? RangeMode { get; set;} 
 
         /// <summary>
         ///     Sets the range of this axis. If the axis `type` is *log*, then you must
@@ -112,7 +112,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     by increasing the *range* (default), or by decreasing the *domain*.
         /// </summary>
         [JsonPropertyName(@"constrain")]
-        public ConstrainEnum? Constrain { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainEnum? Constrain { get; set;} 
 
         /// <summary>
         ///     If this axis needs to be compressed (either due to its own `scaleanchor`
@@ -122,7 +122,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     for y axes.
         /// </summary>
         [JsonPropertyName(@"constraintoward")]
-        public ConstrainTowardEnum? ConstrainToward { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainTowardEnum? ConstrainToward { get; set;} 
 
         /// <summary>
         ///     If set to another axis id (e.g. `x2`, `y`), the range of this axis will
@@ -139,7 +139,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the RangeBreaks.
         /// </summary>
         [JsonPropertyName(@"rangebreaks")]
-        public IList<RangeBreak> RangeBreaks { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeBreak> RangeBreaks { get; set;} 
 
         /// <summary>
         ///     Sets the tick mode for this axis. If *auto*, the number of ticks is set
@@ -150,7 +150,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     is the default value if `tickvals` is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
-        public TickModeEnum? TickMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -214,7 +214,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
-        public TicksEnum? Ticks { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
         ///     Determines where ticks and grid lines are drawn with respect to their corresponding
@@ -223,7 +223,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     to the left/bottom of labels.
         /// </summary>
         [JsonPropertyName(@"tickson")]
-        public TickSonEnum? TickSon { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickSonEnum? TickSon { get; set;} 
 
         /// <summary>
         ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
@@ -233,7 +233,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     axis lines and ticks are mirrored on all shared-axes subplots.
         /// </summary>
         [JsonPropertyName(@"mirror")]
-        public MirrorEnum? Mirror { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.MirrorEnum? Mirror { get; set;} 
 
         /// <summary>
         ///     Sets the tick length (in px).
@@ -300,20 +300,20 @@ namespace Plotly.Blazor.LayoutLib
         ///     on
         /// </summary>
         [JsonPropertyName(@"spikemode")]
-        public SpikeModeFlag? SpikeMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.SpikeModeFlag? SpikeMode { get; set;} 
 
         /// <summary>
         ///     Determines whether spikelines are stuck to the cursor or to the closest
         ///     datapoints.
         /// </summary>
         [JsonPropertyName(@"spikesnap")]
-        public SpikeSnapEnum? SpikeSnap { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.SpikeSnapEnum? SpikeSnap { get; set;} 
 
         /// <summary>
         ///     Sets the tick font.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -334,7 +334,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
-        public ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label suffix.
@@ -346,7 +346,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Same as `showtickprefix` but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
-        public ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
         ///     If *all*, all exponents are shown besides their significands. If *first*,
@@ -354,7 +354,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     of the last tick is shown. If *none*, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
-        public ShowExponentEnum? ShowExponent { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
@@ -363,7 +363,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     1G. If *B*, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     If "true", even 4-digit integers are separated
@@ -386,7 +386,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the TickFormatStops.
         /// </summary>
         [JsonPropertyName(@"tickformatstops")]
-        public IList<TickFormatStop> TickFormatStops { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.XAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
@@ -488,7 +488,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     *top* (*right*) of the plotting area.
         /// </summary>
         [JsonPropertyName(@"side")]
-        public SideEnum? Side { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.SideEnum? Side { get; set;} 
 
         /// <summary>
         ///     If set a same-letter axis id, this axis is overlaid on top of the corresponding
@@ -507,7 +507,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     to *false* to show markers and/or text nodes above this axis.
         /// </summary>
         [JsonPropertyName(@"layer")]
-        public LayerEnum? Layer { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     Sets the domain of this axis (in plot fraction).
@@ -537,7 +537,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     values.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
-        public CategoryOrderEnum? CategoryOrder { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories on this axis appear. Only has an effect
@@ -557,13 +557,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the RangeSlider.
         /// </summary>
         [JsonPropertyName(@"rangeslider")]
-        public RangeSlider RangeSlider { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSlider RangeSlider { get; set;} 
 
         /// <summary>
         ///     Gets or sets the RangeSelector.
         /// </summary>
         [JsonPropertyName(@"rangeselector")]
-        public RangeSelector RangeSelector { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelector RangeSelector { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use for `range` and `tick0` if this is a date
@@ -571,7 +571,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     that's specified in the trace or via the global `layout.calendar`
         /// </summary>
         [JsonPropertyName(@"calendar")]
-        public CalendarEnum? Calendar { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.CalendarEnum? Calendar { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  tickvals .

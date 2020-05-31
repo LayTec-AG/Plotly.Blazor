@@ -37,7 +37,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.BoxLib.Line Line { get; set;} 
 
     }
 }

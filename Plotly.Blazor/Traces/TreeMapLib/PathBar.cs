@@ -25,13 +25,13 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     Determines on which side of the the treemap the `pathbar` should be presented.
         /// </summary>
         [JsonPropertyName(@"side")]
-        public SideEnum? Side { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.SideEnum? Side { get; set;} 
 
         /// <summary>
         ///     Determines which shape is used for edges between `barpath` labels.
         /// </summary>
         [JsonPropertyName(@"edgeshape")]
-        public EdgeShapeEnum? EdgeShape { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.EdgeShapeEnum? EdgeShape { get; set;} 
 
         /// <summary>
         ///     Sets the thickness of `pathbar` (in px). If not specified the `pathbar.textfont.size`
@@ -44,7 +44,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     Sets the font used inside `pathbar`.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.TextFont TextFont { get; set;} 
 
     }
 }

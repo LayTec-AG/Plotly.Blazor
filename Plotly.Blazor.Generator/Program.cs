@@ -544,7 +544,7 @@ namespace Plotly.Blazor.Generator
 
                     try
                     {
-                        typeName = GetTypeByAttributeDescription(pair.Value, pair.Key);
+                        typeName = GetTypeByAttributeDescription(pair.Value, pair.Key, $"{customNamespace}.{friendlyName}Lib");
                     }
                     catch(ArgumentException)
                     {
@@ -605,8 +605,9 @@ namespace Plotly.Blazor.Generator
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="attributeDescription">The attribute description.</param>
-        /// <returns>System.String.</returns>
-        private static string GetTypeByAttributeDescription(AttributeDescription attributeDescription, string key = default)
+        /// <param name="namespace"></param>
+        /// <returns>(TypeName, IsComplex, IsList)</returns>
+        private static string GetTypeByAttributeDescription(AttributeDescription attributeDescription, string key, string @namespace)
         {
 
             // EDGE CASES
@@ -615,9 +616,11 @@ namespace Plotly.Blazor.Generator
                 case "transform":
                     return "ITransform";
                 case "transforms":
-                    return "IList<ITransform>";
+                    return "ITransform";
                 case "data":
-                    return "IList<ITrace>";
+                    return "ITrace";
+                case "layout":
+                    return "Layout";
             }
 
             // HANDLE REGEX
@@ -630,32 +633,36 @@ namespace Plotly.Blazor.Generator
                 }
             }
 
-            // Call it recursively for all nested attributes if its an array
             if (attributeDescription.IsArray)
             {
-                return $"IList<{GetArrayType(attributeDescription).Key}>";
+                var (typeKey, typeDescription) = GetArrayType(attributeDescription);
+                var type = GetTypeByAttributeDescription(typeDescription, typeKey, @namespace);
+
+                return $"IList<{type}>";
             }
 
             if (!string.IsNullOrWhiteSpace(key))
             {
                 if (attributeDescription.IsSubplotObj)
                 {
-                    return $"IList<{key.ToDotNetFriendlyName(_dictionary)}>";
+                    var copy = (AttributeDescription)attributeDescription.Clone();
+                    copy.IsSubplotObj = false;
+                    return $"IList<{GetTypeByAttributeDescription(copy, key, @namespace)}>";
                 }
 
                 if (attributeDescription.Role == "object")
                 {
-                    return key.ToDotNetFriendlyName(_dictionary);
+                    return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}";
                 }
 
                 if (attributeDescription.ValType == "enumerated")
                 {
-                    return $"{key.ToDotNetFriendlyName(_dictionary)}Enum?";
+                    return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}Enum?";
                 }
 
                 if (attributeDescription.ValType == "flaglist")
                 {
-                    return $"{key.ToDotNetFriendlyName(_dictionary)}Flag?";
+                    return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}Flag?";
                 }
             }
 

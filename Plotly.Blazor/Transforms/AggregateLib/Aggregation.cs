@@ -40,14 +40,14 @@ namespace Plotly.Blazor.Transforms.AggregateLib
         ///     will return the difference between the min and max linked values.
         /// </summary>
         [JsonPropertyName(@"func")]
-        public FuncEnum? Func { get; set;} 
+        public Plotly.Blazor.Transforms.AggregateLib.AggregationLib.FuncEnum? Func { get; set;} 
 
         /// <summary>
         ///     *stddev* supports two formula variants: *sample* (normalize by N-1) and
         ///     *population* (normalize by N).
         /// </summary>
         [JsonPropertyName(@"funcmode")]
-        public FuncModeEnum? FuncMode { get; set;} 
+        public Plotly.Blazor.Transforms.AggregateLib.AggregationLib.FuncModeEnum? FuncMode { get; set;} 
 
         /// <summary>
         ///     Determines whether this aggregation function is enabled or disabled.

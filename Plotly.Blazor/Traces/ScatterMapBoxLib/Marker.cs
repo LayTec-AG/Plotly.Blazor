@@ -68,7 +68,7 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
         ///     rule for which the data in `size` is converted to pixels.
         /// </summary>
         [JsonPropertyName(@"sizemode")]
-        public SizeModeEnum? SizeMode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.MarkerLib.SizeModeEnum? SizeMode { get; set;} 
 
         /// <summary>
         ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
@@ -156,7 +156,7 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color

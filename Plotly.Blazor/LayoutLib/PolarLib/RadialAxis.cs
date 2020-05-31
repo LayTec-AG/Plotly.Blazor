@@ -26,7 +26,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     by looking into the data of the traces that referenced the axis in question.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
@@ -34,7 +34,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     then `autorange` is set to *false*.
         /// </summary>
         [JsonPropertyName(@"autorange")]
-        public AutoRangeEnum? AutoRange { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
         ///     If *tozero*`, the range extends to 0, regardless of the input data If *nonnegative*,
@@ -43,7 +43,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     as for cartesian axes).
         /// </summary>
         [JsonPropertyName(@"rangemode")]
-        public RangeModeEnum? RangeMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.RangeModeEnum? RangeMode { get; set;} 
 
         /// <summary>
         ///     Sets the range of this axis. If the axis `type` is *log*, then you must
@@ -72,7 +72,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     values.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
-        public CategoryOrderEnum? CategoryOrder { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories on this axis appear. Only has an effect
@@ -94,13 +94,13 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     Determines on which side of radial axis line the tick and tick labels appear.
         /// </summary>
         [JsonPropertyName(@"side")]
-        public SideEnum? Side { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.SideEnum? Side { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
@@ -174,7 +174,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     is the default value if `tickvals` is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
-        public TickModeEnum? TickMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -238,7 +238,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
-        public TicksEnum? Ticks { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
         ///     Sets the tick length (in px).
@@ -270,7 +270,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
-        public ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label prefix.
@@ -282,7 +282,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     Same as `showtickprefix` but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
-        public ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label suffix.
@@ -296,7 +296,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     of the last tick is shown. If *none*, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
-        public ShowExponentEnum? ShowExponent { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
@@ -305,7 +305,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     1G. If *B*, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     If "true", even 4-digit integers are separated
@@ -317,7 +317,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     Sets the tick font.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -341,7 +341,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     Gets or sets the TickFormatStops.
         /// </summary>
         [JsonPropertyName(@"tickformatstops")]
-        public IList<TickFormatStop> TickFormatStops { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
         ///     Sets the layer on which this axis is displayed. If *above traces*, this
@@ -351,7 +351,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     to *false* to show markers and/or text nodes above this axis.
         /// </summary>
         [JsonPropertyName(@"layer")]
-        public LayerEnum? Layer { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use for `range` and `tick0` if this is a date
@@ -359,7 +359,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     that's specified in the trace or via the global `layout.calendar`
         /// </summary>
         [JsonPropertyName(@"calendar")]
-        public CalendarEnum? Calendar { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.CalendarEnum? Calendar { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  categoryarray .

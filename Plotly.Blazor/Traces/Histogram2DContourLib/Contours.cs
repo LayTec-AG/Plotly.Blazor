@@ -20,7 +20,7 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         ///     the invalid region shaded as specified by the `operation` and `value` parameters.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.Traces.Histogram2DContourLib.ContoursLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Sets the starting contour level value. Must be less than `contours.end`
@@ -47,7 +47,7 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         ///     done on the contour lines. If *none*, no coloring is applied on this trace.
         /// </summary>
         [JsonPropertyName(@"coloring")]
-        public ColoringEnum? Coloring { get; set;} 
+        public Plotly.Blazor.Traces.Histogram2DContourLib.ContoursLib.ColoringEnum? Coloring { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the contour lines are drawn. Has an effect only
@@ -67,7 +67,7 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         ///     from the lines, if shown. The default family and size come from `layout.font`.
         /// </summary>
         [JsonPropertyName(@"labelfont")]
-        public LabelFont LabelFont { get; set;} 
+        public Plotly.Blazor.Traces.Histogram2DContourLib.ContoursLib.LabelFont LabelFont { get; set;} 
 
         /// <summary>
         ///     Sets the contour label formatting rule using d3 formatting mini-language
@@ -85,7 +85,7 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         ///     are allowed for consistency with filter transforms.
         /// </summary>
         [JsonPropertyName(@"operation")]
-        public OperationEnum? Operation { get; set;} 
+        public Plotly.Blazor.Traces.Histogram2DContourLib.ContoursLib.OperationEnum? Operation { get; set;} 
 
         /// <summary>
         ///     Sets the value or values of the constraint boundary. When `operation` is

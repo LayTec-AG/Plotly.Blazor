@@ -59,7 +59,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.NodeLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the padding (in px) between the `nodes`.
@@ -79,13 +79,13 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoEnum? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.NodeLib.HoverInfoEnum? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.NodeLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover

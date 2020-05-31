@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
@@ -57,14 +57,14 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -87,7 +87,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -95,7 +95,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Sets the hover interaction mode for the parcats diagram. If `category`,
@@ -104,7 +104,7 @@ namespace Plotly.Blazor.Traces
         ///     place across all categories per dimension.
         /// </summary>
         [JsonPropertyName(@"hoveron")]
-        public HoverOnEnum? HoverOn { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.HoverOnEnum? HoverOn { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -133,7 +133,7 @@ namespace Plotly.Blazor.Traces
         ///     categories and dimensions are stationary.
         /// </summary>
         [JsonPropertyName(@"arrangement")]
-        public ArrangementEnum? Arrangement { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.ArrangementEnum? Arrangement { get; set;} 
 
         /// <summary>
         ///     Sort paths so that like colors are bundled together within each category.
@@ -147,31 +147,31 @@ namespace Plotly.Blazor.Traces
         ///     categories from right to left.
         /// </summary>
         [JsonPropertyName(@"sortpaths")]
-        public SortPathsEnum? SortPaths { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.SortPathsEnum? SortPaths { get; set;} 
 
         /// <summary>
         ///     Sets the font for the `dimension` labels.
         /// </summary>
         [JsonPropertyName(@"labelfont")]
-        public LabelFont LabelFont { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.LabelFont LabelFont { get; set;} 
 
         /// <summary>
         ///     Sets the font for the `category` labels.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Dimensions.
         /// </summary>
         [JsonPropertyName(@"dimensions")]
-        public IList<Dimension> Dimensions { get; set;} 
+        public IList<Plotly.Blazor.Traces.ParCatsLib.Dimension> Dimensions { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.Line Line { get; set;} 
 
         /// <summary>
         ///     The number of observations represented by each state. Defaults to 1 so that

@@ -25,13 +25,13 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         ///     for bullet charts for which it defaults to right.
         /// </summary>
         [JsonPropertyName(@"align")]
-        public AlignEnum? Align { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.TitleLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
         ///     Set the font used to display the title
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.TitleLib.Font Font { get; set;} 
 
     }
 }

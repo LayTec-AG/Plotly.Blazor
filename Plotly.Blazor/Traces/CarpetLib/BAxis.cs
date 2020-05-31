@@ -32,14 +32,14 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Sets the axis type. By default, plotly attempts to determined the axis type
         ///     by looking into the data of the traces that referenced the axis in question.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
@@ -47,7 +47,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     then `autorange` is set to *false*.
         /// </summary>
         [JsonPropertyName(@"autorange")]
-        public AutoRangeEnum? AutoRange { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
         ///     If *normal*, the range is computed in relation to the extrema of the input
@@ -55,7 +55,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     If *nonnegative*, the range is non-negative, regardless of the input data.
         /// </summary>
         [JsonPropertyName(@"rangemode")]
-        public RangeModeEnum? RangeMode { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.RangeModeEnum? RangeMode { get; set;} 
 
         /// <summary>
         ///     Sets the range of this axis. If the axis `type` is *log*, then you must
@@ -80,13 +80,13 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     Gets or sets the CheaterType.
         /// </summary>
         [JsonPropertyName(@"cheatertype")]
-        public CheaterTypeEnum? CheaterType { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.CheaterTypeEnum? CheaterType { get; set;} 
 
         /// <summary>
         ///     Gets or sets the TickMode.
         /// </summary>
         [JsonPropertyName(@"tickmode")]
-        public TickModeEnum? TickMode { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -115,13 +115,13 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     both, or neither side of the axis.
         /// </summary>
         [JsonPropertyName(@"showticklabels")]
-        public ShowTickLabelsEnum? ShowTickLabels { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowTickLabelsEnum? ShowTickLabels { get; set;} 
 
         /// <summary>
         ///     Sets the tick font.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -142,7 +142,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
-        public ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label suffix.
@@ -154,7 +154,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     Same as `showtickprefix` but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
-        public ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
         ///     If *all*, all exponents are shown besides their significands. If *first*,
@@ -162,7 +162,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     of the last tick is shown. If *none*, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
-        public ShowExponentEnum? ShowExponent { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
@@ -171,7 +171,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     1G. If *B*, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     If "true", even 4-digit integers are separated
@@ -193,7 +193,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     Gets or sets the TickFormatStops.
         /// </summary>
         [JsonPropertyName(@"tickformatstops")]
-        public IList<TickFormatStop> TickFormatStops { get; set;} 
+        public IList<Plotly.Blazor.Traces.CarpetLib.BAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
         ///     Specifies the ordering logic for the case of categorical variables. By default,
@@ -206,7 +206,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
         ///     mode. The unspecified categories will follow the categories in `categoryarray`.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
-        public CategoryOrderEnum? CategoryOrder { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.BAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories on this axis appear. Only has an effect

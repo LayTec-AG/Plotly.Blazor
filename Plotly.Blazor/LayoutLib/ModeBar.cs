@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the orientation of the modebar.
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.LayoutLib.ModeBarLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the modebar.

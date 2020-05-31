@@ -27,7 +27,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib.BAxisLib
         ///     by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.BAxisLib.TitleLib.Font Font { get; set;} 
 
     }
 }

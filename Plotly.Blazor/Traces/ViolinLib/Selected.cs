@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.SelectedLib.Marker Marker { get; set;} 
 
     }
 }

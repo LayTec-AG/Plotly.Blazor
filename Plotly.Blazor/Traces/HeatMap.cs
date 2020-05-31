@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -88,26 +88,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -194,7 +194,7 @@ namespace Plotly.Blazor.Traces
         ///     by *x0* and *dx* (the default behavior when `x` is not provided).
         /// </summary>
         [JsonPropertyName(@"xtype")]
-        public XTypeEnum? XType { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.XTypeEnum? XType { get; set;} 
 
         /// <summary>
         ///     If *array*, the heatmap's y coordinates are given by *y* (the default behavior
@@ -202,13 +202,13 @@ namespace Plotly.Blazor.Traces
         ///     by *y0* and *dy* (the default behavior when `y` is not provided)
         /// </summary>
         [JsonPropertyName(@"ytype")]
-        public YTypeEnum? YType { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.YTypeEnum? YType { get; set;} 
 
         /// <summary>
         ///     Picks a smoothing algorithm use to smooth `z` data.
         /// </summary>
         [JsonPropertyName(@"zsmooth")]
-        public ZSmoothEnum? ZSmooth { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.ZSmoothEnum? ZSmooth { get; set;} 
 
         /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the `z`
@@ -337,7 +337,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -352,13 +352,13 @@ namespace Plotly.Blazor.Traces
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.HeatMapLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.SelectedLib.Marker Marker { get; set;} 
 
     }
 }

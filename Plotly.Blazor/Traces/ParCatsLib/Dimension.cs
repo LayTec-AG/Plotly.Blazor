@@ -31,7 +31,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         ///     mode. The unspecified categories will follow the categories in `categoryarray`.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
-        public CategoryOrderEnum? CategoryOrder { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.DimensionLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
         ///     Sets the order in which categories in this dimension appear. Only has an

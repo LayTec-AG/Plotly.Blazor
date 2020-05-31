@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.LayoutLib.NewShapeLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the color filling new shapes' interior. Please note that if using a
@@ -32,7 +32,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Determines the path's interior. For more info please visit https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
         /// </summary>
         [JsonPropertyName(@"fillrule")]
-        public FillRuleEnum? FillRule { get; set;} 
+        public Plotly.Blazor.LayoutLib.NewShapeLib.FillRuleEnum? FillRule { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of new shapes.
@@ -44,7 +44,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Specifies whether new shapes are drawn below or above traces.
         /// </summary>
         [JsonPropertyName(@"layer")]
-        public LayerEnum? Layer { get; set;} 
+        public Plotly.Blazor.LayoutLib.NewShapeLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     When `dragmode` is set to *drawrect*, *drawline* or *drawcircle* this limits
@@ -54,7 +54,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     *vertical* allows vertical extend.
         /// </summary>
         [JsonPropertyName(@"drawdirection")]
-        public DrawDirectionEnum? DrawDirection { get; set;} 
+        public Plotly.Blazor.LayoutLib.NewShapeLib.DrawDirectionEnum? DrawDirection { get; set;} 
 
     }
 }

@@ -39,7 +39,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         ///     bounds: [17, 8] }   breaks from 5pm to 8am (i.e. skips non-work hours).
         /// </summary>
         [JsonPropertyName(@"pattern")]
-        public PatternEnum? Pattern { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeBreakLib.PatternEnum? Pattern { get; set;} 
 
         /// <summary>
         ///     Sets the coordinate values corresponding to the rangebreaks. An alternative

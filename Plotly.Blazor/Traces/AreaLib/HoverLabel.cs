@@ -30,14 +30,14 @@ namespace Plotly.Blazor.Traces.AreaLib
         ///     Sets the font used in hover labels.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.AreaLib.HoverLabelLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the horizontal alignment of the text content within hover label box.
         ///     Has an effect only if the hover label text spans more two or more lines
         /// </summary>
         [JsonPropertyName(@"align")]
-        public AlignEnum? Align { get; set;} 
+        public Plotly.Blazor.Traces.AreaLib.HoverLabelLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
         ///     Sets the default length (in number of characters) of the trace name in the

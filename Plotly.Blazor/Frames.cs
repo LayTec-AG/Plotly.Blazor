@@ -46,8 +46,7 @@ namespace Plotly.Blazor
         ///     trace definition.
         /// </summary>
         [JsonPropertyName(@"data")]
-        [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITrace> Data { get; set;} 
+        public ITrace Data { get; set;} 
 
         /// <summary>
         ///     Layout properties which this frame modifies. The format is identical to

@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -105,26 +105,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -204,7 +204,7 @@ namespace Plotly.Blazor.Traces
         ///     of `fill`.
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Only relevant when `stackgroup` is used, and only the first `groupnorm`
@@ -217,7 +217,7 @@ namespace Plotly.Blazor.Traces
         ///     own set.
         /// </summary>
         [JsonPropertyName(@"groupnorm")]
-        public GroupNormEnum? GroupNorm { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.GroupNormEnum? GroupNorm { get; set;} 
 
         /// <summary>
         ///     Only relevant when `stackgroup` is used, and only the first `stackgaps`
@@ -229,7 +229,7 @@ namespace Plotly.Blazor.Traces
         ///     values.
         /// </summary>
         [JsonPropertyName(@"stackgaps")]
-        public StackGapsEnum? StackGaps { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.StackGapsEnum? StackGaps { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each (x,y) pair. If a single string,
@@ -272,7 +272,7 @@ namespace Plotly.Blazor.Traces
         ///     *lines*.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeFlag? Mode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
         ///     Do the hover effects highlight individual points (markers or line points)
@@ -281,7 +281,7 @@ namespace Plotly.Blazor.Traces
         ///     it is *points*.
         /// </summary>
         [JsonPropertyName(@"hoveron")]
-        public HoverOnFlag? HoverOn { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.HoverOnFlag? HoverOn { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -305,7 +305,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the provided
@@ -341,7 +341,7 @@ namespace Plotly.Blazor.Traces
         ///     order.
         /// </summary>
         [JsonPropertyName(@"fill")]
-        public FillEnum? Fill { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.FillEnum? Fill { get; set;} 
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
@@ -354,31 +354,31 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Sets the text font.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     r coordinates in scatter traces are deprecated!Please switch to the *scatterpolar*
@@ -398,25 +398,25 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ErrorX.
         /// </summary>
         [JsonPropertyName(@"error_x")]
-        public ErrorX ErrorX { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.ErrorX ErrorX { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorY.
         /// </summary>
         [JsonPropertyName(@"error_y")]
-        public ErrorY ErrorY { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.ErrorY ErrorY { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

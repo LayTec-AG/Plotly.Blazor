@@ -41,7 +41,7 @@ namespace Plotly.Blazor
         ///     Gets or sets the Edits.
         /// </summary>
         [JsonPropertyName(@"edits")]
-        public Edits Edits { get; set;} 
+        public Plotly.Blazor.ConfigLib.Edits Edits { get; set;} 
 
         /// <summary>
         ///     Determines whether the graphs are plotted with respect to layout.autosize:true
@@ -78,7 +78,7 @@ namespace Plotly.Blazor
         ///     Set `scrollZoom` to *false* to disable scrolling for all subplots.
         /// </summary>
         [JsonPropertyName(@"scrollZoom")]
-        public ScrollZoomFlag? ScrollZoom { get; set;} 
+        public Plotly.Blazor.ConfigLib.ScrollZoomFlag? ScrollZoom { get; set;} 
 
         /// <summary>
         ///     Sets the double click interaction mode. Has an effect only in cartesian
@@ -89,7 +89,7 @@ namespace Plotly.Blazor
         ///     clicks set the axis ranges to their autorange values.
         /// </summary>
         [JsonPropertyName(@"doubleClick")]
-        public DoubleClickEnum? DoubleClick { get; set;} 
+        public Plotly.Blazor.ConfigLib.DoubleClickEnum? DoubleClick { get; set;} 
 
         /// <summary>
         ///     Sets the delay for registering a double-click in ms. This is the time interval
@@ -152,7 +152,7 @@ namespace Plotly.Blazor
         ///     bar is visible while the mouse cursor is on the graph container.
         /// </summary>
         [JsonPropertyName(@"displayModeBar")]
-        public DisplayModeBarEnum? DisplayModeBar { get; set;} 
+        public Plotly.Blazor.ConfigLib.DisplayModeBarEnum? DisplayModeBar { get; set;} 
 
         /// <summary>
         ///     Should we include a ModeBar button, labeled "Edit in Chart Studio", that

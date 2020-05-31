@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -99,26 +99,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -178,7 +178,7 @@ namespace Plotly.Blazor.Traces
         ///     visualized along the vertical (horizontal).
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Sets the bandwidth used to compute the kernel density estimate. By default,
@@ -203,7 +203,7 @@ namespace Plotly.Blazor.Traces
         ///     scaled by the number of sample points makingup each violin.
         /// </summary>
         [JsonPropertyName(@"scalemode")]
-        public ScaleModeEnum? ScaleMode { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.ScaleModeEnum? ScaleMode { get; set;} 
 
         /// <summary>
         ///     Sets the method by which the span in data space where the density function
@@ -213,7 +213,7 @@ namespace Plotly.Blazor.Traces
         ///     For custom span settings, use mode *manual* and fill in the `span` attribute.
         /// </summary>
         [JsonPropertyName(@"spanmode")]
-        public SpanModeEnum? SpanMode { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.SpanModeEnum? SpanMode { get; set;} 
 
         /// <summary>
         ///     Sets the span in data space for which the density function will be computed.
@@ -226,7 +226,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
@@ -244,7 +244,7 @@ namespace Plotly.Blazor.Traces
         ///     or `marker.line.outliercolor` is set, otherwise defaults to *outliers*.
         /// </summary>
         [JsonPropertyName(@"points")]
-        public PointsEnum? Points { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.PointsEnum? Points { get; set;} 
 
         /// <summary>
         ///     Sets the amount of jitter in the sample points drawn. If *0*, the sample
@@ -275,7 +275,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets the text elements associated with each sample value. If a single string,
@@ -314,13 +314,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Box.
         /// </summary>
         [JsonPropertyName(@"box")]
-        public Box Box { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.Box Box { get; set;} 
 
         /// <summary>
         ///     Gets or sets the MeanLine.
         /// </summary>
         [JsonPropertyName(@"meanline")]
-        public MeanLine MeanLine { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.MeanLine MeanLine { get; set;} 
 
         /// <summary>
         ///     Determines on which side of the position value the density function making
@@ -329,7 +329,7 @@ namespace Plotly.Blazor.Traces
         ///     other to *negative*.
         /// </summary>
         [JsonPropertyName(@"side")]
-        public SideEnum? Side { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.SideEnum? Side { get; set;} 
 
         /// <summary>
         ///     Set several traces linked to the same position axis or matching axes to
@@ -351,20 +351,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Do the hover effects highlight individual violins or sample points or the
         ///     kernel density estimate or any combination of them?
         /// </summary>
         [JsonPropertyName(@"hoveron")]
-        public HoverOnFlag? HoverOn { get; set;} 
+        public Plotly.Blazor.Traces.ViolinLib.HoverOnFlag? HoverOn { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

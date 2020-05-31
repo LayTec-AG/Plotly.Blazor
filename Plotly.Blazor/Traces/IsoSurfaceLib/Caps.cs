@@ -18,19 +18,19 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         ///     Gets or sets the X.
         /// </summary>
         [JsonPropertyName(@"x")]
-        public X X { get; set;} 
+        public Plotly.Blazor.Traces.IsoSurfaceLib.CapsLib.X X { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Y.
         /// </summary>
         [JsonPropertyName(@"y")]
-        public Y Y { get; set;} 
+        public Plotly.Blazor.Traces.IsoSurfaceLib.CapsLib.Y Y { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Z.
         /// </summary>
         [JsonPropertyName(@"z")]
-        public Z Z { get; set;} 
+        public Plotly.Blazor.Traces.IsoSurfaceLib.CapsLib.Z Z { get; set;} 
 
     }
 }

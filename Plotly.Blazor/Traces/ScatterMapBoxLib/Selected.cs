@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.SelectedLib.Marker Marker { get; set;} 
 
     }
 }

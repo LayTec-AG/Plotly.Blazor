@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
@@ -106,7 +106,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color

@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
         ///     Sets the type of gradient used to fill the markers
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib.GradientLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Sets the final color of the gradient fill: the center color for radial,

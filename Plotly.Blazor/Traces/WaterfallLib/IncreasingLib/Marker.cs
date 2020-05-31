@@ -24,7 +24,7 @@ namespace Plotly.Blazor.Traces.WaterfallLib.IncreasingLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.IncreasingLib.MarkerLib.Line Line { get; set;} 
 
     }
 }

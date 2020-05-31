@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -80,13 +80,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -147,7 +147,7 @@ namespace Plotly.Blazor.Traces
         ///     value (in the same units as the vector field).
         /// </summary>
         [JsonPropertyName(@"sizemode")]
-        public SizeModeEnum? SizeMode { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.SizeModeEnum? SizeMode { get; set;} 
 
         /// <summary>
         ///     Adjusts the cone size scaling. The size of the cones is determined by their
@@ -168,7 +168,7 @@ namespace Plotly.Blazor.Traces
         ///     tail to tip.
         /// </summary>
         [JsonPropertyName(@"anchor")]
-        public AnchorEnum? Anchor { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.AnchorEnum? Anchor { get; set;} 
 
         /// <summary>
         ///     Sets the text elements associated with the cones. If trace `hoverinfo` contains
@@ -277,7 +277,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -302,13 +302,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the LightPosition.
         /// </summary>
         [JsonPropertyName(@"lightposition")]
-        public LightPosition LightPosition { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.LightPosition LightPosition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Lighting.
         /// </summary>
         [JsonPropertyName(@"lighting")]
-        public Lighting Lighting { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.Lighting Lighting { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -316,7 +316,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's 3D coordinate system and a 3D scene.

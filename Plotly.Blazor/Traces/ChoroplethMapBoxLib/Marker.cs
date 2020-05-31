@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the locations.

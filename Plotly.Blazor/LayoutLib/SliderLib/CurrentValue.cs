@@ -24,7 +24,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         ///     The alignment of the value readout relative to the length of the slider.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     The amount of space, in pixels, between the current value label and the
@@ -49,7 +49,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         ///     Sets the font of the current value label text.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib.Font Font { get; set;} 
 
     }
 }

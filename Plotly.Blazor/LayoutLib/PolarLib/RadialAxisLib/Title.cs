@@ -27,7 +27,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib
         ///     by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TitleLib.Font Font { get; set;} 
 
     }
 }

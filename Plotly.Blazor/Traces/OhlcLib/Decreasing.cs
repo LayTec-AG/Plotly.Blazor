@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.OhlcLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.OhlcLib.DecreasingLib.Line Line { get; set;} 
 
     }
 }

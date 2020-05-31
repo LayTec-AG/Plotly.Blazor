@@ -18,13 +18,13 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.UnselectedLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Gets or sets the TextFont.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.UnselectedLib.TextFont TextFont { get; set;} 
 
     }
 }

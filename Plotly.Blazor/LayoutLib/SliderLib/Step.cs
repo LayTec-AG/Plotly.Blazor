@@ -28,7 +28,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         ///     manually via JavaScript.
         /// </summary>
         [JsonPropertyName(@"method")]
-        public MethodEnum? Method { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.StepLib.MethodEnum? Method { get; set;} 
 
         /// <summary>
         ///     Sets the arguments values to be passed to the Plotly method set in `method`

@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -103,20 +103,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -143,7 +143,7 @@ namespace Plotly.Blazor.Traces
         ///     *lines*.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeFlag? Mode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
         ///     Sets the radial coordinates
@@ -189,7 +189,7 @@ namespace Plotly.Blazor.Traces
         ///     angular axes.
         /// </summary>
         [JsonPropertyName(@"thetaunit")]
-        public ThetaUnitEnum? ThetaUnit { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.ThetaUnitEnum? ThetaUnit { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each (x,y) pair. If a single string,
@@ -247,7 +247,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the provided
@@ -260,7 +260,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets the area to fill with a solid color. Defaults to *none* unless this
@@ -281,7 +281,7 @@ namespace Plotly.Blazor.Traces
         ///     order.
         /// </summary>
         [JsonPropertyName(@"fill")]
-        public FillEnum? Fill { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.FillEnum? Fill { get; set;} 
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
@@ -294,13 +294,13 @@ namespace Plotly.Blazor.Traces
         ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Sets the text font.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -308,19 +308,19 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's data coordinates and a polar subplot.

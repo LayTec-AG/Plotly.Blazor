@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     Determines d3 treemap solver. For more info please refer to https://github.com/d3/d3-hierarchy#treemap-tiling
         /// </summary>
         [JsonPropertyName(@"packing")]
-        public PackingEnum? Packing { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.TilingLib.PackingEnum? Packing { get; set;} 
 
         /// <summary>
         ///     When using *squarify* `packing` algorithm, according to https://github.com/d3/d3-hierarchy/blob/master/README.md#squarify_ratio
@@ -37,7 +37,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     Determines if the positions obtained from solver are flipped on each axis.
         /// </summary>
         [JsonPropertyName(@"flip")]
-        public FlipFlag? Flip { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.TilingLib.FlipFlag? Flip { get; set;} 
 
         /// <summary>
         ///     Sets the inner padding (in px).

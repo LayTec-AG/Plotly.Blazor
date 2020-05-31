@@ -31,7 +31,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         ///     we sum later bins so the result decreases from left to right.
         /// </summary>
         [JsonPropertyName(@"direction")]
-        public DirectionEnum? Direction { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.CumulativeLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
         ///     Only applies if cumulative is enabled. Sets whether the current bin is included,
@@ -41,7 +41,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         ///     half-bin bias, and *half* removes it.
         /// </summary>
         [JsonPropertyName(@"currentbin")]
-        public CurrentBinEnum? CurrentBin { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.CumulativeLib.CurrentBinEnum? CurrentBin { get; set;} 
 
     }
 }

@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -95,26 +95,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -201,7 +201,7 @@ namespace Plotly.Blazor.Traces
         ///     by *x0* and *dx* (the default behavior when `x` is not provided).
         /// </summary>
         [JsonPropertyName(@"xtype")]
-        public XTypeEnum? XType { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.XTypeEnum? XType { get; set;} 
 
         /// <summary>
         ///     If *array*, the heatmap's y coordinates are given by *y* (the default behavior
@@ -209,7 +209,7 @@ namespace Plotly.Blazor.Traces
         ///     by *y0* and *dy* (the default behavior when `y` is not provided)
         /// </summary>
         [JsonPropertyName(@"ytype")]
-        public YTypeEnum? YType { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.YTypeEnum? YType { get; set;} 
 
         /// <summary>
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
@@ -279,13 +279,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Contours.
         /// </summary>
         [JsonPropertyName(@"contours")]
-        public Contours Contours { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.Contours Contours { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -355,7 +355,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -370,13 +370,13 @@ namespace Plotly.Blazor.Traces
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.ContourLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

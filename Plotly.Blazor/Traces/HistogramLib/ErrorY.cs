@@ -29,7 +29,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         ///     `array`.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.ErrorYLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the error bars have the same length in both direction

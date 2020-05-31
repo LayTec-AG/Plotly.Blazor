@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the trace.
@@ -79,20 +79,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -141,14 +141,14 @@ namespace Plotly.Blazor.Traces
         ///     taken to be the extra part not part of the sum of the values at their leaves.
         /// </summary>
         [JsonPropertyName(@"branchvalues")]
-        public BranchValuesEnum? BranchValues { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.BranchValuesEnum? BranchValues { get; set;} 
 
         /// <summary>
         ///     Determines default for `values` when it is not provided, by inferring a
         ///     1 for each of the *leaves* and/or *branches*, otherwise 0.
         /// </summary>
         [JsonPropertyName(@"count")]
-        public CountFlag? Count { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.CountFlag? Count { get; set;} 
 
         /// <summary>
         ///     Sets the level from which this trace hierarchy is rendered. Set `level`
@@ -170,19 +170,19 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Tiling.
         /// </summary>
         [JsonPropertyName(@"tiling")]
-        public Tiling Tiling { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.Tiling Tiling { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Gets or sets the PathBar.
         /// </summary>
         [JsonPropertyName(@"pathbar")]
-        public PathBar PathBar { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.PathBar PathBar { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each sector. If trace `textinfo` contains
@@ -197,7 +197,7 @@ namespace Plotly.Blazor.Traces
         ///     Determines which trace information appear on the graph.
         /// </summary>
         [JsonPropertyName(@"textinfo")]
-        public TextInfoFlag? TextInfo { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.TextInfoFlag? TextInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information text that appear on points.
@@ -230,7 +230,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -255,13 +255,13 @@ namespace Plotly.Blazor.Traces
         ///     Sets the font used for `textinfo`.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo` lying inside the sector.
         /// </summary>
         [JsonPropertyName(@"insidetextfont")]
-        public InsideTextFont InsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.InsideTextFont InsideTextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo` lying outside the sector. This option
@@ -270,19 +270,19 @@ namespace Plotly.Blazor.Traces
         ///     won't have any effect and `insidetextfont` would be used.
         /// </summary>
         [JsonPropertyName(@"outsidetextfont")]
-        public OutsideTextFont OutsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.OutsideTextFont OutsideTextFont { get; set;} 
 
         /// <summary>
         ///     Sets the positions of the `text` elements.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  ids .

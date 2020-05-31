@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
@@ -15,10 +14,11 @@ namespace Plotly.Blazor
         // Should be fixed in future blazor wasm releases
         private const string PlotlyInterop = "plotlyInterop";
 
-        private static JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+        private static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = null,
-            IgnoreNullValues = true
+            IgnoreNullValues = true,
+            Converters = { new PolymorphicConverter<ITrace>() }
         };
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.newPlot",
                 objectReference.Value.Id,
-                objectReference.Value.Data.PrepareJsInterop(serializerOptions), // Cast is necessary! Otherwise, it would only serialize the properties of the interface
-                objectReference.Value.Layout.PrepareJsInterop(serializerOptions),
-                objectReference.Value.Config.PrepareJsInterop(serializerOptions));
+                objectReference.Value.Data.Select(trace => trace.PrepareJsInterop(SerializerOptions)),
+                objectReference.Value.Layout.PrepareJsInterop(SerializerOptions),
+                objectReference.Value.Config.PrepareJsInterop(SerializerOptions));
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.react",
                 objectReference.Value.Id,
-                objectReference.Value.Data.PrepareJsInterop(serializerOptions), // Cast is necessary! Otherwise, it would only serialize the properties of the interface
-                objectReference.Value.Layout.PrepareJsInterop(serializerOptions),
-                objectReference.Value.Config.PrepareJsInterop(serializerOptions));
+                objectReference.Value.Data.Select(trace => trace.PrepareJsInterop(SerializerOptions)),
+                objectReference.Value.Layout.PrepareJsInterop(SerializerOptions),
+                objectReference.Value.Config.PrepareJsInterop(SerializerOptions));
         }
     }
 }

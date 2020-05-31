@@ -28,7 +28,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     from left to right.
         /// </summary>
         [JsonPropertyName(@"roworder")]
-        public RowOrderEnum? RowOrder { get; set;} 
+        public Plotly.Blazor.LayoutLib.GridLib.RowOrderEnum? RowOrder { get; set;} 
 
         /// <summary>
         ///     The number of columns in the grid. If you provide a 2D `subplots` array,
@@ -79,7 +79,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     rows according to `roworder`.
         /// </summary>
         [JsonPropertyName(@"pattern")]
-        public PatternEnum? Pattern { get; set;} 
+        public Plotly.Blazor.LayoutLib.GridLib.PatternEnum? Pattern { get; set;} 
 
         /// <summary>
         ///     Horizontal space between grid cells, expressed as a fraction of the total
@@ -101,7 +101,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.LayoutLib.GridLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets where the x axis labels and titles go. *bottom* means the very bottom
@@ -109,7 +109,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     *top* and *top plot* are similar.
         /// </summary>
         [JsonPropertyName(@"xside")]
-        public XSideEnum? XSide { get; set;} 
+        public Plotly.Blazor.LayoutLib.GridLib.XSideEnum? XSide { get; set;} 
 
         /// <summary>
         ///     Sets where the y axis labels and titles go. *left* means the very left edge
@@ -117,7 +117,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     *right* and *right plot* are similar.
         /// </summary>
         [JsonPropertyName(@"yside")]
-        public YSideEnum? YSide { get; set;} 
+        public Plotly.Blazor.LayoutLib.GridLib.YSideEnum? YSide { get; set;} 
 
     }
 }

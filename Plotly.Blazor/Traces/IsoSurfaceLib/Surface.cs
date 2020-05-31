@@ -46,7 +46,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         ///     on the iso-surfaces and creating other patterns of interest.
         /// </summary>
         [JsonPropertyName(@"pattern")]
-        public PatternFlag? Pattern { get; set;} 
+        public Plotly.Blazor.Traces.IsoSurfaceLib.SurfaceLib.PatternFlag? Pattern { get; set;} 
 
     }
 }

@@ -18,13 +18,13 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         ///     Sets the projection type.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Rotation.
         /// </summary>
         [JsonPropertyName(@"rotation")]
-        public Rotation Rotation { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib.Rotation Rotation { get; set;} 
 
         /// <summary>
         ///     For conic projection types only. Sets the parallels (tangent, secant) where

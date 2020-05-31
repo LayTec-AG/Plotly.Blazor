@@ -18,13 +18,13 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         ///     Set the shape of the gauge
         /// </summary>
         [JsonPropertyName(@"shape")]
-        public ShapeEnum? Shape { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
         ///     Set the appearance of the gauge's value
         /// </summary>
         [JsonPropertyName(@"bar")]
-        public Bar Bar { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Bar Bar { get; set;} 
 
         /// <summary>
         ///     Sets the gauge background color.
@@ -48,19 +48,19 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         ///     Gets or sets the Axis.
         /// </summary>
         [JsonPropertyName(@"axis")]
-        public Axis Axis { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Axis Axis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Steps.
         /// </summary>
         [JsonPropertyName(@"steps")]
-        public IList<Step> Steps { get; set;} 
+        public IList<Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Step> Steps { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Threshold.
         /// </summary>
         [JsonPropertyName(@"threshold")]
-        public Threshold Threshold { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Threshold Threshold { get; set;} 
 
     }
 }

@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -105,26 +105,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -174,7 +174,7 @@ namespace Plotly.Blazor.Traces
         ///     bar spans along the vertical (horizontal).
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Specifies the binning function used for this histogram trace. If *count*,
@@ -184,7 +184,7 @@ namespace Plotly.Blazor.Traces
         ///     lying inside each bin respectively.
         /// </summary>
         [JsonPropertyName(@"histfunc")]
-        public HistFuncEnum? HistFunc { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.HistFuncEnum? HistFunc { get; set;} 
 
         /// <summary>
         ///     Specifies the type of normalization used for this histogram trace. If **,
@@ -200,13 +200,13 @@ namespace Plotly.Blazor.Traces
         ///     bin AREAS equals 1).
         /// </summary>
         [JsonPropertyName(@"histnorm")]
-        public HistNormEnum? HistNorm { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.HistNormEnum? HistNorm { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Cumulative.
         /// </summary>
         [JsonPropertyName(@"cumulative")]
-        public Cumulative Cumulative { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.Cumulative Cumulative { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of desired bins. This value will be used in
@@ -221,7 +221,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the XBins.
         /// </summary>
         [JsonPropertyName(@"xbins")]
-        public XBins XBins { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.XBins XBins { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of desired bins. This value will be used in
@@ -236,7 +236,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the YBins.
         /// </summary>
         [JsonPropertyName(@"ybins")]
-        public YBins YBins { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.YBins YBins { get; set;} 
 
         /// <summary>
         ///     Obsolete: since v1.42 each bin attribute is auto-determined separately and
@@ -289,7 +289,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Set several traces linked to the same position axis or matching axes to
@@ -311,37 +311,37 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorX.
         /// </summary>
         [JsonPropertyName(@"error_x")]
-        public ErrorX ErrorX { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.ErrorX ErrorX { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorY.
         /// </summary>
         [JsonPropertyName(@"error_y")]
-        public ErrorY ErrorY { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.ErrorY ErrorY { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.HistogramLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

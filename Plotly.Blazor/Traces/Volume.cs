@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -80,13 +80,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -145,25 +145,25 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Surface.
         /// </summary>
         [JsonPropertyName(@"surface")]
-        public Surface Surface { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.Surface Surface { get; set;} 
 
         /// <summary>
         ///     Gets or sets the SpaceFrame.
         /// </summary>
         [JsonPropertyName(@"spaceframe")]
-        public SpaceFrame SpaceFrame { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.SpaceFrame SpaceFrame { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Slices.
         /// </summary>
         [JsonPropertyName(@"slices")]
-        public Slices Slices { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.Slices Slices { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Caps.
         /// </summary>
         [JsonPropertyName(@"caps")]
-        public Caps Caps { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.Caps Caps { get; set;} 
 
         /// <summary>
         ///     Sets the text elements associated with the vertices. If trace `hoverinfo`
@@ -265,7 +265,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -302,13 +302,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the LightPosition.
         /// </summary>
         [JsonPropertyName(@"lightposition")]
-        public LightPosition LightPosition { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.LightPosition LightPosition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Lighting.
         /// </summary>
         [JsonPropertyName(@"lighting")]
-        public Lighting Lighting { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.Lighting Lighting { get; set;} 
 
         /// <summary>
         ///     Determines whether or not normal smoothing is applied to the meshes, creating
@@ -321,7 +321,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Contour.
         /// </summary>
         [JsonPropertyName(@"contour")]
-        public Contour Contour { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.Contour Contour { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -329,7 +329,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.VolumeLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in

@@ -36,7 +36,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     is the default value if `tickvals` is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
-        public TickModeEnum? TickMode { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -100,7 +100,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
-        public TicksEnum? Ticks { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
         ///     Sets the tick length (in px).
@@ -130,7 +130,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     Sets the color bar's tick label font
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -154,7 +154,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     Gets or sets the TickFormatStops.
         /// </summary>
         [JsonPropertyName(@"tickformatstops")]
-        public IList<TickFormatStop> TickFormatStops { get; set;} 
+        public IList<Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
         ///     Sets a tick label prefix.
@@ -168,7 +168,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
-        public ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label suffix.
@@ -180,7 +180,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     Same as `showtickprefix` but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
-        public ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
         ///     If "true", even 4-digit integers are separated
@@ -195,7 +195,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     1G. If *B*, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     If *all*, all exponents are shown besides their significands. If *first*,
@@ -203,7 +203,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     of the last tick is shown. If *none*, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
-        public ShowExponentEnum? ShowExponent { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  tickvals .

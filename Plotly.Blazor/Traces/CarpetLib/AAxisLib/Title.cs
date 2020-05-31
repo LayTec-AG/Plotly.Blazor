@@ -27,7 +27,7 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
         ///     the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.CarpetLib.AAxisLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     An additional amount by which to offset the title from the tick labels,

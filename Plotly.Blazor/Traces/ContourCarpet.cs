@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -93,7 +93,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -186,7 +186,7 @@ namespace Plotly.Blazor.Traces
         ///     by *x0* and *dx* (the default behavior when `x` is not provided).
         /// </summary>
         [JsonPropertyName(@"atype")]
-        public ATypeEnum? AType { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.ATypeEnum? AType { get; set;} 
 
         /// <summary>
         ///     If *array*, the heatmap's y coordinates are given by *y* (the default behavior
@@ -194,7 +194,7 @@ namespace Plotly.Blazor.Traces
         ///     by *y0* and *dy* (the default behavior when `y` is not provided)
         /// </summary>
         [JsonPropertyName(@"btype")]
-        public BTypeEnum? BType { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.BTypeEnum? BType { get; set;} 
 
         /// <summary>
         ///     Sets the fill color if `contours.type` is *constraint*. Defaults to a half-transparent
@@ -224,13 +224,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Contours.
         /// </summary>
         [JsonPropertyName(@"contours")]
-        public Contours Contours { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.Contours Contours { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -300,7 +300,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.ContourCarpetLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color

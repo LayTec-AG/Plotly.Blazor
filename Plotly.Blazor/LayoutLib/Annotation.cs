@@ -39,7 +39,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the annotation text font.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets an explicit width for the text box. null (default) lets the text set
@@ -68,14 +68,14 @@ namespace Plotly.Blazor.LayoutLib
         ///     <br> HTML tags) or if an explicit width is set to override the text width.
         /// </summary>
         [JsonPropertyName(@"align")]
-        public AlignEnum? Align { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
         ///     Sets the vertical alignment of the `text` within the box. Has an effect
         ///     only if an explicit height is set to override the text height.
         /// </summary>
         [JsonPropertyName(@"valign")]
-        public VAlignEnum? VAlign { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.VAlignEnum? VAlign { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the annotation.
@@ -131,7 +131,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the annotation arrow head position.
         /// </summary>
         [JsonPropertyName(@"arrowside")]
-        public ArrowSideFlag? ArrowSide { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.ArrowSideFlag? ArrowSide { get; set;} 
 
         /// <summary>
         ///     Sets the size of the end annotation arrow head, relative to `arrowwidth`.
@@ -240,7 +240,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     arrow, the anchor picked corresponds to the closest side.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Shifts the position of the whole annotation and arrow to the right (positive)
@@ -279,7 +279,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     arrow, the anchor picked corresponds to the closest side.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Shifts the position of the whole annotation and arrow up (positive) or down
@@ -301,7 +301,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     over `xclick` and `yclick`.
         /// </summary>
         [JsonPropertyName(@"clicktoshow")]
-        public ClickToShowEnum? ClickToShow { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.ClickToShowEnum? ClickToShow { get; set;} 
 
         /// <summary>
         ///     Toggle this annotation when clicking a data point whose `x` value is `xclick`
@@ -328,7 +328,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.LayoutLib.AnnotationLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Determines whether the annotation text box captures mouse move and click

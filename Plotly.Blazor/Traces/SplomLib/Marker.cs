@@ -100,7 +100,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -118,7 +118,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         ///     a symbol name.
         /// </summary>
         [JsonPropertyName(@"symbol")]
-        public SymbolEnum? Symbol { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
         ///     Sets the marker size (in px).
@@ -146,7 +146,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         ///     rule for which the data in `size` is converted to pixels.
         /// </summary>
         [JsonPropertyName(@"sizemode")]
-        public SizeModeEnum? SizeMode { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.MarkerLib.SizeModeEnum? SizeMode { get; set;} 
 
         /// <summary>
         ///     Sets the marker opacity.
@@ -158,7 +158,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .

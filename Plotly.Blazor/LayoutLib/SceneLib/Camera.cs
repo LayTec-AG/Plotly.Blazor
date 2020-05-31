@@ -20,7 +20,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         ///     *{x: 0, y: 0, z: 1}* which means that the z axis points up.
         /// </summary>
         [JsonPropertyName(@"up")]
-        public Up Up { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Up Up { get; set;} 
 
         /// <summary>
         ///     Sets the (x,y,z) components of the 'center' camera vector This vector determines
@@ -28,20 +28,20 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         ///     there is no such translation.
         /// </summary>
         [JsonPropertyName(@"center")]
-        public Center Center { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Center Center { get; set;} 
 
         /// <summary>
         ///     Sets the (x,y,z) components of the 'eye' camera vector. This vector determines
         ///     the view point about the origin of this scene.
         /// </summary>
         [JsonPropertyName(@"eye")]
-        public Eye Eye { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Eye Eye { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Projection.
         /// </summary>
         [JsonPropertyName(@"projection")]
-        public Projection Projection { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Projection Projection { get; set;} 
 
     }
 }

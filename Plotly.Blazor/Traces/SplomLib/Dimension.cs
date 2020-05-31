@@ -38,7 +38,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         ///     Gets or sets the Axis.
         /// </summary>
         [JsonPropertyName(@"axis")]
-        public Axis Axis { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.DimensionLib.Axis Axis { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in

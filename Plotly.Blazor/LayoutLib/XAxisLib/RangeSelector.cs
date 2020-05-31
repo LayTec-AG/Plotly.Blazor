@@ -26,7 +26,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         ///     Gets or sets the Buttons.
         /// </summary>
         [JsonPropertyName(@"buttons")]
-        public IList<Button> Buttons { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.Button> Buttons { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the range selector.
@@ -39,7 +39,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         ///     the `x` position to the *left*, *center* or *right* of the range selector.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the y position (in normalized coordinates) of the range selector.
@@ -52,13 +52,13 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         ///     `y` position to the *top*, *middle* or *bottom* of the range selector.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the font of the range selector button text.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the range selector buttons.

@@ -51,7 +51,7 @@ namespace Plotly.Blazor.Transforms
         ///     values *}{* keeps items not present in a set of values
         /// </summary>
         [JsonPropertyName(@"operation")]
-        public OperationEnum? Operation { get; set;} 
+        public Plotly.Blazor.Transforms.FilterLib.OperationEnum? Operation { get; set;} 
 
         /// <summary>
         ///     Sets the value or values by which to filter. Values are expected to be in
@@ -78,7 +78,7 @@ namespace Plotly.Blazor.Transforms
         ///     Sets the calendar system to use for `value`, if it is a date.
         /// </summary>
         [JsonPropertyName(@"valuecalendar")]
-        public ValueCalendarEnum? ValueCalendar { get; set;} 
+        public Plotly.Blazor.Transforms.FilterLib.ValueCalendarEnum? ValueCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use for `target`, if it is an array of dates.
@@ -86,7 +86,7 @@ namespace Plotly.Blazor.Transforms
         ///     (eg `xcalendar`) if it exists, even if `targetcalendar` is provided.
         /// </summary>
         [JsonPropertyName(@"targetcalendar")]
-        public TargetCalendarEnum? TargetCalendar { get; set;} 
+        public Plotly.Blazor.Transforms.FilterLib.TargetCalendarEnum? TargetCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  target .

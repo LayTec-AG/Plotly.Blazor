@@ -18,19 +18,19 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         ///     Gets or sets the X.
         /// </summary>
         [JsonPropertyName(@"x")]
-        public X X { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib.X X { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Y.
         /// </summary>
         [JsonPropertyName(@"y")]
-        public Y Y { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib.Y Y { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Z.
         /// </summary>
         [JsonPropertyName(@"z")]
-        public Z Z { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib.Z Z { get; set;} 
 
     }
 }

@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         ///     Sets the marker symbol type.
         /// </summary>
         [JsonPropertyName(@"symbol")]
-        public SymbolEnum? Symbol { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
         ///     Sets the marker size (in px).
@@ -46,7 +46,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         ///     rule for which the data in `size` is converted to pixels.
         /// </summary>
         [JsonPropertyName(@"sizemode")]
-        public SizeModeEnum? SizeMode { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.SizeModeEnum? SizeMode { get; set;} 
 
         /// <summary>
         ///     Sets the marker opacity. Note that the marker opacity for scatter3d traces
@@ -61,13 +61,13 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets themarkercolor. It accepts either a specific color or an array of numbers

@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces.PieLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  colors .

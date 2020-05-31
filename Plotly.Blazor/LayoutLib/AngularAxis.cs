@@ -47,7 +47,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     the orientation (from the paper perspective) of the angular axis tick labels.
         /// </summary>
         [JsonPropertyName(@"tickorientation")]
-        public TickOrientationEnum? TickOrientation { get; set;} 
+        public Plotly.Blazor.LayoutLib.AngularAxisLib.TickOrientationEnum? TickOrientation { get; set;} 
 
         /// <summary>
         ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets

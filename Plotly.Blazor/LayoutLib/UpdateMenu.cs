@@ -25,7 +25,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     the buttons are stacked horizontally or vertically
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Determines the direction in which the buttons are laid out, whether in a
@@ -33,7 +33,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     will still appear in left-to-right or top-to-bottom order respectively.
         /// </summary>
         [JsonPropertyName(@"direction")]
-        public DirectionEnum? Direction { get; set;} 
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
         ///     Determines which button (by index starting from 0) is considered active.
@@ -51,7 +51,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Buttons.
         /// </summary>
         [JsonPropertyName(@"buttons")]
-        public IList<Button> Buttons { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.UpdateMenuLib.Button> Buttons { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the update menu.
@@ -64,7 +64,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     `x` position to the *left*, *center* or *right* of the range selector.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the y position (in normalized coordinates) of the update menu.
@@ -77,19 +77,19 @@ namespace Plotly.Blazor.LayoutLib
         ///     position to the *top*, *middle* or *bottom* of the range selector.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the padding around the buttons or dropdown menu.
         /// </summary>
         [JsonPropertyName(@"pad")]
-        public Pad Pad { get; set;} 
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.Pad Pad { get; set;} 
 
         /// <summary>
         ///     Sets the font of the update menu button text.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the update menu buttons.

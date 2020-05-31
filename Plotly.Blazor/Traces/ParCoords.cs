@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
@@ -73,14 +73,14 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -103,7 +103,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the labels with respect to the horizontal. For example,
@@ -120,37 +120,37 @@ namespace Plotly.Blazor.Traces
         ///     is set to *bottom*.
         /// </summary>
         [JsonPropertyName(@"labelside")]
-        public LabelSideEnum? LabelSide { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.LabelSideEnum? LabelSide { get; set;} 
 
         /// <summary>
         ///     Sets the font for the `dimension` labels.
         /// </summary>
         [JsonPropertyName(@"labelfont")]
-        public LabelFont LabelFont { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.LabelFont LabelFont { get; set;} 
 
         /// <summary>
         ///     Sets the font for the `dimension` tick values.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the font for the `dimension` range values.
         /// </summary>
         [JsonPropertyName(@"rangefont")]
-        public RangeFont RangeFont { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.RangeFont RangeFont { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Dimensions.
         /// </summary>
         [JsonPropertyName(@"dimensions")]
-        public IList<Dimension> Dimensions { get; set;} 
+        public IList<Plotly.Blazor.Traces.ParCoordsLib.Dimension> Dimensions { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ParCoordsLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  ids .

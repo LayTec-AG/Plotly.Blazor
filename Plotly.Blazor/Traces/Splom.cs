@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -99,26 +99,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -141,7 +141,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Dimensions.
         /// </summary>
         [JsonPropertyName(@"dimensions")]
-        public IList<Dimension> Dimensions { get; set;} 
+        public IList<Plotly.Blazor.Traces.SplomLib.Dimension> Dimensions { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each (x,y) pair to appear on hover. If
@@ -180,7 +180,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets the list of x axes corresponding to dimensions of this splom trace.
@@ -206,7 +206,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Diagonal.
         /// </summary>
         [JsonPropertyName(@"diagonal")]
-        public Diagonal Diagonal { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.Diagonal Diagonal { get; set;} 
 
         /// <summary>
         ///     Determines whether or not subplots on the upper half from the diagonal are
@@ -226,13 +226,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.SplomLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the trace.

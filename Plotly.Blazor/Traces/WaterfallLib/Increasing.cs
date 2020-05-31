@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.WaterfallLib
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.IncreasingLib.Marker Marker { get; set;} 
 
     }
 }

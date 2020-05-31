@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
@@ -75,19 +75,19 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -110,7 +110,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     The width of columns expressed as a ratio. Columns fill the available width
@@ -131,13 +131,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Header.
         /// </summary>
         [JsonPropertyName(@"header")]
-        public Header Header { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.Header Header { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Cells.
         /// </summary>
         [JsonPropertyName(@"cells")]
-        public Cells Cells { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.Cells Cells { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  ids .

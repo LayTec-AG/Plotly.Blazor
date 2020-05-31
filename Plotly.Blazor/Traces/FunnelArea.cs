@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -93,20 +93,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -158,7 +158,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each sector. If trace `textinfo` contains
@@ -190,7 +190,7 @@ namespace Plotly.Blazor.Traces
         ///     Determines which trace information appear on the graph.
         /// </summary>
         [JsonPropertyName(@"textinfo")]
-        public TextInfoFlag? TextInfo { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.TextInfoFlag? TextInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information text that appear on points.
@@ -213,7 +213,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -238,31 +238,31 @@ namespace Plotly.Blazor.Traces
         ///     Specifies the location of the `textinfo`.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo`.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo` lying inside the sector.
         /// </summary>
         [JsonPropertyName(@"insidetextfont")]
-        public InsideTextFont InsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.InsideTextFont InsideTextFont { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.FunnelAreaLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets the ratio between height and width

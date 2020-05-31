@@ -20,19 +20,19 @@ namespace Plotly.Blazor
         ///     inherit from the global font.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.LayoutLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Gets or sets the UniformText.
         /// </summary>
         [JsonPropertyName(@"uniformtext")]
-        public UniformText UniformText { get; set;} 
+        public Plotly.Blazor.LayoutLib.UniformText UniformText { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a layout width or height that has been left undefined
@@ -59,7 +59,7 @@ namespace Plotly.Blazor
         ///     Gets or sets the Margin.
         /// </summary>
         [JsonPropertyName(@"margin")]
-        public Margin Margin { get; set;} 
+        public Plotly.Blazor.LayoutLib.Margin Margin { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the paper where the graph is drawn.
@@ -170,19 +170,19 @@ namespace Plotly.Blazor
         ///     Gets or sets the ModeBar.
         /// </summary>
         [JsonPropertyName(@"modebar")]
-        public ModeBar ModeBar { get; set;} 
+        public Plotly.Blazor.LayoutLib.ModeBar ModeBar { get; set;} 
 
         /// <summary>
         ///     Gets or sets the NewShape.
         /// </summary>
         [JsonPropertyName(@"newshape")]
-        public NewShape NewShape { get; set;} 
+        public Plotly.Blazor.LayoutLib.NewShape NewShape { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ActiveShape.
         /// </summary>
         [JsonPropertyName(@"activeshape")]
-        public ActiveShape ActiveShape { get; set;} 
+        public Plotly.Blazor.LayoutLib.ActiveShape ActiveShape { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information that can be used in various `text` attributes.
@@ -200,7 +200,7 @@ namespace Plotly.Blazor
         ///     Sets transition options used during Plotly.react updates.
         /// </summary>
         [JsonPropertyName(@"transition")]
-        public Transition Transition { get; set;} 
+        public Plotly.Blazor.LayoutLib.Transition Transition { get; set;} 
 
         /// <summary>
         ///     Determines the mode of single click interactions. *event* is the default
@@ -216,7 +216,7 @@ namespace Plotly.Blazor
         ///     `plotly_selected` events are not fired.
         /// </summary>
         [JsonPropertyName(@"clickmode")]
-        public ClickModeFlag? ClickMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.ClickModeFlag? ClickMode { get; set;} 
 
         /// <summary>
         ///     Determines the mode of drag interactions. *select* and *lasso* apply only
@@ -224,7 +224,7 @@ namespace Plotly.Blazor
         ///     to 3D scenes.
         /// </summary>
         [JsonPropertyName(@"dragmode")]
-        public DragModeEnum? DragMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.DragModeEnum? DragMode { get; set;} 
 
         /// <summary>
         ///     Determines the mode of hover interactions. If *closest*, a single hoverlabel
@@ -242,7 +242,7 @@ namespace Plotly.Blazor
         ///     cartesian coordinates. For anything else the default value is *closest*.
         /// </summary>
         [JsonPropertyName(@"hovermode")]
-        public HoverModeEnum? HoverMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.HoverModeEnum? HoverMode { get; set;} 
 
         /// <summary>
         ///     Sets the default distance (in pixels) to look for data to add hover labels
@@ -268,7 +268,7 @@ namespace Plotly.Blazor
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.LayoutLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     When `dragmode` is set to *select*, this limits the selection of the drag
@@ -276,88 +276,88 @@ namespace Plotly.Blazor
         ///     *v* only vertical, *d* only diagonal and *any* sets no limit.
         /// </summary>
         [JsonPropertyName(@"selectdirection")]
-        public SelectDirectionEnum? SelectDirection { get; set;} 
+        public Plotly.Blazor.LayoutLib.SelectDirectionEnum? SelectDirection { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Grid.
         /// </summary>
         [JsonPropertyName(@"grid")]
-        public Grid Grid { get; set;} 
+        public Plotly.Blazor.LayoutLib.Grid Grid { get; set;} 
 
         /// <summary>
         ///     Sets the default calendar system to use for interpreting and displaying
         ///     dates throughout the plot.
         /// </summary>
         [JsonPropertyName(@"calendar")]
-        public CalendarEnum? Calendar { get; set;} 
+        public Plotly.Blazor.LayoutLib.CalendarEnum? Calendar { get; set;} 
 
         /// <summary>
         ///     Gets or sets the XAxis.
         /// </summary>
         [JsonPropertyName(@"xaxis")]
         [Subplot]
-        public IList<XAxis> XAxis { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.XAxis> XAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the YAxis.
         /// </summary>
         [JsonPropertyName(@"yaxis")]
         [Subplot]
-        public IList<YAxis> YAxis { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.YAxis> YAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Ternary.
         /// </summary>
         [JsonPropertyName(@"ternary")]
         [Subplot]
-        public IList<Ternary> Ternary { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Ternary> Ternary { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Scene.
         /// </summary>
         [JsonPropertyName(@"scene")]
         [Subplot]
-        public IList<Scene> Scene { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Scene> Scene { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Geo.
         /// </summary>
         [JsonPropertyName(@"geo")]
         [Subplot]
-        public IList<Geo> Geo { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Geo> Geo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the MapBox.
         /// </summary>
         [JsonPropertyName(@"mapbox")]
         [Subplot]
-        public IList<MapBox> MapBox { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.MapBox> MapBox { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Polar.
         /// </summary>
         [JsonPropertyName(@"polar")]
         [Subplot]
-        public IList<Polar> Polar { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Polar> Polar { get; set;} 
 
         /// <summary>
         ///     Gets or sets the RadialAxis.
         /// </summary>
         [JsonPropertyName(@"radialaxis")]
-        public RadialAxis RadialAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.RadialAxis RadialAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the AngularAxis.
         /// </summary>
         [JsonPropertyName(@"angularaxis")]
-        public AngularAxis AngularAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.AngularAxis AngularAxis { get; set;} 
 
         /// <summary>
         ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Sets
         ///     the direction corresponding to positive angles in legacy polar charts.
         /// </summary>
         [JsonPropertyName(@"direction")]
-        public DirectionEnum? Direction { get; set;} 
+        public Plotly.Blazor.LayoutLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
         ///     Legacy polar charts are deprecated! Please switch to *polar* subplots. Rotates
@@ -370,50 +370,50 @@ namespace Plotly.Blazor
         ///     Gets or sets the Legend.
         /// </summary>
         [JsonPropertyName(@"legend")]
-        public Legend Legend { get; set;} 
+        public Plotly.Blazor.LayoutLib.Legend Legend { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Annotations.
         /// </summary>
         [JsonPropertyName(@"annotations")]
-        public IList<Annotation> Annotations { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Annotation> Annotations { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Shapes.
         /// </summary>
         [JsonPropertyName(@"shapes")]
-        public IList<Shape> Shapes { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Shape> Shapes { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Images.
         /// </summary>
         [JsonPropertyName(@"images")]
-        public IList<Image> Images { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Image> Images { get; set;} 
 
         /// <summary>
         ///     Gets or sets the UpdateMenus.
         /// </summary>
         [JsonPropertyName(@"updatemenus")]
-        public IList<UpdateMenu> UpdateMenus { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.UpdateMenu> UpdateMenus { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Sliders.
         /// </summary>
         [JsonPropertyName(@"sliders")]
-        public IList<Slider> Sliders { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.Slider> Sliders { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ColorScale.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
-        public ColorScale ColorScale { get; set;} 
+        public Plotly.Blazor.LayoutLib.ColorScale ColorScale { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ColorAxis.
         /// </summary>
         [JsonPropertyName(@"coloraxis")]
         [Subplot]
-        public IList<ColorAxis> ColorAxis { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.ColorAxis> ColorAxis { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  meta .

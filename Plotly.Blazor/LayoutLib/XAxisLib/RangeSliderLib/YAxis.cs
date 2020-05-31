@@ -21,7 +21,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib
         ///     current range of the corresponding y-axis on the main subplot is used.
         /// </summary>
         [JsonPropertyName(@"rangemode")]
-        public RangeModeEnum? RangeMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib.YAxisLib.RangeModeEnum? RangeMode { get; set;} 
 
         /// <summary>
         ///     Sets the range of this axis for the rangeslider.

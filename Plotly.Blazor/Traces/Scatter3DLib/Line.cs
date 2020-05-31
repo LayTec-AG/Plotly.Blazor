@@ -24,7 +24,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         ///     Sets the dash style of the lines.
         /// </summary>
         [JsonPropertyName(@"dash")]
-        public DashEnum? Dash { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.LineLib.DashEnum? Dash { get; set;} 
 
         /// <summary>
         ///     Sets thelinecolor. It accepts either a specific color or an array of numbers
@@ -110,7 +110,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.LineLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color

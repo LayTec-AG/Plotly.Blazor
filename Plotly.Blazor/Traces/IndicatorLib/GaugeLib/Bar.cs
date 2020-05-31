@@ -24,7 +24,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.BarLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the thickness of the bar as a fraction of the total thickness of the

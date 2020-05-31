@@ -54,25 +54,25 @@ namespace Plotly.Blazor.Traces.TableLib
         ///     <br> HTML tags) or if an explicit width is set to override the text width.
         /// </summary>
         [JsonPropertyName(@"align")]
-        public AlignEnum? Align { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.HeaderLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.HeaderLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Fill.
         /// </summary>
         [JsonPropertyName(@"fill")]
-        public Fill Fill { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.HeaderLib.Fill Fill { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Font.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.TableLib.HeaderLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  values .

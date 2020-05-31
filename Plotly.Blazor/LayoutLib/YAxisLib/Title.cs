@@ -27,7 +27,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
         ///     by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.YAxisLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the standoff distance (in px) between the axis labels and the title

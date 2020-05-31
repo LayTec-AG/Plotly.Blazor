@@ -42,20 +42,20 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         ///     geometry
         /// </summary>
         [JsonPropertyName(@"placement")]
-        public PlacementEnum? Placement { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.PlacementEnum? Placement { get; set;} 
 
         /// <summary>
         ///     Sets the icon text font (color=mapbox.layer.paint.text-color, size=mapbox.layer.layout.text-size).
         ///     Has an effect only when `type` is set to *symbol*.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.TextPositionEnum? TextPosition { get; set;} 
 
     }
 }

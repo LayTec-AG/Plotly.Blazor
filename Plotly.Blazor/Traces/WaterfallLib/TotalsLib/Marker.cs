@@ -24,7 +24,7 @@ namespace Plotly.Blazor.Traces.WaterfallLib.TotalsLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.TotalsLib.MarkerLib.Line Line { get; set;} 
 
     }
 }

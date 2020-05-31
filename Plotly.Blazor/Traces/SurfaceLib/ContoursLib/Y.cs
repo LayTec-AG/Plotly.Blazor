@@ -42,7 +42,7 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
         ///     Gets or sets the Project.
         /// </summary>
         [JsonPropertyName(@"project")]
-        public Project Project { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.ContoursLib.YLib.Project Project { get; set;} 
 
         /// <summary>
         ///     Sets the color of the contour lines.

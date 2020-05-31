@@ -30,13 +30,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     draw a custom SVG path using `path`. with respect to the axes' sizing mode.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Specifies whether shapes are drawn below or above traces.
         /// </summary>
         [JsonPropertyName(@"layer")]
-        public LayerEnum? Layer { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     Sets the shape's x coordinate axis. If set to an x axis id (e.g. *x* or
@@ -60,7 +60,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     relative to data or plot fraction.
         /// </summary>
         [JsonPropertyName(@"xsizemode")]
-        public XSizeModeEnum? XSizeMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.XSizeModeEnum? XSizeMode { get; set;} 
 
         /// <summary>
         ///     Only relevant in conjunction with `xsizemode` set to *pixel*. Specifies
@@ -104,7 +104,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     a position relative to data or plot fraction.
         /// </summary>
         [JsonPropertyName(@"ysizemode")]
-        public YSizeModeEnum? YSizeMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.YSizeModeEnum? YSizeMode { get; set;} 
 
         /// <summary>
         ///     Only relevant in conjunction with `ysizemode` set to *pixel*. Specifies
@@ -158,7 +158,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the color filling the shape's interior. Only applies to closed shapes.
@@ -171,7 +171,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     info please visit https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
         /// </summary>
         [JsonPropertyName(@"fillrule")]
-        public FillRuleEnum? FillRule { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.FillRuleEnum? FillRule { get; set;} 
 
         /// <summary>
         ///     Determines whether the shape could be activated for edit or not. Has no

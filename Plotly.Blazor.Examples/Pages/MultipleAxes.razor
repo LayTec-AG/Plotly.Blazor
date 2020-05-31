@@ -1,11 +1,11 @@
-﻿@page "/"
+﻿@page "/multipleaxes"
 @using System.Diagnostics
 @using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.YAxisLib
 @using Plotly.Blazor.Traces.ScatterLib
 @using Title = Plotly.Blazor.LayoutLib.YAxisLib.Title
 
-<h1>Scatter Chart</h1>
+<h1>Multiple Axes</h1>
 
 <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
 <button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
@@ -34,6 +34,15 @@
                 {
                     Text = "Scatter Unit"
                 }
+            },
+            new YAxis
+            {
+                Title = new Title
+                {
+                    Text = "Bar Unit"
+                },
+                Overlaying = "y",
+                Side = SideEnum.Right
             }
         }
     };
@@ -46,17 +55,29 @@
         Mode = ModeFlag.Lines | ModeFlag.Markers,
         X = new List<object>(),
         Y = new List<object>()
+    },
+    new Bar
+    {
+        Name = "Trace2",
+        YAxis = "y2",
+        X = new List<object>(),
+        Y = new List<object>()
     }
 };
 
     private async Task AddData(int count = 100)
     {
         if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
+        if (!(chart.Data.ElementAt(1) is Bar bar)) return;
 
         var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
+        var (x2, y2) = Helper.GenerateData(bar.X.Count + 1, bar.X.Count + 1 + count, GenerateMethod.Cos);
 
         scatter.X.AddRange(x);
         scatter.Y.AddRange(y);
+
+        bar.X.AddRange(x2);
+        bar.Y.AddRange(y2);
 
         var stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -68,12 +89,17 @@
     private async Task Clear()
     {
         if (!(chart.Data.ElementAt(0) is Scatter plot)) return;
+        if (!(chart.Data.ElementAt(1) is Bar plot2)) return;
 
         plot.X.Clear();
         plot.Y.Clear();
 
+        plot2.X.Clear();
+        plot2.Y.Clear();
+
         await chart.Update();
     }
+
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

@@ -30,13 +30,13 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
         ///     Determines the line shape. The values correspond to step-wise line shapes.
         /// </summary>
         [JsonPropertyName(@"shape")]
-        public ShapeEnum? Shape { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
         ///     Sets the style of the lines.
         /// </summary>
         [JsonPropertyName(@"dash")]
-        public DashEnum? Dash { get; set;} 
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.LineLib.DashEnum? Dash { get; set;} 
 
     }
 }

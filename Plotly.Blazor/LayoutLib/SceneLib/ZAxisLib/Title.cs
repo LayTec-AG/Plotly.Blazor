@@ -27,7 +27,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.ZAxisLib
         ///     by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.ZAxisLib.TitleLib.Font Font { get; set;} 
 
     }
 }

@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets the mapbox access token to be used for this mapbox map. Alternatively,
@@ -55,7 +55,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Center.
         /// </summary>
         [JsonPropertyName(@"center")]
-        public Center Center { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.Center Center { get; set;} 
 
         /// <summary>
         ///     Sets the zoom level of the map (mapbox.zoom).
@@ -81,7 +81,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Layers.
         /// </summary>
         [JsonPropertyName(@"layers")]
-        public IList<Layer> Layers { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.MapBoxLib.Layer> Layers { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in the view: `center`, `zoom`,

@@ -27,7 +27,7 @@ namespace Plotly.Blazor.Traces.ConeLib.ColorBarLib
         ///     set by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.ColorBarLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Determines the location of color bar's title with respect to the color bar.
@@ -35,7 +35,7 @@ namespace Plotly.Blazor.Traces.ConeLib.ColorBarLib
         ///     attribute.
         /// </summary>
         [JsonPropertyName(@"side")]
-        public SideEnum? Side { get; set;} 
+        public Plotly.Blazor.Traces.ConeLib.ColorBarLib.TitleLib.SideEnum? Side { get; set;} 
 
     }
 }

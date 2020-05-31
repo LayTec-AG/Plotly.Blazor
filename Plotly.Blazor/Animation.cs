@@ -22,13 +22,13 @@ namespace Plotly.Blazor
         ///     to completion before the new animation is started.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeEnum? Mode { get; set;} 
+        public Plotly.Blazor.AnimationLib.ModeEnum? Mode { get; set;} 
 
         /// <summary>
         ///     The direction in which to play the frames triggered by the animation call
         /// </summary>
         [JsonPropertyName(@"direction")]
-        public DirectionEnum? Direction { get; set;} 
+        public Plotly.Blazor.AnimationLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
         ///     Play frames starting at the current frame instead of the beginning.
@@ -40,13 +40,13 @@ namespace Plotly.Blazor
         ///     Gets or sets the Frame.
         /// </summary>
         [JsonPropertyName(@"frame")]
-        public Frame Frame { get; set;} 
+        public Plotly.Blazor.AnimationLib.Frame Frame { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transition.
         /// </summary>
         [JsonPropertyName(@"transition")]
-        public Transition Transition { get; set;} 
+        public Plotly.Blazor.AnimationLib.Transition Transition { get; set;} 
 
     }
 }

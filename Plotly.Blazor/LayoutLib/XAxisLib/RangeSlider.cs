@@ -70,7 +70,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         /// </summary>
         [JsonPropertyName(@"yaxis")]
         [Subplot]
-        public IList<YAxis> YAxis { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib.YAxis> YAxis { get; set;} 
 
     }
 }

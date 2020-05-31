@@ -24,13 +24,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Camera.
         /// </summary>
         [JsonPropertyName(@"camera")]
-        public Camera Camera { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.Camera Camera { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     If *cube*, this scene's axes are drawn as a cube, regardless of the axes'
@@ -42,43 +42,43 @@ namespace Plotly.Blazor.LayoutLib
         ///     in that case the results of *cube* are used.
         /// </summary>
         [JsonPropertyName(@"aspectmode")]
-        public AspectModeEnum? AspectMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.AspectModeEnum? AspectMode { get; set;} 
 
         /// <summary>
         ///     Sets this scene's axis aspectratio.
         /// </summary>
         [JsonPropertyName(@"aspectratio")]
-        public AspectRatio AspectRatio { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.AspectRatio AspectRatio { get; set;} 
 
         /// <summary>
         ///     Gets or sets the XAxis.
         /// </summary>
         [JsonPropertyName(@"xaxis")]
-        public XAxis XAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.XAxis XAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the YAxis.
         /// </summary>
         [JsonPropertyName(@"yaxis")]
-        public YAxis YAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.YAxis YAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ZAxis.
         /// </summary>
         [JsonPropertyName(@"zaxis")]
-        public ZAxis ZAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.ZAxis ZAxis { get; set;} 
 
         /// <summary>
         ///     Determines the mode of drag interactions for this scene.
         /// </summary>
         [JsonPropertyName(@"dragmode")]
-        public DragModeEnum? DragMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.DragModeEnum? DragMode { get; set;} 
 
         /// <summary>
         ///     Determines the mode of hover interactions for this scene.
         /// </summary>
         [JsonPropertyName(@"hovermode")]
-        public HoverModeEnum? HoverMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.HoverModeEnum? HoverMode { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in camera attributes. Defaults
@@ -91,7 +91,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Annotations.
         /// </summary>
         [JsonPropertyName(@"annotations")]
-        public IList<Annotation> Annotations { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.SceneLib.Annotation> Annotations { get; set;} 
 
     }
 }

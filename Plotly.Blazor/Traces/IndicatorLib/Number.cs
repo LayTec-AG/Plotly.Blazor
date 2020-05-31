@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         ///     Set the font used to display main number
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.NumberLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets a prefix appearing before the number.

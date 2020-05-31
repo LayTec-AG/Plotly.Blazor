@@ -27,21 +27,21 @@ namespace Plotly.Blazor.LayoutLib
         ///     the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the container `x` refers to. *container* spans the entire `width` of
         ///     the plot. *paper* refers to the width of the plotting area only.
         /// </summary>
         [JsonPropertyName(@"xref")]
-        public XrefEnum? Xref { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.XrefEnum? Xref { get; set;} 
 
         /// <summary>
         ///     Sets the container `y` refers to. *container* spans the entire `height`
         ///     of the plot. *paper* refers to the height of the plotting area only.
         /// </summary>
         [JsonPropertyName(@"yref")]
-        public YRefEnum? YRef { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.YRefEnum? YRef { get; set;} 
 
         /// <summary>
         ///     Sets the x position with respect to `xref` in normalized coordinates from
@@ -66,7 +66,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     of `x`.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the title's vertical alignment with respect to its y position. *top*
@@ -76,7 +76,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     based on the value of `y`.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the padding of the title. Each padding value only applies when the
@@ -86,7 +86,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     the respective anchor value is *middle*/*center*.
         /// </summary>
         [JsonPropertyName(@"pad")]
-        public Pad Pad { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.Pad Pad { get; set;} 
 
     }
 }

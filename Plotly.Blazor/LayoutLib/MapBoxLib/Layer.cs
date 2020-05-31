@@ -24,7 +24,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         ///     Sets the source type for this layer, that is the type of the layer data.
         /// </summary>
         [JsonPropertyName(@"sourcetype")]
-        public SourceTypeEnum? SourceType { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SourceTypeEnum? SourceType { get; set;} 
 
         /// <summary>
         ///     Sets the source data for this layer (mapbox.layer.source). When `sourcetype`
@@ -59,7 +59,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         ///     value is allowed.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Sets the coordinates array contains [longitude, latitude] pairs for the
@@ -115,25 +115,25 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         ///     Gets or sets the Circle.
         /// </summary>
         [JsonPropertyName(@"circle")]
-        public Circle Circle { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Circle Circle { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Fill.
         /// </summary>
         [JsonPropertyName(@"fill")]
-        public Fill Fill { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Fill Fill { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Symbol.
         /// </summary>
         [JsonPropertyName(@"symbol")]
-        public Symbol Symbol { get; set;} 
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Symbol Symbol { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in

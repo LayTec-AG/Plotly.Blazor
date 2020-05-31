@@ -50,7 +50,7 @@ namespace Plotly.Blazor.Transforms
         ///     Gets or sets the Styles.
         /// </summary>
         [JsonPropertyName(@"styles")]
-        public IList<Style> Styles { get; set;} 
+        public IList<Plotly.Blazor.Transforms.GroupByLib.Style> Styles { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  groups .

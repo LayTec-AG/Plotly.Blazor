@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -99,26 +99,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -198,31 +198,31 @@ namespace Plotly.Blazor.Traces
         ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Sets the text font.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Determines the drawing mode for this scatter trace.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeFlag? Mode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the provided
@@ -250,7 +250,7 @@ namespace Plotly.Blazor.Traces
         ///     order.
         /// </summary>
         [JsonPropertyName(@"fill")]
-        public FillEnum? Fill { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.FillEnum? Fill { get; set;} 
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
@@ -263,13 +263,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the trace.
@@ -313,25 +313,25 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ErrorX.
         /// </summary>
         [JsonPropertyName(@"error_x")]
-        public ErrorX ErrorX { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.ErrorX ErrorX { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorY.
         /// </summary>
         [JsonPropertyName(@"error_y")]
-        public ErrorY ErrorY { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.ErrorY ErrorY { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.ScatterGlLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

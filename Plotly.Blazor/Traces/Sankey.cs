@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
@@ -83,7 +83,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -109,25 +109,25 @@ namespace Plotly.Blazor.Traces
         ///     by `node.hoverinfo` and `node.hoverinfo` for nodes and links respectively.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets the orientation of the Sankey diagram.
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Sets the value formatting rule using d3 formatting mini-language which is
@@ -151,25 +151,25 @@ namespace Plotly.Blazor.Traces
         ///     If value is `fixed`, the nodes are stationary.
         /// </summary>
         [JsonPropertyName(@"arrangement")]
-        public ArrangementEnum? Arrangement { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.ArrangementEnum? Arrangement { get; set;} 
 
         /// <summary>
         ///     Sets the font for node labels
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     The nodes of the Sankey plot.
         /// </summary>
         [JsonPropertyName(@"node")]
-        public Node Node { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.Node Node { get; set;} 
 
         /// <summary>
         ///     The links of the Sankey plot.
         /// </summary>
         [JsonPropertyName(@"link")]
-        public Link Link { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.Link Link { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  ids .

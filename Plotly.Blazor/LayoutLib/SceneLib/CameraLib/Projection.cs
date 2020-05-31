@@ -19,7 +19,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.CameraLib
         ///     or *orthographic*. The default is *perspective*.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TypeEnum? Type { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.ProjectionLib.TypeEnum? Type { get; set;} 
 
     }
 }

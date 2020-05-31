@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -103,20 +103,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -153,7 +153,7 @@ namespace Plotly.Blazor.Traces
         ///     the `text` elements appear on hover.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeFlag? Mode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each (lon,lat) pair If a single string,
@@ -193,7 +193,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the provided
@@ -206,7 +206,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets the area to fill with a solid color. Use with `fillcolor` if not *none*.
@@ -214,7 +214,7 @@ namespace Plotly.Blazor.Traces
         ///     if it has gaps) into a closed shape.
         /// </summary>
         [JsonPropertyName(@"fill")]
-        public FillEnum? Fill { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.FillEnum? Fill { get; set;} 
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
@@ -228,13 +228,13 @@ namespace Plotly.Blazor.Traces
         ///     Has an effect only when `type` is set to *symbol*.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Determines if this scattermapbox trace's layers are to be inserted before
@@ -249,13 +249,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -263,7 +263,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover

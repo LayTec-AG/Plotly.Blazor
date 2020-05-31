@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -105,26 +105,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -243,14 +243,14 @@ namespace Plotly.Blazor.Traces
         ///     no bar is stacked on this one the text is moved outside.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Determines if texts are kept at center or start/end points in `textposition`
         ///     *inside* mode.
         /// </summary>
         [JsonPropertyName(@"insidetextanchor")]
-        public InsideTextAnchorEnum? InsideTextAnchor { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.InsideTextAnchorEnum? InsideTextAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the bar. For example,
@@ -264,26 +264,26 @@ namespace Plotly.Blazor.Traces
         ///     Sets the font used for `text`.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `text` lying inside the bar.
         /// </summary>
         [JsonPropertyName(@"insidetextfont")]
-        public InsideTextFont InsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.InsideTextFont InsideTextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `text` lying outside the bar.
         /// </summary>
         [JsonPropertyName(@"outsidetextfont")]
-        public OutsideTextFont OutsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.OutsideTextFont OutsideTextFont { get; set;} 
 
         /// <summary>
         ///     Constrain the size of text inside or outside a bar to be no larger than
         ///     the bar itself.
         /// </summary>
         [JsonPropertyName(@"constraintext")]
-        public ConstrainTextEnum? ConstrainText { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.ConstrainTextEnum? ConstrainText { get; set;} 
 
         /// <summary>
         ///     Determines whether the text nodes are clipped about the subplot axes. To
@@ -298,7 +298,7 @@ namespace Plotly.Blazor.Traces
         ///     bar spans along the vertical (horizontal).
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Sets where the bar base is drawn (in position axis units). In *stack* or
@@ -326,7 +326,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Set several traces linked to the same position axis or matching axes to
@@ -348,13 +348,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     r coordinates in scatter traces are deprecated!Please switch to the *scatterpolar*
@@ -374,25 +374,25 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ErrorX.
         /// </summary>
         [JsonPropertyName(@"error_x")]
-        public ErrorX ErrorX { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.ErrorX ErrorX { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorY.
         /// </summary>
         [JsonPropertyName(@"error_y")]
-        public ErrorY ErrorY { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.ErrorY ErrorY { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.BarLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

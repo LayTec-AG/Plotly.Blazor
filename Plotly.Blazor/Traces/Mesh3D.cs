@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -80,13 +80,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -197,7 +197,7 @@ namespace Plotly.Blazor.Traces
         ///     provided and `alphahull` is set to indicate Delaunay triangulation.
         /// </summary>
         [JsonPropertyName(@"delaunayaxis")]
-        public DelaunaYAxisEnum? DelaunaYAxis { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.DelaunaYAxisEnum? DelaunaYAxis { get; set;} 
 
         /// <summary>
         ///     Determines how the mesh surface triangles are derived from the set of vertices
@@ -228,7 +228,7 @@ namespace Plotly.Blazor.Traces
         ///     Determines the source of `intensity` values.
         /// </summary>
         [JsonPropertyName(@"intensitymode")]
-        public IntensityModeEnum? IntensityMode { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.IntensityModeEnum? IntensityMode { get; set;} 
 
         /// <summary>
         ///     Sets the color of the whole mesh
@@ -319,7 +319,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -351,19 +351,19 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Contour.
         /// </summary>
         [JsonPropertyName(@"contour")]
-        public Contour Contour { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.Contour Contour { get; set;} 
 
         /// <summary>
         ///     Gets or sets the LightPosition.
         /// </summary>
         [JsonPropertyName(@"lightposition")]
-        public LightPosition LightPosition { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.LightPosition LightPosition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Lighting.
         /// </summary>
         [JsonPropertyName(@"lighting")]
-        public Lighting Lighting { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.Lighting Lighting { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -371,7 +371,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -384,19 +384,19 @@ namespace Plotly.Blazor.Traces
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `z` date data.
         /// </summary>
         [JsonPropertyName(@"zcalendar")]
-        public ZCalendarEnum? ZCalendar { get; set;} 
+        public Plotly.Blazor.Traces.Mesh3DLib.ZCalendarEnum? ZCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's 3D coordinate system and a 3D scene.

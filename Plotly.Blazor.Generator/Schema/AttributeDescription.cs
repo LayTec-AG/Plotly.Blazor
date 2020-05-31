@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -7,7 +8,8 @@ namespace Plotly.Blazor.Generator.Schema
     /// <summary>
     ///     Class PropertyDescription.
     /// </summary>
-    public class AttributeDescription
+    [Serializable]
+    public class AttributeDescription : ICloneable
     {
         /// <summary>
         ///     Gets or sets the type of the value.
@@ -21,18 +23,17 @@ namespace Plotly.Blazor.Generator.Schema
         /// <value>The role.</value>
         public string Role { get; set; }
 
+        /// <summary>
+        ///     Determines the minimum of the parameters.
+        /// </summary>
+        /// <value>The minimum.</value>
+        public object Min { get; set; }
 
-        ///// <summary>
-        /////     Determines the minimum of the parameters.
-        ///// </summary>
-        ///// <value>The minimum.</value>
-        //public double Min { get; set; }
-
-        ///// <summary>
-        /////     Determines the maximum of the parameters.
-        ///// </summary>
-        ///// <value>The maximum.</value>
-        //public double Max { get; set; }
+        /// <summary>
+        ///     Determines the maximum of the parameters.
+        /// </summary>
+        /// <value>The maximum.</value>
+        public object Max { get; set; }
 
         /// <summary>
         ///     Gets or sets the default.
@@ -158,5 +159,11 @@ namespace Plotly.Blazor.Generator.Schema
         /// </summary>
         /// <value><c>true</c> if this instance is array; otherwise, <c>false</c>.</value>
         public bool IsArray => Role == "object" && Items.ValueKind != JsonValueKind.Undefined;
+
+        /// <inheritdoc />
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }

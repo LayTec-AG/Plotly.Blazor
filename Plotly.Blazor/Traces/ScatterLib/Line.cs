@@ -31,7 +31,7 @@ namespace Plotly.Blazor.Traces.ScatterLib
         ///     interpolation. The other available values correspond to step-wise line shapes.
         /// </summary>
         [JsonPropertyName(@"shape")]
-        public ShapeEnum? Shape { get; set;} 
+        public Plotly.Blazor.Traces.ScatterLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
         ///     Has an effect only if `shape` is set to *spline* Sets the amount of smoothing.

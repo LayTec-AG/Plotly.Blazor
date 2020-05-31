@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -80,13 +80,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -237,7 +237,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -252,7 +252,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Contours.
         /// </summary>
         [JsonPropertyName(@"contours")]
-        public Contours Contours { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.Contours Contours { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a surface is drawn. For example, set `hidesurface`
@@ -266,13 +266,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the LightPosition.
         /// </summary>
         [JsonPropertyName(@"lightposition")]
-        public LightPosition LightPosition { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.LightPosition LightPosition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Lighting.
         /// </summary>
         [JsonPropertyName(@"lighting")]
-        public Lighting Lighting { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.Lighting Lighting { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the surface. Please note that in the case of using high
@@ -302,7 +302,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -315,19 +315,19 @@ namespace Plotly.Blazor.Traces
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `z` date data.
         /// </summary>
         [JsonPropertyName(@"zcalendar")]
-        public ZCalendarEnum? ZCalendar { get; set;} 
+        public Plotly.Blazor.Traces.SurfaceLib.ZCalendarEnum? ZCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's 3D coordinate system and a 3D scene.

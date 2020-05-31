@@ -24,7 +24,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
         ///     Sets this legend's title font.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Determines the location of legend's title with respect to the legend items.
@@ -33,7 +33,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
         ///     x and y sides.
         /// </summary>
         [JsonPropertyName(@"side")]
-        public SideEnum? Side { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.SideEnum? Side { get; set;} 
 
     }
 }

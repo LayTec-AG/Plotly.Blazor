@@ -18,13 +18,13 @@ namespace Plotly.Blazor.Traces.WaterfallLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.ConnectorLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the shape of connector lines.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeEnum? Mode { get; set;} 
+        public Plotly.Blazor.Traces.WaterfallLib.ConnectorLib.ModeEnum? Mode { get; set;} 
 
         /// <summary>
         ///     Determines if connector lines are drawn. 

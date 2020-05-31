@@ -38,7 +38,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.LinkLib.Line Line { get; set;} 
 
         /// <summary>
         ///     An integer number `[0..nodes.length - 1]` that represents the source node.
@@ -64,13 +64,13 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoEnum? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.LinkLib.HoverInfoEnum? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.SankeyLib.LinkLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -95,7 +95,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     Gets or sets the ColorScales.
         /// </summary>
         [JsonPropertyName(@"colorscales")]
-        public IList<ConcentrationScales> ColorScales { get; set;} 
+        public IList<Plotly.Blazor.Traces.SankeyLib.LinkLib.ConcentrationScales> ColorScales { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  label .

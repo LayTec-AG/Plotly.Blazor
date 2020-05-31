@@ -20,7 +20,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     `thickness` to set the value.
         /// </summary>
         [JsonPropertyName(@"thicknessmode")]
-        public ThicknessModeEnum? ThicknessMode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.ThicknessModeEnum? ThicknessMode { get; set;} 
 
         /// <summary>
         ///     Sets the thickness of the color bar This measure excludes the size of the
@@ -35,7 +35,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     `len` to set the value.
         /// </summary>
         [JsonPropertyName(@"lenmode")]
-        public LenModeEnum? LenMode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.LenModeEnum? LenMode { get; set;} 
 
         /// <summary>
         ///     Sets the length of the color bar This measure excludes the padding of both
@@ -56,7 +56,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     `x` position to the *left*, *center* or *right* of the color bar.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the amount of padding (in px) along the x direction.
@@ -75,7 +75,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     position to the *top*, *middle* or *bottom* of the color bar.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the amount of padding (in px) along the y direction.
@@ -122,7 +122,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     is the default value if `tickvals` is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
-        public TickModeEnum? TickMode { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -186,7 +186,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
-        public TicksEnum? Ticks { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
         ///     Sets the tick length (in px).
@@ -216,7 +216,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     Sets the color bar's tick label font
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -240,7 +240,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     Gets or sets the TickFormatStops.
         /// </summary>
         [JsonPropertyName(@"tickformatstops")]
-        public IList<TickFormatStop> TickFormatStops { get; set;} 
+        public IList<Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
         ///     Sets a tick label prefix.
@@ -254,7 +254,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
-        public ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label suffix.
@@ -266,7 +266,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     Same as `showtickprefix` but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
-        public ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
         ///     If "true", even 4-digit integers are separated
@@ -281,7 +281,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     1G. If *B*, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     If *all*, all exponents are shown besides their significands. If *first*,
@@ -289,13 +289,13 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         ///     of the last tick is shown. If *none*, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
-        public ShowExponentEnum? ShowExponent { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.ColorBarLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  tickvals .

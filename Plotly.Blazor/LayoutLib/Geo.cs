@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Determines if this subplot's view settings are auto-computed to fit trace
@@ -33,32 +33,32 @@ namespace Plotly.Blazor.LayoutLib
         ///     in the `fitbounds` computations, Defaults to *false*.
         /// </summary>
         [JsonPropertyName(@"fitbounds")]
-        public FitBoundsEnum? FitBounds { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.FitBoundsEnum? FitBounds { get; set;} 
 
         /// <summary>
         ///     Sets the resolution of the base layers. The values have units of km/mm e.g.
         ///     110 corresponds to a scale ratio of 1:110,000,000.
         /// </summary>
         [JsonPropertyName(@"resolution")]
-        public ResolutionEnum? Resolution { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.ResolutionEnum? Resolution { get; set;} 
 
         /// <summary>
         ///     Set the scope of the map.
         /// </summary>
         [JsonPropertyName(@"scope")]
-        public ScopeEnum? Scope { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.ScopeEnum? Scope { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Projection.
         /// </summary>
         [JsonPropertyName(@"projection")]
-        public Projection Projection { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.Projection Projection { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Center.
         /// </summary>
         [JsonPropertyName(@"center")]
-        public Center Center { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.Center Center { get; set;} 
 
         /// <summary>
         ///     Sets the default visibility of the base layers.
@@ -203,13 +203,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the LonAxis.
         /// </summary>
         [JsonPropertyName(@"lonaxis")]
-        public LonAxis LonAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.LonAxis LonAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the LaTaxis.
         /// </summary>
         [JsonPropertyName(@"lataxis")]
-        public LaTaxis LaTaxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.GeoLib.LaTaxis LaTaxis { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in the view (projection and

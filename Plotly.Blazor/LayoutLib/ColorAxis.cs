@@ -85,7 +85,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.LayoutLib.ColorAxisLib.ColorBar ColorBar { get; set;} 
 
     }
 }

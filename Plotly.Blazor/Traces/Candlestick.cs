@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -105,20 +105,20 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -171,19 +171,19 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Increasing.
         /// </summary>
         [JsonPropertyName(@"increasing")]
-        public Increasing Increasing { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.Increasing Increasing { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Decreasing.
         /// </summary>
         [JsonPropertyName(@"decreasing")]
-        public Decreasing Decreasing { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.Decreasing Decreasing { get; set;} 
 
         /// <summary>
         ///     Sets hover text elements associated with each sample point. If a single
@@ -210,13 +210,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.CandlestickLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

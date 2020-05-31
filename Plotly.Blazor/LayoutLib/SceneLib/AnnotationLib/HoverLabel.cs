@@ -33,7 +33,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib
         ///     size, with color from `hoverlabel.bordercolor`.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib.HoverLabelLib.Font Font { get; set;} 
 
     }
 }

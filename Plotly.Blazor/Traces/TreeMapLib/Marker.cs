@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     Gets or sets the Pad.
         /// </summary>
         [JsonPropertyName(@"pad")]
-        public Pad Pad { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.Pad Pad { get; set;} 
 
         /// <summary>
         ///     Sets the color of each sector of this trace. If not specified, the default
@@ -36,13 +36,13 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     colors while the leaves are faded towards the background color.
         /// </summary>
         [JsonPropertyName(@"depthfade")]
-        public DepthFadeEnum? DepthFade { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.DepthFadeEnum? DepthFade { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -120,7 +120,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color

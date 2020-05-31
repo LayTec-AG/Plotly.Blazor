@@ -32,7 +32,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     `yref` are both set to `paper`, image is drawn below the entire plot area.
         /// </summary>
         [JsonPropertyName(@"layer")]
-        public LayerEnum? Layer { get; set;} 
+        public Plotly.Blazor.LayoutLib.ImageLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     Sets the image container size horizontally. The image will be sized based
@@ -54,7 +54,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Specifies which dimension of the image to constrain.
         /// </summary>
         [JsonPropertyName(@"sizing")]
-        public SizingEnum? Sizing { get; set;} 
+        public Plotly.Blazor.LayoutLib.ImageLib.SizingEnum? Sizing { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the image.
@@ -80,13 +80,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the anchor for the x position
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.ImageLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the anchor for the y position.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.ImageLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the images's x coordinate axis. If set to a x axis id (e.g. *x* or

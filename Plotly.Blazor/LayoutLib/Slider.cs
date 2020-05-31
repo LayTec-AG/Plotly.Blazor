@@ -30,14 +30,14 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Steps.
         /// </summary>
         [JsonPropertyName(@"steps")]
-        public IList<Step> Steps { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.SliderLib.Step> Steps { get; set;} 
 
         /// <summary>
         ///     Determines whether this slider length is set in units of plot *fraction*
         ///     or in *pixels. Use `len` to set the value.
         /// </summary>
         [JsonPropertyName(@"lenmode")]
-        public LenModeEnum? LenMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.LenModeEnum? LenMode { get; set;} 
 
         /// <summary>
         ///     Sets the length of the slider This measure excludes the padding of both
@@ -57,14 +57,14 @@ namespace Plotly.Blazor.LayoutLib
         ///     Set the padding of the slider component along each side.
         /// </summary>
         [JsonPropertyName(@"pad")]
-        public Pad Pad { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.Pad Pad { get; set;} 
 
         /// <summary>
         ///     Sets the slider's horizontal position anchor. This anchor binds the `x`
         ///     position to the *left*, *center* or *right* of the range selector.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the y position (in normalized coordinates) of the slider.
@@ -77,25 +77,25 @@ namespace Plotly.Blazor.LayoutLib
         ///     to the *top*, *middle* or *bottom* of the range selector.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transition.
         /// </summary>
         [JsonPropertyName(@"transition")]
-        public Transition Transition { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.Transition Transition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the CurrentValue.
         /// </summary>
         [JsonPropertyName(@"currentvalue")]
-        public CurrentValue CurrentValue { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValue CurrentValue { get; set;} 
 
         /// <summary>
         ///     Sets the font of the slider step labels.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.SliderLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the slider grip while dragging.

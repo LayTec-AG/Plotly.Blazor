@@ -27,7 +27,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib.AAxisLib
         ///     by the now deprecated `titlefont` attribute.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.AAxisLib.TitleLib.Font Font { get; set;} 
 
     }
 }

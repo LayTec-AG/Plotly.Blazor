@@ -24,7 +24,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
         ///     The unit of measurement that the `count` value will set the range by.
         /// </summary>
         [JsonPropertyName(@"step")]
-        public StepEnum? Step { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib.StepEnum? Step { get; set;} 
 
         /// <summary>
         ///     Sets the range update mode. If *backward*, the range update shifts the start
@@ -36,7 +36,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
         ///     only for the built-in (Gregorian) calendar.
         /// </summary>
         [JsonPropertyName(@"stepmode")]
-        public StepModeEnum? StepMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib.StepModeEnum? StepMode { get; set;} 
 
         /// <summary>
         ///     Sets the number of steps to take to update the range. Use with `step` to

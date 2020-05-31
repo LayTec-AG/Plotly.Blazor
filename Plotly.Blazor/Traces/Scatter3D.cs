@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -93,20 +93,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -202,7 +202,7 @@ namespace Plotly.Blazor.Traces
         ///     *lines*.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeFlag? Mode { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
         ///     If *-1*, the scatter points are not fill with a surface If *0*, *1*, *2*,
@@ -210,7 +210,7 @@ namespace Plotly.Blazor.Traces
         ///     respectively.
         /// </summary>
         [JsonPropertyName(@"surfaceaxis")]
-        public SurfaceAxisEnum? SurfaceAxis { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.SurfaceAxisEnum? SurfaceAxis { get; set;} 
 
         /// <summary>
         ///     Sets the surface fill color.
@@ -222,7 +222,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Projection.
         /// </summary>
         [JsonPropertyName(@"projection")]
-        public Projection Projection { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.Projection Projection { get; set;} 
 
         /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the provided
@@ -235,25 +235,25 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets the positions of the `text` elements with respects to the (x,y) coordinates.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Gets or sets the TextFont.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -261,43 +261,43 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorX.
         /// </summary>
         [JsonPropertyName(@"error_x")]
-        public ErrorX ErrorX { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ErrorX ErrorX { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorY.
         /// </summary>
         [JsonPropertyName(@"error_y")]
-        public ErrorY ErrorY { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ErrorY ErrorY { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ErrorZ.
         /// </summary>
         [JsonPropertyName(@"error_z")]
-        public ErrorZ ErrorZ { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ErrorZ ErrorZ { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `z` date data.
         /// </summary>
         [JsonPropertyName(@"zcalendar")]
-        public ZCalendarEnum? ZCalendar { get; set;} 
+        public Plotly.Blazor.Traces.Scatter3DLib.ZCalendarEnum? ZCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's 3D coordinate system and a 3D scene.

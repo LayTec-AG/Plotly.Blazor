@@ -23,7 +23,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     defined by trace, then the `minsize` is used.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeEnum? Mode { get; set;} 
+        public Plotly.Blazor.LayoutLib.UniformTextLib.ModeEnum? Mode { get; set;} 
 
         /// <summary>
         ///     Sets the minimum text size between traces of the same type.

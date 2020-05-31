@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets angular span of this polar subplot with two angles (in degrees). Sector
@@ -44,13 +44,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     Gets or sets the RadialAxis.
         /// </summary>
         [JsonPropertyName(@"radialaxis")]
-        public RadialAxis RadialAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxis RadialAxis { get; set;} 
 
         /// <summary>
         ///     Gets or sets the AngularAxis.
         /// </summary>
         [JsonPropertyName(@"angularaxis")]
-        public AngularAxis AngularAxis { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.AngularAxis AngularAxis { get; set;} 
 
         /// <summary>
         ///     Determines if the radial axis grid lines and angular axis line are drawn
@@ -60,7 +60,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     (so that radial axis scale is the same as the data scale).
         /// </summary>
         [JsonPropertyName(@"gridshape")]
-        public GridShapeEnum? GridShape { get; set;} 
+        public Plotly.Blazor.LayoutLib.PolarLib.GridShapeEnum? GridShape { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in axis attributes, if not overridden

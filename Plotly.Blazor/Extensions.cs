@@ -15,9 +15,15 @@ namespace Plotly.Blazor
             var type = obj?.GetType();
 
             // Handle simple types
-            if (obj == null || !type.IsComplex())
+            if (obj == null || type.IsPrimitive || type == typeof(string))
             {
                 return obj;
+            }
+            
+            // Handle jsonElements
+            if (obj is JsonElement jsonElement)
+            {
+                return jsonElement.PrepareJsonElement();
             }
 
             // Set default serializer options if necessary
@@ -27,29 +33,9 @@ namespace Plotly.Blazor
                 PropertyNamingPolicy = null
             };
 
-            // Handle jsonElements
-            if (obj is JsonElement asJsonElement)
-            {
-                return asJsonElement.PrepareJsonElement();
-            }
-
-            // Handle objects if its not an enumerable
-            if (!(obj is IEnumerable<object> asEnumerable))
-            {
-                return JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize<object>(obj, serializerOptions))
-                    .PrepareJsonElement();
-            }
-
-            // Handle dictionaries
-            if (asEnumerable is Dictionary<object, object> dictionary)
-            {
-                return dictionary.ToDictionary(keyValue => keyValue.Key,
-                    keyValue => PrepareJsInterop(keyValue.Value, serializerOptions));
-            }
-
-            // Handle lists
-            return asEnumerable.Where(item => !serializerOptions.IgnoreNullValues || item != null)
-                .Select(item => PrepareJsInterop(item, serializerOptions));
+            // Handle all kind of complex objects
+            return JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize<object>(obj, serializerOptions))
+                .PrepareJsonElement();
         }
 
 
@@ -70,7 +56,7 @@ namespace Plotly.Blazor
                 case JsonValueKind.String:
                     return obj.GetString();
                 case JsonValueKind.Number:
-                    return obj.GetSingle();
+                    return obj.GetDecimal();
                 case JsonValueKind.True:
                     return true;
                 case JsonValueKind.False:
@@ -82,12 +68,6 @@ namespace Plotly.Blazor
                 default:
                     throw new ArgumentException();
             }
-        }
-
-        private static bool IsComplex(this Type type)
-        {
-            return !type.IsPrimitive && !type.IsEnum && type != typeof(string) ||
-                   type != typeof(string) && typeof(IEnumerable).IsAssignableFrom(type);
         }
 
         public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)

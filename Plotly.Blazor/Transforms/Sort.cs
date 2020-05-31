@@ -39,7 +39,7 @@ namespace Plotly.Blazor.Transforms
         ///     Sets the sort transform order.
         /// </summary>
         [JsonPropertyName(@"order")]
-        public OrderEnum? Order { get; set;} 
+        public Plotly.Blazor.Transforms.SortLib.OrderEnum? Order { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  target .

@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -93,20 +93,20 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -158,7 +158,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Sets text elements associated with each sector. If trace `textinfo` contains
@@ -190,7 +190,7 @@ namespace Plotly.Blazor.Traces
         ///     Determines which trace information appear on the graph.
         /// </summary>
         [JsonPropertyName(@"textinfo")]
-        public TextInfoFlag? TextInfo { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.TextInfoFlag? TextInfo { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear on hover. If `none` or `skip`
@@ -198,7 +198,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -238,13 +238,13 @@ namespace Plotly.Blazor.Traces
         ///     Specifies the location of the `textinfo`.
         /// </summary>
         [JsonPropertyName(@"textposition")]
-        public TextPositionEnum? TextPosition { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo`.
         /// </summary>
         [JsonPropertyName(@"textfont")]
-        public TextFont TextFont { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Controls the orientation of the text inside chart sectors. When set to *auto*,
@@ -256,19 +256,19 @@ namespace Plotly.Blazor.Traces
         ///     sector.
         /// </summary>
         [JsonPropertyName(@"insidetextorientation")]
-        public InsideTextOrientationEnum? InsideTextOrientation { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.InsideTextOrientationEnum? InsideTextOrientation { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo` lying inside the sector.
         /// </summary>
         [JsonPropertyName(@"insidetextfont")]
-        public InsideTextFont InsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.InsideTextFont InsideTextFont { get; set;} 
 
         /// <summary>
         ///     Sets the font used for `textinfo` lying outside the sector.
         /// </summary>
         [JsonPropertyName(@"outsidetextfont")]
-        public OutsideTextFont OutsideTextFont { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.OutsideTextFont OutsideTextFont { get; set;} 
 
         /// <summary>
         ///     Determines whether outside text labels can push the margins.
@@ -280,13 +280,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Sets the fraction of the radius to cut out of the pie. Use this to make
@@ -305,7 +305,7 @@ namespace Plotly.Blazor.Traces
         ///     Specifies the direction at which succeeding sectors follow one another.
         /// </summary>
         [JsonPropertyName(@"direction")]
-        public DirectionEnum? Direction { get; set;} 
+        public Plotly.Blazor.Traces.PieLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
         ///     Instead of the first slice starting at 12 o'clock, rotate to some other

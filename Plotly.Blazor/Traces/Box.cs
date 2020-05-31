@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not an item corresponding to this trace is shown in
@@ -99,26 +99,26 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -264,7 +264,7 @@ namespace Plotly.Blazor.Traces
         ///     signature. Otherwise defaults to *outliers*.
         /// </summary>
         [JsonPropertyName(@"boxpoints")]
-        public BoxPointsEnum? BoxPoints { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.BoxPointsEnum? BoxPoints { get; set;} 
 
         /// <summary>
         ///     Sets the amount of jitter in the sample points drawn. If *0*, the sample
@@ -290,7 +290,7 @@ namespace Plotly.Blazor.Traces
         ///     is set Otherwise defaults to *false*.
         /// </summary>
         [JsonPropertyName(@"boxmean")]
-        public BoxMeanEnum? BoxMean { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.BoxMeanEnum? BoxMean { get; set;} 
 
         /// <summary>
         ///     Sets the mean values. There should be as many items as the number of boxes
@@ -315,7 +315,7 @@ namespace Plotly.Blazor.Traces
         ///     along the vertical (horizontal).
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Sets the method used to compute the sample's Q1 and Q3 quartiles. The *linear*
@@ -330,7 +330,7 @@ namespace Plotly.Blazor.Traces
         ///     of the upper half.
         /// </summary>
         [JsonPropertyName(@"quartilemethod")]
-        public QuartileMethodEnum? QuartileMethod { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.QuartileMethodEnum? QuartileMethod { get; set;} 
 
         /// <summary>
         ///     Sets the width of the box in data coordinate If *0* (default value) the
@@ -344,13 +344,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Marker.
         /// </summary>
         [JsonPropertyName(@"marker")]
-        public Marker Marker { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
-        public Line Line { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.Line Line { get; set;} 
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
@@ -386,13 +386,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
-        public Selected Selected { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.Selected Selected { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
-        public Unselected Unselected { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.Unselected Unselected { get; set;} 
 
         /// <summary>
         ///     Sets the text elements associated with each sample value. If a single string,
@@ -431,19 +431,19 @@ namespace Plotly.Blazor.Traces
         ///     Do the hover effects highlight individual boxes  or sample points or both?
         /// </summary>
         [JsonPropertyName(@"hoveron")]
-        public HoverOnFlag? HoverOn { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.HoverOnFlag? HoverOn { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `x` date data.
         /// </summary>
         [JsonPropertyName(@"xcalendar")]
-        public XCalendarEnum? XCalendar { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.XCalendarEnum? XCalendar { get; set;} 
 
         /// <summary>
         ///     Sets the calendar system to use with `y` date data.
         /// </summary>
         [JsonPropertyName(@"ycalendar")]
-        public YCalendarEnum? YCalendar { get; set;} 
+        public Plotly.Blazor.Traces.BoxLib.YCalendarEnum? YCalendar { get; set;} 
 
         /// <summary>
         ///     Sets a reference between this trace's x coordinates and a 2D cartesian x

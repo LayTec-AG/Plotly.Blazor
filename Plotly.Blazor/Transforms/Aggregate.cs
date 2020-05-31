@@ -41,7 +41,7 @@ namespace Plotly.Blazor.Transforms
         ///     Gets or sets the Aggregations.
         /// </summary>
         [JsonPropertyName(@"aggregations")]
-        public IList<Aggregation> Aggregations { get; set;} 
+        public IList<Plotly.Blazor.Transforms.AggregateLib.Aggregation> Aggregations { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  groups .

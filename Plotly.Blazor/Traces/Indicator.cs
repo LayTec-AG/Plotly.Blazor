@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
@@ -73,14 +73,14 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         [JsonConverter(typeof(PolymorphicConverter))]
-        public IList<ITransform> Transforms { get; set;} 
+        public ITransform Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -105,7 +105,7 @@ namespace Plotly.Blazor.Traces
         ///     value in text. Finally, `gauge` displays the value graphically on an axis.
         /// </summary>
         [JsonPropertyName(@"mode")]
-        public ModeFlag? Mode { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.ModeFlag? Mode { get; set;} 
 
         /// <summary>
         ///     Sets the number to be displayed.
@@ -119,37 +119,37 @@ namespace Plotly.Blazor.Traces
         ///     it is always centered
         /// </summary>
         [JsonPropertyName(@"align")]
-        public AlignEnum? Align { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
-        public Domain Domain { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Number.
         /// </summary>
         [JsonPropertyName(@"number")]
-        public Number Number { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.Number Number { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Delta.
         /// </summary>
         [JsonPropertyName(@"delta")]
-        public Delta Delta { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.Delta Delta { get; set;} 
 
         /// <summary>
         ///     The gauge of the Indicator plot.
         /// </summary>
         [JsonPropertyName(@"gauge")]
-        public Gauge Gauge { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.Gauge Gauge { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  ids .

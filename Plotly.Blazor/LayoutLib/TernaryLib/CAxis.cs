@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.Title Title { get; set;} 
 
         /// <summary>
         ///     Sets default for all colors associated with this axis all at once: line,
@@ -37,7 +37,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     is the default value if `tickvals` is provided).
         /// </summary>
         [JsonPropertyName(@"tickmode")]
-        public TickModeEnum? TickMode { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -101,7 +101,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     axis lines.
         /// </summary>
         [JsonPropertyName(@"ticks")]
-        public TicksEnum? Ticks { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
         ///     Sets the tick length (in px).
@@ -133,7 +133,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     is displayed with a suffix. If *none*, tick prefixes are hidden.
         /// </summary>
         [JsonPropertyName(@"showtickprefix")]
-        public ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label prefix.
@@ -145,7 +145,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     Same as `showtickprefix` but for tick suffixes.
         /// </summary>
         [JsonPropertyName(@"showticksuffix")]
-        public ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
 
         /// <summary>
         ///     Sets a tick label suffix.
@@ -159,7 +159,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     of the last tick is shown. If *none*, no exponents appear.
         /// </summary>
         [JsonPropertyName(@"showexponent")]
-        public ShowExponentEnum? ShowExponent { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
         ///     Determines a formatting rule for the tick exponents. For example, consider
@@ -168,7 +168,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     1G. If *B*, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     If "true", even 4-digit integers are separated
@@ -180,7 +180,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     Sets the tick font.
         /// </summary>
         [JsonPropertyName(@"tickfont")]
-        public TickFont TickFont { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -204,7 +204,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     Gets or sets the TickFormatStops.
         /// </summary>
         [JsonPropertyName(@"tickformatstops")]
-        public IList<TickFormatStop> TickFormatStops { get; set;} 
+        public IList<Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
@@ -262,15 +262,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         ///     to *false* to show markers and/or text nodes above this axis.
         /// </summary>
         [JsonPropertyName(@"layer")]
-        public LayerEnum? Layer { get; set;} 
-
-        /// <summary>
-        ///     The minimum value visible on this axis. The maximum is determined by the
-        ///     sum minus the minimum values of the other two axes. The full view corresponds
-        ///     to all the minima set to zero.
-        /// </summary>
-        [JsonPropertyName(@"min")]
-        public float? Min { get; set;} 
+        public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in axis `min`, and `title` if

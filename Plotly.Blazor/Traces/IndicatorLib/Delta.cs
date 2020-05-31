@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         ///     Sets the position of delta with respect to the number.
         /// </summary>
         [JsonPropertyName(@"position")]
-        public PositionEnum? Position { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.PositionEnum? Position { get; set;} 
 
         /// <summary>
         ///     Show relative change
@@ -44,19 +44,19 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         ///     Gets or sets the Increasing.
         /// </summary>
         [JsonPropertyName(@"increasing")]
-        public Increasing Increasing { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.Increasing Increasing { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Decreasing.
         /// </summary>
         [JsonPropertyName(@"decreasing")]
-        public Decreasing Decreasing { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.Decreasing Decreasing { get; set;} 
 
         /// <summary>
         ///     Set the font used to display the delta
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.Font Font { get; set;} 
 
     }
 }

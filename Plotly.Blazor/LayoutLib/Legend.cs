@@ -36,13 +36,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the font used to text the legend items.
         /// </summary>
         [JsonPropertyName(@"font")]
-        public Font Font { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.Font Font { get; set;} 
 
         /// <summary>
         ///     Sets the orientation of the legend.
         /// </summary>
         [JsonPropertyName(@"orientation")]
-        public OrientationEnum? Orientation { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Determines the order at which the legend items are displayed. If *normal*,
@@ -53,7 +53,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     order as *grouped*.
         /// </summary>
         [JsonPropertyName(@"traceorder")]
-        public TraceOrderFlag? TraceOrder { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.TraceOrderFlag? TraceOrder { get; set;} 
 
         /// <summary>
         ///     Sets the amount of vertical space (in px) between legend groups.
@@ -66,7 +66,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     attributes or remain *constant* independent of the symbol size on the graph.
         /// </summary>
         [JsonPropertyName(@"itemsizing")]
-        public ItemSizingEnum? ItemSizing { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.ItemSizingEnum? ItemSizing { get; set;} 
 
         /// <summary>
         ///     Determines the behavior on legend item click. *toggle* toggles the visibility
@@ -74,7 +74,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     the sole visible item on the graph. *false* disable legend item click interactions.
         /// </summary>
         [JsonPropertyName(@"itemclick")]
-        public ItemClickEnum? ItemClick { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.ItemClickEnum? ItemClick { get; set;} 
 
         /// <summary>
         ///     Determines the behavior on legend item double-click. *toggle* toggles the
@@ -83,7 +83,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     interactions.
         /// </summary>
         [JsonPropertyName(@"itemdoubleclick")]
-        public ItemDoubleClickEnum? ItemDoubleClick { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.ItemDoubleClickEnum? ItemDoubleClick { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the legend. Defaults
@@ -100,7 +100,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     anchors legends with respect to their center otherwise.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
-        public XAnchorEnum? XAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the y position (in normalized coordinates) of the legend. Defaults
@@ -119,7 +119,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     legends with respect to their middle otherwise.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
-        public YAnchorEnum? YAnchor { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Controls persistence of legend-driven changes in trace and pie label visibility.
@@ -133,13 +133,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     text.
         /// </summary>
         [JsonPropertyName(@"valign")]
-        public VAlignEnum? VAlign { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.VAlignEnum? VAlign { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Title.
         /// </summary>
         [JsonPropertyName(@"title")]
-        public Title Title { get; set;} 
+        public Plotly.Blazor.LayoutLib.LegendLib.Title Title { get; set;} 
 
     }
 }

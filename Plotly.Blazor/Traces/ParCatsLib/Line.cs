@@ -98,7 +98,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         ///     Gets or sets the ColorBar.
         /// </summary>
         [JsonPropertyName(@"colorbar")]
-        public ColorBar ColorBar { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.LineLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
         ///     Sets a reference to a shared color axis. References to these shared color
@@ -114,7 +114,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         ///     lines. If `hspline`, paths are composed of horizontal curved splines
         /// </summary>
         [JsonPropertyName(@"shape")]
-        public ShapeEnum? Shape { get; set;} 
+        public Plotly.Blazor.Traces.ParCatsLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover

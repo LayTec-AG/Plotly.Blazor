@@ -25,14 +25,14 @@ namespace Plotly.Blazor.LayoutLib
         ///     The easing function used for the transition
         /// </summary>
         [JsonPropertyName(@"easing")]
-        public EasingEnum? Easing { get; set;} 
+        public Plotly.Blazor.LayoutLib.TransitionLib.EasingEnum? Easing { get; set;} 
 
         /// <summary>
         ///     Determines whether the figure's layout or traces smoothly transitions during
         ///     updates that make both traces and layout change.
         /// </summary>
         [JsonPropertyName(@"ordering")]
-        public OrderingEnum? Ordering { get; set;} 
+        public Plotly.Blazor.LayoutLib.TransitionLib.OrderingEnum? Ordering { get; set;} 
 
     }
 }

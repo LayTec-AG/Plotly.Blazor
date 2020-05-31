@@ -25,7 +25,7 @@ namespace Plotly.Blazor.Traces
         ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public VisibleEnum? Visible { get; set;} 
+        public Plotly.Blazor.Traces.ImageLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the opacity of the trace.
@@ -79,13 +79,13 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the HoverLabel.
         /// </summary>
         [JsonPropertyName(@"hoverlabel")]
-        public HoverLabel HoverLabel { get; set;} 
+        public Plotly.Blazor.Traces.ImageLib.HoverLabel HoverLabel { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
-        public Stream Stream { get; set;} 
+        public Plotly.Blazor.Traces.ImageLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: `constraintrange`
@@ -116,7 +116,7 @@ namespace Plotly.Blazor.Traces
         ///     into colors.
         /// </summary>
         [JsonPropertyName(@"colormodel")]
-        public ColorModelEnum? ColorModel { get; set;} 
+        public Plotly.Blazor.Traces.ImageLib.ColorModelEnum? ColorModel { get; set;} 
 
         /// <summary>
         ///     Array defining the lower bound for each color component. Note that the default
@@ -179,7 +179,7 @@ namespace Plotly.Blazor.Traces
         ///     click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
-        public HoverInfoFlag? HoverInfo { get; set;} 
+        public Plotly.Blazor.Traces.ImageLib.HoverInfoFlag? HoverInfo { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover

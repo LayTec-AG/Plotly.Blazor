@@ -52,6 +52,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="5.3.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.JSInterop" Version="3.1.4" />
     <PackageReference Include="Stubble.Core" Version="1.8.4" />
     <PackageReference Include="WeCantSpell.Hunspell" Version="3.0.1" />

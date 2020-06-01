@@ -104,16 +104,16 @@ private async Task AddData(int count = 100)
 ### Performance
 - Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
 This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
-- IJSRuntime currently does not allow to adjust the serialization of objects. Accordingly, a conversion is carried out beforehand, which consumes a comparatively large amount of time. You can find this issue [here](https://github.com/dotnet/aspnetcore/issues/12685).
-- Currently, all data, the config and the layout are transferred each time an update is executed. This can take time and in the future it should be possible to lightweightly add new data and make adjustments.
+- IJSRuntime (currently) does not allow to adjust the serialization of objects. Accordingly, a conversion is carried out beforehand, which consumes a comparatively large amount of time. You can find this issue [here](https://github.com/dotnet/aspnetcore/issues/12685).
+- All the data, the config and the layout are transferred each time an update is executed. This can take time and in the future it should be possible to lightweightly add new data and make adjustments.
 
-### Missing Functionality
-- Event handling is not yet possible.
-- Many chart functions like "Plotly.addTraces" are not yet implemented. Currently only Plotly.react is available.
+### Missing Implementations
+- Event handling
+- Other plotly functions like Plotly.AddTraces, ...
 
 ## Contributing
 
-The project is currently still in its initial state. Therefore, a contribution is currently not possible.
+The project is still in its initial state. Therefore, a contribution is currently not possible.
 
 ## Versioning
 

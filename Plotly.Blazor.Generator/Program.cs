@@ -233,20 +233,32 @@ namespace Plotly.Blazor.Generator
         /// </summary>
         private static async Task GenerateLayoutAsync()
         {
+            var traceLayoutAttributes = _schema.Traces
+                .Select(keyValue => keyValue.Value.LayoutAttributes)
+                .Where(layoutAttributes => layoutAttributes != null)
+                .SelectMany(dictionary => dictionary)
+                .ToLookup(pair => pair.Key, pair => pair.Value)
+                .ToDictionary(pair => pair.Key, pair => pair.First());
+
             foreach (var (key, value) in _schema.Layout.LayoutAttributes)
             {
-                if (value.ValueKind != JsonValueKind.Undefined)
+                if (!value.TryToObject<AttributeDescription>(out var attributeDescription))
                 {
+                    continue;
+                }
+                traceLayoutAttributes.Add(key, attributeDescription);
+            }
 
-                    if (!value.TryToObject<AttributeDescription>(out var attributeDescription))
-                    {
-                        continue;
-                    }
-
-                    await GenerateAsync(key, attributeDescription, $"{Namespace}.LayoutLib");
+            
+            foreach (var (key, value) in traceLayoutAttributes)
+            {
+                if (value != null)
+                {
+                    await GenerateAsync(key, value, $"{Namespace}.LayoutLib");
                 }
             }
-            await GenerateClassFileAsync("Layout", _schema.Layout.LayoutAttributes, $"{Namespace}", hasNestedComplexAttributes: true);
+            
+            await GenerateClassFileAsync("Layout", traceLayoutAttributes, $"{Namespace}", hasNestedComplexAttributes: true);
         }
 
         private static async Task GenerateTracesAsync()

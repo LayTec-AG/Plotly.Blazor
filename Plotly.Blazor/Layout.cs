@@ -15,6 +15,219 @@ namespace Plotly.Blazor
     public class Layout 
     {
         /// <summary>
+        ///     Determines how bars at the same location coordinate are displayed on the
+        ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
+        ///     <c>relative</c>, the bars are stacked on top of one another, with negative
+        ///     values below the axis, positive values above With <c>group</c>, the bars
+        ///     are plotted next to one another centered around the shared location. With
+        ///     <c>overlay</c>, the bars are plotted over one another, you might need to
+        ///     an <c>opacity</c> to see multiple bars.
+        /// </summary>
+        [JsonPropertyName(@"barmode")]
+        public Plotly.Blazor.LayoutLib.BarModeEnum? BarMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the normalization for bar traces on the graph. With <c>fraction</c>,
+        ///     the value of each bar is divided by the sum of all values at that location
+        ///     coordinate. <c>percent</c> is the same but multiplied by 100 to show percentages.
+        /// </summary>
+        [JsonPropertyName(@"barnorm")]
+        public Plotly.Blazor.LayoutLib.BarNormEnum? BarNorm { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
+        /// </summary>
+        [JsonPropertyName(@"bargap")]
+        public float? BarGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
+        /// </summary>
+        [JsonPropertyName(@"bargroupgap")]
+        public float? BarGroupGap { get; set;} 
+
+        /// <summary>
+        ///     Determines how boxes at the same location coordinate are displayed on the
+        ///     graph. If <c>group</c>, the boxes are plotted next to one another centered
+        ///     around the shared location. If <c>overlay</c>, the boxes are plotted over
+        ///     one another, you might need to set <c>opacity</c> to see them multiple boxes.
+        ///     Has no effect on traces that have <c>width</c> set.
+        /// </summary>
+        [JsonPropertyName(@"boxmode")]
+        public Plotly.Blazor.LayoutLib.BoxModeEnum? BoxMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between boxes of adjacent location coordinates.
+        ///     Has no effect on traces that have <c>width</c> set.
+        /// </summary>
+        [JsonPropertyName(@"boxgap")]
+        public float? BoxGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between boxes of the same location coordinate.
+        ///     Has no effect on traces that have <c>width</c> set.
+        /// </summary>
+        [JsonPropertyName(@"boxgroupgap")]
+        public float? BoxGroupGap { get; set;} 
+
+        /// <summary>
+        ///     Determines how violins at the same location coordinate are displayed on
+        ///     the graph. If <c>group</c>, the violins are plotted next to one another
+        ///     centered around the shared location. If <c>overlay</c>, the violins are
+        ///     plotted over one another, you might need to set <c>opacity</c> to see them
+        ///     multiple violins. Has no effect on traces that have <c>width</c> set.
+        /// </summary>
+        [JsonPropertyName(@"violinmode")]
+        public Plotly.Blazor.LayoutLib.ViolinModeEnum? ViolinMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between violins of adjacent location coordinates.
+        ///     Has no effect on traces that have <c>width</c> set.
+        /// </summary>
+        [JsonPropertyName(@"violingap")]
+        public float? ViolinGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between violins of the same location coordinate.
+        ///     Has no effect on traces that have <c>width</c> set.
+        /// </summary>
+        [JsonPropertyName(@"violingroupgap")]
+        public float? ViolinGroupGap { get; set;} 
+
+        /// <summary>
+        ///     Determines how bars at the same location coordinate are displayed on the
+        ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
+        ///     <c>group</c>, the bars are plotted next to one another centered around the
+        ///     shared location. With <c>overlay</c>, the bars are plotted over one another,
+        ///     you might need to an <c>opacity</c> to see multiple bars.
+        /// </summary>
+        [JsonPropertyName(@"funnelmode")]
+        public Plotly.Blazor.LayoutLib.FunnelModeEnum? FunnelMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
+        /// </summary>
+        [JsonPropertyName(@"funnelgap")]
+        public float? FunnelGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
+        /// </summary>
+        [JsonPropertyName(@"funnelgroupgap")]
+        public float? FunnelGroupGap { get; set;} 
+
+        /// <summary>
+        ///     Determines how bars at the same location coordinate are displayed on the
+        ///     graph. With <c>group</c>, the bars are plotted next to one another centered
+        ///     around the shared location. With <c>overlay</c>, the bars are plotted over
+        ///     one another, you might need to an <c>opacity</c> to see multiple bars.
+        /// </summary>
+        [JsonPropertyName(@"waterfallmode")]
+        public Plotly.Blazor.LayoutLib.WaterfallModeEnum? WaterfallMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
+        /// </summary>
+        [JsonPropertyName(@"waterfallgap")]
+        public float? WaterfallGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
+        /// </summary>
+        [JsonPropertyName(@"waterfallgroupgap")]
+        public float? WaterfallGroupGap { get; set;} 
+
+        /// <summary>
+        ///     hiddenlabels is the funnelarea &amp; pie chart analog of visible:<c>legendonly</c>
+        ///     but it can contain many labels, and can simultaneously hide slices from
+        ///     several pies/funnelarea charts
+        /// </summary>
+        [JsonPropertyName(@"hiddenlabels")]
+        public IList<object> HiddenLabels { get; set;} 
+
+        /// <summary>
+        ///     Sets the default pie slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendpiecolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"piecolorway")]
+        public IList<object> PieColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the pie slice colors (whether given by <c>piecolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendpiecolors")]
+        public bool? ExtendPieColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hiddenlabels .
+        /// </summary>
+        [JsonPropertyName(@"hiddenlabelssrc")]
+        public string HiddenLabelsSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the default sunburst slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendsunburstcolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"sunburstcolorway")]
+        public IList<object> SunburstColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the sunburst slice colors (whether given by <c>sunburstcolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendsunburstcolors")]
+        public bool? ExtendSunburstColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default treemap slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendtreemapcolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"treemapcolorway")]
+        public IList<object> TreeMapColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the treemap slice colors (whether given by <c>treemapcolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendtreemapcolors")]
+        public bool? ExtendTreeMapColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default funnelarea slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendfunnelareacolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"funnelareacolorway")]
+        public IList<object> FunnelAreaColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the funnelarea slice colors (whether given by <c>funnelareacolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendfunnelareacolors")]
+        public bool? ExtendFunnelAreaColors { get; set;} 
+
+        /// <summary>
         ///     Sets the global font. Note that fonts used in traces and other layout components
         ///     inherit from the global font.
         /// </summary>

@@ -40,6 +40,13 @@ namespace Plotly.Blazor.Generator.Schema.Trace
         public IDictionary<string, JsonElement> Attributes { get; set; }
 
         /// <summary>
+        ///     Gets or sets the layout properties.
+        /// </summary>
+        /// <value>The deprecated properties.</value>
+        public IDictionary<string, AttributeDescription> LayoutAttributes { get; set; }
+
+
+        /// <summary>
         ///     Gets or sets the other attributes.
         /// </summary>
         /// <value>The other attributes.</value>

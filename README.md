@@ -20,9 +20,9 @@ Using Package Manager
 Install-Package Plotly.Blazor -AllowPrereleaseVersions
 ```
 
-Using .NET CLI (e.g. for version 0.1.0-alpha.71)
+Using .NET CLI
 ```
-dotnet add package Plotly.Blazor --version 0.1.0-alpha.71
+dotnet add package Plotly.Blazor --version <version>
 ```
 
 

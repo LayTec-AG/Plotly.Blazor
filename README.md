@@ -1,4 +1,4 @@
-# Plotly.Blazor [![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build%20&%20Deploy)](https://www.nuget.org/packages/Plotly.Blazor/) [![NuGet Status](https://img.shields.io/nuget/vpre/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
+# Plotly.Blazor [![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build%20&%20Deploy)](https://www.nuget.org/packages/Plotly.Blazor/) [![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Deploy%20Examples?label=examples)](https://plotly-blazor.azurewebsites.net/) [![NuGet Status](https://img.shields.io/nuget/vpre/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
 This library packages the well-known charting library plotly.js into a component that can be used in a Blazor project. 
 
 ## Getting Started
@@ -92,15 +92,24 @@ private async Task AddData(int count = 100)
 }
 ```
 
+## Examples
+
+[Here](https://plotly-blazor.azurewebsites.net/) you can find a running instance of the [examples](Plotly.Blazor.Examples/). This is always up-to-date with the current state of the develop branch.
+
 **What it might look like!**
 
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 
 ## Known big issues
 ### Performance
-Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
+- Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
 This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
-Nevertheless the performance of the wrapper is still being worked on!
+- IJSRuntime currently does not allow to adjust the serialization of objects. Accordingly, a conversion is carried out beforehand, which consumes a comparatively large amount of time. You can find this issue [here](https://github.com/dotnet/aspnetcore/issues/12685).
+- Currently, all data, the config and the layout are transferred each time an update is executed. This can take time and in the future it should be possible to lightweightly add new data and make adjustments.
+
+### Missing Functionality
+- Event handling is not yet possible.
+- Many chart functions like "Plotly.addTraces" are not yet implemented. Currently only Plotly.react is available.
 
 ## Contributing
 

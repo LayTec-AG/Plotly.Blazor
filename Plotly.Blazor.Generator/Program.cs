@@ -628,7 +628,7 @@ namespace Plotly.Blazor.Generator
                 case "transform":
                     return "ITransform";
                 case "transforms":
-                    return "ITransform";
+                    return "IList<ITransform>";
                 case "data":
                     return "ITrace";
                 case "layout":

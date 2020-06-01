@@ -102,7 +102,7 @@ namespace Plotly.Blazor.Traces
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
-        public ITransform Transforms { get; set;} 
+        public IList<ITransform> Transforms { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>

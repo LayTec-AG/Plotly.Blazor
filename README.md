@@ -1,4 +1,4 @@
-# Plotly.Blazor ![Build & Deploy](https://github.com/LayTec-AG/Plotly.Blazor/workflows/Build%20&%20Deploy/badge.svg)
+# Plotly.Blazor [![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build%20&%20Deploy)](https://www.nuget.org/packages/Plotly.Blazor/) [![NuGet Status](https://img.shields.io/nuget/vpre/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
 This library packages the well-known charting library plotly.js into a component that can be used in a Blazor project. 
 
 ## Getting Started
@@ -20,9 +20,9 @@ Using Package Manager
 Install-Package Plotly.Blazor -AllowPrereleaseVersions
 ```
 
-Using .NET CLI (e.g. for version 0.1.0-alpha.64)
+Using .NET CLI (e.g. for version 0.1.0-alpha.71)
 ```
-dotnet add package Plotly.Blazor --version 0.1.0-alpha.64
+dotnet add package Plotly.Blazor --version 0.1.0-alpha.71
 ```
 
 
@@ -83,10 +83,10 @@ Info: *The chart reference is important so that we can update the chart later.*
 private async Task AddData(int count = 100)
 {
     if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
-    var (x, y) = Helper.GenerateData(trace.X.Count + 1, trace.X.Count + 1 + count);
+    var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
 
-    trace.X.AddRange(x);
-    trace.Y.AddRange(y);
+    scatter.X.AddRange(x);
+    scatter.Y.AddRange(y);
 
     await chart.Update();
 }

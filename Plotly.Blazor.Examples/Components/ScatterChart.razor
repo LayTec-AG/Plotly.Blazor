@@ -25,7 +25,7 @@
             Text = "Scatter"
         },
         YAxis = new List<YAxis>
-    {
+        {
             new YAxis
             {
                 Title = new LayoutLib.YAxisLib.Title
@@ -33,11 +33,12 @@
                     Text = "Scatter Unit"
                 }
             }
-        }
+        },
+        Height = 500
     };
 
     List<ITrace> data = new List<ITrace>
-{
+    {
         new Scatter
         {
             Name = "ScatterTrace",

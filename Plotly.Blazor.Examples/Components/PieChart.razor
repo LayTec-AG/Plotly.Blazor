@@ -1,8 +1,13 @@
-﻿<PlotlyChart Id="TestId" Layout="layout" Data="data" @ref="chart" />
+﻿<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
 
 @code
 {
     PlotlyChart chart;
+
+    Config config = new Config
+    {
+        Responsive = true
+    };
 
     Layout layout = new Layout
     {
@@ -10,8 +15,7 @@
         {
             Text = "Pie"
         },
-        Height = 400,
-        Width = 500
+        Height = 500
     };
 
     List<ITrace> data = new List<ITrace>

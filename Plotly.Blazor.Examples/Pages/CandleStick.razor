@@ -25,7 +25,6 @@
             T = 25,
             B = 40,
             L = 60
-
         },
         ShowLegend = true,
         Title = new Title
@@ -33,7 +32,7 @@
             Text = "Candlestick"
         },
         XAxis = new List<XAxis>
-    {
+        {
             new XAxis
             {
                 AutoRange = AutoRangeEnum.True,
@@ -51,7 +50,7 @@
             }
         },
         YAxis = new List<YAxis>()
-    {
+        {
             new YAxis
             {
                 AutoRange = LayoutLib.YAxisLib.AutoRangeEnum.True,
@@ -63,8 +62,8 @@
     };
 
     List<ITrace> data = new List<ITrace>
-{
-    new Candlestick
+    {
+        new Candlestick
         {
             X = new List<object>{ new DateTime(2017, 1, 4), new DateTime(2017, 1, 5), new DateTime(2017, 1, 6), new DateTime(2017, 1, 9), new DateTime(2017, 1, 10), new DateTime(2017, 1, 11), new DateTime(2017, 1, 12), new DateTime(2017, 1, 13), new DateTime(2017, 1, 17), new DateTime(2017, 1, 18), new DateTime(2017, 1, 19), new DateTime(2017, 1, 20), new DateTime(2017, 1, 23), new DateTime(2017, 1, 24), new DateTime(2017, 1, 25), new DateTime(2017, 1, 26), new DateTime(2017, 1, 27), new DateTime(2017, 1, 30), new DateTime(2017, 1, 31), new DateTime(2017, 2, 1), new DateTime(2017, 2, 2), new DateTime(2017, 2, 3), new DateTime(2017, 2, 6), new DateTime(2017, 2, 7), new DateTime(2017, 2, 8), new DateTime(2017, 2, 9), new DateTime(2017, 2, 10), new DateTime(2017, 2, 13), new DateTime(2017, 2, 14), new DateTime(2017, 2, 15) },
             Close = new List<object>{ 116.019997, 116.610001, 117.910004, 118.989998, 119.110001, 119.75, 119.25, 119.040001, 120, 119.989998, 119.779999, 120, 120.080002, 119.970001, 121.879997, 121.940002, 121.949997, 121.629997, 121.349998, 128.75, 128.529999, 129.080002, 130.289993, 131.529999, 132.039993, 132.419998, 132.119995, 133.289993, 135.020004, 135.509995 },
@@ -87,7 +86,6 @@
             Open = new List<object>{ 115.849998, 115.919998, 116.779999, 117.949997, 118.769997, 118.739998, 118.900002, 119.110001, 118.339996, 120, 119.400002, 120.449997, 120, 119.550003, 120.419998, 121.669998, 122.139999, 120.93, 121.150002, 127.029999, 127.980003, 128.309998, 129.130005, 130.539993, 131.350006, 131.649994, 132.460007, 133.080002, 133.470001, 135.520004 },
             XAxis = "x",
             YAxis = "y"
-
         }
     };
 }

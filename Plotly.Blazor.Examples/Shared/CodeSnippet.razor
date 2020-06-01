@@ -1,0 +1,19 @@
+﻿<pre><code id="code" class="csharp">@Code</code></pre>
+
+@code {
+    [Parameter]
+    public string Uri { get; set; }
+
+    string Code { get; set; }
+
+    /// <inheritdoc />
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Code = await CodeHttpClient.GetStringAsync(Uri);
+            StateHasChanged();
+        }
+        await JsRunTime.InvokeVoidAsync("onBlazorReady");
+    }
+}

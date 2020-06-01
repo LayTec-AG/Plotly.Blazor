@@ -1,16 +1,13 @@
-﻿@page "/"
-@using System.Diagnostics
+﻿@using System.Diagnostics
 @using Plotly.Blazor.LayoutLib
-@using Plotly.Blazor.LayoutLib.YAxisLib
 @using Plotly.Blazor.Traces.ScatterLib
-@using Title = Plotly.Blazor.LayoutLib.YAxisLib.Title
-
-<h1>Scatter Chart</h1>
-
-<button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
-<button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
 
 <PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+
+<div class="text-right">
+    <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
+    <button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
+</div>
 
 @code
 {
@@ -20,17 +17,18 @@
     {
         Responsive = true
     };
+
     Layout layout = new Layout
     {
         Title = new LayoutLib.Title()
         {
-            Text = "Test"
+            Text = "Scatter"
         },
         YAxis = new List<YAxis>
-{
+    {
             new YAxis
             {
-                Title = new Title
+                Title = new LayoutLib.YAxisLib.Title
                 {
                     Text = "Scatter Unit"
                 }
@@ -40,14 +38,14 @@
 
     List<ITrace> data = new List<ITrace>
 {
-    new Scatter
-    {
-        Name = "ScatterTrace",
-        Mode = ModeFlag.Lines | ModeFlag.Markers,
-        X = new List<object>{1,2,3},
-        Y = new List<object>{1,2,3}
-    }
-};
+        new Scatter
+        {
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            X = new List<object>{1,2,3},
+            Y = new List<object>{1,2,3}
+        }
+    };
 
     private async Task AddData(int count = 100)
     {

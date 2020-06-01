@@ -1,10 +1,6 @@
-﻿@page "/candlestick"
-@using Plotly.Blazor.Traces.CandlestickLib
-@using Title = Plotly.Blazor.LayoutLib.Title
+﻿@using Plotly.Blazor.Traces.CandlestickLib
 @using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.XAxisLib
-
-<h1>Candlestick Chart</h1>
 
 <PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
 

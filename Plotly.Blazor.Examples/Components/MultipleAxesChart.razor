@@ -1,16 +1,14 @@
-﻿@page "/multipleaxes"
-@using System.Diagnostics
+﻿@using System.Diagnostics
 @using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.YAxisLib
 @using Plotly.Blazor.Traces.ScatterLib
-@using Title = Plotly.Blazor.LayoutLib.YAxisLib.Title
-
-<h1>Multiple Axes</h1>
-
-<button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
-<button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
 
 <PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+
+<div class="text-right">
+    <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
+    <button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
+</div>
 
 @code
 {
@@ -20,24 +18,25 @@
     {
         Responsive = true
     };
+
     Layout layout = new Layout
     {
-        Title = new LayoutLib.Title()
+        Title = new Title()
         {
-            Text = "Test"
+            Text = "Multiple Axes"
         },
         YAxis = new List<YAxis>
-{
+        {
             new YAxis
             {
-                Title = new Title
+                Title = new LayoutLib.YAxisLib.Title
                 {
                     Text = "Scatter Unit"
                 }
             },
             new YAxis
             {
-                Title = new Title
+                Title = new LayoutLib.YAxisLib.Title
                 {
                     Text = "Bar Unit"
                 },
@@ -48,22 +47,22 @@
     };
 
     List<ITrace> data = new List<ITrace>
-{
-    new Scatter
     {
-        Name = "ScatterTrace",
-        Mode = ModeFlag.Lines | ModeFlag.Markers,
-        X = new List<object>(),
-        Y = new List<object>()
-    },
-    new Bar
-    {
-        Name = "Trace2",
-        YAxis = "y2",
-        X = new List<object>(),
-        Y = new List<object>()
-    }
-};
+        new Scatter
+        {
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            X = new List<object>(),
+            Y = new List<object>()
+        },
+        new Bar
+        {
+            Name = "Trace2",
+            YAxis = "y2",
+            X = new List<object>(),
+            Y = new List<object>()
+        }
+    };
 
     private async Task AddData(int count = 100)
     {

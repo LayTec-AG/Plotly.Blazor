@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.TitleLib
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
-    public enum XrefEnum
+    public enum XRefEnum
     {
         [EnumMember(Value=@"container")]
         Container = 0,

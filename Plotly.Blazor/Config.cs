@@ -27,7 +27,7 @@ namespace Plotly.Blazor
         ///     to true.
         /// </summary>
         [JsonPropertyName(@"plotlyServerURL")]
-        public string PlotlyServerURL { get; set;} 
+        public string PlotlyServerUrl { get; set;} 
 
         /// <summary>
         ///     Determines whether the graph is editable or not. Sets all pieces of <c>edits</c>
@@ -240,7 +240,7 @@ namespace Plotly.Blazor
         ///     plotly.js module.
         /// </summary>
         [JsonPropertyName(@"topojsonURL")]
-        public string TopojsonURL { get; set;} 
+        public string TopoJsonUrl { get; set;} 
 
         /// <summary>
         ///     Mapbox access token (required to plot mapbox trace types) If using an Mapbox

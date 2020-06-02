@@ -48,7 +48,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     is <c>date</c>, then you must convert the date to unix time in milliseconds.
         /// </summary>
         [JsonPropertyName(@"xref")]
-        public string Xref { get; set;} 
+        public string XRef { get; set;} 
 
         /// <summary>
         ///     Sets the shapes&#39;s sizing mode along the x axis. If set to <c>scaled</c>,

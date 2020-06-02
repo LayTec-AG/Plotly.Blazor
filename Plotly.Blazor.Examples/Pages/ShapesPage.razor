@@ -1,0 +1,33 @@
+﻿@page "/shapes"
+
+<h1>Scatter Chart with Shapes</h1>
+
+<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+    <Items>
+        <Tab Name="example">Example</Tab>
+        <Tab Name="code">Code</Tab>
+    </Items>
+    <Content>
+        <TabPanel Name="example">
+            <Container>
+                <br />
+                <ShapesChart/>
+            </Container>
+        </TabPanel>
+        <TabPanel Name="code">
+            <Container>
+                <br />
+                <CodeSnippet Uri="Plotly.Blazor.Examples/Components/ShapesChart.razor" />
+            </Container>
+        </TabPanel>
+    </Content>
+</Tabs>
+
+@code{
+    string selectedTab = "example";
+
+    private void OnSelectedTabChanged(string name)
+    {
+        selectedTab = name;
+    }
+}

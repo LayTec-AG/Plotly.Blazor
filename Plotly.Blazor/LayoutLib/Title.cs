@@ -33,7 +33,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     area only.
         /// </summary>
         [JsonPropertyName(@"xref")]
-        public Plotly.Blazor.LayoutLib.TitleLib.XrefEnum? Xref { get; set;} 
+        public Plotly.Blazor.LayoutLib.TitleLib.XRefEnum? XRef { get; set;} 
 
         /// <summary>
         ///     Sets the container <c>y</c> refers to. <c>container</c> spans the entire

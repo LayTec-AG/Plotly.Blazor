@@ -25,7 +25,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
         [EnumMember(Value=@"circle")]
         Circle,
         [EnumMember(Value=@"rect")]
-        ReCt,
+        Rect,
         [EnumMember(Value=@"path")]
         Path,
         [EnumMember(Value=@"line")]

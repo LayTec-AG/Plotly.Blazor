@@ -240,3 +240,7 @@ treemapcolorway=treeMapColorway
 extendtreemapcolors=extendTreeMapColors
 funnelareacolorway=funnelAreaColorway
 extendfunnelareacolors=extendFunnelAreaColors
+rect=rect
+xref=xRef
+topojsonURL=topoJsonUrl
+plotlyServerURL=plotlyServerUrl

@@ -95,7 +95,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     to the left (right).
         /// </summary>
         [JsonPropertyName(@"xref")]
-        public string Xref { get; set;} 
+        public string XRef { get; set;} 
 
         /// <summary>
         ///     Sets the images&#39;s y coordinate axis. If set to a y axis id (e.g. <c>y</c>

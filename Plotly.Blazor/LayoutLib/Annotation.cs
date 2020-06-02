@@ -218,7 +218,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     corresponds to the left (right) side.
         /// </summary>
         [JsonPropertyName(@"xref")]
-        public string Xref { get; set;} 
+        public string XRef { get; set;} 
 
         /// <summary>
         ///     Sets the annotation&#39;s x position. If the axis <c>type</c> is <c>log</c>,

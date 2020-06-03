@@ -11,7 +11,7 @@ namespace Plotly.Blazor
     ///     The Layout class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
-    [JsonConverter(typeof(SubplotConverter))]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Layout 
     {
         /// <summary>
@@ -409,6 +409,19 @@ namespace Plotly.Blazor
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra meta information that can be used in various <c>text</c> attributes.
+        ///     Attributes such as the graph, axis and colorbar <c>title.text</c>, annotation
+        ///     <c>text</c> <c>trace.name</c> in legend items, <c>rangeselector</c>, <c>updatemenus</c>
+        ///     and <c>sliders</c> <c>label</c> text all support <c>meta</c>. One can access
+        ///     <c>meta</c> fields using template strings: <c>%{meta[i]}</c> where <c>i</c>
+        ///     is the index of the <c>meta</c> item in question. <c>meta</c> can also be
+        ///     an object for example &#39;{key: value}&#39; which can be accessed %{meta[key]}.
+        /// </summary>
+        [JsonPropertyName(@"meta")]
+        [Array]
+        public IList<object> MetaArray { get; set;} 
 
         /// <summary>
         ///     Sets transition options used during Plotly.react updates.

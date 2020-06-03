@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.Scatter3DLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
     ///     The TextFont class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class TextFont 
     {
         /// <summary>
@@ -19,10 +21,24 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         public object Color { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Color.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Size.
         /// </summary>
         [JsonPropertyName(@"size")]
         public float? Size { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Size.
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        [Array]
+        public IList<float?> SizeArray { get; set;} 
 
         /// <summary>
         ///     HTML font family - the typeface that will be applied by the web browser.

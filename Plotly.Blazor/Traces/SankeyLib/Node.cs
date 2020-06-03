@@ -11,6 +11,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
     ///     The Node class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Node 
     {
         /// <summary>
@@ -47,6 +48,17 @@ namespace Plotly.Blazor.Traces.SankeyLib
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets the <c>node</c> color. It can be a single value, or an array for specifying
+        ///     color for each <c>node</c>. If <c>node.color</c> is omitted, then the default
+        ///     <c>Plotly</c> color palette will be cycled through to have a variety of
+        ///     colors. These defaults are not fully opaque, to allow some visibility of
+        ///     what is beneath the node.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Assigns extra data to each node.
@@ -105,6 +117,27 @@ namespace Plotly.Blazor.Traces.SankeyLib
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the information that appear on hover
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, every attributes that can be specified per-point (the ones
+        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
+        ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
+        ///     in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertemplate")]
+        [Array]
+        public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  label .

@@ -12,11 +12,12 @@ namespace Plotly.Blazor.Traces
     ///     Implements the <see cref="ITrace" />
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Table : ITrace
     {
         /// <inheritdoc/>
         [JsonPropertyName(@"type")]
-        public TraceTypeEnum Type { get; } = TraceTypeEnum.Table;
+        public TraceTypeEnum? Type { get; } = TraceTypeEnum.Table;
 
         /// <summary>
         ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
@@ -70,12 +71,36 @@ namespace Plotly.Blazor.Traces
         public object Meta { get; set;} 
 
         /// <summary>
+        ///     Assigns extra meta information associated with this trace that can be used
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
+        /// </summary>
+        [JsonPropertyName(@"meta")]
+        [Array]
+        public IList<object> MetaArray { get; set;} 
+
+        /// <summary>
         ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
         ///     are set, no information is displayed upon hovering. But, if <c>none</c>
         ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.TableLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.TableLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.
@@ -118,6 +143,14 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"columnwidth")]
         public float? ColumnWidth { get; set;} 
+
+        /// <summary>
+        ///     The width of columns expressed as a ratio. Columns fill the available width
+        ///     in proportion of their specified column widths.
+        /// </summary>
+        [JsonPropertyName(@"columnwidth")]
+        [Array]
+        public IList<float?> ColumnWidthArray { get; set;} 
 
         /// <summary>
         ///     Specifies the rendered order of the data columns; for example, a value <c>2</c>

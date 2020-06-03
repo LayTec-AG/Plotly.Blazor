@@ -12,11 +12,12 @@ namespace Plotly.Blazor.Traces
     ///     Implements the <see cref="ITrace" />
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class BarPolar : ITrace
     {
         /// <inheritdoc/>
         [JsonPropertyName(@"type")]
-        public TraceTypeEnum Type { get; } = TraceTypeEnum.BarPolar;
+        public TraceTypeEnum? Type { get; } = TraceTypeEnum.BarPolar;
 
         /// <summary>
         ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
@@ -88,6 +89,21 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"meta")]
         public object Meta { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra meta information associated with this trace that can be used
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
+        /// </summary>
+        [JsonPropertyName(@"meta")]
+        [Array]
+        public IList<object> MetaArray { get; set;} 
 
         /// <summary>
         ///     Array containing integer indices of selected points. Has an effect only
@@ -190,6 +206,15 @@ namespace Plotly.Blazor.Traces
         public object Base { get; set;} 
 
         /// <summary>
+        ///     Sets where the bar base is drawn (in radial axis units). In <c>stack</c>
+        ///     barmode, traces that set <c>base</c> will be excluded and drawn in <c>overlay</c>
+        ///     mode instead.
+        /// </summary>
+        [JsonPropertyName(@"base")]
+        [Array]
+        public IList<object> BaseArray { get; set;} 
+
+        /// <summary>
         ///     Shifts the angular position where the bar is drawn (in <c>thetatunit</c>
         ///     units).
         /// </summary>
@@ -197,10 +222,25 @@ namespace Plotly.Blazor.Traces
         public float? Offset { get; set;} 
 
         /// <summary>
+        ///     Shifts the angular position where the bar is drawn (in <c>thetatunit</c>
+        ///     units).
+        /// </summary>
+        [JsonPropertyName(@"offset")]
+        [Array]
+        public IList<float?> OffsetArray { get; set;} 
+
+        /// <summary>
         ///     Sets the bar angular width (in <c>thetaunit</c> units).
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
+
+        /// <summary>
+        ///     Sets the bar angular width (in <c>thetaunit</c> units).
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<float?> WidthArray { get; set;} 
 
         /// <summary>
         ///     Sets hover text elements associated with each bar. If a single string, the
@@ -211,10 +251,26 @@ namespace Plotly.Blazor.Traces
         public string Text { get; set;} 
 
         /// <summary>
+        ///     Sets hover text elements associated with each bar. If a single string, the
+        ///     same string appears over all bars. If an array of string, the items are
+        ///     mapped in order to the this trace&#39;s coordinates.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        [Array]
+        public IList<string> TextArray { get; set;} 
+
+        /// <summary>
         ///     Same as <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"hovertext")]
         public string HoverText { get; set;} 
+
+        /// <summary>
+        ///     Same as <c>text</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertext")]
+        [Array]
+        public IList<string> HoverTextArray { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Marker.
@@ -229,6 +285,15 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.BarPolarLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.BarPolarLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
@@ -249,6 +314,27 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the information that appear on hover
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
+        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, every attributes that can be specified per-point (the ones
+        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
+        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
+        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
+        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertemplate")]
+        [Array]
+        public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Selected.

@@ -6,13 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="src\ArrayAttribute.cs" />
     <Compile Remove="src\DateTimeConverter.cs" />
     <Compile Remove="src\EnumConverter.cs" />
     <Compile Remove="src\Extensions.cs" />
+    <Compile Remove="src\PlotlyConverter.cs" />
     <Compile Remove="src\PlotlyJsInterop.cs" />
     <Compile Remove="src\PolymorphicConverter.cs" />
     <Compile Remove="src\SubplotAttribute.cs" />
-    <Compile Remove="src\SubplotConverter.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="src\ArrayAttribute.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="src\DateTimeConverter.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -37,6 +41,9 @@
     <None Include="src\Extensions.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="src\PlotlyConverter.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="src\PlotlyJsInterop.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -44,9 +51,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\SubplotAttribute.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\SubplotConverter.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

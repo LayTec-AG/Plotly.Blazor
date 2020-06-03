@@ -11,6 +11,7 @@ namespace Plotly.Blazor.Traces.TableLib
     ///     The Cells class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Cells 
     {
         /// <summary>
@@ -36,10 +37,24 @@ namespace Plotly.Blazor.Traces.TableLib
         public string Prefix { get; set;} 
 
         /// <summary>
+        ///     Prefix for cell values.
+        /// </summary>
+        [JsonPropertyName(@"prefix")]
+        [Array]
+        public IList<string> PrefixArray { get; set;} 
+
+        /// <summary>
         ///     Suffix for cell values.
         /// </summary>
         [JsonPropertyName(@"suffix")]
         public string Suffix { get; set;} 
+
+        /// <summary>
+        ///     Suffix for cell values.
+        /// </summary>
+        [JsonPropertyName(@"suffix")]
+        [Array]
+        public IList<string> SuffixArray { get; set;} 
 
         /// <summary>
         ///     The height of cells.
@@ -55,6 +70,16 @@ namespace Plotly.Blazor.Traces.TableLib
         /// </summary>
         [JsonPropertyName(@"align")]
         public Plotly.Blazor.Traces.TableLib.CellsLib.AlignEnum? Align { get; set;} 
+
+        /// <summary>
+        ///     Sets the horizontal alignment of the <c>text</c> within the box. Has an
+        ///     effect only if <c>text</c> spans two or more lines (i.e. <c>text</c> contains
+        ///     one or more &lt;br&gt; HTML tags) or if an explicit width is set to override
+        ///     the text width.
+        /// </summary>
+        [JsonPropertyName(@"align")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.TableLib.CellsLib.AlignEnum?> AlignArray { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.

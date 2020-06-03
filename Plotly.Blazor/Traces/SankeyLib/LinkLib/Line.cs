@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
     ///     The Line class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Line 
     {
         /// <summary>
@@ -19,10 +21,24 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
         public object Color { get; set;} 
 
         /// <summary>
+        ///     Sets the color of the <c>line</c> around each <c>link</c>.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
+
+        /// <summary>
         ///     Sets the width (in px) of the <c>line</c> around each <c>link</c>.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the <c>line</c> around each <c>link</c>.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<float?> WidthArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .

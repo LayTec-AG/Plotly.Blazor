@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Transforms
 {
@@ -11,6 +12,7 @@ namespace Plotly.Blazor.Transforms
     ///     Implements the <see cref="ITransform" />
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Sort : ITransform
     {
         /// <inheritdoc/>
@@ -33,6 +35,18 @@ namespace Plotly.Blazor.Transforms
         /// </summary>
         [JsonPropertyName(@"target")]
         public string Target { get; set;} 
+
+        /// <summary>
+        ///     Sets the target by which the sort transform is applied. If a string, <c>target</c>
+        ///     is assumed to be a reference to a data array in the parent trace object.
+        ///     To sort about nested variables, use <c>.</c> to access them. For example,
+        ///     set <c>target</c> to <c>marker.size</c> to sort about the marker size array.
+        ///     If an array, <c>target</c> is then the data array by which the sort transform
+        ///     is applied.
+        /// </summary>
+        [JsonPropertyName(@"target")]
+        [Array]
+        public IList<string> TargetArray { get; set;} 
 
         /// <summary>
         ///     Sets the sort transform order.

@@ -22,7 +22,7 @@
             Text = "Scatter"
         },
         YAxis = new List<YAxis>
-    {
+        {
             new YAxis
             {
                 Title = new LayoutLib.YAxisLib.Title
@@ -40,7 +40,23 @@
                 YRef = "y",
                 X0 = 20,
                 Y0 = 0,
-                X1 = 50,
+                X1 = 40,
+                Y1 = 100,
+                FillColor = "#d3d3d3",
+                Opacity = 0.3f,
+                Line = new Line
+                {
+                    Width = 0
+                }
+            },
+            new Shape
+            {
+                Type = TypeEnum.Rect,
+                XRef = "x",
+                YRef = "y",
+                X0 = 70,
+                Y0 = 0,
+                X1 = 90,
                 Y1 = 100,
                 FillColor = "#d3d3d3",
                 Opacity = 0.3f,
@@ -61,6 +77,14 @@
             Mode = ModeFlag.Lines | ModeFlag.Markers,
             X = Enumerable.Range(0, 100).Cast<object>().ToList(),
             Y = Enumerable.Range(0, 100).Cast<object>().ToList()
+        },
+        new Scatter
+        {
+            Name ="TextTrace",
+            X = new List<object>{30, 80},
+            Y = new List<object>{50, 50},
+            TextArray = new List<string>{"Test1", "Test2"},
+            Mode = ModeFlag.Text
         }
     };
 }

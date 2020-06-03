@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Plotly.Blazor.Generator.Schema;
+using Plotly.Blazor.Generator.Templates;
 using Plotly.Blazor.Generator.Templates.Class;
 using Plotly.Blazor.Generator.Templates.Enumerated;
 using Plotly.Blazor.Generator.Templates.Flag;
@@ -14,7 +16,7 @@ using Plotly.Blazor.Generator.Templates.Interface;
 using Stubble.Core;
 using Stubble.Core.Builders;
 using WeCantSpell.Hunspell;
-using Property = Plotly.Blazor.Generator.Templates.Class.Property;
+using FlagValue = Plotly.Blazor.Generator.Templates.Flag.FlagValue;
 
 namespace Plotly.Blazor.Generator
 {
@@ -25,48 +27,47 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string Namespace = "Plotly.Blazor";
-
         private static SchemaRoot _schema;
         private static StubbleVisitorRenderer _stubble;
         private static WordList _dictionary;
+        private static readonly IDictionary<string, Job> Jobs = new ConcurrentDictionary<string, Job>();
 
-        /// <summary>
-        ///     Defines the entry point of the application.
-        /// </summary>
-        /// <param name="args">The arguments.</param>
+        #region Main
+
         private static async Task Main(string[] args)
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             await using var dictionaryStream = File.OpenRead(@"English (American).dic");
             await using var affixStream = File.OpenRead(@"English (American).aff");
             _dictionary = await WordList.CreateFromStreamsAsync(dictionaryStream, affixStream);
 
             _schema = await GetPlotlySchemaAsync();
             _stubble = new StubbleBuilder().Configure(settings =>
-            {
-                settings.SetIgnoreCaseOnKeyLookup(true);
-                settings.SetEncodingFunction((s) => s);
-            })
+                {
+                    settings.SetIgnoreCaseOnKeyLookup(true);
+                    settings.SetEncodingFunction(s => s);
+                })
                 .Build();
 
-            var tasks = new[]
-            {
-                GenerateAnimationsAsync(),
-                GenerateTransformsAsync(),
-                GenerateFramesAsync(),
-                GenerateLayoutAsync(),
-                GenerateConfigAsync(),
-                GenerateTracesAsync()
-            };
+            Parallel.Invoke(CreateAnimation, CreateTransforms, CreateFrames, CreateLayout, CreateConfig, CreateTraces);
 
-            Task.WaitAll(tasks);
+            foreach (var (key, value) in Jobs)
+            {
+                Console.WriteLine($"Generating {key}.cs");
+                await value.Execute(_stubble);
+            }
 
             await File.WriteAllLinesAsync("UnknownWords.txt", Helper.UnknownWords.Distinct());
+            stopwatch.Stop();
+            Console.WriteLine($"[PERFORMANCE] Generation took {stopwatch.ElapsedMilliseconds/1000.0}s");
         }
 
-        /// <summary>
-        ///     Gets the schema.
-        /// </summary>
-        /// <returns>Schema Root.</returns>
+        #endregion
+
+        #region Schema
+
         private static async Task<SchemaRoot> GetPlotlySchemaAsync()
         {
             using var httpClient = new HttpClient();
@@ -77,7 +78,8 @@ namespace Plotly.Blazor.Generator
             // Write latest .js-File
             var outputDir = @".\src\wwwroot";
             Directory.CreateDirectory(outputDir);
-            await File.WriteAllTextAsync($"{outputDir}\\plotly-latest.min.js", await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-latest.min.js"));
+            await File.WriteAllTextAsync($"{outputDir}\\plotly-latest.min.js",
+                await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-latest.min.js"));
 
             var serializerOptions = new JsonSerializerOptions
             {
@@ -87,151 +89,49 @@ namespace Plotly.Blazor.Generator
             return JsonSerializer.Deserialize<SchemaRoot>(schemaJson, serializerOptions);
         }
 
-        /// <summary>
-        ///     Generates the animations.
-        /// </summary>
-        private static async Task GenerateAnimationsAsync()
+        #endregion
+
+        #region Animation
+
+        private static void CreateAnimation()
         {
             foreach (var (key, value) in _schema.Animation)
             {
-                await GenerateAsync(key, value, $"{Namespace}.AnimationLib");
+                AddJob(key, value, $"{Namespace}.AnimationLib");
             }
 
-            await GenerateClassFileAsync("Animation", _schema.Animation, $"{Namespace}", hasNestedComplexAttributes: true);
+            AddClassJob("Animation", _schema.Animation, Namespace);
         }
 
-        /// <summary>
-        ///     Generates the configuration.
-        /// </summary>
-        private static async Task GenerateConfigAsync()
+        #endregion
+
+        #region Config
+
+        private static void CreateConfig()
         {
             foreach (var (key, value) in _schema.Config)
             {
-                await GenerateAsync(key, value, $"{Namespace}.ConfigLib");
-            }
-            await GenerateClassFileAsync("Config", _schema.Config, $"{Namespace}", hasNestedComplexAttributes: true);
-        }
-
-        /// <summary>
-        /// Generates the transform interface.
-        /// </summary>
-        /// <returns>System.Threading.Tasks.Task.</returns>
-        private static async Task GenerateTransformInterfaceAsync()
-        {
-            var interfaceData = new InterfaceData
-            {
-                Name = "ITransform",
-                Namespace = $"{Namespace}",
-                Description = new[] { "The transform interface." },
-                Properties = new[]{new Templates.Interface.Property
-                {
-                    PropertyDescription = new []{"The type of the transform."},
-                    TypeName = "TransformTypeEnum",
-                    PropertyName = "Type",
-                    DisplayName = "type",
-                    IsReadOnly = true
-                }}
-            };
-            await RenderFileAsync(interfaceData.Namespace, interfaceData.Name, @".\Templates\Interface\Interface.txt",
-                interfaceData);
-        }
-
-        /// <summary>
-        /// Generates the transform classes.
-        /// </summary>
-        /// <returns>System.Threading.Tasks.Task.</returns>
-        private static async Task GenerateTransformClassesAsync()
-        {
-            foreach (var (transformKey, transformValue) in _schema.Transforms)
-            {
-                var friendlyName = transformKey.ToDotNetFriendlyName(_dictionary);
-                await GenerateClassFileAsync(transformKey, transformValue.Attributes, $"{Namespace}.Transforms",
-                    "ITransform", new[]
-                    {
-                        new Property
-                        {
-                            DisplayName = "type",
-                            PropertyName = "Type",
-                            TypeName = "TransformTypeEnum",
-                            IsReadOnly = true,
-                            DefaultValue = $"TransformTypeEnum.{friendlyName}"
-                        }
-                    }, hasNestedComplexAttributes: true);
-            }
-        }
-
-        /// <summary>
-        /// Generates the transforms interface.
-        /// </summary>
-        /// <returns>System.Threading.Tasks.Task.</returns>
-        private static async Task GenerateTransformTypeEnumAsync()
-        {
-            var typeEnumData = new EnumeratedData
-            {
-                Name = "TransformTypeEnum",
-                Namespace = $"{Namespace}",
-                Description = new[] { "Determines the type of the transform." },
-                Values = _schema.Transforms.Select(keyValue => new EnumeratedValue
-                {
-                    DisplayName = keyValue.Key,
-                    EnumName = keyValue.Key.ToDotNetFriendlyName(_dictionary)
-                })
-            };
-
-            await RenderFileAsync(typeEnumData.Namespace, typeEnumData.Name, @".\Templates\Enumerated\Enumerated.txt",
-                typeEnumData);
-        }
-
-        private static async Task RenderFileAsync(string @namespace, string fileName, string templatePath, object data)
-        {
-            var outputDir = @namespace.GetOutputPathByNameSpace();
-            Directory.CreateDirectory(outputDir);
-            using var streamReader = new StreamReader(templatePath, Encoding.UTF8);
-            var output = await _stubble.RenderAsync(await streamReader.ReadToEndAsync(), data);
-            await File.WriteAllTextAsync($"{outputDir}\\{fileName}.cs", output);
-        }
-
-
-        /// <summary>
-        ///     Generates the configuration.
-        /// </summary>
-        private static async Task GenerateTransformsAsync()
-        {
-            // Generate all nested classes
-            foreach (var (transformKey, transformValue) in _schema.Transforms)
-            {
-                foreach (var (key, value) in transformValue.Attributes)
-                {
-                    if (value is JsonElement attributeValue)
-                    {
-                        if (!attributeValue.TryToObject<AttributeDescription>(out var attributeDescription))
-                        {
-                            continue;
-                        }
-                        await GenerateAsync(key, attributeDescription, $"{Namespace}.Transforms.{transformKey.ToDotNetFriendlyName(_dictionary)}Lib");
-                    }
-                }
+                AddJob(key, value, $"{Namespace}.ConfigLib");
             }
 
-            await GenerateTransformInterfaceAsync();
-            await GenerateTransformTypeEnumAsync();
-            await GenerateTransformClassesAsync();
+            AddClassJob("Config", _schema.Config, Namespace);
         }
 
-        /// <summary>
-        ///     Generates the configuration.
-        /// </summary>
-        private static async Task GenerateFramesAsync()
+        #endregion
+
+        #region Frames
+
+        private static void CreateFrames()
         {
-            await GenerateClassFileAsync("Frames", _schema.Frames.Items.Frames_Entry.OtherAttributes, $"{Namespace}",
-                hasNestedComplexAttributes: false);
-
+            AddClassJob("Frames", _schema.Frames.Items.Frames_Entry.OtherAttributes, Namespace);
         }
 
-        /// <summary>
-        ///     Generates the layout.
-        /// </summary>
-        private static async Task GenerateLayoutAsync()
+
+        #endregion
+
+        #region Layout
+
+        private static void CreateLayout()
         {
             var traceLayoutAttributes = _schema.Traces
                 .Select(keyValue => keyValue.Value.LayoutAttributes)
@@ -246,129 +146,202 @@ namespace Plotly.Blazor.Generator
                 {
                     continue;
                 }
+
                 traceLayoutAttributes.Add(key, attributeDescription);
             }
 
-            
             foreach (var (key, value) in traceLayoutAttributes)
             {
                 if (value != null)
                 {
-                    await GenerateAsync(key, value, $"{Namespace}.LayoutLib");
+                    AddJob(key, value, $"{Namespace}.LayoutLib");
                 }
             }
-            
-            await GenerateClassFileAsync("Layout", traceLayoutAttributes, $"{Namespace}", hasNestedComplexAttributes: true);
+
+            AddClassJob("Layout", traceLayoutAttributes, Namespace);
         }
 
-        private static async Task GenerateTracesAsync()
+        #endregion
+
+        #region Transforms
+
+        private static void CreateTransforms()
         {
-            foreach (var (key, value) in _schema.Traces)
+            // Generate all nested classes
+            foreach (var (transformKey, transformValue) in _schema.Transforms)
             {
-                foreach (var (attributeKey, attributeValue) in value.Attributes)
+                foreach (var (key, value) in transformValue.Attributes)
+                {
+                    if (!value.TryToObject<AttributeDescription>(out var attributeDescription))
+                    {
+                        continue;
+                    }
+
+                    AddJob(key, attributeDescription,
+                        $"{Namespace}.Transforms.{transformKey.ToDotNetFriendlyName(_dictionary)}Lib");
+                }
+            }
+
+            CreateTransformInterfaceJob();
+            CreateTransformTypeJob();
+            CreateTransformsJobs();
+        }
+
+        private static void CreateTransformInterfaceJob()
+        {
+            var interfaceData = new InterfaceData
+            {
+                Name = "ITransform",
+                Namespace = Namespace,
+                Description = new[] {"The transform interface."},
+                Properties = new List<Property>
+                {
+                    new Property
+                    {
+                        PropertyDescription = new[] {"The type of the transform."},
+                        TypeName = "TransformTypeEnum",
+                        PropertyName = "Type",
+                        DisplayName = "type",
+                        IsReadOnly = true,
+                        IsInherited = true
+                    }
+                }
+            };
+            Jobs.Add($"{interfaceData.Namespace}.{interfaceData.Name}", new Job(interfaceData));
+        }
+
+        private static void CreateTransformTypeJob()
+        {
+            var typeEnumData = new EnumeratedData
+            {
+                Name = "TransformTypeEnum",
+                Namespace = Namespace,
+                Description = new[] {"Determines the type of the transform."},
+                Values = _schema.Transforms.Select(keyValue => new EnumeratedValue
+                {
+                    DisplayName = keyValue.Key,
+                    EnumName = keyValue.Key.ToDotNetFriendlyName(_dictionary)
+                })
+            };
+            Jobs.Add($"{typeEnumData.Namespace}.{typeEnumData.Name}", new Job(typeEnumData));
+        }
+
+        private static void CreateTransformsJobs()
+        {
+            foreach (var (transformKey, transformValue) in _schema.Transforms)
+            {
+                var friendlyName = transformKey.ToDotNetFriendlyName(_dictionary);
+                var typeProperty = new Property
+                {
+                    DisplayName = "type",
+                    PropertyName = "Type",
+                    TypeName = "TransformTypeEnum",
+                    IsReadOnly = true,
+                    DefaultValue = $"TransformTypeEnum.{friendlyName}",
+                    IsInherited = true
+                };
+                AddClassJob(transformKey, transformValue.Attributes, $"{Namespace}.Transforms", "ITransform",
+                    new[] {typeProperty});
+            }
+        }
+
+        #endregion
+
+        #region Traces
+
+        private static void CreateTraces()
+        {
+            CreateTraceInterfaceJob();
+            CreateTraceTypeEnumJob();
+            CreateTraceJobs();
+        }
+
+        private static void CreateTraceInterfaceJob()
+        {
+            var interfaceData = new InterfaceData
+            {
+                Name = "ITrace",
+                Namespace = $"{Namespace}",
+                Description = new[] {"The trace interface."},
+                Properties = new List<Property>
+                {
+                    new Property
+                    {
+                        PropertyDescription = new[] {"The type of the trace."},
+                        TypeName = "TraceTypeEnum?",
+                        PropertyName = "Type",
+                        DisplayName = "type",
+                        IsReadOnly = true,
+                        IsInherited = true
+                    }
+                }
+            };
+
+            Jobs.Add($"{interfaceData.Namespace}.{interfaceData.Name}", new Job(interfaceData));
+        }
+
+        private static void CreateTraceTypeEnumJob()
+        {
+            var typeEnumData = new EnumeratedData
+            {
+                Name = "TraceTypeEnum",
+                Namespace = $"{Namespace}",
+                Description = new[] {"Determines the type of the trace."},
+                Values = _schema.Traces.Select(keyValue => new EnumeratedValue
+                {
+                    DisplayName = keyValue.Value.Attributes.ContainsKey("type")
+                        ? keyValue.Value.Attributes["type"].GetString()
+                        : keyValue.Key,
+                    EnumName = keyValue.Key.ToDotNetFriendlyName(_dictionary)
+                })
+            };
+            Jobs.Add($"{typeEnumData.Namespace}.{typeEnumData.Name}", new Job(typeEnumData));
+        }
+
+        private static void CreateTraceJobs()
+        {
+            Parallel.ForEach(_schema.Traces, pair =>
+            {
+                var (traceKey, traceValue) = pair;
+                foreach (var (attributeKey, attributeValue) in traceValue.Attributes)
                 {
                     if (!attributeValue.TryToObject<AttributeDescription>(out var attributeDescription))
                     {
                         continue;
                     }
 
-                    await GenerateAsync(attributeKey, attributeDescription,
-                        $"{Namespace}.Traces.{key.ToDotNetFriendlyName(_dictionary)}Lib");
+                    AddJob(attributeKey, attributeDescription,
+                        $"{Namespace}.Traces.{traceKey.ToDotNetFriendlyName(_dictionary)}Lib");
                 }
-            }
 
-            await GenerateTraceInterfaceAsync();
-            await GenerateTraceTypeEnumAsync();
-            await GenerateTraceClassesAsync();
-        }
-
-        /// <summary>
-        /// Generates the trace interface.
-        /// </summary>
-        /// <returns>System.Threading.Tasks.Task.</returns>
-        private static async Task GenerateTraceInterfaceAsync()
-        {
-            var interfaceData = new InterfaceData
-            {
-                Name = "ITrace",
-                Namespace = $"{Namespace}",
-                Description = new[] { "The trace interface." },
-                Properties = new[]{new Templates.Interface.Property
-                {
-                    PropertyDescription = new []{"The type of the trace."},
-                    TypeName = "TraceTypeEnum",
-                    PropertyName = "Type",
-                    DisplayName = "type",
-                    IsReadOnly = true
-                }}
-            };
-            await RenderFileAsync(interfaceData.Namespace, interfaceData.Name, @".\Templates\Interface\Interface.txt",
-                interfaceData);
-        }
-
-        /// <summary>
-        /// Generates the transforms interface.
-        /// </summary>
-        /// <returns>System.Threading.Tasks.Task.</returns>
-        private static async Task GenerateTraceTypeEnumAsync()
-        {
-            var typeEnumData = new EnumeratedData
-            {
-                Name = "TraceTypeEnum",
-                Namespace = $"{Namespace}",
-                Description = new[] { "Determines the type of the trace." },
-                Values = _schema.Traces.Select(keyValue => new EnumeratedValue
-                {
-                    DisplayName = keyValue.Value.Attributes.ContainsKey("type") ? keyValue.Value.Attributes["type"].GetString() : keyValue.Key,
-                    EnumName = keyValue.Key.ToDotNetFriendlyName(_dictionary)
-                })
-            };
-
-            await RenderFileAsync(typeEnumData.Namespace, typeEnumData.Name, @".\Templates\Enumerated\Enumerated.txt",
-                typeEnumData);
-        }
-
-        /// <summary>
-        /// Generates the transform classes.
-        /// </summary>
-        /// <returns>System.Threading.Tasks.Task.</returns>
-        private static async Task GenerateTraceClassesAsync()
-        {
-            foreach (var (traceKey, traceValue) in _schema.Traces)
-            {
                 var friendlyName = traceKey.ToDotNetFriendlyName(_dictionary);
-                await GenerateClassFileAsync(traceKey, traceValue.Attributes, $"{Namespace}.Traces",
-                    "ITrace", new[]
-                    {
-                        new Property
-                        {
-                            DisplayName = "type",
-                            PropertyName = "Type",
-                            TypeName = "TraceTypeEnum",
-                            IsReadOnly = true,
-                            DefaultValue = $"TraceTypeEnum.{friendlyName}"
-                        }
-                    }, hasNestedComplexAttributes: true);
-            }
+                var typeProperty = new Property
+                {
+                    DisplayName = "type",
+                    PropertyName = "Type",
+                    TypeName = "TraceTypeEnum?",
+                    IsReadOnly = true,
+                    DefaultValue = $"TraceTypeEnum.{friendlyName}",
+                    IsInherited = true
+                };
+
+                AddClassJob(traceKey, traceValue.Attributes, $"{Namespace}.Traces",
+                    "ITrace", new[] {typeProperty});
+            });
         }
 
+        #endregion
 
-        private static async Task GenerateAsync(string name, AttributeDescription attributeDescription,
+        #region Jobs
+
+        private static void AddJob(string name, AttributeDescription attributeDescription,
             string customNamespace = Namespace)
         {
-            var hasNestedComplexAttributes = false;
-
             // Call it recursively for all nested attributes if its an array
             if (attributeDescription.IsArray)
             {
                 var (key, value) = GetArrayType(attributeDescription);
-                if (value != null)
-                {
-                    hasNestedComplexAttributes = value.Role == "object" && !value.IsArray  
-                                                 || value.ValType == "flaglist" || value.ValType == "enumerated";
-                }
-
-                await GenerateAsync(key, value, $"{customNamespace}");
+                AddJob(key, value, $"{customNamespace}");
             }
 
             // Call it recursively for all nested attributes if its an object
@@ -376,26 +349,24 @@ namespace Plotly.Blazor.Generator
             {
                 if (attributeDescription.OtherAttributes != null)
                 {
-                    hasNestedComplexAttributes = attributeDescription
-                        .OtherAttributes
-                        .Any(a => a.Value.TryToObject<AttributeDescription>(out var attribute)
-                                  && (attribute.Role == "object" && !attribute.IsArray) ||
-                                  attribute?.ValType == "flaglist" || attribute?.ValType == "enumerated");
-
                     foreach (var (key, value) in attributeDescription.OtherAttributes)
                     {
-                        if (!value.TryToObject<AttributeDescription>(out var otherAttribute)) continue;
+                        if (!value.TryToObject<AttributeDescription>(out var otherAttribute))
+                        {
+                            continue;
+                        }
 
                         if (otherAttribute.ValType == "enumerated")
                         {
-                            if(otherAttribute.OtherAttributes["values"].EnumerateArray()
-                                .Any(elem => elem.ValueKind == JsonValueKind.String && elem.GetString().StartsWith("/^")))
+                            if (otherAttribute.OtherAttributes["values"].EnumerateArray()
+                                .Any(elem =>
+                                    elem.ValueKind == JsonValueKind.String && elem.GetString().StartsWith("/^")))
                             {
                                 continue;
                             }
                         }
 
-                        await GenerateAsync(key, otherAttribute, $"{customNamespace}.{name.ToDotNetFriendlyName(_dictionary)}Lib");
+                        AddJob(key, otherAttribute, $"{customNamespace}.{name.ToDotNetFriendlyName(_dictionary)}Lib");
                     }
                 }
             }
@@ -403,30 +374,31 @@ namespace Plotly.Blazor.Generator
             // Generate files for enums, flags, objects
             if (attributeDescription.ValType == "enumerated")
             {
-                await GenerateEnumFileAsync(name, attributeDescription, $"{customNamespace}");
+                AddEnumJob(name, attributeDescription, customNamespace);
                 return;
             }
+
             if (attributeDescription.ValType == "flaglist")
             {
-                await GenerateFlagFileAsync(name, attributeDescription, $"{customNamespace}");
+                AddFlagJob(name, attributeDescription, customNamespace);
                 return;
             }
 
             if (attributeDescription.Role == "object" && !attributeDescription.IsArray)
             {
-                await GenerateClassFileAsync(name, attributeDescription.OtherAttributes, $"{customNamespace}", hasNestedComplexAttributes: hasNestedComplexAttributes);
+                AddClassJob(name, attributeDescription.OtherAttributes, customNamespace);
             }
-
         }
 
-        private static async Task GenerateEnumFileAsync(string name, AttributeDescription attributeDescription,
-            string customNamespace)
+        private static void AddEnumJob(string name, AttributeDescription attributeDescription, string customNamespace)
         {
-            var enumeratedData = new EnumeratedData()
+            var friendlyName = name.ToDotNetFriendlyName(_dictionary);
+            var enumeratedData = new EnumeratedData
             {
-                Name = $"{name.ToDotNetFriendlyName(_dictionary)}Enum",
+                Name = $"{friendlyName}Enum",
                 Namespace = customNamespace,
-                Description = attributeDescription.Description.HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace()
+                Description = attributeDescription.Description
+                    .HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace()
             };
 
             if (attributeDescription.Default != null)
@@ -439,8 +411,8 @@ namespace Plotly.Blazor.Generator
             }
 
             // Get values as string representation (casting does not work!)
-
-            var valuesAsString = attributeDescription.OtherAttributes["values"].ToObject<object[]>().Select(s => s.ToString()).Distinct().ToArray();
+            var valuesAsString = attributeDescription.OtherAttributes["values"].ToObject<object[]>()
+                .Select(s => s.ToString()).Distinct().ToArray();
 
             enumeratedData.Values = valuesAsString.Select(s =>
                 {
@@ -456,22 +428,20 @@ namespace Plotly.Blazor.Generator
                 })
                 .Where(v => v.EnumName != enumeratedData.DefaultValue?.EnumName);
 
-            var outputDir = customNamespace.GetOutputPathByNameSpace();
-            Directory.CreateDirectory(outputDir);
-
-            using var streamReader = new StreamReader(@".\Templates\Enumerated\Enumerated.txt", Encoding.UTF8);
-            var output = await _stubble.RenderAsync(await streamReader.ReadToEndAsync(), enumeratedData);
-            await File.WriteAllTextAsync($"{outputDir}\\{enumeratedData.Name}.cs", output);
+            Jobs.Add($"{enumeratedData.Namespace}.{enumeratedData.Name}", new Job(enumeratedData));
         }
 
-        private static async Task GenerateFlagFileAsync(string name, AttributeDescription attributeDescription,
+        private static void AddFlagJob(string name, AttributeDescription attributeDescription,
             string customNamespace)
         {
+            var friendlyName = name.ToDotNetFriendlyName(_dictionary);
+
             var flagData = new FlagData
             {
                 Name = $"{name.ToDotNetFriendlyName(_dictionary)}Flag",
                 Namespace = customNamespace,
-                Description = attributeDescription.Description.HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace()
+                Description = attributeDescription.Description.HtmlEncode()?.ReplaceHighlighting()
+                    ?.SplitByCharCountIfWhitespace()
             };
 
             // Get values as string representation (casting does not work!)
@@ -483,7 +453,7 @@ namespace Plotly.Blazor.Generator
                 var hasDuplicates = flagsAsString.Where(v => v != s)
                     .Any(v => string.Equals(v, s, StringComparison.CurrentCultureIgnoreCase));
 
-                return new Templates.Flag.FlagValue
+                return new FlagValue
                 {
                     DisplayName = s,
                     EnumName = s.ToDotNetFriendlyName(_dictionary, hasDuplicates)
@@ -501,7 +471,7 @@ namespace Plotly.Blazor.Generator
                     var hasDuplicates = flagsExtrasAsString.Where(v => v != s)
                         .Any(v => string.Equals(v, s, StringComparison.CurrentCultureIgnoreCase));
 
-                    return new Templates.Flag.FlagValue
+                    return new FlagValue
                     {
                         DisplayName = s,
                         EnumName = s.ToDotNetFriendlyName(_dictionary, hasDuplicates)
@@ -509,83 +479,41 @@ namespace Plotly.Blazor.Generator
                 });
             }
 
-            var outputDir = customNamespace.GetOutputPathByNameSpace();
-            Directory.CreateDirectory(outputDir);
-
-            using var streamReader = new StreamReader(@".\Templates\Flag\Flag.txt", Encoding.UTF8);
-            var output = await _stubble.RenderAsync(await streamReader.ReadToEndAsync(), flagData);
-            await File.WriteAllTextAsync($"{outputDir}\\{flagData.Name}.cs", output);
+            Jobs.Add($"{flagData.Namespace}.{flagData.Name}", new Job(flagData));
         }
 
 
-        private static async Task GenerateClassFileAsync(string name, IDictionary<string, JsonElement> attributes,
-            string customNamespace, string interfaceName = null, IEnumerable<Property> interfaceProperties = null, bool hasNestedComplexAttributes=false)
+        private static void AddClassJob(string name, IDictionary<string, JsonElement> attributes,
+            string customNamespace, string interfaceName = null, IEnumerable<Property> additionalProperties = null)
         {
-            await GenerateClassFileAsync(name, attributes
-                ?.Select(pair =>
-                    !pair.Value.TryToObject<AttributeDescription>(out var description)
-                        ? default
-                        : new KeyValuePair<string, AttributeDescription>(pair.Key, description))
-                .Where(pair => !pair.Equals(default(KeyValuePair<string, AttributeDescription>)))
-                .ToDictionary(pair => pair.Key, pair => pair.Value),
+            AddClassJob(name, attributes
+                    ?.Select(pair =>
+                        !pair.Value.TryToObject<AttributeDescription>(out var description)
+                            ? default
+                            : new KeyValuePair<string, AttributeDescription>(pair.Key, description))
+                    .Where(pair => !pair.Equals(default(KeyValuePair<string, AttributeDescription>)))
+                    .ToDictionary(pair => pair.Key, pair => pair.Value),
                 customNamespace,
                 interfaceName,
-                interfaceProperties,
-                hasNestedComplexAttributes
-                );
+                additionalProperties
+            );
         }
 
-        private static async Task GenerateClassFileAsync(string name, IDictionary<string, AttributeDescription> attributes,
-            string customNamespace, string interfaceName = null, IEnumerable<Property> interfaceProperties = null, bool hasNestedComplexAttributes=false)
+        private static void AddClassJob(string name, IDictionary<string, AttributeDescription> attributes,
+            string customNamespace, string interfaceName = null, IEnumerable<Property> additionalProperties = null)
         {
             var friendlyName = name.ToDotNetFriendlyName(_dictionary);
 
-            var properties = attributes?.Select(pair =>
-                {
-
-                    // GET NAME WITH EDGE CASE THAT THE CLASS NAME EQUALS THE PROPERTY NAME
-                    var propertyFriendlyName = pair.Key.ToDotNetFriendlyName(_dictionary);
-
-                    // HANDLE THE CASE WHEN THE PROPERTY NAME EQUALS THE CLASS NAME
-                    if (propertyFriendlyName == friendlyName)
-                    {
-                        propertyFriendlyName = $"_{propertyFriendlyName}";
-                    }
-
-                    string typeName;
-
-                    try
-                    {
-                        typeName = GetTypeByAttributeDescription(pair.Value, pair.Key, $"{customNamespace}.{friendlyName}Lib");
-                    }
-                    catch(ArgumentException)
-                    {
-                        // Don't include this property, because it's not supported
-                        return null;
-                    }
-
-                    return new Property
-                    {
-                        DisplayName = pair.Key,
-                        PropertyName = propertyFriendlyName,
-                        TypeName = typeName,
-                        PropertyDescription = string.IsNullOrWhiteSpace(pair.Value.Description)
-                            ? new[] { $"Gets or sets the {propertyFriendlyName}." }
-                            : pair.Value.Description.HtmlEncode()?.ReplaceHighlighting()?.SplitByCharCountIfWhitespace(),
-                        IsSubplot = pair.Value.IsSubplotObj
-                    };
-                })
+            var properties = attributes?
+                .Select(pair => CreateProperty(pair, friendlyName, customNamespace))
+                .Where(p => p != null)
+                .SelectMany(p => p)
                 .Where(p => p != null)
                 .ToList();
 
-            if (interfaceName != null && interfaceProperties != null)
+            if (additionalProperties != null)
             {
-                var enumerable = interfaceProperties as Property[] ?? interfaceProperties.ToArray();
-                foreach (var interfaceProperty in enumerable)
-                {
-                    interfaceProperty.IsInherited = true;
-                }
-                properties?.InsertRange(0, enumerable);
+                properties?.InsertRange(0, additionalProperties);
             }
 
             var classData = new ClassData
@@ -593,35 +521,71 @@ namespace Plotly.Blazor.Generator
                 Name = friendlyName,
                 Interface = interfaceName,
                 Namespace = customNamespace,
-                Description = new[] { $"The {friendlyName} class." },
-                Properties = properties,
-                HasNestedComplexAttributes = hasNestedComplexAttributes,
-                ReferencesTransform = true
+                Description = new[] {$"The {friendlyName} class."},
+                Properties = properties
             };
 
             if (classData.Properties != null && classData.Properties.Any())
             {
-                await RenderFileAsync(classData.Namespace, classData.Name, @".\Templates\Class\Class.txt", classData);
+                Jobs.Add($"{classData.Namespace}.{classData.Name}", new Job(classData));
             }
         }
 
-        private static async Task GenerateClassFileAsync(string name, AttributeDescription attributeDescription,
-            string customNamespace, string interfaceName = null, IEnumerable<Property> interfaceProperties = null, bool hasNestedComplexAttributes=false)
+        private static IEnumerable<Property> CreateProperty(KeyValuePair<string, AttributeDescription> pair, string className, string @namespace)
         {
-            await GenerateClassFileAsync(name, attributeDescription.OtherAttributes, customNamespace, interfaceName,
-                interfaceProperties, hasNestedComplexAttributes);
+            if (pair.Key == "_deprecated")
+            {
+                return null;
+            }
+
+            var propertyList = new List<Property>();
+
+            // GET NAME
+            var propertyFriendlyName = pair.Key.ToDotNetFriendlyName(_dictionary);
+
+            // HANDLE THE CASE WHEN THE PROPERTY NAME EQUALS THE CLASS NAME
+            if (propertyFriendlyName == className)
+            {
+                propertyFriendlyName = $"_{propertyFriendlyName}";
+            }
+
+            var typeName =
+                GetTypeByAttributeDescription(pair.Value, pair.Key, $"{@namespace}.{className}Lib");
+
+            var property = new Property
+            {
+                DisplayName = pair.Key,
+                PropertyName = propertyFriendlyName,
+                TypeName = typeName,
+                PropertyDescription = string.IsNullOrWhiteSpace(pair.Value.Description)
+                    ? new[] {$"Gets or sets the {propertyFriendlyName}."}
+                    : pair.Value.Description.HtmlEncode()?.ReplaceHighlighting()
+                        ?.SplitByCharCountIfWhitespace(),
+                IsSubplot = pair.Value.IsSubplotObj
+            };
+            propertyList.Add(property);
+
+            if (!pair.Value.ArrayOk)
+            {
+                return propertyList;
+            }
+
+            var arrayProperty = (Property)property.Clone();
+            arrayProperty.TypeName = $"IList<{arrayProperty.TypeName}>";
+            arrayProperty.PropertyName = $"{arrayProperty.PropertyName}Array";
+            arrayProperty.IsArray = true;
+            propertyList.Add(arrayProperty);
+
+            return propertyList;
         }
 
-        /// <summary>
-        /// Gets the type by attribute description.
-        /// </summary>
-        /// <param name="key">The key.</param>
-        /// <param name="attributeDescription">The attribute description.</param>
-        /// <param name="namespace"></param>
-        /// <returns>(TypeName, IsComplex, IsList)</returns>
-        private static string GetTypeByAttributeDescription(AttributeDescription attributeDescription, string key, string @namespace)
-        {
+        #endregion
 
+        #region Helper
+
+         private static string GetTypeByAttributeDescription(AttributeDescription attributeDescription, string key,
+            string @namespace)
+        {
             // EDGE CASES
             switch (key)
             {
@@ -638,18 +602,18 @@ namespace Plotly.Blazor.Generator
             // HANDLE REGEX
             if (attributeDescription.ValType == "enumerated")
             {
-                if(attributeDescription.OtherAttributes["values"].EnumerateArray()
+                if (attributeDescription.OtherAttributes["values"].EnumerateArray()
                     .Any(elem => elem.ValueKind == JsonValueKind.String && elem.GetString().StartsWith("/^")))
                 {
                     return "string";
                 }
             }
 
+            // HANDLE ARRAY
             if (attributeDescription.IsArray)
             {
                 var (typeKey, typeDescription) = GetArrayType(attributeDescription);
                 var type = GetTypeByAttributeDescription(typeDescription, typeKey, @namespace);
-
                 return $"IList<{type}>";
             }
 
@@ -657,7 +621,7 @@ namespace Plotly.Blazor.Generator
             {
                 if (attributeDescription.IsSubplotObj)
                 {
-                    var copy = (AttributeDescription)attributeDescription.Clone();
+                    var copy = (AttributeDescription) attributeDescription.Clone();
                     copy.IsSubplotObj = false;
                     return $"IList<{GetTypeByAttributeDescription(copy, key, @namespace)}>";
                 }
@@ -667,72 +631,58 @@ namespace Plotly.Blazor.Generator
                     return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}";
                 }
 
-                if (attributeDescription.ValType == "enumerated")
+                switch (attributeDescription.ValType)
                 {
-                    return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}Enum?";
-                }
-
-                if (attributeDescription.ValType == "flaglist")
-                {
-                    return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}Flag?";
+                    case "enumerated":
+                        return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}Enum?";
+                    case "flaglist":
+                        return $"{@namespace}.{key.ToDotNetFriendlyName(_dictionary)}Flag?";
                 }
             }
 
-            switch (attributeDescription.ValType)
+            return attributeDescription.ValType switch
             {
-                case "data_array":
-                    return "IList<object>";
-                case "boolean":
-                    return "bool?";
-                case "number":
-                    return "float?";
-                case "integer":
-                    return "int?";
-                case "string":
-                    return "string";
-                case "color":
-                    return "object";
-                case "colorlist":
-                    return "IList<object>";
-                case "colorscale":
-                    return "object";
-                case "subplotid":
-                    return "string";
-                case "angle":
-                    return "float?";
-                case "any":
-                    return "object";
-                case "info_array":
-                    return "IList<object>";
-
-                default:
-                    throw new ArgumentException($"ValType {attributeDescription.ValType} not supported");
-
-            }
+                "data_array" => "IList<object>",
+                "boolean" => "bool?",
+                "number" => "float?",
+                "integer" => "int?",
+                "string" => "string",
+                "color" => "object",
+                "colorlist" => "IList<object>",
+                "colorscale" => "object",
+                "subplotid" => "string",
+                "angle" => "float?",
+                "any" => "object",
+                "info_array" => "IList<object>",
+                _ => throw new ArgumentException($"ValType {attributeDescription.ValType} not supported")
+            };
         }
 
-        /// <summary>
-        /// Gets the type of the array as a keyValuePair (TypeName, Description).
-        /// </summary>
-        /// <param name="attributeDescription">The attribute description.</param>
-        /// <returns>System.Collections.Generic.KeyValuePair&lt;System.String, Plotly.Blazor.Generator.Schema.AttributeDescription&gt;.</returns>
-        private static KeyValuePair<string, AttributeDescription> GetArrayType(AttributeDescription attributeDescription)
+        private static KeyValuePair<string, AttributeDescription> GetArrayType(
+            AttributeDescription attributeDescription)
         {
+            if (!attributeDescription.IsArray)
+            {
+                throw new ArgumentException("Expected attributeDescription with type array");
+            }
 
-            if (!attributeDescription.IsArray) throw new ArgumentException("Expected attributeDescription with type array");
             JsonElement attrAsJsonElement;
 
             switch (attributeDescription.Items.ValueKind)
             {
                 case JsonValueKind.Array:
+                {
+                    // Try to deserialize as an enumerable of json elements
+                    if (!attributeDescription.Items.TryToObject<IEnumerable<JsonElement>>(
+                        out var asJsonElementEnumerable))
                     {
-                        // Try to deserialize as an enumerable of json elements
-                        if (!attributeDescription.Items.TryToObject<IEnumerable<JsonElement>>(out var asJsonElementEnumerable)) throw new ArgumentException("Couldn't parse attribute description array.");
-
-                        // Check if it's
-                        attrAsJsonElement = asJsonElementEnumerable.FirstOrDefault();
-                        break;
+                        throw new ArgumentException("Couldn't parse attribute description array.");
                     }
+
+                    // Check if it's
+                    attrAsJsonElement = asJsonElementEnumerable.FirstOrDefault();
+                    break;
+                }
                 case JsonValueKind.Object:
                     attrAsJsonElement = attributeDescription.Items;
                     break;
@@ -743,26 +693,25 @@ namespace Plotly.Blazor.Generator
             // Could be keyValuePair
             if (attrAsJsonElement.TryToObject<Dictionary<string, AttributeDescription>>(out var dic))
             {
-                var keyValue = dic.FirstOrDefault();
-                return new KeyValuePair<string, AttributeDescription>(keyValue.Key.ToDotNetFriendlyName(_dictionary), keyValue.Value);
+                var (key, value) = dic.FirstOrDefault();
+                return new KeyValuePair<string, AttributeDescription>(key.ToDotNetFriendlyName(_dictionary), value);
             }
 
             // Or a simple attributeDescription
             if (attributeDescription.Items.TryToObject<AttributeDescription>(out var description))
             {
-                var keyValuePair = description.OtherAttributes.FirstOrDefault();
-                keyValuePair.Value.TryToObject<AttributeDescription>(out var _);
+                var (key, value) = description.OtherAttributes.FirstOrDefault();
+                value.TryToObject<AttributeDescription>(out _);
 
-                return new KeyValuePair<string, AttributeDescription>(keyValuePair.Key.ToDotNetFriendlyName(_dictionary), description);
-            }
-            else
-            {
-
+                return new KeyValuePair<string, AttributeDescription>(key.ToDotNetFriendlyName(_dictionary),
+                    description);
             }
 
             // Otherwise throw
             throw new ArgumentException("Couldn't parse attribute description element.");
         }
-    }
 
+        #endregion
+
+    }
 }

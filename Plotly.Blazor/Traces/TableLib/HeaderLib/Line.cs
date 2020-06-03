@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.TableLib.HeaderLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.TableLib.HeaderLib
     ///     The Line class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Line 
     {
         /// <summary>
@@ -19,10 +21,24 @@ namespace Plotly.Blazor.Traces.TableLib.HeaderLib
         public float? Width { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Width.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<float?> WidthArray { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Color.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Color.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  width .

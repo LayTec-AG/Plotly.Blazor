@@ -12,6 +12,7 @@ namespace Plotly.Blazor.Transforms
     ///     Implements the <see cref="ITransform" />
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Aggregate : ITransform
     {
         /// <inheritdoc/>
@@ -36,6 +37,20 @@ namespace Plotly.Blazor.Transforms
         /// </summary>
         [JsonPropertyName(@"groups")]
         public string Groups { get; set;} 
+
+        /// <summary>
+        ///     Sets the grouping target to which the aggregation is applied. Data points
+        ///     with matching group values will be coalesced into one point, using the supplied
+        ///     aggregation functions to reduce data in other data arrays. If a string,
+        ///     <c>groups</c> is assumed to be a reference to a data array in the parent
+        ///     trace object. To aggregate by nested variables, use <c>.</c> to access them.
+        ///     For example, set <c>groups</c> to <c>marker.color</c> to aggregate about
+        ///     the marker color array. If an array, <c>groups</c> is itself the data array
+        ///     by which we aggregate.
+        /// </summary>
+        [JsonPropertyName(@"groups")]
+        [Array]
+        public IList<string> GroupsArray { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Aggregations.

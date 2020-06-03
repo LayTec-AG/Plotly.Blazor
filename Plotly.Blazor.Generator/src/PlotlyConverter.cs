@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 // ReSharper disable once CheckNamespace
 namespace Plotly.Blazor
 {
-    public class SubplotConverter : JsonConverterFactory
+    public class PlotlyConverter : JsonConverterFactory
     {
         /// <inheritdoc />
         public override bool CanConvert(Type typeToConvert)
@@ -19,8 +19,8 @@ namespace Plotly.Blazor
         /// <inheritdoc />
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
-            return (JsonConverter) Activator.CreateInstance(
-                typeof(SubplotConverter<>).MakeGenericType(typeToConvert),
+            return (JsonConverter)Activator.CreateInstance(
+                typeof(PlotlyConverter<>).MakeGenericType(typeToConvert),
                 BindingFlags.Instance | BindingFlags.Public,
                 null,
                 new object[] { },
@@ -28,7 +28,7 @@ namespace Plotly.Blazor
         }
     }
 
-    public class SubplotConverter<T> : JsonConverter<T>
+    public class PlotlyConverter<T> : JsonConverter<T>
     {
         public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -57,7 +57,15 @@ namespace Plotly.Blazor
                     propertyName = options.PropertyNamingPolicy.ConvertName(nameAttributeValue ?? property.Name);
                 }
 
-                if (property.GetCustomAttribute(typeof(SubplotAttribute)) == null)
+                var containsSubplotAttr = property.GetCustomAttribute(typeof(SubplotAttribute)) != null;
+                var containsArrayAttr = property.GetCustomAttribute(typeof(ArrayAttribute)) != null;
+
+                if (containsSubplotAttr && containsArrayAttr)
+                {
+                    throw new NotSupportedException($"{nameof(SubplotAttribute)} and {nameof(ArrayAttribute)} are currently not supported at the same time.");
+                }
+
+                if (!containsArrayAttr && !containsSubplotAttr)
                 {
                     if (propertyValue == null)
                     {
@@ -68,6 +76,30 @@ namespace Plotly.Blazor
                         }
                         continue;
                     }
+                    writer.WritePropertyName(propertyName);
+                    JsonSerializer.Serialize(writer, propertyValue, options);
+                }
+                else if (containsArrayAttr)
+                {
+                    if (propertyValue == null && options.IgnoreNullValues)
+                    {
+                        continue;
+                    }
+
+                    // Get the standalone property
+                    var standaloneProperty = type.GetProperty(property.Name.Replace("Array", ""));
+                    if (standaloneProperty == null)
+                    {
+                        throw new ArgumentException($"Didn't found a matching property for array property {property.Name} ");
+                    }
+
+                    var standaloneValue = type.GetProperty(standaloneProperty.Name)?.GetValue(value, null);
+
+                    if (standaloneValue != null)
+                    {
+                        continue;
+                    }
+
                     writer.WritePropertyName(propertyName);
                     JsonSerializer.Serialize(writer, propertyValue, options);
                 }

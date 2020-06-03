@@ -1,59 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace Plotly.Blazor.Generator.Templates.Flag
 {
     /// <summary>
-    /// Class EnumeratedData.
+    ///     Class EnumeratedData.
     /// </summary>
-
-    public class FlagData
+    public class FlagData : Data
     {
         /// <summary>
-        /// Gets or sets the namespace.
-        /// </summary>
-        /// <value>The namespace.</value>
-        public string Namespace { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets the generator name.
-        /// </summary>
-        /// <value>The generator name.</value>
-        public string GeneratorName => Assembly.GetExecutingAssembly().GetName().Name;
-
-        /// <summary>
-        /// Gets the generator version.
-        /// </summary>
-        /// <value>The generator version.</value>
-        public System.Version GeneratorVersion => Assembly.GetExecutingAssembly().GetName().Version;
-
-        /// <summary>
-        /// Gets or sets the description.
-        /// </summary>
-        /// <value>The description.</value>
-        public IEnumerable<string> Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the values.
+        ///     Gets or sets the values.
         /// </summary>
         /// <value>The values.</value>
         public IEnumerable<FlagValue> Flags { get; set; }
 
         /// <summary>
-        /// Gets or sets the values.
+        ///     Gets or sets the values.
         /// </summary>
         /// <value>The values.</value>
         public IEnumerable<FlagValue> Extras { get; set; }
 
         /// <summary>
-        /// Get the composed values.
+        ///     Get the composed values.
         /// </summary>
         /// <returns>System.String.</returns>
         public List<string> Composed()
@@ -88,7 +56,8 @@ namespace Plotly.Blazor.Generator.Templates.Flag
 
             if (Extras != null)
             {
-                foreach (var value in Extras.Where(f => f.DisplayName != "all" && f.DisplayName != "none" && f.DisplayName != "skip"))
+                foreach (var value in Extras.Where(f =>
+                    f.DisplayName != "all" && f.DisplayName != "none" && f.DisplayName != "skip"))
                 {
                     sb.Add($"[EnumMember(Value=@\"{value.DisplayName}\")]");
                     sb.Add($"{value.EnumName} = {startValue},");
@@ -111,24 +80,26 @@ namespace Plotly.Blazor.Generator.Templates.Flag
             else
             {
                 sb.Add("[EnumMember(Value=@\"all\")]");
-                sb.Add(!Flags.Any() ? $"All" : $"All = {string.Join(" | ", Flags)}");
+                sb.Add(!Flags.Any() ? "All" : $"All = {string.Join(" | ", Flags)}");
             }
+
             return sb;
         }
     }
 
     /// <summary>
-    /// Class Value.
+    ///     Class Value.
     /// </summary>
     public class FlagValue
     {
         /// <summary>
-        /// Gets or sets the display name.
+        ///     Gets or sets the display name.
         /// </summary>
         /// <value>The display name.</value>
         public string DisplayName { get; set; }
+
         /// <summary>
-        /// Gets or sets the name of the enum.
+        ///     Gets or sets the name of the enum.
         /// </summary>
         /// <value>The name of the enum.</value>
         public string EnumName { get; set; }

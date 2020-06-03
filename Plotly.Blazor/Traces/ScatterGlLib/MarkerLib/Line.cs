@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib
     ///     The Line class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Line 
     {
         /// <summary>
@@ -20,6 +22,16 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets themarker.linecolor. It accepts either a specific color or an array
+        ///     of numbers that are mapped to the colorscale relative to the max and min
+        ///     values of the array or relative to <c>marker.line.cmin</c> and <c>marker.line.cmax</c>
+        ///     if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -105,6 +117,13 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the lines bounding the marker points.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<float?> WidthArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .

@@ -31,10 +31,27 @@ namespace Plotly.Blazor.Tests
         public override object TestProperty2 { get; set; }
     }
 
-    [JsonConverter(typeof(SubplotConverter))]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class TestSubplotClass : ITestClass
     {
-        public object TestProperty { get; set; }
+        [JsonPropertyName("testProperty")]
+        public object TestProperty { get; set; } = "Test";
+
+        [Array]
+        [JsonPropertyName("testProperty")]
+        public IEnumerable<object> TestPropertyArray { get; set; }
+
+        [JsonPropertyName("testProperty2")]
+        public object TestProperty2 { get; set; }
+
+        [JsonPropertyName("testProperty2")]
+        [Array] public IEnumerable<object> TestProperty2Array => new List<object>{"Test1", "Test2"};
+
+        [JsonPropertyName("testProperty3")]
+        public object TestProperty3 { get; set; } = "Test";
+
+        [JsonPropertyName("testProperty3")]
+        [Array] public IEnumerable<object> TestProperty3Array => new List<object>{"Test1", "Test2"};
 
         [Subplot]
         public IEnumerable<TestClass> Items { get; set; }
@@ -154,7 +171,7 @@ namespace Plotly.Blazor.Tests
         }
 
         [Test]
-        public void SubplotConverterTest()
+        public void PlotlyConverterTest()
         {
             var testObj = new TestSubplotClass
             {
@@ -162,8 +179,12 @@ namespace Plotly.Blazor.Tests
             };
 
             var actual = JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize(testObj, serializerOptions));
+
             Assert.NotNull(actual.GetProperty("Items"));
             Assert.NotNull(actual.GetProperty("Items2"));
+            Assert.AreEqual(actual.GetProperty("testProperty").ValueKind, JsonValueKind.String);
+            Assert.AreEqual(actual.GetProperty("testProperty2").ValueKind, JsonValueKind.Array);
+            Assert.AreEqual(actual.GetProperty("testProperty3").ValueKind, JsonValueKind.String);
         }
 
         [Test]

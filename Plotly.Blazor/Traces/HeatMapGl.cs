@@ -12,11 +12,12 @@ namespace Plotly.Blazor.Traces
     ///     Implements the <see cref="ITrace" />
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class HeatMapGl : ITrace
     {
         /// <inheritdoc/>
         [JsonPropertyName(@"type")]
-        public TraceTypeEnum Type { get; } = TraceTypeEnum.HeatMapGl;
+        public TraceTypeEnum? Type { get; } = TraceTypeEnum.HeatMapGl;
 
         /// <summary>
         ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
@@ -76,12 +77,36 @@ namespace Plotly.Blazor.Traces
         public object Meta { get; set;} 
 
         /// <summary>
+        ///     Assigns extra meta information associated with this trace that can be used
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
+        /// </summary>
+        [JsonPropertyName(@"meta")]
+        [Array]
+        public IList<object> MetaArray { get; set;} 
+
+        /// <summary>
         ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
         ///     are set, no information is displayed upon hovering. But, if <c>none</c>
         ///     is set, click and hover events are still fired.
         /// </summary>
         [JsonPropertyName(@"hoverinfo")]
         public Plotly.Blazor.Traces.HeatMapGlLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.HeatMapGlLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
         ///     Gets or sets the HoverLabel.

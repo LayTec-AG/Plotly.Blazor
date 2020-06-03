@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.ScatterCarpetLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
     ///     The Marker class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Marker 
     {
         /// <summary>
@@ -22,10 +24,27 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
+        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
+        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
+        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
+        ///     to a symbol name.
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.SymbolEnum?> SymbolArray { get; set;} 
+
+        /// <summary>
         ///     Sets the marker opacity.
         /// </summary>
         [JsonPropertyName(@"opacity")]
         public float? Opacity { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker opacity.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        [Array]
+        public IList<float?> OpacityArray { get; set;} 
 
         /// <summary>
         ///     Sets a maximum number of points to be drawn on the graph. <c>0</c> corresponds
@@ -39,6 +58,13 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         /// </summary>
         [JsonPropertyName(@"size")]
         public float? Size { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker size (in px).
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        [Array]
+        public IList<float?> SizeArray { get; set;} 
 
         /// <summary>
         ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
@@ -81,6 +107,15 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the

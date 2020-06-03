@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.ScatterMapBoxLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
     ///     The Marker class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Marker 
     {
         /// <summary>
@@ -21,12 +23,30 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
         public string Symbol { get; set;} 
 
         /// <summary>
+        ///     Sets the marker symbol. Full list: https://www.mapbox.com/maki-icons/ Note
+        ///     that the array <c>marker.color</c> and <c>marker.size</c> are only available
+        ///     for <c>circle</c> symbols.
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        [Array]
+        public IList<string> SymbolArray { get; set;} 
+
+        /// <summary>
         ///     Sets the marker orientation from true North, in degrees clockwise. When
         ///     using the <c>auto</c> default, no rotation would be applied in perspective
         ///     views which is different from using a zero angle.
         /// </summary>
         [JsonPropertyName(@"angle")]
         public float? Angle { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker orientation from true North, in degrees clockwise. When
+        ///     using the <c>auto</c> default, no rotation would be applied in perspective
+        ///     views which is different from using a zero angle.
+        /// </summary>
+        [JsonPropertyName(@"angle")]
+        [Array]
+        public IList<float?> AngleArray { get; set;} 
 
         /// <summary>
         ///     Flag to draw all symbols, even if they overlap.
@@ -41,10 +61,24 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
         public float? Opacity { get; set;} 
 
         /// <summary>
+        ///     Sets the marker opacity.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        [Array]
+        public IList<float?> OpacityArray { get; set;} 
+
+        /// <summary>
         ///     Sets the marker size (in px).
         /// </summary>
         [JsonPropertyName(@"size")]
         public float? Size { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker size (in px).
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        [Array]
+        public IList<float?> SizeArray { get; set;} 
 
         /// <summary>
         ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
@@ -75,6 +109,15 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the

@@ -17,7 +17,7 @@ namespace Plotly.Blazor
         ///     The type of the trace.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TraceTypeEnum Type { get; }
+        public TraceTypeEnum? Type { get; }
 
     }
 }

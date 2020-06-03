@@ -11,7 +11,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     The RangeSlider class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
-    [JsonConverter(typeof(SubplotConverter))]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class RangeSlider 
     {
         /// <summary>

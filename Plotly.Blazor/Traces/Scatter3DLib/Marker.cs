@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.Scatter3DLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
     ///     The Marker class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Marker 
     {
         /// <summary>
@@ -19,10 +21,24 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         public Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <summary>
+        ///     Sets the marker symbol type.
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.Scatter3DLib.MarkerLib.SymbolEnum?> SymbolArray { get; set;} 
+
+        /// <summary>
         ///     Sets the marker size (in px).
         /// </summary>
         [JsonPropertyName(@"size")]
         public float? Size { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker size (in px).
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        [Array]
+        public IList<float?> SizeArray { get; set;} 
 
         /// <summary>
         ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
@@ -74,6 +90,15 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the

@@ -155,7 +155,7 @@ namespace Plotly.Blazor.Generator.Schema
         public IDictionary<string, JsonElement> OtherAttributes { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is array.
+        ///     Gets a value indicating whether this instance is array.
         /// </summary>
         /// <value><c>true</c> if this instance is array; otherwise, <c>false</c>.</value>
         public bool IsArray => Role == "object" && Items.ValueKind != JsonValueKind.Undefined;

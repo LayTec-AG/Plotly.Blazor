@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.Scatter3DLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
     ///     The Line class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Line 
     {
         /// <summary>
@@ -31,6 +33,15 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets thelinecolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>line.cmin</c> and <c>line.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the

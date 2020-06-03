@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
     ///     The Line class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class Line 
     {
         /// <summary>
@@ -20,10 +22,25 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
         public object Color { get; set;} 
 
         /// <summary>
+        ///     Sets the color of the line enclosing each sector. Defaults to the <c>paper_bgcolor</c>
+        ///     value.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
+
+        /// <summary>
         ///     Sets the width (in px) of the line enclosing each sector.
         /// </summary>
         [JsonPropertyName(@"width")]
         public float? Width { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the line enclosing each sector.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<float?> WidthArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .

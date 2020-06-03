@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -53,7 +51,7 @@ namespace Plotly.Blazor.Generator
             {
                 return input;
             }
-            
+
             // Check if a divider char exists, run recursively if so
             if (!CustomWords.ContainsKey(input) && Regex.IsMatch(input, "[_+\\-\\s]"))
             {
@@ -212,7 +210,7 @@ namespace Plotly.Blazor.Generator
         {
             if (string.IsNullOrWhiteSpace(input))
             {
-                yield return "TODO";
+                yield return null;
             }
 
             while (input?.Length > 0)
@@ -321,6 +319,5 @@ namespace Plotly.Blazor.Generator
         {
             return WebUtility.HtmlEncode(s);
         }
-
     }
 }

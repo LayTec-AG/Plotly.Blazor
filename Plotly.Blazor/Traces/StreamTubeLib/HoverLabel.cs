@@ -3,6 +3,7 @@
 */
 
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Plotly.Blazor.Traces.StreamTubeLib
 {
@@ -10,6 +11,7 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
     ///     The HoverLabel class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     public class HoverLabel 
     {
         /// <summary>
@@ -19,10 +21,24 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public object BgColor { get; set;} 
 
         /// <summary>
+        ///     Sets the background color of the hover labels for this trace
+        /// </summary>
+        [JsonPropertyName(@"bgcolor")]
+        [Array]
+        public IList<object> BgColorArray { get; set;} 
+
+        /// <summary>
         ///     Sets the border color of the hover labels for this trace.
         /// </summary>
         [JsonPropertyName(@"bordercolor")]
         public object BorderColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the border color of the hover labels for this trace.
+        /// </summary>
+        [JsonPropertyName(@"bordercolor")]
+        [Array]
+        public IList<object> BorderColorArray { get; set;} 
 
         /// <summary>
         ///     Sets the font used in hover labels.
@@ -38,6 +54,14 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public Plotly.Blazor.Traces.StreamTubeLib.HoverLabelLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
+        ///     Sets the horizontal alignment of the text content within hover label box.
+        ///     Has an effect only if the hover label text spans more two or more lines
+        /// </summary>
+        [JsonPropertyName(@"align")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.StreamTubeLib.HoverLabelLib.AlignEnum?> AlignArray { get; set;} 
+
+        /// <summary>
         ///     Sets the default length (in number of characters) of the trace name in the
         ///     hover labels for all traces. -1 shows the whole name regardless of length.
         ///     0-3 shows the first 0-3 characters, and an integer &gt;3 will show the whole
@@ -46,6 +70,17 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         /// </summary>
         [JsonPropertyName(@"namelength")]
         public int? NameLength { get; set;} 
+
+        /// <summary>
+        ///     Sets the default length (in number of characters) of the trace name in the
+        ///     hover labels for all traces. -1 shows the whole name regardless of length.
+        ///     0-3 shows the first 0-3 characters, and an integer &gt;3 will show the whole
+        ///     name if it is less than that many characters, but if it is longer, will
+        ///     truncate to &#39;namelength - 3&#39; characters and add an ellipsis.
+        /// </summary>
+        [JsonPropertyName(@"namelength")]
+        [Array]
+        public IList<int?> NameLengthArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  bgcolor .

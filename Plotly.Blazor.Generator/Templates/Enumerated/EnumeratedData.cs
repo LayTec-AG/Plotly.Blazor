@@ -1,64 +1,32 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
 
 namespace Plotly.Blazor.Generator.Templates.Enumerated
 {
     /// <summary>
-    /// Class EnumeratedData.
+    ///     Class EnumeratedData.
     /// </summary>
-
-    public class EnumeratedData
+    public class EnumeratedData : Data
     {
         /// <summary>
-        /// Gets or sets the namespace.
-        /// </summary>
-        /// <value>The namespace.</value>
-        public string Namespace { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets the generator name.
-        /// </summary>
-        /// <value>The generator name.</value>
-        public string GeneratorName => Assembly.GetExecutingAssembly().GetName().Name;
-
-        /// <summary>
-        /// Gets the generator version.
-        /// </summary>
-        /// <value>The generator version.</value>
-        public System.Version GeneratorVersion => Assembly.GetExecutingAssembly().GetName().Version;
-
-        /// <summary>
-        /// Gets or sets the description.
-        /// </summary>
-        /// <value>The description.</value>
-        public IEnumerable<string> Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the default value.
+        ///     Gets or sets the default value.
         /// </summary>
         /// <value>The default value.</value>
         public EnumeratedValue DefaultValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the values.
+        ///     Gets or sets the values.
         /// </summary>
         /// <value>The values.</value>
         public IEnumerable<EnumeratedValue> Values { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether [should serialize default value].
+        ///     Gets a value indicating whether [should serialize default value].
         /// </summary>
         /// <value><c>true</c> if [should serialize default value]; otherwise, <c>false</c>.</value>
         public bool ShouldSerializeDefaultValue => !string.IsNullOrWhiteSpace(DefaultValue?.EnumName);
 
         /// <summary>
-        /// Get the composed values.
+        ///     Get the composed values.
         /// </summary>
         /// <returns>System.String.</returns>
         public List<string> Composed()
@@ -78,30 +46,26 @@ namespace Plotly.Blazor.Generator.Templates.Enumerated
 
             // Remove last ','
             sb[^1] = sb[^1].Remove(sb[^1].Length - 1);
-            
+
             return sb;
         }
-
-
     }
 
     /// <summary>
-    /// Class Value.
+    ///     Enumerated Value.
     /// </summary>
     public class EnumeratedValue
     {
         /// <summary>
-        /// Gets or sets the display name.
+        ///     Gets or sets the display name.
         /// </summary>
         /// <value>The display name.</value>
         public string DisplayName { get; set; }
+
         /// <summary>
-        /// Gets or sets the name of the enum.
+        ///     Gets or sets the name of the enum.
         /// </summary>
         /// <value>The name of the enum.</value>
         public string EnumName { get; set; }
     }
-
-
-
 }

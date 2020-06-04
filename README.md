@@ -107,7 +107,6 @@ private async Task AddData(int count = 100)
 - Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
 This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - IJSRuntime (currently) does not allow to adjust the serialization of objects. Accordingly, a conversion is carried out beforehand, which consumes a comparatively large amount of time. You can find this issue [here](https://github.com/dotnet/aspnetcore/issues/12685).
-- All the data, the config and the layout are transferred each time an update is executed. This can take time and in the future it should be possible to lightweightly add new data and make adjustments.
 
 ### Missing Implementations
 - Event handling

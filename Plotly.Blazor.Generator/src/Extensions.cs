@@ -10,6 +10,15 @@ namespace Plotly.Blazor
 {
     public static class Extensions
     {
+        /// <summary>
+        ///     Prepares an object for js interop operations, converting the object to a dictionary.
+        ///     This operation can be customized using own serializer options.
+        ///     Current it's not possible to define serializer options for the JSRuntime directly.
+        /// </summary>
+        /// <typeparam name="T">Type of the object.</typeparam>
+        /// <param name="obj">The object.</param>
+        /// <param name="serializerOptions">Optional serializerOptions.</param>
+        /// <returns></returns>
         public static object PrepareJsInterop<T>(this T obj, JsonSerializerOptions serializerOptions = null)
         {
             var type = obj?.GetType();
@@ -19,7 +28,7 @@ namespace Plotly.Blazor
             {
                 return obj;
             }
-            
+
             // Handle jsonElements
             if (obj is JsonElement jsonElement)
             {
@@ -70,6 +79,12 @@ namespace Plotly.Blazor
             }
         }
 
+        /// <summary>
+        ///     Adds data to an IList.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="items"></param>
         public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)
         {
             if (list == null)
@@ -91,6 +106,38 @@ namespace Plotly.Blazor
                 foreach (var item in items)
                 {
                     list.Add(item);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Inserts data to an IList by given index.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="index"></param>
+        /// <param name="items"></param>
+        public static void InsertRange<T>(this IList<T> list, int index, IEnumerable<T> items)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            if (list is List<T> asList)
+            {
+                asList.InsertRange(index, items);
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    list.Insert(0, item);
                 }
             }
         }

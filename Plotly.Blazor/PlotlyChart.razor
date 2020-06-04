@@ -1,5 +1,6 @@
 ﻿@inject IJSRuntime JsRuntime
 @using Microsoft.JSInterop
+@using System.Collections
 @implements IDisposable
 
 <div id="@Id"></div>
@@ -7,62 +8,328 @@
 @code {
 
     /// <summary>
-    ///     Id of the div element
+    ///     Id of the div element.
     /// </summary>
     [Parameter]
     public string Id { get; set; }
 
     /// <summary>
-    ///     Data of the charts
+    ///     Data of the charts.
     /// </summary>
     [Parameter]
-    public IEnumerable<ITrace> Data { get; set; }
+    public IList<ITrace> Data { get; set; }
 
     /// <summary>
-    ///     Layout of the charts
+    ///     Layout of the charts.
     /// </summary>
     [Parameter]
     public Layout Layout { get; set; }
 
     /// <summary>
-    ///     Config of the charts
+    ///     Config of the charts.
     /// </summary>
     [Parameter]
     public Config Config { get; set; }
 
+    /// <summary>
+    ///     Callback when the ID changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> IdChanged { get; set; }
+
+    /// <summary>
+    /// Callback when the data changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<IList<ITrace>> DataChanged { get; set; }
+
+    /// <summary>
+    ///     Callback when the layout changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<Layout> LayoutChanged { get; set; }
+
+    /// <summary>
+    ///     Callback when the config changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<Config> ConfigChanged { get; set; }
+
+    /// <summary>
+    ///     Can be used later to invoke methods from javaScript to .NET.
+    /// </summary>
     private DotNetObjectReference<PlotlyChart> objectReference;
 
+    /// <inheritdoc />
     protected override bool ShouldRender() => false;
 
     /// <inheritdoc />
-    protected override Task OnInitializedAsync()
+    public override async Task SetParametersAsync(ParameterView parameters)
     {
+        await base.SetParametersAsync(parameters);
         objectReference = DotNetObjectReference.Create(this);
-        return base.OnInitializedAsync();
+        if (string.IsNullOrWhiteSpace(Id))
+        {
+            var random = new Random();
+            Id = $"PlotlyChart{random.Next(int.MinValue, int.MaxValue - 1)}";
+            await IdChanged.InvokeAsync(Id);
+        }
+        if (Data == null)
+        {
+            Data = new List<ITrace>();
+            await DataChanged.InvokeAsync(Data);
+        }
+        if (Layout == null)
+        {
+            Layout = new Layout();
+            await LayoutChanged.InvokeAsync(Layout);
+        }
+        if (Config == null)
+        {
+            Config = new Config();
+            await ConfigChanged.InvokeAsync(Config);
+        }
     }
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        await base.OnAfterRenderAsync(firstRender);
         if (firstRender)
         {
-            await JsRuntime.NewPlot(objectReference);
+            await NewPlot();
         }
-        await base.OnAfterRenderAsync(firstRender);
     }
 
     /// <summary>
-    ///     Updates the chart using the current properties
+    ///     Updates the chart using the current properties.
     /// </summary>
-    /// <returns></returns>
-    public async Task Update()
+    /// <returns>Task</returns>
+    public async Task React()
     {
         await JsRuntime.React(objectReference);
+    }
+
+    /// <summary>
+    ///     Same as <see cref="React"/>.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task Update()
+    {
+        await React();
+    }
+
+    /// <summary>
+    ///     (Re-)Creates the chart using the current parameters.
+    /// </summary>
+    /// <returns></returns>
+    public async Task NewPlot()
+    {
+        await JsRuntime.NewPlot(objectReference);
+    }
+
+    /// <summary>
+    ///     Extends a trace, determined by the index, with the specified object x, y.
+    /// </summary>
+    /// <param name="x">X-Value.</param>
+    /// <param name="y">Y-Value.</param>
+    /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task ExtendTrace(object x, object y, int index)
+    {
+        if (x == null && y == null)
+        {
+            return;
+        }
+        if (x == null)
+        {
+            await ExtendTrace(null, new[] { y }, index);
+        }
+        else if (y == null)
+        {
+            await ExtendTrace(new[] { x }, null, index);
+        }
+        else
+        {
+            await ExtendTrace(new[] { x }, new[] { y }, index);
+        }
+    }
+
+    /// <summary>
+    ///     Extends a trace, determined by the index  with the specified arrays x, y.
+    /// </summary>
+    /// <param name="x">X-Values.</param>
+    /// <param name="y">Y-Values.</param>
+    /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task ExtendTrace(IEnumerable<object> x, IEnumerable<object> y, int index)
+    {
+        if (x == null && y == null)
+        {
+            return;
+        }
+        if (x == null)
+        {
+            await ExtendTraces(null, new[] { y }, new[] { index });
+        }
+        else if (y == null)
+        {
+            await ExtendTraces(new[] { x }, null, new[] { index });
+        }
+        else
+        {
+            await ExtendTraces(new[] { x }, new[] { y }, new[] { index });
+        }
+    }
+
+    /// <summary>
+    ///     Extends multiple traces, determined by the indizes, with the specified arrays x, y.
+    /// </summary>
+    /// <param name="x">X-Values.</param>
+    /// <param name="y">Y-Values.</param>
+    /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+    {
+        // Add the data to the current traces
+        foreach (var index in indizes)
+        {
+            var currentTrace = index < 0 ? Data[^index] : Data[index];
+            var traceType = currentTrace.GetType();
+
+            var xArray = x as IEnumerable<object>[] ?? x.ToArray();
+            if (xArray.Length > 0)
+            {
+                var currentXData = index < 0 ? xArray.ElementAt(xArray.Length - 1) : xArray.ElementAt(index);
+                var xData = currentXData as object[] ?? currentXData.ToArray();
+                if (xData.Length > 0)
+                {
+                    ((IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace)).AddRange(xData);
+                }
+            }
+
+            var yArray = y as IEnumerable<object>[] ?? y.ToArray();
+            if (yArray.Length > 0)
+            {
+                var currentYData = index < 0 ? yArray.ElementAt(yArray.Length + index) : yArray.ElementAt(index);
+                var yData = currentYData as object[] ?? currentYData.ToArray();
+                if (yData.Length > 0)
+                {
+                    ((IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace)).AddRange(yData);
+                }
+            }
+        }
+        await JsRuntime.ExtendTraces(objectReference, x, y, indizes);
+    }
+
+    /// <summary>
+    ///     Prepends a trace, determined by the index, with the specified object x, y.
+    /// </summary>
+    /// <param name="x">X-Value.</param>
+    /// <param name="y">Y-Value.</param>
+    /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task PrependTrace(object x, object y, int index)
+    {
+        if (x == null && y == null)
+        {
+            return;
+        }
+        if (x == null)
+        {
+            await PrependTrace(null, new[] { y }, index);
+        }
+        else if (y == null)
+        {
+            await PrependTrace(new[] { x }, null, index);
+        }
+        else
+        {
+            await PrependTrace(new[] { x }, new[] { y }, index);
+        }
+    }
+
+    /// <summary>
+    ///     Prepends a trace, determined by the index, with the specified arrays x, y.
+    /// </summary>
+    /// <param name="x">X-Values.</param>
+    /// <param name="y">Y-Values.</param>
+    /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task PrependTrace(IEnumerable<object> x, IEnumerable<object> y, int index)
+    {
+        if (x == null && y == null)
+        {
+            return;
+        }
+        if (x == null)
+        {
+            await PrependTraces(null, new[] { y }, new[] { index });
+        }
+        else if (y == null)
+        {
+            await PrependTraces(new[] { x }, null, new[] { index });
+        }
+        else
+        {
+            await PrependTraces(new[] { x }, new[] { y }, new[] { index });
+        }
+    }
+
+    /// <summary>
+    ///     Prepends multiple traces, determined by the indizes, with the specified arrays x, y.
+    /// </summary>
+    /// <param name="x">X-Values.</param>
+    /// <param name="y">Y-Values.</param>
+    /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+    {
+        // Add the data to the current traces
+        foreach (var index in indizes)
+        {
+            var currentTrace = index < 0 ? Data[^index] : Data[index];
+            var traceType = currentTrace.GetType();
+
+            var xArray = x as IEnumerable<object>[] ?? x.ToArray();
+            if (xArray.Length > 0)
+            {
+                var currentXData = index < 0 ? xArray.ElementAt(xArray.Length - 1) : xArray.ElementAt(index);
+                var xData = currentXData as object[] ?? currentXData.ToArray();
+                if (xData.Length > 0)
+                {
+                    ((IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace)).InsertRange(0, xData);
+                }
+            }
+
+            var yArray = y as IEnumerable<object>[] ?? y.ToArray();
+            if (yArray.Length > 0)
+            {
+                var currentYData = index < 0 ? yArray.ElementAt(yArray.Length + index) : yArray.ElementAt(index);
+                var yData = currentYData as object[] ?? currentYData.ToArray();
+                if (yData.Length > 0)
+                {
+                    ((IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace)).InsertRange(0, yData);
+                }
+            }
+        }
+        await JsRuntime.PrependTraces(objectReference, x, y, indizes);
+    }
+
+    /// <summary>
+    ///     Removes all traces.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task Clear()
+    {
+        Data = new List<ITrace>();
+        await DataChanged.InvokeAsync(Data);
+        await React();
     }
 
     /// <inheritdoc />
     public void Dispose()
     {
-        objectReference.Dispose();
+        objectReference?.Dispose();
     }
 }

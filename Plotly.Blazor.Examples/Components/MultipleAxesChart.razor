@@ -1,9 +1,8 @@
-﻿@using System.Diagnostics
-@using Plotly.Blazor.LayoutLib
+﻿@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.YAxisLib
 @using Plotly.Blazor.Traces.ScatterLib
-
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+@using System.Diagnostics
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
 
 <div class="text-right">
     <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
@@ -21,7 +20,7 @@
 
     Layout layout = new Layout
     {
-        Title = new Title()
+        Title = new Title
         {
             Text = "Multiple Axes"
         },
@@ -58,10 +57,11 @@
         },
         new Bar
         {
-            Name = "Trace2",
+            Name = "BarTrace",
             YAxis = "y2",
             X = new List<object>(),
-            Y = new List<object>()
+            Y = new List<object>(),
+            Opacity = new decimal(0.7)
         }
     };
 
@@ -81,7 +81,7 @@
 
         var stopwatch = new Stopwatch();
         stopwatch.Start();
-        await chart.Update();
+        await chart.React();
         stopwatch.Stop();
         Console.WriteLine($"[PERF.] Update took {stopwatch.ElapsedMilliseconds}");
     }
@@ -97,7 +97,7 @@
         plot2.X.Clear();
         plot2.Y.Clear();
 
-        await chart.Update();
+        await chart.React();
     }
 
 

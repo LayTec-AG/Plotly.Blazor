@@ -17,18 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="src\wwwroot\plotly-interop.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="src\wwwroot\plotly-interop.js">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="src\ArrayAttribute.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -79,6 +67,11 @@
     </None>
     <None Update="src\PlotlyChart.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="src\wwwroot\plotly-interop.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="src\_Imports.razor">

@@ -1,10 +1,8 @@
-﻿@using System.Diagnostics
-@using Plotly.Blazor.LayoutLib
+﻿@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.ShapeLib
 @using Plotly.Blazor.Traces.ScatterLib
 @using Line = Plotly.Blazor.LayoutLib.ShapeLib.Line
-
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
 
 @code
 {
@@ -17,7 +15,7 @@
 
     Layout layout = new Layout
     {
-        Title = new LayoutLib.Title()
+        Title = new Title
         {
             Text = "Scatter"
         },
@@ -80,10 +78,10 @@
         },
         new Scatter
         {
-            Name ="TextTrace",
-            X = new List<object>{30, 80},
-            Y = new List<object>{50, 50},
-            TextArray = new List<string>{"Test1", "Test2"},
+            Name = "TextTrace",
+            X = new List<object> {30, 80},
+            Y = new List<object> {50, 50},
+            TextArray = new List<string> {"Test1", "Test2"},
             Mode = ModeFlag.Text
         }
     };

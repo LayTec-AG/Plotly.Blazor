@@ -5,7 +5,6 @@ using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,12 +13,12 @@ using Microsoft.Extensions.Hosting;
 namespace Plotly.Blazor.Examples
 {
     /// <summary>
-    /// Class Startup.
+    ///     Class Startup.
     /// </summary>
     public class Startup
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Startup"/> class.
+        ///     Initializes a new instance of the <see cref="Startup" /> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
         public Startup(IConfiguration configuration)
@@ -28,7 +27,7 @@ namespace Plotly.Blazor.Examples
         }
 
         /// <summary>
-        /// Gets the configuration.
+        ///     Gets the configuration.
         /// </summary>
         /// <value>The configuration.</value>
         public IConfiguration Configuration { get; }
@@ -36,7 +35,7 @@ namespace Plotly.Blazor.Examples
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         /// <summary>
-        /// Configures the services.
+        ///     Configures the services.
         /// </summary>
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
@@ -52,18 +51,19 @@ namespace Plotly.Blazor.Examples
                     BaseAddress = new Uri("https://raw.githubusercontent.com/LayTec-AG/Plotly.Blazor/develop/")
                 });
             }
+
             services
-                .AddBlazorise( options =>
+                .AddBlazorise(options =>
                 {
                     options.ChangeTextOnKeyPress = true; // optional
-                } )
+                })
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// <summary>
-        /// Configures the specified application.
+        ///     Configures the specified application.
         /// </summary>
         /// <param name="app">The application.</param>
         /// <param name="env">The env.</param>

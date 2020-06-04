@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -28,8 +29,8 @@ namespace Plotly.Blazor
         };
 
         /// <summary>
-        /// Draws a new plot in an div element, overwriting any existing plot.
-        /// To update an existing plot in a div, it is much more efficient to use <see cref="React" /> than to overwrite it.
+        ///     Draws a new plot in an div element, overwriting any existing plot.
+        ///     To update an existing plot in a div, it is much more efficient to use <see cref="React" /> than to overwrite it.
         /// </summary>
         /// <param name="jsRuntime">The js runtime.</param>
         /// <param name="objectReference">The object reference.</param>
@@ -38,14 +39,14 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.newPlot",
                 objectReference.Value.Id,
-                objectReference.Value.Data.Select(trace => trace.PrepareJsInterop(SerializerOptions)),
-                objectReference.Value.Layout.PrepareJsInterop(SerializerOptions),
-                objectReference.Value.Config.PrepareJsInterop(SerializerOptions));
+                objectReference.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
+                objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions),
+                objectReference.Value.Config?.PrepareJsInterop(SerializerOptions));
         }
 
         /// <summary>
-        /// Can be used in its place to create a plot, but when called again on the same div will update it far more
-        /// efficiently than <see cref="NewPlot" />.
+        ///     Can be used in its place to create a plot, but when called again on the same div will update it far more
+        ///     efficiently than <see cref="NewPlot" />.
         /// </summary>
         /// <param name="jsRuntime">The js runtime.</param>
         /// <param name="objectReference">The object reference.</param>
@@ -53,9 +54,37 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.react",
                 objectReference.Value.Id,
-                objectReference.Value.Data.Select(trace => trace.PrepareJsInterop(SerializerOptions)),
-                objectReference.Value.Layout.PrepareJsInterop(SerializerOptions),
-                objectReference.Value.Config.PrepareJsInterop(SerializerOptions));
+                objectReference.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
+                objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions),
+                objectReference.Value.Config?.PrepareJsInterop(SerializerOptions));
+        }
+
+        /// <summary>
+        ///     Can be used to add data to an existing trace.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="x">X-Values.</param>
+        /// <param name="y">Y-Values</param>
+        /// <param name="indizes">Indizes.</param>
+        public static async Task ExtendTraces(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.extendTraces", objectReference.Value.Id, x, y, indizes);
+        }
+
+        /// <summary>
+        ///     Can be used to prepend data to an existing trace.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="x">X-Values.</param>
+        /// <param name="y">Y-Values</param>
+        /// <param name="indizes">Indizes.</param>
+        public static async Task PrependTraces(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.prependTraces", objectReference.Value.Id, x, y, indizes);
         }
     }
 }

@@ -1,33 +1,5 @@
 ﻿@page "/multipleaxes"
 
-<h1>Multiple Axes</h1>
-
-<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
-    <Items>
-        <Tab Name="example">Example</Tab>
-        <Tab Name="code">Code</Tab>
-    </Items>
-    <Content>
-        <TabPanel Name="example">
-            <Container>
-                <br />
-                <MultipleAxesChart/>
-            </Container>
-        </TabPanel>
-        <TabPanel Name="code">
-            <Container>
-                <br />
-                <CodeSnippet Uri="Plotly.Blazor.Examples/Components/MultipleAxesChart.razor" />
-            </Container>
-        </TabPanel>
-    </Content>
-</Tabs>
-
-@code{
-    string selectedTab = "example";
-
-    private void OnSelectedTabChanged(string name)
-    {
-        selectedTab = name;
-    }
-}
+<Example Title="Multiple Axes" Url="Plotly.Blazor.Examples/Components/MultipleAxesChart.razor">
+    <MultipleAxesChart/>
+</Example>

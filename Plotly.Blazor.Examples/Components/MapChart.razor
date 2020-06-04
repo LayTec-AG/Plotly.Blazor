@@ -1,0 +1,107 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.GeoLib
+@using Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
+@using System.Globalization
+@using Plotly.Blazor.Traces.ScatterGeoLib
+@inject NavigationManager MyNavigationManager
+
+<PlotlyChart Layout="layout" Config="config" Data="data" Id="MapChart" @ref="plotlyChart"/>
+
+@code {
+
+    PlotlyChart plotlyChart;
+    Layout layout;
+    Config config;
+    IList<ITrace> data;
+
+
+    /// <inheritdoc />
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = "Feb. 2011 American Airline flight paths"
+            },
+            ShowLegend = false,
+            Geo = new List<Geo>
+            {
+                new Geo
+                {
+                    Scope = ScopeEnum.NorthAmerica,
+                    Projection = new Projection
+                    {
+                        Type = TypeEnum.AzimuthalEqualArea
+                    },
+                    ShowLand = true,
+                    LandColor = "rgb(243,243,243)",
+                    CountryColor = "rgb(204,204,204)"
+                }
+            },
+            Height = 500
+        };
+
+        config = new Config
+        {
+            ShowLink = false,
+            Responsive = true
+        };
+        data = GetMapData();
+    }
+
+    IList<ITrace> GetMapData()
+    {
+        IList<ITrace> mapData = new List<ITrace>();
+
+        var client = new HttpClient
+        {
+            BaseAddress = new Uri(MyNavigationManager.BaseUri)
+        };
+
+
+        var csv = client.GetStringAsync("/2011_february_aa_flight_paths.csv").Result
+            .Split("\n")
+            .Skip(1)
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Select(s => s.Split(",").ToList()).ToList();
+
+        var startLat = new List<decimal>();
+        var startLon = new List<decimal>();
+        var endLat = new List<decimal>();
+        var endLon = new List<decimal>();
+        var count = new List<int>();
+
+        foreach (var row in csv)
+        {
+            startLat.Add(decimal.Parse(row[0], NumberStyles.Any, CultureInfo.InvariantCulture));
+            startLon.Add(decimal.Parse(row[1], NumberStyles.Any, CultureInfo.InvariantCulture));
+            endLat.Add(decimal.Parse(row[2], NumberStyles.Any, CultureInfo.InvariantCulture));
+            endLon.Add(decimal.Parse(row[3], NumberStyles.Any, CultureInfo.InvariantCulture));
+            count.Add(int.Parse(row[7], NumberStyles.Any, CultureInfo.InvariantCulture));
+        }
+
+        var max = (float) count.Max();
+
+        for (var i = 0; i < count.Count; i++)
+        {
+            mapData.Add(new ScatterGeo
+            {
+                LocationMode = LocationModeEnum.USAStates,
+                Lon = new List<object> {startLon[i], endLon[i]},
+                Lat = new List<object> {startLat[i], endLat[i]},
+                Mode = ModeFlag.Lines,
+                Line = new Line
+                {
+                    Width = 1,
+                    Color = "red"
+                },
+                Opacity = new decimal(count[i] / max)
+            });
+        }
+        ;
+        return mapData;
+    }
+
+}

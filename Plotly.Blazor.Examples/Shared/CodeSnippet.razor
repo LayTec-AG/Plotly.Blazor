@@ -1,8 +1,9 @@
-﻿<pre><code id="code" class="csharp">@Code</code></pre>
+﻿<pre><code id="code" class="csharp" style="font-size: 12px;">@Code</code></pre>
 
 @code {
+
     [Parameter]
-    public string Uri { get; set; }
+    public string Url { get; set; }
 
     string Code { get; set; }
 
@@ -11,9 +12,10 @@
     {
         if (firstRender)
         {
-            Code = await CodeHttpClient.GetStringAsync(Uri);
+            Code = await CodeHttpClient.GetStringAsync(Url);
             StateHasChanged();
         }
         await JsRunTime.InvokeVoidAsync("onBlazorReady");
     }
+
 }

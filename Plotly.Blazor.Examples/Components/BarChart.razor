@@ -1,6 +1,5 @@
 ﻿@using Plotly.Blazor.LayoutLib
-
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
 
 @code
 {
@@ -13,9 +12,9 @@
 
     Layout layout = new Layout
     {
-        Title = new Title()
+        Title = new Title
         {
-            Text = "Bar",
+            Text = "Bar"
         },
         BarMode = BarModeEnum.Stack,
         Height = 500

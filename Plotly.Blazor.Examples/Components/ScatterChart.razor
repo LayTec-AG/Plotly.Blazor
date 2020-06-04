@@ -1,12 +1,12 @@
-﻿@using System.Diagnostics
-@using Plotly.Blazor.LayoutLib
+﻿@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.Traces.ScatterLib
-
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" />
+@using System.Diagnostics
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
 
 <div class="text-right">
     <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
-    <button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
+    <button type="button" class="btn btn-primary" @onclick="() => PrependData()">Prepend data</button>
+    <button type="button" class="btn btn-primary" @onclick="() => ExtendData()">Extend data</button>
 </div>
 
 @code
@@ -20,7 +20,7 @@
 
     Layout layout = new Layout
     {
-        Title = new LayoutLib.Title()
+        Title = new Title
         {
             Text = "Scatter"
         },
@@ -43,25 +43,67 @@
         {
             Name = "ScatterTrace",
             Mode = ModeFlag.Lines | ModeFlag.Markers,
-            X = new List<object>{1,2,3},
-            Y = new List<object>{1,2,3}
+            X = new List<object>(),
+            Y = new List<object>()
         }
     };
 
-    private async Task AddData(int count = 100)
+    private async Task ExtendData(int count = 100, bool firstRender = false)
     {
         if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
 
-        var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
-
-        scatter.X.AddRange(x);
-        scatter.Y.AddRange(y);
+        var max = (int?) scatter.X?.Max();
+        var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
 
         var stopwatch = new Stopwatch();
         stopwatch.Start();
-        await chart.Update();
+
+        if (!scatter.X.Any() || !scatter.Y.Any())
+        {
+            scatter.X.AddRange(x);
+            scatter.Y.AddRange(y);
+            await chart.React();
+        }
+        else
+        {
+            await chart.ExtendTrace(x, y, 0);
+        }
+
         stopwatch.Stop();
         Console.WriteLine($"[PERF.] Update took {stopwatch.ElapsedMilliseconds}");
+    }
+
+    private async Task PrependData(int count = 100)
+    {
+        if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
+
+        var min = (int?) scatter.X?.Min();
+        var (x, y) = Helper.GenerateData(min - 1 ?? 0, min - 1 - count ?? count * -1);
+
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        if (!scatter.X.Any() || !scatter.Y.Any())
+        {
+            scatter.X.AddRange(x);
+            scatter.Y.AddRange(y);
+            await chart.React();
+        }
+        else
+        {
+            await chart.PrependTrace(x, y, 0);
+        }
+
+        stopwatch.Stop();
+        Console.WriteLine($"[PERF.] Update took {stopwatch.ElapsedMilliseconds}");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ExtendData();
+        }
     }
 
     private async Task Clear()
@@ -72,13 +114,5 @@
         plot.Y.Clear();
 
         await chart.Update();
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await AddData();
-        }
     }
 }

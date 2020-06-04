@@ -4,6 +4,7 @@
 
 using System.Text.Json.Serialization;
 using System.Runtime.Serialization;
+#pragma warning disable 1591
 
 namespace Plotly.Blazor.Traces.ConeLib.HoverLabelLib
 {

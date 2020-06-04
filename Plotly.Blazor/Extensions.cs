@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text.Json;
-
+#pragma warning disable 1591
 
 namespace Plotly.Blazor
 {

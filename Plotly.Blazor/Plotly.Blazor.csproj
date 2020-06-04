@@ -14,6 +14,14 @@ Built on top of d3.js and stack.gl, plotly.js is a high-level, declarative chart
 plotly.js is free and open source and you can view the source, report issues or contribute on GitHub.</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
+  </PropertyGroup>
+
 
   <ItemGroup>
     <PackageReference Include="GitVersionTask" Version="5.3.5">

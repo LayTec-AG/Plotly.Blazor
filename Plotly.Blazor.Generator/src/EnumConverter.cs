@@ -7,8 +7,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+#pragma warning disable 1591
 
-// ReSharper disable once CheckNamespace
 namespace Plotly.Blazor
 {
     /// <summary>

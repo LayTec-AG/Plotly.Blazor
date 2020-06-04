@@ -2,6 +2,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
+#pragma warning disable 1591
 
 namespace Plotly.Blazor
 {

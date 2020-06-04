@@ -4,8 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+#pragma warning disable 1591
 
-// ReSharper disable once CheckNamespace
 namespace Plotly.Blazor
 {
     public class PlotlyConverter : JsonConverterFactory

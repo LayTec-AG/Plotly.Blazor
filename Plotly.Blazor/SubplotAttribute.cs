@@ -1,6 +1,6 @@
 ﻿using System;
+#pragma warning disable 1591
 
-// ReSharper disable once CheckNamespace
 namespace Plotly.Blazor
 {
     public class SubplotAttribute : Attribute

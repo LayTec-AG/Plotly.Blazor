@@ -113,10 +113,6 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - Event handling
 - Other plotly functions like Plotly.AddTraces, ...
 
-## Contributing
-
-The project is still in its initial state. Therefore, a contribution is currently not possible.
-
 ## Versioning
 
 We implement [SemVer](http://semver.org/) using [GitVersion](https://github.com/GitTools/GitVersion/)

@@ -17,7 +17,7 @@ namespace Plotly.Blazor
         ///     The type of the transform.
         /// </summary>
         [JsonPropertyName(@"type")]
-        public TransformTypeEnum Type { get; }
+        public TransformTypeEnum? Type { get; }
 
     }
 }

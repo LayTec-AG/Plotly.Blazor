@@ -199,7 +199,7 @@ namespace Plotly.Blazor.Generator
                     new Property
                     {
                         PropertyDescription = new[] {"The type of the transform."},
-                        TypeName = "TransformTypeEnum",
+                        TypeName = "TransformTypeEnum?",
                         PropertyName = "Type",
                         DisplayName = "type",
                         IsReadOnly = true,
@@ -235,7 +235,7 @@ namespace Plotly.Blazor.Generator
                 {
                     DisplayName = "type",
                     PropertyName = "Type",
-                    TypeName = "TransformTypeEnum",
+                    TypeName = "TransformTypeEnum?",
                     IsReadOnly = true,
                     DefaultValue = $"TransformTypeEnum.{friendlyName}",
                     IsInherited = true
@@ -573,7 +573,7 @@ namespace Plotly.Blazor.Generator
             var arrayProperty = (Property)property.Clone();
             arrayProperty.TypeName = $"IList<{arrayProperty.TypeName}>";
             arrayProperty.PropertyName = $"{arrayProperty.PropertyName}Array";
-            arrayProperty.IsArray = true;
+            arrayProperty.IsArrayOk = true;
             propertyList.Add(arrayProperty);
 
             return propertyList;
@@ -644,14 +644,14 @@ namespace Plotly.Blazor.Generator
             {
                 "data_array" => "IList<object>",
                 "boolean" => "bool?",
-                "number" => "float?",
+                "number" => "decimal?",
                 "integer" => "int?",
                 "string" => "string",
                 "color" => "object",
                 "colorlist" => "IList<object>",
                 "colorscale" => "object",
                 "subplotid" => "string",
-                "angle" => "float?",
+                "angle" => "decimal?",
                 "any" => "object",
                 "info_array" => "IList<object>",
                 _ => throw new ArgumentException($"ValType {attributeDescription.ValType} not supported")

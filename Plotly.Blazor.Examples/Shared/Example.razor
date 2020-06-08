@@ -1,0 +1,41 @@
+﻿<h1>@Title</h1>
+
+<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+    <Items>
+        <Tab Name="example">Example</Tab>
+        <Tab Name="code">Code</Tab>
+    </Items>
+    <Content>
+        <TabPanel Name="example">
+            <Container Fluid="true">
+                <br/>
+                @ChildContent
+            </Container>
+        </TabPanel>
+        <TabPanel Name="code">
+            <Container Fluid="true">
+                <br/>
+                <CodeSnippet Url="@Url"/>
+            </Container>
+        </TabPanel>
+    </Content>
+</Tabs>
+
+@code{
+    string selectedTab = "example";
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Url { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private void OnSelectedTabChanged(string name)
+    {
+        selectedTab = name;
+    }
+
+}

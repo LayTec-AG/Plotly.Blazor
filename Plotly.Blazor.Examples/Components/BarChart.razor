@@ -1,0 +1,38 @@
+﻿@using Plotly.Blazor.LayoutLib
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new Config
+    {
+        Responsive = true
+    };
+
+    Layout layout = new Layout
+    {
+        Title = new Title
+        {
+            Text = "Bar"
+        },
+        BarMode = BarModeEnum.Stack,
+        Height = 500
+    };
+
+    List<ITrace> data = new List<ITrace>
+    {
+        new Bar
+        {
+            X = new List<object> {"giraffes", "orangutans", "monkeys"},
+            Y = new List<object> {20, 14, 23},
+            Name = "SF Zoo"
+        },
+        new Bar
+        {
+            X = new List<object> {"giraffes", "orangutans", "monkeys"},
+            Y = new List<object> {12, 18, 29},
+            Name = "LA Zoo"
+        }
+    };
+}

@@ -1,0 +1,29 @@
+﻿<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new Config
+    {
+        Responsive = true
+    };
+
+    Layout layout = new Layout
+    {
+        Title = new Title
+        {
+            Text = "Pie"
+        },
+        Height = 500
+    };
+
+    List<ITrace> data = new List<ITrace>
+    {
+        new Pie
+        {
+            Values = new List<object> {19, 26, 55},
+            Labels = new List<object> {"Residential", "Non-Residential", "Utility"}
+        }
+    };
+}

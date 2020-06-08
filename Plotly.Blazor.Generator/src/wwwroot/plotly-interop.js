@@ -1,0 +1,41 @@
+﻿window.plotlyInterop = {
+    newPlot: function (id, data = [], layout = {}, config = {}, frames = []) {
+        window.Plotly.newPlot(id, data, layout, config, frames);
+    },
+    react: function (id, data = [], layout = {}, config = {}, frames = []) {
+        window.Plotly.react(id, data, layout, config, frames);
+    },
+    extendTraces: function (id, x, y, indizes) {
+        var data = {};
+        if (x != null) {
+            data["x"] = x;
+        }
+        if (y != null) {
+            data["y"] = y;
+        }
+        window.Plotly.extendTraces(id, data, indizes);
+    },
+    prependTraces: function (id, x = null, y = null, indizes = [0]) {
+        var data = {};
+        if (x != null) {
+            data["x"] = x;
+        }
+        if (y != null) {
+            data["y"] = y;
+        }
+        window.Plotly.prependTraces(id, data, indizes);
+    },
+    addTrace: function (id, data = {}, index = null) {
+        if (index != null) {
+            window.Plotly.addTraces(id, [data], [index]);
+        } else {
+            window.Plotly.addTraces(id, [data]);
+        }
+    },
+    deleteTrace: function (id, index) {
+        window.Plotly.deleteTraces(id, index);
+    },
+    purge: function (id) {
+        window.Plotly.purge(id);
+    }
+}

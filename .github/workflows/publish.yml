@@ -1,10 +1,12 @@
-name: Nuget Package Deploy
+name: Build & Deploy
 on:
   push:
     branches:
       - master # Default release branch
       - develop
       - 'releases/**'
+    paths:
+      - 'Plotly.Blazor/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.0.100
+          dotnet-version: 3.1.300
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Test with dotnet
@@ -24,8 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Pack nuget package
-        run: dotnet pack --configuration Release
+        run: dotnet pack ./Plotly.Blazor/Plotly.Blazor.csproj --configuration Release
         env:
           MSBUILDSINGLELOADCONTEXT: 1
       - name: Push package to nuget
-        run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate -n true

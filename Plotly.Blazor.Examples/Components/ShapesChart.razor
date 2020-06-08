@@ -1,0 +1,88 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.ShapeLib
+@using Plotly.Blazor.Traces.ScatterLib
+@using Line = Plotly.Blazor.LayoutLib.ShapeLib.Line
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new Config
+    {
+        Responsive = true
+    };
+
+    Layout layout = new Layout
+    {
+        Title = new Title
+        {
+            Text = "Scatter"
+        },
+        YAxis = new List<YAxis>
+        {
+            new YAxis
+            {
+                Title = new LayoutLib.YAxisLib.Title
+                {
+                    Text = "Scatter Unit"
+                }
+            }
+        },
+        Shapes = new List<Shape>
+        {
+            new Shape
+            {
+                Type = TypeEnum.Rect,
+                XRef = "x",
+                YRef = "y",
+                X0 = 20,
+                Y0 = 0,
+                X1 = 40,
+                Y1 = 100,
+                FillColor = "#d3d3d3",
+                Opacity = new decimal(0.3),
+                Line = new Line
+                {
+                    Width = 0
+                }
+            },
+            new Shape
+            {
+                Type = TypeEnum.Rect,
+                XRef = "x",
+                YRef = "y",
+                X0 = 70,
+                Y0 = 0,
+                X1 = 90,
+                Y1 = 100,
+                FillColor = "#d3d3d3",
+                Opacity = new decimal(0.3),
+                Line = new Line
+                {
+                    Width = 0
+                }
+            }
+        },
+        Height = 500
+    };
+
+    List<ITrace> data = new List<ITrace>
+    {
+        new Scatter
+        {
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            X = Enumerable.Range(0, 100).Cast<object>().ToList(),
+            Y = Enumerable.Range(0, 100).Cast<object>().ToList()
+        },
+        new Scatter
+        {
+            Name = "TextTrace",
+            X = new List<object> {30, 80},
+            Y = new List<object> {50, 50},
+            TextArray = new List<string> {"Test1", "Test2"},
+            Mode = ModeFlag.Text
+        }
+    };
+}

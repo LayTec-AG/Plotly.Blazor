@@ -1,0 +1,24 @@
+﻿@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@using Blazorise
+@using Plotly.Blazor.Examples
+@using Plotly.Blazor.Examples.Shared
+@using Plotly.Blazor.Examples.Components
+@using Plotly.Blazor
+@using Plotly.Blazor.Traces
+@using Helper = Helper
+
+@* Prevent name conflicts *@
+@using Title = Plotly.Blazor.LayoutLib.Title
+@using Layout = Layout
+@using Config = Config
+@using Bar = Plotly.Blazor.Traces.Bar
+@using Margin = Plotly.Blazor.LayoutLib.Margin
+
+@inject IJSRuntime JsRunTime
+@inject HttpClient CodeHttpClient

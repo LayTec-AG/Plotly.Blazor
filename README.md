@@ -1,5 +1,5 @@
 # Plotly.Blazor 
-[![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build%20&%20Deploy)](https://www.nuget.org/packages/Plotly.Blazor/) [![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Deploy%20Examples?label=examples)](https://plotly-blazor.azurewebsites.net/) [![NuGet Status](https://img.shields.io/nuget/vpre/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
+[![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build%20&%20Deploy)](https://www.nuget.org/packages/Plotly.Blazor/) [![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Deploy%20Examples?label=examples)](https://plotly-blazor.azurewebsites.net/) [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
 
 This library packages the well-known charting library [plotly.js](https://github.com/plotly/plotly.js) into a Razor component that can be used in a Blazor project. 
 
@@ -19,12 +19,12 @@ After you have created your Blazor project, you need to do the following steps:
 
 Using Package Manager
 ```
-Install-Package Plotly.Blazor -AllowPrereleaseVersions
+Install-Package Plotly.Blazor
 ```
 
 Using .NET CLI
 ```
-dotnet add package Plotly.Blazor --version <version>
+dotnet add package Plotly.Blazor
 ```
 
 

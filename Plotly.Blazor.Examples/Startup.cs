@@ -48,7 +48,7 @@ namespace Plotly.Blazor.Examples
                 // Setup HttpClient for server side in a client side compatible fashion
                 services.AddScoped(s => new HttpClient
                 {
-                    BaseAddress = new Uri("https://raw.githubusercontent.com/LayTec-AG/Plotly.Blazor/develop/")
+                    BaseAddress = new Uri("https://raw.githubusercontent.com/LayTec-AG/Plotly.Blazor/master/")
                 });
             }
 

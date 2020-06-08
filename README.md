@@ -112,13 +112,13 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - Events
 - Add multiple traces with one call
 - Delete multiple traces with one call
-- plotly.addFrames
-- plotly.restyle
-- plotly.relayout
-- plotly.addFrames
 - plotly.animate
-- plotly.toImage
+- plotly.addFrames
 - plotly.downloadImage
+- plotly.moveTraces
+- plotly.relayout
+- plotly.restyle
+- plotly.toImage
 
 ## Versioning
 

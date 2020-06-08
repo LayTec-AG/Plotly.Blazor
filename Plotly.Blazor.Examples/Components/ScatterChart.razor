@@ -52,7 +52,7 @@
 
     private async Task ExtendData(int count = 100)
     {
-        if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
 
         var max = (int?)scatter.X?.Max();
         var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
@@ -66,13 +66,13 @@
         }
         else
         {
-            await chart.ExtendTrace(x, y, 0);
+            await chart.ExtendTrace(x, y, data.IndexOf(scatter));
         }
     }
 
     private async Task PrependData(int count = 100)
     {
-        if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
 
         var min = (int?)scatter.X?.Min();
         var (x, y) = Helper.GenerateData(min - 1 ?? 0, min - 1 - count ?? count * -1);
@@ -85,7 +85,7 @@
         }
         else
         {
-            await chart.PrependTrace(x, y, 0);
+            await chart.PrependTrace(x, y, data.IndexOf(scatter));
         }
     }
 

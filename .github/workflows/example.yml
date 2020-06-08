@@ -6,7 +6,7 @@ name: Deploy Examples
 on:
   push:
     branches:
-      - develop
+      - master
     paths:
       - 'Plotly.Blazor/**'
       - 'Plotly.Blazor.Examples/**'

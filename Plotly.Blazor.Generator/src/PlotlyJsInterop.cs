@@ -41,7 +41,8 @@ namespace Plotly.Blazor
                 objectReference.Value.Id,
                 objectReference.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
                 objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions),
-                objectReference.Value.Config?.PrepareJsInterop(SerializerOptions));
+                objectReference.Value.Config?.PrepareJsInterop(SerializerOptions),
+                objectReference.Value.Frames?.PrepareJsInterop(SerializerOptions));
         }
 
         /// <summary>
@@ -56,7 +57,8 @@ namespace Plotly.Blazor
                 objectReference.Value.Id,
                 objectReference.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
                 objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions),
-                objectReference.Value.Config?.PrepareJsInterop(SerializerOptions));
+                objectReference.Value.Config?.PrepareJsInterop(SerializerOptions),
+                objectReference.Value.Frames?.PrepareJsInterop(SerializerOptions));
         }
 
         /// <summary>
@@ -85,6 +87,42 @@ namespace Plotly.Blazor
             DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.prependTraces", objectReference.Value.Id, x, y, indizes);
+        }
+
+        /// <summary>
+        ///     Can be used to add a new trace.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="trace">The trace data.</param>
+        /// <param name="index">The optional index, where to add the trace.</param>
+        public static async Task AddTrace(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, int? index)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.addTrace", objectReference.Value.Id,
+                trace?.PrepareJsInterop(SerializerOptions), index);
+        }
+
+        /// <summary>
+        ///     Can be used to delete a trace.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="index">The index of the trace, which should be removed.</param>
+        public static async Task DeleteTrace(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, int index)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.deleteTrace", objectReference.Value.Id, index);
+        }
+
+        /// <summary>
+        ///     Can be used to purge a chart.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        public static async Task Purge(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.purge", objectReference.Value.Id);
         }
     }
 }

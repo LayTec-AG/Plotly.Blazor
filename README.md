@@ -109,8 +109,16 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - IJSRuntime (currently) does not allow to adjust the serialization of objects. Accordingly, a conversion is carried out beforehand, which consumes a comparatively large amount of time. You can find this issue [here](https://github.com/dotnet/aspnetcore/issues/12685).
 
 ### Missing Implementations
-- Event handling
-- Other plotly functions like Plotly.AddTraces, ...
+- Events
+- Add multiple traces with one call
+- Delete multiple traces with one call
+- plotly.addFrames
+- plotly.restyle
+- plotly.relayout
+- plotly.addFrames
+- plotly.animate
+- plotly.toImage
+- plotly.downloadImage
 
 ## Versioning
 

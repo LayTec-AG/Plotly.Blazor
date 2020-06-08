@@ -56,7 +56,7 @@ Info: *These files are already included in the NuGet Package!*
 Info: *The chart reference is important so that we can update the chart later.*
 
 ```
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+<PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 ```
 
 **Generate some initial data for your plot.**
@@ -84,13 +84,10 @@ Info: *The chart reference is important so that we can update the chart later.*
 ```
 private async Task AddData(int count = 100)
 {
-    if (!(chart.Data.ElementAt(0) is Scatter scatter)) return;
+    if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
     var (x, y) = Helper.GenerateData(scatter.X.Count + 1, scatter.X.Count + 1 + count);
 
-    scatter.X.AddRange(x);
-    scatter.Y.AddRange(y);
-
-    await chart.Update();
+    await chart.ExtendTrace(x, y, data.IndexOf(scatter));
 }
 ```
 

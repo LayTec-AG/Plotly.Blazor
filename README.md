@@ -66,7 +66,8 @@ Info: *The chart reference is important so that we can update the chart later.*
     PlotlyChart chart;
     Config config = new Config();
     Layout layout = new Layout();
-    List<ITrace> data = new List<ITrace>
+    // Using of the interface IList is important for the event callback!
+    IList<ITrace> data = new List<ITrace>
     {
         new Scatter
         {

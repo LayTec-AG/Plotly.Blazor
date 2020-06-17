@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection.Metadata;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using NUnit.Framework;
-using Plotly.Blazor;
 
 namespace Plotly.Blazor.Tests
 {

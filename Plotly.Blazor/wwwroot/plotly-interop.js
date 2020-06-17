@@ -25,17 +25,17 @@
         }
         window.Plotly.prependTraces(id, data, indizes);
     },
-    addTrace: function(id, data={}, index=null) {
+    addTrace: function (id, data = {}, index = null) {
         if (index != null) {
             window.Plotly.addTraces(id, [data], [index]);
         } else {
             window.Plotly.addTraces(id, [data]);
         }
     },
-    deleteTrace: function(id, index) {
+    deleteTrace: function (id, index) {
         window.Plotly.deleteTraces(id, index);
     },
-    purge: function(id) {
+    purge: function (id) {
         window.Plotly.purge(id);
     }
 }

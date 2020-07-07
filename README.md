@@ -100,7 +100,7 @@ private async Task AddData(int count = 100)
 
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 
-## Known big issues
+## Known big
 ### Performance
 - Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
 This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).

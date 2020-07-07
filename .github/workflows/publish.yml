@@ -1,12 +1,8 @@
-name: Build & Deploy
+name: Publish
 on:
   push:
-    branches:
-      - master # Default release branch
-      - develop
-      - 'releases/**'
-    paths:
-      - 'Plotly.Blazor/**'
+    tags:
+      - 'v*'
 jobs:
   build:
     runs-on: ubuntu-latest

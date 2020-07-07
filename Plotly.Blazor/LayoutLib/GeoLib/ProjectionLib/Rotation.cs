@@ -53,18 +53,18 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
 
             return 
                 (
-                    Lon == other.Lon &&
-                    Lon != null && other.Lon != null &&
+                    Lon == other.Lon ||
+                    Lon != null &&
                     Lon.Equals(other.Lon)
                 ) && 
                 (
-                    Lat == other.Lat &&
-                    Lat != null && other.Lat != null &&
+                    Lat == other.Lat ||
+                    Lat != null &&
                     Lat.Equals(other.Lat)
                 ) && 
                 (
-                    Roll == other.Roll &&
-                    Roll != null && other.Roll != null &&
+                    Roll == other.Roll ||
+                    Roll != null &&
                     Roll.Equals(other.Roll)
                 );
         }

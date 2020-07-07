@@ -75,23 +75,23 @@ namespace Plotly.Blazor.Transforms.AggregateLib
 
             return 
                 (
-                    Target == other.Target &&
-                    Target != null && other.Target != null &&
+                    Target == other.Target ||
+                    Target != null &&
                     Target.Equals(other.Target)
                 ) && 
                 (
-                    Func == other.Func &&
-                    Func != null && other.Func != null &&
+                    Func == other.Func ||
+                    Func != null &&
                     Func.Equals(other.Func)
                 ) && 
                 (
-                    FuncMode == other.FuncMode &&
-                    FuncMode != null && other.FuncMode != null &&
+                    FuncMode == other.FuncMode ||
+                    FuncMode != null &&
                     FuncMode.Equals(other.FuncMode)
                 ) && 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 );
         }

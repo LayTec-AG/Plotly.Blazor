@@ -90,13 +90,13 @@ namespace Plotly.Blazor.Traces.SplomLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Label == other.Label &&
-                    Label != null && other.Label != null &&
+                    Label == other.Label ||
+                    Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
@@ -105,23 +105,23 @@ namespace Plotly.Blazor.Traces.SplomLib
                     Values.SequenceEqual(other.Values)
                 ) &&
                 (
-                    Axis == other.Axis &&
-                    Axis != null && other.Axis != null &&
+                    Axis == other.Axis ||
+                    Axis != null &&
                     Axis.Equals(other.Axis)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 ) && 
                 (
-                    ValuesSrc == other.ValuesSrc &&
-                    ValuesSrc != null && other.ValuesSrc != null &&
+                    ValuesSrc == other.ValuesSrc ||
+                    ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
                 );
         }

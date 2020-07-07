@@ -45,13 +45,13 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
 
             return 
                 (
-                    Lon == other.Lon &&
-                    Lon != null && other.Lon != null &&
+                    Lon == other.Lon ||
+                    Lon != null &&
                     Lon.Equals(other.Lon)
                 ) && 
                 (
-                    Lat == other.Lat &&
-                    Lat != null && other.Lat != null &&
+                    Lat == other.Lat ||
+                    Lat != null &&
                     Lat.Equals(other.Lat)
                 );
         }

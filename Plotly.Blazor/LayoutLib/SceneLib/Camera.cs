@@ -63,23 +63,23 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
 
             return 
                 (
-                    Up == other.Up &&
-                    Up != null && other.Up != null &&
+                    Up == other.Up ||
+                    Up != null &&
                     Up.Equals(other.Up)
                 ) && 
                 (
-                    Center == other.Center &&
-                    Center != null && other.Center != null &&
+                    Center == other.Center ||
+                    Center != null &&
                     Center.Equals(other.Center)
                 ) && 
                 (
-                    Eye == other.Eye &&
-                    Eye != null && other.Eye != null &&
+                    Eye == other.Eye ||
+                    Eye != null &&
                     Eye.Equals(other.Eye)
                 ) && 
                 (
-                    Projection == other.Projection &&
-                    Projection != null && other.Projection != null &&
+                    Projection == other.Projection ||
+                    Projection != null &&
                     Projection.Equals(other.Projection)
                 );
         }

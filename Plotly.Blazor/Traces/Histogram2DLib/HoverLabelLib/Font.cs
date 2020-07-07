@@ -113,8 +113,8 @@ namespace Plotly.Blazor.Traces.Histogram2DLib.HoverLabelLib
 
             return 
                 (
-                    Family == other.Family &&
-                    Family != null && other.Family != null &&
+                    Family == other.Family ||
+                    Family != null &&
                     Family.Equals(other.Family)
                 ) && 
                 (
@@ -123,8 +123,8 @@ namespace Plotly.Blazor.Traces.Histogram2DLib.HoverLabelLib
                     FamilyArray.SequenceEqual(other.FamilyArray)
                 ) &&
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
@@ -133,8 +133,8 @@ namespace Plotly.Blazor.Traces.Histogram2DLib.HoverLabelLib
                     SizeArray.SequenceEqual(other.SizeArray)
                 ) &&
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -143,18 +143,18 @@ namespace Plotly.Blazor.Traces.Histogram2DLib.HoverLabelLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    FamilySrc == other.FamilySrc &&
-                    FamilySrc != null && other.FamilySrc != null &&
+                    FamilySrc == other.FamilySrc ||
+                    FamilySrc != null &&
                     FamilySrc.Equals(other.FamilySrc)
                 ) && 
                 (
-                    SizeSrc == other.SizeSrc &&
-                    SizeSrc != null && other.SizeSrc != null &&
+                    SizeSrc == other.SizeSrc ||
+                    SizeSrc != null &&
                     SizeSrc.Equals(other.SizeSrc)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 );
         }

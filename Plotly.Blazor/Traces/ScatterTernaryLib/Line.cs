@@ -69,28 +69,28 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    Dash == other.Dash &&
-                    Dash != null && other.Dash != null &&
+                    Dash == other.Dash ||
+                    Dash != null &&
                     Dash.Equals(other.Dash)
                 ) && 
                 (
-                    Shape == other.Shape &&
-                    Shape != null && other.Shape != null &&
+                    Shape == other.Shape ||
+                    Shape != null &&
                     Shape.Equals(other.Shape)
                 ) && 
                 (
-                    Smoothing == other.Smoothing &&
-                    Smoothing != null && other.Smoothing != null &&
+                    Smoothing == other.Smoothing ||
+                    Smoothing != null &&
                     Smoothing.Equals(other.Smoothing)
                 );
         }

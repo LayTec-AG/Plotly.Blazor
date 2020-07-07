@@ -111,38 +111,38 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
-                    AccessToken == other.AccessToken &&
-                    AccessToken != null && other.AccessToken != null &&
+                    AccessToken == other.AccessToken ||
+                    AccessToken != null &&
                     AccessToken.Equals(other.AccessToken)
                 ) && 
                 (
-                    Style == other.Style &&
-                    Style != null && other.Style != null &&
+                    Style == other.Style ||
+                    Style != null &&
                     Style.Equals(other.Style)
                 ) && 
                 (
-                    Center == other.Center &&
-                    Center != null && other.Center != null &&
+                    Center == other.Center ||
+                    Center != null &&
                     Center.Equals(other.Center)
                 ) && 
                 (
-                    Zoom == other.Zoom &&
-                    Zoom != null && other.Zoom != null &&
+                    Zoom == other.Zoom ||
+                    Zoom != null &&
                     Zoom.Equals(other.Zoom)
                 ) && 
                 (
-                    Bearing == other.Bearing &&
-                    Bearing != null && other.Bearing != null &&
+                    Bearing == other.Bearing ||
+                    Bearing != null &&
                     Bearing.Equals(other.Bearing)
                 ) && 
                 (
-                    Pitch == other.Pitch &&
-                    Pitch != null && other.Pitch != null &&
+                    Pitch == other.Pitch ||
+                    Pitch != null &&
                     Pitch.Equals(other.Pitch)
                 ) && 
                 (
@@ -151,8 +151,8 @@ namespace Plotly.Blazor.LayoutLib
                     Layers.SequenceEqual(other.Layers)
                 ) &&
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 );
         }

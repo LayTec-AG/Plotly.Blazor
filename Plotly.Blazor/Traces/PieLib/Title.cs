@@ -56,18 +56,18 @@ namespace Plotly.Blazor.Traces.PieLib
 
             return 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Position == other.Position &&
-                    Position != null && other.Position != null &&
+                    Position == other.Position ||
+                    Position != null &&
                     Position.Equals(other.Position)
                 );
         }

@@ -61,13 +61,13 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Rotation == other.Rotation &&
-                    Rotation != null && other.Rotation != null &&
+                    Rotation == other.Rotation ||
+                    Rotation != null &&
                     Rotation.Equals(other.Rotation)
                 ) && 
                 (
@@ -76,8 +76,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
                     Parallels.SequenceEqual(other.Parallels)
                 ) &&
                 (
-                    Scale == other.Scale &&
-                    Scale != null && other.Scale != null &&
+                    Scale == other.Scale ||
+                    Scale != null &&
                     Scale.Equals(other.Scale)
                 );
         }

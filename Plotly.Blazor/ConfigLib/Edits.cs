@@ -96,53 +96,53 @@ namespace Plotly.Blazor.ConfigLib
 
             return 
                 (
-                    AnnotationPosition == other.AnnotationPosition &&
-                    AnnotationPosition != null && other.AnnotationPosition != null &&
+                    AnnotationPosition == other.AnnotationPosition ||
+                    AnnotationPosition != null &&
                     AnnotationPosition.Equals(other.AnnotationPosition)
                 ) && 
                 (
-                    AnnotationTail == other.AnnotationTail &&
-                    AnnotationTail != null && other.AnnotationTail != null &&
+                    AnnotationTail == other.AnnotationTail ||
+                    AnnotationTail != null &&
                     AnnotationTail.Equals(other.AnnotationTail)
                 ) && 
                 (
-                    AnnotationText == other.AnnotationText &&
-                    AnnotationText != null && other.AnnotationText != null &&
+                    AnnotationText == other.AnnotationText ||
+                    AnnotationText != null &&
                     AnnotationText.Equals(other.AnnotationText)
                 ) && 
                 (
-                    AxisTitleText == other.AxisTitleText &&
-                    AxisTitleText != null && other.AxisTitleText != null &&
+                    AxisTitleText == other.AxisTitleText ||
+                    AxisTitleText != null &&
                     AxisTitleText.Equals(other.AxisTitleText)
                 ) && 
                 (
-                    ColorbarPosition == other.ColorbarPosition &&
-                    ColorbarPosition != null && other.ColorbarPosition != null &&
+                    ColorbarPosition == other.ColorbarPosition ||
+                    ColorbarPosition != null &&
                     ColorbarPosition.Equals(other.ColorbarPosition)
                 ) && 
                 (
-                    ColorbarTitleText == other.ColorbarTitleText &&
-                    ColorbarTitleText != null && other.ColorbarTitleText != null &&
+                    ColorbarTitleText == other.ColorbarTitleText ||
+                    ColorbarTitleText != null &&
                     ColorbarTitleText.Equals(other.ColorbarTitleText)
                 ) && 
                 (
-                    LegendPosition == other.LegendPosition &&
-                    LegendPosition != null && other.LegendPosition != null &&
+                    LegendPosition == other.LegendPosition ||
+                    LegendPosition != null &&
                     LegendPosition.Equals(other.LegendPosition)
                 ) && 
                 (
-                    LegendText == other.LegendText &&
-                    LegendText != null && other.LegendText != null &&
+                    LegendText == other.LegendText ||
+                    LegendText != null &&
                     LegendText.Equals(other.LegendText)
                 ) && 
                 (
-                    ShapePosition == other.ShapePosition &&
-                    ShapePosition != null && other.ShapePosition != null &&
+                    ShapePosition == other.ShapePosition ||
+                    ShapePosition != null &&
                     ShapePosition.Equals(other.ShapePosition)
                 ) && 
                 (
-                    TitleText == other.TitleText &&
-                    TitleText != null && other.TitleText != null &&
+                    TitleText == other.TitleText ||
+                    TitleText != null &&
                     TitleText.Equals(other.TitleText)
                 );
         }

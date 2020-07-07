@@ -46,13 +46,13 @@ namespace Plotly.Blazor.Traces.CandlestickLib
 
             return 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    FillColor == other.FillColor &&
-                    FillColor != null && other.FillColor != null &&
+                    FillColor == other.FillColor ||
+                    FillColor != null &&
                     FillColor.Equals(other.FillColor)
                 );
         }

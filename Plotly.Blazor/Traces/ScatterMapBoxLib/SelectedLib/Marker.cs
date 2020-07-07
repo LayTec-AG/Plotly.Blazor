@@ -51,18 +51,18 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib.SelectedLib
 
             return 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 );
         }

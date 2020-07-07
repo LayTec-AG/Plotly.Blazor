@@ -139,18 +139,18 @@ namespace Plotly.Blazor.Traces.ScatterLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Symmetric == other.Symmetric &&
-                    Symmetric != null && other.Symmetric != null &&
+                    Symmetric == other.Symmetric ||
+                    Symmetric != null &&
                     Symmetric.Equals(other.Symmetric)
                 ) && 
                 (
@@ -164,53 +164,53 @@ namespace Plotly.Blazor.Traces.ScatterLib
                     ArrayMinus.SequenceEqual(other.ArrayMinus)
                 ) &&
                 (
-                    Value == other.Value &&
-                    Value != null && other.Value != null &&
+                    Value == other.Value ||
+                    Value != null &&
                     Value.Equals(other.Value)
                 ) && 
                 (
-                    ValueMinus == other.ValueMinus &&
-                    ValueMinus != null && other.ValueMinus != null &&
+                    ValueMinus == other.ValueMinus ||
+                    ValueMinus != null &&
                     ValueMinus.Equals(other.ValueMinus)
                 ) && 
                 (
-                    TraceRef == other.TraceRef &&
-                    TraceRef != null && other.TraceRef != null &&
+                    TraceRef == other.TraceRef ||
+                    TraceRef != null &&
                     TraceRef.Equals(other.TraceRef)
                 ) && 
                 (
-                    TraceRefMinus == other.TraceRefMinus &&
-                    TraceRefMinus != null && other.TraceRefMinus != null &&
+                    TraceRefMinus == other.TraceRefMinus ||
+                    TraceRefMinus != null &&
                     TraceRefMinus.Equals(other.TraceRefMinus)
                 ) && 
                 (
-                    CopyYStyle == other.CopyYStyle &&
-                    CopyYStyle != null && other.CopyYStyle != null &&
+                    CopyYStyle == other.CopyYStyle ||
+                    CopyYStyle != null &&
                     CopyYStyle.Equals(other.CopyYStyle)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Thickness == other.Thickness &&
-                    Thickness != null && other.Thickness != null &&
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
                     Thickness.Equals(other.Thickness)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    ArraySrc == other.ArraySrc &&
-                    ArraySrc != null && other.ArraySrc != null &&
+                    ArraySrc == other.ArraySrc ||
+                    ArraySrc != null &&
                     ArraySrc.Equals(other.ArraySrc)
                 ) && 
                 (
-                    ArrayMinusSrc == other.ArrayMinusSrc &&
-                    ArrayMinusSrc != null && other.ArrayMinusSrc != null &&
+                    ArrayMinusSrc == other.ArrayMinusSrc ||
+                    ArrayMinusSrc != null &&
                     ArrayMinusSrc.Equals(other.ArrayMinusSrc)
                 );
         }

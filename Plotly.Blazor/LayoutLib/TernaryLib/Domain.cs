@@ -71,13 +71,13 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
                     Y.SequenceEqual(other.Y)
                 ) &&
                 (
-                    Row == other.Row &&
-                    Row != null && other.Row != null &&
+                    Row == other.Row ||
+                    Row != null &&
                     Row.Equals(other.Row)
                 ) && 
                 (
-                    Column == other.Column &&
-                    Column != null && other.Column != null &&
+                    Column == other.Column ||
+                    Column != null &&
                     Column.Equals(other.Column)
                 );
         }

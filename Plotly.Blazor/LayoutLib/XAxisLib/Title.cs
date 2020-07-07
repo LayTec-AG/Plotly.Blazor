@@ -60,18 +60,18 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
             return 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Standoff == other.Standoff &&
-                    Standoff != null && other.Standoff != null &&
+                    Standoff == other.Standoff ||
+                    Standoff != null &&
                     Standoff.Equals(other.Standoff)
                 );
         }

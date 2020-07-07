@@ -56,18 +56,18 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
 
             return 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Offset == other.Offset &&
-                    Offset != null && other.Offset != null &&
+                    Offset == other.Offset ||
+                    Offset != null &&
                     Offset.Equals(other.Offset)
                 );
         }

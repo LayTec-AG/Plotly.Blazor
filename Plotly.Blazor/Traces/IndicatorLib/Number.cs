@@ -58,23 +58,23 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    ValueFormat == other.ValueFormat &&
-                    ValueFormat != null && other.ValueFormat != null &&
+                    ValueFormat == other.ValueFormat ||
+                    ValueFormat != null &&
                     ValueFormat.Equals(other.ValueFormat)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Prefix == other.Prefix &&
-                    Prefix != null && other.Prefix != null &&
+                    Prefix == other.Prefix ||
+                    Prefix != null &&
                     Prefix.Equals(other.Prefix)
                 ) && 
                 (
-                    Suffix == other.Suffix &&
-                    Suffix != null && other.Suffix != null &&
+                    Suffix == other.Suffix ||
+                    Suffix != null &&
                     Suffix.Equals(other.Suffix)
                 );
         }

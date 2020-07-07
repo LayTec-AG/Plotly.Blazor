@@ -105,13 +105,13 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Method == other.Method &&
-                    Method != null && other.Method != null &&
+                    Method == other.Method ||
+                    Method != null &&
                     Method.Equals(other.Method)
                 ) && 
                 (
@@ -120,28 +120,28 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
                     Args.SequenceEqual(other.Args)
                 ) &&
                 (
-                    Label == other.Label &&
-                    Label != null && other.Label != null &&
+                    Label == other.Label ||
+                    Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    Value == other.Value &&
-                    Value != null && other.Value != null &&
+                    Value == other.Value ||
+                    Value != null &&
                     Value.Equals(other.Value)
                 ) && 
                 (
-                    Execute == other.Execute &&
-                    Execute != null && other.Execute != null &&
+                    Execute == other.Execute ||
+                    Execute != null &&
                     Execute.Equals(other.Execute)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

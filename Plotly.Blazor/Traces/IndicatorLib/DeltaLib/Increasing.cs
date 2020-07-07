@@ -45,13 +45,13 @@ namespace Plotly.Blazor.Traces.IndicatorLib.DeltaLib
 
             return 
                 (
-                    Symbol == other.Symbol &&
-                    Symbol != null && other.Symbol != null &&
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
                     Symbol.Equals(other.Symbol)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 );
         }

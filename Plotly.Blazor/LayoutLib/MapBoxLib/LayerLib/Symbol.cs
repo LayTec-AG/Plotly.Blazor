@@ -77,33 +77,33 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
             return 
                 (
-                    Icon == other.Icon &&
-                    Icon != null && other.Icon != null &&
+                    Icon == other.Icon ||
+                    Icon != null &&
                     Icon.Equals(other.Icon)
                 ) && 
                 (
-                    IconSize == other.IconSize &&
-                    IconSize != null && other.IconSize != null &&
+                    IconSize == other.IconSize ||
+                    IconSize != null &&
                     IconSize.Equals(other.IconSize)
                 ) && 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    Placement == other.Placement &&
-                    Placement != null && other.Placement != null &&
+                    Placement == other.Placement ||
+                    Placement != null &&
                     Placement.Equals(other.Placement)
                 ) && 
                 (
-                    TextFont == other.TextFont &&
-                    TextFont != null && other.TextFont != null &&
+                    TextFont == other.TextFont ||
+                    TextFont != null &&
                     TextFont.Equals(other.TextFont)
                 ) && 
                 (
-                    TextPosition == other.TextPosition &&
-                    TextPosition != null && other.TextPosition != null &&
+                    TextPosition == other.TextPosition ||
+                    TextPosition != null &&
                     TextPosition.Equals(other.TextPosition)
                 );
         }

@@ -63,8 +63,8 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.SlicesLib
 
             return 
                 (
-                    Show == other.Show &&
-                    Show != null && other.Show != null &&
+                    Show == other.Show ||
+                    Show != null &&
                     Show.Equals(other.Show)
                 ) && 
                 (
@@ -73,13 +73,13 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.SlicesLib
                     Locations.SequenceEqual(other.Locations)
                 ) &&
                 (
-                    Fill == other.Fill &&
-                    Fill != null && other.Fill != null &&
+                    Fill == other.Fill ||
+                    Fill != null &&
                     Fill.Equals(other.Fill)
                 ) && 
                 (
-                    LocationsSrc == other.LocationsSrc &&
-                    LocationsSrc != null && other.LocationsSrc != null &&
+                    LocationsSrc == other.LocationsSrc ||
+                    LocationsSrc != null &&
                     LocationsSrc.Equals(other.LocationsSrc)
                 );
         }

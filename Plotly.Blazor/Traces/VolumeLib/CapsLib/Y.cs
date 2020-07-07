@@ -51,13 +51,13 @@ namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
 
             return 
                 (
-                    Show == other.Show &&
-                    Show != null && other.Show != null &&
+                    Show == other.Show ||
+                    Show != null &&
                     Show.Equals(other.Show)
                 ) && 
                 (
-                    Fill == other.Fill &&
-                    Fill != null && other.Fill != null &&
+                    Fill == other.Fill ||
+                    Fill != null &&
                     Fill.Equals(other.Fill)
                 );
         }

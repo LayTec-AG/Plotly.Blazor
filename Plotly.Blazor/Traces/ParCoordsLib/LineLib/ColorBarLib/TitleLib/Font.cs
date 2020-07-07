@@ -61,18 +61,18 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.TitleLib
 
             return 
                 (
-                    Family == other.Family &&
-                    Family != null && other.Family != null &&
+                    Family == other.Family ||
+                    Family != null &&
                     Family.Equals(other.Family)
                 ) && 
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 );
         }

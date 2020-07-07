@@ -52,18 +52,18 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Thickness == other.Thickness &&
-                    Thickness != null && other.Thickness != null &&
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
                     Thickness.Equals(other.Thickness)
                 );
         }

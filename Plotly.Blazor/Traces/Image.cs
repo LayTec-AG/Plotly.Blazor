@@ -334,28 +334,28 @@ namespace Plotly.Blazor.Traces
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    UId == other.UId &&
-                    UId != null && other.UId != null &&
+                    UId == other.UId ||
+                    UId != null &&
                     UId.Equals(other.UId)
                 ) && 
                 (
@@ -369,8 +369,8 @@ namespace Plotly.Blazor.Traces
                     CustomData.SequenceEqual(other.CustomData)
                 ) &&
                 (
-                    Meta == other.Meta &&
-                    Meta != null && other.Meta != null &&
+                    Meta == other.Meta ||
+                    Meta != null &&
                     Meta.Equals(other.Meta)
                 ) && 
                 (
@@ -379,18 +379,18 @@ namespace Plotly.Blazor.Traces
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
-                    HoverLabel == other.HoverLabel &&
-                    HoverLabel != null && other.HoverLabel != null &&
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
                     HoverLabel.Equals(other.HoverLabel)
                 ) && 
                 (
-                    Stream == other.Stream &&
-                    Stream != null && other.Stream != null &&
+                    Stream == other.Stream ||
+                    Stream != null &&
                     Stream.Equals(other.Stream)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
@@ -399,8 +399,8 @@ namespace Plotly.Blazor.Traces
                     Z.SequenceEqual(other.Z)
                 ) &&
                 (
-                    ColorModel == other.ColorModel &&
-                    ColorModel != null && other.ColorModel != null &&
+                    ColorModel == other.ColorModel ||
+                    ColorModel != null &&
                     ColorModel.Equals(other.ColorModel)
                 ) && 
                 (
@@ -414,23 +414,23 @@ namespace Plotly.Blazor.Traces
                     ZMax.SequenceEqual(other.ZMax)
                 ) &&
                 (
-                    X0 == other.X0 &&
-                    X0 != null && other.X0 != null &&
+                    X0 == other.X0 ||
+                    X0 != null &&
                     X0.Equals(other.X0)
                 ) && 
                 (
-                    Y0 == other.Y0 &&
-                    Y0 != null && other.Y0 != null &&
+                    Y0 == other.Y0 ||
+                    Y0 != null &&
                     Y0.Equals(other.Y0)
                 ) && 
                 (
-                    DX == other.DX &&
-                    DX != null && other.DX != null &&
+                    DX == other.DX ||
+                    DX != null &&
                     DX.Equals(other.DX)
                 ) && 
                 (
-                    Dy == other.Dy &&
-                    Dy != null && other.Dy != null &&
+                    Dy == other.Dy ||
+                    Dy != null &&
                     Dy.Equals(other.Dy)
                 ) && 
                 (
@@ -444,8 +444,8 @@ namespace Plotly.Blazor.Traces
                     HoverText.SequenceEqual(other.HoverText)
                 ) &&
                 (
-                    HoverInfo == other.HoverInfo &&
-                    HoverInfo != null && other.HoverInfo != null &&
+                    HoverInfo == other.HoverInfo ||
+                    HoverInfo != null &&
                     HoverInfo.Equals(other.HoverInfo)
                 ) && 
                 (
@@ -454,8 +454,8 @@ namespace Plotly.Blazor.Traces
                     HoverInfoArray.SequenceEqual(other.HoverInfoArray)
                 ) &&
                 (
-                    HoverTemplate == other.HoverTemplate &&
-                    HoverTemplate != null && other.HoverTemplate != null &&
+                    HoverTemplate == other.HoverTemplate ||
+                    HoverTemplate != null &&
                     HoverTemplate.Equals(other.HoverTemplate)
                 ) && 
                 (
@@ -464,53 +464,53 @@ namespace Plotly.Blazor.Traces
                     HoverTemplateArray.SequenceEqual(other.HoverTemplateArray)
                 ) &&
                 (
-                    XAxis == other.XAxis &&
-                    XAxis != null && other.XAxis != null &&
+                    XAxis == other.XAxis ||
+                    XAxis != null &&
                     XAxis.Equals(other.XAxis)
                 ) && 
                 (
-                    YAxis == other.YAxis &&
-                    YAxis != null && other.YAxis != null &&
+                    YAxis == other.YAxis ||
+                    YAxis != null &&
                     YAxis.Equals(other.YAxis)
                 ) && 
                 (
-                    IdsSrc == other.IdsSrc &&
-                    IdsSrc != null && other.IdsSrc != null &&
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
                     IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
-                    CustomDataSrc == other.CustomDataSrc &&
-                    CustomDataSrc != null && other.CustomDataSrc != null &&
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
                     CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    MetaSrc == other.MetaSrc &&
-                    MetaSrc != null && other.MetaSrc != null &&
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
                     MetaSrc.Equals(other.MetaSrc)
                 ) && 
                 (
-                    ZSrc == other.ZSrc &&
-                    ZSrc != null && other.ZSrc != null &&
+                    ZSrc == other.ZSrc ||
+                    ZSrc != null &&
                     ZSrc.Equals(other.ZSrc)
                 ) && 
                 (
-                    TextSrc == other.TextSrc &&
-                    TextSrc != null && other.TextSrc != null &&
+                    TextSrc == other.TextSrc ||
+                    TextSrc != null &&
                     TextSrc.Equals(other.TextSrc)
                 ) && 
                 (
-                    HoverTextSrc == other.HoverTextSrc &&
-                    HoverTextSrc != null && other.HoverTextSrc != null &&
+                    HoverTextSrc == other.HoverTextSrc ||
+                    HoverTextSrc != null &&
                     HoverTextSrc.Equals(other.HoverTextSrc)
                 ) && 
                 (
-                    HoverInfoSrc == other.HoverInfoSrc &&
-                    HoverInfoSrc != null && other.HoverInfoSrc != null &&
+                    HoverInfoSrc == other.HoverInfoSrc ||
+                    HoverInfoSrc != null &&
                     HoverInfoSrc.Equals(other.HoverInfoSrc)
                 ) && 
                 (
-                    HoverTemplateSrc == other.HoverTemplateSrc &&
-                    HoverTemplateSrc != null && other.HoverTemplateSrc != null &&
+                    HoverTemplateSrc == other.HoverTemplateSrc ||
+                    HoverTemplateSrc != null &&
                     HoverTemplateSrc.Equals(other.HoverTemplateSrc)
                 );
         }

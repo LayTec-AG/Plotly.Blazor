@@ -100,8 +100,8 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
 
             return 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
@@ -110,8 +110,8 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
                     Bounds.SequenceEqual(other.Bounds)
                 ) &&
                 (
-                    Pattern == other.Pattern &&
-                    Pattern != null && other.Pattern != null &&
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
                     Pattern.Equals(other.Pattern)
                 ) && 
                 (
@@ -120,18 +120,18 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
                     Values.SequenceEqual(other.Values)
                 ) &&
                 (
-                    DValue == other.DValue &&
-                    DValue != null && other.DValue != null &&
+                    DValue == other.DValue ||
+                    DValue != null &&
                     DValue.Equals(other.DValue)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

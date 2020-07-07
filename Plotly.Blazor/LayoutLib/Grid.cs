@@ -140,18 +140,18 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Rows == other.Rows &&
-                    Rows != null && other.Rows != null &&
+                    Rows == other.Rows ||
+                    Rows != null &&
                     Rows.Equals(other.Rows)
                 ) && 
                 (
-                    RowOrder == other.RowOrder &&
-                    RowOrder != null && other.RowOrder != null &&
+                    RowOrder == other.RowOrder ||
+                    RowOrder != null &&
                     RowOrder.Equals(other.RowOrder)
                 ) && 
                 (
-                    Columns == other.Columns &&
-                    Columns != null && other.Columns != null &&
+                    Columns == other.Columns ||
+                    Columns != null &&
                     Columns.Equals(other.Columns)
                 ) && 
                 (
@@ -170,33 +170,33 @@ namespace Plotly.Blazor.LayoutLib
                     YAxes.SequenceEqual(other.YAxes)
                 ) &&
                 (
-                    Pattern == other.Pattern &&
-                    Pattern != null && other.Pattern != null &&
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
                     Pattern.Equals(other.Pattern)
                 ) && 
                 (
-                    XGap == other.XGap &&
-                    XGap != null && other.XGap != null &&
+                    XGap == other.XGap ||
+                    XGap != null &&
                     XGap.Equals(other.XGap)
                 ) && 
                 (
-                    YGap == other.YGap &&
-                    YGap != null && other.YGap != null &&
+                    YGap == other.YGap ||
+                    YGap != null &&
                     YGap.Equals(other.YGap)
                 ) && 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
-                    XSide == other.XSide &&
-                    XSide != null && other.XSide != null &&
+                    XSide == other.XSide ||
+                    XSide != null &&
                     XSide.Equals(other.XSide)
                 ) && 
                 (
-                    YSide == other.YSide &&
-                    YSide != null && other.YSide != null &&
+                    YSide == other.YSide ||
+                    YSide != null &&
                     YSide.Equals(other.YSide)
                 );
         }

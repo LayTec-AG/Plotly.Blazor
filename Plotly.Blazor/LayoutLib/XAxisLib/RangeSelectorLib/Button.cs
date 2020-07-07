@@ -94,38 +94,38 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Step == other.Step &&
-                    Step != null && other.Step != null &&
+                    Step == other.Step ||
+                    Step != null &&
                     Step.Equals(other.Step)
                 ) && 
                 (
-                    StepMode == other.StepMode &&
-                    StepMode != null && other.StepMode != null &&
+                    StepMode == other.StepMode ||
+                    StepMode != null &&
                     StepMode.Equals(other.StepMode)
                 ) && 
                 (
-                    Count == other.Count &&
-                    Count != null && other.Count != null &&
+                    Count == other.Count ||
+                    Count != null &&
                     Count.Equals(other.Count)
                 ) && 
                 (
-                    Label == other.Label &&
-                    Label != null && other.Label != null &&
+                    Label == other.Label ||
+                    Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

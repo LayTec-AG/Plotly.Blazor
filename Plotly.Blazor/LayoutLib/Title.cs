@@ -109,48 +109,48 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    XRef == other.XRef &&
-                    XRef != null && other.XRef != null &&
+                    XRef == other.XRef ||
+                    XRef != null &&
                     XRef.Equals(other.XRef)
                 ) && 
                 (
-                    YRef == other.YRef &&
-                    YRef != null && other.YRef != null &&
+                    YRef == other.YRef ||
+                    YRef != null &&
                     YRef.Equals(other.YRef)
                 ) && 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    Pad == other.Pad &&
-                    Pad != null && other.Pad != null &&
+                    Pad == other.Pad ||
+                    Pad != null &&
                     Pad.Equals(other.Pad)
                 );
         }

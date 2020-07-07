@@ -40,8 +40,8 @@ namespace Plotly.Blazor.Traces.BarPolarLib.UnselectedLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 );
         }

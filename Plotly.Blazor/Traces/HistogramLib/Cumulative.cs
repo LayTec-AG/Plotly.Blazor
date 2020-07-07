@@ -62,18 +62,18 @@ namespace Plotly.Blazor.Traces.HistogramLib
 
             return 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
-                    Direction == other.Direction &&
-                    Direction != null && other.Direction != null &&
+                    Direction == other.Direction ||
+                    Direction != null &&
                     Direction.Equals(other.Direction)
                 ) && 
                 (
-                    CurrentBin == other.CurrentBin &&
-                    CurrentBin != null && other.CurrentBin != null &&
+                    CurrentBin == other.CurrentBin ||
+                    CurrentBin != null &&
                     CurrentBin.Equals(other.CurrentBin)
                 );
         }

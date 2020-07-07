@@ -76,8 +76,8 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -86,8 +86,8 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
@@ -96,13 +96,13 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
                     WidthArray.SequenceEqual(other.WidthArray)
                 ) &&
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
-                    WidthSrc == other.WidthSrc &&
-                    WidthSrc != null && other.WidthSrc != null &&
+                    WidthSrc == other.WidthSrc ||
+                    WidthSrc != null &&
                     WidthSrc.Equals(other.WidthSrc)
                 );
         }

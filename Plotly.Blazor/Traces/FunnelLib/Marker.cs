@@ -176,13 +176,13 @@ namespace Plotly.Blazor.Traces.FunnelLib
 
             return 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -191,58 +191,58 @@ namespace Plotly.Blazor.Traces.FunnelLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    CAuto == other.CAuto &&
-                    CAuto != null && other.CAuto != null &&
+                    CAuto == other.CAuto ||
+                    CAuto != null &&
                     CAuto.Equals(other.CAuto)
                 ) && 
                 (
-                    CMin == other.CMin &&
-                    CMin != null && other.CMin != null &&
+                    CMin == other.CMin ||
+                    CMin != null &&
                     CMin.Equals(other.CMin)
                 ) && 
                 (
-                    CMax == other.CMax &&
-                    CMax != null && other.CMax != null &&
+                    CMax == other.CMax ||
+                    CMax != null &&
                     CMax.Equals(other.CMax)
                 ) && 
                 (
-                    CMid == other.CMid &&
-                    CMid != null && other.CMid != null &&
+                    CMid == other.CMid ||
+                    CMid != null &&
                     CMid.Equals(other.CMid)
                 ) && 
                 (
-                    ColorScale == other.ColorScale &&
-                    ColorScale != null && other.ColorScale != null &&
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
-                    AutoColorScale == other.AutoColorScale &&
-                    AutoColorScale != null && other.AutoColorScale != null &&
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
                     AutoColorScale.Equals(other.AutoColorScale)
                 ) && 
                 (
-                    ReverseScale == other.ReverseScale &&
-                    ReverseScale != null && other.ReverseScale != null &&
+                    ReverseScale == other.ReverseScale ||
+                    ReverseScale != null &&
                     ReverseScale.Equals(other.ReverseScale)
                 ) && 
                 (
-                    ShowScale == other.ShowScale &&
-                    ShowScale != null && other.ShowScale != null &&
+                    ShowScale == other.ShowScale ||
+                    ShowScale != null &&
                     ShowScale.Equals(other.ShowScale)
                 ) && 
                 (
-                    ColorBar == other.ColorBar &&
-                    ColorBar != null && other.ColorBar != null &&
+                    ColorBar == other.ColorBar ||
+                    ColorBar != null &&
                     ColorBar.Equals(other.ColorBar)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis &&
-                    ColorAxis != null && other.ColorAxis != null &&
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
                     ColorAxis.Equals(other.ColorAxis)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
@@ -251,13 +251,13 @@ namespace Plotly.Blazor.Traces.FunnelLib
                     OpacityArray.SequenceEqual(other.OpacityArray)
                 ) &&
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
-                    OpacitySrc == other.OpacitySrc &&
-                    OpacitySrc != null && other.OpacitySrc != null &&
+                    OpacitySrc == other.OpacitySrc ||
+                    OpacitySrc != null &&
                     OpacitySrc.Equals(other.OpacitySrc)
                 );
         }

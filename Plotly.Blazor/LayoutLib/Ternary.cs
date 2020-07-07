@@ -76,38 +76,38 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    Sum == other.Sum &&
-                    Sum != null && other.Sum != null &&
+                    Sum == other.Sum ||
+                    Sum != null &&
                     Sum.Equals(other.Sum)
                 ) && 
                 (
-                    AAxis == other.AAxis &&
-                    AAxis != null && other.AAxis != null &&
+                    AAxis == other.AAxis ||
+                    AAxis != null &&
                     AAxis.Equals(other.AAxis)
                 ) && 
                 (
-                    BAxis == other.BAxis &&
-                    BAxis != null && other.BAxis != null &&
+                    BAxis == other.BAxis ||
+                    BAxis != null &&
                     BAxis.Equals(other.BAxis)
                 ) && 
                 (
-                    CAxis == other.CAxis &&
-                    CAxis != null && other.CAxis != null &&
+                    CAxis == other.CAxis ||
+                    CAxis != null &&
                     CAxis.Equals(other.CAxis)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 );
         }

@@ -47,13 +47,13 @@ namespace Plotly.Blazor.Traces.PointCloudLib.MarkerLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    AreaRatio == other.AreaRatio &&
-                    AreaRatio != null && other.AreaRatio != null &&
+                    AreaRatio == other.AreaRatio ||
+                    AreaRatio != null &&
                     AreaRatio.Equals(other.AreaRatio)
                 );
         }

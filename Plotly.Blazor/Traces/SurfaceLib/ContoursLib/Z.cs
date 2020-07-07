@@ -101,58 +101,58 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
 
             return 
                 (
-                    Show == other.Show &&
-                    Show != null && other.Show != null &&
+                    Show == other.Show ||
+                    Show != null &&
                     Show.Equals(other.Show)
                 ) && 
                 (
-                    Start == other.Start &&
-                    Start != null && other.Start != null &&
+                    Start == other.Start ||
+                    Start != null &&
                     Start.Equals(other.Start)
                 ) && 
                 (
-                    End == other.End &&
-                    End != null && other.End != null &&
+                    End == other.End ||
+                    End != null &&
                     End.Equals(other.End)
                 ) && 
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
-                    Project == other.Project &&
-                    Project != null && other.Project != null &&
+                    Project == other.Project ||
+                    Project != null &&
                     Project.Equals(other.Project)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    UseColorMap == other.UseColorMap &&
-                    UseColorMap != null && other.UseColorMap != null &&
+                    UseColorMap == other.UseColorMap ||
+                    UseColorMap != null &&
                     UseColorMap.Equals(other.UseColorMap)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    Highlight == other.Highlight &&
-                    Highlight != null && other.Highlight != null &&
+                    Highlight == other.Highlight ||
+                    Highlight != null &&
                     Highlight.Equals(other.Highlight)
                 ) && 
                 (
-                    HighlightColor == other.HighlightColor &&
-                    HighlightColor != null && other.HighlightColor != null &&
+                    HighlightColor == other.HighlightColor ||
+                    HighlightColor != null &&
                     HighlightColor.Equals(other.HighlightColor)
                 ) && 
                 (
-                    HighlightWidth == other.HighlightWidth &&
-                    HighlightWidth != null && other.HighlightWidth != null &&
+                    HighlightWidth == other.HighlightWidth ||
+                    HighlightWidth != null &&
                     HighlightWidth.Equals(other.HighlightWidth)
                 );
         }

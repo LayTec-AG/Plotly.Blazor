@@ -57,23 +57,23 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
             return 
                 (
-                    T == other.T &&
-                    T != null && other.T != null &&
+                    T == other.T ||
+                    T != null &&
                     T.Equals(other.T)
                 ) && 
                 (
-                    R == other.R &&
-                    R != null && other.R != null &&
+                    R == other.R ||
+                    R != null &&
                     R.Equals(other.R)
                 ) && 
                 (
-                    B == other.B &&
-                    B != null && other.B != null &&
+                    B == other.B ||
+                    B != null &&
                     B.Equals(other.B)
                 ) && 
                 (
-                    L == other.L &&
-                    L != null && other.L != null &&
+                    L == other.L ||
+                    L != null &&
                     L.Equals(other.L)
                 );
         }

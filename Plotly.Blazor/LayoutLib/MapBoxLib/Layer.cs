@@ -179,93 +179,93 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    SourceType == other.SourceType &&
-                    SourceType != null && other.SourceType != null &&
+                    SourceType == other.SourceType ||
+                    SourceType != null &&
                     SourceType.Equals(other.SourceType)
                 ) && 
                 (
-                    Source == other.Source &&
-                    Source != null && other.Source != null &&
+                    Source == other.Source ||
+                    Source != null &&
                     Source.Equals(other.Source)
                 ) && 
                 (
-                    SourceLayer == other.SourceLayer &&
-                    SourceLayer != null && other.SourceLayer != null &&
+                    SourceLayer == other.SourceLayer ||
+                    SourceLayer != null &&
                     SourceLayer.Equals(other.SourceLayer)
                 ) && 
                 (
-                    SourceAttribution == other.SourceAttribution &&
-                    SourceAttribution != null && other.SourceAttribution != null &&
+                    SourceAttribution == other.SourceAttribution ||
+                    SourceAttribution != null &&
                     SourceAttribution.Equals(other.SourceAttribution)
                 ) && 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Coordinates == other.Coordinates &&
-                    Coordinates != null && other.Coordinates != null &&
+                    Coordinates == other.Coordinates ||
+                    Coordinates != null &&
                     Coordinates.Equals(other.Coordinates)
                 ) && 
                 (
-                    Below == other.Below &&
-                    Below != null && other.Below != null &&
+                    Below == other.Below ||
+                    Below != null &&
                     Below.Equals(other.Below)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    MinZoom == other.MinZoom &&
-                    MinZoom != null && other.MinZoom != null &&
+                    MinZoom == other.MinZoom ||
+                    MinZoom != null &&
                     MinZoom.Equals(other.MinZoom)
                 ) && 
                 (
-                    MaxZoom == other.MaxZoom &&
-                    MaxZoom != null && other.MaxZoom != null &&
+                    MaxZoom == other.MaxZoom ||
+                    MaxZoom != null &&
                     MaxZoom.Equals(other.MaxZoom)
                 ) && 
                 (
-                    Circle == other.Circle &&
-                    Circle != null && other.Circle != null &&
+                    Circle == other.Circle ||
+                    Circle != null &&
                     Circle.Equals(other.Circle)
                 ) && 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Fill == other.Fill &&
-                    Fill != null && other.Fill != null &&
+                    Fill == other.Fill ||
+                    Fill != null &&
                     Fill.Equals(other.Fill)
                 ) && 
                 (
-                    Symbol == other.Symbol &&
-                    Symbol != null && other.Symbol != null &&
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
                     Symbol.Equals(other.Symbol)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

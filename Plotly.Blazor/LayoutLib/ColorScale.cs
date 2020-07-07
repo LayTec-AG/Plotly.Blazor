@@ -54,18 +54,18 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Sequential == other.Sequential &&
-                    Sequential != null && other.Sequential != null &&
+                    Sequential == other.Sequential ||
+                    Sequential != null &&
                     Sequential.Equals(other.Sequential)
                 ) && 
                 (
-                    SequentialMinus == other.SequentialMinus &&
-                    SequentialMinus != null && other.SequentialMinus != null &&
+                    SequentialMinus == other.SequentialMinus ||
+                    SequentialMinus != null &&
                     SequentialMinus.Equals(other.SequentialMinus)
                 ) && 
                 (
-                    Diverging == other.Diverging &&
-                    Diverging != null && other.Diverging != null &&
+                    Diverging == other.Diverging ||
+                    Diverging != null &&
                     Diverging.Equals(other.Diverging)
                 );
         }

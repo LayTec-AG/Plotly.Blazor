@@ -52,18 +52,18 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    Align == other.Align &&
-                    Align != null && other.Align != null &&
+                    Align == other.Align ||
+                    Align != null &&
                     Align.Equals(other.Align)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 );
         }

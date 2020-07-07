@@ -165,88 +165,88 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Orientation == other.Orientation &&
-                    Orientation != null && other.Orientation != null &&
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
                     Orientation.Equals(other.Orientation)
                 ) && 
                 (
-                    TraceOrder == other.TraceOrder &&
-                    TraceOrder != null && other.TraceOrder != null &&
+                    TraceOrder == other.TraceOrder ||
+                    TraceOrder != null &&
                     TraceOrder.Equals(other.TraceOrder)
                 ) && 
                 (
-                    TraceGroupGap == other.TraceGroupGap &&
-                    TraceGroupGap != null && other.TraceGroupGap != null &&
+                    TraceGroupGap == other.TraceGroupGap ||
+                    TraceGroupGap != null &&
                     TraceGroupGap.Equals(other.TraceGroupGap)
                 ) && 
                 (
-                    ItemSizing == other.ItemSizing &&
-                    ItemSizing != null && other.ItemSizing != null &&
+                    ItemSizing == other.ItemSizing ||
+                    ItemSizing != null &&
                     ItemSizing.Equals(other.ItemSizing)
                 ) && 
                 (
-                    ItemClick == other.ItemClick &&
-                    ItemClick != null && other.ItemClick != null &&
+                    ItemClick == other.ItemClick ||
+                    ItemClick != null &&
                     ItemClick.Equals(other.ItemClick)
                 ) && 
                 (
-                    ItemDoubleClick == other.ItemDoubleClick &&
-                    ItemDoubleClick != null && other.ItemDoubleClick != null &&
+                    ItemDoubleClick == other.ItemDoubleClick ||
+                    ItemDoubleClick != null &&
                     ItemDoubleClick.Equals(other.ItemDoubleClick)
                 ) && 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
-                    VAlign == other.VAlign &&
-                    VAlign != null && other.VAlign != null &&
+                    VAlign == other.VAlign ||
+                    VAlign != null &&
                     VAlign.Equals(other.VAlign)
                 ) && 
                 (
-                    Title == other.Title &&
-                    Title != null && other.Title != null &&
+                    Title == other.Title ||
+                    Title != null &&
                     Title.Equals(other.Title)
                 );
         }

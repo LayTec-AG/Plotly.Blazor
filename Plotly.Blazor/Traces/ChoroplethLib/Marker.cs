@@ -61,13 +61,13 @@ namespace Plotly.Blazor.Traces.ChoroplethLib
 
             return 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
@@ -76,8 +76,8 @@ namespace Plotly.Blazor.Traces.ChoroplethLib
                     OpacityArray.SequenceEqual(other.OpacityArray)
                 ) &&
                 (
-                    OpacitySrc == other.OpacitySrc &&
-                    OpacitySrc != null && other.OpacitySrc != null &&
+                    OpacitySrc == other.OpacitySrc ||
+                    OpacitySrc != null &&
                     OpacitySrc.Equals(other.OpacitySrc)
                 );
         }

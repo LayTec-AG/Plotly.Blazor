@@ -128,8 +128,8 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
 
             return 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
@@ -138,8 +138,8 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
                     BgColorArray.SequenceEqual(other.BgColorArray)
                 ) &&
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
@@ -148,13 +148,13 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
                     BorderColorArray.SequenceEqual(other.BorderColorArray)
                 ) &&
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Align == other.Align &&
-                    Align != null && other.Align != null &&
+                    Align == other.Align ||
+                    Align != null &&
                     Align.Equals(other.Align)
                 ) && 
                 (
@@ -163,8 +163,8 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
                     AlignArray.SequenceEqual(other.AlignArray)
                 ) &&
                 (
-                    NameLength == other.NameLength &&
-                    NameLength != null && other.NameLength != null &&
+                    NameLength == other.NameLength ||
+                    NameLength != null &&
                     NameLength.Equals(other.NameLength)
                 ) && 
                 (
@@ -173,23 +173,23 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
                     NameLengthArray.SequenceEqual(other.NameLengthArray)
                 ) &&
                 (
-                    BgColorSrc == other.BgColorSrc &&
-                    BgColorSrc != null && other.BgColorSrc != null &&
+                    BgColorSrc == other.BgColorSrc ||
+                    BgColorSrc != null &&
                     BgColorSrc.Equals(other.BgColorSrc)
                 ) && 
                 (
-                    BorderColorSrc == other.BorderColorSrc &&
-                    BorderColorSrc != null && other.BorderColorSrc != null &&
+                    BorderColorSrc == other.BorderColorSrc ||
+                    BorderColorSrc != null &&
                     BorderColorSrc.Equals(other.BorderColorSrc)
                 ) && 
                 (
-                    AlignSrc == other.AlignSrc &&
-                    AlignSrc != null && other.AlignSrc != null &&
+                    AlignSrc == other.AlignSrc ||
+                    AlignSrc != null &&
                     AlignSrc.Equals(other.AlignSrc)
                 ) && 
                 (
-                    NameLengthSrc == other.NameLengthSrc &&
-                    NameLengthSrc != null && other.NameLengthSrc != null &&
+                    NameLengthSrc == other.NameLengthSrc ||
+                    NameLengthSrc != null &&
                     NameLengthSrc.Equals(other.NameLengthSrc)
                 );
         }

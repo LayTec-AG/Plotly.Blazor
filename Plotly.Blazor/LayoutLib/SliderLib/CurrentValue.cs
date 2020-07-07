@@ -70,33 +70,33 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    Offset == other.Offset &&
-                    Offset != null && other.Offset != null &&
+                    Offset == other.Offset ||
+                    Offset != null &&
                     Offset.Equals(other.Offset)
                 ) && 
                 (
-                    Prefix == other.Prefix &&
-                    Prefix != null && other.Prefix != null &&
+                    Prefix == other.Prefix ||
+                    Prefix != null &&
                     Prefix.Equals(other.Prefix)
                 ) && 
                 (
-                    Suffix == other.Suffix &&
-                    Suffix != null && other.Suffix != null &&
+                    Suffix == other.Suffix ||
+                    Suffix != null &&
                     Suffix.Equals(other.Suffix)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 );
         }

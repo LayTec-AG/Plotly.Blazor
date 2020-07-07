@@ -48,13 +48,13 @@ namespace Plotly.Blazor.Traces.FunnelLib
 
             return 
                 (
-                    Token == other.Token &&
-                    Token != null && other.Token != null &&
+                    Token == other.Token ||
+                    Token != null &&
                     Token.Equals(other.Token)
                 ) && 
                 (
-                    MaxPoints == other.MaxPoints &&
-                    MaxPoints != null && other.MaxPoints != null &&
+                    MaxPoints == other.MaxPoints ||
+                    MaxPoints != null &&
                     MaxPoints.Equals(other.MaxPoints)
                 );
         }

@@ -144,8 +144,8 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
 
             return 
                 (
-                    Label == other.Label &&
-                    Label != null && other.Label != null &&
+                    Label == other.Label ||
+                    Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
@@ -159,13 +159,13 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
                     TickText.SequenceEqual(other.TickText)
                 ) &&
                 (
-                    TickFormat == other.TickFormat &&
-                    TickFormat != null && other.TickFormat != null &&
+                    TickFormat == other.TickFormat ||
+                    TickFormat != null &&
                     TickFormat.Equals(other.TickFormat)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
@@ -179,8 +179,8 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
                     ConstraintRange.SequenceEqual(other.ConstraintRange)
                 ) &&
                 (
-                    MultiSelect == other.MultiSelect &&
-                    MultiSelect != null && other.MultiSelect != null &&
+                    MultiSelect == other.MultiSelect ||
+                    MultiSelect != null &&
                     MultiSelect.Equals(other.MultiSelect)
                 ) && 
                 (
@@ -189,28 +189,28 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
                     Values.SequenceEqual(other.Values)
                 ) &&
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 ) && 
                 (
-                    TickValsSrc == other.TickValsSrc &&
-                    TickValsSrc != null && other.TickValsSrc != null &&
+                    TickValsSrc == other.TickValsSrc ||
+                    TickValsSrc != null &&
                     TickValsSrc.Equals(other.TickValsSrc)
                 ) && 
                 (
-                    TickTextSrc == other.TickTextSrc &&
-                    TickTextSrc != null && other.TickTextSrc != null &&
+                    TickTextSrc == other.TickTextSrc ||
+                    TickTextSrc != null &&
                     TickTextSrc.Equals(other.TickTextSrc)
                 ) && 
                 (
-                    ValuesSrc == other.ValuesSrc &&
-                    ValuesSrc != null && other.ValuesSrc != null &&
+                    ValuesSrc == other.ValuesSrc ||
+                    ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
                 );
         }

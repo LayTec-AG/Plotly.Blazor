@@ -76,8 +76,8 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
@@ -86,8 +86,8 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
                     TypeArray.SequenceEqual(other.TypeArray)
                 ) &&
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -96,13 +96,13 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    TypeSrc == other.TypeSrc &&
-                    TypeSrc != null && other.TypeSrc != null &&
+                    TypeSrc == other.TypeSrc ||
+                    TypeSrc != null &&
                     TypeSrc.Equals(other.TypeSrc)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 );
         }

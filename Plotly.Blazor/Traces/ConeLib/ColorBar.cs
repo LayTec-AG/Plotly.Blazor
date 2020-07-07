@@ -337,98 +337,98 @@ namespace Plotly.Blazor.Traces.ConeLib
 
             return 
                 (
-                    ThicknessMode == other.ThicknessMode &&
-                    ThicknessMode != null && other.ThicknessMode != null &&
+                    ThicknessMode == other.ThicknessMode ||
+                    ThicknessMode != null &&
                     ThicknessMode.Equals(other.ThicknessMode)
                 ) && 
                 (
-                    Thickness == other.Thickness &&
-                    Thickness != null && other.Thickness != null &&
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
                     Thickness.Equals(other.Thickness)
                 ) && 
                 (
-                    LenMode == other.LenMode &&
-                    LenMode != null && other.LenMode != null &&
+                    LenMode == other.LenMode ||
+                    LenMode != null &&
                     LenMode.Equals(other.LenMode)
                 ) && 
                 (
-                    Len == other.Len &&
-                    Len != null && other.Len != null &&
+                    Len == other.Len ||
+                    Len != null &&
                     Len.Equals(other.Len)
                 ) && 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    XPad == other.XPad &&
-                    XPad != null && other.XPad != null &&
+                    XPad == other.XPad ||
+                    XPad != null &&
                     XPad.Equals(other.XPad)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    YPad == other.YPad &&
-                    YPad != null && other.YPad != null &&
+                    YPad == other.YPad ||
+                    YPad != null &&
                     YPad.Equals(other.YPad)
                 ) && 
                 (
-                    OutlineColor == other.OutlineColor &&
-                    OutlineColor != null && other.OutlineColor != null &&
+                    OutlineColor == other.OutlineColor ||
+                    OutlineColor != null &&
                     OutlineColor.Equals(other.OutlineColor)
                 ) && 
                 (
-                    OutlineWidth == other.OutlineWidth &&
-                    OutlineWidth != null && other.OutlineWidth != null &&
+                    OutlineWidth == other.OutlineWidth ||
+                    OutlineWidth != null &&
                     OutlineWidth.Equals(other.OutlineWidth)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    TickMode == other.TickMode &&
-                    TickMode != null && other.TickMode != null &&
+                    TickMode == other.TickMode ||
+                    TickMode != null &&
                     TickMode.Equals(other.TickMode)
                 ) && 
                 (
-                    NTicks == other.NTicks &&
-                    NTicks != null && other.NTicks != null &&
+                    NTicks == other.NTicks ||
+                    NTicks != null &&
                     NTicks.Equals(other.NTicks)
                 ) && 
                 (
-                    Tick0 == other.Tick0 &&
-                    Tick0 != null && other.Tick0 != null &&
+                    Tick0 == other.Tick0 ||
+                    Tick0 != null &&
                     Tick0.Equals(other.Tick0)
                 ) && 
                 (
-                    DTick == other.DTick &&
-                    DTick != null && other.DTick != null &&
+                    DTick == other.DTick ||
+                    DTick != null &&
                     DTick.Equals(other.DTick)
                 ) && 
                 (
@@ -442,43 +442,43 @@ namespace Plotly.Blazor.Traces.ConeLib
                     TickText.SequenceEqual(other.TickText)
                 ) &&
                 (
-                    Ticks == other.Ticks &&
-                    Ticks != null && other.Ticks != null &&
+                    Ticks == other.Ticks ||
+                    Ticks != null &&
                     Ticks.Equals(other.Ticks)
                 ) && 
                 (
-                    TickleN == other.TickleN &&
-                    TickleN != null && other.TickleN != null &&
+                    TickleN == other.TickleN ||
+                    TickleN != null &&
                     TickleN.Equals(other.TickleN)
                 ) && 
                 (
-                    TickWidth == other.TickWidth &&
-                    TickWidth != null && other.TickWidth != null &&
+                    TickWidth == other.TickWidth ||
+                    TickWidth != null &&
                     TickWidth.Equals(other.TickWidth)
                 ) && 
                 (
-                    TickColor == other.TickColor &&
-                    TickColor != null && other.TickColor != null &&
+                    TickColor == other.TickColor ||
+                    TickColor != null &&
                     TickColor.Equals(other.TickColor)
                 ) && 
                 (
-                    ShowTickLabels == other.ShowTickLabels &&
-                    ShowTickLabels != null && other.ShowTickLabels != null &&
+                    ShowTickLabels == other.ShowTickLabels ||
+                    ShowTickLabels != null &&
                     ShowTickLabels.Equals(other.ShowTickLabels)
                 ) && 
                 (
-                    TickFont == other.TickFont &&
-                    TickFont != null && other.TickFont != null &&
+                    TickFont == other.TickFont ||
+                    TickFont != null &&
                     TickFont.Equals(other.TickFont)
                 ) && 
                 (
-                    TickAngle == other.TickAngle &&
-                    TickAngle != null && other.TickAngle != null &&
+                    TickAngle == other.TickAngle ||
+                    TickAngle != null &&
                     TickAngle.Equals(other.TickAngle)
                 ) && 
                 (
-                    TickFormat == other.TickFormat &&
-                    TickFormat != null && other.TickFormat != null &&
+                    TickFormat == other.TickFormat ||
+                    TickFormat != null &&
                     TickFormat.Equals(other.TickFormat)
                 ) && 
                 (
@@ -487,53 +487,53 @@ namespace Plotly.Blazor.Traces.ConeLib
                     TickFormatStops.SequenceEqual(other.TickFormatStops)
                 ) &&
                 (
-                    TickPrefix == other.TickPrefix &&
-                    TickPrefix != null && other.TickPrefix != null &&
+                    TickPrefix == other.TickPrefix ||
+                    TickPrefix != null &&
                     TickPrefix.Equals(other.TickPrefix)
                 ) && 
                 (
-                    ShowTickPrefix == other.ShowTickPrefix &&
-                    ShowTickPrefix != null && other.ShowTickPrefix != null &&
+                    ShowTickPrefix == other.ShowTickPrefix ||
+                    ShowTickPrefix != null &&
                     ShowTickPrefix.Equals(other.ShowTickPrefix)
                 ) && 
                 (
-                    TickSuffix == other.TickSuffix &&
-                    TickSuffix != null && other.TickSuffix != null &&
+                    TickSuffix == other.TickSuffix ||
+                    TickSuffix != null &&
                     TickSuffix.Equals(other.TickSuffix)
                 ) && 
                 (
-                    ShowTickSuffix == other.ShowTickSuffix &&
-                    ShowTickSuffix != null && other.ShowTickSuffix != null &&
+                    ShowTickSuffix == other.ShowTickSuffix ||
+                    ShowTickSuffix != null &&
                     ShowTickSuffix.Equals(other.ShowTickSuffix)
                 ) && 
                 (
-                    SeparateThousands == other.SeparateThousands &&
-                    SeparateThousands != null && other.SeparateThousands != null &&
+                    SeparateThousands == other.SeparateThousands ||
+                    SeparateThousands != null &&
                     SeparateThousands.Equals(other.SeparateThousands)
                 ) && 
                 (
-                    ExponentFormat == other.ExponentFormat &&
-                    ExponentFormat != null && other.ExponentFormat != null &&
+                    ExponentFormat == other.ExponentFormat ||
+                    ExponentFormat != null &&
                     ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
-                    ShowExponent == other.ShowExponent &&
-                    ShowExponent != null && other.ShowExponent != null &&
+                    ShowExponent == other.ShowExponent ||
+                    ShowExponent != null &&
                     ShowExponent.Equals(other.ShowExponent)
                 ) && 
                 (
-                    Title == other.Title &&
-                    Title != null && other.Title != null &&
+                    Title == other.Title ||
+                    Title != null &&
                     Title.Equals(other.Title)
                 ) && 
                 (
-                    TickValsSrc == other.TickValsSrc &&
-                    TickValsSrc != null && other.TickValsSrc != null &&
+                    TickValsSrc == other.TickValsSrc ||
+                    TickValsSrc != null &&
                     TickValsSrc.Equals(other.TickValsSrc)
                 ) && 
                 (
-                    TickTextSrc == other.TickTextSrc &&
-                    TickTextSrc != null && other.TickTextSrc != null &&
+                    TickTextSrc == other.TickTextSrc ||
+                    TickTextSrc != null &&
                     TickTextSrc.Equals(other.TickTextSrc)
                 );
         }

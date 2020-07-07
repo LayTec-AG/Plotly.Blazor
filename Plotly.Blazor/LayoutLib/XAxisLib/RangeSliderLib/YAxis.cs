@@ -51,8 +51,8 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib
 
             return 
                 (
-                    RangeMode == other.RangeMode &&
-                    RangeMode != null && other.RangeMode != null &&
+                    RangeMode == other.RangeMode ||
+                    RangeMode != null &&
                     RangeMode.Equals(other.RangeMode)
                 ) && 
                 (

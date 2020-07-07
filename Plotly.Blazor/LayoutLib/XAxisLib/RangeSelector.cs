@@ -107,8 +107,8 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
@@ -117,48 +117,48 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
                     Buttons.SequenceEqual(other.Buttons)
                 ) &&
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    ActiveColor == other.ActiveColor &&
-                    ActiveColor != null && other.ActiveColor != null &&
+                    ActiveColor == other.ActiveColor ||
+                    ActiveColor != null &&
                     ActiveColor.Equals(other.ActiveColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 );
         }

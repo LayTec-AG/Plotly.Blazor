@@ -48,13 +48,13 @@ namespace Plotly.Blazor.AnimationLib
 
             return 
                 (
-                    Duration == other.Duration &&
-                    Duration != null && other.Duration != null &&
+                    Duration == other.Duration ||
+                    Duration != null &&
                     Duration.Equals(other.Duration)
                 ) && 
                 (
-                    Redraw == other.Redraw &&
-                    Redraw != null && other.Redraw != null &&
+                    Redraw == other.Redraw ||
+                    Redraw != null &&
                     Redraw.Equals(other.Redraw)
                 );
         }

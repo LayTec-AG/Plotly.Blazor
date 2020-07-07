@@ -45,13 +45,13 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    FillColor == other.FillColor &&
-                    FillColor != null && other.FillColor != null &&
+                    FillColor == other.FillColor ||
+                    FillColor != null &&
                     FillColor.Equals(other.FillColor)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 );
         }

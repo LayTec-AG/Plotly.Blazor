@@ -66,28 +66,28 @@ namespace Plotly.Blazor.Traces.TreeMapLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Side == other.Side &&
-                    Side != null && other.Side != null &&
+                    Side == other.Side ||
+                    Side != null &&
                     Side.Equals(other.Side)
                 ) && 
                 (
-                    EdgeShape == other.EdgeShape &&
-                    EdgeShape != null && other.EdgeShape != null &&
+                    EdgeShape == other.EdgeShape ||
+                    EdgeShape != null &&
                     EdgeShape.Equals(other.EdgeShape)
                 ) && 
                 (
-                    Thickness == other.Thickness &&
-                    Thickness != null && other.Thickness != null &&
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
                     Thickness.Equals(other.Thickness)
                 ) && 
                 (
-                    TextFont == other.TextFont &&
-                    TextFont != null && other.TextFont != null &&
+                    TextFont == other.TextFont ||
+                    TextFont != null &&
                     TextFont.Equals(other.TextFont)
                 );
         }

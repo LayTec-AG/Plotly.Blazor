@@ -79,8 +79,8 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
 
             return 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
@@ -89,18 +89,18 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
                     DTickRange.SequenceEqual(other.DTickRange)
                 ) &&
                 (
-                    Value == other.Value &&
-                    Value != null && other.Value != null &&
+                    Value == other.Value ||
+                    Value != null &&
                     Value.Equals(other.Value)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

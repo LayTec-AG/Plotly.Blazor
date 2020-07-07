@@ -51,18 +51,18 @@ namespace Plotly.Blazor.Traces.Mesh3DLib
 
             return 
                 (
-                    Show == other.Show &&
-                    Show != null && other.Show != null &&
+                    Show == other.Show ||
+                    Show != null &&
                     Show.Equals(other.Show)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 );
         }

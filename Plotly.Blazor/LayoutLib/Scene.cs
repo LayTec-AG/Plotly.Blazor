@@ -115,58 +115,58 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    Camera == other.Camera &&
-                    Camera != null && other.Camera != null &&
+                    Camera == other.Camera ||
+                    Camera != null &&
                     Camera.Equals(other.Camera)
                 ) && 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
-                    AspectMode == other.AspectMode &&
-                    AspectMode != null && other.AspectMode != null &&
+                    AspectMode == other.AspectMode ||
+                    AspectMode != null &&
                     AspectMode.Equals(other.AspectMode)
                 ) && 
                 (
-                    AspectRatio == other.AspectRatio &&
-                    AspectRatio != null && other.AspectRatio != null &&
+                    AspectRatio == other.AspectRatio ||
+                    AspectRatio != null &&
                     AspectRatio.Equals(other.AspectRatio)
                 ) && 
                 (
-                    XAxis == other.XAxis &&
-                    XAxis != null && other.XAxis != null &&
+                    XAxis == other.XAxis ||
+                    XAxis != null &&
                     XAxis.Equals(other.XAxis)
                 ) && 
                 (
-                    YAxis == other.YAxis &&
-                    YAxis != null && other.YAxis != null &&
+                    YAxis == other.YAxis ||
+                    YAxis != null &&
                     YAxis.Equals(other.YAxis)
                 ) && 
                 (
-                    ZAxis == other.ZAxis &&
-                    ZAxis != null && other.ZAxis != null &&
+                    ZAxis == other.ZAxis ||
+                    ZAxis != null &&
                     ZAxis.Equals(other.ZAxis)
                 ) && 
                 (
-                    DragMode == other.DragMode &&
-                    DragMode != null && other.DragMode != null &&
+                    DragMode == other.DragMode ||
+                    DragMode != null &&
                     DragMode.Equals(other.DragMode)
                 ) && 
                 (
-                    HoverMode == other.HoverMode &&
-                    HoverMode != null && other.HoverMode != null &&
+                    HoverMode == other.HoverMode ||
+                    HoverMode != null &&
                     HoverMode.Equals(other.HoverMode)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (

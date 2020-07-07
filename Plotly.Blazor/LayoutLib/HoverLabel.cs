@@ -68,28 +68,28 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Align == other.Align &&
-                    Align != null && other.Align != null &&
+                    Align == other.Align ||
+                    Align != null &&
                     Align.Equals(other.Align)
                 ) && 
                 (
-                    NameLength == other.NameLength &&
-                    NameLength != null && other.NameLength != null &&
+                    NameLength == other.NameLength ||
+                    NameLength != null &&
                     NameLength.Equals(other.NameLength)
                 );
         }

@@ -242,8 +242,8 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -252,58 +252,58 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    CAuto == other.CAuto &&
-                    CAuto != null && other.CAuto != null &&
+                    CAuto == other.CAuto ||
+                    CAuto != null &&
                     CAuto.Equals(other.CAuto)
                 ) && 
                 (
-                    CMin == other.CMin &&
-                    CMin != null && other.CMin != null &&
+                    CMin == other.CMin ||
+                    CMin != null &&
                     CMin.Equals(other.CMin)
                 ) && 
                 (
-                    CMax == other.CMax &&
-                    CMax != null && other.CMax != null &&
+                    CMax == other.CMax ||
+                    CMax != null &&
                     CMax.Equals(other.CMax)
                 ) && 
                 (
-                    CMid == other.CMid &&
-                    CMid != null && other.CMid != null &&
+                    CMid == other.CMid ||
+                    CMid != null &&
                     CMid.Equals(other.CMid)
                 ) && 
                 (
-                    ColorScale == other.ColorScale &&
-                    ColorScale != null && other.ColorScale != null &&
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
-                    AutoColorScale == other.AutoColorScale &&
-                    AutoColorScale != null && other.AutoColorScale != null &&
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
                     AutoColorScale.Equals(other.AutoColorScale)
                 ) && 
                 (
-                    ReverseScale == other.ReverseScale &&
-                    ReverseScale != null && other.ReverseScale != null &&
+                    ReverseScale == other.ReverseScale ||
+                    ReverseScale != null &&
                     ReverseScale.Equals(other.ReverseScale)
                 ) && 
                 (
-                    ShowScale == other.ShowScale &&
-                    ShowScale != null && other.ShowScale != null &&
+                    ShowScale == other.ShowScale ||
+                    ShowScale != null &&
                     ShowScale.Equals(other.ShowScale)
                 ) && 
                 (
-                    ColorBar == other.ColorBar &&
-                    ColorBar != null && other.ColorBar != null &&
+                    ColorBar == other.ColorBar ||
+                    ColorBar != null &&
                     ColorBar.Equals(other.ColorBar)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis &&
-                    ColorAxis != null && other.ColorAxis != null &&
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
                     ColorAxis.Equals(other.ColorAxis)
                 ) && 
                 (
-                    Symbol == other.Symbol &&
-                    Symbol != null && other.Symbol != null &&
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
                     Symbol.Equals(other.Symbol)
                 ) && 
                 (
@@ -312,8 +312,8 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     SymbolArray.SequenceEqual(other.SymbolArray)
                 ) &&
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
@@ -322,23 +322,23 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     SizeArray.SequenceEqual(other.SizeArray)
                 ) &&
                 (
-                    SizeRef == other.SizeRef &&
-                    SizeRef != null && other.SizeRef != null &&
+                    SizeRef == other.SizeRef ||
+                    SizeRef != null &&
                     SizeRef.Equals(other.SizeRef)
                 ) && 
                 (
-                    SizeMin == other.SizeMin &&
-                    SizeMin != null && other.SizeMin != null &&
+                    SizeMin == other.SizeMin ||
+                    SizeMin != null &&
                     SizeMin.Equals(other.SizeMin)
                 ) && 
                 (
-                    SizeMode == other.SizeMode &&
-                    SizeMode != null && other.SizeMode != null &&
+                    SizeMode == other.SizeMode ||
+                    SizeMode != null &&
                     SizeMode.Equals(other.SizeMode)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
@@ -347,28 +347,28 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     OpacityArray.SequenceEqual(other.OpacityArray)
                 ) &&
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
-                    SymbolSrc == other.SymbolSrc &&
-                    SymbolSrc != null && other.SymbolSrc != null &&
+                    SymbolSrc == other.SymbolSrc ||
+                    SymbolSrc != null &&
                     SymbolSrc.Equals(other.SymbolSrc)
                 ) && 
                 (
-                    SizeSrc == other.SizeSrc &&
-                    SizeSrc != null && other.SizeSrc != null &&
+                    SizeSrc == other.SizeSrc ||
+                    SizeSrc != null &&
                     SizeSrc.Equals(other.SizeSrc)
                 ) && 
                 (
-                    OpacitySrc == other.OpacitySrc &&
-                    OpacitySrc != null && other.OpacitySrc != null &&
+                    OpacitySrc == other.OpacitySrc ||
+                    OpacitySrc != null &&
                     OpacitySrc.Equals(other.OpacitySrc)
                 );
         }

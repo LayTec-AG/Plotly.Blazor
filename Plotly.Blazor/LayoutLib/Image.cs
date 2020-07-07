@@ -151,78 +151,78 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Source == other.Source &&
-                    Source != null && other.Source != null &&
+                    Source == other.Source ||
+                    Source != null &&
                     Source.Equals(other.Source)
                 ) && 
                 (
-                    Layer == other.Layer &&
-                    Layer != null && other.Layer != null &&
+                    Layer == other.Layer ||
+                    Layer != null &&
                     Layer.Equals(other.Layer)
                 ) && 
                 (
-                    SizeX == other.SizeX &&
-                    SizeX != null && other.SizeX != null &&
+                    SizeX == other.SizeX ||
+                    SizeX != null &&
                     SizeX.Equals(other.SizeX)
                 ) && 
                 (
-                    SizeY == other.SizeY &&
-                    SizeY != null && other.SizeY != null &&
+                    SizeY == other.SizeY ||
+                    SizeY != null &&
                     SizeY.Equals(other.SizeY)
                 ) && 
                 (
-                    Sizing == other.Sizing &&
-                    Sizing != null && other.Sizing != null &&
+                    Sizing == other.Sizing ||
+                    Sizing != null &&
                     Sizing.Equals(other.Sizing)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    XRef == other.XRef &&
-                    XRef != null && other.XRef != null &&
+                    XRef == other.XRef ||
+                    XRef != null &&
                     XRef.Equals(other.XRef)
                 ) && 
                 (
-                    YRef == other.YRef &&
-                    YRef != null && other.YRef != null &&
+                    YRef == other.YRef ||
+                    YRef != null &&
                     YRef.Equals(other.YRef)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

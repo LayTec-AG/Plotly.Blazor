@@ -239,163 +239,163 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
-                    FitBounds == other.FitBounds &&
-                    FitBounds != null && other.FitBounds != null &&
+                    FitBounds == other.FitBounds ||
+                    FitBounds != null &&
                     FitBounds.Equals(other.FitBounds)
                 ) && 
                 (
-                    Resolution == other.Resolution &&
-                    Resolution != null && other.Resolution != null &&
+                    Resolution == other.Resolution ||
+                    Resolution != null &&
                     Resolution.Equals(other.Resolution)
                 ) && 
                 (
-                    Scope == other.Scope &&
-                    Scope != null && other.Scope != null &&
+                    Scope == other.Scope ||
+                    Scope != null &&
                     Scope.Equals(other.Scope)
                 ) && 
                 (
-                    Projection == other.Projection &&
-                    Projection != null && other.Projection != null &&
+                    Projection == other.Projection ||
+                    Projection != null &&
                     Projection.Equals(other.Projection)
                 ) && 
                 (
-                    Center == other.Center &&
-                    Center != null && other.Center != null &&
+                    Center == other.Center ||
+                    Center != null &&
                     Center.Equals(other.Center)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    ShowCoastlines == other.ShowCoastlines &&
-                    ShowCoastlines != null && other.ShowCoastlines != null &&
+                    ShowCoastlines == other.ShowCoastlines ||
+                    ShowCoastlines != null &&
                     ShowCoastlines.Equals(other.ShowCoastlines)
                 ) && 
                 (
-                    CoastlineColor == other.CoastlineColor &&
-                    CoastlineColor != null && other.CoastlineColor != null &&
+                    CoastlineColor == other.CoastlineColor ||
+                    CoastlineColor != null &&
                     CoastlineColor.Equals(other.CoastlineColor)
                 ) && 
                 (
-                    CoastlineWidth == other.CoastlineWidth &&
-                    CoastlineWidth != null && other.CoastlineWidth != null &&
+                    CoastlineWidth == other.CoastlineWidth ||
+                    CoastlineWidth != null &&
                     CoastlineWidth.Equals(other.CoastlineWidth)
                 ) && 
                 (
-                    ShowLand == other.ShowLand &&
-                    ShowLand != null && other.ShowLand != null &&
+                    ShowLand == other.ShowLand ||
+                    ShowLand != null &&
                     ShowLand.Equals(other.ShowLand)
                 ) && 
                 (
-                    LandColor == other.LandColor &&
-                    LandColor != null && other.LandColor != null &&
+                    LandColor == other.LandColor ||
+                    LandColor != null &&
                     LandColor.Equals(other.LandColor)
                 ) && 
                 (
-                    ShowOcean == other.ShowOcean &&
-                    ShowOcean != null && other.ShowOcean != null &&
+                    ShowOcean == other.ShowOcean ||
+                    ShowOcean != null &&
                     ShowOcean.Equals(other.ShowOcean)
                 ) && 
                 (
-                    OceanColor == other.OceanColor &&
-                    OceanColor != null && other.OceanColor != null &&
+                    OceanColor == other.OceanColor ||
+                    OceanColor != null &&
                     OceanColor.Equals(other.OceanColor)
                 ) && 
                 (
-                    ShowLakes == other.ShowLakes &&
-                    ShowLakes != null && other.ShowLakes != null &&
+                    ShowLakes == other.ShowLakes ||
+                    ShowLakes != null &&
                     ShowLakes.Equals(other.ShowLakes)
                 ) && 
                 (
-                    LakeColor == other.LakeColor &&
-                    LakeColor != null && other.LakeColor != null &&
+                    LakeColor == other.LakeColor ||
+                    LakeColor != null &&
                     LakeColor.Equals(other.LakeColor)
                 ) && 
                 (
-                    ShowRivers == other.ShowRivers &&
-                    ShowRivers != null && other.ShowRivers != null &&
+                    ShowRivers == other.ShowRivers ||
+                    ShowRivers != null &&
                     ShowRivers.Equals(other.ShowRivers)
                 ) && 
                 (
-                    RiverColor == other.RiverColor &&
-                    RiverColor != null && other.RiverColor != null &&
+                    RiverColor == other.RiverColor ||
+                    RiverColor != null &&
                     RiverColor.Equals(other.RiverColor)
                 ) && 
                 (
-                    RiverWidth == other.RiverWidth &&
-                    RiverWidth != null && other.RiverWidth != null &&
+                    RiverWidth == other.RiverWidth ||
+                    RiverWidth != null &&
                     RiverWidth.Equals(other.RiverWidth)
                 ) && 
                 (
-                    ShowCountries == other.ShowCountries &&
-                    ShowCountries != null && other.ShowCountries != null &&
+                    ShowCountries == other.ShowCountries ||
+                    ShowCountries != null &&
                     ShowCountries.Equals(other.ShowCountries)
                 ) && 
                 (
-                    CountryColor == other.CountryColor &&
-                    CountryColor != null && other.CountryColor != null &&
+                    CountryColor == other.CountryColor ||
+                    CountryColor != null &&
                     CountryColor.Equals(other.CountryColor)
                 ) && 
                 (
-                    CountryWidth == other.CountryWidth &&
-                    CountryWidth != null && other.CountryWidth != null &&
+                    CountryWidth == other.CountryWidth ||
+                    CountryWidth != null &&
                     CountryWidth.Equals(other.CountryWidth)
                 ) && 
                 (
-                    ShowSubUnits == other.ShowSubUnits &&
-                    ShowSubUnits != null && other.ShowSubUnits != null &&
+                    ShowSubUnits == other.ShowSubUnits ||
+                    ShowSubUnits != null &&
                     ShowSubUnits.Equals(other.ShowSubUnits)
                 ) && 
                 (
-                    SubUnitColor == other.SubUnitColor &&
-                    SubUnitColor != null && other.SubUnitColor != null &&
+                    SubUnitColor == other.SubUnitColor ||
+                    SubUnitColor != null &&
                     SubUnitColor.Equals(other.SubUnitColor)
                 ) && 
                 (
-                    SubUnitWidth == other.SubUnitWidth &&
-                    SubUnitWidth != null && other.SubUnitWidth != null &&
+                    SubUnitWidth == other.SubUnitWidth ||
+                    SubUnitWidth != null &&
                     SubUnitWidth.Equals(other.SubUnitWidth)
                 ) && 
                 (
-                    ShowFrame == other.ShowFrame &&
-                    ShowFrame != null && other.ShowFrame != null &&
+                    ShowFrame == other.ShowFrame ||
+                    ShowFrame != null &&
                     ShowFrame.Equals(other.ShowFrame)
                 ) && 
                 (
-                    FrameColor == other.FrameColor &&
-                    FrameColor != null && other.FrameColor != null &&
+                    FrameColor == other.FrameColor ||
+                    FrameColor != null &&
                     FrameColor.Equals(other.FrameColor)
                 ) && 
                 (
-                    FrameWidth == other.FrameWidth &&
-                    FrameWidth != null && other.FrameWidth != null &&
+                    FrameWidth == other.FrameWidth ||
+                    FrameWidth != null &&
                     FrameWidth.Equals(other.FrameWidth)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    LonAxis == other.LonAxis &&
-                    LonAxis != null && other.LonAxis != null &&
+                    LonAxis == other.LonAxis ||
+                    LonAxis != null &&
                     LonAxis.Equals(other.LonAxis)
                 ) && 
                 (
-                    LaTaxis == other.LaTaxis &&
-                    LaTaxis != null && other.LaTaxis != null &&
+                    LaTaxis == other.LaTaxis ||
+                    LaTaxis != null &&
                     LaTaxis.Equals(other.LaTaxis)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 );
         }

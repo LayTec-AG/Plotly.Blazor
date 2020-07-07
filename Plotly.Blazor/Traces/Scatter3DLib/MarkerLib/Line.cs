@@ -146,13 +146,13 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.MarkerLib
 
             return 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -161,48 +161,48 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.MarkerLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    CAuto == other.CAuto &&
-                    CAuto != null && other.CAuto != null &&
+                    CAuto == other.CAuto ||
+                    CAuto != null &&
                     CAuto.Equals(other.CAuto)
                 ) && 
                 (
-                    CMin == other.CMin &&
-                    CMin != null && other.CMin != null &&
+                    CMin == other.CMin ||
+                    CMin != null &&
                     CMin.Equals(other.CMin)
                 ) && 
                 (
-                    CMax == other.CMax &&
-                    CMax != null && other.CMax != null &&
+                    CMax == other.CMax ||
+                    CMax != null &&
                     CMax.Equals(other.CMax)
                 ) && 
                 (
-                    CMid == other.CMid &&
-                    CMid != null && other.CMid != null &&
+                    CMid == other.CMid ||
+                    CMid != null &&
                     CMid.Equals(other.CMid)
                 ) && 
                 (
-                    ColorScale == other.ColorScale &&
-                    ColorScale != null && other.ColorScale != null &&
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
-                    AutoColorScale == other.AutoColorScale &&
-                    AutoColorScale != null && other.AutoColorScale != null &&
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
                     AutoColorScale.Equals(other.AutoColorScale)
                 ) && 
                 (
-                    ReverseScale == other.ReverseScale &&
-                    ReverseScale != null && other.ReverseScale != null &&
+                    ReverseScale == other.ReverseScale ||
+                    ReverseScale != null &&
                     ReverseScale.Equals(other.ReverseScale)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis &&
-                    ColorAxis != null && other.ColorAxis != null &&
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
                     ColorAxis.Equals(other.ColorAxis)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 );
         }

@@ -199,8 +199,8 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     Label.SequenceEqual(other.Label)
                 ) &&
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -214,8 +214,8 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     CustomData.SequenceEqual(other.CustomData)
                 ) &&
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
@@ -234,18 +234,18 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     Value.SequenceEqual(other.Value)
                 ) &&
                 (
-                    HoverInfo == other.HoverInfo &&
-                    HoverInfo != null && other.HoverInfo != null &&
+                    HoverInfo == other.HoverInfo ||
+                    HoverInfo != null &&
                     HoverInfo.Equals(other.HoverInfo)
                 ) && 
                 (
-                    HoverLabel == other.HoverLabel &&
-                    HoverLabel != null && other.HoverLabel != null &&
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
                     HoverLabel.Equals(other.HoverLabel)
                 ) && 
                 (
-                    HoverTemplate == other.HoverTemplate &&
-                    HoverTemplate != null && other.HoverTemplate != null &&
+                    HoverTemplate == other.HoverTemplate ||
+                    HoverTemplate != null &&
                     HoverTemplate.Equals(other.HoverTemplate)
                 ) && 
                 (
@@ -259,38 +259,38 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     ColorScales.SequenceEqual(other.ColorScales)
                 ) &&
                 (
-                    LabelSrc == other.LabelSrc &&
-                    LabelSrc != null && other.LabelSrc != null &&
+                    LabelSrc == other.LabelSrc ||
+                    LabelSrc != null &&
                     LabelSrc.Equals(other.LabelSrc)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
-                    CustomDataSrc == other.CustomDataSrc &&
-                    CustomDataSrc != null && other.CustomDataSrc != null &&
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
                     CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    SourceSrc == other.SourceSrc &&
-                    SourceSrc != null && other.SourceSrc != null &&
+                    SourceSrc == other.SourceSrc ||
+                    SourceSrc != null &&
                     SourceSrc.Equals(other.SourceSrc)
                 ) && 
                 (
-                    TargetSrc == other.TargetSrc &&
-                    TargetSrc != null && other.TargetSrc != null &&
+                    TargetSrc == other.TargetSrc ||
+                    TargetSrc != null &&
                     TargetSrc.Equals(other.TargetSrc)
                 ) && 
                 (
-                    ValueSrc == other.ValueSrc &&
-                    ValueSrc != null && other.ValueSrc != null &&
+                    ValueSrc == other.ValueSrc ||
+                    ValueSrc != null &&
                     ValueSrc.Equals(other.ValueSrc)
                 ) && 
                 (
-                    HoverTemplateSrc == other.HoverTemplateSrc &&
-                    HoverTemplateSrc != null && other.HoverTemplateSrc != null &&
+                    HoverTemplateSrc == other.HoverTemplateSrc ||
+                    HoverTemplateSrc != null &&
                     HoverTemplateSrc.Equals(other.HoverTemplateSrc)
                 );
         }

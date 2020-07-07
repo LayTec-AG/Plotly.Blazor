@@ -94,23 +94,23 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
             return 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    AutoRange == other.AutoRange &&
-                    AutoRange != null && other.AutoRange != null &&
+                    AutoRange == other.AutoRange ||
+                    AutoRange != null &&
                     AutoRange.Equals(other.AutoRange)
                 ) && 
                 (
@@ -119,13 +119,13 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
                     Range.SequenceEqual(other.Range)
                 ) &&
                 (
-                    Thickness == other.Thickness &&
-                    Thickness != null && other.Thickness != null &&
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
                     Thickness.Equals(other.Thickness)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (

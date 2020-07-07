@@ -40,8 +40,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
             return 
                 (
-                    OutlineColor == other.OutlineColor &&
-                    OutlineColor != null && other.OutlineColor != null &&
+                    OutlineColor == other.OutlineColor ||
+                    OutlineColor != null &&
                     OutlineColor.Equals(other.OutlineColor)
                 );
         }

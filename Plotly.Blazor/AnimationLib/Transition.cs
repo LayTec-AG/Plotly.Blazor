@@ -53,18 +53,18 @@ namespace Plotly.Blazor.AnimationLib
 
             return 
                 (
-                    Duration == other.Duration &&
-                    Duration != null && other.Duration != null &&
+                    Duration == other.Duration ||
+                    Duration != null &&
                     Duration.Equals(other.Duration)
                 ) && 
                 (
-                    Easing == other.Easing &&
-                    Easing != null && other.Easing != null &&
+                    Easing == other.Easing ||
+                    Easing != null &&
                     Easing.Equals(other.Easing)
                 ) && 
                 (
-                    Ordering == other.Ordering &&
-                    Ordering != null && other.Ordering != null &&
+                    Ordering == other.Ordering ||
+                    Ordering != null &&
                     Ordering.Equals(other.Ordering)
                 );
         }

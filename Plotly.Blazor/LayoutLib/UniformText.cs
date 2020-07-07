@@ -50,13 +50,13 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Mode == other.Mode &&
-                    Mode != null && other.Mode != null &&
+                    Mode == other.Mode ||
+                    Mode != null &&
                     Mode.Equals(other.Mode)
                 ) && 
                 (
-                    MinSize == other.MinSize &&
-                    MinSize != null && other.MinSize != null &&
+                    MinSize == other.MinSize ||
+                    MinSize != null &&
                     MinSize.Equals(other.MinSize)
                 );
         }

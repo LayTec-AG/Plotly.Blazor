@@ -41,8 +41,8 @@ namespace Plotly.Blazor.Traces.CandlestickLib
 
             return 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 );
         }

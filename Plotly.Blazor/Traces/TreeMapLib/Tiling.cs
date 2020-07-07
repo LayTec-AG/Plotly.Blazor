@@ -64,23 +64,23 @@ namespace Plotly.Blazor.Traces.TreeMapLib
 
             return 
                 (
-                    Packing == other.Packing &&
-                    Packing != null && other.Packing != null &&
+                    Packing == other.Packing ||
+                    Packing != null &&
                     Packing.Equals(other.Packing)
                 ) && 
                 (
-                    SquarifyRatio == other.SquarifyRatio &&
-                    SquarifyRatio != null && other.SquarifyRatio != null &&
+                    SquarifyRatio == other.SquarifyRatio ||
+                    SquarifyRatio != null &&
                     SquarifyRatio.Equals(other.SquarifyRatio)
                 ) && 
                 (
-                    Flip == other.Flip &&
-                    Flip != null && other.Flip != null &&
+                    Flip == other.Flip ||
+                    Flip != null &&
                     Flip.Equals(other.Flip)
                 ) && 
                 (
-                    Pad == other.Pad &&
-                    Pad != null && other.Pad != null &&
+                    Pad == other.Pad ||
+                    Pad != null &&
                     Pad.Equals(other.Pad)
                 );
         }

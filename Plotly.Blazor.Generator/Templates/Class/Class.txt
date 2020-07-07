@@ -67,8 +67,8 @@ namespace {{Namespace}}
 {{#Properties}}
 {{^IsList}}
                 (
-                    {{PropertyName}} == other.{{PropertyName}} &&
-                    {{PropertyName}} != null && other.{{PropertyName}} != null &&
+                    {{PropertyName}} == other.{{PropertyName}} ||
+                    {{PropertyName}} != null &&
                     {{PropertyName}}.Equals(other.{{PropertyName}})
                 ){{#HasMore}} && {{/HasMore}}{{^HasMore}};{{/HasMore}}
 {{/IsList}}

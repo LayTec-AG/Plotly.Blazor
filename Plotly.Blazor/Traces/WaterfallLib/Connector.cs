@@ -51,18 +51,18 @@ namespace Plotly.Blazor.Traces.WaterfallLib
 
             return 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Mode == other.Mode &&
-                    Mode != null && other.Mode != null &&
+                    Mode == other.Mode ||
+                    Mode != null &&
                     Mode.Equals(other.Mode)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 );
         }

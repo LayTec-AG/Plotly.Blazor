@@ -134,18 +134,18 @@ namespace Plotly.Blazor.Transforms
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
-                    Target == other.Target &&
-                    Target != null && other.Target != null &&
+                    Target == other.Target ||
+                    Target != null &&
                     Target.Equals(other.Target)
                 ) && 
                 (
@@ -154,33 +154,33 @@ namespace Plotly.Blazor.Transforms
                     TargetArray.SequenceEqual(other.TargetArray)
                 ) &&
                 (
-                    Operation == other.Operation &&
-                    Operation != null && other.Operation != null &&
+                    Operation == other.Operation ||
+                    Operation != null &&
                     Operation.Equals(other.Operation)
                 ) && 
                 (
-                    Value == other.Value &&
-                    Value != null && other.Value != null &&
+                    Value == other.Value ||
+                    Value != null &&
                     Value.Equals(other.Value)
                 ) && 
                 (
-                    PreserveGaps == other.PreserveGaps &&
-                    PreserveGaps != null && other.PreserveGaps != null &&
+                    PreserveGaps == other.PreserveGaps ||
+                    PreserveGaps != null &&
                     PreserveGaps.Equals(other.PreserveGaps)
                 ) && 
                 (
-                    ValueCalendar == other.ValueCalendar &&
-                    ValueCalendar != null && other.ValueCalendar != null &&
+                    ValueCalendar == other.ValueCalendar ||
+                    ValueCalendar != null &&
                     ValueCalendar.Equals(other.ValueCalendar)
                 ) && 
                 (
-                    TargetCalendar == other.TargetCalendar &&
-                    TargetCalendar != null && other.TargetCalendar != null &&
+                    TargetCalendar == other.TargetCalendar ||
+                    TargetCalendar != null &&
                     TargetCalendar.Equals(other.TargetCalendar)
                 ) && 
                 (
-                    TargetSrc == other.TargetSrc &&
-                    TargetSrc != null && other.TargetSrc != null &&
+                    TargetSrc == other.TargetSrc ||
+                    TargetSrc != null &&
                     TargetSrc.Equals(other.TargetSrc)
                 );
         }

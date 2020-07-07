@@ -51,18 +51,18 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib
 
             return 
                 (
-                    Show == other.Show &&
-                    Show != null && other.Show != null &&
+                    Show == other.Show ||
+                    Show != null &&
                     Show.Equals(other.Show)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Scale == other.Scale &&
-                    Scale != null && other.Scale != null &&
+                    Scale == other.Scale ||
+                    Scale != null &&
                     Scale.Equals(other.Scale)
                 );
         }

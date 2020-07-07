@@ -309,188 +309,188 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    Z == other.Z &&
-                    Z != null && other.Z != null &&
+                    Z == other.Z ||
+                    Z != null &&
                     Z.Equals(other.Z)
                 ) && 
                 (
-                    Ax == other.Ax &&
-                    Ax != null && other.Ax != null &&
+                    Ax == other.Ax ||
+                    Ax != null &&
                     Ax.Equals(other.Ax)
                 ) && 
                 (
-                    Ay == other.Ay &&
-                    Ay != null && other.Ay != null &&
+                    Ay == other.Ay ||
+                    Ay != null &&
                     Ay.Equals(other.Ay)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    XShift == other.XShift &&
-                    XShift != null && other.XShift != null &&
+                    XShift == other.XShift ||
+                    XShift != null &&
                     XShift.Equals(other.XShift)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    YShift == other.YShift &&
-                    YShift != null && other.YShift != null &&
+                    YShift == other.YShift ||
+                    YShift != null &&
                     YShift.Equals(other.YShift)
                 ) && 
                 (
-                    Text == other.Text &&
-                    Text != null && other.Text != null &&
+                    Text == other.Text ||
+                    Text != null &&
                     Text.Equals(other.Text)
                 ) && 
                 (
-                    TextAngle == other.TextAngle &&
-                    TextAngle != null && other.TextAngle != null &&
+                    TextAngle == other.TextAngle ||
+                    TextAngle != null &&
                     TextAngle.Equals(other.TextAngle)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    Height == other.Height &&
-                    Height != null && other.Height != null &&
+                    Height == other.Height ||
+                    Height != null &&
                     Height.Equals(other.Height)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Align == other.Align &&
-                    Align != null && other.Align != null &&
+                    Align == other.Align ||
+                    Align != null &&
                     Align.Equals(other.Align)
                 ) && 
                 (
-                    VAlign == other.VAlign &&
-                    VAlign != null && other.VAlign != null &&
+                    VAlign == other.VAlign ||
+                    VAlign != null &&
                     VAlign.Equals(other.VAlign)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderPad == other.BorderPad &&
-                    BorderPad != null && other.BorderPad != null &&
+                    BorderPad == other.BorderPad ||
+                    BorderPad != null &&
                     BorderPad.Equals(other.BorderPad)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    ShowArrow == other.ShowArrow &&
-                    ShowArrow != null && other.ShowArrow != null &&
+                    ShowArrow == other.ShowArrow ||
+                    ShowArrow != null &&
                     ShowArrow.Equals(other.ShowArrow)
                 ) && 
                 (
-                    ArrowColor == other.ArrowColor &&
-                    ArrowColor != null && other.ArrowColor != null &&
+                    ArrowColor == other.ArrowColor ||
+                    ArrowColor != null &&
                     ArrowColor.Equals(other.ArrowColor)
                 ) && 
                 (
-                    Arrowhead == other.Arrowhead &&
-                    Arrowhead != null && other.Arrowhead != null &&
+                    Arrowhead == other.Arrowhead ||
+                    Arrowhead != null &&
                     Arrowhead.Equals(other.Arrowhead)
                 ) && 
                 (
-                    StartArrowhead == other.StartArrowhead &&
-                    StartArrowhead != null && other.StartArrowhead != null &&
+                    StartArrowhead == other.StartArrowhead ||
+                    StartArrowhead != null &&
                     StartArrowhead.Equals(other.StartArrowhead)
                 ) && 
                 (
-                    ArrowSide == other.ArrowSide &&
-                    ArrowSide != null && other.ArrowSide != null &&
+                    ArrowSide == other.ArrowSide ||
+                    ArrowSide != null &&
                     ArrowSide.Equals(other.ArrowSide)
                 ) && 
                 (
-                    ArrowSize == other.ArrowSize &&
-                    ArrowSize != null && other.ArrowSize != null &&
+                    ArrowSize == other.ArrowSize ||
+                    ArrowSize != null &&
                     ArrowSize.Equals(other.ArrowSize)
                 ) && 
                 (
-                    StartArrowSize == other.StartArrowSize &&
-                    StartArrowSize != null && other.StartArrowSize != null &&
+                    StartArrowSize == other.StartArrowSize ||
+                    StartArrowSize != null &&
                     StartArrowSize.Equals(other.StartArrowSize)
                 ) && 
                 (
-                    ArrowWidth == other.ArrowWidth &&
-                    ArrowWidth != null && other.ArrowWidth != null &&
+                    ArrowWidth == other.ArrowWidth ||
+                    ArrowWidth != null &&
                     ArrowWidth.Equals(other.ArrowWidth)
                 ) && 
                 (
-                    Standoff == other.Standoff &&
-                    Standoff != null && other.Standoff != null &&
+                    Standoff == other.Standoff ||
+                    Standoff != null &&
                     Standoff.Equals(other.Standoff)
                 ) && 
                 (
-                    StartStandoff == other.StartStandoff &&
-                    StartStandoff != null && other.StartStandoff != null &&
+                    StartStandoff == other.StartStandoff ||
+                    StartStandoff != null &&
                     StartStandoff.Equals(other.StartStandoff)
                 ) && 
                 (
-                    HoverText == other.HoverText &&
-                    HoverText != null && other.HoverText != null &&
+                    HoverText == other.HoverText ||
+                    HoverText != null &&
                     HoverText.Equals(other.HoverText)
                 ) && 
                 (
-                    HoverLabel == other.HoverLabel &&
-                    HoverLabel != null && other.HoverLabel != null &&
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
                     HoverLabel.Equals(other.HoverLabel)
                 ) && 
                 (
-                    CaptureEvents == other.CaptureEvents &&
-                    CaptureEvents != null && other.CaptureEvents != null &&
+                    CaptureEvents == other.CaptureEvents ||
+                    CaptureEvents != null &&
                     CaptureEvents.Equals(other.CaptureEvents)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

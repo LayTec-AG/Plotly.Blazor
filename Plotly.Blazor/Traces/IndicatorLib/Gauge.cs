@@ -83,33 +83,33 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    Shape == other.Shape &&
-                    Shape != null && other.Shape != null &&
+                    Shape == other.Shape ||
+                    Shape != null &&
                     Shape.Equals(other.Shape)
                 ) && 
                 (
-                    Bar == other.Bar &&
-                    Bar != null && other.Bar != null &&
+                    Bar == other.Bar ||
+                    Bar != null &&
                     Bar.Equals(other.Bar)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    Axis == other.Axis &&
-                    Axis != null && other.Axis != null &&
+                    Axis == other.Axis ||
+                    Axis != null &&
                     Axis.Equals(other.Axis)
                 ) && 
                 (
@@ -118,8 +118,8 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     Steps.SequenceEqual(other.Steps)
                 ) &&
                 (
-                    Threshold == other.Threshold &&
-                    Threshold != null && other.Threshold != null &&
+                    Threshold == other.Threshold ||
+                    Threshold != null &&
                     Threshold.Equals(other.Threshold)
                 );
         }

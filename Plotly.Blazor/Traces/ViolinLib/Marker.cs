@@ -74,33 +74,33 @@ namespace Plotly.Blazor.Traces.ViolinLib
 
             return 
                 (
-                    OutlierColor == other.OutlierColor &&
-                    OutlierColor != null && other.OutlierColor != null &&
+                    OutlierColor == other.OutlierColor ||
+                    OutlierColor != null &&
                     OutlierColor.Equals(other.OutlierColor)
                 ) && 
                 (
-                    Symbol == other.Symbol &&
-                    Symbol != null && other.Symbol != null &&
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
                     Symbol.Equals(other.Symbol)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 );
         }

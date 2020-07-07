@@ -39,8 +39,8 @@ namespace Plotly.Blazor.Traces.SplomLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 );
         }

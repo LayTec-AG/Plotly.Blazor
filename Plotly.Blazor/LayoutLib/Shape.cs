@@ -233,108 +233,108 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Layer == other.Layer &&
-                    Layer != null && other.Layer != null &&
+                    Layer == other.Layer ||
+                    Layer != null &&
                     Layer.Equals(other.Layer)
                 ) && 
                 (
-                    XRef == other.XRef &&
-                    XRef != null && other.XRef != null &&
+                    XRef == other.XRef ||
+                    XRef != null &&
                     XRef.Equals(other.XRef)
                 ) && 
                 (
-                    XSizeMode == other.XSizeMode &&
-                    XSizeMode != null && other.XSizeMode != null &&
+                    XSizeMode == other.XSizeMode ||
+                    XSizeMode != null &&
                     XSizeMode.Equals(other.XSizeMode)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    X0 == other.X0 &&
-                    X0 != null && other.X0 != null &&
+                    X0 == other.X0 ||
+                    X0 != null &&
                     X0.Equals(other.X0)
                 ) && 
                 (
-                    X1 == other.X1 &&
-                    X1 != null && other.X1 != null &&
+                    X1 == other.X1 ||
+                    X1 != null &&
                     X1.Equals(other.X1)
                 ) && 
                 (
-                    YRef == other.YRef &&
-                    YRef != null && other.YRef != null &&
+                    YRef == other.YRef ||
+                    YRef != null &&
                     YRef.Equals(other.YRef)
                 ) && 
                 (
-                    YSizeMode == other.YSizeMode &&
-                    YSizeMode != null && other.YSizeMode != null &&
+                    YSizeMode == other.YSizeMode ||
+                    YSizeMode != null &&
                     YSizeMode.Equals(other.YSizeMode)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    Y0 == other.Y0 &&
-                    Y0 != null && other.Y0 != null &&
+                    Y0 == other.Y0 ||
+                    Y0 != null &&
                     Y0.Equals(other.Y0)
                 ) && 
                 (
-                    Y1 == other.Y1 &&
-                    Y1 != null && other.Y1 != null &&
+                    Y1 == other.Y1 ||
+                    Y1 != null &&
                     Y1.Equals(other.Y1)
                 ) && 
                 (
-                    Path == other.Path &&
-                    Path != null && other.Path != null &&
+                    Path == other.Path ||
+                    Path != null &&
                     Path.Equals(other.Path)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    FillColor == other.FillColor &&
-                    FillColor != null && other.FillColor != null &&
+                    FillColor == other.FillColor ||
+                    FillColor != null &&
                     FillColor.Equals(other.FillColor)
                 ) && 
                 (
-                    FillRule == other.FillRule &&
-                    FillRule != null && other.FillRule != null &&
+                    FillRule == other.FillRule ||
+                    FillRule != null &&
                     FillRule.Equals(other.FillRule)
                 ) && 
                 (
-                    Editable == other.Editable &&
-                    Editable != null && other.Editable != null &&
+                    Editable == other.Editable ||
+                    Editable != null &&
                     Editable.Equals(other.Editable)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

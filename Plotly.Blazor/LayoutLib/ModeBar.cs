@@ -65,28 +65,28 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Orientation == other.Orientation &&
-                    Orientation != null && other.Orientation != null &&
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
                     Orientation.Equals(other.Orientation)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    ActiveColor == other.ActiveColor &&
-                    ActiveColor != null && other.ActiveColor != null &&
+                    ActiveColor == other.ActiveColor ||
+                    ActiveColor != null &&
                     ActiveColor.Equals(other.ActiveColor)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 );
         }

@@ -323,188 +323,188 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    StaticPlot == other.StaticPlot &&
-                    StaticPlot != null && other.StaticPlot != null &&
+                    StaticPlot == other.StaticPlot ||
+                    StaticPlot != null &&
                     StaticPlot.Equals(other.StaticPlot)
                 ) && 
                 (
-                    PlotlyServerUrl == other.PlotlyServerUrl &&
-                    PlotlyServerUrl != null && other.PlotlyServerUrl != null &&
+                    PlotlyServerUrl == other.PlotlyServerUrl ||
+                    PlotlyServerUrl != null &&
                     PlotlyServerUrl.Equals(other.PlotlyServerUrl)
                 ) && 
                 (
-                    Editable == other.Editable &&
-                    Editable != null && other.Editable != null &&
+                    Editable == other.Editable ||
+                    Editable != null &&
                     Editable.Equals(other.Editable)
                 ) && 
                 (
-                    Edits == other.Edits &&
-                    Edits != null && other.Edits != null &&
+                    Edits == other.Edits ||
+                    Edits != null &&
                     Edits.Equals(other.Edits)
                 ) && 
                 (
-                    AutoSizable == other.AutoSizable &&
-                    AutoSizable != null && other.AutoSizable != null &&
+                    AutoSizable == other.AutoSizable ||
+                    AutoSizable != null &&
                     AutoSizable.Equals(other.AutoSizable)
                 ) && 
                 (
-                    Responsive == other.Responsive &&
-                    Responsive != null && other.Responsive != null &&
+                    Responsive == other.Responsive ||
+                    Responsive != null &&
                     Responsive.Equals(other.Responsive)
                 ) && 
                 (
-                    FillFrame == other.FillFrame &&
-                    FillFrame != null && other.FillFrame != null &&
+                    FillFrame == other.FillFrame ||
+                    FillFrame != null &&
                     FillFrame.Equals(other.FillFrame)
                 ) && 
                 (
-                    FrameMargins == other.FrameMargins &&
-                    FrameMargins != null && other.FrameMargins != null &&
+                    FrameMargins == other.FrameMargins ||
+                    FrameMargins != null &&
                     FrameMargins.Equals(other.FrameMargins)
                 ) && 
                 (
-                    ScrollZoom == other.ScrollZoom &&
-                    ScrollZoom != null && other.ScrollZoom != null &&
+                    ScrollZoom == other.ScrollZoom ||
+                    ScrollZoom != null &&
                     ScrollZoom.Equals(other.ScrollZoom)
                 ) && 
                 (
-                    DoubleClick == other.DoubleClick &&
-                    DoubleClick != null && other.DoubleClick != null &&
+                    DoubleClick == other.DoubleClick ||
+                    DoubleClick != null &&
                     DoubleClick.Equals(other.DoubleClick)
                 ) && 
                 (
-                    DoubleClickDelay == other.DoubleClickDelay &&
-                    DoubleClickDelay != null && other.DoubleClickDelay != null &&
+                    DoubleClickDelay == other.DoubleClickDelay ||
+                    DoubleClickDelay != null &&
                     DoubleClickDelay.Equals(other.DoubleClickDelay)
                 ) && 
                 (
-                    ShowAxisDragHandles == other.ShowAxisDragHandles &&
-                    ShowAxisDragHandles != null && other.ShowAxisDragHandles != null &&
+                    ShowAxisDragHandles == other.ShowAxisDragHandles ||
+                    ShowAxisDragHandles != null &&
                     ShowAxisDragHandles.Equals(other.ShowAxisDragHandles)
                 ) && 
                 (
-                    ShowAxisRangeEntryBoxes == other.ShowAxisRangeEntryBoxes &&
-                    ShowAxisRangeEntryBoxes != null && other.ShowAxisRangeEntryBoxes != null &&
+                    ShowAxisRangeEntryBoxes == other.ShowAxisRangeEntryBoxes ||
+                    ShowAxisRangeEntryBoxes != null &&
                     ShowAxisRangeEntryBoxes.Equals(other.ShowAxisRangeEntryBoxes)
                 ) && 
                 (
-                    ShowTips == other.ShowTips &&
-                    ShowTips != null && other.ShowTips != null &&
+                    ShowTips == other.ShowTips ||
+                    ShowTips != null &&
                     ShowTips.Equals(other.ShowTips)
                 ) && 
                 (
-                    ShowLink == other.ShowLink &&
-                    ShowLink != null && other.ShowLink != null &&
+                    ShowLink == other.ShowLink ||
+                    ShowLink != null &&
                     ShowLink.Equals(other.ShowLink)
                 ) && 
                 (
-                    LinkText == other.LinkText &&
-                    LinkText != null && other.LinkText != null &&
+                    LinkText == other.LinkText ||
+                    LinkText != null &&
                     LinkText.Equals(other.LinkText)
                 ) && 
                 (
-                    SendData == other.SendData &&
-                    SendData != null && other.SendData != null &&
+                    SendData == other.SendData ||
+                    SendData != null &&
                     SendData.Equals(other.SendData)
                 ) && 
                 (
-                    ShowSources == other.ShowSources &&
-                    ShowSources != null && other.ShowSources != null &&
+                    ShowSources == other.ShowSources ||
+                    ShowSources != null &&
                     ShowSources.Equals(other.ShowSources)
                 ) && 
                 (
-                    DisplayModeBar == other.DisplayModeBar &&
-                    DisplayModeBar != null && other.DisplayModeBar != null &&
+                    DisplayModeBar == other.DisplayModeBar ||
+                    DisplayModeBar != null &&
                     DisplayModeBar.Equals(other.DisplayModeBar)
                 ) && 
                 (
-                    ShowSendToCloud == other.ShowSendToCloud &&
-                    ShowSendToCloud != null && other.ShowSendToCloud != null &&
+                    ShowSendToCloud == other.ShowSendToCloud ||
+                    ShowSendToCloud != null &&
                     ShowSendToCloud.Equals(other.ShowSendToCloud)
                 ) && 
                 (
-                    ShowEditInChartStudio == other.ShowEditInChartStudio &&
-                    ShowEditInChartStudio != null && other.ShowEditInChartStudio != null &&
+                    ShowEditInChartStudio == other.ShowEditInChartStudio ||
+                    ShowEditInChartStudio != null &&
                     ShowEditInChartStudio.Equals(other.ShowEditInChartStudio)
                 ) && 
                 (
-                    ModeBarButtonsToRemove == other.ModeBarButtonsToRemove &&
-                    ModeBarButtonsToRemove != null && other.ModeBarButtonsToRemove != null &&
+                    ModeBarButtonsToRemove == other.ModeBarButtonsToRemove ||
+                    ModeBarButtonsToRemove != null &&
                     ModeBarButtonsToRemove.Equals(other.ModeBarButtonsToRemove)
                 ) && 
                 (
-                    ModeBarButtonsToAdd == other.ModeBarButtonsToAdd &&
-                    ModeBarButtonsToAdd != null && other.ModeBarButtonsToAdd != null &&
+                    ModeBarButtonsToAdd == other.ModeBarButtonsToAdd ||
+                    ModeBarButtonsToAdd != null &&
                     ModeBarButtonsToAdd.Equals(other.ModeBarButtonsToAdd)
                 ) && 
                 (
-                    ModeBarButtons == other.ModeBarButtons &&
-                    ModeBarButtons != null && other.ModeBarButtons != null &&
+                    ModeBarButtons == other.ModeBarButtons ||
+                    ModeBarButtons != null &&
                     ModeBarButtons.Equals(other.ModeBarButtons)
                 ) && 
                 (
-                    ToImageButtonOptions == other.ToImageButtonOptions &&
-                    ToImageButtonOptions != null && other.ToImageButtonOptions != null &&
+                    ToImageButtonOptions == other.ToImageButtonOptions ||
+                    ToImageButtonOptions != null &&
                     ToImageButtonOptions.Equals(other.ToImageButtonOptions)
                 ) && 
                 (
-                    DisplayLogo == other.DisplayLogo &&
-                    DisplayLogo != null && other.DisplayLogo != null &&
+                    DisplayLogo == other.DisplayLogo ||
+                    DisplayLogo != null &&
                     DisplayLogo.Equals(other.DisplayLogo)
                 ) && 
                 (
-                    Watermark == other.Watermark &&
-                    Watermark != null && other.Watermark != null &&
+                    Watermark == other.Watermark ||
+                    Watermark != null &&
                     Watermark.Equals(other.Watermark)
                 ) && 
                 (
-                    PlotGlPixelRatio == other.PlotGlPixelRatio &&
-                    PlotGlPixelRatio != null && other.PlotGlPixelRatio != null &&
+                    PlotGlPixelRatio == other.PlotGlPixelRatio ||
+                    PlotGlPixelRatio != null &&
                     PlotGlPixelRatio.Equals(other.PlotGlPixelRatio)
                 ) && 
                 (
-                    SetBackground == other.SetBackground &&
-                    SetBackground != null && other.SetBackground != null &&
+                    SetBackground == other.SetBackground ||
+                    SetBackground != null &&
                     SetBackground.Equals(other.SetBackground)
                 ) && 
                 (
-                    TopoJsonUrl == other.TopoJsonUrl &&
-                    TopoJsonUrl != null && other.TopoJsonUrl != null &&
+                    TopoJsonUrl == other.TopoJsonUrl ||
+                    TopoJsonUrl != null &&
                     TopoJsonUrl.Equals(other.TopoJsonUrl)
                 ) && 
                 (
-                    MapboxAccessToken == other.MapboxAccessToken &&
-                    MapboxAccessToken != null && other.MapboxAccessToken != null &&
+                    MapboxAccessToken == other.MapboxAccessToken ||
+                    MapboxAccessToken != null &&
                     MapboxAccessToken.Equals(other.MapboxAccessToken)
                 ) && 
                 (
-                    Logging == other.Logging &&
-                    Logging != null && other.Logging != null &&
+                    Logging == other.Logging ||
+                    Logging != null &&
                     Logging.Equals(other.Logging)
                 ) && 
                 (
-                    NotifyOnLogging == other.NotifyOnLogging &&
-                    NotifyOnLogging != null && other.NotifyOnLogging != null &&
+                    NotifyOnLogging == other.NotifyOnLogging ||
+                    NotifyOnLogging != null &&
                     NotifyOnLogging.Equals(other.NotifyOnLogging)
                 ) && 
                 (
-                    QueueLength == other.QueueLength &&
-                    QueueLength != null && other.QueueLength != null &&
+                    QueueLength == other.QueueLength ||
+                    QueueLength != null &&
                     QueueLength.Equals(other.QueueLength)
                 ) && 
                 (
-                    GlobalTransforms == other.GlobalTransforms &&
-                    GlobalTransforms != null && other.GlobalTransforms != null &&
+                    GlobalTransforms == other.GlobalTransforms ||
+                    GlobalTransforms != null &&
                     GlobalTransforms.Equals(other.GlobalTransforms)
                 ) && 
                 (
-                    Locale == other.Locale &&
-                    Locale != null && other.Locale != null &&
+                    Locale == other.Locale ||
+                    Locale != null &&
                     Locale.Equals(other.Locale)
                 ) && 
                 (
-                    Locales == other.Locales &&
-                    Locales != null && other.Locales != null &&
+                    Locales == other.Locales ||
+                    Locales != null &&
                     Locales.Equals(other.Locales)
                 );
         }

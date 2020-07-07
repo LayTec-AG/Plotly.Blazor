@@ -407,23 +407,23 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    AutoRange == other.AutoRange &&
-                    AutoRange != null && other.AutoRange != null &&
+                    AutoRange == other.AutoRange ||
+                    AutoRange != null &&
                     AutoRange.Equals(other.AutoRange)
                 ) && 
                 (
-                    RangeMode == other.RangeMode &&
-                    RangeMode != null && other.RangeMode != null &&
+                    RangeMode == other.RangeMode ||
+                    RangeMode != null &&
                     RangeMode.Equals(other.RangeMode)
                 ) && 
                 (
@@ -432,8 +432,8 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     Range.SequenceEqual(other.Range)
                 ) &&
                 (
-                    CategoryOrder == other.CategoryOrder &&
-                    CategoryOrder != null && other.CategoryOrder != null &&
+                    CategoryOrder == other.CategoryOrder ||
+                    CategoryOrder != null &&
                     CategoryOrder.Equals(other.CategoryOrder)
                 ) && 
                 (
@@ -442,83 +442,83 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     CategoryArray.SequenceEqual(other.CategoryArray)
                 ) &&
                 (
-                    Angle == other.Angle &&
-                    Angle != null && other.Angle != null &&
+                    Angle == other.Angle ||
+                    Angle != null &&
                     Angle.Equals(other.Angle)
                 ) && 
                 (
-                    Side == other.Side &&
-                    Side != null && other.Side != null &&
+                    Side == other.Side ||
+                    Side != null &&
                     Side.Equals(other.Side)
                 ) && 
                 (
-                    Title == other.Title &&
-                    Title != null && other.Title != null &&
+                    Title == other.Title ||
+                    Title != null &&
                     Title.Equals(other.Title)
                 ) && 
                 (
-                    HoverFormat == other.HoverFormat &&
-                    HoverFormat != null && other.HoverFormat != null &&
+                    HoverFormat == other.HoverFormat ||
+                    HoverFormat != null &&
                     HoverFormat.Equals(other.HoverFormat)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    ShowLine == other.ShowLine &&
-                    ShowLine != null && other.ShowLine != null &&
+                    ShowLine == other.ShowLine ||
+                    ShowLine != null &&
                     ShowLine.Equals(other.ShowLine)
                 ) && 
                 (
-                    LineColor == other.LineColor &&
-                    LineColor != null && other.LineColor != null &&
+                    LineColor == other.LineColor ||
+                    LineColor != null &&
                     LineColor.Equals(other.LineColor)
                 ) && 
                 (
-                    LineWidth == other.LineWidth &&
-                    LineWidth != null && other.LineWidth != null &&
+                    LineWidth == other.LineWidth ||
+                    LineWidth != null &&
                     LineWidth.Equals(other.LineWidth)
                 ) && 
                 (
-                    ShowGrid == other.ShowGrid &&
-                    ShowGrid != null && other.ShowGrid != null &&
+                    ShowGrid == other.ShowGrid ||
+                    ShowGrid != null &&
                     ShowGrid.Equals(other.ShowGrid)
                 ) && 
                 (
-                    GridColor == other.GridColor &&
-                    GridColor != null && other.GridColor != null &&
+                    GridColor == other.GridColor ||
+                    GridColor != null &&
                     GridColor.Equals(other.GridColor)
                 ) && 
                 (
-                    GridWidth == other.GridWidth &&
-                    GridWidth != null && other.GridWidth != null &&
+                    GridWidth == other.GridWidth ||
+                    GridWidth != null &&
                     GridWidth.Equals(other.GridWidth)
                 ) && 
                 (
-                    TickMode == other.TickMode &&
-                    TickMode != null && other.TickMode != null &&
+                    TickMode == other.TickMode ||
+                    TickMode != null &&
                     TickMode.Equals(other.TickMode)
                 ) && 
                 (
-                    NTicks == other.NTicks &&
-                    NTicks != null && other.NTicks != null &&
+                    NTicks == other.NTicks ||
+                    NTicks != null &&
                     NTicks.Equals(other.NTicks)
                 ) && 
                 (
-                    Tick0 == other.Tick0 &&
-                    Tick0 != null && other.Tick0 != null &&
+                    Tick0 == other.Tick0 ||
+                    Tick0 != null &&
                     Tick0.Equals(other.Tick0)
                 ) && 
                 (
-                    DTick == other.DTick &&
-                    DTick != null && other.DTick != null &&
+                    DTick == other.DTick ||
+                    DTick != null &&
                     DTick.Equals(other.DTick)
                 ) && 
                 (
@@ -532,78 +532,78 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     TickText.SequenceEqual(other.TickText)
                 ) &&
                 (
-                    Ticks == other.Ticks &&
-                    Ticks != null && other.Ticks != null &&
+                    Ticks == other.Ticks ||
+                    Ticks != null &&
                     Ticks.Equals(other.Ticks)
                 ) && 
                 (
-                    TickleN == other.TickleN &&
-                    TickleN != null && other.TickleN != null &&
+                    TickleN == other.TickleN ||
+                    TickleN != null &&
                     TickleN.Equals(other.TickleN)
                 ) && 
                 (
-                    TickWidth == other.TickWidth &&
-                    TickWidth != null && other.TickWidth != null &&
+                    TickWidth == other.TickWidth ||
+                    TickWidth != null &&
                     TickWidth.Equals(other.TickWidth)
                 ) && 
                 (
-                    TickColor == other.TickColor &&
-                    TickColor != null && other.TickColor != null &&
+                    TickColor == other.TickColor ||
+                    TickColor != null &&
                     TickColor.Equals(other.TickColor)
                 ) && 
                 (
-                    ShowTickLabels == other.ShowTickLabels &&
-                    ShowTickLabels != null && other.ShowTickLabels != null &&
+                    ShowTickLabels == other.ShowTickLabels ||
+                    ShowTickLabels != null &&
                     ShowTickLabels.Equals(other.ShowTickLabels)
                 ) && 
                 (
-                    ShowTickPrefix == other.ShowTickPrefix &&
-                    ShowTickPrefix != null && other.ShowTickPrefix != null &&
+                    ShowTickPrefix == other.ShowTickPrefix ||
+                    ShowTickPrefix != null &&
                     ShowTickPrefix.Equals(other.ShowTickPrefix)
                 ) && 
                 (
-                    TickPrefix == other.TickPrefix &&
-                    TickPrefix != null && other.TickPrefix != null &&
+                    TickPrefix == other.TickPrefix ||
+                    TickPrefix != null &&
                     TickPrefix.Equals(other.TickPrefix)
                 ) && 
                 (
-                    ShowTickSuffix == other.ShowTickSuffix &&
-                    ShowTickSuffix != null && other.ShowTickSuffix != null &&
+                    ShowTickSuffix == other.ShowTickSuffix ||
+                    ShowTickSuffix != null &&
                     ShowTickSuffix.Equals(other.ShowTickSuffix)
                 ) && 
                 (
-                    TickSuffix == other.TickSuffix &&
-                    TickSuffix != null && other.TickSuffix != null &&
+                    TickSuffix == other.TickSuffix ||
+                    TickSuffix != null &&
                     TickSuffix.Equals(other.TickSuffix)
                 ) && 
                 (
-                    ShowExponent == other.ShowExponent &&
-                    ShowExponent != null && other.ShowExponent != null &&
+                    ShowExponent == other.ShowExponent ||
+                    ShowExponent != null &&
                     ShowExponent.Equals(other.ShowExponent)
                 ) && 
                 (
-                    ExponentFormat == other.ExponentFormat &&
-                    ExponentFormat != null && other.ExponentFormat != null &&
+                    ExponentFormat == other.ExponentFormat ||
+                    ExponentFormat != null &&
                     ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
-                    SeparateThousands == other.SeparateThousands &&
-                    SeparateThousands != null && other.SeparateThousands != null &&
+                    SeparateThousands == other.SeparateThousands ||
+                    SeparateThousands != null &&
                     SeparateThousands.Equals(other.SeparateThousands)
                 ) && 
                 (
-                    TickFont == other.TickFont &&
-                    TickFont != null && other.TickFont != null &&
+                    TickFont == other.TickFont ||
+                    TickFont != null &&
                     TickFont.Equals(other.TickFont)
                 ) && 
                 (
-                    TickAngle == other.TickAngle &&
-                    TickAngle != null && other.TickAngle != null &&
+                    TickAngle == other.TickAngle ||
+                    TickAngle != null &&
                     TickAngle.Equals(other.TickAngle)
                 ) && 
                 (
-                    TickFormat == other.TickFormat &&
-                    TickFormat != null && other.TickFormat != null &&
+                    TickFormat == other.TickFormat ||
+                    TickFormat != null &&
                     TickFormat.Equals(other.TickFormat)
                 ) && 
                 (
@@ -612,28 +612,28 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     TickFormatStops.SequenceEqual(other.TickFormatStops)
                 ) &&
                 (
-                    Layer == other.Layer &&
-                    Layer != null && other.Layer != null &&
+                    Layer == other.Layer ||
+                    Layer != null &&
                     Layer.Equals(other.Layer)
                 ) && 
                 (
-                    Calendar == other.Calendar &&
-                    Calendar != null && other.Calendar != null &&
+                    Calendar == other.Calendar ||
+                    Calendar != null &&
                     Calendar.Equals(other.Calendar)
                 ) && 
                 (
-                    CategoryArraySrc == other.CategoryArraySrc &&
-                    CategoryArraySrc != null && other.CategoryArraySrc != null &&
+                    CategoryArraySrc == other.CategoryArraySrc ||
+                    CategoryArraySrc != null &&
                     CategoryArraySrc.Equals(other.CategoryArraySrc)
                 ) && 
                 (
-                    TickValsSrc == other.TickValsSrc &&
-                    TickValsSrc != null && other.TickValsSrc != null &&
+                    TickValsSrc == other.TickValsSrc ||
+                    TickValsSrc != null &&
                     TickValsSrc.Equals(other.TickValsSrc)
                 ) && 
                 (
-                    TickTextSrc == other.TickTextSrc &&
-                    TickTextSrc != null && other.TickTextSrc != null &&
+                    TickTextSrc == other.TickTextSrc ||
+                    TickTextSrc != null &&
                     TickTextSrc.Equals(other.TickTextSrc)
                 );
         }

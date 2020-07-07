@@ -79,33 +79,33 @@ namespace Plotly.Blazor.Traces.PointCloudLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Blend == other.Blend &&
-                    Blend != null && other.Blend != null &&
+                    Blend == other.Blend ||
+                    Blend != null &&
                     Blend.Equals(other.Blend)
                 ) && 
                 (
-                    SizeMin == other.SizeMin &&
-                    SizeMin != null && other.SizeMin != null &&
+                    SizeMin == other.SizeMin ||
+                    SizeMin != null &&
                     SizeMin.Equals(other.SizeMin)
                 ) && 
                 (
-                    SizeMax == other.SizeMax &&
-                    SizeMax != null && other.SizeMax != null &&
+                    SizeMax == other.SizeMax ||
+                    SizeMax != null &&
                     SizeMax.Equals(other.SizeMax)
                 ) && 
                 (
-                    Border == other.Border &&
-                    Border != null && other.Border != null &&
+                    Border == other.Border ||
+                    Border != null &&
                     Border.Equals(other.Border)
                 );
         }

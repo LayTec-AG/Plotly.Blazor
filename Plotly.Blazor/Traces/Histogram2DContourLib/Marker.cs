@@ -52,8 +52,8 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
                     Color.SequenceEqual(other.Color)
                 ) &&
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 );
         }

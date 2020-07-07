@@ -57,8 +57,8 @@ namespace Plotly.Blazor.Traces.TableLib.HeaderLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -67,8 +67,8 @@ namespace Plotly.Blazor.Traces.TableLib.HeaderLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 );
         }

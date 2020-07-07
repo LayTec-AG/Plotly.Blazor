@@ -91,8 +91,8 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
@@ -101,33 +101,33 @@ namespace Plotly.Blazor.LayoutLib
                     Sector.SequenceEqual(other.Sector)
                 ) &&
                 (
-                    Hole == other.Hole &&
-                    Hole != null && other.Hole != null &&
+                    Hole == other.Hole ||
+                    Hole != null &&
                     Hole.Equals(other.Hole)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    RadialAxis == other.RadialAxis &&
-                    RadialAxis != null && other.RadialAxis != null &&
+                    RadialAxis == other.RadialAxis ||
+                    RadialAxis != null &&
                     RadialAxis.Equals(other.RadialAxis)
                 ) && 
                 (
-                    AngularAxis == other.AngularAxis &&
-                    AngularAxis != null && other.AngularAxis != null &&
+                    AngularAxis == other.AngularAxis ||
+                    AngularAxis != null &&
                     AngularAxis.Equals(other.AngularAxis)
                 ) && 
                 (
-                    GridShape == other.GridShape &&
-                    GridShape != null && other.GridShape != null &&
+                    GridShape == other.GridShape ||
+                    GridShape != null &&
                     GridShape.Equals(other.GridShape)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 );
         }

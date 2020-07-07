@@ -40,8 +40,8 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.UnselectedLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 );
         }

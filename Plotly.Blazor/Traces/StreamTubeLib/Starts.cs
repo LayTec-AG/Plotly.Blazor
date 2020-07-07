@@ -86,18 +86,18 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
                     Z.SequenceEqual(other.Z)
                 ) &&
                 (
-                    XSrc == other.XSrc &&
-                    XSrc != null && other.XSrc != null &&
+                    XSrc == other.XSrc ||
+                    XSrc != null &&
                     XSrc.Equals(other.XSrc)
                 ) && 
                 (
-                    YSrc == other.YSrc &&
-                    YSrc != null && other.YSrc != null &&
+                    YSrc == other.YSrc ||
+                    YSrc != null &&
                     YSrc.Equals(other.YSrc)
                 ) && 
                 (
-                    ZSrc == other.ZSrc &&
-                    ZSrc != null && other.ZSrc != null &&
+                    ZSrc == other.ZSrc ||
+                    ZSrc != null &&
                     ZSrc.Equals(other.ZSrc)
                 );
         }

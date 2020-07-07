@@ -67,28 +67,28 @@ namespace Plotly.Blazor.Traces.SurfaceLib
 
             return 
                 (
-                    Ambient == other.Ambient &&
-                    Ambient != null && other.Ambient != null &&
+                    Ambient == other.Ambient ||
+                    Ambient != null &&
                     Ambient.Equals(other.Ambient)
                 ) && 
                 (
-                    Diffuse == other.Diffuse &&
-                    Diffuse != null && other.Diffuse != null &&
+                    Diffuse == other.Diffuse ||
+                    Diffuse != null &&
                     Diffuse.Equals(other.Diffuse)
                 ) && 
                 (
-                    Specular == other.Specular &&
-                    Specular != null && other.Specular != null &&
+                    Specular == other.Specular ||
+                    Specular != null &&
                     Specular.Equals(other.Specular)
                 ) && 
                 (
-                    Roughness == other.Roughness &&
-                    Roughness != null && other.Roughness != null &&
+                    Roughness == other.Roughness ||
+                    Roughness != null &&
                     Roughness.Equals(other.Roughness)
                 ) && 
                 (
-                    Fresnel == other.Fresnel &&
-                    Fresnel != null && other.Fresnel != null &&
+                    Fresnel == other.Fresnel ||
+                    Fresnel != null &&
                     Fresnel.Equals(other.Fresnel)
                 );
         }

@@ -55,8 +55,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
             return 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
@@ -65,8 +65,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
                     Dash.SequenceEqual(other.Dash)
                 ) &&
                 (
-                    DashSrc == other.DashSrc &&
-                    DashSrc != null && other.DashSrc != null &&
+                    DashSrc == other.DashSrc ||
+                    DashSrc != null &&
                     DashSrc.Equals(other.DashSrc)
                 );
         }

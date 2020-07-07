@@ -130,8 +130,8 @@ namespace Plotly.Blazor.Traces.AreaLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -140,8 +140,8 @@ namespace Plotly.Blazor.Traces.AreaLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
@@ -150,8 +150,8 @@ namespace Plotly.Blazor.Traces.AreaLib
                     SizeArray.SequenceEqual(other.SizeArray)
                 ) &&
                 (
-                    Symbol == other.Symbol &&
-                    Symbol != null && other.Symbol != null &&
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
                     Symbol.Equals(other.Symbol)
                 ) && 
                 (
@@ -160,8 +160,8 @@ namespace Plotly.Blazor.Traces.AreaLib
                     SymbolArray.SequenceEqual(other.SymbolArray)
                 ) &&
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
@@ -170,23 +170,23 @@ namespace Plotly.Blazor.Traces.AreaLib
                     OpacityArray.SequenceEqual(other.OpacityArray)
                 ) &&
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
-                    SizeSrc == other.SizeSrc &&
-                    SizeSrc != null && other.SizeSrc != null &&
+                    SizeSrc == other.SizeSrc ||
+                    SizeSrc != null &&
                     SizeSrc.Equals(other.SizeSrc)
                 ) && 
                 (
-                    SymbolSrc == other.SymbolSrc &&
-                    SymbolSrc != null && other.SymbolSrc != null &&
+                    SymbolSrc == other.SymbolSrc ||
+                    SymbolSrc != null &&
                     SymbolSrc.Equals(other.SymbolSrc)
                 ) && 
                 (
-                    OpacitySrc == other.OpacitySrc &&
-                    OpacitySrc != null && other.OpacitySrc != null &&
+                    OpacitySrc == other.OpacitySrc ||
+                    OpacitySrc != null &&
                     OpacitySrc.Equals(other.OpacitySrc)
                 );
         }

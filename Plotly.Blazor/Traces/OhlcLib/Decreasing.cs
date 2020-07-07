@@ -39,8 +39,8 @@ namespace Plotly.Blazor.Traces.OhlcLib
 
             return 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 );
         }

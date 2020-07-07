@@ -75,33 +75,33 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    Group == other.Group &&
-                    Group != null && other.Group != null &&
+                    Group == other.Group ||
+                    Group != null &&
                     Group.Equals(other.Group)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    Traces == other.Traces &&
-                    Traces != null && other.Traces != null &&
+                    Traces == other.Traces ||
+                    Traces != null &&
                     Traces.Equals(other.Traces)
                 ) && 
                 (
-                    BaseFrame == other.BaseFrame &&
-                    BaseFrame != null && other.BaseFrame != null &&
+                    BaseFrame == other.BaseFrame ||
+                    BaseFrame != null &&
                     BaseFrame.Equals(other.BaseFrame)
                 ) && 
                 (
-                    Data == other.Data &&
-                    Data != null && other.Data != null &&
+                    Data == other.Data ||
+                    Data != null &&
                     Data.Equals(other.Data)
                 ) && 
                 (
-                    Layout == other.Layout &&
-                    Layout != null && other.Layout != null &&
+                    Layout == other.Layout ||
+                    Layout != null &&
                     Layout.Equals(other.Layout)
                 );
         }

@@ -60,18 +60,18 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib.XLib
 
             return 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    Z == other.Z &&
-                    Z != null && other.Z != null &&
+                    Z == other.Z ||
+                    Z != null &&
                     Z.Equals(other.Z)
                 );
         }

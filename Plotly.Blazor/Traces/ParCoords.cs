@@ -208,23 +208,23 @@ namespace Plotly.Blazor.Traces
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    UId == other.UId &&
-                    UId != null && other.UId != null &&
+                    UId == other.UId ||
+                    UId != null &&
                     UId.Equals(other.UId)
                 ) && 
                 (
@@ -238,8 +238,8 @@ namespace Plotly.Blazor.Traces
                     CustomData.SequenceEqual(other.CustomData)
                 ) &&
                 (
-                    Meta == other.Meta &&
-                    Meta != null && other.Meta != null &&
+                    Meta == other.Meta ||
+                    Meta != null &&
                     Meta.Equals(other.Meta)
                 ) && 
                 (
@@ -248,8 +248,8 @@ namespace Plotly.Blazor.Traces
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
-                    Stream == other.Stream &&
-                    Stream != null && other.Stream != null &&
+                    Stream == other.Stream ||
+                    Stream != null &&
                     Stream.Equals(other.Stream)
                 ) && 
                 (
@@ -258,38 +258,38 @@ namespace Plotly.Blazor.Traces
                     Transforms.SequenceEqual(other.Transforms)
                 ) &&
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
-                    Domain == other.Domain &&
-                    Domain != null && other.Domain != null &&
+                    Domain == other.Domain ||
+                    Domain != null &&
                     Domain.Equals(other.Domain)
                 ) && 
                 (
-                    LabelAngle == other.LabelAngle &&
-                    LabelAngle != null && other.LabelAngle != null &&
+                    LabelAngle == other.LabelAngle ||
+                    LabelAngle != null &&
                     LabelAngle.Equals(other.LabelAngle)
                 ) && 
                 (
-                    LabelSide == other.LabelSide &&
-                    LabelSide != null && other.LabelSide != null &&
+                    LabelSide == other.LabelSide ||
+                    LabelSide != null &&
                     LabelSide.Equals(other.LabelSide)
                 ) && 
                 (
-                    LabelFont == other.LabelFont &&
-                    LabelFont != null && other.LabelFont != null &&
+                    LabelFont == other.LabelFont ||
+                    LabelFont != null &&
                     LabelFont.Equals(other.LabelFont)
                 ) && 
                 (
-                    TickFont == other.TickFont &&
-                    TickFont != null && other.TickFont != null &&
+                    TickFont == other.TickFont ||
+                    TickFont != null &&
                     TickFont.Equals(other.TickFont)
                 ) && 
                 (
-                    RangeFont == other.RangeFont &&
-                    RangeFont != null && other.RangeFont != null &&
+                    RangeFont == other.RangeFont ||
+                    RangeFont != null &&
                     RangeFont.Equals(other.RangeFont)
                 ) && 
                 (
@@ -298,23 +298,23 @@ namespace Plotly.Blazor.Traces
                     Dimensions.SequenceEqual(other.Dimensions)
                 ) &&
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    IdsSrc == other.IdsSrc &&
-                    IdsSrc != null && other.IdsSrc != null &&
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
                     IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
-                    CustomDataSrc == other.CustomDataSrc &&
-                    CustomDataSrc != null && other.CustomDataSrc != null &&
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
                     CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    MetaSrc == other.MetaSrc &&
-                    MetaSrc != null && other.MetaSrc != null &&
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
                     MetaSrc.Equals(other.MetaSrc)
                 );
         }

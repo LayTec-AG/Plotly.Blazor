@@ -285,28 +285,28 @@ namespace Plotly.Blazor.Traces
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    UId == other.UId &&
-                    UId != null && other.UId != null &&
+                    UId == other.UId ||
+                    UId != null &&
                     UId.Equals(other.UId)
                 ) && 
                 (
@@ -320,8 +320,8 @@ namespace Plotly.Blazor.Traces
                     CustomData.SequenceEqual(other.CustomData)
                 ) &&
                 (
-                    Meta == other.Meta &&
-                    Meta != null && other.Meta != null &&
+                    Meta == other.Meta ||
+                    Meta != null &&
                     Meta.Equals(other.Meta)
                 ) && 
                 (
@@ -330,18 +330,18 @@ namespace Plotly.Blazor.Traces
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
-                    Stream == other.Stream &&
-                    Stream != null && other.Stream != null &&
+                    Stream == other.Stream ||
+                    Stream != null &&
                     Stream.Equals(other.Stream)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
-                    _Carpet == other._Carpet &&
-                    _Carpet != null && other._Carpet != null &&
+                    _Carpet == other._Carpet ||
+                    _Carpet != null &&
                     _Carpet.Equals(other._Carpet)
                 ) && 
                 (
@@ -360,13 +360,13 @@ namespace Plotly.Blazor.Traces
                     A.SequenceEqual(other.A)
                 ) &&
                 (
-                    A0 == other.A0 &&
-                    A0 != null && other.A0 != null &&
+                    A0 == other.A0 ||
+                    A0 != null &&
                     A0.Equals(other.A0)
                 ) && 
                 (
-                    DA == other.DA &&
-                    DA != null && other.DA != null &&
+                    DA == other.DA ||
+                    DA != null &&
                     DA.Equals(other.DA)
                 ) && 
                 (
@@ -375,83 +375,83 @@ namespace Plotly.Blazor.Traces
                     B.SequenceEqual(other.B)
                 ) &&
                 (
-                    B0 == other.B0 &&
-                    B0 != null && other.B0 != null &&
+                    B0 == other.B0 ||
+                    B0 != null &&
                     B0.Equals(other.B0)
                 ) && 
                 (
-                    Db == other.Db &&
-                    Db != null && other.Db != null &&
+                    Db == other.Db ||
+                    Db != null &&
                     Db.Equals(other.Db)
                 ) && 
                 (
-                    CheaterSlope == other.CheaterSlope &&
-                    CheaterSlope != null && other.CheaterSlope != null &&
+                    CheaterSlope == other.CheaterSlope ||
+                    CheaterSlope != null &&
                     CheaterSlope.Equals(other.CheaterSlope)
                 ) && 
                 (
-                    AAxis == other.AAxis &&
-                    AAxis != null && other.AAxis != null &&
+                    AAxis == other.AAxis ||
+                    AAxis != null &&
                     AAxis.Equals(other.AAxis)
                 ) && 
                 (
-                    BAxis == other.BAxis &&
-                    BAxis != null && other.BAxis != null &&
+                    BAxis == other.BAxis ||
+                    BAxis != null &&
                     BAxis.Equals(other.BAxis)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    XAxis == other.XAxis &&
-                    XAxis != null && other.XAxis != null &&
+                    XAxis == other.XAxis ||
+                    XAxis != null &&
                     XAxis.Equals(other.XAxis)
                 ) && 
                 (
-                    YAxis == other.YAxis &&
-                    YAxis != null && other.YAxis != null &&
+                    YAxis == other.YAxis ||
+                    YAxis != null &&
                     YAxis.Equals(other.YAxis)
                 ) && 
                 (
-                    IdsSrc == other.IdsSrc &&
-                    IdsSrc != null && other.IdsSrc != null &&
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
                     IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
-                    CustomDataSrc == other.CustomDataSrc &&
-                    CustomDataSrc != null && other.CustomDataSrc != null &&
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
                     CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    MetaSrc == other.MetaSrc &&
-                    MetaSrc != null && other.MetaSrc != null &&
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
                     MetaSrc.Equals(other.MetaSrc)
                 ) && 
                 (
-                    XSrc == other.XSrc &&
-                    XSrc != null && other.XSrc != null &&
+                    XSrc == other.XSrc ||
+                    XSrc != null &&
                     XSrc.Equals(other.XSrc)
                 ) && 
                 (
-                    YSrc == other.YSrc &&
-                    YSrc != null && other.YSrc != null &&
+                    YSrc == other.YSrc ||
+                    YSrc != null &&
                     YSrc.Equals(other.YSrc)
                 ) && 
                 (
-                    ASrc == other.ASrc &&
-                    ASrc != null && other.ASrc != null &&
+                    ASrc == other.ASrc ||
+                    ASrc != null &&
                     ASrc.Equals(other.ASrc)
                 ) && 
                 (
-                    BSrc == other.BSrc &&
-                    BSrc != null && other.BSrc != null &&
+                    BSrc == other.BSrc ||
+                    BSrc != null &&
                     BSrc.Equals(other.BSrc)
                 );
         }

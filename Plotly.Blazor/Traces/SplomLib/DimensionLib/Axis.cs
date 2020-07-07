@@ -49,13 +49,13 @@ namespace Plotly.Blazor.Traces.SplomLib.DimensionLib
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Matches == other.Matches &&
-                    Matches != null && other.Matches != null &&
+                    Matches == other.Matches ||
+                    Matches != null &&
                     Matches.Equals(other.Matches)
                 );
         }

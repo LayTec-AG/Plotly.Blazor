@@ -40,8 +40,8 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.CameraLib
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 );
         }

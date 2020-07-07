@@ -120,58 +120,58 @@ namespace Plotly.Blazor.Traces.ContourLib
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Start == other.Start &&
-                    Start != null && other.Start != null &&
+                    Start == other.Start ||
+                    Start != null &&
                     Start.Equals(other.Start)
                 ) && 
                 (
-                    End == other.End &&
-                    End != null && other.End != null &&
+                    End == other.End ||
+                    End != null &&
                     End.Equals(other.End)
                 ) && 
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
-                    Coloring == other.Coloring &&
-                    Coloring != null && other.Coloring != null &&
+                    Coloring == other.Coloring ||
+                    Coloring != null &&
                     Coloring.Equals(other.Coloring)
                 ) && 
                 (
-                    ShowLines == other.ShowLines &&
-                    ShowLines != null && other.ShowLines != null &&
+                    ShowLines == other.ShowLines ||
+                    ShowLines != null &&
                     ShowLines.Equals(other.ShowLines)
                 ) && 
                 (
-                    ShowLabels == other.ShowLabels &&
-                    ShowLabels != null && other.ShowLabels != null &&
+                    ShowLabels == other.ShowLabels ||
+                    ShowLabels != null &&
                     ShowLabels.Equals(other.ShowLabels)
                 ) && 
                 (
-                    LabelFont == other.LabelFont &&
-                    LabelFont != null && other.LabelFont != null &&
+                    LabelFont == other.LabelFont ||
+                    LabelFont != null &&
                     LabelFont.Equals(other.LabelFont)
                 ) && 
                 (
-                    LabelFormat == other.LabelFormat &&
-                    LabelFormat != null && other.LabelFormat != null &&
+                    LabelFormat == other.LabelFormat ||
+                    LabelFormat != null &&
                     LabelFormat.Equals(other.LabelFormat)
                 ) && 
                 (
-                    Operation == other.Operation &&
-                    Operation != null && other.Operation != null &&
+                    Operation == other.Operation ||
+                    Operation != null &&
                     Operation.Equals(other.Operation)
                 ) && 
                 (
-                    Value == other.Value &&
-                    Value != null && other.Value != null &&
+                    Value == other.Value ||
+                    Value != null &&
                     Value.Equals(other.Value)
                 );
         }

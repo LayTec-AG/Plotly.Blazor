@@ -77,38 +77,38 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    Reference == other.Reference &&
-                    Reference != null && other.Reference != null &&
+                    Reference == other.Reference ||
+                    Reference != null &&
                     Reference.Equals(other.Reference)
                 ) && 
                 (
-                    Position == other.Position &&
-                    Position != null && other.Position != null &&
+                    Position == other.Position ||
+                    Position != null &&
                     Position.Equals(other.Position)
                 ) && 
                 (
-                    Relative == other.Relative &&
-                    Relative != null && other.Relative != null &&
+                    Relative == other.Relative ||
+                    Relative != null &&
                     Relative.Equals(other.Relative)
                 ) && 
                 (
-                    ValueFormat == other.ValueFormat &&
-                    ValueFormat != null && other.ValueFormat != null &&
+                    ValueFormat == other.ValueFormat ||
+                    ValueFormat != null &&
                     ValueFormat.Equals(other.ValueFormat)
                 ) && 
                 (
-                    Increasing == other.Increasing &&
-                    Increasing != null && other.Increasing != null &&
+                    Increasing == other.Increasing ||
+                    Increasing != null &&
                     Increasing.Equals(other.Increasing)
                 ) && 
                 (
-                    Decreasing == other.Decreasing &&
-                    Decreasing != null && other.Decreasing != null &&
+                    Decreasing == other.Decreasing ||
+                    Decreasing != null &&
                     Decreasing.Equals(other.Decreasing)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 );
         }

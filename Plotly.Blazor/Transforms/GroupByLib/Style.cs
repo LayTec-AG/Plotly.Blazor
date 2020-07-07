@@ -48,13 +48,13 @@ namespace Plotly.Blazor.Transforms.GroupByLib
 
             return 
                 (
-                    Target == other.Target &&
-                    Target != null && other.Target != null &&
+                    Target == other.Target ||
+                    Target != null &&
                     Target.Equals(other.Target)
                 ) && 
                 (
-                    Value == other.Value &&
-                    Value != null && other.Value != null &&
+                    Value == other.Value ||
+                    Value != null &&
                     Value.Equals(other.Value)
                 );
         }

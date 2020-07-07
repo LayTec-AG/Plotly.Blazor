@@ -110,13 +110,13 @@ namespace Plotly.Blazor.Traces.ParCatsLib
 
             return 
                 (
-                    Label == other.Label &&
-                    Label != null && other.Label != null &&
+                    Label == other.Label ||
+                    Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    CategoryOrder == other.CategoryOrder &&
-                    CategoryOrder != null && other.CategoryOrder != null &&
+                    CategoryOrder == other.CategoryOrder ||
+                    CategoryOrder != null &&
                     CategoryOrder.Equals(other.CategoryOrder)
                 ) && 
                 (
@@ -135,28 +135,28 @@ namespace Plotly.Blazor.Traces.ParCatsLib
                     Values.SequenceEqual(other.Values)
                 ) &&
                 (
-                    DisplayIndex == other.DisplayIndex &&
-                    DisplayIndex != null && other.DisplayIndex != null &&
+                    DisplayIndex == other.DisplayIndex ||
+                    DisplayIndex != null &&
                     DisplayIndex.Equals(other.DisplayIndex)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    CategoryArraySrc == other.CategoryArraySrc &&
-                    CategoryArraySrc != null && other.CategoryArraySrc != null &&
+                    CategoryArraySrc == other.CategoryArraySrc ||
+                    CategoryArraySrc != null &&
                     CategoryArraySrc.Equals(other.CategoryArraySrc)
                 ) && 
                 (
-                    TickTextSrc == other.TickTextSrc &&
-                    TickTextSrc != null && other.TickTextSrc != null &&
+                    TickTextSrc == other.TickTextSrc ||
+                    TickTextSrc != null &&
                     TickTextSrc.Equals(other.TickTextSrc)
                 ) && 
                 (
-                    ValuesSrc == other.ValuesSrc &&
-                    ValuesSrc != null && other.ValuesSrc != null &&
+                    ValuesSrc == other.ValuesSrc ||
+                    ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
                 );
         }

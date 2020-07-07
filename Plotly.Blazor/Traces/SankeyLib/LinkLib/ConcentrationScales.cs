@@ -86,33 +86,33 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
 
             return 
                 (
-                    Label == other.Label &&
-                    Label != null && other.Label != null &&
+                    Label == other.Label ||
+                    Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    CMax == other.CMax &&
-                    CMax != null && other.CMax != null &&
+                    CMax == other.CMax ||
+                    CMax != null &&
                     CMax.Equals(other.CMax)
                 ) && 
                 (
-                    CMin == other.CMin &&
-                    CMin != null && other.CMin != null &&
+                    CMin == other.CMin ||
+                    CMin != null &&
                     CMin.Equals(other.CMin)
                 ) && 
                 (
-                    ColorScale == other.ColorScale &&
-                    ColorScale != null && other.ColorScale != null &&
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

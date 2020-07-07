@@ -123,48 +123,48 @@ namespace Plotly.Blazor.LayoutLib
                     Domain.SequenceEqual(other.Domain)
                 ) &&
                 (
-                    Orientation == other.Orientation &&
-                    Orientation != null && other.Orientation != null &&
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
                     Orientation.Equals(other.Orientation)
                 ) && 
                 (
-                    ShowLine == other.ShowLine &&
-                    ShowLine != null && other.ShowLine != null &&
+                    ShowLine == other.ShowLine ||
+                    ShowLine != null &&
                     ShowLine.Equals(other.ShowLine)
                 ) && 
                 (
-                    ShowTickLabels == other.ShowTickLabels &&
-                    ShowTickLabels != null && other.ShowTickLabels != null &&
+                    ShowTickLabels == other.ShowTickLabels ||
+                    ShowTickLabels != null &&
                     ShowTickLabels.Equals(other.ShowTickLabels)
                 ) && 
                 (
-                    TickOrientation == other.TickOrientation &&
-                    TickOrientation != null && other.TickOrientation != null &&
+                    TickOrientation == other.TickOrientation ||
+                    TickOrientation != null &&
                     TickOrientation.Equals(other.TickOrientation)
                 ) && 
                 (
-                    TickleN == other.TickleN &&
-                    TickleN != null && other.TickleN != null &&
+                    TickleN == other.TickleN ||
+                    TickleN != null &&
                     TickleN.Equals(other.TickleN)
                 ) && 
                 (
-                    TickColor == other.TickColor &&
-                    TickColor != null && other.TickColor != null &&
+                    TickColor == other.TickColor ||
+                    TickColor != null &&
                     TickColor.Equals(other.TickColor)
                 ) && 
                 (
-                    TickSuffix == other.TickSuffix &&
-                    TickSuffix != null && other.TickSuffix != null &&
+                    TickSuffix == other.TickSuffix ||
+                    TickSuffix != null &&
                     TickSuffix.Equals(other.TickSuffix)
                 ) && 
                 (
-                    EndPadding == other.EndPadding &&
-                    EndPadding != null && other.EndPadding != null &&
+                    EndPadding == other.EndPadding ||
+                    EndPadding != null &&
                     EndPadding.Equals(other.EndPadding)
                 ) && 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 );
         }

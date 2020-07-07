@@ -60,23 +60,23 @@ namespace Plotly.Blazor.Traces.BoxLib.MarkerLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    OutlierColor == other.OutlierColor &&
-                    OutlierColor != null && other.OutlierColor != null &&
+                    OutlierColor == other.OutlierColor ||
+                    OutlierColor != null &&
                     OutlierColor.Equals(other.OutlierColor)
                 ) && 
                 (
-                    OutlierWidth == other.OutlierWidth &&
-                    OutlierWidth != null && other.OutlierWidth != null &&
+                    OutlierWidth == other.OutlierWidth ||
+                    OutlierWidth != null &&
                     OutlierWidth.Equals(other.OutlierWidth)
                 );
         }

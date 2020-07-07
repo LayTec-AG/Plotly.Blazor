@@ -79,13 +79,13 @@ namespace Plotly.Blazor.Transforms
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
@@ -94,8 +94,8 @@ namespace Plotly.Blazor.Transforms
                     Groups.SequenceEqual(other.Groups)
                 ) &&
                 (
-                    NameFormat == other.NameFormat &&
-                    NameFormat != null && other.NameFormat != null &&
+                    NameFormat == other.NameFormat ||
+                    NameFormat != null &&
                     NameFormat.Equals(other.NameFormat)
                 ) && 
                 (
@@ -104,8 +104,8 @@ namespace Plotly.Blazor.Transforms
                     Styles.SequenceEqual(other.Styles)
                 ) &&
                 (
-                    GroupsSrc == other.GroupsSrc &&
-                    GroupsSrc != null && other.GroupsSrc != null &&
+                    GroupsSrc == other.GroupsSrc ||
+                    GroupsSrc != null &&
                     GroupsSrc.Equals(other.GroupsSrc)
                 );
         }

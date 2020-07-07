@@ -161,8 +161,8 @@ namespace Plotly.Blazor.Traces.TableLib
                     Format.SequenceEqual(other.Format)
                 ) &&
                 (
-                    Prefix == other.Prefix &&
-                    Prefix != null && other.Prefix != null &&
+                    Prefix == other.Prefix ||
+                    Prefix != null &&
                     Prefix.Equals(other.Prefix)
                 ) && 
                 (
@@ -171,8 +171,8 @@ namespace Plotly.Blazor.Traces.TableLib
                     PrefixArray.SequenceEqual(other.PrefixArray)
                 ) &&
                 (
-                    Suffix == other.Suffix &&
-                    Suffix != null && other.Suffix != null &&
+                    Suffix == other.Suffix ||
+                    Suffix != null &&
                     Suffix.Equals(other.Suffix)
                 ) && 
                 (
@@ -181,13 +181,13 @@ namespace Plotly.Blazor.Traces.TableLib
                     SuffixArray.SequenceEqual(other.SuffixArray)
                 ) &&
                 (
-                    Height == other.Height &&
-                    Height != null && other.Height != null &&
+                    Height == other.Height ||
+                    Height != null &&
                     Height.Equals(other.Height)
                 ) && 
                 (
-                    Align == other.Align &&
-                    Align != null && other.Align != null &&
+                    Align == other.Align ||
+                    Align != null &&
                     Align.Equals(other.Align)
                 ) && 
                 (
@@ -196,43 +196,43 @@ namespace Plotly.Blazor.Traces.TableLib
                     AlignArray.SequenceEqual(other.AlignArray)
                 ) &&
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Fill == other.Fill &&
-                    Fill != null && other.Fill != null &&
+                    Fill == other.Fill ||
+                    Fill != null &&
                     Fill.Equals(other.Fill)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    ValuesSrc == other.ValuesSrc &&
-                    ValuesSrc != null && other.ValuesSrc != null &&
+                    ValuesSrc == other.ValuesSrc ||
+                    ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
                 ) && 
                 (
-                    FormatSrc == other.FormatSrc &&
-                    FormatSrc != null && other.FormatSrc != null &&
+                    FormatSrc == other.FormatSrc ||
+                    FormatSrc != null &&
                     FormatSrc.Equals(other.FormatSrc)
                 ) && 
                 (
-                    PrefixSrc == other.PrefixSrc &&
-                    PrefixSrc != null && other.PrefixSrc != null &&
+                    PrefixSrc == other.PrefixSrc ||
+                    PrefixSrc != null &&
                     PrefixSrc.Equals(other.PrefixSrc)
                 ) && 
                 (
-                    SuffixSrc == other.SuffixSrc &&
-                    SuffixSrc != null && other.SuffixSrc != null &&
+                    SuffixSrc == other.SuffixSrc ||
+                    SuffixSrc != null &&
                     SuffixSrc.Equals(other.SuffixSrc)
                 ) && 
                 (
-                    AlignSrc == other.AlignSrc &&
-                    AlignSrc != null && other.AlignSrc != null &&
+                    AlignSrc == other.AlignSrc ||
+                    AlignSrc != null &&
                     AlignSrc.Equals(other.AlignSrc)
                 );
         }

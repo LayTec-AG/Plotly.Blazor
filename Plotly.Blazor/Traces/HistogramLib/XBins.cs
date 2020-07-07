@@ -74,18 +74,18 @@ namespace Plotly.Blazor.Traces.HistogramLib
 
             return 
                 (
-                    Start == other.Start &&
-                    Start != null && other.Start != null &&
+                    Start == other.Start ||
+                    Start != null &&
                     Start.Equals(other.Start)
                 ) && 
                 (
-                    End == other.End &&
-                    End != null && other.End != null &&
+                    End == other.End ||
+                    End != null &&
                     End.Equals(other.End)
                 ) && 
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 );
         }

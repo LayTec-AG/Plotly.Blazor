@@ -40,8 +40,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
             return 
                 (
-                    Radius == other.Radius &&
-                    Radius != null && other.Radius != null &&
+                    Radius == other.Radius ||
+                    Radius != null &&
                     Radius.Equals(other.Radius)
                 );
         }

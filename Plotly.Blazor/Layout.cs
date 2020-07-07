@@ -673,83 +673,83 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    BarMode == other.BarMode &&
-                    BarMode != null && other.BarMode != null &&
+                    BarMode == other.BarMode ||
+                    BarMode != null &&
                     BarMode.Equals(other.BarMode)
                 ) && 
                 (
-                    BarNorm == other.BarNorm &&
-                    BarNorm != null && other.BarNorm != null &&
+                    BarNorm == other.BarNorm ||
+                    BarNorm != null &&
                     BarNorm.Equals(other.BarNorm)
                 ) && 
                 (
-                    BarGap == other.BarGap &&
-                    BarGap != null && other.BarGap != null &&
+                    BarGap == other.BarGap ||
+                    BarGap != null &&
                     BarGap.Equals(other.BarGap)
                 ) && 
                 (
-                    BarGroupGap == other.BarGroupGap &&
-                    BarGroupGap != null && other.BarGroupGap != null &&
+                    BarGroupGap == other.BarGroupGap ||
+                    BarGroupGap != null &&
                     BarGroupGap.Equals(other.BarGroupGap)
                 ) && 
                 (
-                    BoxMode == other.BoxMode &&
-                    BoxMode != null && other.BoxMode != null &&
+                    BoxMode == other.BoxMode ||
+                    BoxMode != null &&
                     BoxMode.Equals(other.BoxMode)
                 ) && 
                 (
-                    BoxGap == other.BoxGap &&
-                    BoxGap != null && other.BoxGap != null &&
+                    BoxGap == other.BoxGap ||
+                    BoxGap != null &&
                     BoxGap.Equals(other.BoxGap)
                 ) && 
                 (
-                    BoxGroupGap == other.BoxGroupGap &&
-                    BoxGroupGap != null && other.BoxGroupGap != null &&
+                    BoxGroupGap == other.BoxGroupGap ||
+                    BoxGroupGap != null &&
                     BoxGroupGap.Equals(other.BoxGroupGap)
                 ) && 
                 (
-                    ViolinMode == other.ViolinMode &&
-                    ViolinMode != null && other.ViolinMode != null &&
+                    ViolinMode == other.ViolinMode ||
+                    ViolinMode != null &&
                     ViolinMode.Equals(other.ViolinMode)
                 ) && 
                 (
-                    ViolinGap == other.ViolinGap &&
-                    ViolinGap != null && other.ViolinGap != null &&
+                    ViolinGap == other.ViolinGap ||
+                    ViolinGap != null &&
                     ViolinGap.Equals(other.ViolinGap)
                 ) && 
                 (
-                    ViolinGroupGap == other.ViolinGroupGap &&
-                    ViolinGroupGap != null && other.ViolinGroupGap != null &&
+                    ViolinGroupGap == other.ViolinGroupGap ||
+                    ViolinGroupGap != null &&
                     ViolinGroupGap.Equals(other.ViolinGroupGap)
                 ) && 
                 (
-                    FunnelMode == other.FunnelMode &&
-                    FunnelMode != null && other.FunnelMode != null &&
+                    FunnelMode == other.FunnelMode ||
+                    FunnelMode != null &&
                     FunnelMode.Equals(other.FunnelMode)
                 ) && 
                 (
-                    FunnelGap == other.FunnelGap &&
-                    FunnelGap != null && other.FunnelGap != null &&
+                    FunnelGap == other.FunnelGap ||
+                    FunnelGap != null &&
                     FunnelGap.Equals(other.FunnelGap)
                 ) && 
                 (
-                    FunnelGroupGap == other.FunnelGroupGap &&
-                    FunnelGroupGap != null && other.FunnelGroupGap != null &&
+                    FunnelGroupGap == other.FunnelGroupGap ||
+                    FunnelGroupGap != null &&
                     FunnelGroupGap.Equals(other.FunnelGroupGap)
                 ) && 
                 (
-                    WaterfallMode == other.WaterfallMode &&
-                    WaterfallMode != null && other.WaterfallMode != null &&
+                    WaterfallMode == other.WaterfallMode ||
+                    WaterfallMode != null &&
                     WaterfallMode.Equals(other.WaterfallMode)
                 ) && 
                 (
-                    WaterfallGap == other.WaterfallGap &&
-                    WaterfallGap != null && other.WaterfallGap != null &&
+                    WaterfallGap == other.WaterfallGap ||
+                    WaterfallGap != null &&
                     WaterfallGap.Equals(other.WaterfallGap)
                 ) && 
                 (
-                    WaterfallGroupGap == other.WaterfallGroupGap &&
-                    WaterfallGroupGap != null && other.WaterfallGroupGap != null &&
+                    WaterfallGroupGap == other.WaterfallGroupGap ||
+                    WaterfallGroupGap != null &&
                     WaterfallGroupGap.Equals(other.WaterfallGroupGap)
                 ) && 
                 (
@@ -763,13 +763,13 @@ namespace Plotly.Blazor
                     PieColorway.SequenceEqual(other.PieColorway)
                 ) &&
                 (
-                    ExtendPieColors == other.ExtendPieColors &&
-                    ExtendPieColors != null && other.ExtendPieColors != null &&
+                    ExtendPieColors == other.ExtendPieColors ||
+                    ExtendPieColors != null &&
                     ExtendPieColors.Equals(other.ExtendPieColors)
                 ) && 
                 (
-                    HiddenLabelsSrc == other.HiddenLabelsSrc &&
-                    HiddenLabelsSrc != null && other.HiddenLabelsSrc != null &&
+                    HiddenLabelsSrc == other.HiddenLabelsSrc ||
+                    HiddenLabelsSrc != null &&
                     HiddenLabelsSrc.Equals(other.HiddenLabelsSrc)
                 ) && 
                 (
@@ -778,8 +778,8 @@ namespace Plotly.Blazor
                     SunburstColorway.SequenceEqual(other.SunburstColorway)
                 ) &&
                 (
-                    ExtendSunburstColors == other.ExtendSunburstColors &&
-                    ExtendSunburstColors != null && other.ExtendSunburstColors != null &&
+                    ExtendSunburstColors == other.ExtendSunburstColors ||
+                    ExtendSunburstColors != null &&
                     ExtendSunburstColors.Equals(other.ExtendSunburstColors)
                 ) && 
                 (
@@ -788,8 +788,8 @@ namespace Plotly.Blazor
                     TreeMapColorway.SequenceEqual(other.TreeMapColorway)
                 ) &&
                 (
-                    ExtendTreeMapColors == other.ExtendTreeMapColors &&
-                    ExtendTreeMapColors != null && other.ExtendTreeMapColors != null &&
+                    ExtendTreeMapColors == other.ExtendTreeMapColors ||
+                    ExtendTreeMapColors != null &&
                     ExtendTreeMapColors.Equals(other.ExtendTreeMapColors)
                 ) && 
                 (
@@ -798,68 +798,68 @@ namespace Plotly.Blazor
                     FunnelAreaColorway.SequenceEqual(other.FunnelAreaColorway)
                 ) &&
                 (
-                    ExtendFunnelAreaColors == other.ExtendFunnelAreaColors &&
-                    ExtendFunnelAreaColors != null && other.ExtendFunnelAreaColors != null &&
+                    ExtendFunnelAreaColors == other.ExtendFunnelAreaColors ||
+                    ExtendFunnelAreaColors != null &&
                     ExtendFunnelAreaColors.Equals(other.ExtendFunnelAreaColors)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Title == other.Title &&
-                    Title != null && other.Title != null &&
+                    Title == other.Title ||
+                    Title != null &&
                     Title.Equals(other.Title)
                 ) && 
                 (
-                    UniformText == other.UniformText &&
-                    UniformText != null && other.UniformText != null &&
+                    UniformText == other.UniformText ||
+                    UniformText != null &&
                     UniformText.Equals(other.UniformText)
                 ) && 
                 (
-                    AutoSize == other.AutoSize &&
-                    AutoSize != null && other.AutoSize != null &&
+                    AutoSize == other.AutoSize ||
+                    AutoSize != null &&
                     AutoSize.Equals(other.AutoSize)
                 ) && 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    Height == other.Height &&
-                    Height != null && other.Height != null &&
+                    Height == other.Height ||
+                    Height != null &&
                     Height.Equals(other.Height)
                 ) && 
                 (
-                    Margin == other.Margin &&
-                    Margin != null && other.Margin != null &&
+                    Margin == other.Margin ||
+                    Margin != null &&
                     Margin.Equals(other.Margin)
                 ) && 
                 (
-                    PaperBgColor == other.PaperBgColor &&
-                    PaperBgColor != null && other.PaperBgColor != null &&
+                    PaperBgColor == other.PaperBgColor ||
+                    PaperBgColor != null &&
                     PaperBgColor.Equals(other.PaperBgColor)
                 ) && 
                 (
-                    PlotBgColor == other.PlotBgColor &&
-                    PlotBgColor != null && other.PlotBgColor != null &&
+                    PlotBgColor == other.PlotBgColor ||
+                    PlotBgColor != null &&
                     PlotBgColor.Equals(other.PlotBgColor)
                 ) && 
                 (
-                    Separators == other.Separators &&
-                    Separators != null && other.Separators != null &&
+                    Separators == other.Separators ||
+                    Separators != null &&
                     Separators.Equals(other.Separators)
                 ) && 
                 (
-                    HideSources == other.HideSources &&
-                    HideSources != null && other.HideSources != null &&
+                    HideSources == other.HideSources ||
+                    HideSources != null &&
                     HideSources.Equals(other.HideSources)
                 ) && 
                 (
-                    ShowLegend == other.ShowLegend &&
-                    ShowLegend != null && other.ShowLegend != null &&
+                    ShowLegend == other.ShowLegend ||
+                    ShowLegend != null &&
                     ShowLegend.Equals(other.ShowLegend)
                 ) && 
                 (
@@ -868,48 +868,48 @@ namespace Plotly.Blazor
                     Colorway.SequenceEqual(other.Colorway)
                 ) &&
                 (
-                    DataRevision == other.DataRevision &&
-                    DataRevision != null && other.DataRevision != null &&
+                    DataRevision == other.DataRevision ||
+                    DataRevision != null &&
                     DataRevision.Equals(other.DataRevision)
                 ) && 
                 (
-                    UiRevision == other.UiRevision &&
-                    UiRevision != null && other.UiRevision != null &&
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
-                    EditRevision == other.EditRevision &&
-                    EditRevision != null && other.EditRevision != null &&
+                    EditRevision == other.EditRevision ||
+                    EditRevision != null &&
                     EditRevision.Equals(other.EditRevision)
                 ) && 
                 (
-                    SelectionRevision == other.SelectionRevision &&
-                    SelectionRevision != null && other.SelectionRevision != null &&
+                    SelectionRevision == other.SelectionRevision ||
+                    SelectionRevision != null &&
                     SelectionRevision.Equals(other.SelectionRevision)
                 ) && 
                 (
-                    Template == other.Template &&
-                    Template != null && other.Template != null &&
+                    Template == other.Template ||
+                    Template != null &&
                     Template.Equals(other.Template)
                 ) && 
                 (
-                    ModeBar == other.ModeBar &&
-                    ModeBar != null && other.ModeBar != null &&
+                    ModeBar == other.ModeBar ||
+                    ModeBar != null &&
                     ModeBar.Equals(other.ModeBar)
                 ) && 
                 (
-                    NewShape == other.NewShape &&
-                    NewShape != null && other.NewShape != null &&
+                    NewShape == other.NewShape ||
+                    NewShape != null &&
                     NewShape.Equals(other.NewShape)
                 ) && 
                 (
-                    ActiveShape == other.ActiveShape &&
-                    ActiveShape != null && other.ActiveShape != null &&
+                    ActiveShape == other.ActiveShape ||
+                    ActiveShape != null &&
                     ActiveShape.Equals(other.ActiveShape)
                 ) && 
                 (
-                    Meta == other.Meta &&
-                    Meta != null && other.Meta != null &&
+                    Meta == other.Meta ||
+                    Meta != null &&
                     Meta.Equals(other.Meta)
                 ) && 
                 (
@@ -918,53 +918,53 @@ namespace Plotly.Blazor
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
-                    Transition == other.Transition &&
-                    Transition != null && other.Transition != null &&
+                    Transition == other.Transition ||
+                    Transition != null &&
                     Transition.Equals(other.Transition)
                 ) && 
                 (
-                    ClickMode == other.ClickMode &&
-                    ClickMode != null && other.ClickMode != null &&
+                    ClickMode == other.ClickMode ||
+                    ClickMode != null &&
                     ClickMode.Equals(other.ClickMode)
                 ) && 
                 (
-                    DragMode == other.DragMode &&
-                    DragMode != null && other.DragMode != null &&
+                    DragMode == other.DragMode ||
+                    DragMode != null &&
                     DragMode.Equals(other.DragMode)
                 ) && 
                 (
-                    HoverMode == other.HoverMode &&
-                    HoverMode != null && other.HoverMode != null &&
+                    HoverMode == other.HoverMode ||
+                    HoverMode != null &&
                     HoverMode.Equals(other.HoverMode)
                 ) && 
                 (
-                    HoverDistance == other.HoverDistance &&
-                    HoverDistance != null && other.HoverDistance != null &&
+                    HoverDistance == other.HoverDistance ||
+                    HoverDistance != null &&
                     HoverDistance.Equals(other.HoverDistance)
                 ) && 
                 (
-                    SpikeDistance == other.SpikeDistance &&
-                    SpikeDistance != null && other.SpikeDistance != null &&
+                    SpikeDistance == other.SpikeDistance ||
+                    SpikeDistance != null &&
                     SpikeDistance.Equals(other.SpikeDistance)
                 ) && 
                 (
-                    HoverLabel == other.HoverLabel &&
-                    HoverLabel != null && other.HoverLabel != null &&
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
                     HoverLabel.Equals(other.HoverLabel)
                 ) && 
                 (
-                    SelectDirection == other.SelectDirection &&
-                    SelectDirection != null && other.SelectDirection != null &&
+                    SelectDirection == other.SelectDirection ||
+                    SelectDirection != null &&
                     SelectDirection.Equals(other.SelectDirection)
                 ) && 
                 (
-                    Grid == other.Grid &&
-                    Grid != null && other.Grid != null &&
+                    Grid == other.Grid ||
+                    Grid != null &&
                     Grid.Equals(other.Grid)
                 ) && 
                 (
-                    Calendar == other.Calendar &&
-                    Calendar != null && other.Calendar != null &&
+                    Calendar == other.Calendar ||
+                    Calendar != null &&
                     Calendar.Equals(other.Calendar)
                 ) && 
                 (
@@ -1003,28 +1003,28 @@ namespace Plotly.Blazor
                     Polar.SequenceEqual(other.Polar)
                 ) &&
                 (
-                    RadialAxis == other.RadialAxis &&
-                    RadialAxis != null && other.RadialAxis != null &&
+                    RadialAxis == other.RadialAxis ||
+                    RadialAxis != null &&
                     RadialAxis.Equals(other.RadialAxis)
                 ) && 
                 (
-                    AngularAxis == other.AngularAxis &&
-                    AngularAxis != null && other.AngularAxis != null &&
+                    AngularAxis == other.AngularAxis ||
+                    AngularAxis != null &&
                     AngularAxis.Equals(other.AngularAxis)
                 ) && 
                 (
-                    Direction == other.Direction &&
-                    Direction != null && other.Direction != null &&
+                    Direction == other.Direction ||
+                    Direction != null &&
                     Direction.Equals(other.Direction)
                 ) && 
                 (
-                    Orientation == other.Orientation &&
-                    Orientation != null && other.Orientation != null &&
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
                     Orientation.Equals(other.Orientation)
                 ) && 
                 (
-                    Legend == other.Legend &&
-                    Legend != null && other.Legend != null &&
+                    Legend == other.Legend ||
+                    Legend != null &&
                     Legend.Equals(other.Legend)
                 ) && 
                 (
@@ -1053,8 +1053,8 @@ namespace Plotly.Blazor
                     Sliders.SequenceEqual(other.Sliders)
                 ) &&
                 (
-                    ColorScale == other.ColorScale &&
-                    ColorScale != null && other.ColorScale != null &&
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
@@ -1063,8 +1063,8 @@ namespace Plotly.Blazor
                     ColorAxis.SequenceEqual(other.ColorAxis)
                 ) &&
                 (
-                    MetaSrc == other.MetaSrc &&
-                    MetaSrc != null && other.MetaSrc != null &&
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
                     MetaSrc.Equals(other.MetaSrc)
                 );
         }

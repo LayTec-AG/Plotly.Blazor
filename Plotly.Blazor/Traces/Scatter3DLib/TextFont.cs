@@ -90,8 +90,8 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
 
             return 
                 (
-                    Color == other.Color &&
-                    Color != null && other.Color != null &&
+                    Color == other.Color ||
+                    Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
@@ -100,8 +100,8 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    Size == other.Size &&
-                    Size != null && other.Size != null &&
+                    Size == other.Size ||
+                    Size != null &&
                     Size.Equals(other.Size)
                 ) && 
                 (
@@ -110,18 +110,18 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
                     SizeArray.SequenceEqual(other.SizeArray)
                 ) &&
                 (
-                    Family == other.Family &&
-                    Family != null && other.Family != null &&
+                    Family == other.Family ||
+                    Family != null &&
                     Family.Equals(other.Family)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc &&
-                    ColorSrc != null && other.ColorSrc != null &&
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
-                    SizeSrc == other.SizeSrc &&
-                    SizeSrc != null && other.SizeSrc != null &&
+                    SizeSrc == other.SizeSrc ||
+                    SizeSrc != null &&
                     SizeSrc.Equals(other.SizeSrc)
                 );
         }

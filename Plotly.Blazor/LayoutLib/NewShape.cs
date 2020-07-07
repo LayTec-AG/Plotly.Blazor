@@ -75,33 +75,33 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    FillColor == other.FillColor &&
-                    FillColor != null && other.FillColor != null &&
+                    FillColor == other.FillColor ||
+                    FillColor != null &&
                     FillColor.Equals(other.FillColor)
                 ) && 
                 (
-                    FillRule == other.FillRule &&
-                    FillRule != null && other.FillRule != null &&
+                    FillRule == other.FillRule ||
+                    FillRule != null &&
                     FillRule.Equals(other.FillRule)
                 ) && 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Layer == other.Layer &&
-                    Layer != null && other.Layer != null &&
+                    Layer == other.Layer ||
+                    Layer != null &&
                     Layer.Equals(other.Layer)
                 ) && 
                 (
-                    DrawDirection == other.DrawDirection &&
-                    DrawDirection != null && other.DrawDirection != null &&
+                    DrawDirection == other.DrawDirection ||
+                    DrawDirection != null &&
                     DrawDirection.Equals(other.DrawDirection)
                 );
         }

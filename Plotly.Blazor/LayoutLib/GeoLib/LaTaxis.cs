@@ -76,28 +76,28 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
                     Range.SequenceEqual(other.Range)
                 ) &&
                 (
-                    ShowGrid == other.ShowGrid &&
-                    ShowGrid != null && other.ShowGrid != null &&
+                    ShowGrid == other.ShowGrid ||
+                    ShowGrid != null &&
                     ShowGrid.Equals(other.ShowGrid)
                 ) && 
                 (
-                    Tick0 == other.Tick0 &&
-                    Tick0 != null && other.Tick0 != null &&
+                    Tick0 == other.Tick0 ||
+                    Tick0 != null &&
                     Tick0.Equals(other.Tick0)
                 ) && 
                 (
-                    DTick == other.DTick &&
-                    DTick != null && other.DTick != null &&
+                    DTick == other.DTick ||
+                    DTick != null &&
                     DTick.Equals(other.DTick)
                 ) && 
                 (
-                    GridColor == other.GridColor &&
-                    GridColor != null && other.GridColor != null &&
+                    GridColor == other.GridColor ||
+                    GridColor != null &&
                     GridColor.Equals(other.GridColor)
                 ) && 
                 (
-                    GridWidth == other.GridWidth &&
-                    GridWidth != null && other.GridWidth != null &&
+                    GridWidth == other.GridWidth ||
+                    GridWidth != null &&
                     GridWidth.Equals(other.GridWidth)
                 );
         }

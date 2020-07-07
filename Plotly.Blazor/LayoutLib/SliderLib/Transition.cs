@@ -45,13 +45,13 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
             return 
                 (
-                    Duration == other.Duration &&
-                    Duration != null && other.Duration != null &&
+                    Duration == other.Duration ||
+                    Duration != null &&
                     Duration.Equals(other.Duration)
                 ) && 
                 (
-                    Easing == other.Easing &&
-                    Easing != null && other.Easing != null &&
+                    Easing == other.Easing ||
+                    Easing != null &&
                     Easing.Equals(other.Easing)
                 );
         }

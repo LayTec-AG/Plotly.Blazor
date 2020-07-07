@@ -39,8 +39,8 @@ namespace Plotly.Blazor.Traces.ChoroplethLib.SelectedLib
 
             return 
                 (
-                    Opacity == other.Opacity &&
-                    Opacity != null && other.Opacity != null &&
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
                     Opacity.Equals(other.Opacity)
                 );
         }

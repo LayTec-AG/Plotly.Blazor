@@ -82,18 +82,18 @@ namespace Plotly.Blazor.Transforms
 
             return 
                 (
-                    Type == other.Type &&
-                    Type != null && other.Type != null &&
+                    Type == other.Type ||
+                    Type != null &&
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Enabled == other.Enabled &&
-                    Enabled != null && other.Enabled != null &&
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
-                    Target == other.Target &&
-                    Target != null && other.Target != null &&
+                    Target == other.Target ||
+                    Target != null &&
                     Target.Equals(other.Target)
                 ) && 
                 (
@@ -102,13 +102,13 @@ namespace Plotly.Blazor.Transforms
                     TargetArray.SequenceEqual(other.TargetArray)
                 ) &&
                 (
-                    Order == other.Order &&
-                    Order != null && other.Order != null &&
+                    Order == other.Order ||
+                    Order != null &&
                     Order.Equals(other.Order)
                 ) && 
                 (
-                    TargetSrc == other.TargetSrc &&
-                    TargetSrc != null && other.TargetSrc != null &&
+                    TargetSrc == other.TargetSrc ||
+                    TargetSrc != null &&
                     TargetSrc.Equals(other.TargetSrc)
                 );
         }

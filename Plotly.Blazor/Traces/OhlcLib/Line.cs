@@ -50,13 +50,13 @@ namespace Plotly.Blazor.Traces.OhlcLib
 
             return 
                 (
-                    Width == other.Width &&
-                    Width != null && other.Width != null &&
+                    Width == other.Width ||
+                    Width != null &&
                     Width.Equals(other.Width)
                 ) && 
                 (
-                    Dash == other.Dash &&
-                    Dash != null && other.Dash != null &&
+                    Dash == other.Dash ||
+                    Dash != null &&
                     Dash.Equals(other.Dash)
                 );
         }

@@ -191,13 +191,13 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible &&
-                    Visible != null && other.Visible != null &&
+                    Visible == other.Visible ||
+                    Visible != null &&
                     Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Active == other.Active &&
-                    Active != null && other.Active != null &&
+                    Active == other.Active ||
+                    Active != null &&
                     Active.Equals(other.Active)
                 ) && 
                 (
@@ -206,103 +206,103 @@ namespace Plotly.Blazor.LayoutLib
                     Steps.SequenceEqual(other.Steps)
                 ) &&
                 (
-                    LenMode == other.LenMode &&
-                    LenMode != null && other.LenMode != null &&
+                    LenMode == other.LenMode ||
+                    LenMode != null &&
                     LenMode.Equals(other.LenMode)
                 ) && 
                 (
-                    Len == other.Len &&
-                    Len != null && other.Len != null &&
+                    Len == other.Len ||
+                    Len != null &&
                     Len.Equals(other.Len)
                 ) && 
                 (
-                    X == other.X &&
-                    X != null && other.X != null &&
+                    X == other.X ||
+                    X != null &&
                     X.Equals(other.X)
                 ) && 
                 (
-                    Pad == other.Pad &&
-                    Pad != null && other.Pad != null &&
+                    Pad == other.Pad ||
+                    Pad != null &&
                     Pad.Equals(other.Pad)
                 ) && 
                 (
-                    XAnchor == other.XAnchor &&
-                    XAnchor != null && other.XAnchor != null &&
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
-                    Y == other.Y &&
-                    Y != null && other.Y != null &&
+                    Y == other.Y ||
+                    Y != null &&
                     Y.Equals(other.Y)
                 ) && 
                 (
-                    YAnchor == other.YAnchor &&
-                    YAnchor != null && other.YAnchor != null &&
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    Transition == other.Transition &&
-                    Transition != null && other.Transition != null &&
+                    Transition == other.Transition ||
+                    Transition != null &&
                     Transition.Equals(other.Transition)
                 ) && 
                 (
-                    CurrentValue == other.CurrentValue &&
-                    CurrentValue != null && other.CurrentValue != null &&
+                    CurrentValue == other.CurrentValue ||
+                    CurrentValue != null &&
                     CurrentValue.Equals(other.CurrentValue)
                 ) && 
                 (
-                    Font == other.Font &&
-                    Font != null && other.Font != null &&
+                    Font == other.Font ||
+                    Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    ActiveBgColor == other.ActiveBgColor &&
-                    ActiveBgColor != null && other.ActiveBgColor != null &&
+                    ActiveBgColor == other.ActiveBgColor ||
+                    ActiveBgColor != null &&
                     ActiveBgColor.Equals(other.ActiveBgColor)
                 ) && 
                 (
-                    BgColor == other.BgColor &&
-                    BgColor != null && other.BgColor != null &&
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    BorderColor == other.BorderColor &&
-                    BorderColor != null && other.BorderColor != null &&
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
                     BorderColor.Equals(other.BorderColor)
                 ) && 
                 (
-                    BorderWidth == other.BorderWidth &&
-                    BorderWidth != null && other.BorderWidth != null &&
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    TickleN == other.TickleN &&
-                    TickleN != null && other.TickleN != null &&
+                    TickleN == other.TickleN ||
+                    TickleN != null &&
                     TickleN.Equals(other.TickleN)
                 ) && 
                 (
-                    TickColor == other.TickColor &&
-                    TickColor != null && other.TickColor != null &&
+                    TickColor == other.TickColor ||
+                    TickColor != null &&
                     TickColor.Equals(other.TickColor)
                 ) && 
                 (
-                    TickWidth == other.TickWidth &&
-                    TickWidth != null && other.TickWidth != null &&
+                    TickWidth == other.TickWidth ||
+                    TickWidth != null &&
                     TickWidth.Equals(other.TickWidth)
                 ) && 
                 (
-                    MinorTickLen == other.MinorTickLen &&
-                    MinorTickLen != null && other.MinorTickLen != null &&
+                    MinorTickLen == other.MinorTickLen ||
+                    MinorTickLen != null &&
                     MinorTickLen.Equals(other.MinorTickLen)
                 ) && 
                 (
-                    Name == other.Name &&
-                    Name != null && other.Name != null &&
+                    Name == other.Name ||
+                    Name != null &&
                     Name.Equals(other.Name)
                 ) && 
                 (
-                    TemplateItemName == other.TemplateItemName &&
-                    TemplateItemName != null && other.TemplateItemName != null &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
                 );
         }

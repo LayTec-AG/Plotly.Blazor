@@ -59,13 +59,13 @@ namespace Plotly.Blazor.Traces.PieLib
                     Colors.SequenceEqual(other.Colors)
                 ) &&
                 (
-                    Line == other.Line &&
-                    Line != null && other.Line != null &&
+                    Line == other.Line ||
+                    Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    ColorsSrc == other.ColorsSrc &&
-                    ColorsSrc != null && other.ColorsSrc != null &&
+                    ColorsSrc == other.ColorsSrc ||
+                    ColorsSrc != null &&
                     ColorsSrc.Equals(other.ColorsSrc)
                 );
         }

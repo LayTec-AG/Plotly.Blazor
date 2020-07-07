@@ -39,8 +39,8 @@ namespace Plotly.Blazor.Traces.WaterfallLib
 
             return 
                 (
-                    Marker == other.Marker &&
-                    Marker != null && other.Marker != null &&
+                    Marker == other.Marker ||
+                    Marker != null &&
                     Marker.Equals(other.Marker)
                 );
         }

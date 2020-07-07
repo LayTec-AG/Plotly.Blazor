@@ -67,23 +67,23 @@ namespace Plotly.Blazor.Traces.VolumeLib
 
             return 
                 (
-                    Show == other.Show &&
-                    Show != null && other.Show != null &&
+                    Show == other.Show ||
+                    Show != null &&
                     Show.Equals(other.Show)
                 ) && 
                 (
-                    Count == other.Count &&
-                    Count != null && other.Count != null &&
+                    Count == other.Count ||
+                    Count != null &&
                     Count.Equals(other.Count)
                 ) && 
                 (
-                    Fill == other.Fill &&
-                    Fill != null && other.Fill != null &&
+                    Fill == other.Fill ||
+                    Fill != null &&
                     Fill.Equals(other.Fill)
                 ) && 
                 (
-                    Pattern == other.Pattern &&
-                    Pattern != null && other.Pattern != null &&
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
                     Pattern.Equals(other.Pattern)
                 );
         }

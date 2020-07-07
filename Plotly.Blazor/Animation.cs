@@ -67,28 +67,28 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    Mode == other.Mode &&
-                    Mode != null && other.Mode != null &&
+                    Mode == other.Mode ||
+                    Mode != null &&
                     Mode.Equals(other.Mode)
                 ) && 
                 (
-                    Direction == other.Direction &&
-                    Direction != null && other.Direction != null &&
+                    Direction == other.Direction ||
+                    Direction != null &&
                     Direction.Equals(other.Direction)
                 ) && 
                 (
-                    FromCurrent == other.FromCurrent &&
-                    FromCurrent != null && other.FromCurrent != null &&
+                    FromCurrent == other.FromCurrent ||
+                    FromCurrent != null &&
                     FromCurrent.Equals(other.FromCurrent)
                 ) && 
                 (
-                    Frame == other.Frame &&
-                    Frame != null && other.Frame != null &&
+                    Frame == other.Frame ||
+                    Frame != null &&
                     Frame.Equals(other.Frame)
                 ) && 
                 (
-                    Transition == other.Transition &&
-                    Transition != null && other.Transition != null &&
+                    Transition == other.Transition ||
+                    Transition != null &&
                     Transition.Equals(other.Transition)
                 );
         }

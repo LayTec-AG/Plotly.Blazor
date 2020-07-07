@@ -1,0 +1,22 @@
+name: Build
+on:
+  push:
+    branches:
+      - master # Default release branch
+      - develop
+      - 'releases/**'
+    paths:
+      - 'Plotly.Blazor/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.300
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+      - name: Test with dotnet
+        run: dotnet test

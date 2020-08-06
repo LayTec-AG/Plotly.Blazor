@@ -277,6 +277,12 @@ namespace Plotly.Blazor
 
             if (rawToTransformed.TryGetValue(rawValue, out var enumInfo))
             {
+                // Serialize boolean enums as bool, not as string
+                if (string.Equals(enumInfo.Name, "false", StringComparison.InvariantCultureIgnoreCase) || string.Equals(enumInfo.Name, "true", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    writer.WriteBooleanValue(bool.Parse(enumInfo.Name));
+                    return;
+                }
                 writer.WriteStringValue(enumInfo.Name);
                 return;
             }

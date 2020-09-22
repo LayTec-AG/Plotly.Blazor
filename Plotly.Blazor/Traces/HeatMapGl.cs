@@ -224,6 +224,12 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.HeatMapGlLib.YTypeEnum? YType { get; set;} 
 
         /// <summary>
+        ///     Picks a smoothing algorithm use to smooth <c>z</c> data.
+        /// </summary>
+        [JsonPropertyName(@"zsmooth")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.ZSmoothEnum? ZSmooth { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
         ///     input data (here in <c>z</c>) or the bounds set in <c>zmin</c> and <c>zmax</c>
         ///      Defaults to <c>false</c> when <c>zmin</c> and <c>zmax</c> are set by the
@@ -516,6 +522,11 @@ namespace Plotly.Blazor.Traces
                     YType.Equals(other.YType)
                 ) && 
                 (
+                    ZSmooth == other.ZSmooth ||
+                    ZSmooth != null &&
+                    ZSmooth.Equals(other.ZSmooth)
+                ) && 
+                (
                     ZAuto == other.ZAuto ||
                     ZAuto != null &&
                     ZAuto.Equals(other.ZAuto)
@@ -649,6 +660,7 @@ namespace Plotly.Blazor.Traces
                 if (Transpose != null) hashCode = hashCode * 59 + Transpose.GetHashCode();
                 if (XType != null) hashCode = hashCode * 59 + XType.GetHashCode();
                 if (YType != null) hashCode = hashCode * 59 + YType.GetHashCode();
+                if (ZSmooth != null) hashCode = hashCode * 59 + ZSmooth.GetHashCode();
                 if (ZAuto != null) hashCode = hashCode * 59 + ZAuto.GetHashCode();
                 if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
                 if (ZMax != null) hashCode = hashCode * 59 + ZMax.GetHashCode();

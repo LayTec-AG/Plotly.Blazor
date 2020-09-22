@@ -60,7 +60,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the length of the tick lines on this angular axis.
         /// </summary>
         [JsonPropertyName(@"ticklen")]
-        public decimal? TickleN { get; set;} 
+        public decimal? TickLen { get; set;} 
 
         /// <summary>
         ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
@@ -130,9 +130,9 @@ namespace Plotly.Blazor.LayoutLib
                     TickOrientation.Equals(other.TickOrientation)
                 ) && 
                 (
-                    TickleN == other.TickleN ||
-                    TickleN != null &&
-                    TickleN.Equals(other.TickleN)
+                    TickLen == other.TickLen ||
+                    TickLen != null &&
+                    TickLen.Equals(other.TickLen)
                 ) && 
                 (
                     TickColor == other.TickColor ||
@@ -167,7 +167,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (ShowLine != null) hashCode = hashCode * 59 + ShowLine.GetHashCode();
                 if (ShowTickLabels != null) hashCode = hashCode * 59 + ShowTickLabels.GetHashCode();
                 if (TickOrientation != null) hashCode = hashCode * 59 + TickOrientation.GetHashCode();
-                if (TickleN != null) hashCode = hashCode * 59 + TickleN.GetHashCode();
+                if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();
                 if (TickSuffix != null) hashCode = hashCode * 59 + TickSuffix.GetHashCode();
                 if (EndPadding != null) hashCode = hashCode * 59 + EndPadding.GetHashCode();

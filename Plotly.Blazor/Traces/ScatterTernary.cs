@@ -231,10 +231,10 @@ namespace Plotly.Blazor.Traces
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. Every attributes that can be
-        ///     specified per-point (the ones that are &#39;arrayOk: true&#39;) are available.
-        ///     variables <c>a</c>, <c>b</c>, <c>c</c> and <c>text</c>.
+        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
+        ///     formatting syntax. Every attributes that can be specified per-point (the
+        ///     ones that are &#39;arrayOk: true&#39;) are available. variables <c>a</c>,
+        ///     <c>b</c>, <c>c</c> and <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         public string TextTemplate { get; set;} 
@@ -247,10 +247,10 @@ namespace Plotly.Blazor.Traces
         ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. Every attributes that can be
-        ///     specified per-point (the ones that are &#39;arrayOk: true&#39;) are available.
-        ///     variables <c>a</c>, <c>b</c>, <c>c</c> and <c>text</c>.
+        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
+        ///     formatting syntax. Every attributes that can be specified per-point (the
+        ///     ones that are &#39;arrayOk: true&#39;) are available. variables <c>a</c>,
+        ///     <c>b</c>, <c>c</c> and <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         [Array]
@@ -388,9 +388,9 @@ namespace Plotly.Blazor.Traces
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
+        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
+        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
         ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
@@ -408,9 +408,9 @@ namespace Plotly.Blazor.Traces
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
+        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
+        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
         ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example

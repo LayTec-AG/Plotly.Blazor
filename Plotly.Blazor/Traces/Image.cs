@@ -127,6 +127,13 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
+        ///     Specifies the data URI of the image to be visualized. The URI consists of
+        ///     &quot;data:image/[&lt;media subtype&gt;][;base64],&lt;data&gt;&quot;
+        /// </summary>
+        [JsonPropertyName(@"source")]
+        public string Source { get; set;} 
+
+        /// <summary>
         ///     A 2-dimensional array in which each element is an array of 3 or 4 numbers
         ///     representing a color.
         /// </summary>
@@ -135,7 +142,8 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Color model used to map the numerical color components described in <c>z</c>
-        ///     into colors.
+        ///     into colors. If <c>source</c> is specified, this attribute will be set to
+        ///     <c>rgba256</c> otherwise it defaults to <c>rgb</c>.
         /// </summary>
         [JsonPropertyName(@"colormodel")]
         public Plotly.Blazor.Traces.ImageLib.ColorModelEnum? ColorModel { get; set;} 
@@ -143,9 +151,9 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Array defining the lower bound for each color component. Note that the default
         ///     value will depend on the colormodel. For the <c>rgb</c> colormodel, it is
-        ///     [0, 0, 0]. For the <c>rgba</c> colormodel, it is [0, 0, 0, 0]. For the <c>hsl</c>
-        ///     colormodel, it is [0, 0, 0]. For the <c>hsla</c> colormodel, it is [0, 0,
-        ///     0, 0].
+        ///     [0, 0, 0]. For the <c>rgba</c> colormodel, it is [0, 0, 0, 0]. For the <c>rgba256</c>
+        ///     colormodel, it is [0, 0, 0, 0]. For the <c>hsl</c> colormodel, it is [0,
+        ///     0, 0]. For the <c>hsla</c> colormodel, it is [0, 0, 0, 0].
         /// </summary>
         [JsonPropertyName(@"zmin")]
         public IList<object> ZMin { get; set;} 
@@ -154,7 +162,8 @@ namespace Plotly.Blazor.Traces
         ///     Array defining the higher bound for each color component. Note that the
         ///     default value will depend on the colormodel. For the <c>rgb</c> colormodel,
         ///     it is [255, 255, 255]. For the <c>rgba</c> colormodel, it is [255, 255,
-        ///     255, 1]. For the <c>hsl</c> colormodel, it is [360, 100, 100]. For the <c>hsla</c>
+        ///     255, 1]. For the <c>rgba256</c> colormodel, it is [255, 255, 255, 255].
+        ///     For the <c>hsl</c> colormodel, it is [360, 100, 100]. For the <c>hsla</c>
         ///     colormodel, it is [360, 100, 100, 1].
         /// </summary>
         [JsonPropertyName(@"zmax")]
@@ -221,9 +230,9 @@ namespace Plotly.Blazor.Traces
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
+        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
+        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available. variables <c>z</c>, <c>color</c>
         ///     and <c>colormodel</c>. Anything contained in tag <c>&lt;extra&gt;</c> is
@@ -241,9 +250,9 @@ namespace Plotly.Blazor.Traces
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     for details on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
+        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
+        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available. variables <c>z</c>, <c>color</c>
         ///     and <c>colormodel</c>. Anything contained in tag <c>&lt;extra&gt;</c> is
@@ -394,6 +403,11 @@ namespace Plotly.Blazor.Traces
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
+                    Source == other.Source ||
+                    Source != null &&
+                    Source.Equals(other.Source)
+                ) && 
+                (
                     Equals(Z, other.Z) ||
                     Z != null && other.Z != null &&
                     Z.SequenceEqual(other.Z)
@@ -533,6 +547,7 @@ namespace Plotly.Blazor.Traces
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Source != null) hashCode = hashCode * 59 + Source.GetHashCode();
                 if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
                 if (ColorModel != null) hashCode = hashCode * 59 + ColorModel.GetHashCode();
                 if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();

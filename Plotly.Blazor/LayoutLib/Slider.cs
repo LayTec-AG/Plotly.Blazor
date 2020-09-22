@@ -132,7 +132,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the length in pixels of step tick marks
         /// </summary>
         [JsonPropertyName(@"ticklen")]
-        public decimal? TickleN { get; set;} 
+        public decimal? TickLen { get; set;} 
 
         /// <summary>
         ///     Sets the color of the border enclosing the slider.
@@ -276,9 +276,9 @@ namespace Plotly.Blazor.LayoutLib
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    TickleN == other.TickleN ||
-                    TickleN != null &&
-                    TickleN.Equals(other.TickleN)
+                    TickLen == other.TickLen ||
+                    TickLen != null &&
+                    TickLen.Equals(other.TickLen)
                 ) && 
                 (
                     TickColor == other.TickColor ||
@@ -330,7 +330,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
-                if (TickleN != null) hashCode = hashCode * 59 + TickleN.GetHashCode();
+                if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();
                 if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();
                 if (MinorTickLen != null) hashCode = hashCode * 59 + MinorTickLen.GetHashCode();

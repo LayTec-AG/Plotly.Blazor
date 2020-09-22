@@ -237,7 +237,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         ///     Sets the tick length (in px).
         /// </summary>
         [JsonPropertyName(@"ticklen")]
-        public decimal? TickleN { get; set;} 
+        public decimal? TickLen { get; set;} 
 
         /// <summary>
         ///     Sets the tick width (in px).
@@ -323,10 +323,10 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
-        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
-        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format We
+        ///     add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional seconds
+        ///     with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"tickformat")]
         public string TickFormat { get; set;} 
@@ -340,10 +340,10 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <summary>
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
-        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
-        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format We
+        ///     add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional seconds
+        ///     with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"hoverformat")]
         public string HoverFormat { get; set;} 
@@ -566,9 +566,9 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                     Mirror.Equals(other.Mirror)
                 ) && 
                 (
-                    TickleN == other.TickleN ||
-                    TickleN != null &&
-                    TickleN.Equals(other.TickleN)
+                    TickLen == other.TickLen ||
+                    TickLen != null &&
+                    TickLen.Equals(other.TickLen)
                 ) && 
                 (
                     TickWidth == other.TickWidth ||
@@ -742,7 +742,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                 if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
                 if (Ticks != null) hashCode = hashCode * 59 + Ticks.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();
-                if (TickleN != null) hashCode = hashCode * 59 + TickleN.GetHashCode();
+                if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();
                 if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();
                 if (ShowTickLabels != null) hashCode = hashCode * 59 + ShowTickLabels.GetHashCode();

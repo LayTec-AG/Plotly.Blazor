@@ -1,0 +1,79 @@
+﻿@using System.Globalization
+@inject NavigationManager MyNavigationManager
+
+<PlotlyChart style="height: 60vh; min-height: 350px" Layout="layout" Config="config" Data="data" Id="MapChart" @ref="plotlyChart" />
+
+@code {
+
+    PlotlyChart plotlyChart;
+    Layout layout;
+    Config config;
+    IList<ITrace> data;
+
+
+    /// <inheritdoc />
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = "Mt Bruno Elevation"
+            },
+            Margin = new Margin
+            {
+                L = 65,
+                R = 50,
+                B = 65,
+                T = 90
+            }
+        };
+
+        config = new Config
+        {
+            ShowLink = false,
+            Responsive = true,
+            DisplayLogo = false
+        };
+        data = GetMapData();
+    }
+
+    IList<ITrace> GetMapData()
+    {
+        IList<ITrace> mapData = new List<ITrace>();
+
+        var client = new HttpClient
+        {
+            BaseAddress = new Uri(MyNavigationManager.BaseUri)
+        };
+
+        var csv = client.GetStringAsync("/mt_bruno_elevation.csv").Result
+            .Split("\n")
+            .Skip(1)
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Select(s => s.Split(",").ToList()).ToList();
+
+        var z = new List<decimal[]>();
+
+        foreach (var row in csv)
+        {
+            var currentValues = new List<decimal>();
+
+            for(var i=1;i<25;i++)
+            {
+                currentValues.Add(decimal.Parse(row[i], NumberStyles.Any, CultureInfo.InvariantCulture));
+            }
+
+            z.Add(currentValues.ToArray());
+        }
+
+        mapData.Add(new Surface()
+        {
+            Z = z.Cast<object>().ToList()
+        });
+
+        return mapData;
+    }
+
+}

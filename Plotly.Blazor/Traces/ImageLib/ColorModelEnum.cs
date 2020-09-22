@@ -10,16 +10,19 @@ namespace Plotly.Blazor.Traces.ImageLib
 {
     /// <summary>
     ///     Color model used to map the numerical color components described in <c>z</c>
-    ///     into colors.
+    ///     into colors. If <c>source</c> is specified, this attribute will be set to
+    ///     <c>rgba256</c> otherwise it defaults to <c>rgb</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ColorModelEnum
     {
         [EnumMember(Value=@"rgb")]
-        Rgb = 0,
+        Rgb,
         [EnumMember(Value=@"rgba")]
         Rgba,
+        [EnumMember(Value=@"rgba256")]
+        Rgba256,
         [EnumMember(Value=@"hsl")]
         Hsl,
         [EnumMember(Value=@"hsla")]

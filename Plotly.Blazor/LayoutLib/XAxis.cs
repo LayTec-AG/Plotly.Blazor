@@ -236,6 +236,15 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.TickSonEnum? TickSon { get; set;} 
 
         /// <summary>
+        ///     Determines where tick labels are drawn with respect to their corresponding
+        ///     ticks and grid lines. Only has an effect for axes of <c>type</c> <c>date</c>
+        ///     When set to <c>period</c>, tick labels are drawn in the middle of the period
+        ///     between ticks.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelmode")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelModeEnum? TickLabelMode { get; set;} 
+
+        /// <summary>
         ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
         ///     of the plotting area. If <c>true</c>, the axis lines are mirrored. If <c>ticks</c>,
         ///     the axis lines and ticks are mirrored. If <c>false</c>, mirroring is disable.
@@ -249,7 +258,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the tick length (in px).
         /// </summary>
         [JsonPropertyName(@"ticklen")]
-        public decimal? TickleN { get; set;} 
+        public decimal? TickLen { get; set;} 
 
         /// <summary>
         ///     Sets the tick width (in px).
@@ -385,10 +394,10 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
-        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
-        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format We
+        ///     add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional seconds
+        ///     with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"tickformat")]
         public string TickFormat { get; set;} 
@@ -402,10 +411,10 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Sets the hover text formatting rule using d3 formatting mini-languages which
         ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-3.x-api-reference/blob/master/Time-Formatting.md#format
-        ///     We add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional
-        ///     seconds with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with
-        ///     tickformat <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format We
+        ///     add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional seconds
+        ///     with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"hoverformat")]
         public string HoverFormat { get; set;} 
@@ -731,14 +740,19 @@ namespace Plotly.Blazor.LayoutLib
                     TickSon.Equals(other.TickSon)
                 ) && 
                 (
+                    TickLabelMode == other.TickLabelMode ||
+                    TickLabelMode != null &&
+                    TickLabelMode.Equals(other.TickLabelMode)
+                ) && 
+                (
                     Mirror == other.Mirror ||
                     Mirror != null &&
                     Mirror.Equals(other.Mirror)
                 ) && 
                 (
-                    TickleN == other.TickleN ||
-                    TickleN != null &&
-                    TickleN.Equals(other.TickleN)
+                    TickLen == other.TickLen ||
+                    TickLen != null &&
+                    TickLen.Equals(other.TickLen)
                 ) && 
                 (
                     TickWidth == other.TickWidth ||
@@ -1015,8 +1029,9 @@ namespace Plotly.Blazor.LayoutLib
                 if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
                 if (Ticks != null) hashCode = hashCode * 59 + Ticks.GetHashCode();
                 if (TickSon != null) hashCode = hashCode * 59 + TickSon.GetHashCode();
+                if (TickLabelMode != null) hashCode = hashCode * 59 + TickLabelMode.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();
-                if (TickleN != null) hashCode = hashCode * 59 + TickleN.GetHashCode();
+                if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();
                 if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();
                 if (ShowTickLabels != null) hashCode = hashCode * 59 + ShowTickLabels.GetHashCode();

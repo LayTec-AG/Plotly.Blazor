@@ -244,3 +244,5 @@ rect=rect
 xref=xRef
 topojsonURL=topoJsonUrl
 plotlyServerURL=plotlyServerUrl
+ticklen=tickLen
+ticklabelmode=tickLabelMode

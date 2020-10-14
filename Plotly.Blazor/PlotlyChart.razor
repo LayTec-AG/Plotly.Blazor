@@ -191,13 +191,10 @@
             absoluteIndizes.Add(absoluteIndex);
         }
         var json = JsonSerializer.Serialize(trace?.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
-        //Console.WriteLine($"Restyling {json}");
         foreach (var index in absoluteIndizes)
         {
             var currentTrace = Data[index];
-            //Console.WriteLine($"Restyle before [{index}] {JsonSerializer.Serialize(currentTrace, PlotlyJsInterop.SerializerOptions)}");
             Newtonsoft.Json.JsonConvert.PopulateObject(json, currentTrace); // apply change to the existing object
-            //Console.WriteLine($"Restyle after [{index}] {JsonSerializer.Serialize(currentTrace, PlotlyJsInterop.SerializerOptions)}");
         }
         await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray());
     }

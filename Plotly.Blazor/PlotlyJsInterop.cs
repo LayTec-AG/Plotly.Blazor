@@ -148,9 +148,6 @@ namespace Plotly.Blazor
         public static async Task Restyle(this IJSRuntime jsRuntime,
             DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, IEnumerable<int> indizes)
         {
-            //var data = trace?.PrepareJsInterop(SerializerOptions);
-            //Console.WriteLine($"Restyle [{string.Join(", ", indizes.ToArray())}] {JsonSerializer.Serialize(data)}");
-            //JsonSerializer.pop
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
         }
 

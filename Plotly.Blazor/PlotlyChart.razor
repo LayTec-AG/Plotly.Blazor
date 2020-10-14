@@ -1,5 +1,6 @@
 ﻿@inject IJSRuntime JsRuntime
 @using Microsoft.JSInterop
+@using System.Text.Json;
 @using System.Collections
 @implements IDisposable
 
@@ -134,12 +135,71 @@
     }
 
     /// <summary>
-    ///     Updates the chart using the current properties.
+    ///     Updates the chart layout using the current properties.
     /// </summary>
     /// <returns>Task</returns>
     public async Task Relayout()
     {
         await JsRuntime.Relayout(objectReference);
+    }
+
+    /// <summary>
+    ///     Updates all the traces using the provided parameter
+    /// </summary>
+    /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <returns>Task</returns>
+    public async Task Restyle(ITrace trace)
+    {
+        await Restyle(trace, Data?.Select((v, index) => index).ToArray());
+    }
+
+    /// <summary>
+    ///     Updates the specified trace using the provided parameter
+    /// </summary>
+    /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task Restyle(ITrace trace, int index)
+    {
+        await Restyle(trace, new[] { index });
+    }
+
+    /// <summary>
+    ///     Updates the specified traces using the provided parameter
+    /// </summary>
+    /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task Restyle(ITrace trace, IEnumerable<int> indizes)
+    {
+        if (indizes == null || !indizes.Any())
+        {
+            throw new ArgumentException("You must specifiy at least one index.");
+        }
+        if (trace == null)
+        {
+            throw new ArgumentNullException(nameof(trace));
+        }
+        List<int> absoluteIndizes = new List<int>();
+        foreach (var index in indizes)
+        {
+            int absoluteIndex = index < 0 ? Data.Count + index : index;
+            if (index > Data.Count - 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+            absoluteIndizes.Add(absoluteIndex);
+        }
+        var json = JsonSerializer.Serialize(trace?.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
+        //Console.WriteLine($"Restyling {json}");
+        foreach (var index in absoluteIndizes)
+        {
+            var currentTrace = Data[index];
+            //Console.WriteLine($"Restyle before [{index}] {JsonSerializer.Serialize(currentTrace, PlotlyJsInterop.SerializerOptions)}");
+            Newtonsoft.Json.JsonConvert.PopulateObject(json, currentTrace); // apply change to the existing object
+            //Console.WriteLine($"Restyle after [{index}] {JsonSerializer.Serialize(currentTrace, PlotlyJsInterop.SerializerOptions)}");
+        }
+        await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray());
     }
 
     /// <summary>
@@ -314,7 +374,7 @@
         }
 
         // Add the data to the current traces
-        foreach (var index in indizesArr.Select((Value,Index) => new { Value, Index }))
+        foreach (var index in indizesArr.Select((Value, Index) => new { Value, Index }))
         {
             var currentTrace = index.Value < 0 ? Data[Data.Count + index.Value] : Data[index.Value];
             var traceType = currentTrace.GetType();

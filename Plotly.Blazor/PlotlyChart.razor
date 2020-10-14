@@ -134,6 +134,15 @@
     }
 
     /// <summary>
+    ///     Updates the chart using the current properties.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task Relayout()
+    {
+        await JsRuntime.Relayout(objectReference);
+    }
+
+    /// <summary>
     ///     Same as <see cref="React"/>.
     /// </summary>
     /// <returns>Task</returns>
@@ -305,15 +314,15 @@
         }
 
         // Add the data to the current traces
-        foreach (var index in indizesArr)
+        foreach (var index in indizesArr.Select((Value,Index) => new { Value, Index }))
         {
-            var currentTrace = index < 0 ? Data[^index] : Data[index];
+            var currentTrace = index.Value < 0 ? Data[Data.Count + index.Value] : Data[index.Value];
             var traceType = currentTrace.GetType();
 
             var xArray = x as IEnumerable<object>[] ?? x.ToArray();
             if (xArray.Length > 0)
             {
-                var currentXData = index < 0 ? xArray.ElementAt(xArray.Length - 1) : xArray.ElementAt(index);
+                var currentXData = xArray.ElementAt(index.Index);
                 var xData = currentXData as object[] ?? currentXData.ToArray();
                 if (xData.Length > 0)
                 {
@@ -324,7 +333,7 @@
             var yArray = y as IEnumerable<object>[] ?? y.ToArray();
             if (yArray.Length > 0)
             {
-                var currentYData = index < 0 ? yArray.ElementAt(yArray.Length + index) : yArray.ElementAt(index);
+                var currentYData = yArray.ElementAt(index.Index);
                 var yData = currentYData as object[] ?? currentYData.ToArray();
                 if (yData.Length > 0)
                 {

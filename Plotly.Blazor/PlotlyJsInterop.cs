@@ -124,5 +124,19 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.purge", objectReference.Value.Id);
         }
+
+        /// <summary>
+        ///     An efficient means of updating the layout object of an existing plot.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        public static async Task Relayout(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.relayout",
+                objectReference.Value.Id,
+                objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions));
+        }
+
+        
     }
 }

@@ -37,5 +37,9 @@
     },
     purge: function (id) {
         window.Plotly.purge(id);
-    }
+    },
+    relayout: function (id, layout = {} ) {
+        window.Plotly.relayout(id, layout);
+    },
+
 }

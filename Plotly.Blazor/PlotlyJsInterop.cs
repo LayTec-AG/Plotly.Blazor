@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -16,7 +17,7 @@ namespace Plotly.Blazor
         // Should be fixed in future blazor wasm releases
         private const string PlotlyInterop = "plotlyInterop";
 
-        private static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions
+        internal static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = null,
             IgnoreNullValues = true,
@@ -124,5 +125,34 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.purge", objectReference.Value.Id);
         }
+
+        /// <summary>
+        ///     An efficient means of updating the layout object of an existing plot.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        public static async Task Relayout(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.relayout",
+                objectReference.Value.Id,
+                objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions));
+        }
+
+        /// <summary>
+        ///     Can be used to add data to an existing trace.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="trace">The new trace parameter</param>
+        /// <param name="indizes">Indizes.</param>
+        public static async Task Restyle(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, IEnumerable<int> indizes)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
+        }
+
+
+
+
     }
 }

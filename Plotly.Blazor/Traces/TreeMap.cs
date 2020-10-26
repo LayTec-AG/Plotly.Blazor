@@ -363,6 +363,12 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.TreeMapLib.TextPositionEnum? TextPosition { get; set;} 
 
         /// <summary>
+        ///     Determines whether or not the sectors are reordered from largest to smallest.
+        /// </summary>
+        [JsonPropertyName(@"sort")]
+        public bool? Sort { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
@@ -635,6 +641,11 @@ namespace Plotly.Blazor.Traces
                     TextPosition.Equals(other.TextPosition)
                 ) && 
                 (
+                    Sort == other.Sort ||
+                    Sort != null &&
+                    Sort.Equals(other.Sort)
+                ) && 
+                (
                     Domain == other.Domain ||
                     Domain != null &&
                     Domain.Equals(other.Domain)
@@ -739,6 +750,7 @@ namespace Plotly.Blazor.Traces
                 if (InsideTextFont != null) hashCode = hashCode * 59 + InsideTextFont.GetHashCode();
                 if (OutsideTextFont != null) hashCode = hashCode * 59 + OutsideTextFont.GetHashCode();
                 if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
+                if (Sort != null) hashCode = hashCode * 59 + Sort.GetHashCode();
                 if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
                 if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();

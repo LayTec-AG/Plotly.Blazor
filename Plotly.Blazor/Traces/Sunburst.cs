@@ -363,6 +363,19 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.SunburstLib.OutsideTextFont OutsideTextFont { get; set;} 
 
         /// <summary>
+        ///     Rotates the whole diagram counterclockwise by some angle. By default the
+        ///     first slice starts at 3 o&#39;clock.
+        /// </summary>
+        [JsonPropertyName(@"rotation")]
+        public decimal? Rotation { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not the sectors are reordered from largest to smallest.
+        /// </summary>
+        [JsonPropertyName(@"sort")]
+        public bool? Sort { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
@@ -630,6 +643,16 @@ namespace Plotly.Blazor.Traces
                     OutsideTextFont.Equals(other.OutsideTextFont)
                 ) && 
                 (
+                    Rotation == other.Rotation ||
+                    Rotation != null &&
+                    Rotation.Equals(other.Rotation)
+                ) && 
+                (
+                    Sort == other.Sort ||
+                    Sort != null &&
+                    Sort.Equals(other.Sort)
+                ) && 
+                (
                     Domain == other.Domain ||
                     Domain != null &&
                     Domain.Equals(other.Domain)
@@ -733,6 +756,8 @@ namespace Plotly.Blazor.Traces
                 if (InsideTextOrientation != null) hashCode = hashCode * 59 + InsideTextOrientation.GetHashCode();
                 if (InsideTextFont != null) hashCode = hashCode * 59 + InsideTextFont.GetHashCode();
                 if (OutsideTextFont != null) hashCode = hashCode * 59 + OutsideTextFont.GetHashCode();
+                if (Rotation != null) hashCode = hashCode * 59 + Rotation.GetHashCode();
+                if (Sort != null) hashCode = hashCode * 59 + Sort.GetHashCode();
                 if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
                 if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();

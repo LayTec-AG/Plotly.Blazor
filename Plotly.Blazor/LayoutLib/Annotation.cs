@@ -179,48 +179,81 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Sets the x component of the arrow tail about the arrow head. If <c>axref</c>
-        ///     is <c>pixel</c>, a positive (negative)  component corresponds to an arrow
-        ///     pointing from right to left (left to right). If <c>axref</c> is an axis,
-        ///     this is an absolute value on that axis, like <c>x</c>, NOT a relative value.
+        ///     is <c>pixel</c>, a positive (negative) component corresponds to an arrow
+        ///     pointing from right to left (left to right). If <c>axref</c> is not <c>pixel</c>
+        ///     and is exactly the same as <c>xref</c>, this is an absolute value on that
+        ///     axis, like <c>x</c>, specified in the same coordinates as <c>xref</c>.
         /// </summary>
         [JsonPropertyName(@"ax")]
         public object Ax { get; set;} 
 
         /// <summary>
         ///     Sets the y component of the arrow tail about the arrow head. If <c>ayref</c>
-        ///     is <c>pixel</c>, a positive (negative)  component corresponds to an arrow
-        ///     pointing from bottom to top (top to bottom). If <c>ayref</c> is an axis,
-        ///     this is an absolute value on that axis, like <c>y</c>, NOT a relative value.
+        ///     is <c>pixel</c>, a positive (negative) component corresponds to an arrow
+        ///     pointing from bottom to top (top to bottom). If <c>ayref</c> is not <c>pixel</c>
+        ///     and is exactly the same as <c>yref</c>, this is an absolute value on that
+        ///     axis, like <c>y</c>, specified in the same coordinates as <c>yref</c>.
         /// </summary>
         [JsonPropertyName(@"ay")]
         public object Ay { get; set;} 
 
         /// <summary>
-        ///     Indicates in what terms the tail of the annotation (ax,ay)  is specified.
-        ///     If <c>pixel</c>, <c>ax</c> is a relative offset in pixels  from <c>x</c>.
-        ///     If set to an x axis id (e.g. <c>x</c> or <c>x2</c>), <c>ax</c> is  specified
-        ///     in the same terms as that axis. This is useful  for trendline annotations
-        ///     which should continue to indicate  the correct trend when zoomed.
+        ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
+        ///     If set to a ax axis id (e.g. <c>ax</c> or <c>ax2</c>), the <c>ax</c> position
+        ///     refers to a ax coordinate. If set to <c>paper</c>, the <c>ax</c> position
+        ///     refers to the distance from the left of the plotting area in normalized
+        ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the left (right). If
+        ///     set to a ax axis ID followed by <c>domain</c> (separated by a space), the
+        ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
+        ///     of the domain length from the left of the domain of that axis: e.g., &#39;ax2
+        ///     domain&#39; refers to the domain of the second ax  axis and a ax position
+        ///     of 0.5 refers to the point between the left and the right of the domain
+        ///     of the second ax axis. In order for absolute positioning of the arrow to
+        ///     work, <c>axref</c> must be exactly the same as <c>xref</c>, otherwise <c>axref</c>
+        ///     will revert to <c>pixel</c> (explained next). For relative positioning,
+        ///     <c>axref</c> can be set to <c>pixel</c>, in which case the <c>ax</c> value
+        ///     is specified in pixels relative to <c>x</c>. Absolute positioning is useful
+        ///     for trendline annotations which should continue to indicate the correct
+        ///     trend when zoomed. Relative positioning is useful for specifying the text
+        ///     offset for an annotated point.
         /// </summary>
         [JsonPropertyName(@"axref")]
         public string AXref { get; set;} 
 
         /// <summary>
-        ///     Indicates in what terms the tail of the annotation (ax,ay)  is specified.
-        ///     If <c>pixel</c>, <c>ay</c> is a relative offset in pixels  from <c>y</c>.
-        ///     If set to a y axis id (e.g. <c>y</c> or <c>y2</c>), <c>ay</c> is  specified
-        ///     in the same terms as that axis. This is useful  for trendline annotations
-        ///     which should continue to indicate  the correct trend when zoomed.
+        ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
+        ///     If set to a ay axis id (e.g. <c>ay</c> or <c>ay2</c>), the <c>ay</c> position
+        ///     refers to a ay coordinate. If set to <c>paper</c>, the <c>ay</c> position
+        ///     refers to the distance from the bottom of the plotting area in normalized
+        ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the bottom (top). If
+        ///     set to a ay axis ID followed by <c>domain</c> (separated by a space), the
+        ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
+        ///     of the domain length from the bottom of the domain of that axis: e.g., &#39;ay2
+        ///     domain&#39; refers to the domain of the second ay  axis and a ay position
+        ///     of 0.5 refers to the point between the bottom and the top of the domain
+        ///     of the second ay axis. In order for absolute positioning of the arrow to
+        ///     work, <c>ayref</c> must be exactly the same as <c>yref</c>, otherwise <c>ayref</c>
+        ///     will revert to <c>pixel</c> (explained next). For relative positioning,
+        ///     <c>ayref</c> can be set to <c>pixel</c>, in which case the <c>ay</c> value
+        ///     is specified in pixels relative to <c>y</c>. Absolute positioning is useful
+        ///     for trendline annotations which should continue to indicate the correct
+        ///     trend when zoomed. Relative positioning is useful for specifying the text
+        ///     offset for an annotated point.
         /// </summary>
         [JsonPropertyName(@"ayref")]
         public string AyRef { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation&#39;s x coordinate axis. If set to an x axis id (e.g.
-        ///     <c>x</c> or <c>x2</c>), the <c>x</c> position refers to an x coordinate
+        ///     Sets the annotation&#39;s x coordinate axis. If set to a x axis id (e.g.
+        ///     <c>x</c> or <c>x2</c>), the <c>x</c> position refers to a x coordinate.
         ///     If set to <c>paper</c>, the <c>x</c> position refers to the distance from
-        ///     the left side of the plotting area in normalized coordinates where 0 (1)
-        ///     corresponds to the left (right) side.
+        ///     the left of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the left (right). If set to a x axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the left of
+        ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
+        ///     of the second x  axis and a x position of 0.5 refers to the point between
+        ///     the left and the right of the domain of the second x axis.
         /// </summary>
         [JsonPropertyName(@"xref")]
         public string XRef { get; set;} 
@@ -258,11 +291,16 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? XShift { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation&#39;s y coordinate axis. If set to an y axis id (e.g.
-        ///     <c>y</c> or <c>y2</c>), the <c>y</c> position refers to an y coordinate
+        ///     Sets the annotation&#39;s y coordinate axis. If set to a y axis id (e.g.
+        ///     <c>y</c> or <c>y2</c>), the <c>y</c> position refers to a y coordinate.
         ///     If set to <c>paper</c>, the <c>y</c> position refers to the distance from
-        ///     the bottom of the plotting area in normalized coordinates where 0 (1) corresponds
-        ///     to the bottom (top).
+        ///     the bottom of the plotting area in normalized coordinates where <c>0</c>
+        ///     (<c>1</c>) corresponds to the bottom (top). If set to a y axis ID followed
+        ///     by <c>domain</c> (separated by a space), the position behaves like for <c>paper</c>,
+        ///     but refers to the distance in fractions of the domain length from the bottom
+        ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
+        ///     of the second y  axis and a y position of 0.5 refers to the point between
+        ///     the bottom and the top of the domain of the second y axis.
         /// </summary>
         [JsonPropertyName(@"yref")]
         public string YRef { get; set;} 

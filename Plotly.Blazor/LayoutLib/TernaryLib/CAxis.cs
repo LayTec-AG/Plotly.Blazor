@@ -181,6 +181,13 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         public Plotly.Blazor.LayoutLib.TernaryLib.CAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
+        ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
+        ///     when <c>tickformat</c> is <c>SI</c> or <c>B</c>.
+        /// </summary>
+        [JsonPropertyName(@"minexponent")]
+        public decimal? MinExponent { get; set;} 
+
+        /// <summary>
         ///     If <c>true</c>, even 4-digit integers are separated
         /// </summary>
         [JsonPropertyName(@"separatethousands")]
@@ -405,6 +412,11 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
                     ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
+                    MinExponent == other.MinExponent ||
+                    MinExponent != null &&
+                    MinExponent.Equals(other.MinExponent)
+                ) && 
+                (
                     SeparateThousands == other.SeparateThousands ||
                     SeparateThousands != null &&
                     SeparateThousands.Equals(other.SeparateThousands)
@@ -511,6 +523,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
                 if (TickSuffix != null) hashCode = hashCode * 59 + TickSuffix.GetHashCode();
                 if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
                 if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
                 if (TickAngle != null) hashCode = hashCode * 59 + TickAngle.GetHashCode();

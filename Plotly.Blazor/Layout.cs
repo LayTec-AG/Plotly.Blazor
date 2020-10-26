@@ -280,6 +280,14 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.Margin Margin { get; set;} 
 
         /// <summary>
+        ///     Placeholder for exporting automargin-impacting values namely <c>margin.t</c>,
+        ///     <c>margin.b</c>, <c>margin.l</c> and <c>margin.r</c> in <c>full-json</c>
+        ///     mode.
+        /// </summary>
+        [JsonPropertyName(@"computed")]
+        public object Computed { get; set;} 
+
+        /// <summary>
         ///     Sets the background color of the paper where the graph is drawn.
         /// </summary>
         [JsonPropertyName(@"paper_bgcolor")]
@@ -838,6 +846,11 @@ namespace Plotly.Blazor
                     Margin.Equals(other.Margin)
                 ) && 
                 (
+                    Computed == other.Computed ||
+                    Computed != null &&
+                    Computed.Equals(other.Computed)
+                ) && 
+                (
                     PaperBgColor == other.PaperBgColor ||
                     PaperBgColor != null &&
                     PaperBgColor.Equals(other.PaperBgColor)
@@ -1108,6 +1121,7 @@ namespace Plotly.Blazor
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (Height != null) hashCode = hashCode * 59 + Height.GetHashCode();
                 if (Margin != null) hashCode = hashCode * 59 + Margin.GetHashCode();
+                if (Computed != null) hashCode = hashCode * 59 + Computed.GetHashCode();
                 if (PaperBgColor != null) hashCode = hashCode * 59 + PaperBgColor.GetHashCode();
                 if (PlotBgColor != null) hashCode = hashCode * 59 + PlotBgColor.GetHashCode();
                 if (Separators != null) hashCode = hashCode * 59 + Separators.GetHashCode();

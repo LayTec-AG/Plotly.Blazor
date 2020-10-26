@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Plotly.Blazor.Tests
@@ -21,36 +22,38 @@ namespace Plotly.Blazor.Tests
         public TestFlag? TestFlag { get; set; }
 
         [JsonPropertyName(@"testProperty")]
-        public object TestProperty { get; set; }
+        public string TestProperty { get; set; }
 
         [JsonPropertyName(@"testProperty2")]
-        public override object TestProperty2 { get; set; }
+        public override string TestProperty2 { get; set; }
     }
 
     [JsonConverter(typeof(PlotlyConverter))]
     public class TestSubplotClass : ITestClass
     {
         [JsonPropertyName("testProperty")]
-        public object TestProperty { get; set; } = "Test";
+        public string TestProperty { get; set; }
 
         [Array]
         [JsonPropertyName("testProperty")]
-        public IEnumerable<object> TestPropertyArray { get; set; }
+        public IList<string> TestPropertyArray { get; set; }
 
         [JsonPropertyName("testProperty2")]
-        public object TestProperty2 { get; set; }
+        public string TestProperty2 { get; set; }
 
         [JsonPropertyName("testProperty2")]
-        [Array] public IEnumerable<object> TestProperty2Array => new List<object>{"Test1", "Test2"};
+        [Array]
+        public IList<string> TestProperty2Array => new List<string>();
 
         [JsonPropertyName("testProperty3")]
-        public object TestProperty3 { get; set; } = "Test";
+        public string TestProperty3 { get; set; }
 
         [JsonPropertyName("testProperty3")]
-        [Array] public IEnumerable<object> TestProperty3Array => new List<object>{"Test1", "Test2"};
+        [Array]
+        public IList<string> TestProperty3Array => new List<string>();
 
         [Subplot]
-        public IEnumerable<TestClass> Items { get; set; }
+        public IList<TestClass> Items { get; set; }
     }
 
     public class TestPolymorphicClass
@@ -63,12 +66,12 @@ namespace Plotly.Blazor.Tests
 
     public interface ITestClass
     {
-        public object TestProperty { get; set; }
+        public string TestProperty { get; set; }
     }
 
     public abstract class TestClassAbstract
     {
-        public abstract object TestProperty2 { get; set; }
+        public abstract string TestProperty2 { get; set; }
     }
 
     /// <summary>
@@ -169,18 +172,18 @@ namespace Plotly.Blazor.Tests
         [Test]
         public void PlotlyConverterTest()
         {
-            var testObj = new TestSubplotClass
+            var expected = new TestSubplotClass
             {
-                Items = new []{new TestClass{TestFlag = TestFlag.All}, new TestClass()}
+                TestProperty = "Test",
+                TestProperty2 = "Test2",
+                TestProperty3 = "Test3",
+                Items = new []{new TestClass{TestFlag = TestFlag.All}, new TestClass()},
             };
 
-            var actual = JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize(testObj, serializerOptions));
+            var serialized = JsonSerializer.Serialize(expected, serializerOptions);
+            var actual = JsonSerializer.Deserialize<TestSubplotClass>(serialized);
 
-            Assert.NotNull(actual.GetProperty("Items"));
-            Assert.NotNull(actual.GetProperty("Items2"));
-            Assert.AreEqual(actual.GetProperty("testProperty").ValueKind, JsonValueKind.String);
-            Assert.AreEqual(actual.GetProperty("testProperty2").ValueKind, JsonValueKind.Array);
-            Assert.AreEqual(actual.GetProperty("testProperty3").ValueKind, JsonValueKind.String);
+            expected.Should().BeEquivalentTo(actual);
         }
 
         [Test]
@@ -188,8 +191,8 @@ namespace Plotly.Blazor.Tests
         {
             var testObj = new TestPolymorphicClass
             {
-                InterfaceProperty = new TestClass{TestProperty = "TestInterfaceProperty", TestProperty2 = "TestAbstractProperty"},
-                AbstractProperty = new TestClass{TestProperty = "TestInterfaceProperty", TestProperty2 = "TestAbstractProperty"}
+                InterfaceProperty = new TestClass { TestProperty = "TestInterfaceProperty", TestProperty2 = "TestAbstractProperty" },
+                AbstractProperty = new TestClass { TestProperty = "TestInterfaceProperty", TestProperty2 = "TestAbstractProperty" }
             };
 
             var actual = JsonSerializer.Serialize(testObj, serializerOptions);

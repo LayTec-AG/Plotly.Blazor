@@ -1,5 +1,6 @@
 ﻿@inject IJSRuntime JsRuntime
 @using Microsoft.JSInterop
+@using System.Text.Json;
 @using System.Collections
 @implements IDisposable
 
@@ -131,6 +132,70 @@
     public async Task React()
     {
         await JsRuntime.React(objectReference);
+    }
+
+    /// <summary>
+    ///     Updates the chart layout using the current properties.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task Relayout()
+    {
+        await JsRuntime.Relayout(objectReference);
+    }
+
+    /// <summary>
+    ///     Updates all the traces using the provided parameter
+    /// </summary>
+    /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <returns>Task</returns>
+    public async Task Restyle(ITrace trace)
+    {
+        await Restyle(trace, Data?.Select((v, index) => index).ToArray());
+    }
+
+    /// <summary>
+    ///     Updates the specified trace using the provided parameter
+    /// </summary>
+    /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task Restyle(ITrace trace, int index)
+    {
+        await Restyle(trace, new[] { index });
+    }
+
+    /// <summary>
+    ///     Updates the specified traces using the provided parameter
+    /// </summary>
+    /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <returns>Task</returns>
+    public async Task Restyle(ITrace trace, IEnumerable<int> indizes)
+    {
+        if (indizes == null || !indizes.Any())
+        {
+            throw new ArgumentException("You must specifiy at least one index.");
+        }
+        if (trace == null)
+        {
+            throw new ArgumentNullException(nameof(trace));
+        }
+        var absoluteIndizes = new List<int>();
+        foreach (var index in indizes)
+        {
+            var absoluteIndex = index < 0 ? Data.Count + index : index;
+            if (index > Data.Count - 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+            absoluteIndizes.Add(absoluteIndex);
+        }
+        var json = JsonSerializer.Serialize(trace.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
+        foreach (var currentTrace in absoluteIndizes.Select(index => Data[index]))
+        {
+            currentTrace.Populate(json); // apply change to the existing object
+        }
+        await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray());
     }
 
     /// <summary>
@@ -305,15 +370,15 @@
         }
 
         // Add the data to the current traces
-        foreach (var index in indizesArr)
+        foreach (var index in indizesArr.Select((Value, Index) => new { Value, Index }))
         {
-            var currentTrace = index < 0 ? Data[^index] : Data[index];
+            var currentTrace = index.Value < 0 ? Data[Data.Count + index.Value] : Data[index.Value];
             var traceType = currentTrace.GetType();
 
             var xArray = x as IEnumerable<object>[] ?? x.ToArray();
             if (xArray.Length > 0)
             {
-                var currentXData = index < 0 ? xArray.ElementAt(xArray.Length - 1) : xArray.ElementAt(index);
+                var currentXData = xArray.ElementAt(index.Index);
                 var xData = currentXData as object[] ?? currentXData.ToArray();
                 if (xData.Length > 0)
                 {
@@ -324,7 +389,7 @@
             var yArray = y as IEnumerable<object>[] ?? y.ToArray();
             if (yArray.Length > 0)
             {
-                var currentYData = index < 0 ? yArray.ElementAt(yArray.Length + index) : yArray.ElementAt(index);
+                var currentYData = yArray.ElementAt(index.Index);
                 var yData = currentYData as object[] ?? currentYData.ToArray();
                 if (yData.Length > 0)
                 {

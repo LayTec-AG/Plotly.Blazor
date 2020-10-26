@@ -41,7 +41,8 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Sets the image container size horizontally. The image will be sized based
         ///     on the <c>position</c> value. When <c>xref</c> is set to <c>paper</c>, units
-        ///     are sized relative to the plot width.
+        ///     are sized relative to the plot width. When <c>xref</c> ends with &#39; domain&#39;,
+        ///     units are sized relative to the axis width.
         /// </summary>
         [JsonPropertyName(@"sizex")]
         public decimal? SizeX { get; set;} 
@@ -49,7 +50,8 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Sets the image container size vertically. The image will be sized based
         ///     on the <c>position</c> value. When <c>yref</c> is set to <c>paper</c>, units
-        ///     are sized relative to the plot height.
+        ///     are sized relative to the plot height. When <c>yref</c> ends with &#39;
+        ///     domain&#39;, units are sized relative to the axis height.
         /// </summary>
         [JsonPropertyName(@"sizey")]
         public decimal? SizeY { get; set;} 
@@ -94,20 +96,30 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Sets the images&#39;s x coordinate axis. If set to a x axis id (e.g. <c>x</c>
-        ///     or <c>x2</c>), the <c>x</c> position refers to an x data coordinate If set
-        ///     to <c>paper</c>, the <c>x</c> position refers to the distance from the left
-        ///     of plot in normalized coordinates where <c>0</c> (<c>1</c>) corresponds
-        ///     to the left (right).
+        ///     or <c>x2</c>), the <c>x</c> position refers to a x coordinate. If set to
+        ///     <c>paper</c>, the <c>x</c> position refers to the distance from the left
+        ///     of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the left (right). If set to a x axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the left of
+        ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
+        ///     of the second x  axis and a x position of 0.5 refers to the point between
+        ///     the left and the right of the domain of the second x axis.
         /// </summary>
         [JsonPropertyName(@"xref")]
         public string XRef { get; set;} 
 
         /// <summary>
         ///     Sets the images&#39;s y coordinate axis. If set to a y axis id (e.g. <c>y</c>
-        ///     or <c>y2</c>), the <c>y</c> position refers to a y data coordinate. If set
-        ///     to <c>paper</c>, the <c>y</c> position refers to the distance from the bottom
-        ///     of the plot in normalized coordinates where <c>0</c> (<c>1</c>) corresponds
-        ///     to the bottom (top).
+        ///     or <c>y2</c>), the <c>y</c> position refers to a y coordinate. If set to
+        ///     <c>paper</c>, the <c>y</c> position refers to the distance from the bottom
+        ///     of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the bottom (top). If set to a y axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the bottom
+        ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
+        ///     of the second y  axis and a y position of 0.5 refers to the point between
+        ///     the bottom and the top of the domain of the second y axis.
         /// </summary>
         [JsonPropertyName(@"yref")]
         public string YRef { get; set;} 

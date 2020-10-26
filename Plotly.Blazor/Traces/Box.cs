@@ -206,6 +206,56 @@ namespace Plotly.Blazor.Traces
         public decimal? Dy { get; set;} 
 
         /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the period
+        ///     positioning in milliseconds or <c>M&lt;n&gt;</c> on the x axis. Special
+        ///     values in the form of <c>M&lt;n&gt;</c> could be used to declare the number
+        ///     of months. In this case <c>n</c> must be a positive integer.
+        /// </summary>
+        [JsonPropertyName(@"xperiod")]
+        public object XPeriod { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the period
+        ///     positioning in milliseconds or <c>M&lt;n&gt;</c> on the y axis. Special
+        ///     values in the form of <c>M&lt;n&gt;</c> could be used to declare the number
+        ///     of months. In this case <c>n</c> must be a positive integer.
+        /// </summary>
+        [JsonPropertyName(@"yperiod")]
+        public object YPeriod { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the base for
+        ///     period positioning in milliseconds or date string on the x0 axis. When <c>x0period</c>
+        ///     is round number of weeks, the <c>x0period0</c> by default would be on a
+        ///     Sunday i.e. 2000-01-02, otherwise it would be at 2000-01-01.
+        /// </summary>
+        [JsonPropertyName(@"xperiod0")]
+        public object XPeriod0 { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the base for
+        ///     period positioning in milliseconds or date string on the y0 axis. When <c>y0period</c>
+        ///     is round number of weeks, the <c>y0period0</c> by default would be on a
+        ///     Sunday i.e. 2000-01-02, otherwise it would be at 2000-01-01.
+        /// </summary>
+        [JsonPropertyName(@"yperiod0")]
+        public object YPeriod0 { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the alignment
+        ///     of data points on the x axis.
+        /// </summary>
+        [JsonPropertyName(@"xperiodalignment")]
+        public Plotly.Blazor.Traces.BoxLib.XPeriodAlignmentEnum? XPeriodAlignment { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the alignment
+        ///     of data points on the y axis.
+        /// </summary>
+        [JsonPropertyName(@"yperiodalignment")]
+        public Plotly.Blazor.Traces.BoxLib.YPeriodAlignmentEnum? YPeriodAlignment { get; set;} 
+
+        /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
         ///     For box traces, the name will also be used for the position coordinate,
         ///     if <c>x</c> and <c>x0</c> (<c>y</c> and <c>y0</c> if horizontal) are missing
@@ -766,6 +816,36 @@ namespace Plotly.Blazor.Traces
                     Dy.Equals(other.Dy)
                 ) && 
                 (
+                    XPeriod == other.XPeriod ||
+                    XPeriod != null &&
+                    XPeriod.Equals(other.XPeriod)
+                ) && 
+                (
+                    YPeriod == other.YPeriod ||
+                    YPeriod != null &&
+                    YPeriod.Equals(other.YPeriod)
+                ) && 
+                (
+                    XPeriod0 == other.XPeriod0 ||
+                    XPeriod0 != null &&
+                    XPeriod0.Equals(other.XPeriod0)
+                ) && 
+                (
+                    YPeriod0 == other.YPeriod0 ||
+                    YPeriod0 != null &&
+                    YPeriod0.Equals(other.YPeriod0)
+                ) && 
+                (
+                    XPeriodAlignment == other.XPeriodAlignment ||
+                    XPeriodAlignment != null &&
+                    XPeriodAlignment.Equals(other.XPeriodAlignment)
+                ) && 
+                (
+                    YPeriodAlignment == other.YPeriodAlignment ||
+                    YPeriodAlignment != null &&
+                    YPeriodAlignment.Equals(other.YPeriodAlignment)
+                ) && 
+                (
                     Name == other.Name ||
                     Name != null &&
                     Name.Equals(other.Name)
@@ -1066,6 +1146,12 @@ namespace Plotly.Blazor.Traces
                 if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
                 if (DX != null) hashCode = hashCode * 59 + DX.GetHashCode();
                 if (Dy != null) hashCode = hashCode * 59 + Dy.GetHashCode();
+                if (XPeriod != null) hashCode = hashCode * 59 + XPeriod.GetHashCode();
+                if (YPeriod != null) hashCode = hashCode * 59 + YPeriod.GetHashCode();
+                if (XPeriod0 != null) hashCode = hashCode * 59 + XPeriod0.GetHashCode();
+                if (YPeriod0 != null) hashCode = hashCode * 59 + YPeriod0.GetHashCode();
+                if (XPeriodAlignment != null) hashCode = hashCode * 59 + XPeriodAlignment.GetHashCode();
+                if (YPeriodAlignment != null) hashCode = hashCode * 59 + YPeriodAlignment.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (Q1 != null) hashCode = hashCode * 59 + Q1.GetHashCode();
                 if (Median != null) hashCode = hashCode * 59 + Median.GetHashCode();

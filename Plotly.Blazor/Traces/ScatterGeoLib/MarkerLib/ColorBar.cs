@@ -296,6 +296,13 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib
         public Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib.ColorBarLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
+        ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
+        ///     when <c>tickformat</c> is <c>SI</c> or <c>B</c>.
+        /// </summary>
+        [JsonPropertyName(@"minexponent")]
+        public decimal? MinExponent { get; set;} 
+
+        /// <summary>
         ///     If <c>all</c>, all exponents are shown besides their significands. If <c>first</c>,
         ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
         ///     of the last tick is shown. If <c>none</c>, no exponents appear.
@@ -517,6 +524,11 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib
                     ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
+                    MinExponent == other.MinExponent ||
+                    MinExponent != null &&
+                    MinExponent.Equals(other.MinExponent)
+                ) && 
+                (
                     ShowExponent == other.ShowExponent ||
                     ShowExponent != null &&
                     ShowExponent.Equals(other.ShowExponent)
@@ -580,6 +592,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib
                 if (ShowTickSuffix != null) hashCode = hashCode * 59 + ShowTickSuffix.GetHashCode();
                 if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
                 if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
                 if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();

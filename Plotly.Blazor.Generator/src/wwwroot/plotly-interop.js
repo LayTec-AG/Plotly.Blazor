@@ -37,5 +37,11 @@
     },
     purge: function (id) {
         window.Plotly.purge(id);
+    },
+    relayout: function (id, layout = {} ) {
+        window.Plotly.relayout(id, layout);
+    },
+    restyle: function (id, data, indizes) {
+        window.Plotly.restyle(id, data, indizes);
     }
 }

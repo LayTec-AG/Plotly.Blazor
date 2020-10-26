@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 #pragma warning disable 1591
 
@@ -13,7 +13,7 @@ namespace Plotly.Blazor
         /// <summary>
         ///     Prepares an object for js interop operations, converting the object to a dictionary.
         ///     This operation can be customized using own serializer options.
-        ///     Current it's not possible to define serializer options for the JSRuntime directly.
+        ///     Currently it's not possible to define serializer options for the JSRuntime directly.
         /// </summary>
         /// <typeparam name="T">Type of the object.</typeparam>
         /// <param name="obj">The object.</param>
@@ -108,6 +108,48 @@ namespace Plotly.Blazor
                     list.Add(item);
                 }
             }
+        }
+
+        /// <summary>
+        ///     Updates the properties of a given object, using a json string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
+        internal static T Populate<T>(this T obj, string jsonString) where T : class
+        {
+            var newObj = JsonSerializer.Deserialize(jsonString, obj.GetType());
+
+            foreach (var property in newObj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy).Where(p => p.CanWrite))
+            { 
+                if (!obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy).Where(p => p.CanWrite).Any(x => x.Name == property.Name && property.GetValue(newObj) != default))
+                {
+                    continue;
+                }
+
+                if (property.GetType().IsClass && property.PropertyType.Assembly.FullName == typeof(T).Assembly.FullName)
+                {
+                    var mapMethod = typeof(Extensions).GetMethod("Populate");
+                    if(mapMethod == null) throw new NullReferenceException(nameof(mapMethod));
+                    var genericMethod = mapMethod.MakeGenericMethod(property.GetValue(newObj).GetType());
+                    var obj2 = genericMethod.Invoke(null, new[] { property.GetValue(newObj), JsonSerializer.Serialize(property.GetValue(newObj).ToString()) });
+
+                    foreach (var property2 in obj2.GetType().GetProperties())
+                    {
+                        if (property2.GetValue(obj2) != null)
+                        {
+                            property?.GetValue(obj)?.GetType()?.GetProperty(property2.Name)?.SetValue(property.GetValue(obj), property2.GetValue(obj2));
+                        }
+                    }
+                }
+                else
+                {
+                    property.SetValue(obj, property.GetValue(newObj));
+                }
+            }
+
+            return obj;
         }
 
         /// <summary>

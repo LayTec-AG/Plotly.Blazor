@@ -180,21 +180,20 @@
         {
             throw new ArgumentNullException(nameof(trace));
         }
-        List<int> absoluteIndizes = new List<int>();
+        var absoluteIndizes = new List<int>();
         foreach (var index in indizes)
         {
-            int absoluteIndex = index < 0 ? Data.Count + index : index;
+            var absoluteIndex = index < 0 ? Data.Count + index : index;
             if (index > Data.Count - 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
             absoluteIndizes.Add(absoluteIndex);
         }
-        var json = JsonSerializer.Serialize(trace?.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
-        foreach (var index in absoluteIndizes)
+        var json = JsonSerializer.Serialize(trace.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
+        foreach (var currentTrace in absoluteIndizes.Select(index => Data[index]))
         {
-            var currentTrace = Data[index];
-            Newtonsoft.Json.JsonConvert.PopulateObject(json, currentTrace); // apply change to the existing object
+            currentTrace.Populate(json); // apply change to the existing object
         }
         await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray());
     }

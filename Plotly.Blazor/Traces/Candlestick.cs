@@ -168,6 +168,31 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the period
+        ///     positioning in milliseconds or <c>M&lt;n&gt;</c> on the x axis. Special
+        ///     values in the form of <c>M&lt;n&gt;</c> could be used to declare the number
+        ///     of months. In this case <c>n</c> must be a positive integer.
+        /// </summary>
+        [JsonPropertyName(@"xperiod")]
+        public object XPeriod { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the base for
+        ///     period positioning in milliseconds or date string on the x0 axis. When <c>x0period</c>
+        ///     is round number of weeks, the <c>x0period0</c> by default would be on a
+        ///     Sunday i.e. 2000-01-02, otherwise it would be at 2000-01-01.
+        /// </summary>
+        [JsonPropertyName(@"xperiod0")]
+        public object XPeriod0 { get; set;} 
+
+        /// <summary>
+        ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the alignment
+        ///     of data points on the x axis.
+        /// </summary>
+        [JsonPropertyName(@"xperiodalignment")]
+        public Plotly.Blazor.Traces.CandlestickLib.XPeriodAlignmentEnum? XPeriodAlignment { get; set;} 
+
+        /// <summary>
         ///     Sets the x coordinates. If absent, linear coordinate will be generated.
         /// </summary>
         [JsonPropertyName(@"x")]
@@ -447,6 +472,21 @@ namespace Plotly.Blazor.Traces
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
+                    XPeriod == other.XPeriod ||
+                    XPeriod != null &&
+                    XPeriod.Equals(other.XPeriod)
+                ) && 
+                (
+                    XPeriod0 == other.XPeriod0 ||
+                    XPeriod0 != null &&
+                    XPeriod0.Equals(other.XPeriod0)
+                ) && 
+                (
+                    XPeriodAlignment == other.XPeriodAlignment ||
+                    XPeriodAlignment != null &&
+                    XPeriodAlignment.Equals(other.XPeriodAlignment)
+                ) && 
+                (
                     Equals(X, other.X) ||
                     X != null && other.X != null &&
                     X.SequenceEqual(other.X)
@@ -611,6 +651,9 @@ namespace Plotly.Blazor.Traces
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
                 if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (XPeriod != null) hashCode = hashCode * 59 + XPeriod.GetHashCode();
+                if (XPeriod0 != null) hashCode = hashCode * 59 + XPeriod0.GetHashCode();
+                if (XPeriodAlignment != null) hashCode = hashCode * 59 + XPeriodAlignment.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (Open != null) hashCode = hashCode * 59 + Open.GetHashCode();
                 if (High != null) hashCode = hashCode * 59 + High.GetHashCode();

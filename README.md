@@ -1,7 +1,9 @@
 # Plotly.Blazor 
 [![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build?label=build)](https://www.nuget.org/packages/Plotly.Blazor/) [![Publish Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Publish?label=publish)](https://www.nuget.org/packages/Plotly.Blazor/) [![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Examples?label=examples)](https://plotly-blazor.azurewebsites.net/) [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
 
-This library packages the well-known charting library [plotly.js](https://github.com/plotly/plotly.js) into a Razor component that can be used in a Blazor project. 
+This library packages the well-known charting library [plotly.js](https://github.com/plotly/plotly.js) into a Razor component that can be used in a Blazor project.
+The advantage of this wrapper is that the plotly scheme itself is used to generate the classes. So you can automatically update to the latest plotly.js version with the help of the generator.
+
 
 ## Getting Started
 ### Prerequisites
@@ -114,8 +116,8 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - plotly.addFrames
 - plotly.downloadImage
 - plotly.moveTraces
-- plotly.relayout
-- plotly.restyle
+- <s>plotly.relayout</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
+- <s>plotly.restyle</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
 - plotly.toImage
 
 ## Versioning

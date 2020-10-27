@@ -193,7 +193,7 @@
         var json = JsonSerializer.Serialize(trace.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
         foreach (var currentTrace in absoluteIndizes.Select(index => Data[index]))
         {
-            currentTrace.Populate(json); // apply change to the existing object
+            currentTrace.Populate(json, PlotlyJsInterop.SerializerOptions); // apply changes to the existing object
         }
         await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray());
     }

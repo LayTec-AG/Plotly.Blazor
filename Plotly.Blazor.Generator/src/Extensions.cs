@@ -116,13 +116,16 @@ namespace Plotly.Blazor
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <param name="jsonString"></param>
+        /// <param name="options"></param>
         /// <returns></returns>
-        internal static T Populate<T>(this T obj, string jsonString) where T : class
+        internal static T Populate<T>(this T obj, string jsonString, JsonSerializerOptions options) where T : class
         {
-            var newObj = JsonSerializer.Deserialize(jsonString, obj.GetType());
+            options ??= new JsonSerializerOptions();
+
+            var newObj = JsonSerializer.Deserialize(jsonString, obj.GetType(), options);
 
             foreach (var property in newObj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy).Where(p => p.CanWrite))
-            { 
+            {
                 if (!obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy).Where(p => p.CanWrite).Any(x => x.Name == property.Name && property.GetValue(newObj) != default))
                 {
                     continue;
@@ -131,7 +134,7 @@ namespace Plotly.Blazor
                 if (property.GetType().IsClass && property.PropertyType.Assembly.FullName == typeof(T).Assembly.FullName)
                 {
                     var mapMethod = typeof(Extensions).GetMethod("Populate");
-                    if(mapMethod == null) throw new NullReferenceException(nameof(mapMethod));
+                    if (mapMethod == null) throw new NullReferenceException(nameof(mapMethod));
                     var genericMethod = mapMethod.MakeGenericMethod(property.GetValue(newObj).GetType());
                     var obj2 = genericMethod.Invoke(null, new[] { property.GetValue(newObj), JsonSerializer.Serialize(property.GetValue(newObj).ToString()) });
 
@@ -150,6 +153,18 @@ namespace Plotly.Blazor
             }
 
             return obj;
+        }
+
+        /// <summary>
+        ///     Updates the properties of a given object, using a json string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
+        internal static T Populate<T>(this T obj, string jsonString) where T : class
+        {
+            return obj.Populate(jsonString, null);
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ plotly.js is free and open source and you can view the source, report issues or 
 
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="5.3.7">
+    <PackageReference Include="GitVersionTask" Version="5.5.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

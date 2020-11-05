@@ -68,10 +68,11 @@ namespace Plotly.Blazor
         /// <param name="x">X-Values.</param>
         /// <param name="y">Y-Values</param>
         /// <param name="indizes">Indizes.</param>
+        /// <param name="max">Max Points.</param>
         public static async Task ExtendTraces(this IJSRuntime jsRuntime,
-            DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+            DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max)
         {
-            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.extendTraces", objectReference.Value.Id, x, y, indizes);
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.extendTraces", objectReference.Value.Id, x, y, indizes, max);
         }
 
         /// <summary>
@@ -82,10 +83,11 @@ namespace Plotly.Blazor
         /// <param name="x">X-Values.</param>
         /// <param name="y">Y-Values</param>
         /// <param name="indizes">Indizes.</param>
+        /// <param name="max">Max Points.</param>
         public static async Task PrependTraces(this IJSRuntime jsRuntime,
-            DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+            DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max)
         {
-            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.prependTraces", objectReference.Value.Id, x, y, indizes);
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.prependTraces", objectReference.Value.Id, x, y, indizes, max);
         }
 
         /// <summary>

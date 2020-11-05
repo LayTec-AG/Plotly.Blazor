@@ -5,7 +5,7 @@
     react: function (id, data = [], layout = {}, config = {}, frames = []) {
         window.Plotly.react(id, data, layout, config, frames);
     },
-    extendTraces: function (id, x, y, indizes) {
+    extendTraces: function (id, x, y, indizes, max) {
         var data = {};
         if (x != null) {
             data["x"] = x;
@@ -13,9 +13,13 @@
         if (y != null) {
             data["y"] = y;
         }
-        window.Plotly.extendTraces(id, data, indizes);
+        if (max != null) {
+            window.Plotly.extendTraces(id, data, indizes, max);
+        } else {
+            window.Plotly.extendTraces(id, data, indizes);
+        }
     },
-    prependTraces: function (id, x = null, y = null, indizes = [0]) {
+    prependTraces: function (id, x = null, y = null, indizes = [0], max) {
         var data = {};
         if (x != null) {
             data["x"] = x;
@@ -23,7 +27,12 @@
         if (y != null) {
             data["y"] = y;
         }
-        window.Plotly.prependTraces(id, data, indizes);
+        if (max != null) {
+            window.Plotly.prependTraces(id, data, indizes, max);
+        }
+        else {
+            window.Plotly.prependTraces(id, data, indizes);
+        }
     },
     addTrace: function (id, data = {}, index = null) {
         if (index != null) {

@@ -12,6 +12,8 @@
     <button type="button" class="btn btn-primary" @onclick="() => Restyle()">Rename First</button>
     <button type="button" class="btn btn-primary" @onclick="() => PrependData()">Prepend First</button>
     <button type="button" class="btn btn-primary" @onclick="() => ExtendData()">Extend First</button>
+    <button type="button" class="btn btn-primary" @onclick="() => ExtendWithLimit()">Extend First (Max. 100)</button>
+    <button type="button" class="btn btn-primary" @onclick="() => PrependWithLimit()">Prepend First (Max. 100)</button>
 </div>
 
 @code
@@ -68,6 +70,45 @@
         else
         {
             await chart.ExtendTrace(x, y, data.IndexOf(scatter));
+        }
+    }
+
+    private async Task ExtendWithLimit(int count = 100, int limit = 100)
+    {
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
+
+        var max = (int?)scatter.X?.Max();
+        var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
+
+
+        if (!scatter.X.Any() || !scatter.Y.Any())
+        {
+            scatter.X.AddRange(x);
+            scatter.Y.AddRange(y);
+            await chart.React();
+        }
+        else
+        {
+            await chart.ExtendTrace(x, y, data.IndexOf(scatter), limit);
+        }
+    }
+
+    private async Task PrependWithLimit(int count = 100, int limit = 100)
+    {
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
+
+        var min = (int?)scatter.X?.Min();
+        var (x, y) = Helper.GenerateData(min - 1 ?? 0, min - 1 - count ?? count * -1);
+
+        if (!scatter.X.Any() || !scatter.Y.Any())
+        {
+            scatter.X.AddRange(x);
+            scatter.Y.AddRange(y);
+            await chart.React();
+        }
+        else
+        {
+            await chart.PrependTrace(x, y, data.IndexOf(scatter), limit);
         }
     }
 

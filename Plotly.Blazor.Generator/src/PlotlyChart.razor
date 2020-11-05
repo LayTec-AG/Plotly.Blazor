@@ -296,8 +296,9 @@
     /// <param name="x">X-Value.</param>
     /// <param name="y">Y-Value.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <param name="max">Limits the number of points in the trace.</param>
     /// <returns>Task</returns>
-    public async Task ExtendTrace(object x, object y, int index)
+    public async Task ExtendTrace(object x, object y, int index, int? max = null)
     {
         if (x == null && y == null)
         {
@@ -305,15 +306,15 @@
         }
         if (x == null)
         {
-            await ExtendTrace(null, new[] { y }, index);
+            await ExtendTrace(null, new[] { y }, index, max);
         }
         else if (y == null)
         {
-            await ExtendTrace(new[] { x }, null, index);
+            await ExtendTrace(new[] { x }, null, index, max);
         }
         else
         {
-            await ExtendTrace(new[] { x }, new[] { y }, index);
+            await ExtendTrace(new[] { x }, new[] { y }, index, max);
         }
     }
 
@@ -323,8 +324,9 @@
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <param name="max">Limits the number of points in the trace.</param>
     /// <returns>Task</returns>
-    public async Task ExtendTrace(IEnumerable<object> x, IEnumerable<object> y, int index)
+    public async Task ExtendTrace(IEnumerable<object> x, IEnumerable<object> y, int index, int? max = null)
     {
         if (x == null && y == null)
         {
@@ -332,15 +334,15 @@
         }
         if (x == null)
         {
-            await ExtendTraces(null, new[] { y }, new[] { index });
+            await ExtendTraces(null, new[] { y }, new[] { index }, max);
         }
         else if (y == null)
         {
-            await ExtendTraces(new[] { x }, null, new[] { index });
+            await ExtendTraces(new[] { x }, null, new[] { index }, max);
         }
         else
         {
-            await ExtendTraces(new[] { x }, new[] { y }, new[] { index });
+            await ExtendTraces(new[] { x }, new[] { y }, new[] { index }, max);
         }
     }
 
@@ -350,8 +352,9 @@
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values.</param>
     /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <param name="max">Limits the number of points in the trace.</param>
     /// <returns>Task</returns>
-    public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+    public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null)
     {
         if (indizes == null || !indizes.Any())
         {
@@ -382,7 +385,12 @@
                 var xData = currentXData as object[] ?? currentXData.ToArray();
                 if (xData.Length > 0)
                 {
-                    ((IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace)).AddRange(xData);
+                    var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
+                    list.AddRange(xData);
+                    if (max != null)
+                    {
+                        traceType.GetProperty("X")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
+                    }
                 }
             }
 
@@ -393,13 +401,18 @@
                 var yData = currentYData as object[] ?? currentYData.ToArray();
                 if (yData.Length > 0)
                 {
-                    ((IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace)).AddRange(yData);
+                    var list = (IList<object>) traceType.GetProperty("Y")?.GetValue(currentTrace);
+                    list.AddRange(yData);
+                    if (max != null)
+                    {
+                        traceType.GetProperty("Y")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
+                    }
                 }
             }
         }
 
         await DataChanged.InvokeAsync(Data);
-        await JsRuntime.ExtendTraces(objectReference, x, y, indizesArr);
+        await JsRuntime.ExtendTraces(objectReference, x, y, indizesArr, max);
     }
 
     /// <summary>
@@ -408,8 +421,9 @@
     /// <param name="x">X-Value.</param>
     /// <param name="y">Y-Value.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <param name="max">Limits the number of points in the trace.</param>
     /// <returns>Task</returns>
-    public async Task PrependTrace(object x, object y, int index)
+    public async Task PrependTrace(object x, object y, int index, int? max = null)
     {
         if (x == null && y == null)
         {
@@ -417,15 +431,15 @@
         }
         if (x == null)
         {
-            await PrependTrace(null, new[] { y }, index);
+            await PrependTrace(null, new[] { y }, index, max);
         }
         else if (y == null)
         {
-            await PrependTrace(new[] { x }, null, index);
+            await PrependTrace(new[] { x }, null, index, max);
         }
         else
         {
-            await PrependTrace(new[] { x }, new[] { y }, index);
+            await PrependTrace(new[] { x }, new[] { y }, index, max);
         }
     }
 
@@ -435,8 +449,9 @@
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <param name="max">Limits the number of points in the trace.</param>
     /// <returns>Task</returns>
-    public async Task PrependTrace(IEnumerable<object> x, IEnumerable<object> y, int index)
+    public async Task PrependTrace(IEnumerable<object> x, IEnumerable<object> y, int index, int? max = null)
     {
         if (x == null && y == null)
         {
@@ -444,15 +459,15 @@
         }
         if (x == null)
         {
-            await PrependTraces(null, new[] { y }, new[] { index });
+            await PrependTraces(null, new[] { y }, new[] { index }, max);
         }
         else if (y == null)
         {
-            await PrependTraces(new[] { x }, null, new[] { index });
+            await PrependTraces(new[] { x }, null, new[] { index }, max);
         }
         else
         {
-            await PrependTraces(new[] { x }, new[] { y }, new[] { index });
+            await PrependTraces(new[] { x }, new[] { y }, new[] { index }, max);
         }
     }
 
@@ -462,8 +477,9 @@
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values.</param>
     /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <param name="max">Limits the number of points in the trace.</param>
     /// <returns>Task</returns>
-    public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes)
+    public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null)
     {
         if (indizes == null || !indizes.Any())
         {
@@ -492,9 +508,18 @@
             {
                 var currentXData = index < 0 ? xArray.ElementAt(xArray.Length - 1) : xArray.ElementAt(index);
                 var xData = currentXData as object[] ?? currentXData.ToArray();
+
+                var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
+               
                 if (xData.Length > 0)
                 {
-                    ((IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace)).InsertRange(0, xData);
+                    list.InsertRange(0, xData);
+
+                }
+                
+                if (max != null)
+                {
+                    traceType.GetProperty("X")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
                 }
             }
 
@@ -503,14 +528,22 @@
             {
                 var currentYData = index < 0 ? yArray.ElementAt(yArray.Length + index) : yArray.ElementAt(index);
                 var yData = currentYData as object[] ?? currentYData.ToArray();
+
+                var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
+               
                 if (yData.Length > 0)
                 {
-                    ((IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace)).InsertRange(0, yData);
+                    list.InsertRange(0, yData);
+                }
+                
+                if (max != null)
+                {
+                    traceType.GetProperty("Y")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
                 }
             }
         }
         await DataChanged.InvokeAsync(Data);
-        await JsRuntime.PrependTraces(objectReference, x, y, indizes);
+        await JsRuntime.PrependTraces(objectReference, x, y, indizes, max);
     }
 
     /// <summary>

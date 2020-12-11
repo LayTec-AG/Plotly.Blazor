@@ -1,12 +1,13 @@
 name: Build
 on:
+  workflow_dispatch:
   push:
     branches:
       - master # Default release branch
       - develop
       - 'releases/**'
     paths:
-      - 'Plotly.Blazor/**'
+      - 'Plotly.Blazor/**' 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +16,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.300
+          dotnet-version: 5.0.101
       - name: Build with dotnet
         run: dotnet build --configuration Release
       - name: Test with dotnet

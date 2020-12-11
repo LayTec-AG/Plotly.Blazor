@@ -251,3 +251,5 @@ yperiodalignment=yPeriodAlignment
 xperiod0=xPeriod0
 yperiod0=yPeriod0
 rgba256=rgba256
+autotypenumbers=autoTypeNumbers
+ticklabelposition=tickLabelPosition

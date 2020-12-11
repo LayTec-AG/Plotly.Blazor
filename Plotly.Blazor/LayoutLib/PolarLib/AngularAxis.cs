@@ -35,6 +35,15 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         public Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
+        ///     Using <c>strict</c> a numeric string in trace data is not converted to a
+        ///     number. Using &#39;convert types&#39; a numeric string in trace data may
+        ///     be treated as a number during automatic axis <c>type</c> detection. Defaults
+        ///     to layout.autotypenumbers.
+        /// </summary>
+        [JsonPropertyName(@"autotypenumbers")]
+        public Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib.AutoTypeNumbersEnum? AutoTypeNumbers { get; set;} 
+
+        /// <summary>
         ///     Specifies the ordering logic for the case of categorical variables. By default,
         ///     plotly uses <c>trace</c>, which specifies the order that is present in the
         ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
@@ -396,6 +405,11 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     Type.Equals(other.Type)
                 ) && 
                 (
+                    AutoTypeNumbers == other.AutoTypeNumbers ||
+                    AutoTypeNumbers != null &&
+                    AutoTypeNumbers.Equals(other.AutoTypeNumbers)
+                ) && 
+                (
                     CategoryOrder == other.CategoryOrder ||
                     CategoryOrder != null &&
                     CategoryOrder.Equals(other.CategoryOrder)
@@ -615,6 +629,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                 var hashCode = 41;
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (CategoryOrder != null) hashCode = hashCode * 59 + CategoryOrder.GetHashCode();
                 if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
                 if (ThetaUnit != null) hashCode = hashCode * 59 + ThetaUnit.GetHashCode();

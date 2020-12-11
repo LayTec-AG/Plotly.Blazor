@@ -200,6 +200,12 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
         public Plotly.Blazor.Traces.SunburstLib.MarkerLib.ColorBarLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
+        ///     Determines where tick labels are drawn.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelposition")]
+        public Plotly.Blazor.Traces.SunburstLib.MarkerLib.ColorBarLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
+
+        /// <summary>
         ///     Sets the tick length (in px).
         /// </summary>
         [JsonPropertyName(@"ticklen")]
@@ -454,6 +460,11 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
                     Ticks.Equals(other.Ticks)
                 ) && 
                 (
+                    TickLabelPosition == other.TickLabelPosition ||
+                    TickLabelPosition != null &&
+                    TickLabelPosition.Equals(other.TickLabelPosition)
+                ) && 
+                (
                     TickLen == other.TickLen ||
                     TickLen != null &&
                     TickLen.Equals(other.TickLen)
@@ -578,6 +589,7 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
                 if (TickVals != null) hashCode = hashCode * 59 + TickVals.GetHashCode();
                 if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
                 if (Ticks != null) hashCode = hashCode * 59 + Ticks.GetHashCode();
+                if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
                 if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();
                 if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();

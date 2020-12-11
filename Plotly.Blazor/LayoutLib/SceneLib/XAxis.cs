@@ -116,6 +116,15 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public Plotly.Blazor.LayoutLib.SceneLib.XAxisLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
+        ///     Using <c>strict</c> a numeric string in trace data is not converted to a
+        ///     number. Using &#39;convert types&#39; a numeric string in trace data may
+        ///     be treated as a number during automatic axis <c>type</c> detection. Defaults
+        ///     to layout.autotypenumbers.
+        /// </summary>
+        [JsonPropertyName(@"autotypenumbers")]
+        public Plotly.Blazor.LayoutLib.SceneLib.XAxisLib.AutoTypeNumbersEnum? AutoTypeNumbers { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
         ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
         ///     provided, then <c>autorange</c> is set to <c>false</c>.
@@ -518,6 +527,11 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                     Type.Equals(other.Type)
                 ) && 
                 (
+                    AutoTypeNumbers == other.AutoTypeNumbers ||
+                    AutoTypeNumbers != null &&
+                    AutoTypeNumbers.Equals(other.AutoTypeNumbers)
+                ) && 
+                (
                     AutoRange == other.AutoRange ||
                     AutoRange != null &&
                     AutoRange.Equals(other.AutoRange)
@@ -743,6 +757,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                 if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
                 if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
                 if (RangeMode != null) hashCode = hashCode * 59 + RangeMode.GetHashCode();
                 if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();

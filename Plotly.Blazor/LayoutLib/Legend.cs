@@ -73,6 +73,13 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.ItemSizingEnum? ItemSizing { get; set;} 
 
         /// <summary>
+        ///     Sets the width (in px) of the legend item symbols (the part other than the
+        ///     title.text).
+        /// </summary>
+        [JsonPropertyName(@"itemwidth")]
+        public decimal? ItemWidth { get; set;} 
+
+        /// <summary>
         ///     Determines the behavior on legend item click. <c>toggle</c> toggles the
         ///     visibility of the item clicked on the graph. <c>toggleothers</c> makes the
         ///     clicked item the sole visible item on the graph. <c>false</c> disable legend
@@ -205,6 +212,11 @@ namespace Plotly.Blazor.LayoutLib
                     ItemSizing.Equals(other.ItemSizing)
                 ) && 
                 (
+                    ItemWidth == other.ItemWidth ||
+                    ItemWidth != null &&
+                    ItemWidth.Equals(other.ItemWidth)
+                ) && 
+                (
                     ItemClick == other.ItemClick ||
                     ItemClick != null &&
                     ItemClick.Equals(other.ItemClick)
@@ -265,6 +277,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (TraceOrder != null) hashCode = hashCode * 59 + TraceOrder.GetHashCode();
                 if (TraceGroupGap != null) hashCode = hashCode * 59 + TraceGroupGap.GetHashCode();
                 if (ItemSizing != null) hashCode = hashCode * 59 + ItemSizing.GetHashCode();
+                if (ItemWidth != null) hashCode = hashCode * 59 + ItemWidth.GetHashCode();
                 if (ItemClick != null) hashCode = hashCode * 59 + ItemClick.GetHashCode();
                 if (ItemDoubleClick != null) hashCode = hashCode * 59 + ItemDoubleClick.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();

@@ -369,6 +369,12 @@ namespace Plotly.Blazor.Traces
         public bool? Sort { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Root.
+        /// </summary>
+        [JsonPropertyName(@"root")]
+        public Plotly.Blazor.Traces.TreeMapLib.Root Root { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
@@ -646,6 +652,11 @@ namespace Plotly.Blazor.Traces
                     Sort.Equals(other.Sort)
                 ) && 
                 (
+                    Root == other.Root ||
+                    Root != null &&
+                    Root.Equals(other.Root)
+                ) && 
+                (
                     Domain == other.Domain ||
                     Domain != null &&
                     Domain.Equals(other.Domain)
@@ -751,6 +762,7 @@ namespace Plotly.Blazor.Traces
                 if (OutsideTextFont != null) hashCode = hashCode * 59 + OutsideTextFont.GetHashCode();
                 if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
                 if (Sort != null) hashCode = hashCode * 59 + Sort.GetHashCode();
+                if (Root != null) hashCode = hashCode * 59 + Root.GetHashCode();
                 if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
                 if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();

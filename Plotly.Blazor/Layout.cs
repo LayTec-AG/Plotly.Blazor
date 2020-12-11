@@ -300,6 +300,15 @@ namespace Plotly.Blazor
         public object PlotBgColor { get; set;} 
 
         /// <summary>
+        ///     Using <c>strict</c> a numeric string in trace data is not converted to a
+        ///     number. Using &#39;convert types&#39; a numeric string in trace data may
+        ///     be treated as a number during automatic axis <c>type</c> detection. This
+        ///     is the default value; however it could be overridden for individual axes.
+        /// </summary>
+        [JsonPropertyName(@"autotypenumbers")]
+        public Plotly.Blazor.LayoutLib.AutoTypeNumbersEnum? AutoTypeNumbers { get; set;} 
+
+        /// <summary>
         ///     Sets the decimal and thousand separators. For example, &#39;. &#39; puts
         ///     a <c>.</c> before decimals and a space between thousands. In English locales,
         ///     dflt is <c>.,</c> but other locales may alter this default.
@@ -861,6 +870,11 @@ namespace Plotly.Blazor
                     PlotBgColor.Equals(other.PlotBgColor)
                 ) && 
                 (
+                    AutoTypeNumbers == other.AutoTypeNumbers ||
+                    AutoTypeNumbers != null &&
+                    AutoTypeNumbers.Equals(other.AutoTypeNumbers)
+                ) && 
+                (
                     Separators == other.Separators ||
                     Separators != null &&
                     Separators.Equals(other.Separators)
@@ -1124,6 +1138,7 @@ namespace Plotly.Blazor
                 if (Computed != null) hashCode = hashCode * 59 + Computed.GetHashCode();
                 if (PaperBgColor != null) hashCode = hashCode * 59 + PaperBgColor.GetHashCode();
                 if (PlotBgColor != null) hashCode = hashCode * 59 + PlotBgColor.GetHashCode();
+                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (Separators != null) hashCode = hashCode * 59 + Separators.GetHashCode();
                 if (HideSources != null) hashCode = hashCode * 59 + HideSources.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();

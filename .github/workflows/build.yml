@@ -1,12 +1,13 @@
 name: Build
 on:
+  workflow_dispatch:
   push:
     branches:
       - master # Default release branch
       - develop
       - 'releases/**'
     paths:
-      - 'Plotly.Blazor/**'
+      - 'Plotly.Blazor/**' 
 jobs:
   build:
     runs-on: ubuntu-latest

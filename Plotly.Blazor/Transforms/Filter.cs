@@ -233,11 +233,7 @@ namespace Plotly.Blazor.Transforms
         /// <returns>Filter</returns>
         public Filter DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Filter) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -118,11 +118,7 @@ namespace Plotly.Blazor.Traces.Mesh3DLib.ColorBarLib.TitleLib
         /// <returns>Font</returns>
         public Font DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Font) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

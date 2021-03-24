@@ -1238,11 +1238,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Box</returns>
         public Box DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Box) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

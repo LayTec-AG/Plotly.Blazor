@@ -201,11 +201,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <returns>ColorAxis</returns>
         public ColorAxis DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (ColorAxis) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

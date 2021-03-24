@@ -101,11 +101,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <returns>UniformText</returns>
         public UniformText DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (UniformText) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

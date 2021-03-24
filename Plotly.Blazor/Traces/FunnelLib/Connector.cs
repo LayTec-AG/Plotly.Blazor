@@ -108,11 +108,7 @@ namespace Plotly.Blazor.Traces.FunnelLib
         /// <returns>Connector</returns>
         public Connector DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Connector) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

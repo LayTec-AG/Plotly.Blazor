@@ -138,11 +138,7 @@ namespace Plotly.Blazor.Transforms.AggregateLib
         /// <returns>Aggregation</returns>
         public Aggregation DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Aggregation) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

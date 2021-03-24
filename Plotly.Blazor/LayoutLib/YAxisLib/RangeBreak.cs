@@ -181,11 +181,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
         /// <returns>RangeBreak</returns>
         public RangeBreak DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (RangeBreak) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

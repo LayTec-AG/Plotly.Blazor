@@ -101,11 +101,7 @@ namespace Plotly.Blazor.Traces.VolumeLib
         /// <returns>SpaceFrame</returns>
         public SpaceFrame DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (SpaceFrame) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

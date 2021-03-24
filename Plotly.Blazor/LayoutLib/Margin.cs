@@ -147,11 +147,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <returns>Margin</returns>
         public Margin DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Margin) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -85,11 +85,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.UnselectedLib
         /// <returns>TextFont</returns>
         public TextFont DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (TextFont) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

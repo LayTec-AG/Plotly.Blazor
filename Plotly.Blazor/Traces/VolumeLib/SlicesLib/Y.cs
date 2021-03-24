@@ -126,11 +126,7 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
         /// <returns>Y</returns>
         public Y DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Y) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

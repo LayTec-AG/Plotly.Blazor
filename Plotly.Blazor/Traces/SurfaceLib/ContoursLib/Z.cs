@@ -206,11 +206,7 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
         /// <returns>Z</returns>
         public Z DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Z) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

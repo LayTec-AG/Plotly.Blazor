@@ -148,11 +148,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
         /// <returns>TickFormatStop</returns>
         public TickFormatStop DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (TickFormatStop) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

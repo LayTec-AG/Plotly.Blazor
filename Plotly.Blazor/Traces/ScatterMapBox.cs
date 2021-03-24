@@ -801,11 +801,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>ScatterMapBox</returns>
         public ScatterMapBox DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (ScatterMapBox) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

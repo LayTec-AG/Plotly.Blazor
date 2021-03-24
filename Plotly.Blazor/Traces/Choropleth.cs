@@ -799,11 +799,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Choropleth</returns>
         public Choropleth DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Choropleth) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

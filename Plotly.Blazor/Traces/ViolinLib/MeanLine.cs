@@ -111,11 +111,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
         /// <returns>MeanLine</returns>
         public MeanLine DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (MeanLine) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

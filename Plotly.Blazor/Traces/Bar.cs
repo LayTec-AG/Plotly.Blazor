@@ -535,20 +535,6 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.BarLib.Unselected Unselected { get; set;} 
 
         /// <summary>
-        ///     r coordinates in scatter traces are deprecated!Please switch to the <c>scatterpolar</c>
-        ///     trace type.Sets the radial coordinatesfor legacy polar chart only.
-        /// </summary>
-        [JsonPropertyName(@"r")]
-        public IList<object> R { get; set;} 
-
-        /// <summary>
-        ///     t coordinates in scatter traces are deprecated!Please switch to the <c>scatterpolar</c>
-        ///     trace type.Sets the angular coordinatesfor legacy polar chart only.
-        /// </summary>
-        [JsonPropertyName(@"t")]
-        public IList<object> T { get; set;} 
-
-        /// <summary>
         ///     Gets or sets the ErrorX.
         /// </summary>
         [JsonPropertyName(@"error_x")]
@@ -671,18 +657,6 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"widthsrc")]
         public string WidthSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  r .
-        /// </summary>
-        [JsonPropertyName(@"rsrc")]
-        public string RSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  t .
-        /// </summary>
-        [JsonPropertyName(@"tsrc")]
-        public string TSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -995,16 +969,6 @@ namespace Plotly.Blazor.Traces
                     Unselected.Equals(other.Unselected)
                 ) && 
                 (
-                    Equals(R, other.R) ||
-                    R != null && other.R != null &&
-                    R.SequenceEqual(other.R)
-                ) &&
-                (
-                    Equals(T, other.T) ||
-                    T != null && other.T != null &&
-                    T.SequenceEqual(other.T)
-                ) &&
-                (
                     ErrorX == other.ErrorX ||
                     ErrorX != null &&
                     ErrorX.Equals(other.ErrorX)
@@ -1103,16 +1067,6 @@ namespace Plotly.Blazor.Traces
                     WidthSrc == other.WidthSrc ||
                     WidthSrc != null &&
                     WidthSrc.Equals(other.WidthSrc)
-                ) && 
-                (
-                    RSrc == other.RSrc ||
-                    RSrc != null &&
-                    RSrc.Equals(other.RSrc)
-                ) && 
-                (
-                    TSrc == other.TSrc ||
-                    TSrc != null &&
-                    TSrc.Equals(other.TSrc)
                 );
         }
 
@@ -1181,8 +1135,6 @@ namespace Plotly.Blazor.Traces
                 if (AlignmentGroup != null) hashCode = hashCode * 59 + AlignmentGroup.GetHashCode();
                 if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();
                 if (Unselected != null) hashCode = hashCode * 59 + Unselected.GetHashCode();
-                if (R != null) hashCode = hashCode * 59 + R.GetHashCode();
-                if (T != null) hashCode = hashCode * 59 + T.GetHashCode();
                 if (ErrorX != null) hashCode = hashCode * 59 + ErrorX.GetHashCode();
                 if (ErrorY != null) hashCode = hashCode * 59 + ErrorY.GetHashCode();
                 if (XCalendar != null) hashCode = hashCode * 59 + XCalendar.GetHashCode();
@@ -1203,8 +1155,6 @@ namespace Plotly.Blazor.Traces
                 if (BaseSrc != null) hashCode = hashCode * 59 + BaseSrc.GetHashCode();
                 if (OffsetSrc != null) hashCode = hashCode * 59 + OffsetSrc.GetHashCode();
                 if (WidthSrc != null) hashCode = hashCode * 59 + WidthSrc.GetHashCode();
-                if (RSrc != null) hashCode = hashCode * 59 + RSrc.GetHashCode();
-                if (TSrc != null) hashCode = hashCode * 59 + TSrc.GetHashCode();
                 return hashCode;
             }
         }
@@ -1237,11 +1187,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Bar</returns>
         public Bar DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Bar) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -195,11 +195,7 @@ namespace Plotly.Blazor.ConfigLib
         /// <returns>Edits</returns>
         public Edits DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Edits) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

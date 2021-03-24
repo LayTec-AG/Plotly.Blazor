@@ -120,11 +120,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// <returns>Pad</returns>
         public Pad DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Pad) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

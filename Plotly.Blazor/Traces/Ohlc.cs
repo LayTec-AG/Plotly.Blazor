@@ -714,11 +714,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Ohlc</returns>
         public Ohlc DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Ohlc) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

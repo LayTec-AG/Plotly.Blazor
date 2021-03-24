@@ -97,11 +97,7 @@ namespace Plotly.Blazor.Traces.CandlestickLib
         /// <returns>Increasing</returns>
         public Increasing DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Increasing) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

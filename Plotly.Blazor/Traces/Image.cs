@@ -149,6 +149,13 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ImageLib.ColorModelEnum? ColorModel { get; set;} 
 
         /// <summary>
+        ///     Picks a smoothing algorithm used to smooth <c>z</c> data. This only applies
+        ///     for image traces that use the <c>source</c> attribute.
+        /// </summary>
+        [JsonPropertyName(@"zsmooth")]
+        public Plotly.Blazor.Traces.ImageLib.ZSmoothEnum? ZSmooth { get; set;} 
+
+        /// <summary>
         ///     Array defining the lower bound for each color component. Note that the default
         ///     value will depend on the colormodel. For the <c>rgb</c> colormodel, it is
         ///     [0, 0, 0]. For the <c>rgba</c> colormodel, it is [0, 0, 0, 0]. For the <c>rgba256</c>
@@ -418,6 +425,11 @@ namespace Plotly.Blazor.Traces
                     ColorModel.Equals(other.ColorModel)
                 ) && 
                 (
+                    ZSmooth == other.ZSmooth ||
+                    ZSmooth != null &&
+                    ZSmooth.Equals(other.ZSmooth)
+                ) && 
+                (
                     Equals(ZMin, other.ZMin) ||
                     ZMin != null && other.ZMin != null &&
                     ZMin.SequenceEqual(other.ZMin)
@@ -550,6 +562,7 @@ namespace Plotly.Blazor.Traces
                 if (Source != null) hashCode = hashCode * 59 + Source.GetHashCode();
                 if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
                 if (ColorModel != null) hashCode = hashCode * 59 + ColorModel.GetHashCode();
+                if (ZSmooth != null) hashCode = hashCode * 59 + ZSmooth.GetHashCode();
                 if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
                 if (ZMax != null) hashCode = hashCode * 59 + ZMax.GetHashCode();
                 if (X0 != null) hashCode = hashCode * 59 + X0.GetHashCode();
@@ -604,11 +617,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Image</returns>
         public Image DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Image) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

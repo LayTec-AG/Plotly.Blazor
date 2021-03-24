@@ -831,11 +831,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <returns>XAxis</returns>
         public XAxis DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (XAxis) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

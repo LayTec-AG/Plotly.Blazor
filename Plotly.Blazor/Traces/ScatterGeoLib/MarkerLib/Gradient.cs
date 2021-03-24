@@ -151,11 +151,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib
         /// <returns>Gradient</returns>
         public Gradient DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Gradient) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

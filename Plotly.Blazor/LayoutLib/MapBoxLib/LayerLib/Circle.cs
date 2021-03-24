@@ -85,11 +85,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         /// <returns>Circle</returns>
         public Circle DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Circle) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -84,11 +84,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         /// <returns>Diagonal</returns>
         public Diagonal DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Diagonal) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

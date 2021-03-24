@@ -131,11 +131,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         /// <returns>YBins</returns>
         public YBins DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (YBins) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

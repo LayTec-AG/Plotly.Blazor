@@ -84,11 +84,7 @@ namespace Plotly.Blazor.Traces.ChoroplethLib
         /// <returns>Selected</returns>
         public Selected DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Selected) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

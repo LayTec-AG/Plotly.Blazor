@@ -98,11 +98,7 @@ namespace Plotly.Blazor.Traces.PointCloudLib.MarkerLib
         /// <returns>Border</returns>
         public Border DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Border) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -108,11 +108,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         /// <returns>AspectRatio</returns>
         public AspectRatio DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (AspectRatio) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

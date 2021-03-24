@@ -109,11 +109,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         /// <returns>Threshold</returns>
         public Threshold DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Threshold) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

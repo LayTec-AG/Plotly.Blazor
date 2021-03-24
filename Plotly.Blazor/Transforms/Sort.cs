@@ -157,11 +157,7 @@ namespace Plotly.Blazor.Transforms
         /// <returns>Sort</returns>
         public Sort DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Sort) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

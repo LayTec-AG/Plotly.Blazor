@@ -56,7 +56,7 @@ namespace Plotly.Blazor
 
         /// <summary>
         ///     Determines whether to change the layout size when window is resized. In
-        ///     v2, this option will be removed and will always be true.
+        ///     v3, this option will be removed and will always be true.
         /// </summary>
         [JsonPropertyName(@"responsive")]
         public bool? Responsive { get; set;} 
@@ -584,11 +584,7 @@ namespace Plotly.Blazor
         /// <returns>Config</returns>
         public Config DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Config) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

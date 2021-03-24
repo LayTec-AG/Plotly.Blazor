@@ -110,11 +110,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <returns>Transition</returns>
         public Transition DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Transition) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -162,11 +162,7 @@ namespace Plotly.Blazor.Traces.VolumeLib
         /// <returns>Lighting</returns>
         public Lighting DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Lighting) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

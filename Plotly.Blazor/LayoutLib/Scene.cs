@@ -226,11 +226,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <returns>Scene</returns>
         public Scene DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Scene) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

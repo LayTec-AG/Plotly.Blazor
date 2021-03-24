@@ -206,11 +206,7 @@ namespace Plotly.Blazor.Traces.BarLib
         /// <returns>OutsideTextFont</returns>
         public OutsideTextFont DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (OutsideTextFont) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

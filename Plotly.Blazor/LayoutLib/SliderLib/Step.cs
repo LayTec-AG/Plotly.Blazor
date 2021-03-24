@@ -192,11 +192,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// <returns>Step</returns>
         public Step DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Step) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -106,8 +106,6 @@ namespace Plotly.Blazor
         [EnumMember(Value=@"scatterpolargl")]
         ScatterPolarGl,
         [EnumMember(Value=@"barpolar")]
-        BarPolar,
-        [EnumMember(Value=@"area")]
-        Area
+        BarPolar
     }
 }

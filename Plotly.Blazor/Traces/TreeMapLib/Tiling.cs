@@ -127,11 +127,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         /// <returns>Tiling</returns>
         public Tiling DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Tiling) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

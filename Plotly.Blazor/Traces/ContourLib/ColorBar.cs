@@ -641,11 +641,7 @@ namespace Plotly.Blazor.Traces.ContourLib
         /// <returns>ColorBar</returns>
         public ColorBar DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (ColorBar) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

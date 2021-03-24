@@ -572,11 +572,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib
         /// <returns>BAxis</returns>
         public BAxis DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (BAxis) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

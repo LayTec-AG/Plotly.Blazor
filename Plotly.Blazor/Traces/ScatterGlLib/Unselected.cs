@@ -96,11 +96,7 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
         /// <returns>Unselected</returns>
         public Unselected DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Unselected) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

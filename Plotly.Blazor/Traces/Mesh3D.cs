@@ -1050,11 +1050,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Mesh3D</returns>
         public Mesh3D DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Mesh3D) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

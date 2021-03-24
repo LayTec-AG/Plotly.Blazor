@@ -292,11 +292,7 @@ namespace Plotly.Blazor.Traces.TableLib
         /// <returns>Cells</returns>
         public Cells DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Cells) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

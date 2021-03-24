@@ -876,11 +876,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Surface</returns>
         public Surface DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Surface) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

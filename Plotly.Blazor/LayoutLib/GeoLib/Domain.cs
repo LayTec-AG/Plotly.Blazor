@@ -132,11 +132,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         /// <returns>Domain</returns>
         public Domain DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Domain) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

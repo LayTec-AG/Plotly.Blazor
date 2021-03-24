@@ -85,11 +85,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         /// <returns>Root</returns>
         public Root DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Root) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

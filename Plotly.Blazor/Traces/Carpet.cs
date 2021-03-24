@@ -128,7 +128,7 @@ namespace Plotly.Blazor.Traces
         public string _Carpet { get; set;} 
 
         /// <summary>
-        ///     A two dimensional array of x coordinates at each carpet point. If ommitted,
+        ///     A two dimensional array of x coordinates at each carpet point. If omitted,
         ///     the plot is a cheater plot and the xaxis is hidden by default.
         /// </summary>
         [JsonPropertyName(@"x")]
@@ -180,7 +180,7 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     The shift applied to each successive row of data in creating a cheater plot.
-        ///     Only used if <c>x</c> is been ommitted.
+        ///     Only used if <c>x</c> is been omitted.
         /// </summary>
         [JsonPropertyName(@"cheaterslope")]
         public decimal? CheaterSlope { get; set;} 
@@ -528,11 +528,7 @@ namespace Plotly.Blazor.Traces
         /// <returns>Carpet</returns>
         public Carpet DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Carpet) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

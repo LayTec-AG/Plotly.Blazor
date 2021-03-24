@@ -181,11 +181,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         /// <returns>RangeSlider</returns>
         public RangeSlider DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (RangeSlider) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

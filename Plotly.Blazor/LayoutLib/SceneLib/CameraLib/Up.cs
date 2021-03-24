@@ -108,11 +108,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.CameraLib
         /// <returns>Up</returns>
         public Up DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Up) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

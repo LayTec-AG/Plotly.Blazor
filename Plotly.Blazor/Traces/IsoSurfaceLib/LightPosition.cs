@@ -108,11 +108,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         /// <returns>LightPosition</returns>
         public LightPosition DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (LightPosition) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

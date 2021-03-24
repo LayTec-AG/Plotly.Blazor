@@ -368,11 +368,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <returns>Slider</returns>
         public Slider DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Slider) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

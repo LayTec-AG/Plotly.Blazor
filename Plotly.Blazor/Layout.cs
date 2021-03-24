@@ -594,32 +594,6 @@ namespace Plotly.Blazor
         public IList<Plotly.Blazor.LayoutLib.Polar> Polar { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the RadialAxis.
-        /// </summary>
-        [JsonPropertyName(@"radialaxis")]
-        public Plotly.Blazor.LayoutLib.RadialAxis RadialAxis { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the AngularAxis.
-        /// </summary>
-        [JsonPropertyName(@"angularaxis")]
-        public Plotly.Blazor.LayoutLib.AngularAxis AngularAxis { get; set;} 
-
-        /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
-        ///     Sets the direction corresponding to positive angles in legacy polar charts.
-        /// </summary>
-        [JsonPropertyName(@"direction")]
-        public Plotly.Blazor.LayoutLib.DirectionEnum? Direction { get; set;} 
-
-        /// <summary>
-        ///     Legacy polar charts are deprecated! Please switch to <c>polar</c> subplots.
-        ///     Rotates the entire polar by the given angle in legacy polar charts.
-        /// </summary>
-        [JsonPropertyName(@"orientation")]
-        public decimal? Orientation { get; set;} 
-
-        /// <summary>
         ///     Gets or sets the Legend.
         /// </summary>
         [JsonPropertyName(@"legend")]
@@ -1030,26 +1004,6 @@ namespace Plotly.Blazor
                     Polar.SequenceEqual(other.Polar)
                 ) &&
                 (
-                    RadialAxis == other.RadialAxis ||
-                    RadialAxis != null &&
-                    RadialAxis.Equals(other.RadialAxis)
-                ) && 
-                (
-                    AngularAxis == other.AngularAxis ||
-                    AngularAxis != null &&
-                    AngularAxis.Equals(other.AngularAxis)
-                ) && 
-                (
-                    Direction == other.Direction ||
-                    Direction != null &&
-                    Direction.Equals(other.Direction)
-                ) && 
-                (
-                    Orientation == other.Orientation ||
-                    Orientation != null &&
-                    Orientation.Equals(other.Orientation)
-                ) && 
-                (
                     Legend == other.Legend ||
                     Legend != null &&
                     Legend.Equals(other.Legend)
@@ -1170,10 +1124,6 @@ namespace Plotly.Blazor
                 if (Geo != null) hashCode = hashCode * 59 + Geo.GetHashCode();
                 if (MapBox != null) hashCode = hashCode * 59 + MapBox.GetHashCode();
                 if (Polar != null) hashCode = hashCode * 59 + Polar.GetHashCode();
-                if (RadialAxis != null) hashCode = hashCode * 59 + RadialAxis.GetHashCode();
-                if (AngularAxis != null) hashCode = hashCode * 59 + AngularAxis.GetHashCode();
-                if (Direction != null) hashCode = hashCode * 59 + Direction.GetHashCode();
-                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
                 if (Annotations != null) hashCode = hashCode * 59 + Annotations.GetHashCode();
                 if (Shapes != null) hashCode = hashCode * 59 + Shapes.GetHashCode();
@@ -1215,11 +1165,7 @@ namespace Plotly.Blazor
         /// <returns>Layout</returns>
         public Layout DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Layout) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

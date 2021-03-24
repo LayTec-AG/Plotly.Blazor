@@ -306,11 +306,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         /// <returns>Line</returns>
         public Line DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Line) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

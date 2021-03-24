@@ -82,10 +82,6 @@ namespace Plotly.Blazor.Examples
 
             app.UseRouting();
 
-            app.ApplicationServices
-                .UseBootstrapProviders()
-                .UseFontAwesomeIcons();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();

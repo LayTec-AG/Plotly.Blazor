@@ -146,11 +146,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         /// <returns>LaTaxis</returns>
         public LaTaxis DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (LaTaxis) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

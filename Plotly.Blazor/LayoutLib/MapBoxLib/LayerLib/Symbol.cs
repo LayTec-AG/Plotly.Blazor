@@ -152,11 +152,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         /// <returns>Symbol</returns>
         public Symbol DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Symbol) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

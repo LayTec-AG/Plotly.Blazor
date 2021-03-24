@@ -113,11 +113,7 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib.ColorBarLib
         /// <returns>Title</returns>
         public Title DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Title) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

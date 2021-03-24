@@ -114,11 +114,7 @@ namespace Plotly.Blazor.Traces.TableLib.HeaderLib
         /// <returns>Fill</returns>
         public Fill DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Fill) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

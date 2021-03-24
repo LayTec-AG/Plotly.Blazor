@@ -145,11 +145,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// <returns>CurrentValue</returns>
         public CurrentValue DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (CurrentValue) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

@@ -99,11 +99,7 @@ namespace Plotly.Blazor.Transforms.GroupByLib
         /// <returns>Style</returns>
         public Style DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Style) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

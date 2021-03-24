@@ -102,11 +102,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.CapsLib
         /// <returns>X</returns>
         public X DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (X) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

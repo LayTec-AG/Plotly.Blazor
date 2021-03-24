@@ -118,11 +118,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib
         /// <returns>TickFont</returns>
         public TickFont DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (TickFont) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

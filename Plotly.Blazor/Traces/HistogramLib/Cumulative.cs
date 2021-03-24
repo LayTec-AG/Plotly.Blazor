@@ -119,11 +119,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
         /// <returns>Cumulative</returns>
         public Cumulative DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Cumulative) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

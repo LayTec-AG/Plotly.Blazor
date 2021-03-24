@@ -171,11 +171,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         /// <returns>Dimension</returns>
         public Dimension DeepClone()
         {
-            using var ms = new MemoryStream();
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(ms, this);
-            ms.Position = 0;
-            return (Dimension) formatter.Deserialize(ms);
+            return this.Copy();
         }
     }
 }

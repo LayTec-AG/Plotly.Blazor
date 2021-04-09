@@ -3,16 +3,12 @@
         <TargetFramework>net5.0</TargetFramework>
         <RazorLangVersion>3.0</RazorLangVersion>
         <Authors>sean-laytec</Authors>
-        <Company>LayTec-AG</Company>
+        <Company>LayTec AG</Company>
         <RepositoryUrl>https://github.com/LayTec-AG/Plotly.Blazor.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>blazor plotly charting-library</PackageTags>
         <PackageProjectUrl>https://github.com/LayTec-AG/Plotly.Blazor</PackageProjectUrl>
-        <Description>
-            Plotly.Blazor is a wrapper for plotly.js.
-            Built on top of d3.js and stack.gl, plotly.js is a high-level, declarative charting library. It ships with over 40 chart types, including 3D charts, statistical graphs, and SVG maps.
-            plotly.js is free and open source and you can view the source, report issues or contribute on GitHub.
-        </Description>
+        <Description>Plotly.Blazor is a wrapper for plotly.js. Built on top of d3.js and stack.gl, plotly.js is a high-level, declarative charting library. It ships with over 40 chart types, including 3D charts, statistical graphs, and SVG maps. plotly.js is free and open source and you can view the source, report issues or contribute on GitHub.</Description>
         <EnableNETAnalyzers>false</EnableNETAnalyzers>
     </PropertyGroup>
 

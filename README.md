@@ -12,6 +12,9 @@ To create Blazor Server Apps, install the latest version of Visual Studio 2019 w
 For Blazor WebAssembly you need at least Visual Studio 2019 16.6+.
 Another alternative would be to use Visual Studio code. Click [here](https://docs.microsoft.com/en-us/aspnet/core/blazor/get-started?view=aspnetcore-3.1&tabs=visual-studio-code) for more information.
 
+**Plotly.Blazor with version >= 2.0.0 requires .NET 5 or higher.**
+
+
 ### Installing
 
 After you have created your Blazor project, you need to do the following steps:

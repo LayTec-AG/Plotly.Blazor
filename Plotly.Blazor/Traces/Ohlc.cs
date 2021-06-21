@@ -48,6 +48,16 @@ namespace Plotly.Blazor.Traces
         public string LegendGroup { get; set;} 
 
         /// <summary>
+        ///     Sets the legend rank for this trace. Items and groups with smaller ranks
+        ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
+        ///     they are on bottom/right side. The default legendrank is 1000, so that you
+        ///     can use ranks less than 1000 to place certain items before all unranked
+        ///     items, and ranks greater than 1000 to go after all unranked items.
+        /// </summary>
+        [JsonPropertyName(@"legendrank")]
+        public decimal? LegendRank { get; set;} 
+
+        /// <summary>
         ///     Sets the opacity of the trace.
         /// </summary>
         [JsonPropertyName(@"opacity")]
@@ -191,6 +201,24 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"xperiodalignment")]
         public Plotly.Blazor.Traces.OhlcLib.XPeriodAlignmentEnum? XPeriodAlignment { get; set;} 
+
+        /// <summary>
+        ///     Sets the hover text formatting rule for <c>x</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
+        ///     default the values are formatted using <c>xaxis.hoverformat</c>.
+        /// </summary>
+        [JsonPropertyName(@"xhoverformat")]
+        public string XHoverFormat { get; set;} 
+
+        /// <summary>
+        ///     Sets the hover text formatting rule for <c>y</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
+        ///     default the values are formatted using <c>yaxis.hoverformat</c>.
+        /// </summary>
+        [JsonPropertyName(@"yhoverformat")]
+        public string YHoverFormat { get; set;} 
 
         /// <summary>
         ///     Sets the x coordinates. If absent, linear coordinate will be generated.
@@ -407,6 +435,11 @@ namespace Plotly.Blazor.Traces
                     LegendGroup.Equals(other.LegendGroup)
                 ) && 
                 (
+                    LegendRank == other.LegendRank ||
+                    LegendRank != null &&
+                    LegendRank.Equals(other.LegendRank)
+                ) && 
+                (
                     Opacity == other.Opacity ||
                     Opacity != null &&
                     Opacity.Equals(other.Opacity)
@@ -485,6 +518,16 @@ namespace Plotly.Blazor.Traces
                     XPeriodAlignment == other.XPeriodAlignment ||
                     XPeriodAlignment != null &&
                     XPeriodAlignment.Equals(other.XPeriodAlignment)
+                ) && 
+                (
+                    XHoverFormat == other.XHoverFormat ||
+                    XHoverFormat != null &&
+                    XHoverFormat.Equals(other.XHoverFormat)
+                ) && 
+                (
+                    YHoverFormat == other.YHoverFormat ||
+                    YHoverFormat != null &&
+                    YHoverFormat.Equals(other.YHoverFormat)
                 ) && 
                 (
                     Equals(X, other.X) ||
@@ -638,6 +681,7 @@ namespace Plotly.Blazor.Traces
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
@@ -654,6 +698,8 @@ namespace Plotly.Blazor.Traces
                 if (XPeriod != null) hashCode = hashCode * 59 + XPeriod.GetHashCode();
                 if (XPeriod0 != null) hashCode = hashCode * 59 + XPeriod0.GetHashCode();
                 if (XPeriodAlignment != null) hashCode = hashCode * 59 + XPeriodAlignment.GetHashCode();
+                if (XHoverFormat != null) hashCode = hashCode * 59 + XHoverFormat.GetHashCode();
+                if (YHoverFormat != null) hashCode = hashCode * 59 + YHoverFormat.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (Open != null) hashCode = hashCode * 59 + Open.GetHashCode();
                 if (High != null) hashCode = hashCode * 59 + High.GetHashCode();

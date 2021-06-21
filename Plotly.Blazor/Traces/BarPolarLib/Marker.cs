@@ -149,6 +149,12 @@ namespace Plotly.Blazor.Traces.BarPolarLib
         public IList<decimal?> OpacityArray { get; set;} 
 
         /// <summary>
+        ///     Sets the pattern within the marker.
+        /// </summary>
+        [JsonPropertyName(@"pattern")]
+        public Plotly.Blazor.Traces.BarPolarLib.MarkerLib.Pattern Pattern { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
         [JsonPropertyName(@"colorsrc")]
@@ -251,6 +257,11 @@ namespace Plotly.Blazor.Traces.BarPolarLib
                     OpacityArray.SequenceEqual(other.OpacityArray)
                 ) &&
                 (
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
+                    Pattern.Equals(other.Pattern)
+                ) && 
+                (
                     ColorSrc == other.ColorSrc ||
                     ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
@@ -283,6 +294,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib
                 if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (OpacityArray != null) hashCode = hashCode * 59 + OpacityArray.GetHashCode();
+                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (OpacitySrc != null) hashCode = hashCode * 59 + OpacitySrc.GetHashCode();
                 return hashCode;

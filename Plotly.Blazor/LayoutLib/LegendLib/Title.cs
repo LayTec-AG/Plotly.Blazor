@@ -24,7 +24,8 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets this legend&#39;s title font.
+        ///     Sets this legend&#39;s title font. Defaults to <c>legend.font</c> with its
+        ///     size increased about 20%.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.Font Font { get; set;} 

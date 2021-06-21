@@ -215,6 +215,25 @@ namespace Plotly.Blazor
         public bool? ExtendTreeMapColors { get; set;} 
 
         /// <summary>
+        ///     Sets the default icicle slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendiciclecolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"iciclecolorway")]
+        public IList<object> IcicleColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the icicle slice colors (whether given by <c>iciclecolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendiciclecolors")]
+        public bool? ExtendIcicleColors { get; set;} 
+
+        /// <summary>
         ///     Sets the default funnelarea slice colors. Defaults to the main <c>colorway</c>
         ///     used for trace colors. If you specify a new list here it can still be extended
         ///     with lighter and darker colors, see <c>extendfunnelareacolors</c>.
@@ -404,12 +423,6 @@ namespace Plotly.Blazor
         public object Template { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the ModeBar.
-        /// </summary>
-        [JsonPropertyName(@"modebar")]
-        public Plotly.Blazor.LayoutLib.ModeBar ModeBar { get; set;} 
-
-        /// <summary>
         ///     Gets or sets the NewShape.
         /// </summary>
         [JsonPropertyName(@"newshape")]
@@ -487,11 +500,7 @@ namespace Plotly.Blazor
         ///     appear multiple points at the closest x- (or y-) coordinate within the <c>hoverdistance</c>
         ///     with the caveat that no more than one hoverlabel will appear per trace.
         ///     In this mode, spikelines are enabled by default perpendicular to the specified
-        ///     axis. If false, hover interactions are disabled. If <c>clickmode</c> includes
-        ///     the <c>select</c> flag, <c>hovermode</c> defaults to <c>closest</c>. If
-        ///     <c>clickmode</c> lacks the <c>select</c> flag, it defaults to <c>x</c> or
-        ///     <c>y</c> (depending on the trace&#39;s <c>orientation</c> value) for plots
-        ///     based on cartesian coordinates. For anything else the default value is <c>closest</c>.
+        ///     axis. If false, hover interactions are disabled.
         /// </summary>
         [JsonPropertyName(@"hovermode")]
         public Plotly.Blazor.LayoutLib.HoverModeEnum? HoverMode { get; set;} 
@@ -643,6 +652,12 @@ namespace Plotly.Blazor
         public IList<Plotly.Blazor.LayoutLib.ColorAxis> ColorAxis { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the ModeBar.
+        /// </summary>
+        [JsonPropertyName(@"modebar")]
+        public Plotly.Blazor.LayoutLib.ModeBar ModeBar { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  meta .
         /// </summary>
         [JsonPropertyName(@"metasrc")]
@@ -784,6 +799,16 @@ namespace Plotly.Blazor
                     ExtendTreeMapColors.Equals(other.ExtendTreeMapColors)
                 ) && 
                 (
+                    Equals(IcicleColorway, other.IcicleColorway) ||
+                    IcicleColorway != null && other.IcicleColorway != null &&
+                    IcicleColorway.SequenceEqual(other.IcicleColorway)
+                ) &&
+                (
+                    ExtendIcicleColors == other.ExtendIcicleColors ||
+                    ExtendIcicleColors != null &&
+                    ExtendIcicleColors.Equals(other.ExtendIcicleColors)
+                ) && 
+                (
                     Equals(FunnelAreaColorway, other.FunnelAreaColorway) ||
                     FunnelAreaColorway != null && other.FunnelAreaColorway != null &&
                     FunnelAreaColorway.SequenceEqual(other.FunnelAreaColorway)
@@ -892,11 +917,6 @@ namespace Plotly.Blazor
                     Template == other.Template ||
                     Template != null &&
                     Template.Equals(other.Template)
-                ) && 
-                (
-                    ModeBar == other.ModeBar ||
-                    ModeBar != null &&
-                    ModeBar.Equals(other.ModeBar)
                 ) && 
                 (
                     NewShape == other.NewShape ||
@@ -1044,6 +1064,11 @@ namespace Plotly.Blazor
                     ColorAxis.SequenceEqual(other.ColorAxis)
                 ) &&
                 (
+                    ModeBar == other.ModeBar ||
+                    ModeBar != null &&
+                    ModeBar.Equals(other.ModeBar)
+                ) && 
+                (
                     MetaSrc == other.MetaSrc ||
                     MetaSrc != null &&
                     MetaSrc.Equals(other.MetaSrc)
@@ -1080,6 +1105,8 @@ namespace Plotly.Blazor
                 if (ExtendSunburstColors != null) hashCode = hashCode * 59 + ExtendSunburstColors.GetHashCode();
                 if (TreeMapColorway != null) hashCode = hashCode * 59 + TreeMapColorway.GetHashCode();
                 if (ExtendTreeMapColors != null) hashCode = hashCode * 59 + ExtendTreeMapColors.GetHashCode();
+                if (IcicleColorway != null) hashCode = hashCode * 59 + IcicleColorway.GetHashCode();
+                if (ExtendIcicleColors != null) hashCode = hashCode * 59 + ExtendIcicleColors.GetHashCode();
                 if (FunnelAreaColorway != null) hashCode = hashCode * 59 + FunnelAreaColorway.GetHashCode();
                 if (ExtendFunnelAreaColors != null) hashCode = hashCode * 59 + ExtendFunnelAreaColors.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
@@ -1102,7 +1129,6 @@ namespace Plotly.Blazor
                 if (EditRevision != null) hashCode = hashCode * 59 + EditRevision.GetHashCode();
                 if (SelectionRevision != null) hashCode = hashCode * 59 + SelectionRevision.GetHashCode();
                 if (Template != null) hashCode = hashCode * 59 + Template.GetHashCode();
-                if (ModeBar != null) hashCode = hashCode * 59 + ModeBar.GetHashCode();
                 if (NewShape != null) hashCode = hashCode * 59 + NewShape.GetHashCode();
                 if (ActiveShape != null) hashCode = hashCode * 59 + ActiveShape.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
@@ -1132,6 +1158,7 @@ namespace Plotly.Blazor
                 if (Sliders != null) hashCode = hashCode * 59 + Sliders.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
+                if (ModeBar != null) hashCode = hashCode * 59 + ModeBar.GetHashCode();
                 if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
                 return hashCode;
             }

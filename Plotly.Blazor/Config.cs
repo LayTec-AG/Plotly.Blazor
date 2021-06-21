@@ -188,7 +188,13 @@ namespace Plotly.Blazor
 
         /// <summary>
         ///     Add mode bar button using config objects See ./components/modebar/buttons.js
-        ///     for list of arguments.
+        ///     for list of arguments. To enable predefined modebar buttons e.g. shape drawing,
+        ///     hover and spikelines, simply provide their string name(s). This could include:
+        ///     <c>v1hovermode</c>, <c>hoverclosest</c>, <c>hovercompare</c>, <c>togglehover</c>,
+        ///     <c>togglespikelines</c>, <c>drawline</c>, <c>drawopenpath</c>, <c>drawclosedpath</c>,
+        ///     <c>drawcircle</c>, <c>drawrect</c> and <c>eraseshape</c>. Please note that
+        ///     these predefined buttons will only be shown if they are compatible with
+        ///     all trace types used in a graph.
         /// </summary>
         [JsonPropertyName(@"modeBarButtonsToAdd")]
         public object ModeBarButtonsToAdd { get; set;} 

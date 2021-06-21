@@ -34,6 +34,16 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.SunburstLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
+        ///     Sets the legend rank for this trace. Items and groups with smaller ranks
+        ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
+        ///     they are on bottom/right side. The default legendrank is 1000, so that you
+        ///     can use ranks less than 1000 to place certain items before all unranked
+        ///     items, and ranks greater than 1000 to go after all unranked items.
+        /// </summary>
+        [JsonPropertyName(@"legendrank")]
+        public decimal? LegendRank { get; set;} 
+
+        /// <summary>
         ///     Sets the opacity of the trace.
         /// </summary>
         [JsonPropertyName(@"opacity")]
@@ -289,7 +299,11 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
         ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
@@ -310,7 +324,11 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
         ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
@@ -477,6 +495,11 @@ namespace Plotly.Blazor.Traces
                     Visible == other.Visible ||
                     Visible != null &&
                     Visible.Equals(other.Visible)
+                ) && 
+                (
+                    LegendRank == other.LegendRank ||
+                    LegendRank != null &&
+                    LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
                     Opacity == other.Opacity ||
@@ -733,6 +756,7 @@ namespace Plotly.Blazor.Traces
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();

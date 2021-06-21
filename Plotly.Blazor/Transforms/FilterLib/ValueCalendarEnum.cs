@@ -9,7 +9,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Transforms.FilterLib
 {
     /// <summary>
-    ///     Sets the calendar system to use for <c>value</c>, if it is a date.
+    ///     WARNING: All transforms are deprecated and may be removed from the API in
+    ///     next major version. Sets the calendar system to use for <c>value</c>, if
+    ///     it is a date.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

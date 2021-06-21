@@ -130,7 +130,11 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
         ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s

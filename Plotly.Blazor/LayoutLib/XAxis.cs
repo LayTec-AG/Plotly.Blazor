@@ -267,6 +267,16 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
 
         /// <summary>
+        ///     Determines how we handle tick labels that would overflow either the graph
+        ///     div or the domain of the axis. The default value for inside tick labels
+        ///     is &#39;hide past domain&#39;. Otherwise on <c>category</c> and <c>multicategory</c>
+        ///     axes the default is <c>allow</c>. In other cases the default is &#39;hide
+        ///     past div&#39;.
+        /// </summary>
+        [JsonPropertyName(@"ticklabeloverflow")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelOverflowEnum? TickLabelOverflow { get; set;} 
+
+        /// <summary>
         ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
         ///     of the plotting area. If <c>true</c>, the axis lines are mirrored. If <c>ticks</c>,
         ///     the axis lines and ticks are mirrored. If <c>false</c>, mirroring is disable.
@@ -784,6 +794,11 @@ namespace Plotly.Blazor.LayoutLib
                     TickLabelPosition.Equals(other.TickLabelPosition)
                 ) && 
                 (
+                    TickLabelOverflow == other.TickLabelOverflow ||
+                    TickLabelOverflow != null &&
+                    TickLabelOverflow.Equals(other.TickLabelOverflow)
+                ) && 
+                (
                     Mirror == other.Mirror ||
                     Mirror != null &&
                     Mirror.Equals(other.Mirror)
@@ -1076,6 +1091,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (TickSon != null) hashCode = hashCode * 59 + TickSon.GetHashCode();
                 if (TickLabelMode != null) hashCode = hashCode * 59 + TickLabelMode.GetHashCode();
                 if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
+                if (TickLabelOverflow != null) hashCode = hashCode * 59 + TickLabelOverflow.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();
                 if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();

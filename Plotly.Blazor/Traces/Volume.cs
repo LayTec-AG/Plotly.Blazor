@@ -41,6 +41,16 @@ namespace Plotly.Blazor.Traces
         public string LegendGroup { get; set;} 
 
         /// <summary>
+        ///     Sets the legend rank for this trace. Items and groups with smaller ranks
+        ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
+        ///     they are on bottom/right side. The default legendrank is 1000, so that you
+        ///     can use ranks less than 1000 to place certain items before all unranked
+        ///     items, and ranks greater than 1000 to go after all unranked items.
+        /// </summary>
+        [JsonPropertyName(@"legendrank")]
+        public decimal? LegendRank { get; set;} 
+
+        /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
         /// </summary>
         [JsonPropertyName(@"name")]
@@ -218,9 +228,48 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTextArray { get; set;} 
 
         /// <summary>
+        ///     Sets the hover text formatting rule for <c>x</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
+        ///     default the values are formatted using <c>xaxis.hoverformat</c>.
+        /// </summary>
+        [JsonPropertyName(@"xhoverformat")]
+        public string XHoverFormat { get; set;} 
+
+        /// <summary>
+        ///     Sets the hover text formatting rule for <c>y</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
+        ///     default the values are formatted using <c>yaxis.hoverformat</c>.
+        /// </summary>
+        [JsonPropertyName(@"yhoverformat")]
+        public string YHoverFormat { get; set;} 
+
+        /// <summary>
+        ///     Sets the hover text formatting rule for <c>z</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
+        ///     default the values are formatted using <c>zaxis.hoverformat</c>.
+        /// </summary>
+        [JsonPropertyName(@"zhoverformat")]
+        public string ZHoverFormat { get; set;} 
+
+        /// <summary>
+        ///     Sets the hover text formatting rule for <c>value</c>  using d3 formatting
+        ///     mini-languages which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     By default the values are formatted using generic number format.
+        /// </summary>
+        [JsonPropertyName(@"valuehoverformat")]
+        public string ValueHoverFormat { get; set;} 
+
+        /// <summary>
         ///     Template string used for rendering the information that appear on hover
         ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
@@ -240,7 +289,11 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Template string used for rendering the information that appear on hover
         ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
         ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
         ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
@@ -519,6 +572,11 @@ namespace Plotly.Blazor.Traces
                     LegendGroup.Equals(other.LegendGroup)
                 ) && 
                 (
+                    LegendRank == other.LegendRank ||
+                    LegendRank != null &&
+                    LegendRank.Equals(other.LegendRank)
+                ) && 
+                (
                     Name == other.Name ||
                     Name != null &&
                     Name.Equals(other.Name)
@@ -633,6 +691,26 @@ namespace Plotly.Blazor.Traces
                     HoverTextArray != null && other.HoverTextArray != null &&
                     HoverTextArray.SequenceEqual(other.HoverTextArray)
                 ) &&
+                (
+                    XHoverFormat == other.XHoverFormat ||
+                    XHoverFormat != null &&
+                    XHoverFormat.Equals(other.XHoverFormat)
+                ) && 
+                (
+                    YHoverFormat == other.YHoverFormat ||
+                    YHoverFormat != null &&
+                    YHoverFormat.Equals(other.YHoverFormat)
+                ) && 
+                (
+                    ZHoverFormat == other.ZHoverFormat ||
+                    ZHoverFormat != null &&
+                    ZHoverFormat.Equals(other.ZHoverFormat)
+                ) && 
+                (
+                    ValueHoverFormat == other.ValueHoverFormat ||
+                    ValueHoverFormat != null &&
+                    ValueHoverFormat.Equals(other.ValueHoverFormat)
+                ) && 
                 (
                     HoverTemplate == other.HoverTemplate ||
                     HoverTemplate != null &&
@@ -809,6 +887,7 @@ namespace Plotly.Blazor.Traces
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
@@ -832,6 +911,10 @@ namespace Plotly.Blazor.Traces
                 if (TextArray != null) hashCode = hashCode * 59 + TextArray.GetHashCode();
                 if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
                 if (HoverTextArray != null) hashCode = hashCode * 59 + HoverTextArray.GetHashCode();
+                if (XHoverFormat != null) hashCode = hashCode * 59 + XHoverFormat.GetHashCode();
+                if (YHoverFormat != null) hashCode = hashCode * 59 + YHoverFormat.GetHashCode();
+                if (ZHoverFormat != null) hashCode = hashCode * 59 + ZHoverFormat.GetHashCode();
+                if (ValueHoverFormat != null) hashCode = hashCode * 59 + ValueHoverFormat.GetHashCode();
                 if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
                 if (HoverTemplateArray != null) hashCode = hashCode * 59 + HoverTemplateArray.GetHashCode();
                 if (CAuto != null) hashCode = hashCode * 59 + CAuto.GetHashCode();

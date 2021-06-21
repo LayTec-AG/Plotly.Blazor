@@ -47,6 +47,8 @@ namespace Plotly.Blazor
         Sunburst,
         [EnumMember(Value=@"treemap")]
         TreeMap,
+        [EnumMember(Value=@"icicle")]
+        Icicle,
         [EnumMember(Value=@"funnelarea")]
         FunnelArea,
         [EnumMember(Value=@"scatter3d")]

@@ -98,16 +98,19 @@ namespace Plotly.Blazor.Transforms
         public bool? PreserveGaps { get; set;} 
 
         /// <summary>
-        ///     Sets the calendar system to use for <c>value</c>, if it is a date.
+        ///     WARNING: All transforms are deprecated and may be removed from the API in
+        ///     next major version. Sets the calendar system to use for <c>value</c>, if
+        ///     it is a date.
         /// </summary>
         [JsonPropertyName(@"valuecalendar")]
         public Plotly.Blazor.Transforms.FilterLib.ValueCalendarEnum? ValueCalendar { get; set;} 
 
         /// <summary>
-        ///     Sets the calendar system to use for <c>target</c>, if it is an array of
-        ///     dates. If <c>target</c> is a string (eg <c>x</c>) we use the corresponding
-        ///     trace attribute (eg <c>xcalendar</c>) if it exists, even if <c>targetcalendar</c>
-        ///     is provided.
+        ///     WARNING: All transforms are deprecated and may be removed from the API in
+        ///     next major version. Sets the calendar system to use for <c>target</c>, if
+        ///     it is an array of dates. If <c>target</c> is a string (eg <c>x</c>) we use
+        ///     the corresponding trace attribute (eg <c>xcalendar</c>) if it exists, even
+        ///     if <c>targetcalendar</c> is provided.
         /// </summary>
         [JsonPropertyName(@"targetcalendar")]
         public Plotly.Blazor.Transforms.FilterLib.TargetCalendarEnum? TargetCalendar { get; set;} 

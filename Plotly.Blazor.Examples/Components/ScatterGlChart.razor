@@ -1,0 +1,42 @@
+﻿@using Plotly.Blazor.LayoutLib
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new()
+    {
+        Responsive = true
+    };
+
+    Layout layout = new()
+    {
+        Title = new Title
+        {
+            Text = "ScatterGl with >100k Points"
+        },
+        YAxis = new List<YAxis>
+        {
+            new()
+            {
+                Title = new LayoutLib.YAxisLib.Title
+                {
+                    Text = "Scatter Unit"
+                }
+            }
+        }
+    };
+
+    IList<ITrace> data = new List<ITrace>
+    {
+        new ScatterGl
+        {
+            Name = "ScatterGlTrace",
+            Mode = Traces.ScatterGlLib.ModeFlag.Lines | Traces.ScatterGlLib.ModeFlag.Markers,
+            X = Enumerable.Range(0, 100000).Cast<object>().ToList(),
+            Y = Helper.GenerateData(0, 100000).Y
+        }
+    };
+}

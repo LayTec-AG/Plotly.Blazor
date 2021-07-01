@@ -16,11 +16,11 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     [JsonConverter(typeof(EnumConverter))]
     public enum SpikeSnapEnum
     {
-        [EnumMember(Value=@"data")]
-        Data = 0,
-        [EnumMember(Value=@"cursor")]
-        Cursor,
         [EnumMember(Value=@"hovered data")]
-        HoveredData
+        HoveredData = 0,
+        [EnumMember(Value=@"data")]
+        Data,
+        [EnumMember(Value=@"cursor")]
+        Cursor
     }
 }

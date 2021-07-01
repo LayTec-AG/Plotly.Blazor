@@ -18,22 +18,18 @@ namespace Plotly.Blazor.LayoutLib
     ///     appear multiple points at the closest x- (or y-) coordinate within the <c>hoverdistance</c>
     ///     with the caveat that no more than one hoverlabel will appear per trace.
     ///     In this mode, spikelines are enabled by default perpendicular to the specified
-    ///     axis. If false, hover interactions are disabled. If <c>clickmode</c> includes
-    ///     the <c>select</c> flag, <c>hovermode</c> defaults to <c>closest</c>. If
-    ///     <c>clickmode</c> lacks the <c>select</c> flag, it defaults to <c>x</c> or
-    ///     <c>y</c> (depending on the trace&#39;s <c>orientation</c> value) for plots
-    ///     based on cartesian coordinates. For anything else the default value is <c>closest</c>.
+    ///     axis. If false, hover interactions are disabled.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverModeEnum
     {
+        [EnumMember(Value=@"closest")]
+        Closest = 0,
         [EnumMember(Value=@"x")]
         X,
         [EnumMember(Value=@"y")]
         Y,
-        [EnumMember(Value=@"closest")]
-        Closest,
         [EnumMember(Value=@"False")]
         False,
         [EnumMember(Value=@"x unified")]

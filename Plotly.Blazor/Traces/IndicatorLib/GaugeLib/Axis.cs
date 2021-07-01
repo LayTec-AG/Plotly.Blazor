@@ -205,7 +205,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ExponentFormatEnum? Exponentformat { get; set;} 
 
         /// <summary>
         ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
@@ -360,9 +360,9 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                     SeparateThousands.Equals(other.SeparateThousands)
                 ) && 
                 (
-                    ExponentFormat == other.ExponentFormat ||
-                    ExponentFormat != null &&
-                    ExponentFormat.Equals(other.ExponentFormat)
+                    Exponentformat == other.Exponentformat ||
+                    Exponentformat != null &&
+                    Exponentformat.Equals(other.Exponentformat)
                 ) && 
                 (
                     MinExponent == other.MinExponent ||
@@ -414,7 +414,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                 if (TickSuffix != null) hashCode = hashCode * 59 + TickSuffix.GetHashCode();
                 if (ShowTickSuffix != null) hashCode = hashCode * 59 + ShowTickSuffix.GetHashCode();
                 if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
-                if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (Exponentformat != null) hashCode = hashCode * 59 + Exponentformat.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
                 if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();

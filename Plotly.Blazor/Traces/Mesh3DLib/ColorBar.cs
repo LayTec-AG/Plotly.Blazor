@@ -200,6 +200,15 @@ namespace Plotly.Blazor.Traces.Mesh3DLib
         public Plotly.Blazor.Traces.Mesh3DLib.ColorBarLib.TicksEnum? Ticks { get; set;} 
 
         /// <summary>
+        ///     Determines how we handle tick labels that would overflow either the graph
+        ///     div or the domain of the axis. The default value for inside tick labels
+        ///     is &#39;hide past domain&#39;. In other cases the default is &#39;hide past
+        ///     div&#39;.
+        /// </summary>
+        [JsonPropertyName(@"ticklabeloverflow")]
+        public Plotly.Blazor.Traces.Mesh3DLib.ColorBarLib.TickLabelOverflowEnum? TickLabelOverflow { get; set;} 
+
+        /// <summary>
         ///     Determines where tick labels are drawn.
         /// </summary>
         [JsonPropertyName(@"ticklabelposition")]
@@ -460,6 +469,11 @@ namespace Plotly.Blazor.Traces.Mesh3DLib
                     Ticks.Equals(other.Ticks)
                 ) && 
                 (
+                    TickLabelOverflow == other.TickLabelOverflow ||
+                    TickLabelOverflow != null &&
+                    TickLabelOverflow.Equals(other.TickLabelOverflow)
+                ) && 
+                (
                     TickLabelPosition == other.TickLabelPosition ||
                     TickLabelPosition != null &&
                     TickLabelPosition.Equals(other.TickLabelPosition)
@@ -589,6 +603,7 @@ namespace Plotly.Blazor.Traces.Mesh3DLib
                 if (TickVals != null) hashCode = hashCode * 59 + TickVals.GetHashCode();
                 if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
                 if (Ticks != null) hashCode = hashCode * 59 + Ticks.GetHashCode();
+                if (TickLabelOverflow != null) hashCode = hashCode * 59 + TickLabelOverflow.GetHashCode();
                 if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
                 if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();

@@ -34,6 +34,12 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ParCoordsLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the LegendGroupTitle.
+        /// </summary>
+        [JsonPropertyName(@"legendgrouptitle")]
+        public Plotly.Blazor.Traces.ParCoordsLib.LegendGroupTitle LegendGroupTitle { get; set;} 
+
+        /// <summary>
         ///     Sets the legend rank for this trace. Items and groups with smaller ranks
         ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
         ///     they are on bottom/right side. The default legendrank is 1000, so that you
@@ -228,6 +234,11 @@ namespace Plotly.Blazor.Traces
                     Visible.Equals(other.Visible)
                 ) && 
                 (
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                ) && 
+                (
                     LegendRank == other.LegendRank ||
                     LegendRank != null &&
                     LegendRank.Equals(other.LegendRank)
@@ -342,6 +353,7 @@ namespace Plotly.Blazor.Traces
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();

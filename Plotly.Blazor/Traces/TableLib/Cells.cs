@@ -30,8 +30,8 @@ namespace Plotly.Blazor.Traces.TableLib
         public IList<object> Values { get; set;} 
 
         /// <summary>
-        ///     Sets the cell value formatting rule using d3 formatting mini-language which
-        ///     is similar to those of Python. See https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     Sets the cell value formatting rule using d3 formatting mini-languages which
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
         /// </summary>
         [JsonPropertyName(@"format")]
         public IList<object> Format { get; set;} 

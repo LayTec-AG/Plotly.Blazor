@@ -21,10 +21,10 @@ namespace Plotly.Blazor.Traces.IndicatorLib
     public enum ModeFlag
     {
         [EnumMember(Value=@"number")]
-        Number = 0,
+        Number = 1,
         [EnumMember(Value=@"delta")]
-        Delta = 1,
+        Delta = 2,
         [EnumMember(Value=@"gauge")]
-        Gauge = 2
+        Gauge = 4
     }
 }

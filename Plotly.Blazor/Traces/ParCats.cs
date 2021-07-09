@@ -34,6 +34,12 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ParCatsLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the LegendGroupTitle.
+        /// </summary>
+        [JsonPropertyName(@"legendgrouptitle")]
+        public Plotly.Blazor.Traces.ParCatsLib.LegendGroupTitle LegendGroupTitle { get; set;} 
+
+        /// <summary>
         ///     Sets the trace name. The trace name appear as the legend item and on hover.
         /// </summary>
         [JsonPropertyName(@"name")]
@@ -252,6 +258,11 @@ namespace Plotly.Blazor.Traces
                     Visible.Equals(other.Visible)
                 ) && 
                 (
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                ) && 
+                (
                     Name == other.Name ||
                     Name != null &&
                     Name.Equals(other.Name)
@@ -371,6 +382,7 @@ namespace Plotly.Blazor.Traces
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();

@@ -21,8 +21,8 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
     public enum HoverOnFlag
     {
         [EnumMember(Value=@"points")]
-        Points = 0,
+        Points = 1,
         [EnumMember(Value=@"fills")]
-        Fills = 1
+        Fills = 2
     }
 }

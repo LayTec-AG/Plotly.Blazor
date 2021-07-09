@@ -150,10 +150,11 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
 
         /// <summary>
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format We
-        ///     add one item to d3&#39;s date formatter: <c>%{n}f</c> for fractional seconds
-        ///     with n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format. We
+        ///     add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
+        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
+        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
         ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
         [JsonPropertyName(@"tickformat")]
@@ -205,7 +206,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
-        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ExponentFormatEnum? Exponentformat { get; set;} 
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
         ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
@@ -360,9 +361,9 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                     SeparateThousands.Equals(other.SeparateThousands)
                 ) && 
                 (
-                    Exponentformat == other.Exponentformat ||
-                    Exponentformat != null &&
-                    Exponentformat.Equals(other.Exponentformat)
+                    ExponentFormat == other.ExponentFormat ||
+                    ExponentFormat != null &&
+                    ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
                     MinExponent == other.MinExponent ||
@@ -414,7 +415,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                 if (TickSuffix != null) hashCode = hashCode * 59 + TickSuffix.GetHashCode();
                 if (ShowTickSuffix != null) hashCode = hashCode * 59 + ShowTickSuffix.GetHashCode();
                 if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
-                if (Exponentformat != null) hashCode = hashCode * 59 + Exponentformat.GetHashCode();
+                if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
                 if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();

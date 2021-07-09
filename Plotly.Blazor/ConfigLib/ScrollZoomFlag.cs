@@ -21,16 +21,16 @@ namespace Plotly.Blazor.ConfigLib
     public enum ScrollZoomFlag
     {
         [EnumMember(Value=@"True")]
-        True = 0,
+        True = 1,
         [EnumMember(Value=@"False")]
-        False = 1,
+        False = 2,
         [EnumMember(Value=@"cartesian")]
-        Cartesian = 2,
+        Cartesian = 4,
         [EnumMember(Value=@"gl3d")]
-        Gl3D = 4,
+        Gl3D = 8,
         [EnumMember(Value=@"geo")]
-        Geo = 8,
+        Geo = 16,
         [EnumMember(Value=@"mapbox")]
-        MapBox = 16
+        MapBox = 32
     }
 }

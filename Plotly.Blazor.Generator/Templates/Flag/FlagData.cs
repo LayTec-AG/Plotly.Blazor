@@ -31,7 +31,7 @@ namespace Plotly.Blazor.Generator.Templates.Flag
             var containsNone = Extras?.Any(v => v.DisplayName == "none") ?? false;
             var containsAll = Extras?.Any(v => v.DisplayName == "all") ?? false;
 
-            var startValue = 0;
+            var startValue = 1;
 
             if (containsSkip && containsNone)
             {
@@ -45,13 +45,11 @@ namespace Plotly.Blazor.Generator.Templates.Flag
             {
                 sb.Add("[EnumMember(Value=@\"skip\")]");
                 sb.Add("Skip = 0,");
-                startValue = 1;
             }
             else if (containsNone)
             {
                 sb.Add("[EnumMember(Value=@\"none\")]");
                 sb.Add("None = 0,");
-                startValue = 1;
             }
 
             if (Extras != null)
@@ -61,7 +59,7 @@ namespace Plotly.Blazor.Generator.Templates.Flag
                 {
                     sb.Add($"[EnumMember(Value=@\"{value.DisplayName}\")]");
                     sb.Add($"{value.EnumName} = {startValue},");
-                    startValue = startValue == 0 ? startValue + 1 : startValue * 2;
+                    startValue *= 2;
                 }
             }
 
@@ -69,7 +67,7 @@ namespace Plotly.Blazor.Generator.Templates.Flag
             {
                 sb.Add($"[EnumMember(Value=@\"{value.DisplayName}\")]");
                 sb.Add($"{value.EnumName} = {startValue},");
-                startValue = startValue == 0 ? startValue + 1 : startValue * 2;
+                startValue *= 2;
             }
 
             // Remove ',' if 'all' does not exists

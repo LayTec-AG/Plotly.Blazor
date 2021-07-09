@@ -79,7 +79,7 @@ namespace Plotly.Blazor.Generator
             var outputDir = @".\src\wwwroot";
             Directory.CreateDirectory(outputDir);
             await File.WriteAllTextAsync($"{outputDir}\\plotly-latest.min.js",
-                await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-latest.min.js"));
+                await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-2.2.0.min.js"));
 
             var serializerOptions = new JsonSerializerOptions
             {

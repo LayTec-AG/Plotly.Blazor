@@ -23,10 +23,10 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     public enum TraceOrderFlag
     {
         [EnumMember(Value=@"normal")]
-        Normal = 0,
+        Normal = 1,
         [EnumMember(Value=@"reversed")]
-        Reversed = 1,
+        Reversed = 2,
         [EnumMember(Value=@"grouped")]
-        Grouped = 2
+        Grouped = 4
     }
 }

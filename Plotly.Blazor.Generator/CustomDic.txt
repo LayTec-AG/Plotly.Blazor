@@ -273,3 +273,4 @@ categoryorder=categoryOrder
 xanchor=xAnchor
 hoverlabel=hoverLabel
 colorbar=colorBar
+legendgrouptitle=legendGroupTitle

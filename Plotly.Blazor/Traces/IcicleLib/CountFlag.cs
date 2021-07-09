@@ -19,8 +19,8 @@ namespace Plotly.Blazor.Traces.IcicleLib
     public enum CountFlag
     {
         [EnumMember(Value=@"branches")]
-        Branches = 0,
+        Branches = 1,
         [EnumMember(Value=@"leaves")]
-        Leaves = 1
+        Leaves = 2
     }
 }

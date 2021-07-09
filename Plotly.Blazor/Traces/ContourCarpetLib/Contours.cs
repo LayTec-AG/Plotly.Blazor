@@ -74,8 +74,8 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
         public Plotly.Blazor.Traces.ContourCarpetLib.ContoursLib.LabelFont LabelFont { get; set;} 
 
         /// <summary>
-        ///     Sets the contour label formatting rule using d3 formatting mini-language
-        ///     which is very similar to Python, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
+        ///     Sets the contour label formatting rule using d3 formatting mini-languages
+        ///     which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
         /// </summary>
         [JsonPropertyName(@"labelformat")]
         public string LabelFormat { get; set;} 

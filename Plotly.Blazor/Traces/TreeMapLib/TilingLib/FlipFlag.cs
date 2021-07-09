@@ -18,8 +18,8 @@ namespace Plotly.Blazor.Traces.TreeMapLib.TilingLib
     public enum FlipFlag
     {
         [EnumMember(Value=@"x")]
-        X = 0,
+        X = 1,
         [EnumMember(Value=@"y")]
-        Y = 1
+        Y = 2
     }
 }

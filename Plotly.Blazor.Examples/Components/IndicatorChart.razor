@@ -1,0 +1,112 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.GridLib
+@using Plotly.Blazor.Traces.IndicatorLib
+@using Domain = Plotly.Blazor.Traces.IndicatorLib.Domain
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new()
+    {
+        Responsive = true
+    };
+
+    Layout layout = new()
+    {
+        Margin = new Margin
+        {
+            L = 25,
+            B = 25,
+            R = 25,
+            T = 25
+        },
+        Grid = new Grid
+        {
+            Columns = 2,
+            Rows = 2,
+            Pattern = PatternEnum.Independent
+        }
+    };
+
+    IList<ITrace> data = new List<ITrace>
+    {
+        new Indicator
+        {
+            Mode = ModeFlag.Number,
+            Title = new Traces.IndicatorLib.Title
+            {
+                Text = "Number Indicator"
+            },
+            Value = 500,
+            Domain = new Domain
+            {
+                Row = 0,
+                Column = 0
+            },
+            Delta = new Delta
+            {
+                Reference = 400,
+                Relative = true
+            }
+        },
+        new Indicator
+        {
+            Mode = ModeFlag.Number | ModeFlag.Delta,
+            Title = new Traces.IndicatorLib.Title
+            {
+                Text = "Number+Delta Indicator"
+            },
+            Value = 500,
+            Domain = new Domain
+            {
+                Row = 0,
+                Column = 1
+            },
+            Delta = new Delta
+            {
+                Reference = 400,
+                Relative = true
+            }
+        },
+        new Indicator
+        {
+            Mode = ModeFlag.Number | ModeFlag.Gauge,
+            Title = new Traces.IndicatorLib.Title
+            {
+                Text = "Number+Gauge Indicator"
+            },
+            Value = 500,
+            Domain = new Domain
+            {
+                Row = 1,
+                Column = 0
+            },
+            Delta = new Delta
+            {
+                Reference = 400,
+                Relative = true
+            }
+        },
+        new Indicator
+        {
+            Mode = ModeFlag.Number | ModeFlag.Delta | ModeFlag.Gauge,
+            Title = new Traces.IndicatorLib.Title
+            {
+                Text = "Number+Delta+Gauge Indicator"
+            },
+            Value = 500,
+            Domain = new Domain
+            {
+                Row = 1,
+                Column = 1
+            },
+            Delta = new Delta
+            {
+                Reference = 400,
+                Relative = true
+            }
+        }
+    };
+}

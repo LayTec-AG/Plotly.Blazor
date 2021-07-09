@@ -23,19 +23,19 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.SurfaceLib
     public enum PatternFlag
     {
         [EnumMember(Value=@"odd")]
-        Odd = 0,
+        Odd = 1,
         [EnumMember(Value=@"even")]
-        Even = 1,
+        Even = 2,
         [EnumMember(Value=@"A")]
-        A = 2,
+        A = 4,
         [EnumMember(Value=@"B")]
-        B = 4,
+        B = 8,
         [EnumMember(Value=@"C")]
-        C = 8,
+        C = 16,
         [EnumMember(Value=@"D")]
-        D = 16,
+        D = 32,
         [EnumMember(Value=@"E")]
-        E = 32,
+        E = 64,
         [EnumMember(Value=@"all")]
         All = A | B | C | D | E
     }

@@ -22,10 +22,10 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     public enum SpikeModeFlag
     {
         [EnumMember(Value=@"toaxis")]
-        ToAxis = 0,
+        ToAxis = 1,
         [EnumMember(Value=@"across")]
-        Across = 1,
+        Across = 2,
         [EnumMember(Value=@"marker")]
-        Marker = 2
+        Marker = 4
     }
 }

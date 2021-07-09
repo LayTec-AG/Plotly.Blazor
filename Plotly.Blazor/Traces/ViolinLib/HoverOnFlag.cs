@@ -19,11 +19,11 @@ namespace Plotly.Blazor.Traces.ViolinLib
     public enum HoverOnFlag
     {
         [EnumMember(Value=@"violins")]
-        Violins = 0,
+        Violins = 1,
         [EnumMember(Value=@"points")]
-        Points = 1,
+        Points = 2,
         [EnumMember(Value=@"kde")]
-        Kde = 2,
+        Kde = 4,
         [EnumMember(Value=@"all")]
         All = Violins | Points | Kde
     }

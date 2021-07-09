@@ -18,8 +18,8 @@ namespace Plotly.Blazor.Traces.BoxLib
     public enum HoverOnFlag
     {
         [EnumMember(Value=@"boxes")]
-        Boxes = 0,
+        Boxes = 1,
         [EnumMember(Value=@"points")]
-        Points = 1
+        Points = 2
     }
 }

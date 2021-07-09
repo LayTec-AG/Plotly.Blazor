@@ -48,6 +48,12 @@ namespace Plotly.Blazor.Traces
         public string LegendGroup { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the LegendGroupTitle.
+        /// </summary>
+        [JsonPropertyName(@"legendgrouptitle")]
+        public Plotly.Blazor.Traces.FunnelLib.LegendGroupTitle LegendGroupTitle { get; set;} 
+
+        /// <summary>
         ///     Sets the legend rank for this trace. Items and groups with smaller ranks
         ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
         ///     they are on bottom/right side. The default legendrank is 1000, so that you
@@ -255,19 +261,27 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.FunnelLib.YPeriodAlignmentEnum? YPeriodAlignment { get; set;} 
 
         /// <summary>
-        ///     Sets the hover text formatting rule for <c>x</c>  using d3 formatting mini-languages
-        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
-        ///     default the values are formatted using <c>xaxis.hoverformat</c>.
+        ///     Sets the hover text formatting rulefor <c>x</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format. We
+        ///     add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
+        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
+        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>By default the values
+        ///     are formatted using <c>xaxis.hoverformat</c>.
         /// </summary>
         [JsonPropertyName(@"xhoverformat")]
         public string XHoverFormat { get; set;} 
 
         /// <summary>
-        ///     Sets the hover text formatting rule for <c>y</c>  using d3 formatting mini-languages
-        ///     which are very similar to those in Python. See: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format By
-        ///     default the values are formatted using <c>yaxis.hoverformat</c>.
+        ///     Sets the hover text formatting rulefor <c>y</c>  using d3 formatting mini-languages
+        ///     which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
+        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format. We
+        ///     add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
+        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
+        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>By default the values
+        ///     are formatted using <c>yaxis.hoverformat</c>.
         /// </summary>
         [JsonPropertyName(@"yhoverformat")]
         public string YHoverFormat { get; set;} 
@@ -663,6 +677,11 @@ namespace Plotly.Blazor.Traces
                     LegendGroup.Equals(other.LegendGroup)
                 ) && 
                 (
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                ) && 
+                (
                     LegendRank == other.LegendRank ||
                     LegendRank != null &&
                     LegendRank.Equals(other.LegendRank)
@@ -1009,6 +1028,7 @@ namespace Plotly.Blazor.Traces
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();

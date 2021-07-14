@@ -27,7 +27,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.7" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.8" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
         <PackageReference Include="System.Text.Json" Version="5.0.2" />
     </ItemGroup>

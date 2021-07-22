@@ -389,7 +389,7 @@
                     list.AddRange(xData);
                     if (max != null)
                     {
-                        traceType.GetProperty("X")?.SetValue(currentTrace, list.Skip(Math.Max(0, list.Count() - max.Value)).ToList());
+                        traceType.GetProperty("X")?.SetValue(currentTrace, list?.TakeLast(max.Value).ToList());
                     }
                 }
             }
@@ -405,7 +405,7 @@
                     list.AddRange(yData);
                     if (max != null)
                     {
-                        traceType.GetProperty("Y")?.SetValue(currentTrace, list.Skip(Math.Max(0, list.Count() - max.Value)).ToList());
+                        traceType.GetProperty("Y")?.SetValue(currentTrace, list?.TakeLast(max.Value).ToList());
                     }
                 }
             }

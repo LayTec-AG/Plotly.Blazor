@@ -22,7 +22,7 @@
 
 
     <ItemGroup>
-        <PackageReference Include="GitVersion.MsBuild" Version="5.6.10">
+        <PackageReference Include="GitVersion.MsBuild" Version="5.6.11">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

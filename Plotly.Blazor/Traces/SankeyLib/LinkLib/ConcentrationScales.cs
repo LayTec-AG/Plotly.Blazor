@@ -18,12 +18,6 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
     public class ConcentrationScales : IEquatable<ConcentrationScales>
     {
         /// <summary>
-        ///     The label of the links to color based on their concentration within a flow.
-        /// </summary>
-        [JsonPropertyName(@"label")]
-        public string Label { get; set;} 
-
-        /// <summary>
         ///     Sets the upper bound of the color domain.
         /// </summary>
         [JsonPropertyName(@"cmax")]
@@ -42,10 +36,16 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
         ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
         ///     To control the bounds of the colorscale in color space, use<c>cmin</c> and
         ///     <c>cmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
-        ///     of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
+
+        /// <summary>
+        ///     The label of the links to color based on their concentration within a flow.
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public string Label { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
@@ -86,11 +86,6 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
 
             return 
                 (
-                    Label == other.Label ||
-                    Label != null &&
-                    Label.Equals(other.Label)
-                ) && 
-                (
                     CMax == other.CMax ||
                     CMax != null &&
                     CMax.Equals(other.CMax)
@@ -104,6 +99,11 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
                     ColorScale == other.ColorScale ||
                     ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
+                ) && 
+                (
+                    Label == other.Label ||
+                    Label != null &&
+                    Label.Equals(other.Label)
                 ) && 
                 (
                     Name == other.Name ||
@@ -123,10 +123,10 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (CMax != null) hashCode = hashCode * 59 + CMax.GetHashCode();
                 if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
                 return hashCode;

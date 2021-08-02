@@ -18,6 +18,12 @@ namespace Plotly.Blazor.LayoutLib
     public class UniformText : IEquatable<UniformText>
     {
         /// <summary>
+        ///     Sets the minimum text size between traces of the same type.
+        /// </summary>
+        [JsonPropertyName(@"minsize")]
+        public decimal? MinSize { get; set;} 
+
+        /// <summary>
         ///     Determines how the font size for various text elements are uniformed between
         ///     each trace type. If the computed text sizes were smaller than the minimum
         ///     size defined by <c>uniformtext.minsize</c> using <c>hide</c> option hides
@@ -27,12 +33,6 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"mode")]
         public Plotly.Blazor.LayoutLib.UniformTextLib.ModeEnum? Mode { get; set;} 
-
-        /// <summary>
-        ///     Sets the minimum text size between traces of the same type.
-        /// </summary>
-        [JsonPropertyName(@"minsize")]
-        public decimal? MinSize { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -50,14 +50,14 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Mode == other.Mode ||
-                    Mode != null &&
-                    Mode.Equals(other.Mode)
-                ) && 
-                (
                     MinSize == other.MinSize ||
                     MinSize != null &&
                     MinSize.Equals(other.MinSize)
+                ) && 
+                (
+                    Mode == other.Mode ||
+                    Mode != null &&
+                    Mode.Equals(other.Mode)
                 );
         }
 
@@ -67,8 +67,8 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Mode != null) hashCode = hashCode * 59 + Mode.GetHashCode();
                 if (MinSize != null) hashCode = hashCode * 59 + MinSize.GetHashCode();
+                if (Mode != null) hashCode = hashCode * 59 + Mode.GetHashCode();
                 return hashCode;
             }
         }

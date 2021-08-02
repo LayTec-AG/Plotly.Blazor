@@ -18,6 +18,42 @@ namespace Plotly.Blazor.LayoutLib
     public class Geo : IEquatable<Geo>
     {
         /// <summary>
+        ///     Set the background color of the map
+        /// </summary>
+        [JsonPropertyName(@"bgcolor")]
+        public object BgColor { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Center.
+        /// </summary>
+        [JsonPropertyName(@"center")]
+        public Plotly.Blazor.LayoutLib.GeoLib.Center Center { get; set;} 
+
+        /// <summary>
+        ///     Sets the coastline color.
+        /// </summary>
+        [JsonPropertyName(@"coastlinecolor")]
+        public object CoastlineColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the coastline stroke width (in px).
+        /// </summary>
+        [JsonPropertyName(@"coastlinewidth")]
+        public decimal? CoastlineWidth { get; set;} 
+
+        /// <summary>
+        ///     Sets line color of the country boundaries.
+        /// </summary>
+        [JsonPropertyName(@"countrycolor")]
+        public object CountryColor { get; set;} 
+
+        /// <summary>
+        ///     Sets line width (in px) of the country boundaries.
+        /// </summary>
+        [JsonPropertyName(@"countrywidth")]
+        public decimal? CountryWidth { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Domain.
         /// </summary>
         [JsonPropertyName(@"domain")]
@@ -41,83 +77,16 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.GeoLib.FitBoundsEnum? FitBounds { get; set;} 
 
         /// <summary>
-        ///     Sets the resolution of the base layers. The values have units of km/mm e.g.
-        ///     110 corresponds to a scale ratio of 1:110,000,000.
+        ///     Sets the color the frame.
         /// </summary>
-        [JsonPropertyName(@"resolution")]
-        public Plotly.Blazor.LayoutLib.GeoLib.ResolutionEnum? Resolution { get; set;} 
+        [JsonPropertyName(@"framecolor")]
+        public object FrameColor { get; set;} 
 
         /// <summary>
-        ///     Set the scope of the map.
+        ///     Sets the stroke width (in px) of the frame.
         /// </summary>
-        [JsonPropertyName(@"scope")]
-        public Plotly.Blazor.LayoutLib.GeoLib.ScopeEnum? Scope { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Projection.
-        /// </summary>
-        [JsonPropertyName(@"projection")]
-        public Plotly.Blazor.LayoutLib.GeoLib.Projection Projection { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Center.
-        /// </summary>
-        [JsonPropertyName(@"center")]
-        public Plotly.Blazor.LayoutLib.GeoLib.Center Center { get; set;} 
-
-        /// <summary>
-        ///     Sets the default visibility of the base layers.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Sets whether or not the coastlines are drawn.
-        /// </summary>
-        [JsonPropertyName(@"showcoastlines")]
-        public bool? ShowCoastlines { get; set;} 
-
-        /// <summary>
-        ///     Sets the coastline color.
-        /// </summary>
-        [JsonPropertyName(@"coastlinecolor")]
-        public object CoastlineColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the coastline stroke width (in px).
-        /// </summary>
-        [JsonPropertyName(@"coastlinewidth")]
-        public decimal? CoastlineWidth { get; set;} 
-
-        /// <summary>
-        ///     Sets whether or not land masses are filled in color.
-        /// </summary>
-        [JsonPropertyName(@"showland")]
-        public bool? ShowLand { get; set;} 
-
-        /// <summary>
-        ///     Sets the land mass color.
-        /// </summary>
-        [JsonPropertyName(@"landcolor")]
-        public object LandColor { get; set;} 
-
-        /// <summary>
-        ///     Sets whether or not oceans are filled in color.
-        /// </summary>
-        [JsonPropertyName(@"showocean")]
-        public bool? ShowOcean { get; set;} 
-
-        /// <summary>
-        ///     Sets the ocean color
-        /// </summary>
-        [JsonPropertyName(@"oceancolor")]
-        public object OceanColor { get; set;} 
-
-        /// <summary>
-        ///     Sets whether or not lakes are drawn.
-        /// </summary>
-        [JsonPropertyName(@"showlakes")]
-        public bool? ShowLakes { get; set;} 
+        [JsonPropertyName(@"framewidth")]
+        public decimal? FrameWidth { get; set;} 
 
         /// <summary>
         ///     Sets the color of the lakes.
@@ -126,10 +95,41 @@ namespace Plotly.Blazor.LayoutLib
         public object LakeColor { get; set;} 
 
         /// <summary>
-        ///     Sets whether or not rivers are drawn.
+        ///     Sets the land mass color.
         /// </summary>
-        [JsonPropertyName(@"showrivers")]
-        public bool? ShowRivers { get; set;} 
+        [JsonPropertyName(@"landcolor")]
+        public object LandColor { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the LaTaxis.
+        /// </summary>
+        [JsonPropertyName(@"lataxis")]
+        public Plotly.Blazor.LayoutLib.GeoLib.LaTaxis LaTaxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the LonAxis.
+        /// </summary>
+        [JsonPropertyName(@"lonaxis")]
+        public Plotly.Blazor.LayoutLib.GeoLib.LonAxis LonAxis { get; set;} 
+
+        /// <summary>
+        ///     Sets the ocean color
+        /// </summary>
+        [JsonPropertyName(@"oceancolor")]
+        public object OceanColor { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Projection.
+        /// </summary>
+        [JsonPropertyName(@"projection")]
+        public Plotly.Blazor.LayoutLib.GeoLib.Projection Projection { get; set;} 
+
+        /// <summary>
+        ///     Sets the resolution of the base layers. The values have units of km/mm e.g.
+        ///     110 corresponds to a scale ratio of 1:110,000,000.
+        /// </summary>
+        [JsonPropertyName(@"resolution")]
+        public Plotly.Blazor.LayoutLib.GeoLib.ResolutionEnum? Resolution { get; set;} 
 
         /// <summary>
         ///     Sets color of the rivers.
@@ -144,22 +144,52 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? RiverWidth { get; set;} 
 
         /// <summary>
+        ///     Set the scope of the map.
+        /// </summary>
+        [JsonPropertyName(@"scope")]
+        public Plotly.Blazor.LayoutLib.GeoLib.ScopeEnum? Scope { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not the coastlines are drawn.
+        /// </summary>
+        [JsonPropertyName(@"showcoastlines")]
+        public bool? ShowCoastlines { get; set;} 
+
+        /// <summary>
         ///     Sets whether or not country boundaries are drawn.
         /// </summary>
         [JsonPropertyName(@"showcountries")]
         public bool? ShowCountries { get; set;} 
 
         /// <summary>
-        ///     Sets line color of the country boundaries.
+        ///     Sets whether or not a frame is drawn around the map.
         /// </summary>
-        [JsonPropertyName(@"countrycolor")]
-        public object CountryColor { get; set;} 
+        [JsonPropertyName(@"showframe")]
+        public bool? ShowFrame { get; set;} 
 
         /// <summary>
-        ///     Sets line width (in px) of the country boundaries.
+        ///     Sets whether or not lakes are drawn.
         /// </summary>
-        [JsonPropertyName(@"countrywidth")]
-        public decimal? CountryWidth { get; set;} 
+        [JsonPropertyName(@"showlakes")]
+        public bool? ShowLakes { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not land masses are filled in color.
+        /// </summary>
+        [JsonPropertyName(@"showland")]
+        public bool? ShowLand { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not oceans are filled in color.
+        /// </summary>
+        [JsonPropertyName(@"showocean")]
+        public bool? ShowOcean { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not rivers are drawn.
+        /// </summary>
+        [JsonPropertyName(@"showrivers")]
+        public bool? ShowRivers { get; set;} 
 
         /// <summary>
         ///     Sets whether or not boundaries of subunits within countries (e.g. states,
@@ -181,47 +211,17 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? SubUnitWidth { get; set;} 
 
         /// <summary>
-        ///     Sets whether or not a frame is drawn around the map.
-        /// </summary>
-        [JsonPropertyName(@"showframe")]
-        public bool? ShowFrame { get; set;} 
-
-        /// <summary>
-        ///     Sets the color the frame.
-        /// </summary>
-        [JsonPropertyName(@"framecolor")]
-        public object FrameColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the stroke width (in px) of the frame.
-        /// </summary>
-        [JsonPropertyName(@"framewidth")]
-        public decimal? FrameWidth { get; set;} 
-
-        /// <summary>
-        ///     Set the background color of the map
-        /// </summary>
-        [JsonPropertyName(@"bgcolor")]
-        public object BgColor { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the LonAxis.
-        /// </summary>
-        [JsonPropertyName(@"lonaxis")]
-        public Plotly.Blazor.LayoutLib.GeoLib.LonAxis LonAxis { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the LaTaxis.
-        /// </summary>
-        [JsonPropertyName(@"lataxis")]
-        public Plotly.Blazor.LayoutLib.GeoLib.LaTaxis LaTaxis { get; set;} 
-
-        /// <summary>
         ///     Controls persistence of user-driven changes in the view (projection and
         ///     center). Defaults to <c>layout.uirevision</c>.
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
+
+        /// <summary>
+        ///     Sets the default visibility of the base layers.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -239,44 +239,14 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain ||
-                    Domain != null &&
-                    Domain.Equals(other.Domain)
-                ) && 
-                (
-                    FitBounds == other.FitBounds ||
-                    FitBounds != null &&
-                    FitBounds.Equals(other.FitBounds)
-                ) && 
-                (
-                    Resolution == other.Resolution ||
-                    Resolution != null &&
-                    Resolution.Equals(other.Resolution)
-                ) && 
-                (
-                    Scope == other.Scope ||
-                    Scope != null &&
-                    Scope.Equals(other.Scope)
-                ) && 
-                (
-                    Projection == other.Projection ||
-                    Projection != null &&
-                    Projection.Equals(other.Projection)
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
+                    BgColor.Equals(other.BgColor)
                 ) && 
                 (
                     Center == other.Center ||
                     Center != null &&
                     Center.Equals(other.Center)
-                ) && 
-                (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    ShowCoastlines == other.ShowCoastlines ||
-                    ShowCoastlines != null &&
-                    ShowCoastlines.Equals(other.ShowCoastlines)
                 ) && 
                 (
                     CoastlineColor == other.CoastlineColor ||
@@ -289,29 +259,34 @@ namespace Plotly.Blazor.LayoutLib
                     CoastlineWidth.Equals(other.CoastlineWidth)
                 ) && 
                 (
-                    ShowLand == other.ShowLand ||
-                    ShowLand != null &&
-                    ShowLand.Equals(other.ShowLand)
+                    CountryColor == other.CountryColor ||
+                    CountryColor != null &&
+                    CountryColor.Equals(other.CountryColor)
                 ) && 
                 (
-                    LandColor == other.LandColor ||
-                    LandColor != null &&
-                    LandColor.Equals(other.LandColor)
+                    CountryWidth == other.CountryWidth ||
+                    CountryWidth != null &&
+                    CountryWidth.Equals(other.CountryWidth)
                 ) && 
                 (
-                    ShowOcean == other.ShowOcean ||
-                    ShowOcean != null &&
-                    ShowOcean.Equals(other.ShowOcean)
+                    Domain == other.Domain ||
+                    Domain != null &&
+                    Domain.Equals(other.Domain)
                 ) && 
                 (
-                    OceanColor == other.OceanColor ||
-                    OceanColor != null &&
-                    OceanColor.Equals(other.OceanColor)
+                    FitBounds == other.FitBounds ||
+                    FitBounds != null &&
+                    FitBounds.Equals(other.FitBounds)
                 ) && 
                 (
-                    ShowLakes == other.ShowLakes ||
-                    ShowLakes != null &&
-                    ShowLakes.Equals(other.ShowLakes)
+                    FrameColor == other.FrameColor ||
+                    FrameColor != null &&
+                    FrameColor.Equals(other.FrameColor)
+                ) && 
+                (
+                    FrameWidth == other.FrameWidth ||
+                    FrameWidth != null &&
+                    FrameWidth.Equals(other.FrameWidth)
                 ) && 
                 (
                     LakeColor == other.LakeColor ||
@@ -319,9 +294,34 @@ namespace Plotly.Blazor.LayoutLib
                     LakeColor.Equals(other.LakeColor)
                 ) && 
                 (
-                    ShowRivers == other.ShowRivers ||
-                    ShowRivers != null &&
-                    ShowRivers.Equals(other.ShowRivers)
+                    LandColor == other.LandColor ||
+                    LandColor != null &&
+                    LandColor.Equals(other.LandColor)
+                ) && 
+                (
+                    LaTaxis == other.LaTaxis ||
+                    LaTaxis != null &&
+                    LaTaxis.Equals(other.LaTaxis)
+                ) && 
+                (
+                    LonAxis == other.LonAxis ||
+                    LonAxis != null &&
+                    LonAxis.Equals(other.LonAxis)
+                ) && 
+                (
+                    OceanColor == other.OceanColor ||
+                    OceanColor != null &&
+                    OceanColor.Equals(other.OceanColor)
+                ) && 
+                (
+                    Projection == other.Projection ||
+                    Projection != null &&
+                    Projection.Equals(other.Projection)
+                ) && 
+                (
+                    Resolution == other.Resolution ||
+                    Resolution != null &&
+                    Resolution.Equals(other.Resolution)
                 ) && 
                 (
                     RiverColor == other.RiverColor ||
@@ -334,19 +334,44 @@ namespace Plotly.Blazor.LayoutLib
                     RiverWidth.Equals(other.RiverWidth)
                 ) && 
                 (
+                    Scope == other.Scope ||
+                    Scope != null &&
+                    Scope.Equals(other.Scope)
+                ) && 
+                (
+                    ShowCoastlines == other.ShowCoastlines ||
+                    ShowCoastlines != null &&
+                    ShowCoastlines.Equals(other.ShowCoastlines)
+                ) && 
+                (
                     ShowCountries == other.ShowCountries ||
                     ShowCountries != null &&
                     ShowCountries.Equals(other.ShowCountries)
                 ) && 
                 (
-                    CountryColor == other.CountryColor ||
-                    CountryColor != null &&
-                    CountryColor.Equals(other.CountryColor)
+                    ShowFrame == other.ShowFrame ||
+                    ShowFrame != null &&
+                    ShowFrame.Equals(other.ShowFrame)
                 ) && 
                 (
-                    CountryWidth == other.CountryWidth ||
-                    CountryWidth != null &&
-                    CountryWidth.Equals(other.CountryWidth)
+                    ShowLakes == other.ShowLakes ||
+                    ShowLakes != null &&
+                    ShowLakes.Equals(other.ShowLakes)
+                ) && 
+                (
+                    ShowLand == other.ShowLand ||
+                    ShowLand != null &&
+                    ShowLand.Equals(other.ShowLand)
+                ) && 
+                (
+                    ShowOcean == other.ShowOcean ||
+                    ShowOcean != null &&
+                    ShowOcean.Equals(other.ShowOcean)
+                ) && 
+                (
+                    ShowRivers == other.ShowRivers ||
+                    ShowRivers != null &&
+                    ShowRivers.Equals(other.ShowRivers)
                 ) && 
                 (
                     ShowSubUnits == other.ShowSubUnits ||
@@ -364,39 +389,14 @@ namespace Plotly.Blazor.LayoutLib
                     SubUnitWidth.Equals(other.SubUnitWidth)
                 ) && 
                 (
-                    ShowFrame == other.ShowFrame ||
-                    ShowFrame != null &&
-                    ShowFrame.Equals(other.ShowFrame)
-                ) && 
-                (
-                    FrameColor == other.FrameColor ||
-                    FrameColor != null &&
-                    FrameColor.Equals(other.FrameColor)
-                ) && 
-                (
-                    FrameWidth == other.FrameWidth ||
-                    FrameWidth != null &&
-                    FrameWidth.Equals(other.FrameWidth)
-                ) && 
-                (
-                    BgColor == other.BgColor ||
-                    BgColor != null &&
-                    BgColor.Equals(other.BgColor)
-                ) && 
-                (
-                    LonAxis == other.LonAxis ||
-                    LonAxis != null &&
-                    LonAxis.Equals(other.LonAxis)
-                ) && 
-                (
-                    LaTaxis == other.LaTaxis ||
-                    LaTaxis != null &&
-                    LaTaxis.Equals(other.LaTaxis)
-                ) && 
-                (
                     UiRevision == other.UiRevision ||
                     UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -406,38 +406,38 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
-                if (FitBounds != null) hashCode = hashCode * 59 + FitBounds.GetHashCode();
-                if (Resolution != null) hashCode = hashCode * 59 + Resolution.GetHashCode();
-                if (Scope != null) hashCode = hashCode * 59 + Scope.GetHashCode();
-                if (Projection != null) hashCode = hashCode * 59 + Projection.GetHashCode();
+                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (Center != null) hashCode = hashCode * 59 + Center.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (ShowCoastlines != null) hashCode = hashCode * 59 + ShowCoastlines.GetHashCode();
                 if (CoastlineColor != null) hashCode = hashCode * 59 + CoastlineColor.GetHashCode();
                 if (CoastlineWidth != null) hashCode = hashCode * 59 + CoastlineWidth.GetHashCode();
-                if (ShowLand != null) hashCode = hashCode * 59 + ShowLand.GetHashCode();
-                if (LandColor != null) hashCode = hashCode * 59 + LandColor.GetHashCode();
-                if (ShowOcean != null) hashCode = hashCode * 59 + ShowOcean.GetHashCode();
-                if (OceanColor != null) hashCode = hashCode * 59 + OceanColor.GetHashCode();
-                if (ShowLakes != null) hashCode = hashCode * 59 + ShowLakes.GetHashCode();
-                if (LakeColor != null) hashCode = hashCode * 59 + LakeColor.GetHashCode();
-                if (ShowRivers != null) hashCode = hashCode * 59 + ShowRivers.GetHashCode();
-                if (RiverColor != null) hashCode = hashCode * 59 + RiverColor.GetHashCode();
-                if (RiverWidth != null) hashCode = hashCode * 59 + RiverWidth.GetHashCode();
-                if (ShowCountries != null) hashCode = hashCode * 59 + ShowCountries.GetHashCode();
                 if (CountryColor != null) hashCode = hashCode * 59 + CountryColor.GetHashCode();
                 if (CountryWidth != null) hashCode = hashCode * 59 + CountryWidth.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
+                if (FitBounds != null) hashCode = hashCode * 59 + FitBounds.GetHashCode();
+                if (FrameColor != null) hashCode = hashCode * 59 + FrameColor.GetHashCode();
+                if (FrameWidth != null) hashCode = hashCode * 59 + FrameWidth.GetHashCode();
+                if (LakeColor != null) hashCode = hashCode * 59 + LakeColor.GetHashCode();
+                if (LandColor != null) hashCode = hashCode * 59 + LandColor.GetHashCode();
+                if (LaTaxis != null) hashCode = hashCode * 59 + LaTaxis.GetHashCode();
+                if (LonAxis != null) hashCode = hashCode * 59 + LonAxis.GetHashCode();
+                if (OceanColor != null) hashCode = hashCode * 59 + OceanColor.GetHashCode();
+                if (Projection != null) hashCode = hashCode * 59 + Projection.GetHashCode();
+                if (Resolution != null) hashCode = hashCode * 59 + Resolution.GetHashCode();
+                if (RiverColor != null) hashCode = hashCode * 59 + RiverColor.GetHashCode();
+                if (RiverWidth != null) hashCode = hashCode * 59 + RiverWidth.GetHashCode();
+                if (Scope != null) hashCode = hashCode * 59 + Scope.GetHashCode();
+                if (ShowCoastlines != null) hashCode = hashCode * 59 + ShowCoastlines.GetHashCode();
+                if (ShowCountries != null) hashCode = hashCode * 59 + ShowCountries.GetHashCode();
+                if (ShowFrame != null) hashCode = hashCode * 59 + ShowFrame.GetHashCode();
+                if (ShowLakes != null) hashCode = hashCode * 59 + ShowLakes.GetHashCode();
+                if (ShowLand != null) hashCode = hashCode * 59 + ShowLand.GetHashCode();
+                if (ShowOcean != null) hashCode = hashCode * 59 + ShowOcean.GetHashCode();
+                if (ShowRivers != null) hashCode = hashCode * 59 + ShowRivers.GetHashCode();
                 if (ShowSubUnits != null) hashCode = hashCode * 59 + ShowSubUnits.GetHashCode();
                 if (SubUnitColor != null) hashCode = hashCode * 59 + SubUnitColor.GetHashCode();
                 if (SubUnitWidth != null) hashCode = hashCode * 59 + SubUnitWidth.GetHashCode();
-                if (ShowFrame != null) hashCode = hashCode * 59 + ShowFrame.GetHashCode();
-                if (FrameColor != null) hashCode = hashCode * 59 + FrameColor.GetHashCode();
-                if (FrameWidth != null) hashCode = hashCode * 59 + FrameWidth.GetHashCode();
-                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
-                if (LonAxis != null) hashCode = hashCode * 59 + LonAxis.GetHashCode();
-                if (LaTaxis != null) hashCode = hashCode * 59 + LaTaxis.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,12 +18,6 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib
     public class X : IEquatable<X>
     {
         /// <summary>
-        ///     Sets whether or not projections are shown along the x axis.
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
         ///     Sets the projection color.
         /// </summary>
         [JsonPropertyName(@"opacity")]
@@ -34,6 +28,12 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib
         /// </summary>
         [JsonPropertyName(@"scale")]
         public decimal? Scale { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not projections are shown along the x axis.
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -51,11 +51,6 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
-                ) && 
-                (
                     Opacity == other.Opacity ||
                     Opacity != null &&
                     Opacity.Equals(other.Opacity)
@@ -64,6 +59,11 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib
                     Scale == other.Scale ||
                     Scale != null &&
                     Scale.Equals(other.Scale)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
                 );
         }
 
@@ -73,9 +73,9 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Scale != null) hashCode = hashCode * 59 + Scale.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 return hashCode;
             }
         }

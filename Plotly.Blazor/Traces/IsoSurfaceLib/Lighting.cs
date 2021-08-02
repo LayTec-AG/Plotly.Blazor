@@ -18,20 +18,6 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
     public class Lighting : IEquatable<Lighting>
     {
         /// <summary>
-        ///     Epsilon for vertex normals calculation avoids math issues arising from degenerate
-        ///     geometry.
-        /// </summary>
-        [JsonPropertyName(@"vertexnormalsepsilon")]
-        public decimal? VertexNormalsEpsilon { get; set;} 
-
-        /// <summary>
-        ///     Epsilon for face normals calculation avoids math issues arising from degenerate
-        ///     geometry.
-        /// </summary>
-        [JsonPropertyName(@"facenormalsepsilon")]
-        public decimal? FaceNormalsEpsilon { get; set;} 
-
-        /// <summary>
         ///     Ambient light increases overall color visibility but can wash out the image.
         /// </summary>
         [JsonPropertyName(@"ambient")]
@@ -44,11 +30,19 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public decimal? Diffuse { get; set;} 
 
         /// <summary>
-        ///     Represents the level that incident rays are reflected in a single direction,
+        ///     Epsilon for face normals calculation avoids math issues arising from degenerate
+        ///     geometry.
+        /// </summary>
+        [JsonPropertyName(@"facenormalsepsilon")]
+        public decimal? FaceNormalsEpsilon { get; set;} 
+
+        /// <summary>
+        ///     Represents the reflectance as a dependency of the viewing angle; e.g. paper
+        ///     is reflective when viewing it from the edge of the paper (almost 90 degrees),
         ///     causing shine.
         /// </summary>
-        [JsonPropertyName(@"specular")]
-        public decimal? Specular { get; set;} 
+        [JsonPropertyName(@"fresnel")]
+        public decimal? Fresnel { get; set;} 
 
         /// <summary>
         ///     Alters specular reflection; the rougher the surface, the wider and less
@@ -58,12 +52,18 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public decimal? Roughness { get; set;} 
 
         /// <summary>
-        ///     Represents the reflectance as a dependency of the viewing angle; e.g. paper
-        ///     is reflective when viewing it from the edge of the paper (almost 90 degrees),
+        ///     Represents the level that incident rays are reflected in a single direction,
         ///     causing shine.
         /// </summary>
-        [JsonPropertyName(@"fresnel")]
-        public decimal? Fresnel { get; set;} 
+        [JsonPropertyName(@"specular")]
+        public decimal? Specular { get; set;} 
+
+        /// <summary>
+        ///     Epsilon for vertex normals calculation avoids math issues arising from degenerate
+        ///     geometry.
+        /// </summary>
+        [JsonPropertyName(@"vertexnormalsepsilon")]
+        public decimal? VertexNormalsEpsilon { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -81,16 +81,6 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
 
             return 
                 (
-                    VertexNormalsEpsilon == other.VertexNormalsEpsilon ||
-                    VertexNormalsEpsilon != null &&
-                    VertexNormalsEpsilon.Equals(other.VertexNormalsEpsilon)
-                ) && 
-                (
-                    FaceNormalsEpsilon == other.FaceNormalsEpsilon ||
-                    FaceNormalsEpsilon != null &&
-                    FaceNormalsEpsilon.Equals(other.FaceNormalsEpsilon)
-                ) && 
-                (
                     Ambient == other.Ambient ||
                     Ambient != null &&
                     Ambient.Equals(other.Ambient)
@@ -101,9 +91,14 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                     Diffuse.Equals(other.Diffuse)
                 ) && 
                 (
-                    Specular == other.Specular ||
-                    Specular != null &&
-                    Specular.Equals(other.Specular)
+                    FaceNormalsEpsilon == other.FaceNormalsEpsilon ||
+                    FaceNormalsEpsilon != null &&
+                    FaceNormalsEpsilon.Equals(other.FaceNormalsEpsilon)
+                ) && 
+                (
+                    Fresnel == other.Fresnel ||
+                    Fresnel != null &&
+                    Fresnel.Equals(other.Fresnel)
                 ) && 
                 (
                     Roughness == other.Roughness ||
@@ -111,9 +106,14 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                     Roughness.Equals(other.Roughness)
                 ) && 
                 (
-                    Fresnel == other.Fresnel ||
-                    Fresnel != null &&
-                    Fresnel.Equals(other.Fresnel)
+                    Specular == other.Specular ||
+                    Specular != null &&
+                    Specular.Equals(other.Specular)
+                ) && 
+                (
+                    VertexNormalsEpsilon == other.VertexNormalsEpsilon ||
+                    VertexNormalsEpsilon != null &&
+                    VertexNormalsEpsilon.Equals(other.VertexNormalsEpsilon)
                 );
         }
 
@@ -123,13 +123,13 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (VertexNormalsEpsilon != null) hashCode = hashCode * 59 + VertexNormalsEpsilon.GetHashCode();
-                if (FaceNormalsEpsilon != null) hashCode = hashCode * 59 + FaceNormalsEpsilon.GetHashCode();
                 if (Ambient != null) hashCode = hashCode * 59 + Ambient.GetHashCode();
                 if (Diffuse != null) hashCode = hashCode * 59 + Diffuse.GetHashCode();
-                if (Specular != null) hashCode = hashCode * 59 + Specular.GetHashCode();
-                if (Roughness != null) hashCode = hashCode * 59 + Roughness.GetHashCode();
+                if (FaceNormalsEpsilon != null) hashCode = hashCode * 59 + FaceNormalsEpsilon.GetHashCode();
                 if (Fresnel != null) hashCode = hashCode * 59 + Fresnel.GetHashCode();
+                if (Roughness != null) hashCode = hashCode * 59 + Roughness.GetHashCode();
+                if (Specular != null) hashCode = hashCode * 59 + Specular.GetHashCode();
+                if (VertexNormalsEpsilon != null) hashCode = hashCode * 59 + VertexNormalsEpsilon.GetHashCode();
                 return hashCode;
             }
         }

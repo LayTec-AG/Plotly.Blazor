@@ -20,13 +20,6 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     public class TickFormatStop : IEquatable<TickFormatStop>
     {
         /// <summary>
-        ///     Determines whether or not this stop is used. If <c>false</c>, this stop
-        ///     is ignored even within its <c>dtickrange</c>.
-        /// </summary>
-        [JsonPropertyName(@"enabled")]
-        public bool? Enabled { get; set;} 
-
-        /// <summary>
         ///     range [<c>min</c>, <c>max</c>], where <c>min</c>, <c>max</c> - dtick values
         ///     which describe some zoom level, it is possible to omit <c>min</c> or <c>max</c>
         ///     value by passing <c>null</c>
@@ -35,10 +28,11 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
         public IList<object> DTickRange { get; set;} 
 
         /// <summary>
-        ///     string - dtickformat for described zoom level, the same as <c>tickformat</c>
+        ///     Determines whether or not this stop is used. If <c>false</c>, this stop
+        ///     is ignored even within its <c>dtickrange</c>.
         /// </summary>
-        [JsonPropertyName(@"value")]
-        public string Value { get; set;} 
+        [JsonPropertyName(@"enabled")]
+        public bool? Enabled { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
@@ -63,6 +57,12 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 
 
+        /// <summary>
+        ///     string - dtickformat for described zoom level, the same as <c>tickformat</c>
+        /// </summary>
+        [JsonPropertyName(@"value")]
+        public string Value { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -79,19 +79,14 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
 
             return 
                 (
-                    Enabled == other.Enabled ||
-                    Enabled != null &&
-                    Enabled.Equals(other.Enabled)
-                ) && 
-                (
                     Equals(DTickRange, other.DTickRange) ||
                     DTickRange != null && other.DTickRange != null &&
                     DTickRange.SequenceEqual(other.DTickRange)
                 ) &&
                 (
-                    Value == other.Value ||
-                    Value != null &&
-                    Value.Equals(other.Value)
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
+                    Enabled.Equals(other.Enabled)
                 ) && 
                 (
                     Name == other.Name ||
@@ -102,6 +97,11 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Value == other.Value ||
+                    Value != null &&
+                    Value.Equals(other.Value)
                 );
         }
 
@@ -111,11 +111,11 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
                 if (DTickRange != null) hashCode = hashCode * 59 + DTickRange.GetHashCode();
-                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
+                if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
                 return hashCode;
             }
         }

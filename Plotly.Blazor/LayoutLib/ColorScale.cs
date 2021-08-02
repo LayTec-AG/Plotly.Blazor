@@ -18,6 +18,13 @@ namespace Plotly.Blazor.LayoutLib
     public class ColorScale : IEquatable<ColorScale>
     {
         /// <summary>
+        ///     Sets the default diverging colorscale. Note that <c>autocolorscale</c> must
+        ///     be true for this attribute to work.
+        /// </summary>
+        [JsonPropertyName(@"diverging")]
+        public object Diverging { get; set;} 
+
+        /// <summary>
         ///     Sets the default sequential colorscale for positive values. Note that <c>autocolorscale</c>
         ///     must be true for this attribute to work.
         /// </summary>
@@ -30,13 +37,6 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"sequentialminus")]
         public object SequentialMinus { get; set;} 
-
-        /// <summary>
-        ///     Sets the default diverging colorscale. Note that <c>autocolorscale</c> must
-        ///     be true for this attribute to work.
-        /// </summary>
-        [JsonPropertyName(@"diverging")]
-        public object Diverging { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -54,6 +54,11 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
+                    Diverging == other.Diverging ||
+                    Diverging != null &&
+                    Diverging.Equals(other.Diverging)
+                ) && 
+                (
                     Sequential == other.Sequential ||
                     Sequential != null &&
                     Sequential.Equals(other.Sequential)
@@ -62,11 +67,6 @@ namespace Plotly.Blazor.LayoutLib
                     SequentialMinus == other.SequentialMinus ||
                     SequentialMinus != null &&
                     SequentialMinus.Equals(other.SequentialMinus)
-                ) && 
-                (
-                    Diverging == other.Diverging ||
-                    Diverging != null &&
-                    Diverging.Equals(other.Diverging)
                 );
         }
 
@@ -76,9 +76,9 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Diverging != null) hashCode = hashCode * 59 + Diverging.GetHashCode();
                 if (Sequential != null) hashCode = hashCode * 59 + Sequential.GetHashCode();
                 if (SequentialMinus != null) hashCode = hashCode * 59 + SequentialMinus.GetHashCode();
-                if (Diverging != null) hashCode = hashCode * 59 + Diverging.GetHashCode();
                 return hashCode;
             }
         }

@@ -15,99 +15,99 @@ namespace Plotly.Blazor
     [JsonConverter(typeof(EnumConverter))]
     public enum TraceTypeEnum
     {
-        [EnumMember(Value=@"scatter")]
-        Scatter,
         [EnumMember(Value=@"bar")]
         Bar,
+        [EnumMember(Value=@"barpolar")]
+        BarPolar,
         [EnumMember(Value=@"box")]
         Box,
+        [EnumMember(Value=@"candlestick")]
+        Candlestick,
+        [EnumMember(Value=@"carpet")]
+        Carpet,
+        [EnumMember(Value=@"choropleth")]
+        Choropleth,
+        [EnumMember(Value=@"choroplethmapbox")]
+        ChoroplethMapBox,
+        [EnumMember(Value=@"cone")]
+        Cone,
+        [EnumMember(Value=@"contour")]
+        Contour,
+        [EnumMember(Value=@"contourcarpet")]
+        ContourCarpet,
+        [EnumMember(Value=@"densitymapbox")]
+        DensityMapBox,
+        [EnumMember(Value=@"funnel")]
+        Funnel,
+        [EnumMember(Value=@"funnelarea")]
+        FunnelArea,
         [EnumMember(Value=@"heatmap")]
         HeatMap,
+        [EnumMember(Value=@"heatmapgl")]
+        HeatMapGl,
         [EnumMember(Value=@"histogram")]
         Histogram,
         [EnumMember(Value=@"histogram2d")]
         Histogram2D,
         [EnumMember(Value=@"histogram2dcontour")]
         Histogram2DContour,
-        [EnumMember(Value=@"contour")]
-        Contour,
-        [EnumMember(Value=@"scatterternary")]
-        ScatterTernary,
-        [EnumMember(Value=@"violin")]
-        Violin,
-        [EnumMember(Value=@"funnel")]
-        Funnel,
-        [EnumMember(Value=@"waterfall")]
-        Waterfall,
-        [EnumMember(Value=@"image")]
-        Image,
-        [EnumMember(Value=@"pie")]
-        Pie,
-        [EnumMember(Value=@"sunburst")]
-        Sunburst,
-        [EnumMember(Value=@"treemap")]
-        TreeMap,
         [EnumMember(Value=@"icicle")]
         Icicle,
-        [EnumMember(Value=@"funnelarea")]
-        FunnelArea,
-        [EnumMember(Value=@"scatter3d")]
-        Scatter3D,
-        [EnumMember(Value=@"surface")]
-        Surface,
-        [EnumMember(Value=@"isosurface")]
-        IsoSurface,
-        [EnumMember(Value=@"volume")]
-        Volume,
-        [EnumMember(Value=@"mesh3d")]
-        Mesh3D,
-        [EnumMember(Value=@"cone")]
-        Cone,
-        [EnumMember(Value=@"streamtube")]
-        StreamTube,
-        [EnumMember(Value=@"scattergeo")]
-        ScatterGeo,
-        [EnumMember(Value=@"choropleth")]
-        Choropleth,
-        [EnumMember(Value=@"scattergl")]
-        ScatterGl,
-        [EnumMember(Value=@"splom")]
-        Splom,
-        [EnumMember(Value=@"pointcloud")]
-        PointCloud,
-        [EnumMember(Value=@"heatmapgl")]
-        HeatMapGl,
-        [EnumMember(Value=@"parcoords")]
-        ParCoords,
-        [EnumMember(Value=@"parcats")]
-        ParCats,
-        [EnumMember(Value=@"scattermapbox")]
-        ScatterMapBox,
-        [EnumMember(Value=@"choroplethmapbox")]
-        ChoroplethMapBox,
-        [EnumMember(Value=@"densitymapbox")]
-        DensityMapBox,
-        [EnumMember(Value=@"sankey")]
-        Sankey,
+        [EnumMember(Value=@"image")]
+        Image,
         [EnumMember(Value=@"indicator")]
         Indicator,
-        [EnumMember(Value=@"table")]
-        Table,
-        [EnumMember(Value=@"carpet")]
-        Carpet,
-        [EnumMember(Value=@"scattercarpet")]
-        ScatterCarpet,
-        [EnumMember(Value=@"contourcarpet")]
-        ContourCarpet,
+        [EnumMember(Value=@"isosurface")]
+        IsoSurface,
+        [EnumMember(Value=@"mesh3d")]
+        Mesh3D,
         [EnumMember(Value=@"ohlc")]
         Ohlc,
-        [EnumMember(Value=@"candlestick")]
-        Candlestick,
+        [EnumMember(Value=@"parcats")]
+        ParCats,
+        [EnumMember(Value=@"parcoords")]
+        ParCoords,
+        [EnumMember(Value=@"pie")]
+        Pie,
+        [EnumMember(Value=@"pointcloud")]
+        PointCloud,
+        [EnumMember(Value=@"sankey")]
+        Sankey,
+        [EnumMember(Value=@"scatter")]
+        Scatter,
+        [EnumMember(Value=@"scatter3d")]
+        Scatter3D,
+        [EnumMember(Value=@"scattercarpet")]
+        ScatterCarpet,
+        [EnumMember(Value=@"scattergeo")]
+        ScatterGeo,
+        [EnumMember(Value=@"scattergl")]
+        ScatterGl,
+        [EnumMember(Value=@"scattermapbox")]
+        ScatterMapBox,
         [EnumMember(Value=@"scatterpolar")]
         ScatterPolar,
         [EnumMember(Value=@"scatterpolargl")]
         ScatterPolarGl,
-        [EnumMember(Value=@"barpolar")]
-        BarPolar
+        [EnumMember(Value=@"scatterternary")]
+        ScatterTernary,
+        [EnumMember(Value=@"splom")]
+        Splom,
+        [EnumMember(Value=@"streamtube")]
+        StreamTube,
+        [EnumMember(Value=@"sunburst")]
+        Sunburst,
+        [EnumMember(Value=@"surface")]
+        Surface,
+        [EnumMember(Value=@"table")]
+        Table,
+        [EnumMember(Value=@"treemap")]
+        TreeMap,
+        [EnumMember(Value=@"violin")]
+        Violin,
+        [EnumMember(Value=@"volume")]
+        Volume,
+        [EnumMember(Value=@"waterfall")]
+        Waterfall
     }
 }

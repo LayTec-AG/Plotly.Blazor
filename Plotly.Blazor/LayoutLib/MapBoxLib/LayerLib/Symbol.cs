@@ -32,12 +32,6 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         public decimal? IconSize { get; set;} 
 
         /// <summary>
-        ///     Sets the symbol text (mapbox.layer.layout.text-field).
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
         ///     Sets the symbol and/or text placement (mapbox.layer.layout.symbol-placement).
         ///     If <c>placement</c> is <c>point</c>, the label is placed where the geometry
         ///     is located If <c>placement</c> is <c>line</c>, the label is placed along
@@ -46,6 +40,12 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         /// </summary>
         [JsonPropertyName(@"placement")]
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.PlacementEnum? Placement { get; set;} 
+
+        /// <summary>
+        ///     Sets the symbol text (mapbox.layer.layout.text-field).
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
 
         /// <summary>
         ///     Sets the icon text font (color=mapbox.layer.paint.text-color, size=mapbox.layer.layout.text-size).
@@ -87,14 +87,14 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
                     IconSize.Equals(other.IconSize)
                 ) && 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Placement == other.Placement ||
                     Placement != null &&
                     Placement.Equals(other.Placement)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 ) && 
                 (
                     TextFont == other.TextFont ||
@@ -116,8 +116,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
                 var hashCode = 41;
                 if (Icon != null) hashCode = hashCode * 59 + Icon.GetHashCode();
                 if (IconSize != null) hashCode = hashCode * 59 + IconSize.GetHashCode();
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Placement != null) hashCode = hashCode * 59 + Placement.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
                 if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
                 return hashCode;

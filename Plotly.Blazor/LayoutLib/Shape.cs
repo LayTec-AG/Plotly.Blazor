@@ -18,10 +18,88 @@ namespace Plotly.Blazor.LayoutLib
     public class Shape : IEquatable<Shape>
     {
         /// <summary>
-        ///     Determines whether or not this shape is visible.
+        ///     Determines whether the shape could be activated for edit or not. Has no
+        ///     effect when the older editable shapes mode is enabled via <c>config.editable</c>
+        ///     or <c>config.edits.shapePosition</c>.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"editable")]
+        public bool? Editable { get; set;} 
+
+        /// <summary>
+        ///     Sets the color filling the shape&#39;s interior. Only applies to closed
+        ///     shapes.
+        /// </summary>
+        [JsonPropertyName(@"fillcolor")]
+        public object FillColor { get; set;} 
+
+        /// <summary>
+        ///     Determines which regions of complex paths constitute the interior. For more
+        ///     info please visit https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
+        /// </summary>
+        [JsonPropertyName(@"fillrule")]
+        public Plotly.Blazor.LayoutLib.ShapeLib.FillRuleEnum? FillRule { get; set;} 
+
+        /// <summary>
+        ///     Specifies whether shapes are drawn below or above traces.
+        /// </summary>
+        [JsonPropertyName(@"layer")]
+        public Plotly.Blazor.LayoutLib.ShapeLib.LayerEnum? Layer { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.LayoutLib.ShapeLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     When used in a template, named items are created in the output figure in
+        ///     addition to any items the figure already has in this array. You can modify
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of the shape.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
+
+        /// <summary>
+        ///     For <c>type</c> <c>path</c> - a valid SVG path with the pixel values replaced
+        ///     by data values in <c>xsizemode</c>/<c>ysizemode</c> being <c>scaled</c>
+        ///     and taken unmodified as pixels relative to <c>xanchor</c> and <c>yanchor</c>
+        ///     in case of <c>pixel</c> size mode. There are a few restrictions / quirks
+        ///     only absolute instructions, not relative. So the allowed segments are: M,
+        ///     L, H, V, Q, C, T, S, and Z arcs (A) are not allowed because radius rx and
+        ///     ry are relative. In the future we could consider supporting relative commands,
+        ///     but we would have to decide on how to handle date and log axes. Note that
+        ///     even as is, Q and C Bezier paths that are smooth on linear axes may not
+        ///     be smooth on log, and vice versa. no chained <c>polybezier</c> commands
+        ///     - specify the segment type for each one. On category axes, values are numbers
+        ///     scaled to the serial numbers of categories because using the categories
+        ///     themselves there would be no way to describe fractional positions On data
+        ///     axes: because space and T are both normal components of path strings, we
+        ///     can&#39;t use either to separate date from time parts. Therefore we&#39;ll
+        ///     use underscore for this purpose: 2015-02-21_13:45:56.789
+        /// </summary>
+        [JsonPropertyName(@"path")]
+        public string Path { get; set;} 
+
+        /// <summary>
+        ///     Used to refer to a named item in this array in the template. Named items
+        ///     from the template will be created even without a matching item in the input
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
+        /// </summary>
+        [JsonPropertyName(@"templateitemname")]
+        public string TemplateItemName { get; set;} 
 
         /// <summary>
         ///     Specifies the shape type to be drawn. If <c>line</c>, a line is drawn from
@@ -38,10 +116,34 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
-        ///     Specifies whether shapes are drawn below or above traces.
+        ///     Determines whether or not this shape is visible.
         /// </summary>
-        [JsonPropertyName(@"layer")]
-        public Plotly.Blazor.LayoutLib.ShapeLib.LayerEnum? Layer { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape&#39;s starting x position. See <c>type</c> and <c>xsizemode</c>
+        ///     for more info.
+        /// </summary>
+        [JsonPropertyName(@"x0")]
+        public object X0 { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape&#39;s end x position. See <c>type</c> and <c>xsizemode</c>
+        ///     for more info.
+        /// </summary>
+        [JsonPropertyName(@"x1")]
+        public object X1 { get; set;} 
+
+        /// <summary>
+        ///     Only relevant in conjunction with <c>xsizemode</c> set to <c>pixel</c>.
+        ///     Specifies the anchor point on the x axis to which <c>x0</c>, <c>x1</c> and
+        ///     x coordinates within <c>path</c> are relative to. E.g. useful to attach
+        ///     a pixel sized shape to a certain data value. No effect when <c>xsizemode</c>
+        ///     not set to <c>pixel</c>.
+        /// </summary>
+        [JsonPropertyName(@"xanchor")]
+        public object XAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the shape&#39;s x coordinate axis. If set to a x axis id (e.g. <c>x</c>
@@ -75,28 +177,28 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.XSizeModeEnum? XSizeMode { get; set;} 
 
         /// <summary>
-        ///     Only relevant in conjunction with <c>xsizemode</c> set to <c>pixel</c>.
-        ///     Specifies the anchor point on the x axis to which <c>x0</c>, <c>x1</c> and
-        ///     x coordinates within <c>path</c> are relative to. E.g. useful to attach
-        ///     a pixel sized shape to a certain data value. No effect when <c>xsizemode</c>
+        ///     Sets the shape&#39;s starting y position. See <c>type</c> and <c>ysizemode</c>
+        ///     for more info.
+        /// </summary>
+        [JsonPropertyName(@"y0")]
+        public object Y0 { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape&#39;s end y position. See <c>type</c> and <c>ysizemode</c>
+        ///     for more info.
+        /// </summary>
+        [JsonPropertyName(@"y1")]
+        public object Y1 { get; set;} 
+
+        /// <summary>
+        ///     Only relevant in conjunction with <c>ysizemode</c> set to <c>pixel</c>.
+        ///     Specifies the anchor point on the y axis to which <c>y0</c>, <c>y1</c> and
+        ///     y coordinates within <c>path</c> are relative to. E.g. useful to attach
+        ///     a pixel sized shape to a certain data value. No effect when <c>ysizemode</c>
         ///     not set to <c>pixel</c>.
         /// </summary>
-        [JsonPropertyName(@"xanchor")]
-        public object XAnchor { get; set;} 
-
-        /// <summary>
-        ///     Sets the shape&#39;s starting x position. See <c>type</c> and <c>xsizemode</c>
-        ///     for more info.
-        /// </summary>
-        [JsonPropertyName(@"x0")]
-        public object X0 { get; set;} 
-
-        /// <summary>
-        ///     Sets the shape&#39;s end x position. See <c>type</c> and <c>xsizemode</c>
-        ///     for more info.
-        /// </summary>
-        [JsonPropertyName(@"x1")]
-        public object X1 { get; set;} 
+        [JsonPropertyName(@"yanchor")]
+        public object YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the annotation&#39;s y coordinate axis. If set to a y axis id (e.g.
@@ -126,108 +228,6 @@ namespace Plotly.Blazor.LayoutLib
         [JsonPropertyName(@"ysizemode")]
         public Plotly.Blazor.LayoutLib.ShapeLib.YSizeModeEnum? YSizeMode { get; set;} 
 
-        /// <summary>
-        ///     Only relevant in conjunction with <c>ysizemode</c> set to <c>pixel</c>.
-        ///     Specifies the anchor point on the y axis to which <c>y0</c>, <c>y1</c> and
-        ///     y coordinates within <c>path</c> are relative to. E.g. useful to attach
-        ///     a pixel sized shape to a certain data value. No effect when <c>ysizemode</c>
-        ///     not set to <c>pixel</c>.
-        /// </summary>
-        [JsonPropertyName(@"yanchor")]
-        public object YAnchor { get; set;} 
-
-        /// <summary>
-        ///     Sets the shape&#39;s starting y position. See <c>type</c> and <c>ysizemode</c>
-        ///     for more info.
-        /// </summary>
-        [JsonPropertyName(@"y0")]
-        public object Y0 { get; set;} 
-
-        /// <summary>
-        ///     Sets the shape&#39;s end y position. See <c>type</c> and <c>ysizemode</c>
-        ///     for more info.
-        /// </summary>
-        [JsonPropertyName(@"y1")]
-        public object Y1 { get; set;} 
-
-        /// <summary>
-        ///     For <c>type</c> <c>path</c> - a valid SVG path with the pixel values replaced
-        ///     by data values in <c>xsizemode</c>/<c>ysizemode</c> being <c>scaled</c>
-        ///     and taken unmodified as pixels relative to <c>xanchor</c> and <c>yanchor</c>
-        ///     in case of <c>pixel</c> size mode. There are a few restrictions / quirks
-        ///     only absolute instructions, not relative. So the allowed segments are: M,
-        ///     L, H, V, Q, C, T, S, and Z arcs (A) are not allowed because radius rx and
-        ///     ry are relative. In the future we could consider supporting relative commands,
-        ///     but we would have to decide on how to handle date and log axes. Note that
-        ///     even as is, Q and C Bezier paths that are smooth on linear axes may not
-        ///     be smooth on log, and vice versa. no chained <c>polybezier</c> commands
-        ///     - specify the segment type for each one. On category axes, values are numbers
-        ///     scaled to the serial numbers of categories because using the categories
-        ///     themselves there would be no way to describe fractional positions On data
-        ///     axes: because space and T are both normal components of path strings, we
-        ///     can&#39;t use either to separate date from time parts. Therefore we&#39;ll
-        ///     use underscore for this purpose: 2015-02-21_13:45:56.789
-        /// </summary>
-        [JsonPropertyName(@"path")]
-        public string Path { get; set;} 
-
-        /// <summary>
-        ///     Sets the opacity of the shape.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Line.
-        /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.LayoutLib.ShapeLib.Line Line { get; set;} 
-
-        /// <summary>
-        ///     Sets the color filling the shape&#39;s interior. Only applies to closed
-        ///     shapes.
-        /// </summary>
-        [JsonPropertyName(@"fillcolor")]
-        public object FillColor { get; set;} 
-
-        /// <summary>
-        ///     Determines which regions of complex paths constitute the interior. For more
-        ///     info please visit https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
-        /// </summary>
-        [JsonPropertyName(@"fillrule")]
-        public Plotly.Blazor.LayoutLib.ShapeLib.FillRuleEnum? FillRule { get; set;} 
-
-        /// <summary>
-        ///     Determines whether the shape could be activated for edit or not. Has no
-        ///     effect when the older editable shapes mode is enabled via <c>config.editable</c>
-        ///     or <c>config.edits.shapePosition</c>.
-        /// </summary>
-        [JsonPropertyName(@"editable")]
-        public bool? Editable { get; set;} 
-
-        /// <summary>
-        ///     When used in a template, named items are created in the output figure in
-        ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with <c>templateitemname</c>
-        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
-        ///     of a template.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Used to refer to a named item in this array in the template. Named items
-        ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
-        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
-        ///     or no matching item, this item will be hidden unless you explicitly show
-        ///     it with &#39;visible: true&#39;.
-        /// </summary>
-        [JsonPropertyName(@"templateitemname")]
-        public string TemplateItemName { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -244,84 +244,9 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    Layer == other.Layer ||
-                    Layer != null &&
-                    Layer.Equals(other.Layer)
-                ) && 
-                (
-                    XRef == other.XRef ||
-                    XRef != null &&
-                    XRef.Equals(other.XRef)
-                ) && 
-                (
-                    XSizeMode == other.XSizeMode ||
-                    XSizeMode != null &&
-                    XSizeMode.Equals(other.XSizeMode)
-                ) && 
-                (
-                    XAnchor == other.XAnchor ||
-                    XAnchor != null &&
-                    XAnchor.Equals(other.XAnchor)
-                ) && 
-                (
-                    X0 == other.X0 ||
-                    X0 != null &&
-                    X0.Equals(other.X0)
-                ) && 
-                (
-                    X1 == other.X1 ||
-                    X1 != null &&
-                    X1.Equals(other.X1)
-                ) && 
-                (
-                    YRef == other.YRef ||
-                    YRef != null &&
-                    YRef.Equals(other.YRef)
-                ) && 
-                (
-                    YSizeMode == other.YSizeMode ||
-                    YSizeMode != null &&
-                    YSizeMode.Equals(other.YSizeMode)
-                ) && 
-                (
-                    YAnchor == other.YAnchor ||
-                    YAnchor != null &&
-                    YAnchor.Equals(other.YAnchor)
-                ) && 
-                (
-                    Y0 == other.Y0 ||
-                    Y0 != null &&
-                    Y0.Equals(other.Y0)
-                ) && 
-                (
-                    Y1 == other.Y1 ||
-                    Y1 != null &&
-                    Y1.Equals(other.Y1)
-                ) && 
-                (
-                    Path == other.Path ||
-                    Path != null &&
-                    Path.Equals(other.Path)
-                ) && 
-                (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
+                    Editable == other.Editable ||
+                    Editable != null &&
+                    Editable.Equals(other.Editable)
                 ) && 
                 (
                     FillColor == other.FillColor ||
@@ -334,9 +259,14 @@ namespace Plotly.Blazor.LayoutLib
                     FillRule.Equals(other.FillRule)
                 ) && 
                 (
-                    Editable == other.Editable ||
-                    Editable != null &&
-                    Editable.Equals(other.Editable)
+                    Layer == other.Layer ||
+                    Layer != null &&
+                    Layer.Equals(other.Layer)
+                ) && 
+                (
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
                 ) && 
                 (
                     Name == other.Name ||
@@ -344,9 +274,79 @@ namespace Plotly.Blazor.LayoutLib
                     Name.Equals(other.Name)
                 ) && 
                 (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
+                ) && 
+                (
+                    Path == other.Path ||
+                    Path != null &&
+                    Path.Equals(other.Path)
+                ) && 
+                (
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
+                (
+                    X0 == other.X0 ||
+                    X0 != null &&
+                    X0.Equals(other.X0)
+                ) && 
+                (
+                    X1 == other.X1 ||
+                    X1 != null &&
+                    X1.Equals(other.X1)
+                ) && 
+                (
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
+                    XAnchor.Equals(other.XAnchor)
+                ) && 
+                (
+                    XRef == other.XRef ||
+                    XRef != null &&
+                    XRef.Equals(other.XRef)
+                ) && 
+                (
+                    XSizeMode == other.XSizeMode ||
+                    XSizeMode != null &&
+                    XSizeMode.Equals(other.XSizeMode)
+                ) && 
+                (
+                    Y0 == other.Y0 ||
+                    Y0 != null &&
+                    Y0.Equals(other.Y0)
+                ) && 
+                (
+                    Y1 == other.Y1 ||
+                    Y1 != null &&
+                    Y1.Equals(other.Y1)
+                ) && 
+                (
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
+                    YAnchor.Equals(other.YAnchor)
+                ) && 
+                (
+                    YRef == other.YRef ||
+                    YRef != null &&
+                    YRef.Equals(other.YRef)
+                ) && 
+                (
+                    YSizeMode == other.YSizeMode ||
+                    YSizeMode != null &&
+                    YSizeMode.Equals(other.YSizeMode)
                 );
         }
 
@@ -356,27 +356,27 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
-                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
-                if (XSizeMode != null) hashCode = hashCode * 59 + XSizeMode.GetHashCode();
-                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
-                if (X0 != null) hashCode = hashCode * 59 + X0.GetHashCode();
-                if (X1 != null) hashCode = hashCode * 59 + X1.GetHashCode();
-                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
-                if (YSizeMode != null) hashCode = hashCode * 59 + YSizeMode.GetHashCode();
-                if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
-                if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
-                if (Y1 != null) hashCode = hashCode * 59 + Y1.GetHashCode();
-                if (Path != null) hashCode = hashCode * 59 + Path.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Editable != null) hashCode = hashCode * 59 + Editable.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
                 if (FillRule != null) hashCode = hashCode * 59 + FillRule.GetHashCode();
-                if (Editable != null) hashCode = hashCode * 59 + Editable.GetHashCode();
+                if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
+                if (Path != null) hashCode = hashCode * 59 + Path.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (X0 != null) hashCode = hashCode * 59 + X0.GetHashCode();
+                if (X1 != null) hashCode = hashCode * 59 + X1.GetHashCode();
+                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
+                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
+                if (XSizeMode != null) hashCode = hashCode * 59 + XSizeMode.GetHashCode();
+                if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
+                if (Y1 != null) hashCode = hashCode * 59 + Y1.GetHashCode();
+                if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
+                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
+                if (YSizeMode != null) hashCode = hashCode * 59 + YSizeMode.GetHashCode();
                 return hashCode;
             }
         }

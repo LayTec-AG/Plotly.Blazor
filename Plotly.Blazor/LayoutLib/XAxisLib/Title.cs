@@ -18,14 +18,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets the title of this axis. Note that before the existence of <c>title.text</c>,
-        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
-        ///     itself. This behavior has been deprecated.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
         ///     Sets this axis&#39; title font. Note that the title&#39;s font used to be
         ///     customized by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
@@ -44,6 +36,14 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         [JsonPropertyName(@"standoff")]
         public decimal? Standoff { get; set;} 
 
+        /// <summary>
+        ///     Sets the title of this axis. Note that before the existence of <c>title.text</c>,
+        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
+        ///     itself. This behavior has been deprecated.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -60,11 +60,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
@@ -73,6 +68,11 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
                     Standoff == other.Standoff ||
                     Standoff != null &&
                     Standoff.Equals(other.Standoff)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -82,9 +82,9 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Standoff != null) hashCode = hashCode * 59 + Standoff.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

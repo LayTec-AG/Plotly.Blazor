@@ -21,19 +21,6 @@ namespace Plotly.Blazor.Traces.TableLib.CellsLib
     public class Line : IEquatable<Line>
     {
         /// <summary>
-        ///     Gets or sets the Width.
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Width.
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        [Array]
-        public IList<decimal?> WidthArray { get; set;} 
-
-        /// <summary>
         ///     Gets or sets the Color.
         /// </summary>
         [JsonPropertyName(@"color")]
@@ -47,16 +34,29 @@ namespace Plotly.Blazor.Traces.TableLib.CellsLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  width .
-        /// </summary>
-        [JsonPropertyName(@"widthsrc")]
-        public string WidthSrc { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
         [JsonPropertyName(@"colorsrc")]
         public string ColorSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Width.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Width.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<decimal?> WidthArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  width .
+        /// </summary>
+        [JsonPropertyName(@"widthsrc")]
+        public string WidthSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -74,16 +74,6 @@ namespace Plotly.Blazor.Traces.TableLib.CellsLib
 
             return 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
-                    Equals(WidthArray, other.WidthArray) ||
-                    WidthArray != null && other.WidthArray != null &&
-                    WidthArray.SequenceEqual(other.WidthArray)
-                ) &&
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -94,14 +84,24 @@ namespace Plotly.Blazor.Traces.TableLib.CellsLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    WidthSrc == other.WidthSrc ||
-                    WidthSrc != null &&
-                    WidthSrc.Equals(other.WidthSrc)
-                ) && 
-                (
                     ColorSrc == other.ColorSrc ||
                     ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
+                ) && 
+                (
+                    Equals(WidthArray, other.WidthArray) ||
+                    WidthArray != null && other.WidthArray != null &&
+                    WidthArray.SequenceEqual(other.WidthArray)
+                ) &&
+                (
+                    WidthSrc == other.WidthSrc ||
+                    WidthSrc != null &&
+                    WidthSrc.Equals(other.WidthSrc)
                 );
         }
 
@@ -111,12 +111,12 @@ namespace Plotly.Blazor.Traces.TableLib.CellsLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (WidthArray != null) hashCode = hashCode * 59 + WidthArray.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
-                if (WidthSrc != null) hashCode = hashCode * 59 + WidthSrc.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
+                if (WidthArray != null) hashCode = hashCode * 59 + WidthArray.GetHashCode();
+                if (WidthSrc != null) hashCode = hashCode * 59 + WidthSrc.GetHashCode();
                 return hashCode;
             }
         }

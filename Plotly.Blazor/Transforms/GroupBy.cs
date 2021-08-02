@@ -40,6 +40,12 @@ namespace Plotly.Blazor.Transforms
         public IList<object> Groups { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  groups .
+        /// </summary>
+        [JsonPropertyName(@"groupssrc")]
+        public string GroupsSrc { get; set;} 
+
+        /// <summary>
         ///     Pattern by which grouped traces are named. If only one trace is present,
         ///     defaults to the group name (<c><c>%{group}</c></c>), otherwise defaults
         ///     to the group name with trace name (&#39;&quot;%{group} (%{trace})&quot;&#39;).
@@ -56,12 +62,6 @@ namespace Plotly.Blazor.Transforms
         /// </summary>
         [JsonPropertyName(@"styles")]
         public IList<Plotly.Blazor.Transforms.GroupByLib.Style> Styles { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  groups .
-        /// </summary>
-        [JsonPropertyName(@"groupssrc")]
-        public string GroupsSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -94,6 +94,11 @@ namespace Plotly.Blazor.Transforms
                     Groups.SequenceEqual(other.Groups)
                 ) &&
                 (
+                    GroupsSrc == other.GroupsSrc ||
+                    GroupsSrc != null &&
+                    GroupsSrc.Equals(other.GroupsSrc)
+                ) && 
+                (
                     NameFormat == other.NameFormat ||
                     NameFormat != null &&
                     NameFormat.Equals(other.NameFormat)
@@ -102,11 +107,6 @@ namespace Plotly.Blazor.Transforms
                     Equals(Styles, other.Styles) ||
                     Styles != null && other.Styles != null &&
                     Styles.SequenceEqual(other.Styles)
-                ) &&
-                (
-                    GroupsSrc == other.GroupsSrc ||
-                    GroupsSrc != null &&
-                    GroupsSrc.Equals(other.GroupsSrc)
                 );
         }
 
@@ -119,9 +119,9 @@ namespace Plotly.Blazor.Transforms
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
                 if (Groups != null) hashCode = hashCode * 59 + Groups.GetHashCode();
+                if (GroupsSrc != null) hashCode = hashCode * 59 + GroupsSrc.GetHashCode();
                 if (NameFormat != null) hashCode = hashCode * 59 + NameFormat.GetHashCode();
                 if (Styles != null) hashCode = hashCode * 59 + Styles.GetHashCode();
-                if (GroupsSrc != null) hashCode = hashCode * 59 + GroupsSrc.GetHashCode();
                 return hashCode;
             }
         }

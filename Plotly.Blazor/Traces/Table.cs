@@ -26,12 +26,114 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum? Type { get; } = TraceTypeEnum.Table;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
-        ///     trace is not drawn, but can appear as a legend item (provided that the legend
-        ///     itself is visible).
+        ///     Gets or sets the Cells.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public Plotly.Blazor.Traces.TableLib.VisibleEnum? Visible { get; set;} 
+        [JsonPropertyName(@"cells")]
+        public Plotly.Blazor.Traces.TableLib.Cells Cells { get; set;} 
+
+        /// <summary>
+        ///     Specifies the rendered order of the data columns; for example, a value <c>2</c>
+        ///     at position <c>0</c> means that column index <c>0</c> in the data will be
+        ///     rendered as the third column, as columns have an index base of zero.
+        /// </summary>
+        [JsonPropertyName(@"columnorder")]
+        public IList<object> ColumnOrder { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  columnorder .
+        /// </summary>
+        [JsonPropertyName(@"columnordersrc")]
+        public string ColumnOrderSrc { get; set;} 
+
+        /// <summary>
+        ///     The width of columns expressed as a ratio. Columns fill the available width
+        ///     in proportion of their specified column widths.
+        /// </summary>
+        [JsonPropertyName(@"columnwidth")]
+        public decimal? ColumnWidth { get; set;} 
+
+        /// <summary>
+        ///     The width of columns expressed as a ratio. Columns fill the available width
+        ///     in proportion of their specified column widths.
+        /// </summary>
+        [JsonPropertyName(@"columnwidth")]
+        [Array]
+        public IList<decimal?> ColumnWidthArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  columnwidth .
+        /// </summary>
+        [JsonPropertyName(@"columnwidthsrc")]
+        public string ColumnWidthSrc { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra data each datum. This may be useful when listening to hover,
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
+        /// </summary>
+        [JsonPropertyName(@"customdata")]
+        public IList<object> CustomData { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        /// </summary>
+        [JsonPropertyName(@"customdatasrc")]
+        public string CustomDataSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Domain.
+        /// </summary>
+        [JsonPropertyName(@"domain")]
+        public Plotly.Blazor.Traces.TableLib.Domain Domain { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Header.
+        /// </summary>
+        [JsonPropertyName(@"header")]
+        public Plotly.Blazor.Traces.TableLib.Header Header { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        public Plotly.Blazor.Traces.TableLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.TableLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        /// </summary>
+        [JsonPropertyName(@"hoverinfosrc")]
+        public string HoverInfoSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the HoverLabel.
+        /// </summary>
+        [JsonPropertyName(@"hoverlabel")]
+        public Plotly.Blazor.Traces.TableLib.HoverLabel HoverLabel { get; set;} 
+
+        /// <summary>
+        ///     Assigns id labels to each datum. These ids for object constancy of data
+        ///     points during animation. Should be an array of strings, not numbers or any
+        ///     other type.
+        /// </summary>
+        [JsonPropertyName(@"ids")]
+        public IList<object> Ids { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        /// </summary>
+        [JsonPropertyName(@"idssrc")]
+        public string IdsSrc { get; set;} 
 
         /// <summary>
         ///     Gets or sets the LegendGroupTitle.
@@ -48,35 +150,6 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"legendrank")]
         public decimal? LegendRank { get; set;} 
-
-        /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Assign an id to this trace, Use this to provide object constancy between
-        ///     traces during animations and transitions.
-        /// </summary>
-        [JsonPropertyName(@"uid")]
-        public string UId { get; set;} 
-
-        /// <summary>
-        ///     Assigns id labels to each datum. These ids for object constancy of data
-        ///     points during animation. Should be an array of strings, not numbers or any
-        ///     other type.
-        /// </summary>
-        [JsonPropertyName(@"ids")]
-        public IList<object> Ids { get; set;} 
-
-        /// <summary>
-        ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, <c>scatter</c> traces also appends
-        ///     customdata items in the markers DOM elements
-        /// </summary>
-        [JsonPropertyName(@"customdata")]
-        public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
@@ -108,33 +181,29 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired.
+        ///     Sets the source reference on Chart Studio Cloud for  meta .
         /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        public Plotly.Blazor.Traces.TableLib.HoverInfoFlag? HoverInfo { get; set;} 
+        [JsonPropertyName(@"metasrc")]
+        public string MetaSrc { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired.
+        ///     Sets the trace name. The trace name appear as the legend item and on hover.
         /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.TableLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the HoverLabel.
-        /// </summary>
-        [JsonPropertyName(@"hoverlabel")]
-        public Plotly.Blazor.Traces.TableLib.HoverLabel HoverLabel { get; set;} 
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
         /// </summary>
         [JsonPropertyName(@"stream")]
         public Plotly.Blazor.Traces.TableLib.Stream Stream { get; set;} 
+
+        /// <summary>
+        ///     Assign an id to this trace, Use this to provide object constancy between
+        ///     traces during animations and transitions.
+        /// </summary>
+        [JsonPropertyName(@"uid")]
+        public string UId { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
@@ -154,81 +223,12 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Domain.
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
+        ///     itself is visible).
         /// </summary>
-        [JsonPropertyName(@"domain")]
-        public Plotly.Blazor.Traces.TableLib.Domain Domain { get; set;} 
-
-        /// <summary>
-        ///     The width of columns expressed as a ratio. Columns fill the available width
-        ///     in proportion of their specified column widths.
-        /// </summary>
-        [JsonPropertyName(@"columnwidth")]
-        public decimal? ColumnWidth { get; set;} 
-
-        /// <summary>
-        ///     The width of columns expressed as a ratio. Columns fill the available width
-        ///     in proportion of their specified column widths.
-        /// </summary>
-        [JsonPropertyName(@"columnwidth")]
-        [Array]
-        public IList<decimal?> ColumnWidthArray { get; set;} 
-
-        /// <summary>
-        ///     Specifies the rendered order of the data columns; for example, a value <c>2</c>
-        ///     at position <c>0</c> means that column index <c>0</c> in the data will be
-        ///     rendered as the third column, as columns have an index base of zero.
-        /// </summary>
-        [JsonPropertyName(@"columnorder")]
-        public IList<object> ColumnOrder { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Header.
-        /// </summary>
-        [JsonPropertyName(@"header")]
-        public Plotly.Blazor.Traces.TableLib.Header Header { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Cells.
-        /// </summary>
-        [JsonPropertyName(@"cells")]
-        public Plotly.Blazor.Traces.TableLib.Cells Cells { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
-        /// </summary>
-        [JsonPropertyName(@"idssrc")]
-        public string IdsSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
-        /// </summary>
-        [JsonPropertyName(@"customdatasrc")]
-        public string CustomDataSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
-        /// </summary>
-        [JsonPropertyName(@"metasrc")]
-        public string MetaSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
-        /// </summary>
-        [JsonPropertyName(@"hoverinfosrc")]
-        public string HoverInfoSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  columnwidth .
-        /// </summary>
-        [JsonPropertyName(@"columnwidthsrc")]
-        public string ColumnWidthSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  columnorder .
-        /// </summary>
-        [JsonPropertyName(@"columnordersrc")]
-        public string ColumnOrderSrc { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public Plotly.Blazor.Traces.TableLib.VisibleEnum? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -251,79 +251,19 @@ namespace Plotly.Blazor.Traces
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Cells == other.Cells ||
+                    Cells != null &&
+                    Cells.Equals(other.Cells)
                 ) && 
                 (
-                    LegendGroupTitle == other.LegendGroupTitle ||
-                    LegendGroupTitle != null &&
-                    LegendGroupTitle.Equals(other.LegendGroupTitle)
-                ) && 
-                (
-                    LegendRank == other.LegendRank ||
-                    LegendRank != null &&
-                    LegendRank.Equals(other.LegendRank)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    UId == other.UId ||
-                    UId != null &&
-                    UId.Equals(other.UId)
-                ) && 
-                (
-                    Equals(Ids, other.Ids) ||
-                    Ids != null && other.Ids != null &&
-                    Ids.SequenceEqual(other.Ids)
+                    Equals(ColumnOrder, other.ColumnOrder) ||
+                    ColumnOrder != null && other.ColumnOrder != null &&
+                    ColumnOrder.SequenceEqual(other.ColumnOrder)
                 ) &&
                 (
-                    Equals(CustomData, other.CustomData) ||
-                    CustomData != null && other.CustomData != null &&
-                    CustomData.SequenceEqual(other.CustomData)
-                ) &&
-                (
-                    Meta == other.Meta ||
-                    Meta != null &&
-                    Meta.Equals(other.Meta)
-                ) && 
-                (
-                    Equals(MetaArray, other.MetaArray) ||
-                    MetaArray != null && other.MetaArray != null &&
-                    MetaArray.SequenceEqual(other.MetaArray)
-                ) &&
-                (
-                    HoverInfo == other.HoverInfo ||
-                    HoverInfo != null &&
-                    HoverInfo.Equals(other.HoverInfo)
-                ) && 
-                (
-                    Equals(HoverInfoArray, other.HoverInfoArray) ||
-                    HoverInfoArray != null && other.HoverInfoArray != null &&
-                    HoverInfoArray.SequenceEqual(other.HoverInfoArray)
-                ) &&
-                (
-                    HoverLabel == other.HoverLabel ||
-                    HoverLabel != null &&
-                    HoverLabel.Equals(other.HoverLabel)
-                ) && 
-                (
-                    Stream == other.Stream ||
-                    Stream != null &&
-                    Stream.Equals(other.Stream)
-                ) && 
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
-                ) && 
-                (
-                    Domain == other.Domain ||
-                    Domain != null &&
-                    Domain.Equals(other.Domain)
+                    ColumnOrderSrc == other.ColumnOrderSrc ||
+                    ColumnOrderSrc != null &&
+                    ColumnOrderSrc.Equals(other.ColumnOrderSrc)
                 ) && 
                 (
                     ColumnWidth == other.ColumnWidth ||
@@ -336,49 +276,109 @@ namespace Plotly.Blazor.Traces
                     ColumnWidthArray.SequenceEqual(other.ColumnWidthArray)
                 ) &&
                 (
-                    Equals(ColumnOrder, other.ColumnOrder) ||
-                    ColumnOrder != null && other.ColumnOrder != null &&
-                    ColumnOrder.SequenceEqual(other.ColumnOrder)
+                    ColumnWidthSrc == other.ColumnWidthSrc ||
+                    ColumnWidthSrc != null &&
+                    ColumnWidthSrc.Equals(other.ColumnWidthSrc)
+                ) && 
+                (
+                    Equals(CustomData, other.CustomData) ||
+                    CustomData != null && other.CustomData != null &&
+                    CustomData.SequenceEqual(other.CustomData)
                 ) &&
-                (
-                    Header == other.Header ||
-                    Header != null &&
-                    Header.Equals(other.Header)
-                ) && 
-                (
-                    Cells == other.Cells ||
-                    Cells != null &&
-                    Cells.Equals(other.Cells)
-                ) && 
-                (
-                    IdsSrc == other.IdsSrc ||
-                    IdsSrc != null &&
-                    IdsSrc.Equals(other.IdsSrc)
-                ) && 
                 (
                     CustomDataSrc == other.CustomDataSrc ||
                     CustomDataSrc != null &&
                     CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    MetaSrc == other.MetaSrc ||
-                    MetaSrc != null &&
-                    MetaSrc.Equals(other.MetaSrc)
+                    Domain == other.Domain ||
+                    Domain != null &&
+                    Domain.Equals(other.Domain)
                 ) && 
+                (
+                    Header == other.Header ||
+                    Header != null &&
+                    Header.Equals(other.Header)
+                ) && 
+                (
+                    HoverInfo == other.HoverInfo ||
+                    HoverInfo != null &&
+                    HoverInfo.Equals(other.HoverInfo)
+                ) && 
+                (
+                    Equals(HoverInfoArray, other.HoverInfoArray) ||
+                    HoverInfoArray != null && other.HoverInfoArray != null &&
+                    HoverInfoArray.SequenceEqual(other.HoverInfoArray)
+                ) &&
                 (
                     HoverInfoSrc == other.HoverInfoSrc ||
                     HoverInfoSrc != null &&
                     HoverInfoSrc.Equals(other.HoverInfoSrc)
                 ) && 
                 (
-                    ColumnWidthSrc == other.ColumnWidthSrc ||
-                    ColumnWidthSrc != null &&
-                    ColumnWidthSrc.Equals(other.ColumnWidthSrc)
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
+                    HoverLabel.Equals(other.HoverLabel)
                 ) && 
                 (
-                    ColumnOrderSrc == other.ColumnOrderSrc ||
-                    ColumnOrderSrc != null &&
-                    ColumnOrderSrc.Equals(other.ColumnOrderSrc)
+                    Equals(Ids, other.Ids) ||
+                    Ids != null && other.Ids != null &&
+                    Ids.SequenceEqual(other.Ids)
+                ) &&
+                (
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
+                    IdsSrc.Equals(other.IdsSrc)
+                ) && 
+                (
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                ) && 
+                (
+                    LegendRank == other.LegendRank ||
+                    LegendRank != null &&
+                    LegendRank.Equals(other.LegendRank)
+                ) && 
+                (
+                    Meta == other.Meta ||
+                    Meta != null &&
+                    Meta.Equals(other.Meta)
+                ) && 
+                (
+                    Equals(MetaArray, other.MetaArray) ||
+                    MetaArray != null && other.MetaArray != null &&
+                    MetaArray.SequenceEqual(other.MetaArray)
+                ) &&
+                (
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
+                    MetaSrc.Equals(other.MetaSrc)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    Stream == other.Stream ||
+                    Stream != null &&
+                    Stream.Equals(other.Stream)
+                ) && 
+                (
+                    UId == other.UId ||
+                    UId != null &&
+                    UId.Equals(other.UId)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -389,32 +389,32 @@ namespace Plotly.Blazor.Traces
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
-                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
-                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
-                if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
-                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
-                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
-                if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
-                if (HoverInfoArray != null) hashCode = hashCode * 59 + HoverInfoArray.GetHashCode();
-                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
-                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
+                if (Cells != null) hashCode = hashCode * 59 + Cells.GetHashCode();
+                if (ColumnOrder != null) hashCode = hashCode * 59 + ColumnOrder.GetHashCode();
+                if (ColumnOrderSrc != null) hashCode = hashCode * 59 + ColumnOrderSrc.GetHashCode();
                 if (ColumnWidth != null) hashCode = hashCode * 59 + ColumnWidth.GetHashCode();
                 if (ColumnWidthArray != null) hashCode = hashCode * 59 + ColumnWidthArray.GetHashCode();
-                if (ColumnOrder != null) hashCode = hashCode * 59 + ColumnOrder.GetHashCode();
-                if (Header != null) hashCode = hashCode * 59 + Header.GetHashCode();
-                if (Cells != null) hashCode = hashCode * 59 + Cells.GetHashCode();
-                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
-                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
-                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
-                if (HoverInfoSrc != null) hashCode = hashCode * 59 + HoverInfoSrc.GetHashCode();
                 if (ColumnWidthSrc != null) hashCode = hashCode * 59 + ColumnWidthSrc.GetHashCode();
-                if (ColumnOrderSrc != null) hashCode = hashCode * 59 + ColumnOrderSrc.GetHashCode();
+                if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
+                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
+                if (Header != null) hashCode = hashCode * 59 + Header.GetHashCode();
+                if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
+                if (HoverInfoArray != null) hashCode = hashCode * 59 + HoverInfoArray.GetHashCode();
+                if (HoverInfoSrc != null) hashCode = hashCode * 59 + HoverInfoSrc.GetHashCode();
+                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
+                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
+                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
+                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
+                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
+                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

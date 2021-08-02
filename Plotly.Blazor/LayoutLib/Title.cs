@@ -18,6 +18,23 @@ namespace Plotly.Blazor.LayoutLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
+        ///     Sets the title font. Note that the title&#39;s font used to be customized
+        ///     by the now deprecated <c>titlefont</c> attribute.
+        /// </summary>
+        [JsonPropertyName(@"font")]
+        public Plotly.Blazor.LayoutLib.TitleLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     Sets the padding of the title. Each padding value only applies when the
+        ///     corresponding <c>xanchor</c>/<c>yanchor</c> value is set accordingly. E.g.
+        ///     for left padding to take effect, <c>xanchor</c> must be set to <c>left</c>.
+        ///     The same rule applies if <c>xanchor</c>/<c>yanchor</c> is determined automatically.
+        ///     Padding is muted if the respective anchor value is <c>middle</c>/<c>center</c>.
+        /// </summary>
+        [JsonPropertyName(@"pad")]
+        public Plotly.Blazor.LayoutLib.TitleLib.Pad Pad { get; set;} 
+
+        /// <summary>
         ///     Sets the plot&#39;s title. Note that before the existence of <c>title.text</c>,
         ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
         ///     itself. This behavior has been deprecated.
@@ -26,42 +43,11 @@ namespace Plotly.Blazor.LayoutLib
         public string Text { get; set;} 
 
         /// <summary>
-        ///     Sets the title font. Note that the title&#39;s font used to be customized
-        ///     by the now deprecated <c>titlefont</c> attribute.
-        /// </summary>
-        [JsonPropertyName(@"font")]
-        public Plotly.Blazor.LayoutLib.TitleLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Sets the container <c>x</c> refers to. <c>container</c> spans the entire
-        ///     <c>width</c> of the plot. <c>paper</c> refers to the width of the plotting
-        ///     area only.
-        /// </summary>
-        [JsonPropertyName(@"xref")]
-        public Plotly.Blazor.LayoutLib.TitleLib.XRefEnum? XRef { get; set;} 
-
-        /// <summary>
-        ///     Sets the container <c>y</c> refers to. <c>container</c> spans the entire
-        ///     <c>height</c> of the plot. <c>paper</c> refers to the height of the plotting
-        ///     area only.
-        /// </summary>
-        [JsonPropertyName(@"yref")]
-        public Plotly.Blazor.LayoutLib.TitleLib.YRefEnum? YRef { get; set;} 
-
-        /// <summary>
         ///     Sets the x position with respect to <c>xref</c> in normalized coordinates
         ///     from <c>0</c> (left) to <c>1</c> (right).
         /// </summary>
         [JsonPropertyName(@"x")]
         public decimal? X { get; set;} 
-
-        /// <summary>
-        ///     Sets the y position with respect to <c>yref</c> in normalized coordinates
-        ///     from <c>0</c> (bottom) to <c>1</c> (top). <c>auto</c> places the baseline
-        ///     of the title onto the vertical center of the top margin.
-        /// </summary>
-        [JsonPropertyName(@"y")]
-        public decimal? Y { get; set;} 
 
         /// <summary>
         ///     Sets the title&#39;s horizontal alignment with respect to its x position.
@@ -74,6 +60,22 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.TitleLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
+        ///     Sets the container <c>x</c> refers to. <c>container</c> spans the entire
+        ///     <c>width</c> of the plot. <c>paper</c> refers to the width of the plotting
+        ///     area only.
+        /// </summary>
+        [JsonPropertyName(@"xref")]
+        public Plotly.Blazor.LayoutLib.TitleLib.XRefEnum? XRef { get; set;} 
+
+        /// <summary>
+        ///     Sets the y position with respect to <c>yref</c> in normalized coordinates
+        ///     from <c>0</c> (bottom) to <c>1</c> (top). <c>auto</c> places the baseline
+        ///     of the title onto the vertical center of the top margin.
+        /// </summary>
+        [JsonPropertyName(@"y")]
+        public decimal? Y { get; set;} 
+
+        /// <summary>
         ///     Sets the title&#39;s vertical alignment with respect to its y position.
         ///     <c>top</c> means that the title&#39;s cap line is at y, <c>bottom</c> means
         ///     that the title&#39;s baseline is at y and <c>middle</c> means that the title&#39;s
@@ -84,14 +86,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.TitleLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the padding of the title. Each padding value only applies when the
-        ///     corresponding <c>xanchor</c>/<c>yanchor</c> value is set accordingly. E.g.
-        ///     for left padding to take effect, <c>xanchor</c> must be set to <c>left</c>.
-        ///     The same rule applies if <c>xanchor</c>/<c>yanchor</c> is determined automatically.
-        ///     Padding is muted if the respective anchor value is <c>middle</c>/<c>center</c>.
+        ///     Sets the container <c>y</c> refers to. <c>container</c> spans the entire
+        ///     <c>height</c> of the plot. <c>paper</c> refers to the height of the plotting
+        ///     area only.
         /// </summary>
-        [JsonPropertyName(@"pad")]
-        public Plotly.Blazor.LayoutLib.TitleLib.Pad Pad { get; set;} 
+        [JsonPropertyName(@"yref")]
+        public Plotly.Blazor.LayoutLib.TitleLib.YRefEnum? YRef { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -109,24 +109,19 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    XRef == other.XRef ||
-                    XRef != null &&
-                    XRef.Equals(other.XRef)
+                    Pad == other.Pad ||
+                    Pad != null &&
+                    Pad.Equals(other.Pad)
                 ) && 
                 (
-                    YRef == other.YRef ||
-                    YRef != null &&
-                    YRef.Equals(other.YRef)
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 ) && 
                 (
                     X == other.X ||
@@ -134,14 +129,19 @@ namespace Plotly.Blazor.LayoutLib
                     X.Equals(other.X)
                 ) && 
                 (
-                    Y == other.Y ||
-                    Y != null &&
-                    Y.Equals(other.Y)
-                ) && 
-                (
                     XAnchor == other.XAnchor ||
                     XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
+                ) && 
+                (
+                    XRef == other.XRef ||
+                    XRef != null &&
+                    XRef.Equals(other.XRef)
+                ) && 
+                (
+                    Y == other.Y ||
+                    Y != null &&
+                    Y.Equals(other.Y)
                 ) && 
                 (
                     YAnchor == other.YAnchor ||
@@ -149,9 +149,9 @@ namespace Plotly.Blazor.LayoutLib
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    Pad == other.Pad ||
-                    Pad != null &&
-                    Pad.Equals(other.Pad)
+                    YRef == other.YRef ||
+                    YRef != null &&
+                    YRef.Equals(other.YRef)
                 );
         }
 
@@ -161,15 +161,15 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
-                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
-                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
-                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
-                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
-                if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
+                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
+                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
+                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
+                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
+                if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
+                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
                 return hashCode;
             }
         }

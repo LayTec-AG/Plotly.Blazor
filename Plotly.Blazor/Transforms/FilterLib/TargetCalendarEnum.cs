@@ -33,6 +33,8 @@ namespace Plotly.Blazor.Transforms.FilterLib
         Hebrew,
         [EnumMember(Value=@"islamic")]
         Islamic,
+        [EnumMember(Value=@"jalali")]
+        Jalali,
         [EnumMember(Value=@"julian")]
         Julian,
         [EnumMember(Value=@"mayan")]
@@ -43,8 +45,6 @@ namespace Plotly.Blazor.Transforms.FilterLib
         Nepali,
         [EnumMember(Value=@"persian")]
         Persian,
-        [EnumMember(Value=@"jalali")]
-        Jalali,
         [EnumMember(Value=@"taiwan")]
         Taiwan,
         [EnumMember(Value=@"thai")]

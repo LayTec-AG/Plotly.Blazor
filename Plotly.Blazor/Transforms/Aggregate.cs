@@ -26,6 +26,12 @@ namespace Plotly.Blazor.Transforms
         public TransformTypeEnum? Type { get; } = TransformTypeEnum.Aggregate;
 
         /// <summary>
+        ///     Gets or sets the Aggregations.
+        /// </summary>
+        [JsonPropertyName(@"aggregations")]
+        public IList<Plotly.Blazor.Transforms.AggregateLib.Aggregation> Aggregations { get; set;} 
+
+        /// <summary>
         ///     Determines whether this aggregate transform is enabled or disabled.
         /// </summary>
         [JsonPropertyName(@"enabled")]
@@ -59,12 +65,6 @@ namespace Plotly.Blazor.Transforms
         public IList<string> GroupsArray { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Aggregations.
-        /// </summary>
-        [JsonPropertyName(@"aggregations")]
-        public IList<Plotly.Blazor.Transforms.AggregateLib.Aggregation> Aggregations { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  groups .
         /// </summary>
         [JsonPropertyName(@"groupssrc")]
@@ -91,6 +91,11 @@ namespace Plotly.Blazor.Transforms
                     Type.Equals(other.Type)
                 ) && 
                 (
+                    Equals(Aggregations, other.Aggregations) ||
+                    Aggregations != null && other.Aggregations != null &&
+                    Aggregations.SequenceEqual(other.Aggregations)
+                ) &&
+                (
                     Enabled == other.Enabled ||
                     Enabled != null &&
                     Enabled.Equals(other.Enabled)
@@ -106,11 +111,6 @@ namespace Plotly.Blazor.Transforms
                     GroupsArray.SequenceEqual(other.GroupsArray)
                 ) &&
                 (
-                    Equals(Aggregations, other.Aggregations) ||
-                    Aggregations != null && other.Aggregations != null &&
-                    Aggregations.SequenceEqual(other.Aggregations)
-                ) &&
-                (
                     GroupsSrc == other.GroupsSrc ||
                     GroupsSrc != null &&
                     GroupsSrc.Equals(other.GroupsSrc)
@@ -124,10 +124,10 @@ namespace Plotly.Blazor.Transforms
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Aggregations != null) hashCode = hashCode * 59 + Aggregations.GetHashCode();
                 if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
                 if (Groups != null) hashCode = hashCode * 59 + Groups.GetHashCode();
                 if (GroupsArray != null) hashCode = hashCode * 59 + GroupsArray.GetHashCode();
-                if (Aggregations != null) hashCode = hashCode * 59 + Aggregations.GetHashCode();
                 if (GroupsSrc != null) hashCode = hashCode * 59 + GroupsSrc.GetHashCode();
                 return hashCode;
             }

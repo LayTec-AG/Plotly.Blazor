@@ -18,6 +18,18 @@ namespace Plotly.Blazor.Traces.ViolinLib
     public class Box : IEquatable<Box>
     {
         /// <summary>
+        ///     Sets the inner box plot fill color.
+        /// </summary>
+        [JsonPropertyName(@"fillcolor")]
+        public object FillColor { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.ViolinLib.BoxLib.Line Line { get; set;} 
+
+        /// <summary>
         ///     Determines if an miniature box plot is drawn inside the violins. 
         /// </summary>
         [JsonPropertyName(@"visible")]
@@ -29,18 +41,6 @@ namespace Plotly.Blazor.Traces.ViolinLib
         /// </summary>
         [JsonPropertyName(@"width")]
         public decimal? Width { get; set;} 
-
-        /// <summary>
-        ///     Sets the inner box plot fill color.
-        /// </summary>
-        [JsonPropertyName(@"fillcolor")]
-        public object FillColor { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Line.
-        /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.ViolinLib.BoxLib.Line Line { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -58,16 +58,6 @@ namespace Plotly.Blazor.Traces.ViolinLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
                     FillColor == other.FillColor ||
                     FillColor != null &&
                     FillColor.Equals(other.FillColor)
@@ -76,6 +66,16 @@ namespace Plotly.Blazor.Traces.ViolinLib
                     Line == other.Line ||
                     Line != null &&
                     Line.Equals(other.Line)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -85,10 +85,10 @@ namespace Plotly.Blazor.Traces.ViolinLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

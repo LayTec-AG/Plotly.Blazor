@@ -42,27 +42,22 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Sets the orientation of the legend.
+        ///     Determines the behavior on legend item click. <c>toggle</c> toggles the
+        ///     visibility of the item clicked on the graph. <c>toggleothers</c> makes the
+        ///     clicked item the sole visible item on the graph. <c>false</c> disable legend
+        ///     item click interactions.
         /// </summary>
-        [JsonPropertyName(@"orientation")]
-        public Plotly.Blazor.LayoutLib.LegendLib.OrientationEnum? Orientation { get; set;} 
+        [JsonPropertyName(@"itemclick")]
+        public Plotly.Blazor.LayoutLib.LegendLib.ItemClickEnum? ItemClick { get; set;} 
 
         /// <summary>
-        ///     Determines the order at which the legend items are displayed. If <c>normal</c>,
-        ///     the items are displayed top-to-bottom in the same order as the input data.
-        ///     If <c>reversed</c>, the items are displayed in the opposite order as <c>normal</c>.
-        ///     If <c>grouped</c>, the items are displayed in groups (when a trace <c>legendgroup</c>
-        ///     is provided). if <c>grouped+reversed</c>, the items are displayed in the
-        ///     opposite order as <c>grouped</c>.
+        ///     Determines the behavior on legend item double-click. <c>toggle</c> toggles
+        ///     the visibility of the item clicked on the graph. <c>toggleothers</c> makes
+        ///     the clicked item the sole visible item on the graph. <c>false</c> disable
+        ///     legend item double-click interactions.
         /// </summary>
-        [JsonPropertyName(@"traceorder")]
-        public Plotly.Blazor.LayoutLib.LegendLib.TraceOrderFlag? TraceOrder { get; set;} 
-
-        /// <summary>
-        ///     Sets the amount of vertical space (in px) between legend groups.
-        /// </summary>
-        [JsonPropertyName(@"tracegroupgap")]
-        public decimal? TraceGroupGap { get; set;} 
+        [JsonPropertyName(@"itemdoubleclick")]
+        public Plotly.Blazor.LayoutLib.LegendLib.ItemDoubleClickEnum? ItemDoubleClick { get; set;} 
 
         /// <summary>
         ///     Determines if the legend items symbols scale with their corresponding <c>trace</c>
@@ -80,22 +75,47 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? ItemWidth { get; set;} 
 
         /// <summary>
-        ///     Determines the behavior on legend item click. <c>toggle</c> toggles the
-        ///     visibility of the item clicked on the graph. <c>toggleothers</c> makes the
-        ///     clicked item the sole visible item on the graph. <c>false</c> disable legend
-        ///     item click interactions.
+        ///     Sets the orientation of the legend.
         /// </summary>
-        [JsonPropertyName(@"itemclick")]
-        public Plotly.Blazor.LayoutLib.LegendLib.ItemClickEnum? ItemClick { get; set;} 
+        [JsonPropertyName(@"orientation")]
+        public Plotly.Blazor.LayoutLib.LegendLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
-        ///     Determines the behavior on legend item double-click. <c>toggle</c> toggles
-        ///     the visibility of the item clicked on the graph. <c>toggleothers</c> makes
-        ///     the clicked item the sole visible item on the graph. <c>false</c> disable
-        ///     legend item double-click interactions.
+        ///     Gets or sets the Title.
         /// </summary>
-        [JsonPropertyName(@"itemdoubleclick")]
-        public Plotly.Blazor.LayoutLib.LegendLib.ItemDoubleClickEnum? ItemDoubleClick { get; set;} 
+        [JsonPropertyName(@"title")]
+        public Plotly.Blazor.LayoutLib.LegendLib.Title Title { get; set;} 
+
+        /// <summary>
+        ///     Sets the amount of vertical space (in px) between legend groups.
+        /// </summary>
+        [JsonPropertyName(@"tracegroupgap")]
+        public decimal? TraceGroupGap { get; set;} 
+
+        /// <summary>
+        ///     Determines the order at which the legend items are displayed. If <c>normal</c>,
+        ///     the items are displayed top-to-bottom in the same order as the input data.
+        ///     If <c>reversed</c>, the items are displayed in the opposite order as <c>normal</c>.
+        ///     If <c>grouped</c>, the items are displayed in groups (when a trace <c>legendgroup</c>
+        ///     is provided). if <c>grouped+reversed</c>, the items are displayed in the
+        ///     opposite order as <c>grouped</c>.
+        /// </summary>
+        [JsonPropertyName(@"traceorder")]
+        public Plotly.Blazor.LayoutLib.LegendLib.TraceOrderFlag? TraceOrder { get; set;} 
+
+        /// <summary>
+        ///     Controls persistence of legend-driven changes in trace and pie label visibility.
+        ///     Defaults to <c>layout.uirevision</c>.
+        /// </summary>
+        [JsonPropertyName(@"uirevision")]
+        public object UiRevision { get; set;} 
+
+        /// <summary>
+        ///     Sets the vertical alignment of the symbols with respect to their associated
+        ///     text.
+        /// </summary>
+        [JsonPropertyName(@"valign")]
+        public Plotly.Blazor.LayoutLib.LegendLib.VAlignEnum? VAlign { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the legend. Defaults
@@ -136,26 +156,6 @@ namespace Plotly.Blazor.LayoutLib
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.LegendLib.YAnchorEnum? YAnchor { get; set;} 
 
-        /// <summary>
-        ///     Controls persistence of legend-driven changes in trace and pie label visibility.
-        ///     Defaults to <c>layout.uirevision</c>.
-        /// </summary>
-        [JsonPropertyName(@"uirevision")]
-        public object UiRevision { get; set;} 
-
-        /// <summary>
-        ///     Sets the vertical alignment of the symbols with respect to their associated
-        ///     text.
-        /// </summary>
-        [JsonPropertyName(@"valign")]
-        public Plotly.Blazor.LayoutLib.LegendLib.VAlignEnum? VAlign { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Title.
-        /// </summary>
-        [JsonPropertyName(@"title")]
-        public Plotly.Blazor.LayoutLib.LegendLib.Title Title { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -192,19 +192,14 @@ namespace Plotly.Blazor.LayoutLib
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Orientation == other.Orientation ||
-                    Orientation != null &&
-                    Orientation.Equals(other.Orientation)
+                    ItemClick == other.ItemClick ||
+                    ItemClick != null &&
+                    ItemClick.Equals(other.ItemClick)
                 ) && 
                 (
-                    TraceOrder == other.TraceOrder ||
-                    TraceOrder != null &&
-                    TraceOrder.Equals(other.TraceOrder)
-                ) && 
-                (
-                    TraceGroupGap == other.TraceGroupGap ||
-                    TraceGroupGap != null &&
-                    TraceGroupGap.Equals(other.TraceGroupGap)
+                    ItemDoubleClick == other.ItemDoubleClick ||
+                    ItemDoubleClick != null &&
+                    ItemDoubleClick.Equals(other.ItemDoubleClick)
                 ) && 
                 (
                     ItemSizing == other.ItemSizing ||
@@ -217,14 +212,34 @@ namespace Plotly.Blazor.LayoutLib
                     ItemWidth.Equals(other.ItemWidth)
                 ) && 
                 (
-                    ItemClick == other.ItemClick ||
-                    ItemClick != null &&
-                    ItemClick.Equals(other.ItemClick)
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
+                    Orientation.Equals(other.Orientation)
                 ) && 
                 (
-                    ItemDoubleClick == other.ItemDoubleClick ||
-                    ItemDoubleClick != null &&
-                    ItemDoubleClick.Equals(other.ItemDoubleClick)
+                    Title == other.Title ||
+                    Title != null &&
+                    Title.Equals(other.Title)
+                ) && 
+                (
+                    TraceGroupGap == other.TraceGroupGap ||
+                    TraceGroupGap != null &&
+                    TraceGroupGap.Equals(other.TraceGroupGap)
+                ) && 
+                (
+                    TraceOrder == other.TraceOrder ||
+                    TraceOrder != null &&
+                    TraceOrder.Equals(other.TraceOrder)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    VAlign == other.VAlign ||
+                    VAlign != null &&
+                    VAlign.Equals(other.VAlign)
                 ) && 
                 (
                     X == other.X ||
@@ -245,21 +260,6 @@ namespace Plotly.Blazor.LayoutLib
                     YAnchor == other.YAnchor ||
                     YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
-                ) && 
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
-                ) && 
-                (
-                    VAlign == other.VAlign ||
-                    VAlign != null &&
-                    VAlign.Equals(other.VAlign)
-                ) && 
-                (
-                    Title == other.Title ||
-                    Title != null &&
-                    Title.Equals(other.Title)
                 );
         }
 
@@ -273,20 +273,20 @@ namespace Plotly.Blazor.LayoutLib
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
-                if (TraceOrder != null) hashCode = hashCode * 59 + TraceOrder.GetHashCode();
-                if (TraceGroupGap != null) hashCode = hashCode * 59 + TraceGroupGap.GetHashCode();
-                if (ItemSizing != null) hashCode = hashCode * 59 + ItemSizing.GetHashCode();
-                if (ItemWidth != null) hashCode = hashCode * 59 + ItemWidth.GetHashCode();
                 if (ItemClick != null) hashCode = hashCode * 59 + ItemClick.GetHashCode();
                 if (ItemDoubleClick != null) hashCode = hashCode * 59 + ItemDoubleClick.GetHashCode();
+                if (ItemSizing != null) hashCode = hashCode * 59 + ItemSizing.GetHashCode();
+                if (ItemWidth != null) hashCode = hashCode * 59 + ItemWidth.GetHashCode();
+                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
+                if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
+                if (TraceGroupGap != null) hashCode = hashCode * 59 + TraceGroupGap.GetHashCode();
+                if (TraceOrder != null) hashCode = hashCode * 59 + TraceOrder.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (VAlign != null) hashCode = hashCode * 59 + VAlign.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (VAlign != null) hashCode = hashCode * 59 + VAlign.GetHashCode();
-                if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
                 return hashCode;
             }
         }

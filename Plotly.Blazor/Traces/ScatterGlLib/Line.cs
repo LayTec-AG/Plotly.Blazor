@@ -24,10 +24,10 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the line width (in px).
+        ///     Sets the style of the lines.
         /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
+        [JsonPropertyName(@"dash")]
+        public Plotly.Blazor.Traces.ScatterGlLib.LineLib.DashEnum? Dash { get; set;} 
 
         /// <summary>
         ///     Determines the line shape. The values correspond to step-wise line shapes.
@@ -36,10 +36,10 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
         public Plotly.Blazor.Traces.ScatterGlLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
-        ///     Sets the style of the lines.
+        ///     Sets the line width (in px).
         /// </summary>
-        [JsonPropertyName(@"dash")]
-        public Plotly.Blazor.Traces.ScatterGlLib.LineLib.DashEnum? Dash { get; set;} 
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -62,9 +62,9 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
+                    Dash == other.Dash ||
+                    Dash != null &&
+                    Dash.Equals(other.Dash)
                 ) && 
                 (
                     Shape == other.Shape ||
@@ -72,9 +72,9 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     Shape.Equals(other.Shape)
                 ) && 
                 (
-                    Dash == other.Dash ||
-                    Dash != null &&
-                    Dash.Equals(other.Dash)
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -85,9 +85,9 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
             {
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
+                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

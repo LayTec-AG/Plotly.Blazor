@@ -26,12 +26,199 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum? Type { get; } = TraceTypeEnum.ChoroplethMapBox;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
-        ///     trace is not drawn, but can appear as a legend item (provided that the legend
-        ///     itself is visible).
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>colorscale</c>. In case <c>colorscale</c>
+        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     be chosen according to whether numbers in the <c>color</c> array are all
+        ///     positive, all negative or mixed.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.VisibleEnum? Visible { get; set;} 
+        [JsonPropertyName(@"autocolorscale")]
+        public bool? AutoColorScale { get; set;} 
+
+        /// <summary>
+        ///     Determines if the choropleth polygons will be inserted before the layer
+        ///     with the specified ID. By default, choroplethmapbox traces are placed above
+        ///     the water layers. If set to &#39;&#39;, the layer will be inserted above
+        ///     every existing layer.
+        /// </summary>
+        [JsonPropertyName(@"below")]
+        public string Below { get; set;} 
+
+        /// <summary>
+        ///     Sets a reference to a shared color axis. References to these shared color
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
+        /// </summary>
+        [JsonPropertyName(@"coloraxis")]
+        public string ColorAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the ColorBar.
+        /// </summary>
+        [JsonPropertyName(@"colorbar")]
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.ColorBar ColorBar { get; set;} 
+
+        /// <summary>
+        ///     Sets the colorscale. The colorscale must be an array containing arrays mapping
+        ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
+        ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
+        ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
+        ///     To control the bounds of the colorscale in color space, use<c>zmin</c> and
+        ///     <c>zmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
+        ///     of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+        /// </summary>
+        [JsonPropertyName(@"colorscale")]
+        public object ColorScale { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra data each datum. This may be useful when listening to hover,
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
+        /// </summary>
+        [JsonPropertyName(@"customdata")]
+        public IList<object> CustomData { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        /// </summary>
+        [JsonPropertyName(@"customdatasrc")]
+        public string CustomDataSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the key in GeoJSON features which is used as id to match the items
+        ///     included in the <c>locations</c> array. Support nested property, for example
+        ///     <c>properties.name</c>.
+        /// </summary>
+        [JsonPropertyName(@"featureidkey")]
+        public string FeatureIdKey { get; set;} 
+
+        /// <summary>
+        ///     Sets the GeoJSON data associated with this trace. It can be set as a valid
+        ///     GeoJSON object or as a URL string. Note that we only accept GeoJSONs of
+        ///     type <c>FeatureCollection</c> or <c>Feature</c> with geometries of type
+        ///     <c>Polygon</c> or <c>MultiPolygon</c>.
+        /// </summary>
+        [JsonPropertyName(@"geojson")]
+        public object GeoJson { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ChoroplethMapBoxLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        /// </summary>
+        [JsonPropertyName(@"hoverinfosrc")]
+        public string HoverInfoSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the HoverLabel.
+        /// </summary>
+        [JsonPropertyName(@"hoverlabel")]
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.HoverLabel HoverLabel { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the information that appear on hover
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, every attributes that can be specified per-point (the ones
+        ///     that are &#39;arrayOk: true&#39;) are available. variable <c>properties</c>
+        ///     Anything contained in tag <c>&lt;extra&gt;</c> is displayed in the secondary
+        ///     box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide
+        ///     the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertemplate")]
+        public string HoverTemplate { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the information that appear on hover
+        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
+        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
+        ///     <c>xother</c> will be added to those with different x positions from the
+        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
+        ///     space on that side, only when this field is shown. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, every attributes that can be specified per-point (the ones
+        ///     that are &#39;arrayOk: true&#39;) are available. variable <c>properties</c>
+        ///     Anything contained in tag <c>&lt;extra&gt;</c> is displayed in the secondary
+        ///     box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide
+        ///     the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertemplate")]
+        [Array]
+        public IList<string> HoverTemplateArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        /// </summary>
+        [JsonPropertyName(@"hovertemplatesrc")]
+        public string HoverTemplateSrc { get; set;} 
+
+        /// <summary>
+        ///     Same as <c>text</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertext")]
+        public string HoverText { get; set;} 
+
+        /// <summary>
+        ///     Same as <c>text</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovertext")]
+        [Array]
+        public IList<string> HoverTextArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hovertext .
+        /// </summary>
+        [JsonPropertyName(@"hovertextsrc")]
+        public string HoverTextSrc { get; set;} 
+
+        /// <summary>
+        ///     Assigns id labels to each datum. These ids for object constancy of data
+        ///     points during animation. Should be an array of strings, not numbers or any
+        ///     other type.
+        /// </summary>
+        [JsonPropertyName(@"ids")]
+        public IList<object> Ids { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        /// </summary>
+        [JsonPropertyName(@"idssrc")]
+        public string IdsSrc { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -57,33 +244,23 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendRank { get; set;} 
 
         /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        ///     Sets which features found in <c>geojson</c> to plot using their feature
+        ///     <c>id</c> field.
         /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
+        [JsonPropertyName(@"locations")]
+        public IList<object> Locations { get; set;} 
 
         /// <summary>
-        ///     Assign an id to this trace, Use this to provide object constancy between
-        ///     traces during animations and transitions.
+        ///     Sets the source reference on Chart Studio Cloud for  locations .
         /// </summary>
-        [JsonPropertyName(@"uid")]
-        public string UId { get; set;} 
+        [JsonPropertyName(@"locationssrc")]
+        public string LocationsSrc { get; set;} 
 
         /// <summary>
-        ///     Assigns id labels to each datum. These ids for object constancy of data
-        ///     points during animation. Should be an array of strings, not numbers or any
-        ///     other type.
+        ///     Gets or sets the Marker.
         /// </summary>
-        [JsonPropertyName(@"ids")]
-        public IList<object> Ids { get; set;} 
-
-        /// <summary>
-        ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, <c>scatter</c> traces also appends
-        ///     customdata items in the markers DOM elements
-        /// </summary>
-        [JsonPropertyName(@"customdata")]
-        public IList<object> CustomData { get; set;} 
+        [JsonPropertyName(@"marker")]
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.Marker Marker { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
@@ -115,6 +292,32 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        /// </summary>
+        [JsonPropertyName(@"metasrc")]
+        public string MetaSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     Reverses the color mapping if true. If true, <c>zmin</c> will correspond
+        ///     to the last color in the array and <c>zmax</c> will correspond to the first
+        ///     color.
+        /// </summary>
+        [JsonPropertyName(@"reversescale")]
+        public bool? ReverseScale { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Selected.
+        /// </summary>
+        [JsonPropertyName(@"selected")]
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.Selected Selected { get; set;} 
+
+        /// <summary>
         ///     Array containing integer indices of selected points. Has an effect only
         ///     for traces that support selections. Note that an empty array means an empty
         ///     selection where the <c>unselected</c> are turned on for all points, whereas,
@@ -125,10 +328,17 @@ namespace Plotly.Blazor.Traces
         public object SelectedPoints { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the HoverLabel.
+        ///     Determines whether or not an item corresponding to this trace is shown in
+        ///     the legend.
         /// </summary>
-        [JsonPropertyName(@"hoverlabel")]
-        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.HoverLabel HoverLabel { get; set;} 
+        [JsonPropertyName(@"showlegend")]
+        public bool? ShowLegend { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not a colorbar is displayed for this trace.
+        /// </summary>
+        [JsonPropertyName(@"showscale")]
+        public bool? ShowScale { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
@@ -137,10 +347,44 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ChoroplethMapBoxLib.Stream Stream { get; set;} 
 
         /// <summary>
+        ///     Sets a reference between this trace&#39;s data coordinates and a mapbox
+        ///     subplot. If <c>mapbox</c> (the default value), the data refer to <c>layout.mapbox</c>.
+        ///     If <c>mapbox2</c>, the data refer to <c>layout.mapbox2</c>, and so on.
+        /// </summary>
+        [JsonPropertyName(@"subplot")]
+        public string Subplot { get; set;} 
+
+        /// <summary>
+        ///     Sets the text elements associated with each location.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
+
+        /// <summary>
+        ///     Sets the text elements associated with each location.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        [Array]
+        public IList<string> TextArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  text .
+        /// </summary>
+        [JsonPropertyName(@"textsrc")]
+        public string TextSrc { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         public IList<ITransform> Transforms { get; set;} 
+
+        /// <summary>
+        ///     Assign an id to this trace, Use this to provide object constancy between
+        ///     traces during animations and transitions.
+        /// </summary>
+        [JsonPropertyName(@"uid")]
+        public string UId { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
@@ -160,160 +404,24 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Sets which features found in <c>geojson</c> to plot using their feature
-        ///     <c>id</c> field.
-        /// </summary>
-        [JsonPropertyName(@"locations")]
-        public IList<object> Locations { get; set;} 
-
-        /// <summary>
-        ///     Sets the color values.
-        /// </summary>
-        [JsonPropertyName(@"z")]
-        public IList<object> Z { get; set;} 
-
-        /// <summary>
-        ///     Sets the GeoJSON data associated with this trace. It can be set as a valid
-        ///     GeoJSON object or as a URL string. Note that we only accept GeoJSONs of
-        ///     type <c>FeatureCollection</c> or <c>Feature</c> with geometries of type
-        ///     <c>Polygon</c> or <c>MultiPolygon</c>.
-        /// </summary>
-        [JsonPropertyName(@"geojson")]
-        public object GeoJson { get; set;} 
-
-        /// <summary>
-        ///     Sets the key in GeoJSON features which is used as id to match the items
-        ///     included in the <c>locations</c> array. Support nested property, for example
-        ///     <c>properties.name</c>.
-        /// </summary>
-        [JsonPropertyName(@"featureidkey")]
-        public string FeatureIdKey { get; set;} 
-
-        /// <summary>
-        ///     Determines if the choropleth polygons will be inserted before the layer
-        ///     with the specified ID. By default, choroplethmapbox traces are placed above
-        ///     the water layers. If set to &#39;&#39;, the layer will be inserted above
-        ///     every existing layer.
-        /// </summary>
-        [JsonPropertyName(@"below")]
-        public string Below { get; set;} 
-
-        /// <summary>
-        ///     Sets the text elements associated with each location.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
-        ///     Sets the text elements associated with each location.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        [Array]
-        public IList<string> TextArray { get; set;} 
-
-        /// <summary>
-        ///     Same as <c>text</c>.
-        /// </summary>
-        [JsonPropertyName(@"hovertext")]
-        public string HoverText { get; set;} 
-
-        /// <summary>
-        ///     Same as <c>text</c>.
-        /// </summary>
-        [JsonPropertyName(@"hovertext")]
-        [Array]
-        public IList<string> HoverTextArray { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Marker.
-        /// </summary>
-        [JsonPropertyName(@"marker")]
-        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.Marker Marker { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Selected.
-        /// </summary>
-        [JsonPropertyName(@"selected")]
-        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.Selected Selected { get; set;} 
-
-        /// <summary>
         ///     Gets or sets the Unselected.
         /// </summary>
         [JsonPropertyName(@"unselected")]
         public Plotly.Blazor.Traces.ChoroplethMapBoxLib.Unselected Unselected { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired.
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
+        ///     itself is visible).
         /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.HoverInfoFlag? HoverInfo { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired.
+        ///     Sets the color values.
         /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.ChoroplethMapBoxLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
-
-        /// <summary>
-        ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
-        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
-        ///     <c>xother</c> will be added to those with different x positions from the
-        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
-        ///     space on that side, only when this field is shown. Numbers are formatted
-        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
-        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
-        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
-        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
-        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
-        ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variable <c>properties</c>
-        ///     Anything contained in tag <c>&lt;extra&gt;</c> is displayed in the secondary
-        ///     box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide
-        ///     the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
-        /// </summary>
-        [JsonPropertyName(@"hovertemplate")]
-        public string HoverTemplate { get; set;} 
-
-        /// <summary>
-        ///     Template string used for rendering the information that appear on hover
-        ///     box. Note that this will override <c>hoverinfo</c>. Variables are inserted
-        ///     using %{variable}, for example &quot;y: %{y}&quot; as well as %{xother},
-        ///     {%_xother}, {%_xother_}, {%xother_}. When showing info for several points,
-        ///     <c>xother</c> will be added to those with different x positions from the
-        ///     first point. An underscore before or after <c>(x|y)other</c> will add a
-        ///     space on that side, only when this field is shown. Numbers are formatted
-        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
-        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
-        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
-        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
-        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
-        ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variable <c>properties</c>
-        ///     Anything contained in tag <c>&lt;extra&gt;</c> is displayed in the secondary
-        ///     box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide
-        ///     the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
-        /// </summary>
-        [JsonPropertyName(@"hovertemplate")]
-        [Array]
-        public IList<string> HoverTemplateArray { get; set;} 
-
-        /// <summary>
-        ///     Determines whether or not an item corresponding to this trace is shown in
-        ///     the legend.
-        /// </summary>
-        [JsonPropertyName(@"showlegend")]
-        public bool? ShowLegend { get; set;} 
+        [JsonPropertyName(@"z")]
+        public IList<object> Z { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -323,13 +431,6 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"zauto")]
         public bool? ZAuto { get; set;} 
-
-        /// <summary>
-        ///     Sets the lower bound of the color domain. Value should have the same units
-        ///     as in <c>z</c> and if set, <c>zmax</c> must be set as well.
-        /// </summary>
-        [JsonPropertyName(@"zmin")]
-        public decimal? ZMin { get; set;} 
 
         /// <summary>
         ///     Sets the upper bound of the color domain. Value should have the same units
@@ -347,118 +448,17 @@ namespace Plotly.Blazor.Traces
         public decimal? ZMid { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. The colorscale must be an array containing arrays mapping
-        ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
-        ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
-        ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
-        ///     To control the bounds of the colorscale in color space, use<c>zmin</c> and
-        ///     <c>zmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
-        ///     of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     Sets the lower bound of the color domain. Value should have the same units
+        ///     as in <c>z</c> and if set, <c>zmax</c> must be set as well.
         /// </summary>
-        [JsonPropertyName(@"colorscale")]
-        public object ColorScale { get; set;} 
-
-        /// <summary>
-        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
-        ///     true&#39;) or the palette determined by <c>colorscale</c>. In case <c>colorscale</c>
-        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
-        ///     be chosen according to whether numbers in the <c>color</c> array are all
-        ///     positive, all negative or mixed.
-        /// </summary>
-        [JsonPropertyName(@"autocolorscale")]
-        public bool? AutoColorScale { get; set;} 
-
-        /// <summary>
-        ///     Reverses the color mapping if true. If true, <c>zmin</c> will correspond
-        ///     to the last color in the array and <c>zmax</c> will correspond to the first
-        ///     color.
-        /// </summary>
-        [JsonPropertyName(@"reversescale")]
-        public bool? ReverseScale { get; set;} 
-
-        /// <summary>
-        ///     Determines whether or not a colorbar is displayed for this trace.
-        /// </summary>
-        [JsonPropertyName(@"showscale")]
-        public bool? ShowScale { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the ColorBar.
-        /// </summary>
-        [JsonPropertyName(@"colorbar")]
-        public Plotly.Blazor.Traces.ChoroplethMapBoxLib.ColorBar ColorBar { get; set;} 
-
-        /// <summary>
-        ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
-        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
-        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
-        ///     to the same color axis.
-        /// </summary>
-        [JsonPropertyName(@"coloraxis")]
-        public string ColorAxis { get; set;} 
-
-        /// <summary>
-        ///     Sets a reference between this trace&#39;s data coordinates and a mapbox
-        ///     subplot. If <c>mapbox</c> (the default value), the data refer to <c>layout.mapbox</c>.
-        ///     If <c>mapbox2</c>, the data refer to <c>layout.mapbox2</c>, and so on.
-        /// </summary>
-        [JsonPropertyName(@"subplot")]
-        public string Subplot { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
-        /// </summary>
-        [JsonPropertyName(@"idssrc")]
-        public string IdsSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
-        /// </summary>
-        [JsonPropertyName(@"customdatasrc")]
-        public string CustomDataSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
-        /// </summary>
-        [JsonPropertyName(@"metasrc")]
-        public string MetaSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  locations .
-        /// </summary>
-        [JsonPropertyName(@"locationssrc")]
-        public string LocationsSrc { get; set;} 
+        [JsonPropertyName(@"zmin")]
+        public decimal? ZMin { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  z .
         /// </summary>
         [JsonPropertyName(@"zsrc")]
         public string ZSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  text .
-        /// </summary>
-        [JsonPropertyName(@"textsrc")]
-        public string TextSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertext .
-        /// </summary>
-        [JsonPropertyName(@"hovertextsrc")]
-        public string HoverTextSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
-        /// </summary>
-        [JsonPropertyName(@"hoverinfosrc")]
-        public string HoverInfoSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
-        /// </summary>
-        [JsonPropertyName(@"hovertemplatesrc")]
-        public string HoverTemplateSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -481,9 +481,109 @@ namespace Plotly.Blazor.Traces
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
+                    AutoColorScale.Equals(other.AutoColorScale)
+                ) && 
+                (
+                    Below == other.Below ||
+                    Below != null &&
+                    Below.Equals(other.Below)
+                ) && 
+                (
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
+                    ColorAxis.Equals(other.ColorAxis)
+                ) && 
+                (
+                    ColorBar == other.ColorBar ||
+                    ColorBar != null &&
+                    ColorBar.Equals(other.ColorBar)
+                ) && 
+                (
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
+                    ColorScale.Equals(other.ColorScale)
+                ) && 
+                (
+                    Equals(CustomData, other.CustomData) ||
+                    CustomData != null && other.CustomData != null &&
+                    CustomData.SequenceEqual(other.CustomData)
+                ) &&
+                (
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
+                    CustomDataSrc.Equals(other.CustomDataSrc)
+                ) && 
+                (
+                    FeatureIdKey == other.FeatureIdKey ||
+                    FeatureIdKey != null &&
+                    FeatureIdKey.Equals(other.FeatureIdKey)
+                ) && 
+                (
+                    GeoJson == other.GeoJson ||
+                    GeoJson != null &&
+                    GeoJson.Equals(other.GeoJson)
+                ) && 
+                (
+                    HoverInfo == other.HoverInfo ||
+                    HoverInfo != null &&
+                    HoverInfo.Equals(other.HoverInfo)
+                ) && 
+                (
+                    Equals(HoverInfoArray, other.HoverInfoArray) ||
+                    HoverInfoArray != null && other.HoverInfoArray != null &&
+                    HoverInfoArray.SequenceEqual(other.HoverInfoArray)
+                ) &&
+                (
+                    HoverInfoSrc == other.HoverInfoSrc ||
+                    HoverInfoSrc != null &&
+                    HoverInfoSrc.Equals(other.HoverInfoSrc)
+                ) && 
+                (
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
+                    HoverLabel.Equals(other.HoverLabel)
+                ) && 
+                (
+                    HoverTemplate == other.HoverTemplate ||
+                    HoverTemplate != null &&
+                    HoverTemplate.Equals(other.HoverTemplate)
+                ) && 
+                (
+                    Equals(HoverTemplateArray, other.HoverTemplateArray) ||
+                    HoverTemplateArray != null && other.HoverTemplateArray != null &&
+                    HoverTemplateArray.SequenceEqual(other.HoverTemplateArray)
+                ) &&
+                (
+                    HoverTemplateSrc == other.HoverTemplateSrc ||
+                    HoverTemplateSrc != null &&
+                    HoverTemplateSrc.Equals(other.HoverTemplateSrc)
+                ) && 
+                (
+                    HoverText == other.HoverText ||
+                    HoverText != null &&
+                    HoverText.Equals(other.HoverText)
+                ) && 
+                (
+                    Equals(HoverTextArray, other.HoverTextArray) ||
+                    HoverTextArray != null && other.HoverTextArray != null &&
+                    HoverTextArray.SequenceEqual(other.HoverTextArray)
+                ) &&
+                (
+                    HoverTextSrc == other.HoverTextSrc ||
+                    HoverTextSrc != null &&
+                    HoverTextSrc.Equals(other.HoverTextSrc)
+                ) && 
+                (
+                    Equals(Ids, other.Ids) ||
+                    Ids != null && other.Ids != null &&
+                    Ids.SequenceEqual(other.Ids)
+                ) &&
+                (
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
+                    IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
                     LegendGroup == other.LegendGroup ||
@@ -501,25 +601,20 @@ namespace Plotly.Blazor.Traces
                     LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    UId == other.UId ||
-                    UId != null &&
-                    UId.Equals(other.UId)
-                ) && 
-                (
-                    Equals(Ids, other.Ids) ||
-                    Ids != null && other.Ids != null &&
-                    Ids.SequenceEqual(other.Ids)
+                    Equals(Locations, other.Locations) ||
+                    Locations != null && other.Locations != null &&
+                    Locations.SequenceEqual(other.Locations)
                 ) &&
                 (
-                    Equals(CustomData, other.CustomData) ||
-                    CustomData != null && other.CustomData != null &&
-                    CustomData.SequenceEqual(other.CustomData)
-                ) &&
+                    LocationsSrc == other.LocationsSrc ||
+                    LocationsSrc != null &&
+                    LocationsSrc.Equals(other.LocationsSrc)
+                ) && 
+                (
+                    Marker == other.Marker ||
+                    Marker != null &&
+                    Marker.Equals(other.Marker)
+                ) && 
                 (
                     Meta == other.Meta ||
                     Meta != null &&
@@ -531,14 +626,39 @@ namespace Plotly.Blazor.Traces
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
+                    MetaSrc.Equals(other.MetaSrc)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    ReverseScale == other.ReverseScale ||
+                    ReverseScale != null &&
+                    ReverseScale.Equals(other.ReverseScale)
+                ) && 
+                (
+                    Selected == other.Selected ||
+                    Selected != null &&
+                    Selected.Equals(other.Selected)
+                ) && 
+                (
                     SelectedPoints == other.SelectedPoints ||
                     SelectedPoints != null &&
                     SelectedPoints.Equals(other.SelectedPoints)
                 ) && 
                 (
-                    HoverLabel == other.HoverLabel ||
-                    HoverLabel != null &&
-                    HoverLabel.Equals(other.HoverLabel)
+                    ShowLegend == other.ShowLegend ||
+                    ShowLegend != null &&
+                    ShowLegend.Equals(other.ShowLegend)
+                ) && 
+                (
+                    ShowScale == other.ShowScale ||
+                    ShowScale != null &&
+                    ShowScale.Equals(other.ShowScale)
                 ) && 
                 (
                     Stream == other.Stream ||
@@ -546,39 +666,9 @@ namespace Plotly.Blazor.Traces
                     Stream.Equals(other.Stream)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
-                ) && 
-                (
-                    Equals(Locations, other.Locations) ||
-                    Locations != null && other.Locations != null &&
-                    Locations.SequenceEqual(other.Locations)
-                ) &&
-                (
-                    Equals(Z, other.Z) ||
-                    Z != null && other.Z != null &&
-                    Z.SequenceEqual(other.Z)
-                ) &&
-                (
-                    GeoJson == other.GeoJson ||
-                    GeoJson != null &&
-                    GeoJson.Equals(other.GeoJson)
-                ) && 
-                (
-                    FeatureIdKey == other.FeatureIdKey ||
-                    FeatureIdKey != null &&
-                    FeatureIdKey.Equals(other.FeatureIdKey)
-                ) && 
-                (
-                    Below == other.Below ||
-                    Below != null &&
-                    Below.Equals(other.Below)
+                    Subplot == other.Subplot ||
+                    Subplot != null &&
+                    Subplot.Equals(other.Subplot)
                 ) && 
                 (
                     Text == other.Text ||
@@ -591,24 +681,24 @@ namespace Plotly.Blazor.Traces
                     TextArray.SequenceEqual(other.TextArray)
                 ) &&
                 (
-                    HoverText == other.HoverText ||
-                    HoverText != null &&
-                    HoverText.Equals(other.HoverText)
+                    TextSrc == other.TextSrc ||
+                    TextSrc != null &&
+                    TextSrc.Equals(other.TextSrc)
                 ) && 
                 (
-                    Equals(HoverTextArray, other.HoverTextArray) ||
-                    HoverTextArray != null && other.HoverTextArray != null &&
-                    HoverTextArray.SequenceEqual(other.HoverTextArray)
+                    Equals(Transforms, other.Transforms) ||
+                    Transforms != null && other.Transforms != null &&
+                    Transforms.SequenceEqual(other.Transforms)
                 ) &&
                 (
-                    Marker == other.Marker ||
-                    Marker != null &&
-                    Marker.Equals(other.Marker)
+                    UId == other.UId ||
+                    UId != null &&
+                    UId.Equals(other.UId)
                 ) && 
                 (
-                    Selected == other.Selected ||
-                    Selected != null &&
-                    Selected.Equals(other.Selected)
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
                     Unselected == other.Unselected ||
@@ -616,39 +706,19 @@ namespace Plotly.Blazor.Traces
                     Unselected.Equals(other.Unselected)
                 ) && 
                 (
-                    HoverInfo == other.HoverInfo ||
-                    HoverInfo != null &&
-                    HoverInfo.Equals(other.HoverInfo)
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 ) && 
                 (
-                    Equals(HoverInfoArray, other.HoverInfoArray) ||
-                    HoverInfoArray != null && other.HoverInfoArray != null &&
-                    HoverInfoArray.SequenceEqual(other.HoverInfoArray)
+                    Equals(Z, other.Z) ||
+                    Z != null && other.Z != null &&
+                    Z.SequenceEqual(other.Z)
                 ) &&
-                (
-                    HoverTemplate == other.HoverTemplate ||
-                    HoverTemplate != null &&
-                    HoverTemplate.Equals(other.HoverTemplate)
-                ) && 
-                (
-                    Equals(HoverTemplateArray, other.HoverTemplateArray) ||
-                    HoverTemplateArray != null && other.HoverTemplateArray != null &&
-                    HoverTemplateArray.SequenceEqual(other.HoverTemplateArray)
-                ) &&
-                (
-                    ShowLegend == other.ShowLegend ||
-                    ShowLegend != null &&
-                    ShowLegend.Equals(other.ShowLegend)
-                ) && 
                 (
                     ZAuto == other.ZAuto ||
                     ZAuto != null &&
                     ZAuto.Equals(other.ZAuto)
-                ) && 
-                (
-                    ZMin == other.ZMin ||
-                    ZMin != null &&
-                    ZMin.Equals(other.ZMin)
                 ) && 
                 (
                     ZMax == other.ZMax ||
@@ -661,84 +731,14 @@ namespace Plotly.Blazor.Traces
                     ZMid.Equals(other.ZMid)
                 ) && 
                 (
-                    ColorScale == other.ColorScale ||
-                    ColorScale != null &&
-                    ColorScale.Equals(other.ColorScale)
-                ) && 
-                (
-                    AutoColorScale == other.AutoColorScale ||
-                    AutoColorScale != null &&
-                    AutoColorScale.Equals(other.AutoColorScale)
-                ) && 
-                (
-                    ReverseScale == other.ReverseScale ||
-                    ReverseScale != null &&
-                    ReverseScale.Equals(other.ReverseScale)
-                ) && 
-                (
-                    ShowScale == other.ShowScale ||
-                    ShowScale != null &&
-                    ShowScale.Equals(other.ShowScale)
-                ) && 
-                (
-                    ColorBar == other.ColorBar ||
-                    ColorBar != null &&
-                    ColorBar.Equals(other.ColorBar)
-                ) && 
-                (
-                    ColorAxis == other.ColorAxis ||
-                    ColorAxis != null &&
-                    ColorAxis.Equals(other.ColorAxis)
-                ) && 
-                (
-                    Subplot == other.Subplot ||
-                    Subplot != null &&
-                    Subplot.Equals(other.Subplot)
-                ) && 
-                (
-                    IdsSrc == other.IdsSrc ||
-                    IdsSrc != null &&
-                    IdsSrc.Equals(other.IdsSrc)
-                ) && 
-                (
-                    CustomDataSrc == other.CustomDataSrc ||
-                    CustomDataSrc != null &&
-                    CustomDataSrc.Equals(other.CustomDataSrc)
-                ) && 
-                (
-                    MetaSrc == other.MetaSrc ||
-                    MetaSrc != null &&
-                    MetaSrc.Equals(other.MetaSrc)
-                ) && 
-                (
-                    LocationsSrc == other.LocationsSrc ||
-                    LocationsSrc != null &&
-                    LocationsSrc.Equals(other.LocationsSrc)
+                    ZMin == other.ZMin ||
+                    ZMin != null &&
+                    ZMin.Equals(other.ZMin)
                 ) && 
                 (
                     ZSrc == other.ZSrc ||
                     ZSrc != null &&
                     ZSrc.Equals(other.ZSrc)
-                ) && 
-                (
-                    TextSrc == other.TextSrc ||
-                    TextSrc != null &&
-                    TextSrc.Equals(other.TextSrc)
-                ) && 
-                (
-                    HoverTextSrc == other.HoverTextSrc ||
-                    HoverTextSrc != null &&
-                    HoverTextSrc.Equals(other.HoverTextSrc)
-                ) && 
-                (
-                    HoverInfoSrc == other.HoverInfoSrc ||
-                    HoverInfoSrc != null &&
-                    HoverInfoSrc.Equals(other.HoverInfoSrc)
-                ) && 
-                (
-                    HoverTemplateSrc == other.HoverTemplateSrc ||
-                    HoverTemplateSrc != null &&
-                    HoverTemplateSrc.Equals(other.HoverTemplateSrc)
                 );
         }
 
@@ -749,58 +749,58 @@ namespace Plotly.Blazor.Traces
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
+                if (Below != null) hashCode = hashCode * 59 + Below.GetHashCode();
+                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
+                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
+                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
+                if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
+                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
+                if (FeatureIdKey != null) hashCode = hashCode * 59 + FeatureIdKey.GetHashCode();
+                if (GeoJson != null) hashCode = hashCode * 59 + GeoJson.GetHashCode();
+                if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
+                if (HoverInfoArray != null) hashCode = hashCode * 59 + HoverInfoArray.GetHashCode();
+                if (HoverInfoSrc != null) hashCode = hashCode * 59 + HoverInfoSrc.GetHashCode();
+                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
+                if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
+                if (HoverTemplateArray != null) hashCode = hashCode * 59 + HoverTemplateArray.GetHashCode();
+                if (HoverTemplateSrc != null) hashCode = hashCode * 59 + HoverTemplateSrc.GetHashCode();
+                if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
+                if (HoverTextArray != null) hashCode = hashCode * 59 + HoverTextArray.GetHashCode();
+                if (HoverTextSrc != null) hashCode = hashCode * 59 + HoverTextSrc.GetHashCode();
+                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
+                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
-                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
-                if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
+                if (Locations != null) hashCode = hashCode * 59 + Locations.GetHashCode();
+                if (LocationsSrc != null) hashCode = hashCode * 59 + LocationsSrc.GetHashCode();
+                if (Marker != null) hashCode = hashCode * 59 + Marker.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
                 if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
+                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
+                if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();
                 if (SelectedPoints != null) hashCode = hashCode * 59 + SelectedPoints.GetHashCode();
-                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
+                if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
+                if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (Locations != null) hashCode = hashCode * 59 + Locations.GetHashCode();
-                if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
-                if (GeoJson != null) hashCode = hashCode * 59 + GeoJson.GetHashCode();
-                if (FeatureIdKey != null) hashCode = hashCode * 59 + FeatureIdKey.GetHashCode();
-                if (Below != null) hashCode = hashCode * 59 + Below.GetHashCode();
+                if (Subplot != null) hashCode = hashCode * 59 + Subplot.GetHashCode();
                 if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (TextArray != null) hashCode = hashCode * 59 + TextArray.GetHashCode();
-                if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
-                if (HoverTextArray != null) hashCode = hashCode * 59 + HoverTextArray.GetHashCode();
-                if (Marker != null) hashCode = hashCode * 59 + Marker.GetHashCode();
-                if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();
+                if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
+                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
+                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Unselected != null) hashCode = hashCode * 59 + Unselected.GetHashCode();
-                if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
-                if (HoverInfoArray != null) hashCode = hashCode * 59 + HoverInfoArray.GetHashCode();
-                if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
-                if (HoverTemplateArray != null) hashCode = hashCode * 59 + HoverTemplateArray.GetHashCode();
-                if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
                 if (ZAuto != null) hashCode = hashCode * 59 + ZAuto.GetHashCode();
-                if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
                 if (ZMax != null) hashCode = hashCode * 59 + ZMax.GetHashCode();
                 if (ZMid != null) hashCode = hashCode * 59 + ZMid.GetHashCode();
-                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
-                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
-                if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
-                if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
-                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
-                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
-                if (Subplot != null) hashCode = hashCode * 59 + Subplot.GetHashCode();
-                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
-                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
-                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
-                if (LocationsSrc != null) hashCode = hashCode * 59 + LocationsSrc.GetHashCode();
+                if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
                 if (ZSrc != null) hashCode = hashCode * 59 + ZSrc.GetHashCode();
-                if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
-                if (HoverTextSrc != null) hashCode = hashCode * 59 + HoverTextSrc.GetHashCode();
-                if (HoverInfoSrc != null) hashCode = hashCode * 59 + HoverInfoSrc.GetHashCode();
-                if (HoverTemplateSrc != null) hashCode = hashCode * 59 + HoverTemplateSrc.GetHashCode();
                 return hashCode;
             }
         }

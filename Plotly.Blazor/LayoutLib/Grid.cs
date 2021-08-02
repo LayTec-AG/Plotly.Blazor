@@ -20,13 +20,30 @@ namespace Plotly.Blazor.LayoutLib
     public class Grid : IEquatable<Grid>
     {
         /// <summary>
-        ///     The number of rows in the grid. If you provide a 2D <c>subplots</c> array
-        ///     or a <c>yaxes</c> array, its length is used as the default. But it&#39;s
-        ///     also possible to have a different length, if you want to leave a row at
-        ///     the end for non-cartesian subplots.
+        ///     The number of columns in the grid. If you provide a 2D <c>subplots</c> array,
+        ///     the length of its longest row is used as the default. If you give an <c>xaxes</c>
+        ///     array, its length is used as the default. But it&#39;s also possible to
+        ///     have a different length, if you want to leave a row at the end for non-cartesian
+        ///     subplots.
         /// </summary>
-        [JsonPropertyName(@"rows")]
-        public int? Rows { get; set;} 
+        [JsonPropertyName(@"columns")]
+        public int? Columns { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Domain.
+        /// </summary>
+        [JsonPropertyName(@"domain")]
+        public Plotly.Blazor.LayoutLib.GridLib.Domain Domain { get; set;} 
+
+        /// <summary>
+        ///     If no <c>subplots</c>, <c>xaxes</c>, or <c>yaxes</c> are given but we do
+        ///     have <c>rows</c> and <c>columns</c>, we can generate defaults using consecutive
+        ///     axis IDs, in two ways: <c>coupled</c> gives one x axis per column and one
+        ///     y axis per row. <c>independent</c> uses a new xy pair for each cell, left-to-right
+        ///     across each row then iterating rows according to <c>roworder</c>.
+        /// </summary>
+        [JsonPropertyName(@"pattern")]
+        public Plotly.Blazor.LayoutLib.GridLib.PatternEnum? Pattern { get; set;} 
 
         /// <summary>
         ///     Is the first row the top or the bottom? Note that columns are always enumerated
@@ -36,14 +53,13 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.GridLib.RowOrderEnum? RowOrder { get; set;} 
 
         /// <summary>
-        ///     The number of columns in the grid. If you provide a 2D <c>subplots</c> array,
-        ///     the length of its longest row is used as the default. If you give an <c>xaxes</c>
-        ///     array, its length is used as the default. But it&#39;s also possible to
-        ///     have a different length, if you want to leave a row at the end for non-cartesian
-        ///     subplots.
+        ///     The number of rows in the grid. If you provide a 2D <c>subplots</c> array
+        ///     or a <c>yaxes</c> array, its length is used as the default. But it&#39;s
+        ///     also possible to have a different length, if you want to leave a row at
+        ///     the end for non-cartesian subplots.
         /// </summary>
-        [JsonPropertyName(@"columns")]
-        public int? Columns { get; set;} 
+        [JsonPropertyName(@"rows")]
+        public int? Rows { get; set;} 
 
         /// <summary>
         ///     Used for freeform grids, where some axes may be shared across subplots but
@@ -67,6 +83,22 @@ namespace Plotly.Blazor.LayoutLib
         public IList<object> XAxes { get; set;} 
 
         /// <summary>
+        ///     Horizontal space between grid cells, expressed as a fraction of the total
+        ///     width available to one cell. Defaults to 0.1 for coupled-axes grids and
+        ///     0.2 for independent grids.
+        /// </summary>
+        [JsonPropertyName(@"xgap")]
+        public decimal? XGap { get; set;} 
+
+        /// <summary>
+        ///     Sets where the x axis labels and titles go. <c>bottom</c> means the very
+        ///     bottom of the grid. &#39;bottom plot&#39; is the lowest plot that each x
+        ///     axis is used in. <c>top</c> and &#39;top plot&#39; are similar.
+        /// </summary>
+        [JsonPropertyName(@"xside")]
+        public Plotly.Blazor.LayoutLib.GridLib.XSideEnum? XSide { get; set;} 
+
+        /// <summary>
         ///     Used with <c>yaxes</c> when the x and y axes are shared across columns and
         ///     rows. Each entry should be an y axis id like <c>y</c>, <c>y2</c>, etc.,
         ///     or *&#39; to not put a y axis in that row. Entries other than &#39;* must
@@ -77,44 +109,12 @@ namespace Plotly.Blazor.LayoutLib
         public IList<object> YAxes { get; set;} 
 
         /// <summary>
-        ///     If no <c>subplots</c>, <c>xaxes</c>, or <c>yaxes</c> are given but we do
-        ///     have <c>rows</c> and <c>columns</c>, we can generate defaults using consecutive
-        ///     axis IDs, in two ways: <c>coupled</c> gives one x axis per column and one
-        ///     y axis per row. <c>independent</c> uses a new xy pair for each cell, left-to-right
-        ///     across each row then iterating rows according to <c>roworder</c>.
-        /// </summary>
-        [JsonPropertyName(@"pattern")]
-        public Plotly.Blazor.LayoutLib.GridLib.PatternEnum? Pattern { get; set;} 
-
-        /// <summary>
-        ///     Horizontal space between grid cells, expressed as a fraction of the total
-        ///     width available to one cell. Defaults to 0.1 for coupled-axes grids and
-        ///     0.2 for independent grids.
-        /// </summary>
-        [JsonPropertyName(@"xgap")]
-        public decimal? XGap { get; set;} 
-
-        /// <summary>
         ///     Vertical space between grid cells, expressed as a fraction of the total
         ///     height available to one cell. Defaults to 0.1 for coupled-axes grids and
         ///     0.3 for independent grids.
         /// </summary>
         [JsonPropertyName(@"ygap")]
         public decimal? YGap { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Domain.
-        /// </summary>
-        [JsonPropertyName(@"domain")]
-        public Plotly.Blazor.LayoutLib.GridLib.Domain Domain { get; set;} 
-
-        /// <summary>
-        ///     Sets where the x axis labels and titles go. <c>bottom</c> means the very
-        ///     bottom of the grid. &#39;bottom plot&#39; is the lowest plot that each x
-        ///     axis is used in. <c>top</c> and &#39;top plot&#39; are similar.
-        /// </summary>
-        [JsonPropertyName(@"xside")]
-        public Plotly.Blazor.LayoutLib.GridLib.XSideEnum? XSide { get; set;} 
 
         /// <summary>
         ///     Sets where the y axis labels and titles go. <c>left</c> means the very left
@@ -140,9 +140,19 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Rows == other.Rows ||
-                    Rows != null &&
-                    Rows.Equals(other.Rows)
+                    Columns == other.Columns ||
+                    Columns != null &&
+                    Columns.Equals(other.Columns)
+                ) && 
+                (
+                    Domain == other.Domain ||
+                    Domain != null &&
+                    Domain.Equals(other.Domain)
+                ) && 
+                (
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
+                    Pattern.Equals(other.Pattern)
                 ) && 
                 (
                     RowOrder == other.RowOrder ||
@@ -150,9 +160,9 @@ namespace Plotly.Blazor.LayoutLib
                     RowOrder.Equals(other.RowOrder)
                 ) && 
                 (
-                    Columns == other.Columns ||
-                    Columns != null &&
-                    Columns.Equals(other.Columns)
+                    Rows == other.Rows ||
+                    Rows != null &&
+                    Rows.Equals(other.Rows)
                 ) && 
                 (
                     Equals(Subplots, other.Subplots) ||
@@ -165,34 +175,24 @@ namespace Plotly.Blazor.LayoutLib
                     XAxes.SequenceEqual(other.XAxes)
                 ) &&
                 (
-                    Equals(YAxes, other.YAxes) ||
-                    YAxes != null && other.YAxes != null &&
-                    YAxes.SequenceEqual(other.YAxes)
-                ) &&
-                (
-                    Pattern == other.Pattern ||
-                    Pattern != null &&
-                    Pattern.Equals(other.Pattern)
-                ) && 
-                (
                     XGap == other.XGap ||
                     XGap != null &&
                     XGap.Equals(other.XGap)
                 ) && 
                 (
-                    YGap == other.YGap ||
-                    YGap != null &&
-                    YGap.Equals(other.YGap)
-                ) && 
-                (
-                    Domain == other.Domain ||
-                    Domain != null &&
-                    Domain.Equals(other.Domain)
-                ) && 
-                (
                     XSide == other.XSide ||
                     XSide != null &&
                     XSide.Equals(other.XSide)
+                ) && 
+                (
+                    Equals(YAxes, other.YAxes) ||
+                    YAxes != null && other.YAxes != null &&
+                    YAxes.SequenceEqual(other.YAxes)
+                ) &&
+                (
+                    YGap == other.YGap ||
+                    YGap != null &&
+                    YGap.Equals(other.YGap)
                 ) && 
                 (
                     YSide == other.YSide ||
@@ -207,17 +207,17 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Rows != null) hashCode = hashCode * 59 + Rows.GetHashCode();
-                if (RowOrder != null) hashCode = hashCode * 59 + RowOrder.GetHashCode();
                 if (Columns != null) hashCode = hashCode * 59 + Columns.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
+                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
+                if (RowOrder != null) hashCode = hashCode * 59 + RowOrder.GetHashCode();
+                if (Rows != null) hashCode = hashCode * 59 + Rows.GetHashCode();
                 if (Subplots != null) hashCode = hashCode * 59 + Subplots.GetHashCode();
                 if (XAxes != null) hashCode = hashCode * 59 + XAxes.GetHashCode();
-                if (YAxes != null) hashCode = hashCode * 59 + YAxes.GetHashCode();
-                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
                 if (XGap != null) hashCode = hashCode * 59 + XGap.GetHashCode();
-                if (YGap != null) hashCode = hashCode * 59 + YGap.GetHashCode();
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (XSide != null) hashCode = hashCode * 59 + XSide.GetHashCode();
+                if (YAxes != null) hashCode = hashCode * 59 + YAxes.GetHashCode();
+                if (YGap != null) hashCode = hashCode * 59 + YGap.GetHashCode();
                 if (YSide != null) hashCode = hashCode * 59 + YSide.GetHashCode();
                 return hashCode;
             }

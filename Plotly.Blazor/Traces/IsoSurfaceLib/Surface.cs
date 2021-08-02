@@ -18,12 +18,6 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
     public class Surface : IEquatable<Surface>
     {
         /// <summary>
-        ///     Hides/displays surfaces between minimum and maximum iso-values.
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
         ///     Sets the number of iso-surfaces between minimum and maximum iso-values.
         ///     By default this value is 2 meaning that only minimum and maximum surfaces
         ///     would be drawn.
@@ -51,6 +45,12 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         [JsonPropertyName(@"pattern")]
         public Plotly.Blazor.Traces.IsoSurfaceLib.SurfaceLib.PatternFlag? Pattern { get; set;} 
 
+        /// <summary>
+        ///     Hides/displays surfaces between minimum and maximum iso-values.
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -67,11 +67,6 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
-                ) && 
-                (
                     Count == other.Count ||
                     Count != null &&
                     Count.Equals(other.Count)
@@ -85,6 +80,11 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                     Pattern == other.Pattern ||
                     Pattern != null &&
                     Pattern.Equals(other.Pattern)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
                 );
         }
 
@@ -94,10 +94,10 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 if (Count != null) hashCode = hashCode * 59 + Count.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
                 if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 return hashCode;
             }
         }

@@ -26,12 +26,111 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum? Type { get; } = TraceTypeEnum.HeatMapGl;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
-        ///     trace is not drawn, but can appear as a legend item (provided that the legend
-        ///     itself is visible).
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>colorscale</c>. In case <c>colorscale</c>
+        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     be chosen according to whether numbers in the <c>color</c> array are all
+        ///     positive, all negative or mixed.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public Plotly.Blazor.Traces.HeatMapGlLib.VisibleEnum? Visible { get; set;} 
+        [JsonPropertyName(@"autocolorscale")]
+        public bool? AutoColorScale { get; set;} 
+
+        /// <summary>
+        ///     Sets a reference to a shared color axis. References to these shared color
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
+        /// </summary>
+        [JsonPropertyName(@"coloraxis")]
+        public string ColorAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the ColorBar.
+        /// </summary>
+        [JsonPropertyName(@"colorbar")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.ColorBar ColorBar { get; set;} 
+
+        /// <summary>
+        ///     Sets the colorscale. The colorscale must be an array containing arrays mapping
+        ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
+        ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
+        ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
+        ///     To control the bounds of the colorscale in color space, use<c>zmin</c> and
+        ///     <c>zmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
+        ///     of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+        /// </summary>
+        [JsonPropertyName(@"colorscale")]
+        public object ColorScale { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra data each datum. This may be useful when listening to hover,
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
+        /// </summary>
+        [JsonPropertyName(@"customdata")]
+        public IList<object> CustomData { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        /// </summary>
+        [JsonPropertyName(@"customdatasrc")]
+        public string CustomDataSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the x coordinate step. See <c>x0</c> for more info.
+        /// </summary>
+        [JsonPropertyName(@"dx")]
+        public decimal? DX { get; set;} 
+
+        /// <summary>
+        ///     Sets the y coordinate step. See <c>y0</c> for more info.
+        /// </summary>
+        [JsonPropertyName(@"dy")]
+        public decimal? Dy { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.HeatMapGlLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        /// </summary>
+        [JsonPropertyName(@"hoverinfosrc")]
+        public string HoverInfoSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the HoverLabel.
+        /// </summary>
+        [JsonPropertyName(@"hoverlabel")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.HoverLabel HoverLabel { get; set;} 
+
+        /// <summary>
+        ///     Assigns id labels to each datum. These ids for object constancy of data
+        ///     points during animation. Should be an array of strings, not numbers or any
+        ///     other type.
+        /// </summary>
+        [JsonPropertyName(@"ids")]
+        public IList<object> Ids { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        /// </summary>
+        [JsonPropertyName(@"idssrc")]
+        public string IdsSrc { get; set;} 
 
         /// <summary>
         ///     Gets or sets the LegendGroupTitle.
@@ -48,41 +147,6 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"legendrank")]
         public decimal? LegendRank { get; set;} 
-
-        /// <summary>
-        ///     Sets the opacity of the trace.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Assign an id to this trace, Use this to provide object constancy between
-        ///     traces during animations and transitions.
-        /// </summary>
-        [JsonPropertyName(@"uid")]
-        public string UId { get; set;} 
-
-        /// <summary>
-        ///     Assigns id labels to each datum. These ids for object constancy of data
-        ///     points during animation. Should be an array of strings, not numbers or any
-        ///     other type.
-        /// </summary>
-        [JsonPropertyName(@"ids")]
-        public IList<object> Ids { get; set;} 
-
-        /// <summary>
-        ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, <c>scatter</c> traces also appends
-        ///     customdata items in the markers DOM elements
-        /// </summary>
-        [JsonPropertyName(@"customdata")]
-        public IList<object> CustomData { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
@@ -114,27 +178,36 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired.
+        ///     Sets the source reference on Chart Studio Cloud for  meta .
         /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        public Plotly.Blazor.Traces.HeatMapGlLib.HoverInfoFlag? HoverInfo { get; set;} 
+        [JsonPropertyName(@"metasrc")]
+        public string MetaSrc { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired.
+        ///     Sets the trace name. The trace name appear as the legend item and on hover.
         /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.HeatMapGlLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the HoverLabel.
+        ///     Sets the opacity of the trace.
         /// </summary>
-        [JsonPropertyName(@"hoverlabel")]
-        public Plotly.Blazor.Traces.HeatMapGlLib.HoverLabel HoverLabel { get; set;} 
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
+
+        /// <summary>
+        ///     Reverses the color mapping if true. If true, <c>zmin</c> will correspond
+        ///     to the last color in the array and <c>zmax</c> will correspond to the first
+        ///     color.
+        /// </summary>
+        [JsonPropertyName(@"reversescale")]
+        public bool? ReverseScale { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not a colorbar is displayed for this trace.
+        /// </summary>
+        [JsonPropertyName(@"showscale")]
+        public bool? ShowScale { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
@@ -143,10 +216,35 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.HeatMapGlLib.Stream Stream { get; set;} 
 
         /// <summary>
+        ///     Sets the text elements associated with each z value.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public IList<object> Text { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  text .
+        /// </summary>
+        [JsonPropertyName(@"textsrc")]
+        public string TextSrc { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Transforms.
         /// </summary>
         [JsonPropertyName(@"transforms")]
         public IList<ITransform> Transforms { get; set;} 
+
+        /// <summary>
+        ///     Transposes the z data.
+        /// </summary>
+        [JsonPropertyName(@"transpose")]
+        public bool? Transpose { get; set;} 
+
+        /// <summary>
+        ///     Assign an id to this trace, Use this to provide object constancy between
+        ///     traces during animations and transitions.
+        /// </summary>
+        [JsonPropertyName(@"uid")]
+        public string UId { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
@@ -166,10 +264,12 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Sets the z data.
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
+        ///     itself is visible).
         /// </summary>
-        [JsonPropertyName(@"z")]
-        public IList<object> Z { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the x coordinates.
@@ -185,10 +285,27 @@ namespace Plotly.Blazor.Traces
         public object X0 { get; set;} 
 
         /// <summary>
-        ///     Sets the x coordinate step. See <c>x0</c> for more info.
+        ///     Sets a reference between this trace&#39;s x coordinates and a 2D cartesian
+        ///     x axis. If <c>x</c> (the default value), the x coordinates refer to <c>layout.xaxis</c>.
+        ///     If <c>x2</c>, the x coordinates refer to <c>layout.xaxis2</c>, and so on.
         /// </summary>
-        [JsonPropertyName(@"dx")]
-        public decimal? DX { get; set;} 
+        [JsonPropertyName(@"xaxis")]
+        public string XAxis { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  x .
+        /// </summary>
+        [JsonPropertyName(@"xsrc")]
+        public string XSrc { get; set;} 
+
+        /// <summary>
+        ///     If <c>array</c>, the heatmap&#39;s x coordinates are given by <c>x</c> (the
+        ///     default behavior when <c>x</c> is provided). If <c>scaled</c>, the heatmap&#39;s
+        ///     x coordinates are given by <c>x0</c> and <c>dx</c> (the default behavior
+        ///     when <c>x</c> is not provided).
+        /// </summary>
+        [JsonPropertyName(@"xtype")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.XTypeEnum? XType { get; set;} 
 
         /// <summary>
         ///     Sets the y coordinates.
@@ -204,31 +321,18 @@ namespace Plotly.Blazor.Traces
         public object Y0 { get; set;} 
 
         /// <summary>
-        ///     Sets the y coordinate step. See <c>y0</c> for more info.
+        ///     Sets a reference between this trace&#39;s y coordinates and a 2D cartesian
+        ///     y axis. If <c>y</c> (the default value), the y coordinates refer to <c>layout.yaxis</c>.
+        ///     If <c>y2</c>, the y coordinates refer to <c>layout.yaxis2</c>, and so on.
         /// </summary>
-        [JsonPropertyName(@"dy")]
-        public decimal? Dy { get; set;} 
+        [JsonPropertyName(@"yaxis")]
+        public string YAxis { get; set;} 
 
         /// <summary>
-        ///     Sets the text elements associated with each z value.
+        ///     Sets the source reference on Chart Studio Cloud for  y .
         /// </summary>
-        [JsonPropertyName(@"text")]
-        public IList<object> Text { get; set;} 
-
-        /// <summary>
-        ///     Transposes the z data.
-        /// </summary>
-        [JsonPropertyName(@"transpose")]
-        public bool? Transpose { get; set;} 
-
-        /// <summary>
-        ///     If <c>array</c>, the heatmap&#39;s x coordinates are given by <c>x</c> (the
-        ///     default behavior when <c>x</c> is provided). If <c>scaled</c>, the heatmap&#39;s
-        ///     x coordinates are given by <c>x0</c> and <c>dx</c> (the default behavior
-        ///     when <c>x</c> is not provided).
-        /// </summary>
-        [JsonPropertyName(@"xtype")]
-        public Plotly.Blazor.Traces.HeatMapGlLib.XTypeEnum? XType { get; set;} 
+        [JsonPropertyName(@"ysrc")]
+        public string YSrc { get; set;} 
 
         /// <summary>
         ///     If <c>array</c>, the heatmap&#39;s y coordinates are given by <c>y</c> (the
@@ -240,10 +344,10 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.HeatMapGlLib.YTypeEnum? YType { get; set;} 
 
         /// <summary>
-        ///     Picks a smoothing algorithm use to smooth <c>z</c> data.
+        ///     Sets the z data.
         /// </summary>
-        [JsonPropertyName(@"zsmooth")]
-        public Plotly.Blazor.Traces.HeatMapGlLib.ZSmoothEnum? ZSmooth { get; set;} 
+        [JsonPropertyName(@"z")]
+        public IList<object> Z { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -253,13 +357,6 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"zauto")]
         public bool? ZAuto { get; set;} 
-
-        /// <summary>
-        ///     Sets the lower bound of the color domain. Value should have the same units
-        ///     as in <c>z</c> and if set, <c>zmax</c> must be set as well.
-        /// </summary>
-        [JsonPropertyName(@"zmin")]
-        public decimal? ZMin { get; set;} 
 
         /// <summary>
         ///     Sets the upper bound of the color domain. Value should have the same units
@@ -277,120 +374,23 @@ namespace Plotly.Blazor.Traces
         public decimal? ZMid { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. The colorscale must be an array containing arrays mapping
-        ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
-        ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
-        ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
-        ///     To control the bounds of the colorscale in color space, use<c>zmin</c> and
-        ///     <c>zmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
-        ///     of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     Sets the lower bound of the color domain. Value should have the same units
+        ///     as in <c>z</c> and if set, <c>zmax</c> must be set as well.
         /// </summary>
-        [JsonPropertyName(@"colorscale")]
-        public object ColorScale { get; set;} 
+        [JsonPropertyName(@"zmin")]
+        public decimal? ZMin { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
-        ///     true&#39;) or the palette determined by <c>colorscale</c>. In case <c>colorscale</c>
-        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
-        ///     be chosen according to whether numbers in the <c>color</c> array are all
-        ///     positive, all negative or mixed.
+        ///     Picks a smoothing algorithm use to smooth <c>z</c> data.
         /// </summary>
-        [JsonPropertyName(@"autocolorscale")]
-        public bool? AutoColorScale { get; set;} 
-
-        /// <summary>
-        ///     Reverses the color mapping if true. If true, <c>zmin</c> will correspond
-        ///     to the last color in the array and <c>zmax</c> will correspond to the first
-        ///     color.
-        /// </summary>
-        [JsonPropertyName(@"reversescale")]
-        public bool? ReverseScale { get; set;} 
-
-        /// <summary>
-        ///     Determines whether or not a colorbar is displayed for this trace.
-        /// </summary>
-        [JsonPropertyName(@"showscale")]
-        public bool? ShowScale { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the ColorBar.
-        /// </summary>
-        [JsonPropertyName(@"colorbar")]
-        public Plotly.Blazor.Traces.HeatMapGlLib.ColorBar ColorBar { get; set;} 
-
-        /// <summary>
-        ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
-        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
-        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
-        ///     to the same color axis.
-        /// </summary>
-        [JsonPropertyName(@"coloraxis")]
-        public string ColorAxis { get; set;} 
-
-        /// <summary>
-        ///     Sets a reference between this trace&#39;s x coordinates and a 2D cartesian
-        ///     x axis. If <c>x</c> (the default value), the x coordinates refer to <c>layout.xaxis</c>.
-        ///     If <c>x2</c>, the x coordinates refer to <c>layout.xaxis2</c>, and so on.
-        /// </summary>
-        [JsonPropertyName(@"xaxis")]
-        public string XAxis { get; set;} 
-
-        /// <summary>
-        ///     Sets a reference between this trace&#39;s y coordinates and a 2D cartesian
-        ///     y axis. If <c>y</c> (the default value), the y coordinates refer to <c>layout.yaxis</c>.
-        ///     If <c>y2</c>, the y coordinates refer to <c>layout.yaxis2</c>, and so on.
-        /// </summary>
-        [JsonPropertyName(@"yaxis")]
-        public string YAxis { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
-        /// </summary>
-        [JsonPropertyName(@"idssrc")]
-        public string IdsSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
-        /// </summary>
-        [JsonPropertyName(@"customdatasrc")]
-        public string CustomDataSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
-        /// </summary>
-        [JsonPropertyName(@"metasrc")]
-        public string MetaSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
-        /// </summary>
-        [JsonPropertyName(@"hoverinfosrc")]
-        public string HoverInfoSrc { get; set;} 
+        [JsonPropertyName(@"zsmooth")]
+        public Plotly.Blazor.Traces.HeatMapGlLib.ZSmoothEnum? ZSmooth { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  z .
         /// </summary>
         [JsonPropertyName(@"zsrc")]
         public string ZSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
-        /// </summary>
-        [JsonPropertyName(@"xsrc")]
-        public string XSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
-        /// </summary>
-        [JsonPropertyName(@"ysrc")]
-        public string YSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  text .
-        /// </summary>
-        [JsonPropertyName(@"textsrc")]
-        public string TextSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -413,9 +413,74 @@ namespace Plotly.Blazor.Traces
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
+                    AutoColorScale.Equals(other.AutoColorScale)
+                ) && 
+                (
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
+                    ColorAxis.Equals(other.ColorAxis)
+                ) && 
+                (
+                    ColorBar == other.ColorBar ||
+                    ColorBar != null &&
+                    ColorBar.Equals(other.ColorBar)
+                ) && 
+                (
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
+                    ColorScale.Equals(other.ColorScale)
+                ) && 
+                (
+                    Equals(CustomData, other.CustomData) ||
+                    CustomData != null && other.CustomData != null &&
+                    CustomData.SequenceEqual(other.CustomData)
+                ) &&
+                (
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
+                    CustomDataSrc.Equals(other.CustomDataSrc)
+                ) && 
+                (
+                    DX == other.DX ||
+                    DX != null &&
+                    DX.Equals(other.DX)
+                ) && 
+                (
+                    Dy == other.Dy ||
+                    Dy != null &&
+                    Dy.Equals(other.Dy)
+                ) && 
+                (
+                    HoverInfo == other.HoverInfo ||
+                    HoverInfo != null &&
+                    HoverInfo.Equals(other.HoverInfo)
+                ) && 
+                (
+                    Equals(HoverInfoArray, other.HoverInfoArray) ||
+                    HoverInfoArray != null && other.HoverInfoArray != null &&
+                    HoverInfoArray.SequenceEqual(other.HoverInfoArray)
+                ) &&
+                (
+                    HoverInfoSrc == other.HoverInfoSrc ||
+                    HoverInfoSrc != null &&
+                    HoverInfoSrc.Equals(other.HoverInfoSrc)
+                ) && 
+                (
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
+                    HoverLabel.Equals(other.HoverLabel)
+                ) && 
+                (
+                    Equals(Ids, other.Ids) ||
+                    Ids != null && other.Ids != null &&
+                    Ids.SequenceEqual(other.Ids)
+                ) &&
+                (
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
+                    IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
                     LegendGroupTitle == other.LegendGroupTitle ||
@@ -428,31 +493,6 @@ namespace Plotly.Blazor.Traces
                     LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    UId == other.UId ||
-                    UId != null &&
-                    UId.Equals(other.UId)
-                ) && 
-                (
-                    Equals(Ids, other.Ids) ||
-                    Ids != null && other.Ids != null &&
-                    Ids.SequenceEqual(other.Ids)
-                ) &&
-                (
-                    Equals(CustomData, other.CustomData) ||
-                    CustomData != null && other.CustomData != null &&
-                    CustomData.SequenceEqual(other.CustomData)
-                ) &&
-                (
                     Meta == other.Meta ||
                     Meta != null &&
                     Meta.Equals(other.Meta)
@@ -463,124 +503,19 @@ namespace Plotly.Blazor.Traces
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
-                    HoverInfo == other.HoverInfo ||
-                    HoverInfo != null &&
-                    HoverInfo.Equals(other.HoverInfo)
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
+                    MetaSrc.Equals(other.MetaSrc)
                 ) && 
                 (
-                    Equals(HoverInfoArray, other.HoverInfoArray) ||
-                    HoverInfoArray != null && other.HoverInfoArray != null &&
-                    HoverInfoArray.SequenceEqual(other.HoverInfoArray)
-                ) &&
-                (
-                    HoverLabel == other.HoverLabel ||
-                    HoverLabel != null &&
-                    HoverLabel.Equals(other.HoverLabel)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 ) && 
                 (
-                    Stream == other.Stream ||
-                    Stream != null &&
-                    Stream.Equals(other.Stream)
-                ) && 
-                (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
-                ) && 
-                (
-                    Equals(Z, other.Z) ||
-                    Z != null && other.Z != null &&
-                    Z.SequenceEqual(other.Z)
-                ) &&
-                (
-                    Equals(X, other.X) ||
-                    X != null && other.X != null &&
-                    X.SequenceEqual(other.X)
-                ) &&
-                (
-                    X0 == other.X0 ||
-                    X0 != null &&
-                    X0.Equals(other.X0)
-                ) && 
-                (
-                    DX == other.DX ||
-                    DX != null &&
-                    DX.Equals(other.DX)
-                ) && 
-                (
-                    Equals(Y, other.Y) ||
-                    Y != null && other.Y != null &&
-                    Y.SequenceEqual(other.Y)
-                ) &&
-                (
-                    Y0 == other.Y0 ||
-                    Y0 != null &&
-                    Y0.Equals(other.Y0)
-                ) && 
-                (
-                    Dy == other.Dy ||
-                    Dy != null &&
-                    Dy.Equals(other.Dy)
-                ) && 
-                (
-                    Equals(Text, other.Text) ||
-                    Text != null && other.Text != null &&
-                    Text.SequenceEqual(other.Text)
-                ) &&
-                (
-                    Transpose == other.Transpose ||
-                    Transpose != null &&
-                    Transpose.Equals(other.Transpose)
-                ) && 
-                (
-                    XType == other.XType ||
-                    XType != null &&
-                    XType.Equals(other.XType)
-                ) && 
-                (
-                    YType == other.YType ||
-                    YType != null &&
-                    YType.Equals(other.YType)
-                ) && 
-                (
-                    ZSmooth == other.ZSmooth ||
-                    ZSmooth != null &&
-                    ZSmooth.Equals(other.ZSmooth)
-                ) && 
-                (
-                    ZAuto == other.ZAuto ||
-                    ZAuto != null &&
-                    ZAuto.Equals(other.ZAuto)
-                ) && 
-                (
-                    ZMin == other.ZMin ||
-                    ZMin != null &&
-                    ZMin.Equals(other.ZMin)
-                ) && 
-                (
-                    ZMax == other.ZMax ||
-                    ZMax != null &&
-                    ZMax.Equals(other.ZMax)
-                ) && 
-                (
-                    ZMid == other.ZMid ||
-                    ZMid != null &&
-                    ZMid.Equals(other.ZMid)
-                ) && 
-                (
-                    ColorScale == other.ColorScale ||
-                    ColorScale != null &&
-                    ColorScale.Equals(other.ColorScale)
-                ) && 
-                (
-                    AutoColorScale == other.AutoColorScale ||
-                    AutoColorScale != null &&
-                    AutoColorScale.Equals(other.AutoColorScale)
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
                 ) && 
                 (
                     ReverseScale == other.ReverseScale ||
@@ -593,14 +528,54 @@ namespace Plotly.Blazor.Traces
                     ShowScale.Equals(other.ShowScale)
                 ) && 
                 (
-                    ColorBar == other.ColorBar ||
-                    ColorBar != null &&
-                    ColorBar.Equals(other.ColorBar)
+                    Stream == other.Stream ||
+                    Stream != null &&
+                    Stream.Equals(other.Stream)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis ||
-                    ColorAxis != null &&
-                    ColorAxis.Equals(other.ColorAxis)
+                    Equals(Text, other.Text) ||
+                    Text != null && other.Text != null &&
+                    Text.SequenceEqual(other.Text)
+                ) &&
+                (
+                    TextSrc == other.TextSrc ||
+                    TextSrc != null &&
+                    TextSrc.Equals(other.TextSrc)
+                ) && 
+                (
+                    Equals(Transforms, other.Transforms) ||
+                    Transforms != null && other.Transforms != null &&
+                    Transforms.SequenceEqual(other.Transforms)
+                ) &&
+                (
+                    Transpose == other.Transpose ||
+                    Transpose != null &&
+                    Transpose.Equals(other.Transpose)
+                ) && 
+                (
+                    UId == other.UId ||
+                    UId != null &&
+                    UId.Equals(other.UId)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
+                (
+                    Equals(X, other.X) ||
+                    X != null && other.X != null &&
+                    X.SequenceEqual(other.X)
+                ) &&
+                (
+                    X0 == other.X0 ||
+                    X0 != null &&
+                    X0.Equals(other.X0)
                 ) && 
                 (
                     XAxis == other.XAxis ||
@@ -608,39 +583,29 @@ namespace Plotly.Blazor.Traces
                     XAxis.Equals(other.XAxis)
                 ) && 
                 (
-                    YAxis == other.YAxis ||
-                    YAxis != null &&
-                    YAxis.Equals(other.YAxis)
-                ) && 
-                (
-                    IdsSrc == other.IdsSrc ||
-                    IdsSrc != null &&
-                    IdsSrc.Equals(other.IdsSrc)
-                ) && 
-                (
-                    CustomDataSrc == other.CustomDataSrc ||
-                    CustomDataSrc != null &&
-                    CustomDataSrc.Equals(other.CustomDataSrc)
-                ) && 
-                (
-                    MetaSrc == other.MetaSrc ||
-                    MetaSrc != null &&
-                    MetaSrc.Equals(other.MetaSrc)
-                ) && 
-                (
-                    HoverInfoSrc == other.HoverInfoSrc ||
-                    HoverInfoSrc != null &&
-                    HoverInfoSrc.Equals(other.HoverInfoSrc)
-                ) && 
-                (
-                    ZSrc == other.ZSrc ||
-                    ZSrc != null &&
-                    ZSrc.Equals(other.ZSrc)
-                ) && 
-                (
                     XSrc == other.XSrc ||
                     XSrc != null &&
                     XSrc.Equals(other.XSrc)
+                ) && 
+                (
+                    XType == other.XType ||
+                    XType != null &&
+                    XType.Equals(other.XType)
+                ) && 
+                (
+                    Equals(Y, other.Y) ||
+                    Y != null && other.Y != null &&
+                    Y.SequenceEqual(other.Y)
+                ) &&
+                (
+                    Y0 == other.Y0 ||
+                    Y0 != null &&
+                    Y0.Equals(other.Y0)
+                ) && 
+                (
+                    YAxis == other.YAxis ||
+                    YAxis != null &&
+                    YAxis.Equals(other.YAxis)
                 ) && 
                 (
                     YSrc == other.YSrc ||
@@ -648,9 +613,44 @@ namespace Plotly.Blazor.Traces
                     YSrc.Equals(other.YSrc)
                 ) && 
                 (
-                    TextSrc == other.TextSrc ||
-                    TextSrc != null &&
-                    TextSrc.Equals(other.TextSrc)
+                    YType == other.YType ||
+                    YType != null &&
+                    YType.Equals(other.YType)
+                ) && 
+                (
+                    Equals(Z, other.Z) ||
+                    Z != null && other.Z != null &&
+                    Z.SequenceEqual(other.Z)
+                ) &&
+                (
+                    ZAuto == other.ZAuto ||
+                    ZAuto != null &&
+                    ZAuto.Equals(other.ZAuto)
+                ) && 
+                (
+                    ZMax == other.ZMax ||
+                    ZMax != null &&
+                    ZMax.Equals(other.ZMax)
+                ) && 
+                (
+                    ZMid == other.ZMid ||
+                    ZMid != null &&
+                    ZMid.Equals(other.ZMid)
+                ) && 
+                (
+                    ZMin == other.ZMin ||
+                    ZMin != null &&
+                    ZMin.Equals(other.ZMin)
+                ) && 
+                (
+                    ZSmooth == other.ZSmooth ||
+                    ZSmooth != null &&
+                    ZSmooth.Equals(other.ZSmooth)
+                ) && 
+                (
+                    ZSrc == other.ZSrc ||
+                    ZSrc != null &&
+                    ZSrc.Equals(other.ZSrc)
                 );
         }
 
@@ -661,54 +661,54 @@ namespace Plotly.Blazor.Traces
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
-                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
-                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
+                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
+                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
+                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
+                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
-                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
-                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
+                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
+                if (DX != null) hashCode = hashCode * 59 + DX.GetHashCode();
+                if (Dy != null) hashCode = hashCode * 59 + Dy.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
                 if (HoverInfoArray != null) hashCode = hashCode * 59 + HoverInfoArray.GetHashCode();
+                if (HoverInfoSrc != null) hashCode = hashCode * 59 + HoverInfoSrc.GetHashCode();
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
-                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
-                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
-                if (X0 != null) hashCode = hashCode * 59 + X0.GetHashCode();
-                if (DX != null) hashCode = hashCode * 59 + DX.GetHashCode();
-                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
-                if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
-                if (Dy != null) hashCode = hashCode * 59 + Dy.GetHashCode();
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
-                if (Transpose != null) hashCode = hashCode * 59 + Transpose.GetHashCode();
-                if (XType != null) hashCode = hashCode * 59 + XType.GetHashCode();
-                if (YType != null) hashCode = hashCode * 59 + YType.GetHashCode();
-                if (ZSmooth != null) hashCode = hashCode * 59 + ZSmooth.GetHashCode();
-                if (ZAuto != null) hashCode = hashCode * 59 + ZAuto.GetHashCode();
-                if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
-                if (ZMax != null) hashCode = hashCode * 59 + ZMax.GetHashCode();
-                if (ZMid != null) hashCode = hashCode * 59 + ZMid.GetHashCode();
-                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
-                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
+                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
+                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
+                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
+                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
                 if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
-                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
-                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
-                if (XAxis != null) hashCode = hashCode * 59 + XAxis.GetHashCode();
-                if (YAxis != null) hashCode = hashCode * 59 + YAxis.GetHashCode();
-                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
-                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
-                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
-                if (HoverInfoSrc != null) hashCode = hashCode * 59 + HoverInfoSrc.GetHashCode();
-                if (ZSrc != null) hashCode = hashCode * 59 + ZSrc.GetHashCode();
-                if (XSrc != null) hashCode = hashCode * 59 + XSrc.GetHashCode();
-                if (YSrc != null) hashCode = hashCode * 59 + YSrc.GetHashCode();
+                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
+                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
+                if (Transpose != null) hashCode = hashCode * 59 + Transpose.GetHashCode();
+                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
+                if (X0 != null) hashCode = hashCode * 59 + X0.GetHashCode();
+                if (XAxis != null) hashCode = hashCode * 59 + XAxis.GetHashCode();
+                if (XSrc != null) hashCode = hashCode * 59 + XSrc.GetHashCode();
+                if (XType != null) hashCode = hashCode * 59 + XType.GetHashCode();
+                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
+                if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
+                if (YAxis != null) hashCode = hashCode * 59 + YAxis.GetHashCode();
+                if (YSrc != null) hashCode = hashCode * 59 + YSrc.GetHashCode();
+                if (YType != null) hashCode = hashCode * 59 + YType.GetHashCode();
+                if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
+                if (ZAuto != null) hashCode = hashCode * 59 + ZAuto.GetHashCode();
+                if (ZMax != null) hashCode = hashCode * 59 + ZMax.GetHashCode();
+                if (ZMid != null) hashCode = hashCode * 59 + ZMid.GetHashCode();
+                if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
+                if (ZSmooth != null) hashCode = hashCode * 59 + ZSmooth.GetHashCode();
+                if (ZSrc != null) hashCode = hashCode * 59 + ZSrc.GetHashCode();
                 return hashCode;
             }
         }

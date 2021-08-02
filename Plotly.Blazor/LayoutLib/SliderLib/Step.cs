@@ -20,40 +20,11 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
     public class Step : IEquatable<Step>
     {
         /// <summary>
-        ///     Determines whether or not this step is included in the slider.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Sets the Plotly method to be called when the slider value is changed. If
-        ///     the <c>skip</c> method is used, the API slider will function as normal but
-        ///     will perform no API calls and will not bind automatically to state updates.
-        ///     This may be used to create a component interface and attach to slider events
-        ///     manually via JavaScript.
-        /// </summary>
-        [JsonPropertyName(@"method")]
-        public Plotly.Blazor.LayoutLib.SliderLib.StepLib.MethodEnum? Method { get; set;} 
-
-        /// <summary>
         ///     Sets the arguments values to be passed to the Plotly method set in <c>method</c>
         ///     on slide.
         /// </summary>
         [JsonPropertyName(@"args")]
         public IList<object> Args { get; set;} 
-
-        /// <summary>
-        ///     Sets the text label to appear on the slider
-        /// </summary>
-        [JsonPropertyName(@"label")]
-        public string Label { get; set;} 
-
-        /// <summary>
-        ///     Sets the value of the slider step, used to refer to the step programatically.
-        ///     Defaults to the slider label if not provided.
-        /// </summary>
-        [JsonPropertyName(@"value")]
-        public string Value { get; set;} 
 
         /// <summary>
         ///     When true, the API method is executed. When false, all other behaviors are
@@ -65,6 +36,22 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         /// </summary>
         [JsonPropertyName(@"execute")]
         public bool? Execute { get; set;} 
+
+        /// <summary>
+        ///     Sets the text label to appear on the slider
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public string Label { get; set;} 
+
+        /// <summary>
+        ///     Sets the Plotly method to be called when the slider value is changed. If
+        ///     the <c>skip</c> method is used, the API slider will function as normal but
+        ///     will perform no API calls and will not bind automatically to state updates.
+        ///     This may be used to create a component interface and attach to slider events
+        ///     manually via JavaScript.
+        /// </summary>
+        [JsonPropertyName(@"method")]
+        public Plotly.Blazor.LayoutLib.SliderLib.StepLib.MethodEnum? Method { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
@@ -89,6 +76,19 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 
 
+        /// <summary>
+        ///     Sets the value of the slider step, used to refer to the step programatically.
+        ///     Defaults to the slider label if not provided.
+        /// </summary>
+        [JsonPropertyName(@"value")]
+        public string Value { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not this step is included in the slider.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -105,34 +105,24 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Method == other.Method ||
-                    Method != null &&
-                    Method.Equals(other.Method)
-                ) && 
-                (
                     Equals(Args, other.Args) ||
                     Args != null && other.Args != null &&
                     Args.SequenceEqual(other.Args)
                 ) &&
+                (
+                    Execute == other.Execute ||
+                    Execute != null &&
+                    Execute.Equals(other.Execute)
+                ) && 
                 (
                     Label == other.Label ||
                     Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    Value == other.Value ||
-                    Value != null &&
-                    Value.Equals(other.Value)
-                ) && 
-                (
-                    Execute == other.Execute ||
-                    Execute != null &&
-                    Execute.Equals(other.Execute)
+                    Method == other.Method ||
+                    Method != null &&
+                    Method.Equals(other.Method)
                 ) && 
                 (
                     Name == other.Name ||
@@ -143,6 +133,16 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Value == other.Value ||
+                    Value != null &&
+                    Value.Equals(other.Value)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -152,14 +152,14 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Method != null) hashCode = hashCode * 59 + Method.GetHashCode();
                 if (Args != null) hashCode = hashCode * 59 + Args.GetHashCode();
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
-                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
                 if (Execute != null) hashCode = hashCode * 59 + Execute.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
+                if (Method != null) hashCode = hashCode * 59 + Method.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,15 +18,6 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
     public class Camera : IEquatable<Camera>
     {
         /// <summary>
-        ///     Sets the (x,y,z) components of the <c>up</c> camera vector. This vector
-        ///     determines the up direction of this scene with respect to the page. The
-        ///     default is &#39;{x: 0, y: 0, z: 1}&#39; which means that the z axis points
-        ///     up.
-        /// </summary>
-        [JsonPropertyName(@"up")]
-        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Up Up { get; set;} 
-
-        /// <summary>
         ///     Sets the (x,y,z) components of the <c>center</c> camera vector This vector
         ///     determines the translation (x,y,z) space about the center of this scene.
         ///     By default, there is no such translation.
@@ -47,6 +38,15 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         [JsonPropertyName(@"projection")]
         public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Projection Projection { get; set;} 
 
+        /// <summary>
+        ///     Sets the (x,y,z) components of the <c>up</c> camera vector. This vector
+        ///     determines the up direction of this scene with respect to the page. The
+        ///     default is &#39;{x: 0, y: 0, z: 1}&#39; which means that the z axis points
+        ///     up.
+        /// </summary>
+        [JsonPropertyName(@"up")]
+        public Plotly.Blazor.LayoutLib.SceneLib.CameraLib.Up Up { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -63,11 +63,6 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
 
             return 
                 (
-                    Up == other.Up ||
-                    Up != null &&
-                    Up.Equals(other.Up)
-                ) && 
-                (
                     Center == other.Center ||
                     Center != null &&
                     Center.Equals(other.Center)
@@ -81,6 +76,11 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                     Projection == other.Projection ||
                     Projection != null &&
                     Projection.Equals(other.Projection)
+                ) && 
+                (
+                    Up == other.Up ||
+                    Up != null &&
+                    Up.Equals(other.Up)
                 );
         }
 
@@ -90,10 +90,10 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Up != null) hashCode = hashCode * 59 + Up.GetHashCode();
                 if (Center != null) hashCode = hashCode * 59 + Center.GetHashCode();
                 if (Eye != null) hashCode = hashCode * 59 + Eye.GetHashCode();
                 if (Projection != null) hashCode = hashCode * 59 + Projection.GetHashCode();
+                if (Up != null) hashCode = hashCode * 59 + Up.GetHashCode();
                 return hashCode;
             }
         }

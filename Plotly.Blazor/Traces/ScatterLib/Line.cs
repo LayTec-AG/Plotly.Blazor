@@ -24,10 +24,12 @@ namespace Plotly.Blazor.Traces.ScatterLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the line width (in px).
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
         /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
+        [JsonPropertyName(@"dash")]
+        public string Dash { get; set;} 
 
         /// <summary>
         ///     Determines the line shape. With <c>spline</c> the lines are drawn using
@@ -38,6 +40,14 @@ namespace Plotly.Blazor.Traces.ScatterLib
         public Plotly.Blazor.Traces.ScatterLib.LineLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
+        ///     Simplifies lines by removing nearly-collinear points. When transitioning
+        ///     lines, it may be desirable to disable this so that the number of points
+        ///     along the resulting SVG path is unaffected.
+        /// </summary>
+        [JsonPropertyName(@"simplify")]
+        public bool? Simplify { get; set;} 
+
+        /// <summary>
         ///     Has an effect only if <c>shape</c> is set to <c>spline</c> Sets the amount
         ///     of smoothing. <c>0</c> corresponds to no smoothing (equivalent to a <c>linear</c>
         ///     shape).
@@ -46,20 +56,10 @@ namespace Plotly.Blazor.Traces.ScatterLib
         public decimal? Smoothing { get; set;} 
 
         /// <summary>
-        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
-        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
-        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        ///     Sets the line width (in px).
         /// </summary>
-        [JsonPropertyName(@"dash")]
-        public string Dash { get; set;} 
-
-        /// <summary>
-        ///     Simplifies lines by removing nearly-collinear points. When transitioning
-        ///     lines, it may be desirable to disable this so that the number of points
-        ///     along the resulting SVG path is unaffected.
-        /// </summary>
-        [JsonPropertyName(@"simplify")]
-        public bool? Simplify { get; set;} 
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -82,9 +82,9 @@ namespace Plotly.Blazor.Traces.ScatterLib
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
+                    Dash == other.Dash ||
+                    Dash != null &&
+                    Dash.Equals(other.Dash)
                 ) && 
                 (
                     Shape == other.Shape ||
@@ -92,19 +92,19 @@ namespace Plotly.Blazor.Traces.ScatterLib
                     Shape.Equals(other.Shape)
                 ) && 
                 (
+                    Simplify == other.Simplify ||
+                    Simplify != null &&
+                    Simplify.Equals(other.Simplify)
+                ) && 
+                (
                     Smoothing == other.Smoothing ||
                     Smoothing != null &&
                     Smoothing.Equals(other.Smoothing)
                 ) && 
                 (
-                    Dash == other.Dash ||
-                    Dash != null &&
-                    Dash.Equals(other.Dash)
-                ) && 
-                (
-                    Simplify == other.Simplify ||
-                    Simplify != null &&
-                    Simplify.Equals(other.Simplify)
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -115,11 +115,11 @@ namespace Plotly.Blazor.Traces.ScatterLib
             {
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
-                if (Smoothing != null) hashCode = hashCode * 59 + Smoothing.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
+                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
                 if (Simplify != null) hashCode = hashCode * 59 + Simplify.GetHashCode();
+                if (Smoothing != null) hashCode = hashCode * 59 + Smoothing.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

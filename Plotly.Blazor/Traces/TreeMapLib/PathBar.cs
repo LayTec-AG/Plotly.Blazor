@@ -18,11 +18,10 @@ namespace Plotly.Blazor.Traces.TreeMapLib
     public class PathBar : IEquatable<PathBar>
     {
         /// <summary>
-        ///     Determines if the path bar is drawn i.e. outside the trace <c>domain</c>
-        ///     and with one pixel gap.
+        ///     Determines which shape is used for edges between <c>barpath</c> labels.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"edgeshape")]
+        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.EdgeShapeEnum? EdgeShape { get; set;} 
 
         /// <summary>
         ///     Determines on which side of the the treemap the <c>pathbar</c> should be
@@ -32,10 +31,10 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.SideEnum? Side { get; set;} 
 
         /// <summary>
-        ///     Determines which shape is used for edges between <c>barpath</c> labels.
+        ///     Sets the font used inside <c>pathbar</c>.
         /// </summary>
-        [JsonPropertyName(@"edgeshape")]
-        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.EdgeShapeEnum? EdgeShape { get; set;} 
+        [JsonPropertyName(@"textfont")]
+        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.TextFont TextFont { get; set;} 
 
         /// <summary>
         ///     Sets the thickness of <c>pathbar</c> (in px). If not specified the <c>pathbar.textfont.size</c>
@@ -45,10 +44,11 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         public decimal? Thickness { get; set;} 
 
         /// <summary>
-        ///     Sets the font used inside <c>pathbar</c>.
+        ///     Determines if the path bar is drawn i.e. outside the trace <c>domain</c>
+        ///     and with one pixel gap.
         /// </summary>
-        [JsonPropertyName(@"textfont")]
-        public Plotly.Blazor.Traces.TreeMapLib.PathBarLib.TextFont TextFont { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -66,9 +66,9 @@ namespace Plotly.Blazor.Traces.TreeMapLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    EdgeShape == other.EdgeShape ||
+                    EdgeShape != null &&
+                    EdgeShape.Equals(other.EdgeShape)
                 ) && 
                 (
                     Side == other.Side ||
@@ -76,9 +76,9 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                     Side.Equals(other.Side)
                 ) && 
                 (
-                    EdgeShape == other.EdgeShape ||
-                    EdgeShape != null &&
-                    EdgeShape.Equals(other.EdgeShape)
+                    TextFont == other.TextFont ||
+                    TextFont != null &&
+                    TextFont.Equals(other.TextFont)
                 ) && 
                 (
                     Thickness == other.Thickness ||
@@ -86,9 +86,9 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                     Thickness.Equals(other.Thickness)
                 ) && 
                 (
-                    TextFont == other.TextFont ||
-                    TextFont != null &&
-                    TextFont.Equals(other.TextFont)
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -98,11 +98,11 @@ namespace Plotly.Blazor.Traces.TreeMapLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Side != null) hashCode = hashCode * 59 + Side.GetHashCode();
                 if (EdgeShape != null) hashCode = hashCode * 59 + EdgeShape.GetHashCode();
-                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
+                if (Side != null) hashCode = hashCode * 59 + Side.GetHashCode();
                 if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
+                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

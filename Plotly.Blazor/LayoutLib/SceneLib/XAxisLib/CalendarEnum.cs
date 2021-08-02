@@ -31,6 +31,8 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.XAxisLib
         Hebrew,
         [EnumMember(Value=@"islamic")]
         Islamic,
+        [EnumMember(Value=@"jalali")]
+        Jalali,
         [EnumMember(Value=@"julian")]
         Julian,
         [EnumMember(Value=@"mayan")]
@@ -41,8 +43,6 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.XAxisLib
         Nepali,
         [EnumMember(Value=@"persian")]
         Persian,
-        [EnumMember(Value=@"jalali")]
-        Jalali,
         [EnumMember(Value=@"taiwan")]
         Taiwan,
         [EnumMember(Value=@"thai")]

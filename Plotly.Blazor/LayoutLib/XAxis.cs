@@ -20,32 +20,26 @@ namespace Plotly.Blazor.LayoutLib
     public class XAxis : IEquatable<XAxis>
     {
         /// <summary>
-        ///     A single toggle to hide the axis while preserving interaction like dragging.
-        ///     Default is true when a cheater plot is present on the axis, otherwise false
+        ///     If set to an opposite-letter axis id (e.g. <c>x2</c>, <c>y</c>), this axis
+        ///     is bound to the corresponding opposite-letter axis. If set to <c>free</c>,
+        ///     this axis&#39; position is determined by <c>position</c>.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"anchor")]
+        public string Anchor { get; set;} 
 
         /// <summary>
-        ///     Sets default for all colors associated with this axis all at once: line,
-        ///     font, tick, and grid colors. Grid color is lightened by blending this with
-        ///     the plot background Individual pieces can override this.
+        ///     Determines whether long tick labels automatically grow the figure margins.
         /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
+        [JsonPropertyName(@"automargin")]
+        public bool? AutoMargin { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Title.
+        ///     Determines whether or not the range of this axis is computed in relation
+        ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
+        ///     provided, then <c>autorange</c> is set to <c>false</c>.
         /// </summary>
-        [JsonPropertyName(@"title")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.Title Title { get; set;} 
-
-        /// <summary>
-        ///     Sets the axis type. By default, plotly attempts to determined the axis type
-        ///     by looking into the data of the traces that referenced the axis in question.
-        /// </summary>
-        [JsonPropertyName(@"type")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TypeEnum? Type { get; set;} 
+        [JsonPropertyName(@"autorange")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
         ///     Using <c>strict</c> a numeric string in trace data is not converted to a
@@ -57,21 +51,228 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.AutoTypeNumbersEnum? AutoTypeNumbers { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not the range of this axis is computed in relation
-        ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
-        ///     provided, then <c>autorange</c> is set to <c>false</c>.
+        ///     Sets the calendar system to use for <c>range</c> and <c>tick0</c> if this
+        ///     is a date axis. This does not set the calendar for interpreting data on
+        ///     this axis, that&#39;s specified in the trace or via the global <c>layout.calendar</c>
         /// </summary>
-        [JsonPropertyName(@"autorange")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeEnum? AutoRange { get; set;} 
+        [JsonPropertyName(@"calendar")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.CalendarEnum? Calendar { get; set;} 
 
         /// <summary>
-        ///     If <c>normal</c>, the range is computed in relation to the extrema of the
-        ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
-        ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
-        ///     of the input data. Applies only to linear axes.
+        ///     Sets the order in which categories on this axis appear. Only has an effect
+        ///     if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
         /// </summary>
-        [JsonPropertyName(@"rangemode")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.RangeModeEnum? RangeMode { get; set;} 
+        [JsonPropertyName(@"categoryarray")]
+        public IList<object> CategoryArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
+        /// </summary>
+        [JsonPropertyName(@"categoryarraysrc")]
+        public string CategoryArraySrc { get; set;} 
+
+        /// <summary>
+        ///     Specifies the ordering logic for the case of categorical variables. By default,
+        ///     plotly uses <c>trace</c>, which specifies the order that is present in the
+        ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
+        ///     or &#39;category descending&#39; if order should be determined by the alphanumerical
+        ///     order of the category names. Set <c>categoryorder</c> to <c>array</c> to
+        ///     derive the ordering from the attribute <c>categoryarray</c>. If a category
+        ///     is not found in the <c>categoryarray</c> array, the sorting behavior for
+        ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
+        ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
+        ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
+        ///     be determined by the numerical order of the values. Similarly, the order
+        ///     can be determined by the min, max, sum, mean or median of all the values.
+        /// </summary>
+        [JsonPropertyName(@"categoryorder")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
+
+        /// <summary>
+        ///     Sets default for all colors associated with this axis all at once: line,
+        ///     font, tick, and grid colors. Grid color is lightened by blending this with
+        ///     the plot background Individual pieces can override this.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
+        ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
+        ///     and <c>scaleratio</c> or those of the other axis), determines how that happens:
+        ///     by increasing the <c>range</c>, or by decreasing the <c>domain</c>. Default
+        ///     is <c>domain</c> for axes containing image traces, <c>range</c> otherwise.
+        /// </summary>
+        [JsonPropertyName(@"constrain")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainEnum? Constrain { get; set;} 
+
+        /// <summary>
+        ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
+        ///     and <c>scaleratio</c> or those of the other axis), determines which direction
+        ///     we push the originally specified plot area. Options are <c>left</c>, <c>center</c>
+        ///     (default), and <c>right</c> for x axes, and <c>top</c>, <c>middle</c> (default),
+        ///     and <c>bottom</c> for y axes.
+        /// </summary>
+        [JsonPropertyName(@"constraintoward")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainTowardEnum? ConstrainToward { get; set;} 
+
+        /// <summary>
+        ///     Sets the color of the dividers Only has an effect on <c>multicategory</c>
+        ///     axes.
+        /// </summary>
+        [JsonPropertyName(@"dividercolor")]
+        public object DividerColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the dividers Only has an effect on <c>multicategory</c>
+        ///     axes.
+        /// </summary>
+        [JsonPropertyName(@"dividerwidth")]
+        public decimal? DividerWidth { get; set;} 
+
+        /// <summary>
+        ///     Sets the domain of this axis (in plot fraction).
+        /// </summary>
+        [JsonPropertyName(@"domain")]
+        public IList<object> Domain { get; set;} 
+
+        /// <summary>
+        ///     Sets the step in-between ticks on this axis. Use with <c>tick0</c>. Must
+        ///     be a positive number, or special strings available to <c>log</c> and <c>date</c>
+        ///     axes. If the axis <c>type</c> is <c>log</c>, then ticks are set every 10^(n*dtick)
+        ///     where n is the tick number. For example, to set a tick mark at 1, 10, 100,
+        ///     1000, ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick
+        ///     to 2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5),
+        ///     or 0.69897000433. <c>log</c> has several special values; <c>L&lt;f&gt;</c>,
+        ///     where <c>f</c> is a positive number, gives ticks linearly spaced in value
+        ///     (but not position). For example <c>tick0</c> = 0.1, <c>dtick</c> = <c>L0.5</c>
+        ///     will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small
+        ///     digits between, use <c>D1</c> (all digits) or <c>D2</c> (only 2 and 5).
+        ///     <c>tick0</c> is ignored for <c>D1</c> and <c>D2</c>. If the axis <c>type</c>
+        ///     is <c>date</c>, then you must convert the time to milliseconds. For example,
+        ///     to set the interval between ticks to one day, set <c>dtick</c> to 86400000.0.
+        ///     <c>date</c> also has special values <c>M&lt;n&gt;</c> gives ticks spaced
+        ///     by a number of months. <c>n</c> must be a positive integer. To set ticks
+        ///     on the 15th of every third month, set <c>tick0</c> to <c>2000-01-15</c>
+        ///     and <c>dtick</c> to <c>M3</c>. To set ticks every 4 years, set <c>dtick</c>
+        ///     to <c>M48</c>
+        /// </summary>
+        [JsonPropertyName(@"dtick")]
+        public object DTick { get; set;} 
+
+        /// <summary>
+        ///     Determines a formatting rule for the tick exponents. For example, consider
+        ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
+        ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
+        /// </summary>
+        [JsonPropertyName(@"exponentformat")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not this axis is zoom-able. If true, then zoom is
+        ///     disabled.
+        /// </summary>
+        [JsonPropertyName(@"fixedrange")]
+        public bool? FixedRange { get; set;} 
+
+        /// <summary>
+        ///     Sets the color of the grid lines.
+        /// </summary>
+        [JsonPropertyName(@"gridcolor")]
+        public object GridColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the grid lines.
+        /// </summary>
+        [JsonPropertyName(@"gridwidth")]
+        public decimal? GridWidth { get; set;} 
+
+        /// <summary>
+        ///     Sets the hover text formatting rule using d3 formatting mini-languages which
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+        ///     And for dates see: https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format.
+        ///     We add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
+        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
+        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
+        /// </summary>
+        [JsonPropertyName(@"hoverformat")]
+        public string HoverFormat { get; set;} 
+
+        /// <summary>
+        ///     Sets the layer on which this axis is displayed. If &#39;above traces&#39;,
+        ///     this axis is displayed above all the subplot&#39;s traces If &#39;below
+        ///     traces&#39;, this axis is displayed below all the subplot&#39;s traces,
+        ///     but above the grid lines. Useful when used together with scatter-like traces
+        ///     with <c>cliponaxis</c> set to <c>false</c> to show markers and/or text nodes
+        ///     above this axis.
+        /// </summary>
+        [JsonPropertyName(@"layer")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.LayerEnum? Layer { get; set;} 
+
+        /// <summary>
+        ///     Sets the axis line color.
+        /// </summary>
+        [JsonPropertyName(@"linecolor")]
+        public object LineColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the axis line.
+        /// </summary>
+        [JsonPropertyName(@"linewidth")]
+        public decimal? LineWidth { get; set;} 
+
+        /// <summary>
+        ///     If set to another axis id (e.g. <c>x2</c>, <c>y</c>), the range of this
+        ///     axis will match the range of the corresponding axis in data-coordinates
+        ///     space. Moreover, matching axes share auto-range values, category lists and
+        ///     histogram auto-bins. Note that setting axes simultaneously in both a <c>scaleanchor</c>
+        ///     and a <c>matches</c> constraint is currently forbidden. Moreover, note that
+        ///     matching axes must have the same <c>type</c>.
+        /// </summary>
+        [JsonPropertyName(@"matches")]
+        public string Matches { get; set;} 
+
+        /// <summary>
+        ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
+        ///     when <c>tickformat</c> is <c>SI</c> or <c>B</c>.
+        /// </summary>
+        [JsonPropertyName(@"minexponent")]
+        public decimal? MinExponent { get; set;} 
+
+        /// <summary>
+        ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
+        ///     of the plotting area. If <c>true</c>, the axis lines are mirrored. If <c>ticks</c>,
+        ///     the axis lines and ticks are mirrored. If <c>false</c>, mirroring is disable.
+        ///     If <c>all</c>, axis lines are mirrored on all shared-axes subplots. If <c>allticks</c>,
+        ///     axis lines and ticks are mirrored on all shared-axes subplots.
+        /// </summary>
+        [JsonPropertyName(@"mirror")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.MirrorEnum? Mirror { get; set;} 
+
+        /// <summary>
+        ///     Specifies the maximum number of ticks for the particular axis. The actual
+        ///     number of ticks will be chosen automatically to be less than or equal to
+        ///     <c>nticks</c>. Has an effect only if <c>tickmode</c> is set to <c>auto</c>.
+        /// </summary>
+        [JsonPropertyName(@"nticks")]
+        public int? NTicks { get; set;} 
+
+        /// <summary>
+        ///     If set a same-letter axis id, this axis is overlaid on top of the corresponding
+        ///     same-letter axis, with traces and axes visible for both axes. If <c>false</c>,
+        ///     this axis does not overlay any same-letter axes. In this case, for axes
+        ///     with overlapping domains only the highest-numbered axis will be visible.
+        /// </summary>
+        [JsonPropertyName(@"overlaying")]
+        public string Overlaying { get; set;} 
+
+        /// <summary>
+        ///     Sets the position of this axis in the plotting space (in normalized coordinates).
+        ///     Only has an effect if <c>anchor</c> is set to <c>free</c>.
+        /// </summary>
+        [JsonPropertyName(@"position")]
+        public decimal? Position { get; set;} 
 
         /// <summary>
         ///     Sets the range of this axis. If the axis <c>type</c> is <c>log</c>, then
@@ -86,11 +287,31 @@ namespace Plotly.Blazor.LayoutLib
         public IList<object> Range { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not this axis is zoom-able. If true, then zoom is
-        ///     disabled.
+        ///     Gets or sets the RangeBreaks.
         /// </summary>
-        [JsonPropertyName(@"fixedrange")]
-        public bool? FixedRange { get; set;} 
+        [JsonPropertyName(@"rangebreaks")]
+        public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeBreak> RangeBreaks { get; set;} 
+
+        /// <summary>
+        ///     If <c>normal</c>, the range is computed in relation to the extrema of the
+        ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
+        ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
+        ///     of the input data. Applies only to linear axes.
+        /// </summary>
+        [JsonPropertyName(@"rangemode")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeModeEnum? RangeMode { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the RangeSelector.
+        /// </summary>
+        [JsonPropertyName(@"rangeselector")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelector RangeSelector { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the RangeSlider.
+        /// </summary>
+        [JsonPropertyName(@"rangeslider")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSlider RangeSlider { get; set;} 
 
         /// <summary>
         ///     If set to another axis id (e.g. <c>x2</c>, <c>y</c>), the range of this
@@ -122,199 +343,38 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? ScaleRatio { get; set;} 
 
         /// <summary>
-        ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
-        ///     and <c>scaleratio</c> or those of the other axis), determines how that happens:
-        ///     by increasing the <c>range</c>, or by decreasing the <c>domain</c>. Default
-        ///     is <c>domain</c> for axes containing image traces, <c>range</c> otherwise.
+        ///     If <c>true</c>, even 4-digit integers are separated
         /// </summary>
-        [JsonPropertyName(@"constrain")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainEnum? Constrain { get; set;} 
+        [JsonPropertyName(@"separatethousands")]
+        public bool? SeparateThousands { get; set;} 
 
         /// <summary>
-        ///     If this axis needs to be compressed (either due to its own <c>scaleanchor</c>
-        ///     and <c>scaleratio</c> or those of the other axis), determines which direction
-        ///     we push the originally specified plot area. Options are <c>left</c>, <c>center</c>
-        ///     (default), and <c>right</c> for x axes, and <c>top</c>, <c>middle</c> (default),
-        ///     and <c>bottom</c> for y axes.
+        ///     Determines whether or not a dividers are drawn between the category levels
+        ///     of this axis. Only has an effect on <c>multicategory</c> axes.
         /// </summary>
-        [JsonPropertyName(@"constraintoward")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.ConstrainTowardEnum? ConstrainToward { get; set;} 
+        [JsonPropertyName(@"showdividers")]
+        public bool? ShowDividers { get; set;} 
 
         /// <summary>
-        ///     If set to another axis id (e.g. <c>x2</c>, <c>y</c>), the range of this
-        ///     axis will match the range of the corresponding axis in data-coordinates
-        ///     space. Moreover, matching axes share auto-range values, category lists and
-        ///     histogram auto-bins. Note that setting axes simultaneously in both a <c>scaleanchor</c>
-        ///     and a <c>matches</c> constraint is currently forbidden. Moreover, note that
-        ///     matching axes must have the same <c>type</c>.
+        ///     If <c>all</c>, all exponents are shown besides their significands. If <c>first</c>,
+        ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
+        ///     of the last tick is shown. If <c>none</c>, no exponents appear.
         /// </summary>
-        [JsonPropertyName(@"matches")]
-        public string Matches { get; set;} 
+        [JsonPropertyName(@"showexponent")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the RangeBreaks.
+        ///     Determines whether or not grid lines are drawn. If <c>true</c>, the grid
+        ///     lines are drawn at every tick mark.
         /// </summary>
-        [JsonPropertyName(@"rangebreaks")]
-        public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeBreak> RangeBreaks { get; set;} 
+        [JsonPropertyName(@"showgrid")]
+        public bool? ShowGrid { get; set;} 
 
         /// <summary>
-        ///     Sets the tick mode for this axis. If <c>auto</c>, the number of ticks is
-        ///     set via <c>nticks</c>. If <c>linear</c>, the placement of the ticks is determined
-        ///     by a starting position <c>tick0</c> and a tick step <c>dtick</c> (<c>linear</c>
-        ///     is the default value if <c>tick0</c> and <c>dtick</c> are provided). If
-        ///     <c>array</c>, the placement of the ticks is set via <c>tickvals</c> and
-        ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
-        ///     <c>tickvals</c> is provided).
+        ///     Determines whether or not a line bounding this axis is drawn.
         /// </summary>
-        [JsonPropertyName(@"tickmode")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TickModeEnum? TickMode { get; set;} 
-
-        /// <summary>
-        ///     Specifies the maximum number of ticks for the particular axis. The actual
-        ///     number of ticks will be chosen automatically to be less than or equal to
-        ///     <c>nticks</c>. Has an effect only if <c>tickmode</c> is set to <c>auto</c>.
-        /// </summary>
-        [JsonPropertyName(@"nticks")]
-        public int? NTicks { get; set;} 
-
-        /// <summary>
-        ///     Sets the placement of the first tick on this axis. Use with <c>dtick</c>.
-        ///     If the axis <c>type</c> is <c>log</c>, then you must take the log of your
-        ///     starting tick (e.g. to set the starting tick to 100, set the <c>tick0</c>
-        ///     to 2) except when <c>dtick</c>=<c>L&lt;f&gt;</c> (see <c>dtick</c> for more
-        ///     info). If the axis <c>type</c> is <c>date</c>, it should be a date string,
-        ///     like date data. If the axis <c>type</c> is <c>category</c>, it should be
-        ///     a number, using the scale where each category is assigned a serial number
-        ///     from zero in the order it appears.
-        /// </summary>
-        [JsonPropertyName(@"tick0")]
-        public object Tick0 { get; set;} 
-
-        /// <summary>
-        ///     Sets the step in-between ticks on this axis. Use with <c>tick0</c>. Must
-        ///     be a positive number, or special strings available to <c>log</c> and <c>date</c>
-        ///     axes. If the axis <c>type</c> is <c>log</c>, then ticks are set every 10^(n*dtick)
-        ///     where n is the tick number. For example, to set a tick mark at 1, 10, 100,
-        ///     1000, ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick
-        ///     to 2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5),
-        ///     or 0.69897000433. <c>log</c> has several special values; <c>L&lt;f&gt;</c>,
-        ///     where <c>f</c> is a positive number, gives ticks linearly spaced in value
-        ///     (but not position). For example <c>tick0</c> = 0.1, <c>dtick</c> = <c>L0.5</c>
-        ///     will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small
-        ///     digits between, use <c>D1</c> (all digits) or <c>D2</c> (only 2 and 5).
-        ///     <c>tick0</c> is ignored for <c>D1</c> and <c>D2</c>. If the axis <c>type</c>
-        ///     is <c>date</c>, then you must convert the time to milliseconds. For example,
-        ///     to set the interval between ticks to one day, set <c>dtick</c> to 86400000.0.
-        ///     <c>date</c> also has special values <c>M&lt;n&gt;</c> gives ticks spaced
-        ///     by a number of months. <c>n</c> must be a positive integer. To set ticks
-        ///     on the 15th of every third month, set <c>tick0</c> to <c>2000-01-15</c>
-        ///     and <c>dtick</c> to <c>M3</c>. To set ticks every 4 years, set <c>dtick</c>
-        ///     to <c>M48</c>
-        /// </summary>
-        [JsonPropertyName(@"dtick")]
-        public object DTick { get; set;} 
-
-        /// <summary>
-        ///     Sets the values at which ticks on this axis appear. Only has an effect if
-        ///     <c>tickmode</c> is set to <c>array</c>. Used with <c>ticktext</c>.
-        /// </summary>
-        [JsonPropertyName(@"tickvals")]
-        public IList<object> TickVals { get; set;} 
-
-        /// <summary>
-        ///     Sets the text displayed at the ticks position via <c>tickvals</c>. Only
-        ///     has an effect if <c>tickmode</c> is set to <c>array</c>. Used with <c>tickvals</c>.
-        /// </summary>
-        [JsonPropertyName(@"ticktext")]
-        public IList<object> TickText { get; set;} 
-
-        /// <summary>
-        ///     Determines whether ticks are drawn or not. If **, this axis&#39; ticks are
-        ///     not drawn. If <c>outside</c> (<c>inside</c>), this axis&#39; are drawn outside
-        ///     (inside) the axis lines.
-        /// </summary>
-        [JsonPropertyName(@"ticks")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TicksEnum? Ticks { get; set;} 
-
-        /// <summary>
-        ///     Determines where ticks and grid lines are drawn with respect to their corresponding
-        ///     tick labels. Only has an effect for axes of <c>type</c> <c>category</c>
-        ///     or <c>multicategory</c>. When set to <c>boundaries</c>, ticks and grid lines
-        ///     are drawn half a category to the left/bottom of labels.
-        /// </summary>
-        [JsonPropertyName(@"tickson")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TickSonEnum? TickSon { get; set;} 
-
-        /// <summary>
-        ///     Determines where tick labels are drawn with respect to their corresponding
-        ///     ticks and grid lines. Only has an effect for axes of <c>type</c> <c>date</c>
-        ///     When set to <c>period</c>, tick labels are drawn in the middle of the period
-        ///     between ticks.
-        /// </summary>
-        [JsonPropertyName(@"ticklabelmode")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelModeEnum? TickLabelMode { get; set;} 
-
-        /// <summary>
-        ///     Determines where tick labels are drawn with respect to the axis Please note
-        ///     that top or bottom has no effect on x axes or when <c>ticklabelmode</c>
-        ///     is set to <c>period</c>. Similarly left or right has no effect on y axes
-        ///     or when <c>ticklabelmode</c> is set to <c>period</c>. Has no effect on <c>multicategory</c>
-        ///     axes or when <c>tickson</c> is set to <c>boundaries</c>. When used on axes
-        ///     linked by <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside
-        ///     labels would be added by autorange, so that the scales could match.
-        /// </summary>
-        [JsonPropertyName(@"ticklabelposition")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
-
-        /// <summary>
-        ///     Determines how we handle tick labels that would overflow either the graph
-        ///     div or the domain of the axis. The default value for inside tick labels
-        ///     is &#39;hide past domain&#39;. Otherwise on <c>category</c> and <c>multicategory</c>
-        ///     axes the default is <c>allow</c>. In other cases the default is &#39;hide
-        ///     past div&#39;.
-        /// </summary>
-        [JsonPropertyName(@"ticklabeloverflow")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelOverflowEnum? TickLabelOverflow { get; set;} 
-
-        /// <summary>
-        ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
-        ///     of the plotting area. If <c>true</c>, the axis lines are mirrored. If <c>ticks</c>,
-        ///     the axis lines and ticks are mirrored. If <c>false</c>, mirroring is disable.
-        ///     If <c>all</c>, axis lines are mirrored on all shared-axes subplots. If <c>allticks</c>,
-        ///     axis lines and ticks are mirrored on all shared-axes subplots.
-        /// </summary>
-        [JsonPropertyName(@"mirror")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.MirrorEnum? Mirror { get; set;} 
-
-        /// <summary>
-        ///     Sets the tick length (in px).
-        /// </summary>
-        [JsonPropertyName(@"ticklen")]
-        public decimal? TickLen { get; set;} 
-
-        /// <summary>
-        ///     Sets the tick width (in px).
-        /// </summary>
-        [JsonPropertyName(@"tickwidth")]
-        public decimal? TickWidth { get; set;} 
-
-        /// <summary>
-        ///     Sets the tick color.
-        /// </summary>
-        [JsonPropertyName(@"tickcolor")]
-        public object TickColor { get; set;} 
-
-        /// <summary>
-        ///     Determines whether or not the tick labels are drawn.
-        /// </summary>
-        [JsonPropertyName(@"showticklabels")]
-        public bool? ShowTickLabels { get; set;} 
-
-        /// <summary>
-        ///     Determines whether long tick labels automatically grow the figure margins.
-        /// </summary>
-        [JsonPropertyName(@"automargin")]
-        public bool? AutoMargin { get; set;} 
+        [JsonPropertyName(@"showline")]
+        public bool? ShowLine { get; set;} 
 
         /// <summary>
         ///     Determines whether or not spikes (aka droplines) are drawn for this axis.
@@ -324,16 +384,38 @@ namespace Plotly.Blazor.LayoutLib
         public bool? ShowSpikes { get; set;} 
 
         /// <summary>
+        ///     Determines whether or not the tick labels are drawn.
+        /// </summary>
+        [JsonPropertyName(@"showticklabels")]
+        public bool? ShowTickLabels { get; set;} 
+
+        /// <summary>
+        ///     If <c>all</c>, all tick labels are displayed with a prefix. If <c>first</c>,
+        ///     only the first tick is displayed with a prefix. If <c>last</c>, only the
+        ///     last tick is displayed with a suffix. If <c>none</c>, tick prefixes are
+        ///     hidden.
+        /// </summary>
+        [JsonPropertyName(@"showtickprefix")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
+
+        /// <summary>
+        ///     Same as <c>showtickprefix</c> but for tick suffixes.
+        /// </summary>
+        [JsonPropertyName(@"showticksuffix")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
+
+        /// <summary>
+        ///     Determines whether a x (y) axis is positioned at the <c>bottom</c> (<c>left</c>)
+        ///     or <c>top</c> (<c>right</c>) of the plotting area.
+        /// </summary>
+        [JsonPropertyName(@"side")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.SideEnum? Side { get; set;} 
+
+        /// <summary>
         ///     Sets the spike color. If undefined, will use the series color
         /// </summary>
         [JsonPropertyName(@"spikecolor")]
         public object SpikeColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the width (in px) of the zero line.
-        /// </summary>
-        [JsonPropertyName(@"spikethickness")]
-        public decimal? SpikeThickness { get; set;} 
 
         /// <summary>
         ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
@@ -361,10 +443,23 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.SpikeSnapEnum? SpikeSnap { get; set;} 
 
         /// <summary>
-        ///     Sets the tick font.
+        ///     Sets the width (in px) of the zero line.
         /// </summary>
-        [JsonPropertyName(@"tickfont")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.TickFont TickFont { get; set;} 
+        [JsonPropertyName(@"spikethickness")]
+        public decimal? SpikeThickness { get; set;} 
+
+        /// <summary>
+        ///     Sets the placement of the first tick on this axis. Use with <c>dtick</c>.
+        ///     If the axis <c>type</c> is <c>log</c>, then you must take the log of your
+        ///     starting tick (e.g. to set the starting tick to 100, set the <c>tick0</c>
+        ///     to 2) except when <c>dtick</c>=<c>L&lt;f&gt;</c> (see <c>dtick</c> for more
+        ///     info). If the axis <c>type</c> is <c>date</c>, it should be a date string,
+        ///     like date data. If the axis <c>type</c> is <c>category</c>, it should be
+        ///     a number, using the scale where each category is assigned a serial number
+        ///     from zero in the order it appears.
+        /// </summary>
+        [JsonPropertyName(@"tick0")]
+        public object Tick0 { get; set;} 
 
         /// <summary>
         ///     Sets the angle of the tick labels with respect to the horizontal. For example,
@@ -374,67 +469,22 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? TickAngle { get; set;} 
 
         /// <summary>
-        ///     Sets a tick label prefix.
+        ///     Sets the tick color.
         /// </summary>
-        [JsonPropertyName(@"tickprefix")]
-        public string TickPrefix { get; set;} 
+        [JsonPropertyName(@"tickcolor")]
+        public object TickColor { get; set;} 
 
         /// <summary>
-        ///     If <c>all</c>, all tick labels are displayed with a prefix. If <c>first</c>,
-        ///     only the first tick is displayed with a prefix. If <c>last</c>, only the
-        ///     last tick is displayed with a suffix. If <c>none</c>, tick prefixes are
-        ///     hidden.
+        ///     Sets the tick font.
         /// </summary>
-        [JsonPropertyName(@"showtickprefix")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickPrefixEnum? ShowTickPrefix { get; set;} 
-
-        /// <summary>
-        ///     Sets a tick label suffix.
-        /// </summary>
-        [JsonPropertyName(@"ticksuffix")]
-        public string TickSuffix { get; set;} 
-
-        /// <summary>
-        ///     Same as <c>showtickprefix</c> but for tick suffixes.
-        /// </summary>
-        [JsonPropertyName(@"showticksuffix")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.ShowTickSuffixEnum? ShowTickSuffix { get; set;} 
-
-        /// <summary>
-        ///     If <c>all</c>, all exponents are shown besides their significands. If <c>first</c>,
-        ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
-        ///     of the last tick is shown. If <c>none</c>, no exponents appear.
-        /// </summary>
-        [JsonPropertyName(@"showexponent")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.ShowExponentEnum? ShowExponent { get; set;} 
-
-        /// <summary>
-        ///     Determines a formatting rule for the tick exponents. For example, consider
-        ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
-        ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
-        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
-        /// </summary>
-        [JsonPropertyName(@"exponentformat")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
-
-        /// <summary>
-        ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
-        ///     when <c>tickformat</c> is <c>SI</c> or <c>B</c>.
-        /// </summary>
-        [JsonPropertyName(@"minexponent")]
-        public decimal? MinExponent { get; set;} 
-
-        /// <summary>
-        ///     If <c>true</c>, even 4-digit integers are separated
-        /// </summary>
-        [JsonPropertyName(@"separatethousands")]
-        public bool? SeparateThousands { get; set;} 
+        [JsonPropertyName(@"tickfont")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickFont TickFont { get; set;} 
 
         /// <summary>
         ///     Sets the tick label formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
-        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format. We
-        ///     add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+        ///     And for dates see: https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format.
+        ///     We add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
         ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
         ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
         ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
@@ -449,53 +499,142 @@ namespace Plotly.Blazor.LayoutLib
         public IList<Plotly.Blazor.LayoutLib.XAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
-        ///     Sets the hover text formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
-        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format. We
-        ///     add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
-        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
-        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
-        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
+        ///     Determines where tick labels are drawn with respect to their corresponding
+        ///     ticks and grid lines. Only has an effect for axes of <c>type</c> <c>date</c>
+        ///     When set to <c>period</c>, tick labels are drawn in the middle of the period
+        ///     between ticks.
         /// </summary>
-        [JsonPropertyName(@"hoverformat")]
-        public string HoverFormat { get; set;} 
+        [JsonPropertyName(@"ticklabelmode")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelModeEnum? TickLabelMode { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not a line bounding this axis is drawn.
+        ///     Determines how we handle tick labels that would overflow either the graph
+        ///     div or the domain of the axis. The default value for inside tick labels
+        ///     is &#39;hide past domain&#39;. Otherwise on <c>category</c> and <c>multicategory</c>
+        ///     axes the default is <c>allow</c>. In other cases the default is &#39;hide
+        ///     past div&#39;.
         /// </summary>
-        [JsonPropertyName(@"showline")]
-        public bool? ShowLine { get; set;} 
+        [JsonPropertyName(@"ticklabeloverflow")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelOverflowEnum? TickLabelOverflow { get; set;} 
 
         /// <summary>
-        ///     Sets the axis line color.
+        ///     Determines where tick labels are drawn with respect to the axis Please note
+        ///     that top or bottom has no effect on x axes or when <c>ticklabelmode</c>
+        ///     is set to <c>period</c>. Similarly left or right has no effect on y axes
+        ///     or when <c>ticklabelmode</c> is set to <c>period</c>. Has no effect on <c>multicategory</c>
+        ///     axes or when <c>tickson</c> is set to <c>boundaries</c>. When used on axes
+        ///     linked by <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside
+        ///     labels would be added by autorange, so that the scales could match.
         /// </summary>
-        [JsonPropertyName(@"linecolor")]
-        public object LineColor { get; set;} 
+        [JsonPropertyName(@"ticklabelposition")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the axis line.
+        ///     Sets the tick length (in px).
         /// </summary>
-        [JsonPropertyName(@"linewidth")]
-        public decimal? LineWidth { get; set;} 
+        [JsonPropertyName(@"ticklen")]
+        public decimal? TickLen { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not grid lines are drawn. If <c>true</c>, the grid
-        ///     lines are drawn at every tick mark.
+        ///     Sets the tick mode for this axis. If <c>auto</c>, the number of ticks is
+        ///     set via <c>nticks</c>. If <c>linear</c>, the placement of the ticks is determined
+        ///     by a starting position <c>tick0</c> and a tick step <c>dtick</c> (<c>linear</c>
+        ///     is the default value if <c>tick0</c> and <c>dtick</c> are provided). If
+        ///     <c>array</c>, the placement of the ticks is set via <c>tickvals</c> and
+        ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
+        ///     <c>tickvals</c> is provided).
         /// </summary>
-        [JsonPropertyName(@"showgrid")]
-        public bool? ShowGrid { get; set;} 
+        [JsonPropertyName(@"tickmode")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickModeEnum? TickMode { get; set;} 
 
         /// <summary>
-        ///     Sets the color of the grid lines.
+        ///     Sets a tick label prefix.
         /// </summary>
-        [JsonPropertyName(@"gridcolor")]
-        public object GridColor { get; set;} 
+        [JsonPropertyName(@"tickprefix")]
+        public string TickPrefix { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the grid lines.
+        ///     Determines whether ticks are drawn or not. If **, this axis&#39; ticks are
+        ///     not drawn. If <c>outside</c> (<c>inside</c>), this axis&#39; are drawn outside
+        ///     (inside) the axis lines.
         /// </summary>
-        [JsonPropertyName(@"gridwidth")]
-        public decimal? GridWidth { get; set;} 
+        [JsonPropertyName(@"ticks")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TicksEnum? Ticks { get; set;} 
+
+        /// <summary>
+        ///     Determines where ticks and grid lines are drawn with respect to their corresponding
+        ///     tick labels. Only has an effect for axes of <c>type</c> <c>category</c>
+        ///     or <c>multicategory</c>. When set to <c>boundaries</c>, ticks and grid lines
+        ///     are drawn half a category to the left/bottom of labels.
+        /// </summary>
+        [JsonPropertyName(@"tickson")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TickSonEnum? TickSon { get; set;} 
+
+        /// <summary>
+        ///     Sets a tick label suffix.
+        /// </summary>
+        [JsonPropertyName(@"ticksuffix")]
+        public string TickSuffix { get; set;} 
+
+        /// <summary>
+        ///     Sets the text displayed at the ticks position via <c>tickvals</c>. Only
+        ///     has an effect if <c>tickmode</c> is set to <c>array</c>. Used with <c>tickvals</c>.
+        /// </summary>
+        [JsonPropertyName(@"ticktext")]
+        public IList<object> TickText { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
+        /// </summary>
+        [JsonPropertyName(@"ticktextsrc")]
+        public string TickTextSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the values at which ticks on this axis appear. Only has an effect if
+        ///     <c>tickmode</c> is set to <c>array</c>. Used with <c>ticktext</c>.
+        /// </summary>
+        [JsonPropertyName(@"tickvals")]
+        public IList<object> TickVals { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
+        /// </summary>
+        [JsonPropertyName(@"tickvalssrc")]
+        public string TickValsSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the tick width (in px).
+        /// </summary>
+        [JsonPropertyName(@"tickwidth")]
+        public decimal? TickWidth { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Title.
+        /// </summary>
+        [JsonPropertyName(@"title")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.Title Title { get; set;} 
+
+        /// <summary>
+        ///     Sets the axis type. By default, plotly attempts to determined the axis type
+        ///     by looking into the data of the traces that referenced the axis in question.
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.TypeEnum? Type { get; set;} 
+
+        /// <summary>
+        ///     Controls persistence of user-driven changes in axis <c>range</c>, <c>autorange</c>,
+        ///     and <c>title</c> if in &#39;editable: true&#39; configuration. Defaults
+        ///     to <c>layout.uirevision</c>.
+        /// </summary>
+        [JsonPropertyName(@"uirevision")]
+        public object UiRevision { get; set;} 
+
+        /// <summary>
+        ///     A single toggle to hide the axis while preserving interaction like dragging.
+        ///     Default is true when a cheater plot is present on the axis, otherwise false
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a line is drawn at along the 0 value of this axis.
@@ -516,145 +655,6 @@ namespace Plotly.Blazor.LayoutLib
         [JsonPropertyName(@"zerolinewidth")]
         public decimal? ZeroLineWidth { get; set;} 
 
-        /// <summary>
-        ///     Determines whether or not a dividers are drawn between the category levels
-        ///     of this axis. Only has an effect on <c>multicategory</c> axes.
-        /// </summary>
-        [JsonPropertyName(@"showdividers")]
-        public bool? ShowDividers { get; set;} 
-
-        /// <summary>
-        ///     Sets the color of the dividers Only has an effect on <c>multicategory</c>
-        ///     axes.
-        /// </summary>
-        [JsonPropertyName(@"dividercolor")]
-        public object DividerColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the width (in px) of the dividers Only has an effect on <c>multicategory</c>
-        ///     axes.
-        /// </summary>
-        [JsonPropertyName(@"dividerwidth")]
-        public decimal? DividerWidth { get; set;} 
-
-        /// <summary>
-        ///     If set to an opposite-letter axis id (e.g. <c>x2</c>, <c>y</c>), this axis
-        ///     is bound to the corresponding opposite-letter axis. If set to <c>free</c>,
-        ///     this axis&#39; position is determined by <c>position</c>.
-        /// </summary>
-        [JsonPropertyName(@"anchor")]
-        public string Anchor { get; set;} 
-
-        /// <summary>
-        ///     Determines whether a x (y) axis is positioned at the <c>bottom</c> (<c>left</c>)
-        ///     or <c>top</c> (<c>right</c>) of the plotting area.
-        /// </summary>
-        [JsonPropertyName(@"side")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.SideEnum? Side { get; set;} 
-
-        /// <summary>
-        ///     If set a same-letter axis id, this axis is overlaid on top of the corresponding
-        ///     same-letter axis, with traces and axes visible for both axes. If <c>false</c>,
-        ///     this axis does not overlay any same-letter axes. In this case, for axes
-        ///     with overlapping domains only the highest-numbered axis will be visible.
-        /// </summary>
-        [JsonPropertyName(@"overlaying")]
-        public string Overlaying { get; set;} 
-
-        /// <summary>
-        ///     Sets the layer on which this axis is displayed. If &#39;above traces&#39;,
-        ///     this axis is displayed above all the subplot&#39;s traces If &#39;below
-        ///     traces&#39;, this axis is displayed below all the subplot&#39;s traces,
-        ///     but above the grid lines. Useful when used together with scatter-like traces
-        ///     with <c>cliponaxis</c> set to <c>false</c> to show markers and/or text nodes
-        ///     above this axis.
-        /// </summary>
-        [JsonPropertyName(@"layer")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.LayerEnum? Layer { get; set;} 
-
-        /// <summary>
-        ///     Sets the domain of this axis (in plot fraction).
-        /// </summary>
-        [JsonPropertyName(@"domain")]
-        public IList<object> Domain { get; set;} 
-
-        /// <summary>
-        ///     Sets the position of this axis in the plotting space (in normalized coordinates).
-        ///     Only has an effect if <c>anchor</c> is set to <c>free</c>.
-        /// </summary>
-        [JsonPropertyName(@"position")]
-        public decimal? Position { get; set;} 
-
-        /// <summary>
-        ///     Specifies the ordering logic for the case of categorical variables. By default,
-        ///     plotly uses <c>trace</c>, which specifies the order that is present in the
-        ///     data supplied. Set <c>categoryorder</c> to &#39;category ascending&#39;
-        ///     or &#39;category descending&#39; if order should be determined by the alphanumerical
-        ///     order of the category names. Set <c>categoryorder</c> to <c>array</c> to
-        ///     derive the ordering from the attribute <c>categoryarray</c>. If a category
-        ///     is not found in the <c>categoryarray</c> array, the sorting behavior for
-        ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
-        ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
-        ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
-        ///     be determined by the numerical order of the values. Similarly, the order
-        ///     can be determined by the min, max, sum, mean or median of all the values.
-        /// </summary>
-        [JsonPropertyName(@"categoryorder")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
-
-        /// <summary>
-        ///     Sets the order in which categories on this axis appear. Only has an effect
-        ///     if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
-        /// </summary>
-        [JsonPropertyName(@"categoryarray")]
-        public IList<object> CategoryArray { get; set;} 
-
-        /// <summary>
-        ///     Controls persistence of user-driven changes in axis <c>range</c>, <c>autorange</c>,
-        ///     and <c>title</c> if in &#39;editable: true&#39; configuration. Defaults
-        ///     to <c>layout.uirevision</c>.
-        /// </summary>
-        [JsonPropertyName(@"uirevision")]
-        public object UiRevision { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the RangeSlider.
-        /// </summary>
-        [JsonPropertyName(@"rangeslider")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSlider RangeSlider { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the RangeSelector.
-        /// </summary>
-        [JsonPropertyName(@"rangeselector")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelector RangeSelector { get; set;} 
-
-        /// <summary>
-        ///     Sets the calendar system to use for <c>range</c> and <c>tick0</c> if this
-        ///     is a date axis. This does not set the calendar for interpreting data on
-        ///     this axis, that&#39;s specified in the trace or via the global <c>layout.calendar</c>
-        /// </summary>
-        [JsonPropertyName(@"calendar")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.CalendarEnum? Calendar { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
-        /// </summary>
-        [JsonPropertyName(@"tickvalssrc")]
-        public string TickValsSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
-        /// </summary>
-        [JsonPropertyName(@"ticktextsrc")]
-        public string TickTextSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
-        /// </summary>
-        [JsonPropertyName(@"categoryarraysrc")]
-        public string CategoryArraySrc { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -671,29 +671,14 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Anchor == other.Anchor ||
+                    Anchor != null &&
+                    Anchor.Equals(other.Anchor)
                 ) && 
                 (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
-                    Title == other.Title ||
-                    Title != null &&
-                    Title.Equals(other.Title)
-                ) && 
-                (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    AutoTypeNumbers == other.AutoTypeNumbers ||
-                    AutoTypeNumbers != null &&
-                    AutoTypeNumbers.Equals(other.AutoTypeNumbers)
+                    AutoMargin == other.AutoMargin ||
+                    AutoMargin != null &&
+                    AutoMargin.Equals(other.AutoMargin)
                 ) && 
                 (
                     AutoRange == other.AutoRange ||
@@ -701,29 +686,34 @@ namespace Plotly.Blazor.LayoutLib
                     AutoRange.Equals(other.AutoRange)
                 ) && 
                 (
-                    RangeMode == other.RangeMode ||
-                    RangeMode != null &&
-                    RangeMode.Equals(other.RangeMode)
+                    AutoTypeNumbers == other.AutoTypeNumbers ||
+                    AutoTypeNumbers != null &&
+                    AutoTypeNumbers.Equals(other.AutoTypeNumbers)
                 ) && 
                 (
-                    Equals(Range, other.Range) ||
-                    Range != null && other.Range != null &&
-                    Range.SequenceEqual(other.Range)
+                    Calendar == other.Calendar ||
+                    Calendar != null &&
+                    Calendar.Equals(other.Calendar)
+                ) && 
+                (
+                    Equals(CategoryArray, other.CategoryArray) ||
+                    CategoryArray != null && other.CategoryArray != null &&
+                    CategoryArray.SequenceEqual(other.CategoryArray)
                 ) &&
                 (
-                    FixedRange == other.FixedRange ||
-                    FixedRange != null &&
-                    FixedRange.Equals(other.FixedRange)
+                    CategoryArraySrc == other.CategoryArraySrc ||
+                    CategoryArraySrc != null &&
+                    CategoryArraySrc.Equals(other.CategoryArraySrc)
                 ) && 
                 (
-                    ScaleAnchor == other.ScaleAnchor ||
-                    ScaleAnchor != null &&
-                    ScaleAnchor.Equals(other.ScaleAnchor)
+                    CategoryOrder == other.CategoryOrder ||
+                    CategoryOrder != null &&
+                    CategoryOrder.Equals(other.CategoryOrder)
                 ) && 
                 (
-                    ScaleRatio == other.ScaleRatio ||
-                    ScaleRatio != null &&
-                    ScaleRatio.Equals(other.ScaleRatio)
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
                 ) && 
                 (
                     Constrain == other.Constrain ||
@@ -736,69 +726,74 @@ namespace Plotly.Blazor.LayoutLib
                     ConstrainToward.Equals(other.ConstrainToward)
                 ) && 
                 (
-                    Matches == other.Matches ||
-                    Matches != null &&
-                    Matches.Equals(other.Matches)
+                    DividerColor == other.DividerColor ||
+                    DividerColor != null &&
+                    DividerColor.Equals(other.DividerColor)
                 ) && 
                 (
-                    Equals(RangeBreaks, other.RangeBreaks) ||
-                    RangeBreaks != null && other.RangeBreaks != null &&
-                    RangeBreaks.SequenceEqual(other.RangeBreaks)
+                    DividerWidth == other.DividerWidth ||
+                    DividerWidth != null &&
+                    DividerWidth.Equals(other.DividerWidth)
+                ) && 
+                (
+                    Equals(Domain, other.Domain) ||
+                    Domain != null && other.Domain != null &&
+                    Domain.SequenceEqual(other.Domain)
                 ) &&
-                (
-                    TickMode == other.TickMode ||
-                    TickMode != null &&
-                    TickMode.Equals(other.TickMode)
-                ) && 
-                (
-                    NTicks == other.NTicks ||
-                    NTicks != null &&
-                    NTicks.Equals(other.NTicks)
-                ) && 
-                (
-                    Tick0 == other.Tick0 ||
-                    Tick0 != null &&
-                    Tick0.Equals(other.Tick0)
-                ) && 
                 (
                     DTick == other.DTick ||
                     DTick != null &&
                     DTick.Equals(other.DTick)
                 ) && 
                 (
-                    Equals(TickVals, other.TickVals) ||
-                    TickVals != null && other.TickVals != null &&
-                    TickVals.SequenceEqual(other.TickVals)
-                ) &&
-                (
-                    Equals(TickText, other.TickText) ||
-                    TickText != null && other.TickText != null &&
-                    TickText.SequenceEqual(other.TickText)
-                ) &&
-                (
-                    Ticks == other.Ticks ||
-                    Ticks != null &&
-                    Ticks.Equals(other.Ticks)
+                    ExponentFormat == other.ExponentFormat ||
+                    ExponentFormat != null &&
+                    ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
-                    TickSon == other.TickSon ||
-                    TickSon != null &&
-                    TickSon.Equals(other.TickSon)
+                    FixedRange == other.FixedRange ||
+                    FixedRange != null &&
+                    FixedRange.Equals(other.FixedRange)
                 ) && 
                 (
-                    TickLabelMode == other.TickLabelMode ||
-                    TickLabelMode != null &&
-                    TickLabelMode.Equals(other.TickLabelMode)
+                    GridColor == other.GridColor ||
+                    GridColor != null &&
+                    GridColor.Equals(other.GridColor)
                 ) && 
                 (
-                    TickLabelPosition == other.TickLabelPosition ||
-                    TickLabelPosition != null &&
-                    TickLabelPosition.Equals(other.TickLabelPosition)
+                    GridWidth == other.GridWidth ||
+                    GridWidth != null &&
+                    GridWidth.Equals(other.GridWidth)
                 ) && 
                 (
-                    TickLabelOverflow == other.TickLabelOverflow ||
-                    TickLabelOverflow != null &&
-                    TickLabelOverflow.Equals(other.TickLabelOverflow)
+                    HoverFormat == other.HoverFormat ||
+                    HoverFormat != null &&
+                    HoverFormat.Equals(other.HoverFormat)
+                ) && 
+                (
+                    Layer == other.Layer ||
+                    Layer != null &&
+                    Layer.Equals(other.Layer)
+                ) && 
+                (
+                    LineColor == other.LineColor ||
+                    LineColor != null &&
+                    LineColor.Equals(other.LineColor)
+                ) && 
+                (
+                    LineWidth == other.LineWidth ||
+                    LineWidth != null &&
+                    LineWidth.Equals(other.LineWidth)
+                ) && 
+                (
+                    Matches == other.Matches ||
+                    Matches != null &&
+                    Matches.Equals(other.Matches)
+                ) && 
+                (
+                    MinExponent == other.MinExponent ||
+                    MinExponent != null &&
+                    MinExponent.Equals(other.MinExponent)
                 ) && 
                 (
                     Mirror == other.Mirror ||
@@ -806,29 +801,79 @@ namespace Plotly.Blazor.LayoutLib
                     Mirror.Equals(other.Mirror)
                 ) && 
                 (
-                    TickLen == other.TickLen ||
-                    TickLen != null &&
-                    TickLen.Equals(other.TickLen)
+                    NTicks == other.NTicks ||
+                    NTicks != null &&
+                    NTicks.Equals(other.NTicks)
                 ) && 
                 (
-                    TickWidth == other.TickWidth ||
-                    TickWidth != null &&
-                    TickWidth.Equals(other.TickWidth)
+                    Overlaying == other.Overlaying ||
+                    Overlaying != null &&
+                    Overlaying.Equals(other.Overlaying)
                 ) && 
                 (
-                    TickColor == other.TickColor ||
-                    TickColor != null &&
-                    TickColor.Equals(other.TickColor)
+                    Position == other.Position ||
+                    Position != null &&
+                    Position.Equals(other.Position)
                 ) && 
                 (
-                    ShowTickLabels == other.ShowTickLabels ||
-                    ShowTickLabels != null &&
-                    ShowTickLabels.Equals(other.ShowTickLabels)
+                    Equals(Range, other.Range) ||
+                    Range != null && other.Range != null &&
+                    Range.SequenceEqual(other.Range)
+                ) &&
+                (
+                    Equals(RangeBreaks, other.RangeBreaks) ||
+                    RangeBreaks != null && other.RangeBreaks != null &&
+                    RangeBreaks.SequenceEqual(other.RangeBreaks)
+                ) &&
+                (
+                    RangeMode == other.RangeMode ||
+                    RangeMode != null &&
+                    RangeMode.Equals(other.RangeMode)
                 ) && 
                 (
-                    AutoMargin == other.AutoMargin ||
-                    AutoMargin != null &&
-                    AutoMargin.Equals(other.AutoMargin)
+                    RangeSelector == other.RangeSelector ||
+                    RangeSelector != null &&
+                    RangeSelector.Equals(other.RangeSelector)
+                ) && 
+                (
+                    RangeSlider == other.RangeSlider ||
+                    RangeSlider != null &&
+                    RangeSlider.Equals(other.RangeSlider)
+                ) && 
+                (
+                    ScaleAnchor == other.ScaleAnchor ||
+                    ScaleAnchor != null &&
+                    ScaleAnchor.Equals(other.ScaleAnchor)
+                ) && 
+                (
+                    ScaleRatio == other.ScaleRatio ||
+                    ScaleRatio != null &&
+                    ScaleRatio.Equals(other.ScaleRatio)
+                ) && 
+                (
+                    SeparateThousands == other.SeparateThousands ||
+                    SeparateThousands != null &&
+                    SeparateThousands.Equals(other.SeparateThousands)
+                ) && 
+                (
+                    ShowDividers == other.ShowDividers ||
+                    ShowDividers != null &&
+                    ShowDividers.Equals(other.ShowDividers)
+                ) && 
+                (
+                    ShowExponent == other.ShowExponent ||
+                    ShowExponent != null &&
+                    ShowExponent.Equals(other.ShowExponent)
+                ) && 
+                (
+                    ShowGrid == other.ShowGrid ||
+                    ShowGrid != null &&
+                    ShowGrid.Equals(other.ShowGrid)
+                ) && 
+                (
+                    ShowLine == other.ShowLine ||
+                    ShowLine != null &&
+                    ShowLine.Equals(other.ShowLine)
                 ) && 
                 (
                     ShowSpikes == other.ShowSpikes ||
@@ -836,14 +881,29 @@ namespace Plotly.Blazor.LayoutLib
                     ShowSpikes.Equals(other.ShowSpikes)
                 ) && 
                 (
+                    ShowTickLabels == other.ShowTickLabels ||
+                    ShowTickLabels != null &&
+                    ShowTickLabels.Equals(other.ShowTickLabels)
+                ) && 
+                (
+                    ShowTickPrefix == other.ShowTickPrefix ||
+                    ShowTickPrefix != null &&
+                    ShowTickPrefix.Equals(other.ShowTickPrefix)
+                ) && 
+                (
+                    ShowTickSuffix == other.ShowTickSuffix ||
+                    ShowTickSuffix != null &&
+                    ShowTickSuffix.Equals(other.ShowTickSuffix)
+                ) && 
+                (
+                    Side == other.Side ||
+                    Side != null &&
+                    Side.Equals(other.Side)
+                ) && 
+                (
                     SpikeColor == other.SpikeColor ||
                     SpikeColor != null &&
                     SpikeColor.Equals(other.SpikeColor)
-                ) && 
-                (
-                    SpikeThickness == other.SpikeThickness ||
-                    SpikeThickness != null &&
-                    SpikeThickness.Equals(other.SpikeThickness)
                 ) && 
                 (
                     SpikeDash == other.SpikeDash ||
@@ -861,9 +921,14 @@ namespace Plotly.Blazor.LayoutLib
                     SpikeSnap.Equals(other.SpikeSnap)
                 ) && 
                 (
-                    TickFont == other.TickFont ||
-                    TickFont != null &&
-                    TickFont.Equals(other.TickFont)
+                    SpikeThickness == other.SpikeThickness ||
+                    SpikeThickness != null &&
+                    SpikeThickness.Equals(other.SpikeThickness)
+                ) && 
+                (
+                    Tick0 == other.Tick0 ||
+                    Tick0 != null &&
+                    Tick0.Equals(other.Tick0)
                 ) && 
                 (
                     TickAngle == other.TickAngle ||
@@ -871,44 +936,14 @@ namespace Plotly.Blazor.LayoutLib
                     TickAngle.Equals(other.TickAngle)
                 ) && 
                 (
-                    TickPrefix == other.TickPrefix ||
-                    TickPrefix != null &&
-                    TickPrefix.Equals(other.TickPrefix)
+                    TickColor == other.TickColor ||
+                    TickColor != null &&
+                    TickColor.Equals(other.TickColor)
                 ) && 
                 (
-                    ShowTickPrefix == other.ShowTickPrefix ||
-                    ShowTickPrefix != null &&
-                    ShowTickPrefix.Equals(other.ShowTickPrefix)
-                ) && 
-                (
-                    TickSuffix == other.TickSuffix ||
-                    TickSuffix != null &&
-                    TickSuffix.Equals(other.TickSuffix)
-                ) && 
-                (
-                    ShowTickSuffix == other.ShowTickSuffix ||
-                    ShowTickSuffix != null &&
-                    ShowTickSuffix.Equals(other.ShowTickSuffix)
-                ) && 
-                (
-                    ShowExponent == other.ShowExponent ||
-                    ShowExponent != null &&
-                    ShowExponent.Equals(other.ShowExponent)
-                ) && 
-                (
-                    ExponentFormat == other.ExponentFormat ||
-                    ExponentFormat != null &&
-                    ExponentFormat.Equals(other.ExponentFormat)
-                ) && 
-                (
-                    MinExponent == other.MinExponent ||
-                    MinExponent != null &&
-                    MinExponent.Equals(other.MinExponent)
-                ) && 
-                (
-                    SeparateThousands == other.SeparateThousands ||
-                    SeparateThousands != null &&
-                    SeparateThousands.Equals(other.SeparateThousands)
+                    TickFont == other.TickFont ||
+                    TickFont != null &&
+                    TickFont.Equals(other.TickFont)
                 ) && 
                 (
                     TickFormat == other.TickFormat ||
@@ -921,39 +956,94 @@ namespace Plotly.Blazor.LayoutLib
                     TickFormatStops.SequenceEqual(other.TickFormatStops)
                 ) &&
                 (
-                    HoverFormat == other.HoverFormat ||
-                    HoverFormat != null &&
-                    HoverFormat.Equals(other.HoverFormat)
+                    TickLabelMode == other.TickLabelMode ||
+                    TickLabelMode != null &&
+                    TickLabelMode.Equals(other.TickLabelMode)
                 ) && 
                 (
-                    ShowLine == other.ShowLine ||
-                    ShowLine != null &&
-                    ShowLine.Equals(other.ShowLine)
+                    TickLabelOverflow == other.TickLabelOverflow ||
+                    TickLabelOverflow != null &&
+                    TickLabelOverflow.Equals(other.TickLabelOverflow)
                 ) && 
                 (
-                    LineColor == other.LineColor ||
-                    LineColor != null &&
-                    LineColor.Equals(other.LineColor)
+                    TickLabelPosition == other.TickLabelPosition ||
+                    TickLabelPosition != null &&
+                    TickLabelPosition.Equals(other.TickLabelPosition)
                 ) && 
                 (
-                    LineWidth == other.LineWidth ||
-                    LineWidth != null &&
-                    LineWidth.Equals(other.LineWidth)
+                    TickLen == other.TickLen ||
+                    TickLen != null &&
+                    TickLen.Equals(other.TickLen)
                 ) && 
                 (
-                    ShowGrid == other.ShowGrid ||
-                    ShowGrid != null &&
-                    ShowGrid.Equals(other.ShowGrid)
+                    TickMode == other.TickMode ||
+                    TickMode != null &&
+                    TickMode.Equals(other.TickMode)
                 ) && 
                 (
-                    GridColor == other.GridColor ||
-                    GridColor != null &&
-                    GridColor.Equals(other.GridColor)
+                    TickPrefix == other.TickPrefix ||
+                    TickPrefix != null &&
+                    TickPrefix.Equals(other.TickPrefix)
                 ) && 
                 (
-                    GridWidth == other.GridWidth ||
-                    GridWidth != null &&
-                    GridWidth.Equals(other.GridWidth)
+                    Ticks == other.Ticks ||
+                    Ticks != null &&
+                    Ticks.Equals(other.Ticks)
+                ) && 
+                (
+                    TickSon == other.TickSon ||
+                    TickSon != null &&
+                    TickSon.Equals(other.TickSon)
+                ) && 
+                (
+                    TickSuffix == other.TickSuffix ||
+                    TickSuffix != null &&
+                    TickSuffix.Equals(other.TickSuffix)
+                ) && 
+                (
+                    Equals(TickText, other.TickText) ||
+                    TickText != null && other.TickText != null &&
+                    TickText.SequenceEqual(other.TickText)
+                ) &&
+                (
+                    TickTextSrc == other.TickTextSrc ||
+                    TickTextSrc != null &&
+                    TickTextSrc.Equals(other.TickTextSrc)
+                ) && 
+                (
+                    Equals(TickVals, other.TickVals) ||
+                    TickVals != null && other.TickVals != null &&
+                    TickVals.SequenceEqual(other.TickVals)
+                ) &&
+                (
+                    TickValsSrc == other.TickValsSrc ||
+                    TickValsSrc != null &&
+                    TickValsSrc.Equals(other.TickValsSrc)
+                ) && 
+                (
+                    TickWidth == other.TickWidth ||
+                    TickWidth != null &&
+                    TickWidth.Equals(other.TickWidth)
+                ) && 
+                (
+                    Title == other.Title ||
+                    Title != null &&
+                    Title.Equals(other.Title)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 ) && 
                 (
                     ZeroLine == other.ZeroLine ||
@@ -969,96 +1059,6 @@ namespace Plotly.Blazor.LayoutLib
                     ZeroLineWidth == other.ZeroLineWidth ||
                     ZeroLineWidth != null &&
                     ZeroLineWidth.Equals(other.ZeroLineWidth)
-                ) && 
-                (
-                    ShowDividers == other.ShowDividers ||
-                    ShowDividers != null &&
-                    ShowDividers.Equals(other.ShowDividers)
-                ) && 
-                (
-                    DividerColor == other.DividerColor ||
-                    DividerColor != null &&
-                    DividerColor.Equals(other.DividerColor)
-                ) && 
-                (
-                    DividerWidth == other.DividerWidth ||
-                    DividerWidth != null &&
-                    DividerWidth.Equals(other.DividerWidth)
-                ) && 
-                (
-                    Anchor == other.Anchor ||
-                    Anchor != null &&
-                    Anchor.Equals(other.Anchor)
-                ) && 
-                (
-                    Side == other.Side ||
-                    Side != null &&
-                    Side.Equals(other.Side)
-                ) && 
-                (
-                    Overlaying == other.Overlaying ||
-                    Overlaying != null &&
-                    Overlaying.Equals(other.Overlaying)
-                ) && 
-                (
-                    Layer == other.Layer ||
-                    Layer != null &&
-                    Layer.Equals(other.Layer)
-                ) && 
-                (
-                    Equals(Domain, other.Domain) ||
-                    Domain != null && other.Domain != null &&
-                    Domain.SequenceEqual(other.Domain)
-                ) &&
-                (
-                    Position == other.Position ||
-                    Position != null &&
-                    Position.Equals(other.Position)
-                ) && 
-                (
-                    CategoryOrder == other.CategoryOrder ||
-                    CategoryOrder != null &&
-                    CategoryOrder.Equals(other.CategoryOrder)
-                ) && 
-                (
-                    Equals(CategoryArray, other.CategoryArray) ||
-                    CategoryArray != null && other.CategoryArray != null &&
-                    CategoryArray.SequenceEqual(other.CategoryArray)
-                ) &&
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
-                ) && 
-                (
-                    RangeSlider == other.RangeSlider ||
-                    RangeSlider != null &&
-                    RangeSlider.Equals(other.RangeSlider)
-                ) && 
-                (
-                    RangeSelector == other.RangeSelector ||
-                    RangeSelector != null &&
-                    RangeSelector.Equals(other.RangeSelector)
-                ) && 
-                (
-                    Calendar == other.Calendar ||
-                    Calendar != null &&
-                    Calendar.Equals(other.Calendar)
-                ) && 
-                (
-                    TickValsSrc == other.TickValsSrc ||
-                    TickValsSrc != null &&
-                    TickValsSrc.Equals(other.TickValsSrc)
-                ) && 
-                (
-                    TickTextSrc == other.TickTextSrc ||
-                    TickTextSrc != null &&
-                    TickTextSrc.Equals(other.TickTextSrc)
-                ) && 
-                (
-                    CategoryArraySrc == other.CategoryArraySrc ||
-                    CategoryArraySrc != null &&
-                    CategoryArraySrc.Equals(other.CategoryArraySrc)
                 );
         }
 
@@ -1068,84 +1068,84 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
+                if (Anchor != null) hashCode = hashCode * 59 + Anchor.GetHashCode();
+                if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
                 if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
-                if (RangeMode != null) hashCode = hashCode * 59 + RangeMode.GetHashCode();
-                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
-                if (FixedRange != null) hashCode = hashCode * 59 + FixedRange.GetHashCode();
-                if (ScaleAnchor != null) hashCode = hashCode * 59 + ScaleAnchor.GetHashCode();
-                if (ScaleRatio != null) hashCode = hashCode * 59 + ScaleRatio.GetHashCode();
+                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
+                if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
+                if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
+                if (CategoryArraySrc != null) hashCode = hashCode * 59 + CategoryArraySrc.GetHashCode();
+                if (CategoryOrder != null) hashCode = hashCode * 59 + CategoryOrder.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Constrain != null) hashCode = hashCode * 59 + Constrain.GetHashCode();
                 if (ConstrainToward != null) hashCode = hashCode * 59 + ConstrainToward.GetHashCode();
-                if (Matches != null) hashCode = hashCode * 59 + Matches.GetHashCode();
-                if (RangeBreaks != null) hashCode = hashCode * 59 + RangeBreaks.GetHashCode();
-                if (TickMode != null) hashCode = hashCode * 59 + TickMode.GetHashCode();
-                if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
-                if (Tick0 != null) hashCode = hashCode * 59 + Tick0.GetHashCode();
+                if (DividerColor != null) hashCode = hashCode * 59 + DividerColor.GetHashCode();
+                if (DividerWidth != null) hashCode = hashCode * 59 + DividerWidth.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (DTick != null) hashCode = hashCode * 59 + DTick.GetHashCode();
-                if (TickVals != null) hashCode = hashCode * 59 + TickVals.GetHashCode();
-                if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
-                if (Ticks != null) hashCode = hashCode * 59 + Ticks.GetHashCode();
-                if (TickSon != null) hashCode = hashCode * 59 + TickSon.GetHashCode();
-                if (TickLabelMode != null) hashCode = hashCode * 59 + TickLabelMode.GetHashCode();
-                if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
-                if (TickLabelOverflow != null) hashCode = hashCode * 59 + TickLabelOverflow.GetHashCode();
+                if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (FixedRange != null) hashCode = hashCode * 59 + FixedRange.GetHashCode();
+                if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
+                if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
+                if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
+                if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
+                if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();
+                if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();
+                if (Matches != null) hashCode = hashCode * 59 + Matches.GetHashCode();
+                if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();
-                if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
-                if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();
-                if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();
-                if (ShowTickLabels != null) hashCode = hashCode * 59 + ShowTickLabels.GetHashCode();
-                if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
+                if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
+                if (Overlaying != null) hashCode = hashCode * 59 + Overlaying.GetHashCode();
+                if (Position != null) hashCode = hashCode * 59 + Position.GetHashCode();
+                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
+                if (RangeBreaks != null) hashCode = hashCode * 59 + RangeBreaks.GetHashCode();
+                if (RangeMode != null) hashCode = hashCode * 59 + RangeMode.GetHashCode();
+                if (RangeSelector != null) hashCode = hashCode * 59 + RangeSelector.GetHashCode();
+                if (RangeSlider != null) hashCode = hashCode * 59 + RangeSlider.GetHashCode();
+                if (ScaleAnchor != null) hashCode = hashCode * 59 + ScaleAnchor.GetHashCode();
+                if (ScaleRatio != null) hashCode = hashCode * 59 + ScaleRatio.GetHashCode();
+                if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
+                if (ShowDividers != null) hashCode = hashCode * 59 + ShowDividers.GetHashCode();
+                if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
+                if (ShowGrid != null) hashCode = hashCode * 59 + ShowGrid.GetHashCode();
+                if (ShowLine != null) hashCode = hashCode * 59 + ShowLine.GetHashCode();
                 if (ShowSpikes != null) hashCode = hashCode * 59 + ShowSpikes.GetHashCode();
+                if (ShowTickLabels != null) hashCode = hashCode * 59 + ShowTickLabels.GetHashCode();
+                if (ShowTickPrefix != null) hashCode = hashCode * 59 + ShowTickPrefix.GetHashCode();
+                if (ShowTickSuffix != null) hashCode = hashCode * 59 + ShowTickSuffix.GetHashCode();
+                if (Side != null) hashCode = hashCode * 59 + Side.GetHashCode();
                 if (SpikeColor != null) hashCode = hashCode * 59 + SpikeColor.GetHashCode();
-                if (SpikeThickness != null) hashCode = hashCode * 59 + SpikeThickness.GetHashCode();
                 if (SpikeDash != null) hashCode = hashCode * 59 + SpikeDash.GetHashCode();
                 if (SpikeMode != null) hashCode = hashCode * 59 + SpikeMode.GetHashCode();
                 if (SpikeSnap != null) hashCode = hashCode * 59 + SpikeSnap.GetHashCode();
-                if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
+                if (SpikeThickness != null) hashCode = hashCode * 59 + SpikeThickness.GetHashCode();
+                if (Tick0 != null) hashCode = hashCode * 59 + Tick0.GetHashCode();
                 if (TickAngle != null) hashCode = hashCode * 59 + TickAngle.GetHashCode();
-                if (TickPrefix != null) hashCode = hashCode * 59 + TickPrefix.GetHashCode();
-                if (ShowTickPrefix != null) hashCode = hashCode * 59 + ShowTickPrefix.GetHashCode();
-                if (TickSuffix != null) hashCode = hashCode * 59 + TickSuffix.GetHashCode();
-                if (ShowTickSuffix != null) hashCode = hashCode * 59 + ShowTickSuffix.GetHashCode();
-                if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
-                if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
-                if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
-                if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
+                if (TickColor != null) hashCode = hashCode * 59 + TickColor.GetHashCode();
+                if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
                 if (TickFormat != null) hashCode = hashCode * 59 + TickFormat.GetHashCode();
                 if (TickFormatStops != null) hashCode = hashCode * 59 + TickFormatStops.GetHashCode();
-                if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
-                if (ShowLine != null) hashCode = hashCode * 59 + ShowLine.GetHashCode();
-                if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();
-                if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();
-                if (ShowGrid != null) hashCode = hashCode * 59 + ShowGrid.GetHashCode();
-                if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
-                if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
+                if (TickLabelMode != null) hashCode = hashCode * 59 + TickLabelMode.GetHashCode();
+                if (TickLabelOverflow != null) hashCode = hashCode * 59 + TickLabelOverflow.GetHashCode();
+                if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
+                if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
+                if (TickMode != null) hashCode = hashCode * 59 + TickMode.GetHashCode();
+                if (TickPrefix != null) hashCode = hashCode * 59 + TickPrefix.GetHashCode();
+                if (Ticks != null) hashCode = hashCode * 59 + Ticks.GetHashCode();
+                if (TickSon != null) hashCode = hashCode * 59 + TickSon.GetHashCode();
+                if (TickSuffix != null) hashCode = hashCode * 59 + TickSuffix.GetHashCode();
+                if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
+                if (TickTextSrc != null) hashCode = hashCode * 59 + TickTextSrc.GetHashCode();
+                if (TickVals != null) hashCode = hashCode * 59 + TickVals.GetHashCode();
+                if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();
+                if (TickWidth != null) hashCode = hashCode * 59 + TickWidth.GetHashCode();
+                if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (ZeroLine != null) hashCode = hashCode * 59 + ZeroLine.GetHashCode();
                 if (ZeroLineColor != null) hashCode = hashCode * 59 + ZeroLineColor.GetHashCode();
                 if (ZeroLineWidth != null) hashCode = hashCode * 59 + ZeroLineWidth.GetHashCode();
-                if (ShowDividers != null) hashCode = hashCode * 59 + ShowDividers.GetHashCode();
-                if (DividerColor != null) hashCode = hashCode * 59 + DividerColor.GetHashCode();
-                if (DividerWidth != null) hashCode = hashCode * 59 + DividerWidth.GetHashCode();
-                if (Anchor != null) hashCode = hashCode * 59 + Anchor.GetHashCode();
-                if (Side != null) hashCode = hashCode * 59 + Side.GetHashCode();
-                if (Overlaying != null) hashCode = hashCode * 59 + Overlaying.GetHashCode();
-                if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
-                if (Position != null) hashCode = hashCode * 59 + Position.GetHashCode();
-                if (CategoryOrder != null) hashCode = hashCode * 59 + CategoryOrder.GetHashCode();
-                if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (RangeSlider != null) hashCode = hashCode * 59 + RangeSlider.GetHashCode();
-                if (RangeSelector != null) hashCode = hashCode * 59 + RangeSelector.GetHashCode();
-                if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
-                if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();
-                if (TickTextSrc != null) hashCode = hashCode * 59 + TickTextSrc.GetHashCode();
-                if (CategoryArraySrc != null) hashCode = hashCode * 59 + CategoryArraySrc.GetHashCode();
                 return hashCode;
             }
         }

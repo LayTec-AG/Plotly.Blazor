@@ -20,30 +20,6 @@ namespace Plotly.Blazor.Traces.HistogramLib
     public class ErrorX : IEquatable<ErrorX>
     {
         /// <summary>
-        ///     Determines whether or not this set of error bars is visible.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Determines the rule used to generate the error bars. If *constant`, the
-        ///     bar lengths are of a constant value. Set this constant in <c>value</c>.
-        ///     If <c>percent</c>, the bar lengths correspond to a percentage of underlying
-        ///     data. Set this percentage in <c>value</c>. If <c>sqrt</c>, the bar lengths
-        ///     correspond to the square of the underlying data. If <c>data</c>, the bar
-        ///     lengths are set with data set <c>array</c>.
-        /// </summary>
-        [JsonPropertyName(@"type")]
-        public Plotly.Blazor.Traces.HistogramLib.ErrorXLib.TypeEnum? Type { get; set;} 
-
-        /// <summary>
-        ///     Determines whether or not the error bars have the same length in both direction
-        ///     (top/bottom for vertical bars, left/right for horizontal bars.
-        /// </summary>
-        [JsonPropertyName(@"symmetric")]
-        public bool? Symmetric { get; set;} 
-
-        /// <summary>
         ///     Sets the data corresponding the length of each error bar. Values are plotted
         ///     relative to the underlying data.
         /// </summary>
@@ -57,6 +33,66 @@ namespace Plotly.Blazor.Traces.HistogramLib
         /// </summary>
         [JsonPropertyName(@"arrayminus")]
         public IList<object> ArrayMinus { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  arrayminus .
+        /// </summary>
+        [JsonPropertyName(@"arrayminussrc")]
+        public string ArrayMinusSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  array .
+        /// </summary>
+        [JsonPropertyName(@"arraysrc")]
+        public string ArraySrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the stoke color of the error bars.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the CopyYStyle.
+        /// </summary>
+        [JsonPropertyName(@"copy_ystyle")]
+        public bool? CopyYStyle { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not the error bars have the same length in both direction
+        ///     (top/bottom for vertical bars, left/right for horizontal bars.
+        /// </summary>
+        [JsonPropertyName(@"symmetric")]
+        public bool? Symmetric { get; set;} 
+
+        /// <summary>
+        ///     Sets the thickness (in px) of the error bars.
+        /// </summary>
+        [JsonPropertyName(@"thickness")]
+        public decimal? Thickness { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the TraceRef.
+        /// </summary>
+        [JsonPropertyName(@"traceref")]
+        public int? TraceRef { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the TraceRefMinus.
+        /// </summary>
+        [JsonPropertyName(@"tracerefminus")]
+        public int? TraceRefMinus { get; set;} 
+
+        /// <summary>
+        ///     Determines the rule used to generate the error bars. If *constant`, the
+        ///     bar lengths are of a constant value. Set this constant in <c>value</c>.
+        ///     If <c>percent</c>, the bar lengths correspond to a percentage of underlying
+        ///     data. Set this percentage in <c>value</c>. If <c>sqrt</c>, the bar lengths
+        ///     correspond to the square of the underlying data. If <c>data</c>, the bar
+        ///     lengths are set with data set <c>array</c>.
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        public Plotly.Blazor.Traces.HistogramLib.ErrorXLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Sets the value of either the percentage (if <c>type</c> is set to <c>percent</c>)
@@ -76,52 +112,16 @@ namespace Plotly.Blazor.Traces.HistogramLib
         public decimal? ValueMinus { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the TraceRef.
+        ///     Determines whether or not this set of error bars is visible.
         /// </summary>
-        [JsonPropertyName(@"traceref")]
-        public int? TraceRef { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the TraceRefMinus.
-        /// </summary>
-        [JsonPropertyName(@"tracerefminus")]
-        public int? TraceRefMinus { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the CopyYStyle.
-        /// </summary>
-        [JsonPropertyName(@"copy_ystyle")]
-        public bool? CopyYStyle { get; set;} 
-
-        /// <summary>
-        ///     Sets the stoke color of the error bars.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
-
-        /// <summary>
-        ///     Sets the thickness (in px) of the error bars.
-        /// </summary>
-        [JsonPropertyName(@"thickness")]
-        public decimal? Thickness { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the width (in px) of the cross-bar at both ends of the error bars.
         /// </summary>
         [JsonPropertyName(@"width")]
         public decimal? Width { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  array .
-        /// </summary>
-        [JsonPropertyName(@"arraysrc")]
-        public string ArraySrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  arrayminus .
-        /// </summary>
-        [JsonPropertyName(@"arrayminussrc")]
-        public string ArrayMinusSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -139,21 +139,6 @@ namespace Plotly.Blazor.Traces.HistogramLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    Symmetric == other.Symmetric ||
-                    Symmetric != null &&
-                    Symmetric.Equals(other.Symmetric)
-                ) && 
-                (
                     Equals(Array, other.Array) ||
                     Array != null && other.Array != null &&
                     Array.SequenceEqual(other.Array)
@@ -164,14 +149,34 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     ArrayMinus.SequenceEqual(other.ArrayMinus)
                 ) &&
                 (
-                    Value == other.Value ||
-                    Value != null &&
-                    Value.Equals(other.Value)
+                    ArrayMinusSrc == other.ArrayMinusSrc ||
+                    ArrayMinusSrc != null &&
+                    ArrayMinusSrc.Equals(other.ArrayMinusSrc)
                 ) && 
                 (
-                    ValueMinus == other.ValueMinus ||
-                    ValueMinus != null &&
-                    ValueMinus.Equals(other.ValueMinus)
+                    ArraySrc == other.ArraySrc ||
+                    ArraySrc != null &&
+                    ArraySrc.Equals(other.ArraySrc)
+                ) && 
+                (
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
+                ) && 
+                (
+                    CopyYStyle == other.CopyYStyle ||
+                    CopyYStyle != null &&
+                    CopyYStyle.Equals(other.CopyYStyle)
+                ) && 
+                (
+                    Symmetric == other.Symmetric ||
+                    Symmetric != null &&
+                    Symmetric.Equals(other.Symmetric)
+                ) && 
+                (
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
+                    Thickness.Equals(other.Thickness)
                 ) && 
                 (
                     TraceRef == other.TraceRef ||
@@ -184,34 +189,29 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     TraceRefMinus.Equals(other.TraceRefMinus)
                 ) && 
                 (
-                    CopyYStyle == other.CopyYStyle ||
-                    CopyYStyle != null &&
-                    CopyYStyle.Equals(other.CopyYStyle)
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
                 ) && 
                 (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
+                    Value == other.Value ||
+                    Value != null &&
+                    Value.Equals(other.Value)
                 ) && 
                 (
-                    Thickness == other.Thickness ||
-                    Thickness != null &&
-                    Thickness.Equals(other.Thickness)
+                    ValueMinus == other.ValueMinus ||
+                    ValueMinus != null &&
+                    ValueMinus.Equals(other.ValueMinus)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 ) && 
                 (
                     Width == other.Width ||
                     Width != null &&
                     Width.Equals(other.Width)
-                ) && 
-                (
-                    ArraySrc == other.ArraySrc ||
-                    ArraySrc != null &&
-                    ArraySrc.Equals(other.ArraySrc)
-                ) && 
-                (
-                    ArrayMinusSrc == other.ArrayMinusSrc ||
-                    ArrayMinusSrc != null &&
-                    ArrayMinusSrc.Equals(other.ArrayMinusSrc)
                 );
         }
 
@@ -221,21 +221,21 @@ namespace Plotly.Blazor.Traces.HistogramLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Symmetric != null) hashCode = hashCode * 59 + Symmetric.GetHashCode();
                 if (Array != null) hashCode = hashCode * 59 + Array.GetHashCode();
                 if (ArrayMinus != null) hashCode = hashCode * 59 + ArrayMinus.GetHashCode();
-                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
-                if (ValueMinus != null) hashCode = hashCode * 59 + ValueMinus.GetHashCode();
+                if (ArrayMinusSrc != null) hashCode = hashCode * 59 + ArrayMinusSrc.GetHashCode();
+                if (ArraySrc != null) hashCode = hashCode * 59 + ArraySrc.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (CopyYStyle != null) hashCode = hashCode * 59 + CopyYStyle.GetHashCode();
+                if (Symmetric != null) hashCode = hashCode * 59 + Symmetric.GetHashCode();
+                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
                 if (TraceRef != null) hashCode = hashCode * 59 + TraceRef.GetHashCode();
                 if (TraceRefMinus != null) hashCode = hashCode * 59 + TraceRefMinus.GetHashCode();
-                if (CopyYStyle != null) hashCode = hashCode * 59 + CopyYStyle.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
+                if (ValueMinus != null) hashCode = hashCode * 59 + ValueMinus.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (ArraySrc != null) hashCode = hashCode * 59 + ArraySrc.GetHashCode();
-                if (ArrayMinusSrc != null) hashCode = hashCode * 59 + ArrayMinusSrc.GetHashCode();
                 return hashCode;
             }
         }

@@ -30,11 +30,12 @@ namespace Plotly.Blazor.Traces.SurfaceLib
         public decimal? Diffuse { get; set;} 
 
         /// <summary>
-        ///     Represents the level that incident rays are reflected in a single direction,
+        ///     Represents the reflectance as a dependency of the viewing angle; e.g. paper
+        ///     is reflective when viewing it from the edge of the paper (almost 90 degrees),
         ///     causing shine.
         /// </summary>
-        [JsonPropertyName(@"specular")]
-        public decimal? Specular { get; set;} 
+        [JsonPropertyName(@"fresnel")]
+        public decimal? Fresnel { get; set;} 
 
         /// <summary>
         ///     Alters specular reflection; the rougher the surface, the wider and less
@@ -44,12 +45,11 @@ namespace Plotly.Blazor.Traces.SurfaceLib
         public decimal? Roughness { get; set;} 
 
         /// <summary>
-        ///     Represents the reflectance as a dependency of the viewing angle; e.g. paper
-        ///     is reflective when viewing it from the edge of the paper (almost 90 degrees),
+        ///     Represents the level that incident rays are reflected in a single direction,
         ///     causing shine.
         /// </summary>
-        [JsonPropertyName(@"fresnel")]
-        public decimal? Fresnel { get; set;} 
+        [JsonPropertyName(@"specular")]
+        public decimal? Specular { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -77,9 +77,9 @@ namespace Plotly.Blazor.Traces.SurfaceLib
                     Diffuse.Equals(other.Diffuse)
                 ) && 
                 (
-                    Specular == other.Specular ||
-                    Specular != null &&
-                    Specular.Equals(other.Specular)
+                    Fresnel == other.Fresnel ||
+                    Fresnel != null &&
+                    Fresnel.Equals(other.Fresnel)
                 ) && 
                 (
                     Roughness == other.Roughness ||
@@ -87,9 +87,9 @@ namespace Plotly.Blazor.Traces.SurfaceLib
                     Roughness.Equals(other.Roughness)
                 ) && 
                 (
-                    Fresnel == other.Fresnel ||
-                    Fresnel != null &&
-                    Fresnel.Equals(other.Fresnel)
+                    Specular == other.Specular ||
+                    Specular != null &&
+                    Specular.Equals(other.Specular)
                 );
         }
 
@@ -101,9 +101,9 @@ namespace Plotly.Blazor.Traces.SurfaceLib
                 var hashCode = 41;
                 if (Ambient != null) hashCode = hashCode * 59 + Ambient.GetHashCode();
                 if (Diffuse != null) hashCode = hashCode * 59 + Diffuse.GetHashCode();
-                if (Specular != null) hashCode = hashCode * 59 + Specular.GetHashCode();
-                if (Roughness != null) hashCode = hashCode * 59 + Roughness.GetHashCode();
                 if (Fresnel != null) hashCode = hashCode * 59 + Fresnel.GetHashCode();
+                if (Roughness != null) hashCode = hashCode * 59 + Roughness.GetHashCode();
+                if (Specular != null) hashCode = hashCode * 59 + Specular.GetHashCode();
                 return hashCode;
             }
         }

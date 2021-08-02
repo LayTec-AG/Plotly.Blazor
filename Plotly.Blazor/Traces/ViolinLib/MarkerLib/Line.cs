@@ -27,12 +27,6 @@ namespace Plotly.Blazor.Traces.ViolinLib.MarkerLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the lines bounding the marker points.
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
         ///     Sets the border line color of the outlier sample points. Defaults to marker.color
         /// </summary>
         [JsonPropertyName(@"outliercolor")]
@@ -43,6 +37,12 @@ namespace Plotly.Blazor.Traces.ViolinLib.MarkerLib
         /// </summary>
         [JsonPropertyName(@"outlierwidth")]
         public decimal? OutlierWidth { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the lines bounding the marker points.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -65,11 +65,6 @@ namespace Plotly.Blazor.Traces.ViolinLib.MarkerLib
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
                     OutlierColor == other.OutlierColor ||
                     OutlierColor != null &&
                     OutlierColor.Equals(other.OutlierColor)
@@ -78,6 +73,11 @@ namespace Plotly.Blazor.Traces.ViolinLib.MarkerLib
                     OutlierWidth == other.OutlierWidth ||
                     OutlierWidth != null &&
                     OutlierWidth.Equals(other.OutlierWidth)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -88,9 +88,9 @@ namespace Plotly.Blazor.Traces.ViolinLib.MarkerLib
             {
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (OutlierColor != null) hashCode = hashCode * 59 + OutlierColor.GetHashCode();
                 if (OutlierWidth != null) hashCode = hashCode * 59 + OutlierWidth.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

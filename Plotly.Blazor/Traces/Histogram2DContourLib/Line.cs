@@ -25,12 +25,6 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the contour line width in (in px)
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
         ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
         ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
         ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
@@ -44,6 +38,12 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
         /// </summary>
         [JsonPropertyName(@"smoothing")]
         public decimal? Smoothing { get; set;} 
+
+        /// <summary>
+        ///     Sets the contour line width in (in px)
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -66,11 +66,6 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
                     Dash == other.Dash ||
                     Dash != null &&
                     Dash.Equals(other.Dash)
@@ -79,6 +74,11 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
                     Smoothing == other.Smoothing ||
                     Smoothing != null &&
                     Smoothing.Equals(other.Smoothing)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -89,9 +89,9 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
             {
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
                 if (Smoothing != null) hashCode = hashCode * 59 + Smoothing.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

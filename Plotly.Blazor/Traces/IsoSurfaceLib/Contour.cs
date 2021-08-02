@@ -18,16 +18,16 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
     public class Contour : IEquatable<Contour>
     {
         /// <summary>
-        ///     Sets whether or not dynamic contours are shown on hover
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
         ///     Sets the color of the contour lines.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not dynamic contours are shown on hover
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
 
         /// <summary>
         ///     Sets the width of the contour lines.
@@ -51,14 +51,14 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
                 ) && 
                 (
                     Width == other.Width ||
@@ -73,8 +73,8 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }

@@ -18,6 +18,12 @@ namespace Plotly.Blazor.Traces.ViolinLib
     public class MeanLine : IEquatable<MeanLine>
     {
         /// <summary>
+        ///     Sets the mean line color.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
         ///     Determines if a line corresponding to the sample&#39;s mean is shown inside
         ///     the violins. If <c>box.visible</c> is turned on, the mean line is drawn
         ///     inside the inner box. Otherwise, the mean line is drawn from one side of
@@ -25,12 +31,6 @@ namespace Plotly.Blazor.Traces.ViolinLib
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Sets the mean line color.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
 
         /// <summary>
         ///     Sets the mean line width.
@@ -54,14 +54,14 @@ namespace Plotly.Blazor.Traces.ViolinLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 ) && 
                 (
                     Width == other.Width ||
@@ -76,8 +76,8 @@ namespace Plotly.Blazor.Traces.ViolinLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }

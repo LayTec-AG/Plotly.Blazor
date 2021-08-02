@@ -20,12 +20,6 @@ namespace Plotly.Blazor.LayoutLib
     public class MapBox : IEquatable<MapBox>
     {
         /// <summary>
-        ///     Gets or sets the Domain.
-        /// </summary>
-        [JsonPropertyName(@"domain")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.Domain Domain { get; set;} 
-
-        /// <summary>
         ///     Sets the mapbox access token to be used for this mapbox map. Alternatively,
         ///     the mapbox access token can be set in the configuration options under <c>mapboxAccessToken</c>.
         ///     Note that accessToken are only required when <c>style</c> (e.g with values
@@ -34,6 +28,38 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"accesstoken")]
         public string AccessToken { get; set;} 
+
+        /// <summary>
+        ///     Sets the bearing angle of the map in degrees counter-clockwise from North
+        ///     (mapbox.bearing).
+        /// </summary>
+        [JsonPropertyName(@"bearing")]
+        public decimal? Bearing { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Center.
+        /// </summary>
+        [JsonPropertyName(@"center")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.Center Center { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Domain.
+        /// </summary>
+        [JsonPropertyName(@"domain")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.Domain Domain { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Layers.
+        /// </summary>
+        [JsonPropertyName(@"layers")]
+        public IList<Plotly.Blazor.LayoutLib.MapBoxLib.Layer> Layers { get; set;} 
+
+        /// <summary>
+        ///     Sets the pitch angle of the map (in degrees, where <c>0</c> means perpendicular
+        ///     to the surface of the map) (mapbox.pitch).
+        /// </summary>
+        [JsonPropertyName(@"pitch")]
+        public decimal? Pitch { get; set;} 
 
         /// <summary>
         ///     Defines the map layers that are rendered by default below the trace layers
@@ -48,45 +74,13 @@ namespace Plotly.Blazor.LayoutLib
         ///     in the <c>accesstoken</c> attribute or in the <c>mapboxAccessToken</c> config
         ///     option.  Mapbox Style objects are of the form described in the Mapbox GL
         ///     JS documentation available at https://docs.mapbox.com/mapbox-gl-js/style-spec
-        ///      The built-in plotly.js styles objects are: open-street-map, white-bg, carto-positron,
-        ///     carto-darkmatter, stamen-terrain, stamen-toner, stamen-watercolor  The built-in
-        ///     Mapbox styles are: basic, streets, outdoors, light, dark, satellite, satellite-streets
-        ///      Mapbox style URLs are of the form: mapbox://mapbox.mapbox-&lt;name&gt;-&lt;version&gt;
+        ///      The built-in plotly.js styles objects are: carto-darkmatter, carto-positron,
+        ///     open-street-map, stamen-terrain, stamen-toner, stamen-watercolor, white-bg
+        ///      The built-in Mapbox styles are: basic, streets, outdoors, light, dark,
+        ///     satellite, satellite-streets  Mapbox style URLs are of the form: mapbox://mapbox.mapbox-&lt;name&gt;-&lt;version&gt;
         /// </summary>
         [JsonPropertyName(@"style")]
         public object Style { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Center.
-        /// </summary>
-        [JsonPropertyName(@"center")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.Center Center { get; set;} 
-
-        /// <summary>
-        ///     Sets the zoom level of the map (mapbox.zoom).
-        /// </summary>
-        [JsonPropertyName(@"zoom")]
-        public decimal? Zoom { get; set;} 
-
-        /// <summary>
-        ///     Sets the bearing angle of the map in degrees counter-clockwise from North
-        ///     (mapbox.bearing).
-        /// </summary>
-        [JsonPropertyName(@"bearing")]
-        public decimal? Bearing { get; set;} 
-
-        /// <summary>
-        ///     Sets the pitch angle of the map (in degrees, where <c>0</c> means perpendicular
-        ///     to the surface of the map) (mapbox.pitch).
-        /// </summary>
-        [JsonPropertyName(@"pitch")]
-        public decimal? Pitch { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Layers.
-        /// </summary>
-        [JsonPropertyName(@"layers")]
-        public IList<Plotly.Blazor.LayoutLib.MapBoxLib.Layer> Layers { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in the view: <c>center</c>,
@@ -94,6 +88,12 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"uirevision")]
         public object UiRevision { get; set;} 
+
+        /// <summary>
+        ///     Sets the zoom level of the map (mapbox.zoom).
+        /// </summary>
+        [JsonPropertyName(@"zoom")]
+        public decimal? Zoom { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -111,29 +111,9 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain ||
-                    Domain != null &&
-                    Domain.Equals(other.Domain)
-                ) && 
-                (
                     AccessToken == other.AccessToken ||
                     AccessToken != null &&
                     AccessToken.Equals(other.AccessToken)
-                ) && 
-                (
-                    Style == other.Style ||
-                    Style != null &&
-                    Style.Equals(other.Style)
-                ) && 
-                (
-                    Center == other.Center ||
-                    Center != null &&
-                    Center.Equals(other.Center)
-                ) && 
-                (
-                    Zoom == other.Zoom ||
-                    Zoom != null &&
-                    Zoom.Equals(other.Zoom)
                 ) && 
                 (
                     Bearing == other.Bearing ||
@@ -141,9 +121,14 @@ namespace Plotly.Blazor.LayoutLib
                     Bearing.Equals(other.Bearing)
                 ) && 
                 (
-                    Pitch == other.Pitch ||
-                    Pitch != null &&
-                    Pitch.Equals(other.Pitch)
+                    Center == other.Center ||
+                    Center != null &&
+                    Center.Equals(other.Center)
+                ) && 
+                (
+                    Domain == other.Domain ||
+                    Domain != null &&
+                    Domain.Equals(other.Domain)
                 ) && 
                 (
                     Equals(Layers, other.Layers) ||
@@ -151,9 +136,24 @@ namespace Plotly.Blazor.LayoutLib
                     Layers.SequenceEqual(other.Layers)
                 ) &&
                 (
+                    Pitch == other.Pitch ||
+                    Pitch != null &&
+                    Pitch.Equals(other.Pitch)
+                ) && 
+                (
+                    Style == other.Style ||
+                    Style != null &&
+                    Style.Equals(other.Style)
+                ) && 
+                (
                     UiRevision == other.UiRevision ||
                     UiRevision != null &&
                     UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    Zoom == other.Zoom ||
+                    Zoom != null &&
+                    Zoom.Equals(other.Zoom)
                 );
         }
 
@@ -163,15 +163,15 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (AccessToken != null) hashCode = hashCode * 59 + AccessToken.GetHashCode();
-                if (Style != null) hashCode = hashCode * 59 + Style.GetHashCode();
-                if (Center != null) hashCode = hashCode * 59 + Center.GetHashCode();
-                if (Zoom != null) hashCode = hashCode * 59 + Zoom.GetHashCode();
                 if (Bearing != null) hashCode = hashCode * 59 + Bearing.GetHashCode();
-                if (Pitch != null) hashCode = hashCode * 59 + Pitch.GetHashCode();
+                if (Center != null) hashCode = hashCode * 59 + Center.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (Layers != null) hashCode = hashCode * 59 + Layers.GetHashCode();
+                if (Pitch != null) hashCode = hashCode * 59 + Pitch.GetHashCode();
+                if (Style != null) hashCode = hashCode * 59 + Style.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Zoom != null) hashCode = hashCode * 59 + Zoom.GetHashCode();
                 return hashCode;
             }
         }

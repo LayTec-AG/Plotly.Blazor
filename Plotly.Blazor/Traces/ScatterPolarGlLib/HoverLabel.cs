@@ -21,6 +21,27 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
     public class HoverLabel : IEquatable<HoverLabel>
     {
         /// <summary>
+        ///     Sets the horizontal alignment of the text content within hover label box.
+        ///     Has an effect only if the hover label text spans more two or more lines
+        /// </summary>
+        [JsonPropertyName(@"align")]
+        public Plotly.Blazor.Traces.ScatterPolarGlLib.HoverLabelLib.AlignEnum? Align { get; set;} 
+
+        /// <summary>
+        ///     Sets the horizontal alignment of the text content within hover label box.
+        ///     Has an effect only if the hover label text spans more two or more lines
+        /// </summary>
+        [JsonPropertyName(@"align")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterPolarGlLib.HoverLabelLib.AlignEnum?> AlignArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  align .
+        /// </summary>
+        [JsonPropertyName(@"alignsrc")]
+        public string AlignSrc { get; set;} 
+
+        /// <summary>
         ///     Sets the background color of the hover labels for this trace
         /// </summary>
         [JsonPropertyName(@"bgcolor")]
@@ -32,6 +53,12 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
         [JsonPropertyName(@"bgcolor")]
         [Array]
         public IList<object> BgColorArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  bgcolor .
+        /// </summary>
+        [JsonPropertyName(@"bgcolorsrc")]
+        public string BgColorSrc { get; set;} 
 
         /// <summary>
         ///     Sets the border color of the hover labels for this trace.
@@ -47,25 +74,16 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
         public IList<object> BorderColorArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  bordercolor .
+        /// </summary>
+        [JsonPropertyName(@"bordercolorsrc")]
+        public string BorderColorSrc { get; set;} 
+
+        /// <summary>
         ///     Sets the font used in hover labels.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.ScatterPolarGlLib.HoverLabelLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Sets the horizontal alignment of the text content within hover label box.
-        ///     Has an effect only if the hover label text spans more two or more lines
-        /// </summary>
-        [JsonPropertyName(@"align")]
-        public Plotly.Blazor.Traces.ScatterPolarGlLib.HoverLabelLib.AlignEnum? Align { get; set;} 
-
-        /// <summary>
-        ///     Sets the horizontal alignment of the text content within hover label box.
-        ///     Has an effect only if the hover label text spans more two or more lines
-        /// </summary>
-        [JsonPropertyName(@"align")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.ScatterPolarGlLib.HoverLabelLib.AlignEnum?> AlignArray { get; set;} 
 
         /// <summary>
         ///     Sets the default length (in number of characters) of the trace name in the
@@ -89,24 +107,6 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
         public IList<int?> NameLengthArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  bgcolor .
-        /// </summary>
-        [JsonPropertyName(@"bgcolorsrc")]
-        public string BgColorSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  bordercolor .
-        /// </summary>
-        [JsonPropertyName(@"bordercolorsrc")]
-        public string BorderColorSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  align .
-        /// </summary>
-        [JsonPropertyName(@"alignsrc")]
-        public string AlignSrc { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  namelength .
         /// </summary>
         [JsonPropertyName(@"namelengthsrc")]
@@ -128,6 +128,21 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
 
             return 
                 (
+                    Align == other.Align ||
+                    Align != null &&
+                    Align.Equals(other.Align)
+                ) && 
+                (
+                    Equals(AlignArray, other.AlignArray) ||
+                    AlignArray != null && other.AlignArray != null &&
+                    AlignArray.SequenceEqual(other.AlignArray)
+                ) &&
+                (
+                    AlignSrc == other.AlignSrc ||
+                    AlignSrc != null &&
+                    AlignSrc.Equals(other.AlignSrc)
+                ) && 
+                (
                     BgColor == other.BgColor ||
                     BgColor != null &&
                     BgColor.Equals(other.BgColor)
@@ -137,6 +152,11 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
                     BgColorArray != null && other.BgColorArray != null &&
                     BgColorArray.SequenceEqual(other.BgColorArray)
                 ) &&
+                (
+                    BgColorSrc == other.BgColorSrc ||
+                    BgColorSrc != null &&
+                    BgColorSrc.Equals(other.BgColorSrc)
+                ) && 
                 (
                     BorderColor == other.BorderColor ||
                     BorderColor != null &&
@@ -148,20 +168,15 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
                     BorderColorArray.SequenceEqual(other.BorderColorArray)
                 ) &&
                 (
+                    BorderColorSrc == other.BorderColorSrc ||
+                    BorderColorSrc != null &&
+                    BorderColorSrc.Equals(other.BorderColorSrc)
+                ) && 
+                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
                 ) && 
-                (
-                    Align == other.Align ||
-                    Align != null &&
-                    Align.Equals(other.Align)
-                ) && 
-                (
-                    Equals(AlignArray, other.AlignArray) ||
-                    AlignArray != null && other.AlignArray != null &&
-                    AlignArray.SequenceEqual(other.AlignArray)
-                ) &&
                 (
                     NameLength == other.NameLength ||
                     NameLength != null &&
@@ -172,21 +187,6 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
                     NameLengthArray != null && other.NameLengthArray != null &&
                     NameLengthArray.SequenceEqual(other.NameLengthArray)
                 ) &&
-                (
-                    BgColorSrc == other.BgColorSrc ||
-                    BgColorSrc != null &&
-                    BgColorSrc.Equals(other.BgColorSrc)
-                ) && 
-                (
-                    BorderColorSrc == other.BorderColorSrc ||
-                    BorderColorSrc != null &&
-                    BorderColorSrc.Equals(other.BorderColorSrc)
-                ) && 
-                (
-                    AlignSrc == other.AlignSrc ||
-                    AlignSrc != null &&
-                    AlignSrc.Equals(other.AlignSrc)
-                ) && 
                 (
                     NameLengthSrc == other.NameLengthSrc ||
                     NameLengthSrc != null &&
@@ -200,18 +200,18 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
-                if (BgColorArray != null) hashCode = hashCode * 59 + BgColorArray.GetHashCode();
-                if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
-                if (BorderColorArray != null) hashCode = hashCode * 59 + BorderColorArray.GetHashCode();
-                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Align != null) hashCode = hashCode * 59 + Align.GetHashCode();
                 if (AlignArray != null) hashCode = hashCode * 59 + AlignArray.GetHashCode();
+                if (AlignSrc != null) hashCode = hashCode * 59 + AlignSrc.GetHashCode();
+                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
+                if (BgColorArray != null) hashCode = hashCode * 59 + BgColorArray.GetHashCode();
+                if (BgColorSrc != null) hashCode = hashCode * 59 + BgColorSrc.GetHashCode();
+                if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
+                if (BorderColorArray != null) hashCode = hashCode * 59 + BorderColorArray.GetHashCode();
+                if (BorderColorSrc != null) hashCode = hashCode * 59 + BorderColorSrc.GetHashCode();
+                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (NameLength != null) hashCode = hashCode * 59 + NameLength.GetHashCode();
                 if (NameLengthArray != null) hashCode = hashCode * 59 + NameLengthArray.GetHashCode();
-                if (BgColorSrc != null) hashCode = hashCode * 59 + BgColorSrc.GetHashCode();
-                if (BorderColorSrc != null) hashCode = hashCode * 59 + BorderColorSrc.GetHashCode();
-                if (AlignSrc != null) hashCode = hashCode * 59 + AlignSrc.GetHashCode();
                 if (NameLengthSrc != null) hashCode = hashCode * 59 + NameLengthSrc.GetHashCode();
                 return hashCode;
             }

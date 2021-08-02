@@ -17,14 +17,14 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib.LineLib
     {
         [EnumMember(Value=@"solid")]
         Solid = 0,
-        [EnumMember(Value=@"dot")]
-        Dot,
         [EnumMember(Value=@"dash")]
         Dash,
-        [EnumMember(Value=@"longdash")]
-        LongDash,
         [EnumMember(Value=@"dashdot")]
         DashDot,
+        [EnumMember(Value=@"dot")]
+        Dot,
+        [EnumMember(Value=@"longdash")]
+        LongDash,
         [EnumMember(Value=@"longdashdot")]
         LongDashDot
     }

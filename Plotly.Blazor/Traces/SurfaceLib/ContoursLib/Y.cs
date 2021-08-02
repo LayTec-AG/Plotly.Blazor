@@ -18,53 +18,16 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
     public class Y : IEquatable<Y>
     {
         /// <summary>
-        ///     Determines whether or not contour lines about the y dimension are drawn.
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
-        ///     Sets the starting contour level value. Must be less than <c>contours.end</c>
-        /// </summary>
-        [JsonPropertyName(@"start")]
-        public decimal? Start { get; set;} 
-
-        /// <summary>
-        ///     Sets the end contour level value. Must be more than <c>contours.start</c>
-        /// </summary>
-        [JsonPropertyName(@"end")]
-        public decimal? End { get; set;} 
-
-        /// <summary>
-        ///     Sets the step between each contour level. Must be positive.
-        /// </summary>
-        [JsonPropertyName(@"size")]
-        public decimal? Size { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Project.
-        /// </summary>
-        [JsonPropertyName(@"project")]
-        public Plotly.Blazor.Traces.SurfaceLib.ContoursLib.YLib.Project Project { get; set;} 
-
-        /// <summary>
         ///     Sets the color of the contour lines.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
 
         /// <summary>
-        ///     An alternate to <c>color</c>. Determines whether or not the contour lines
-        ///     are colored using the trace <c>colorscale</c>.
+        ///     Sets the end contour level value. Must be more than <c>contours.start</c>
         /// </summary>
-        [JsonPropertyName(@"usecolormap")]
-        public bool? UseColorMap { get; set;} 
-
-        /// <summary>
-        ///     Sets the width of the contour lines.
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
+        [JsonPropertyName(@"end")]
+        public decimal? End { get; set;} 
 
         /// <summary>
         ///     Determines whether or not contour lines about the y dimension are highlighted
@@ -85,6 +48,43 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
         [JsonPropertyName(@"highlightwidth")]
         public decimal? HighlightWidth { get; set;} 
 
+        /// <summary>
+        ///     Gets or sets the Project.
+        /// </summary>
+        [JsonPropertyName(@"project")]
+        public Plotly.Blazor.Traces.SurfaceLib.ContoursLib.YLib.Project Project { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not contour lines about the y dimension are drawn.
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
+
+        /// <summary>
+        ///     Sets the step between each contour level. Must be positive.
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        public decimal? Size { get; set;} 
+
+        /// <summary>
+        ///     Sets the starting contour level value. Must be less than <c>contours.end</c>
+        /// </summary>
+        [JsonPropertyName(@"start")]
+        public decimal? Start { get; set;} 
+
+        /// <summary>
+        ///     An alternate to <c>color</c>. Determines whether or not the contour lines
+        ///     are colored using the trace <c>colorscale</c>.
+        /// </summary>
+        [JsonPropertyName(@"usecolormap")]
+        public bool? UseColorMap { get; set;} 
+
+        /// <summary>
+        ///     Sets the width of the contour lines.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -101,44 +101,14 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
-                ) && 
-                (
-                    Start == other.Start ||
-                    Start != null &&
-                    Start.Equals(other.Start)
-                ) && 
-                (
-                    End == other.End ||
-                    End != null &&
-                    End.Equals(other.End)
-                ) && 
-                (
-                    Size == other.Size ||
-                    Size != null &&
-                    Size.Equals(other.Size)
-                ) && 
-                (
-                    Project == other.Project ||
-                    Project != null &&
-                    Project.Equals(other.Project)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    UseColorMap == other.UseColorMap ||
-                    UseColorMap != null &&
-                    UseColorMap.Equals(other.UseColorMap)
-                ) && 
-                (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
+                    End == other.End ||
+                    End != null &&
+                    End.Equals(other.End)
                 ) && 
                 (
                     Highlight == other.Highlight ||
@@ -154,6 +124,36 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
                     HighlightWidth == other.HighlightWidth ||
                     HighlightWidth != null &&
                     HighlightWidth.Equals(other.HighlightWidth)
+                ) && 
+                (
+                    Project == other.Project ||
+                    Project != null &&
+                    Project.Equals(other.Project)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
+                ) && 
+                (
+                    Size == other.Size ||
+                    Size != null &&
+                    Size.Equals(other.Size)
+                ) && 
+                (
+                    Start == other.Start ||
+                    Start != null &&
+                    Start.Equals(other.Start)
+                ) && 
+                (
+                    UseColorMap == other.UseColorMap ||
+                    UseColorMap != null &&
+                    UseColorMap.Equals(other.UseColorMap)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -163,17 +163,17 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
-                if (Start != null) hashCode = hashCode * 59 + Start.GetHashCode();
-                if (End != null) hashCode = hashCode * 59 + End.GetHashCode();
-                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
-                if (Project != null) hashCode = hashCode * 59 + Project.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (UseColorMap != null) hashCode = hashCode * 59 + UseColorMap.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
+                if (End != null) hashCode = hashCode * 59 + End.GetHashCode();
                 if (Highlight != null) hashCode = hashCode * 59 + Highlight.GetHashCode();
                 if (HighlightColor != null) hashCode = hashCode * 59 + HighlightColor.GetHashCode();
                 if (HighlightWidth != null) hashCode = hashCode * 59 + HighlightWidth.GetHashCode();
+                if (Project != null) hashCode = hashCode * 59 + Project.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
+                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
+                if (Start != null) hashCode = hashCode * 59 + Start.GetHashCode();
+                if (UseColorMap != null) hashCode = hashCode * 59 + UseColorMap.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,14 +18,10 @@ namespace Plotly.Blazor.Transforms.AggregateLib
     public class Aggregation : IEquatable<Aggregation>
     {
         /// <summary>
-        ///     A reference to the data array in the parent trace to aggregate. To aggregate
-        ///     by nested variables, use <c>.</c> to access them. For example, set <c>groups</c>
-        ///     to <c>marker.color</c> to aggregate over the marker color array. The referenced
-        ///     array must already exist, unless <c>func</c> is <c>count</c>, and each array
-        ///     may only be referenced once.
+        ///     Determines whether this aggregation function is enabled or disabled.
         /// </summary>
-        [JsonPropertyName(@"target")]
-        public string Target { get; set;} 
+        [JsonPropertyName(@"enabled")]
+        public bool? Enabled { get; set;} 
 
         /// <summary>
         ///     Sets the aggregation function. All values from the linked <c>target</c>,
@@ -54,10 +50,14 @@ namespace Plotly.Blazor.Transforms.AggregateLib
         public Plotly.Blazor.Transforms.AggregateLib.AggregationLib.FuncModeEnum? FuncMode { get; set;} 
 
         /// <summary>
-        ///     Determines whether this aggregation function is enabled or disabled.
+        ///     A reference to the data array in the parent trace to aggregate. To aggregate
+        ///     by nested variables, use <c>.</c> to access them. For example, set <c>groups</c>
+        ///     to <c>marker.color</c> to aggregate over the marker color array. The referenced
+        ///     array must already exist, unless <c>func</c> is <c>count</c>, and each array
+        ///     may only be referenced once.
         /// </summary>
-        [JsonPropertyName(@"enabled")]
-        public bool? Enabled { get; set;} 
+        [JsonPropertyName(@"target")]
+        public string Target { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -75,9 +75,9 @@ namespace Plotly.Blazor.Transforms.AggregateLib
 
             return 
                 (
-                    Target == other.Target ||
-                    Target != null &&
-                    Target.Equals(other.Target)
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
+                    Enabled.Equals(other.Enabled)
                 ) && 
                 (
                     Func == other.Func ||
@@ -90,9 +90,9 @@ namespace Plotly.Blazor.Transforms.AggregateLib
                     FuncMode.Equals(other.FuncMode)
                 ) && 
                 (
-                    Enabled == other.Enabled ||
-                    Enabled != null &&
-                    Enabled.Equals(other.Enabled)
+                    Target == other.Target ||
+                    Target != null &&
+                    Target.Equals(other.Target)
                 );
         }
 
@@ -102,10 +102,10 @@ namespace Plotly.Blazor.Transforms.AggregateLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Target != null) hashCode = hashCode * 59 + Target.GetHashCode();
+                if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
                 if (Func != null) hashCode = hashCode * 59 + Func.GetHashCode();
                 if (FuncMode != null) hashCode = hashCode * 59 + FuncMode.GetHashCode();
-                if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
+                if (Target != null) hashCode = hashCode * 59 + Target.GetHashCode();
                 return hashCode;
             }
         }

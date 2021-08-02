@@ -32,6 +32,12 @@ namespace Plotly.Blazor.Transforms
         public bool? Enabled { get; set;} 
 
         /// <summary>
+        ///     Sets the sort transform order.
+        /// </summary>
+        [JsonPropertyName(@"order")]
+        public Plotly.Blazor.Transforms.SortLib.OrderEnum? Order { get; set;} 
+
+        /// <summary>
         ///     Sets the target by which the sort transform is applied. If a string, <c>target</c>
         ///     is assumed to be a reference to a data array in the parent trace object.
         ///     To sort about nested variables, use <c>.</c> to access them. For example,
@@ -53,12 +59,6 @@ namespace Plotly.Blazor.Transforms
         [JsonPropertyName(@"target")]
         [Array]
         public IList<string> TargetArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the sort transform order.
-        /// </summary>
-        [JsonPropertyName(@"order")]
-        public Plotly.Blazor.Transforms.SortLib.OrderEnum? Order { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  target .
@@ -92,6 +92,11 @@ namespace Plotly.Blazor.Transforms
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
+                    Order == other.Order ||
+                    Order != null &&
+                    Order.Equals(other.Order)
+                ) && 
+                (
                     Target == other.Target ||
                     Target != null &&
                     Target.Equals(other.Target)
@@ -101,11 +106,6 @@ namespace Plotly.Blazor.Transforms
                     TargetArray != null && other.TargetArray != null &&
                     TargetArray.SequenceEqual(other.TargetArray)
                 ) &&
-                (
-                    Order == other.Order ||
-                    Order != null &&
-                    Order.Equals(other.Order)
-                ) && 
                 (
                     TargetSrc == other.TargetSrc ||
                     TargetSrc != null &&
@@ -121,9 +121,9 @@ namespace Plotly.Blazor.Transforms
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
+                if (Order != null) hashCode = hashCode * 59 + Order.GetHashCode();
                 if (Target != null) hashCode = hashCode * 59 + Target.GetHashCode();
                 if (TargetArray != null) hashCode = hashCode * 59 + TargetArray.GetHashCode();
-                if (Order != null) hashCode = hashCode * 59 + Order.GetHashCode();
                 if (TargetSrc != null) hashCode = hashCode * 59 + TargetSrc.GetHashCode();
                 return hashCode;
             }

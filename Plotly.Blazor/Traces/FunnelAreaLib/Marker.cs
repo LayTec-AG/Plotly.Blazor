@@ -27,16 +27,16 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
         public IList<object> Colors { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Line.
-        /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.FunnelAreaLib.MarkerLib.Line Line { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  colors .
         /// </summary>
         [JsonPropertyName(@"colorssrc")]
         public string ColorsSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.FunnelAreaLib.MarkerLib.Line Line { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -59,14 +59,14 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
                     Colors.SequenceEqual(other.Colors)
                 ) &&
                 (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
-                ) && 
-                (
                     ColorsSrc == other.ColorsSrc ||
                     ColorsSrc != null &&
                     ColorsSrc.Equals(other.ColorsSrc)
+                ) && 
+                (
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
                 );
         }
 
@@ -77,8 +77,8 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
             {
                 var hashCode = 41;
                 if (Colors != null) hashCode = hashCode * 59 + Colors.GetHashCode();
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (ColorsSrc != null) hashCode = hashCode * 59 + ColorsSrc.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 return hashCode;
             }
         }

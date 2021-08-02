@@ -18,38 +18,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib
     public class Delta : IEquatable<Delta>
     {
         /// <summary>
-        ///     Sets the reference value to compute the delta. By default, it is set to
-        ///     the current value.
-        /// </summary>
-        [JsonPropertyName(@"reference")]
-        public decimal? Reference { get; set;} 
-
-        /// <summary>
-        ///     Sets the position of delta with respect to the number.
-        /// </summary>
-        [JsonPropertyName(@"position")]
-        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.PositionEnum? Position { get; set;} 
-
-        /// <summary>
-        ///     Show relative change
-        /// </summary>
-        [JsonPropertyName(@"relative")]
-        public bool? Relative { get; set;} 
-
-        /// <summary>
-        ///     Sets the value formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
-        /// </summary>
-        [JsonPropertyName(@"valueformat")]
-        public string ValueFormat { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Increasing.
-        /// </summary>
-        [JsonPropertyName(@"increasing")]
-        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.Increasing Increasing { get; set;} 
-
-        /// <summary>
         ///     Gets or sets the Decreasing.
         /// </summary>
         [JsonPropertyName(@"decreasing")]
@@ -60,6 +28,38 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Increasing.
+        /// </summary>
+        [JsonPropertyName(@"increasing")]
+        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.Increasing Increasing { get; set;} 
+
+        /// <summary>
+        ///     Sets the position of delta with respect to the number.
+        /// </summary>
+        [JsonPropertyName(@"position")]
+        public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.PositionEnum? Position { get; set;} 
+
+        /// <summary>
+        ///     Sets the reference value to compute the delta. By default, it is set to
+        ///     the current value.
+        /// </summary>
+        [JsonPropertyName(@"reference")]
+        public decimal? Reference { get; set;} 
+
+        /// <summary>
+        ///     Show relative change
+        /// </summary>
+        [JsonPropertyName(@"relative")]
+        public bool? Relative { get; set;} 
+
+        /// <summary>
+        ///     Sets the value formatting rule using d3 formatting mini-languages which
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+        /// </summary>
+        [JsonPropertyName(@"valueformat")]
+        public string ValueFormat { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -77,14 +77,29 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    Reference == other.Reference ||
-                    Reference != null &&
-                    Reference.Equals(other.Reference)
+                    Decreasing == other.Decreasing ||
+                    Decreasing != null &&
+                    Decreasing.Equals(other.Decreasing)
+                ) && 
+                (
+                    Font == other.Font ||
+                    Font != null &&
+                    Font.Equals(other.Font)
+                ) && 
+                (
+                    Increasing == other.Increasing ||
+                    Increasing != null &&
+                    Increasing.Equals(other.Increasing)
                 ) && 
                 (
                     Position == other.Position ||
                     Position != null &&
                     Position.Equals(other.Position)
+                ) && 
+                (
+                    Reference == other.Reference ||
+                    Reference != null &&
+                    Reference.Equals(other.Reference)
                 ) && 
                 (
                     Relative == other.Relative ||
@@ -95,21 +110,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     ValueFormat == other.ValueFormat ||
                     ValueFormat != null &&
                     ValueFormat.Equals(other.ValueFormat)
-                ) && 
-                (
-                    Increasing == other.Increasing ||
-                    Increasing != null &&
-                    Increasing.Equals(other.Increasing)
-                ) && 
-                (
-                    Decreasing == other.Decreasing ||
-                    Decreasing != null &&
-                    Decreasing.Equals(other.Decreasing)
-                ) && 
-                (
-                    Font == other.Font ||
-                    Font != null &&
-                    Font.Equals(other.Font)
                 );
         }
 
@@ -119,13 +119,13 @@ namespace Plotly.Blazor.Traces.IndicatorLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Reference != null) hashCode = hashCode * 59 + Reference.GetHashCode();
-                if (Position != null) hashCode = hashCode * 59 + Position.GetHashCode();
-                if (Relative != null) hashCode = hashCode * 59 + Relative.GetHashCode();
-                if (ValueFormat != null) hashCode = hashCode * 59 + ValueFormat.GetHashCode();
-                if (Increasing != null) hashCode = hashCode * 59 + Increasing.GetHashCode();
                 if (Decreasing != null) hashCode = hashCode * 59 + Decreasing.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Increasing != null) hashCode = hashCode * 59 + Increasing.GetHashCode();
+                if (Position != null) hashCode = hashCode * 59 + Position.GetHashCode();
+                if (Reference != null) hashCode = hashCode * 59 + Reference.GetHashCode();
+                if (Relative != null) hashCode = hashCode * 59 + Relative.GetHashCode();
+                if (ValueFormat != null) hashCode = hashCode * 59 + ValueFormat.GetHashCode();
                 return hashCode;
             }
         }

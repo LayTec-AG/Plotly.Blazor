@@ -21,27 +21,15 @@ namespace Plotly.Blazor.Traces.HistogramLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
-        ///     Gets or sets the Line.
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
+        ///     effect only if in <c>marker.color</c>is set to a numerical array. In case
+        ///     <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true, the default
+        ///      palette will be chosen according to whether numbers in the <c>color</c>
+        ///     array are all positive, all negative or mixed.
         /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.Line Line { get; set;} 
-
-        /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
-
-        /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        [Array]
-        public IList<object> ColorArray { get; set;} 
+        [JsonPropertyName(@"autocolorscale")]
+        public bool? AutoColorScale { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -52,14 +40,6 @@ namespace Plotly.Blazor.Traces.HistogramLib
         /// </summary>
         [JsonPropertyName(@"cauto")]
         public bool? CAuto { get; set;} 
-
-        /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>marker.color</c>
-        ///     and if set, <c>marker.cmax</c> must be set as well.
-        /// </summary>
-        [JsonPropertyName(@"cmin")]
-        public decimal? CMin { get; set;} 
 
         /// <summary>
         ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.color</c>is
@@ -80,6 +60,47 @@ namespace Plotly.Blazor.Traces.HistogramLib
         public decimal? CMid { get; set;} 
 
         /// <summary>
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>marker.color</c>
+        ///     and if set, <c>marker.cmax</c> must be set as well.
+        /// </summary>
+        [JsonPropertyName(@"cmin")]
+        public decimal? CMin { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
+
+        /// <summary>
+        ///     Sets a reference to a shared color axis. References to these shared color
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
+        /// </summary>
+        [JsonPropertyName(@"coloraxis")]
+        public string ColorAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the ColorBar.
+        /// </summary>
+        [JsonPropertyName(@"colorbar")]
+        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.ColorBar ColorBar { get; set;} 
+
+        /// <summary>
         ///     Sets the colorscale. Has an effect only if in <c>marker.color</c>is set
         ///     to a numerical array. The colorscale must be an array containing arrays
         ///     mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
@@ -87,21 +108,47 @@ namespace Plotly.Blazor.Traces.HistogramLib
         ///     are required. For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
         ///     To control the bounds of the colorscale in color space, use<c>marker.cmin</c>
         ///     and <c>marker.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
-        ///     name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
-        ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
-        ///     effect only if in <c>marker.color</c>is set to a numerical array. In case
-        ///     <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true, the default
-        ///      palette will be chosen according to whether numbers in the <c>color</c>
-        ///     array are all positive, all negative or mixed.
+        ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
-        [JsonPropertyName(@"autocolorscale")]
-        public bool? AutoColorScale { get; set;} 
+        [JsonPropertyName(@"colorsrc")]
+        public string ColorSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of the bars.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of the bars.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        [Array]
+        public IList<decimal?> OpacityArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  opacity .
+        /// </summary>
+        [JsonPropertyName(@"opacitysrc")]
+        public string OpacitySrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the pattern within the marker.
+        /// </summary>
+        [JsonPropertyName(@"pattern")]
+        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.Pattern Pattern { get; set;} 
 
         /// <summary>
         ///     Reverses the color mapping if true. Has an effect only if in <c>marker.color</c>is
@@ -119,53 +166,6 @@ namespace Plotly.Blazor.Traces.HistogramLib
         [JsonPropertyName(@"showscale")]
         public bool? ShowScale { get; set;} 
 
-        /// <summary>
-        ///     Gets or sets the ColorBar.
-        /// </summary>
-        [JsonPropertyName(@"colorbar")]
-        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.ColorBar ColorBar { get; set;} 
-
-        /// <summary>
-        ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
-        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
-        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
-        ///     to the same color axis.
-        /// </summary>
-        [JsonPropertyName(@"coloraxis")]
-        public string ColorAxis { get; set;} 
-
-        /// <summary>
-        ///     Sets the opacity of the bars.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
-        ///     Sets the opacity of the bars.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        [Array]
-        public IList<decimal?> OpacityArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the pattern within the marker.
-        /// </summary>
-        [JsonPropertyName(@"pattern")]
-        public Plotly.Blazor.Traces.HistogramLib.MarkerLib.Pattern Pattern { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
-        /// </summary>
-        [JsonPropertyName(@"colorsrc")]
-        public string ColorSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  opacity .
-        /// </summary>
-        [JsonPropertyName(@"opacitysrc")]
-        public string OpacitySrc { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -182,29 +182,14 @@ namespace Plotly.Blazor.Traces.HistogramLib
 
             return 
                 (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
+                    AutoColorScale.Equals(other.AutoColorScale)
                 ) && 
-                (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
-                    Equals(ColorArray, other.ColorArray) ||
-                    ColorArray != null && other.ColorArray != null &&
-                    ColorArray.SequenceEqual(other.ColorArray)
-                ) &&
                 (
                     CAuto == other.CAuto ||
                     CAuto != null &&
                     CAuto.Equals(other.CAuto)
-                ) && 
-                (
-                    CMin == other.CMin ||
-                    CMin != null &&
-                    CMin.Equals(other.CMin)
                 ) && 
                 (
                     CMax == other.CMax ||
@@ -217,24 +202,24 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     CMid.Equals(other.CMid)
                 ) && 
                 (
-                    ColorScale == other.ColorScale ||
-                    ColorScale != null &&
-                    ColorScale.Equals(other.ColorScale)
+                    CMin == other.CMin ||
+                    CMin != null &&
+                    CMin.Equals(other.CMin)
                 ) && 
                 (
-                    AutoColorScale == other.AutoColorScale ||
-                    AutoColorScale != null &&
-                    AutoColorScale.Equals(other.AutoColorScale)
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
                 ) && 
                 (
-                    ReverseScale == other.ReverseScale ||
-                    ReverseScale != null &&
-                    ReverseScale.Equals(other.ReverseScale)
-                ) && 
+                    Equals(ColorArray, other.ColorArray) ||
+                    ColorArray != null && other.ColorArray != null &&
+                    ColorArray.SequenceEqual(other.ColorArray)
+                ) &&
                 (
-                    ShowScale == other.ShowScale ||
-                    ShowScale != null &&
-                    ShowScale.Equals(other.ShowScale)
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
+                    ColorAxis.Equals(other.ColorAxis)
                 ) && 
                 (
                     ColorBar == other.ColorBar ||
@@ -242,9 +227,19 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     ColorBar.Equals(other.ColorBar)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis ||
-                    ColorAxis != null &&
-                    ColorAxis.Equals(other.ColorAxis)
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
+                    ColorScale.Equals(other.ColorScale)
+                ) && 
+                (
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
+                    ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
                 ) && 
                 (
                     Opacity == other.Opacity ||
@@ -257,19 +252,24 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     OpacityArray.SequenceEqual(other.OpacityArray)
                 ) &&
                 (
+                    OpacitySrc == other.OpacitySrc ||
+                    OpacitySrc != null &&
+                    OpacitySrc.Equals(other.OpacitySrc)
+                ) && 
+                (
                     Pattern == other.Pattern ||
                     Pattern != null &&
                     Pattern.Equals(other.Pattern)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc ||
-                    ColorSrc != null &&
-                    ColorSrc.Equals(other.ColorSrc)
+                    ReverseScale == other.ReverseScale ||
+                    ReverseScale != null &&
+                    ReverseScale.Equals(other.ReverseScale)
                 ) && 
                 (
-                    OpacitySrc == other.OpacitySrc ||
-                    OpacitySrc != null &&
-                    OpacitySrc.Equals(other.OpacitySrc)
+                    ShowScale == other.ShowScale ||
+                    ShowScale != null &&
+                    ShowScale.Equals(other.ShowScale)
                 );
         }
 
@@ -279,24 +279,24 @@ namespace Plotly.Blazor.Traces.HistogramLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
                 if (CAuto != null) hashCode = hashCode * 59 + CAuto.GetHashCode();
-                if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
                 if (CMax != null) hashCode = hashCode * 59 + CMax.GetHashCode();
                 if (CMid != null) hashCode = hashCode * 59 + CMid.GetHashCode();
-                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
-                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
-                if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
-                if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
-                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
+                if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
                 if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
+                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
+                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
+                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (OpacityArray != null) hashCode = hashCode * 59 + OpacityArray.GetHashCode();
-                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
-                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (OpacitySrc != null) hashCode = hashCode * 59 + OpacitySrc.GetHashCode();
+                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
+                if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
+                if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,33 +18,6 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
     public class Contours : IEquatable<Contours>
     {
         /// <summary>
-        ///     If <c>levels</c>, the data is represented as a contour plot with multiple
-        ///     levels displayed. If <c>constraint</c>, the data is represented as constraints
-        ///     with the invalid region shaded as specified by the <c>operation</c> and
-        ///     <c>value</c> parameters.
-        /// </summary>
-        [JsonPropertyName(@"type")]
-        public Plotly.Blazor.Traces.ContourCarpetLib.ContoursLib.TypeEnum? Type { get; set;} 
-
-        /// <summary>
-        ///     Sets the starting contour level value. Must be less than <c>contours.end</c>
-        /// </summary>
-        [JsonPropertyName(@"start")]
-        public decimal? Start { get; set;} 
-
-        /// <summary>
-        ///     Sets the end contour level value. Must be more than <c>contours.start</c>
-        /// </summary>
-        [JsonPropertyName(@"end")]
-        public decimal? End { get; set;} 
-
-        /// <summary>
-        ///     Sets the step between each contour level. Must be positive.
-        /// </summary>
-        [JsonPropertyName(@"size")]
-        public decimal? Size { get; set;} 
-
-        /// <summary>
         ///     Determines the coloring method showing the contour values. If <c>fill</c>,
         ///     coloring is done evenly between each contour level If <c>lines</c>, coloring
         ///     is done on the contour lines. If <c>none</c>, no coloring is applied on
@@ -54,17 +27,10 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
         public Plotly.Blazor.Traces.ContourCarpetLib.ContoursLib.ColoringEnum? Coloring { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not the contour lines are drawn. Has an effect only
-        ///     if <c>contours.coloring</c> is set to <c>fill</c>.
+        ///     Sets the end contour level value. Must be more than <c>contours.start</c>
         /// </summary>
-        [JsonPropertyName(@"showlines")]
-        public bool? ShowLines { get; set;} 
-
-        /// <summary>
-        ///     Determines whether to label the contour lines with their values.
-        /// </summary>
-        [JsonPropertyName(@"showlabels")]
-        public bool? ShowLabels { get; set;} 
+        [JsonPropertyName(@"end")]
+        public decimal? End { get; set;} 
 
         /// <summary>
         ///     Sets the font used for labeling the contour levels. The default color comes
@@ -75,7 +41,7 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
 
         /// <summary>
         ///     Sets the contour label formatting rule using d3 formatting mini-languages
-        ///     which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
+        ///     which are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
         /// </summary>
         [JsonPropertyName(@"labelformat")]
         public string LabelFormat { get; set;} 
@@ -91,6 +57,40 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
         /// </summary>
         [JsonPropertyName(@"operation")]
         public Plotly.Blazor.Traces.ContourCarpetLib.ContoursLib.OperationEnum? Operation { get; set;} 
+
+        /// <summary>
+        ///     Determines whether to label the contour lines with their values.
+        /// </summary>
+        [JsonPropertyName(@"showlabels")]
+        public bool? ShowLabels { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not the contour lines are drawn. Has an effect only
+        ///     if <c>contours.coloring</c> is set to <c>fill</c>.
+        /// </summary>
+        [JsonPropertyName(@"showlines")]
+        public bool? ShowLines { get; set;} 
+
+        /// <summary>
+        ///     Sets the step between each contour level. Must be positive.
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        public decimal? Size { get; set;} 
+
+        /// <summary>
+        ///     Sets the starting contour level value. Must be less than <c>contours.end</c>
+        /// </summary>
+        [JsonPropertyName(@"start")]
+        public decimal? Start { get; set;} 
+
+        /// <summary>
+        ///     If <c>levels</c>, the data is represented as a contour plot with multiple
+        ///     levels displayed. If <c>constraint</c>, the data is represented as constraints
+        ///     with the invalid region shaded as specified by the <c>operation</c> and
+        ///     <c>value</c> parameters.
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        public Plotly.Blazor.Traces.ContourCarpetLib.ContoursLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
         ///     Sets the value or values of the constraint boundary. When <c>operation</c>
@@ -119,39 +119,14 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
 
             return 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    Start == other.Start ||
-                    Start != null &&
-                    Start.Equals(other.Start)
-                ) && 
-                (
-                    End == other.End ||
-                    End != null &&
-                    End.Equals(other.End)
-                ) && 
-                (
-                    Size == other.Size ||
-                    Size != null &&
-                    Size.Equals(other.Size)
-                ) && 
-                (
                     Coloring == other.Coloring ||
                     Coloring != null &&
                     Coloring.Equals(other.Coloring)
                 ) && 
                 (
-                    ShowLines == other.ShowLines ||
-                    ShowLines != null &&
-                    ShowLines.Equals(other.ShowLines)
-                ) && 
-                (
-                    ShowLabels == other.ShowLabels ||
-                    ShowLabels != null &&
-                    ShowLabels.Equals(other.ShowLabels)
+                    End == other.End ||
+                    End != null &&
+                    End.Equals(other.End)
                 ) && 
                 (
                     LabelFont == other.LabelFont ||
@@ -169,6 +144,31 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
                     Operation.Equals(other.Operation)
                 ) && 
                 (
+                    ShowLabels == other.ShowLabels ||
+                    ShowLabels != null &&
+                    ShowLabels.Equals(other.ShowLabels)
+                ) && 
+                (
+                    ShowLines == other.ShowLines ||
+                    ShowLines != null &&
+                    ShowLines.Equals(other.ShowLines)
+                ) && 
+                (
+                    Size == other.Size ||
+                    Size != null &&
+                    Size.Equals(other.Size)
+                ) && 
+                (
+                    Start == other.Start ||
+                    Start != null &&
+                    Start.Equals(other.Start)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
                     Value == other.Value ||
                     Value != null &&
                     Value.Equals(other.Value)
@@ -181,16 +181,16 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Start != null) hashCode = hashCode * 59 + Start.GetHashCode();
-                if (End != null) hashCode = hashCode * 59 + End.GetHashCode();
-                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 if (Coloring != null) hashCode = hashCode * 59 + Coloring.GetHashCode();
-                if (ShowLines != null) hashCode = hashCode * 59 + ShowLines.GetHashCode();
-                if (ShowLabels != null) hashCode = hashCode * 59 + ShowLabels.GetHashCode();
+                if (End != null) hashCode = hashCode * 59 + End.GetHashCode();
                 if (LabelFont != null) hashCode = hashCode * 59 + LabelFont.GetHashCode();
                 if (LabelFormat != null) hashCode = hashCode * 59 + LabelFormat.GetHashCode();
                 if (Operation != null) hashCode = hashCode * 59 + Operation.GetHashCode();
+                if (ShowLabels != null) hashCode = hashCode * 59 + ShowLabels.GetHashCode();
+                if (ShowLines != null) hashCode = hashCode * 59 + ShowLines.GetHashCode();
+                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
+                if (Start != null) hashCode = hashCode * 59 + Start.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
                 return hashCode;
             }

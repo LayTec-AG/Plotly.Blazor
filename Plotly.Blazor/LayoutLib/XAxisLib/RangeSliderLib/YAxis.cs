@@ -20,6 +20,12 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib
     public class YAxis : IEquatable<YAxis>
     {
         /// <summary>
+        ///     Sets the range of this axis for the rangeslider.
+        /// </summary>
+        [JsonPropertyName(@"range")]
+        public IList<object> Range { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not the range of this axis in the rangeslider use
         ///     the same value than in the main plot when zooming in/out. If <c>auto</c>,
         ///     the autorange will be used. If <c>fixed</c>, the <c>range</c> is used. If
@@ -28,12 +34,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib
         /// </summary>
         [JsonPropertyName(@"rangemode")]
         public Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib.YAxisLib.RangeModeEnum? RangeMode { get; set;} 
-
-        /// <summary>
-        ///     Sets the range of this axis for the rangeslider.
-        /// </summary>
-        [JsonPropertyName(@"range")]
-        public IList<object> Range { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -51,14 +51,14 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib
 
             return 
                 (
-                    RangeMode == other.RangeMode ||
-                    RangeMode != null &&
-                    RangeMode.Equals(other.RangeMode)
-                ) && 
-                (
                     Equals(Range, other.Range) ||
                     Range != null && other.Range != null &&
                     Range.SequenceEqual(other.Range)
+                ) &&
+                (
+                    RangeMode == other.RangeMode ||
+                    RangeMode != null &&
+                    RangeMode.Equals(other.RangeMode)
                 );
         }
 
@@ -68,8 +68,8 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSliderLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (RangeMode != null) hashCode = hashCode * 59 + RangeMode.GetHashCode();
                 if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
+                if (RangeMode != null) hashCode = hashCode * 59 + RangeMode.GetHashCode();
                 return hashCode;
             }
         }

@@ -20,16 +20,11 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     public class Projection : IEquatable<Projection>
     {
         /// <summary>
-        ///     Sets the projection type.
+        ///     For satellite projection type only. Sets the distance from the center of
+        ///     the sphere to the point of view as a proportion of the sphere’s radius.
         /// </summary>
-        [JsonPropertyName(@"type")]
-        public Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib.TypeEnum? Type { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Rotation.
-        /// </summary>
-        [JsonPropertyName(@"rotation")]
-        public Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib.Rotation Rotation { get; set;} 
+        [JsonPropertyName(@"distance")]
+        public decimal? Distance { get; set;} 
 
         /// <summary>
         ///     For conic projection types only. Sets the parallels (tangent, secant) where
@@ -39,11 +34,29 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         public IList<object> Parallels { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Rotation.
+        /// </summary>
+        [JsonPropertyName(@"rotation")]
+        public Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib.Rotation Rotation { get; set;} 
+
+        /// <summary>
         ///     Zooms in or out on the map view. A scale of <c>1</c> corresponds to the
         ///     largest zoom level that fits the map&#39;s lon and lat ranges. 
         /// </summary>
         [JsonPropertyName(@"scale")]
         public decimal? Scale { get; set;} 
+
+        /// <summary>
+        ///     For satellite projection type only. Sets the tilt angle of perspective projection.
+        /// </summary>
+        [JsonPropertyName(@"tilt")]
+        public decimal? Tilt { get; set;} 
+
+        /// <summary>
+        ///     Sets the projection type.
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        public Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib.TypeEnum? Type { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -61,14 +74,9 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
 
             return 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    Rotation == other.Rotation ||
-                    Rotation != null &&
-                    Rotation.Equals(other.Rotation)
+                    Distance == other.Distance ||
+                    Distance != null &&
+                    Distance.Equals(other.Distance)
                 ) && 
                 (
                     Equals(Parallels, other.Parallels) ||
@@ -76,9 +84,24 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
                     Parallels.SequenceEqual(other.Parallels)
                 ) &&
                 (
+                    Rotation == other.Rotation ||
+                    Rotation != null &&
+                    Rotation.Equals(other.Rotation)
+                ) && 
+                (
                     Scale == other.Scale ||
                     Scale != null &&
                     Scale.Equals(other.Scale)
+                ) && 
+                (
+                    Tilt == other.Tilt ||
+                    Tilt != null &&
+                    Tilt.Equals(other.Tilt)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
                 );
         }
 
@@ -88,10 +111,12 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Rotation != null) hashCode = hashCode * 59 + Rotation.GetHashCode();
+                if (Distance != null) hashCode = hashCode * 59 + Distance.GetHashCode();
                 if (Parallels != null) hashCode = hashCode * 59 + Parallels.GetHashCode();
+                if (Rotation != null) hashCode = hashCode * 59 + Rotation.GetHashCode();
                 if (Scale != null) hashCode = hashCode * 59 + Scale.GetHashCode();
+                if (Tilt != null) hashCode = hashCode * 59 + Tilt.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 return hashCode;
             }
         }

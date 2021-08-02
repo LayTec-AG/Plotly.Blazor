@@ -21,36 +21,10 @@ namespace Plotly.Blazor.LayoutLib
     public class ModeBar : IEquatable<ModeBar>
     {
         /// <summary>
-        ///     Sets the orientation of the modebar.
-        /// </summary>
-        [JsonPropertyName(@"orientation")]
-        public Plotly.Blazor.LayoutLib.ModeBarLib.OrientationEnum? Orientation { get; set;} 
-
-        /// <summary>
-        ///     Sets the background color of the modebar.
-        /// </summary>
-        [JsonPropertyName(@"bgcolor")]
-        public object BgColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the color of the icons in the modebar.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
-
-        /// <summary>
         ///     Sets the color of the active or hovered on icons in the modebar.
         /// </summary>
         [JsonPropertyName(@"activecolor")]
         public object ActiveColor { get; set;} 
-
-        /// <summary>
-        ///     Controls persistence of user-driven changes related to the modebar, including
-        ///     <c>hovermode</c>, <c>dragmode</c>, and <c>showspikes</c> at both the root
-        ///     level and inside subplots. Defaults to <c>layout.uirevision</c>.
-        /// </summary>
-        [JsonPropertyName(@"uirevision")]
-        public object UiRevision { get; set;} 
 
         /// <summary>
         ///     Determines which predefined modebar buttons to add. Please note that these
@@ -74,6 +48,30 @@ namespace Plotly.Blazor.LayoutLib
         [JsonPropertyName(@"add")]
         [Array]
         public IList<string> AddArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  add .
+        /// </summary>
+        [JsonPropertyName(@"addsrc")]
+        public string AddSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the background color of the modebar.
+        /// </summary>
+        [JsonPropertyName(@"bgcolor")]
+        public object BgColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the color of the icons in the modebar.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets the orientation of the modebar.
+        /// </summary>
+        [JsonPropertyName(@"orientation")]
+        public Plotly.Blazor.LayoutLib.ModeBarLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
         ///     Determines which predefined modebar buttons to remove. Similar to <c>config.modeBarButtonsToRemove</c>
@@ -115,16 +113,18 @@ namespace Plotly.Blazor.LayoutLib
         public IList<string> RemoveArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  add .
-        /// </summary>
-        [JsonPropertyName(@"addsrc")]
-        public string AddSrc { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  remove .
         /// </summary>
         [JsonPropertyName(@"removesrc")]
         public string RemoveSrc { get; set;} 
+
+        /// <summary>
+        ///     Controls persistence of user-driven changes related to the modebar, including
+        ///     <c>hovermode</c>, <c>dragmode</c>, and <c>showspikes</c> at both the root
+        ///     level and inside subplots. Defaults to <c>layout.uirevision</c>.
+        /// </summary>
+        [JsonPropertyName(@"uirevision")]
+        public object UiRevision { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -142,29 +142,9 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Orientation == other.Orientation ||
-                    Orientation != null &&
-                    Orientation.Equals(other.Orientation)
-                ) && 
-                (
-                    BgColor == other.BgColor ||
-                    BgColor != null &&
-                    BgColor.Equals(other.BgColor)
-                ) && 
-                (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
                     ActiveColor == other.ActiveColor ||
                     ActiveColor != null &&
                     ActiveColor.Equals(other.ActiveColor)
-                ) && 
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
                     Add == other.Add ||
@@ -177,6 +157,26 @@ namespace Plotly.Blazor.LayoutLib
                     AddArray.SequenceEqual(other.AddArray)
                 ) &&
                 (
+                    AddSrc == other.AddSrc ||
+                    AddSrc != null &&
+                    AddSrc.Equals(other.AddSrc)
+                ) && 
+                (
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
+                    BgColor.Equals(other.BgColor)
+                ) && 
+                (
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
+                ) && 
+                (
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
+                    Orientation.Equals(other.Orientation)
+                ) && 
+                (
                     Remove == other.Remove ||
                     Remove != null &&
                     Remove.Equals(other.Remove)
@@ -187,14 +187,14 @@ namespace Plotly.Blazor.LayoutLib
                     RemoveArray.SequenceEqual(other.RemoveArray)
                 ) &&
                 (
-                    AddSrc == other.AddSrc ||
-                    AddSrc != null &&
-                    AddSrc.Equals(other.AddSrc)
-                ) && 
-                (
                     RemoveSrc == other.RemoveSrc ||
                     RemoveSrc != null &&
                     RemoveSrc.Equals(other.RemoveSrc)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
                 );
         }
 
@@ -204,17 +204,17 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
-                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ActiveColor != null) hashCode = hashCode * 59 + ActiveColor.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Add != null) hashCode = hashCode * 59 + Add.GetHashCode();
                 if (AddArray != null) hashCode = hashCode * 59 + AddArray.GetHashCode();
+                if (AddSrc != null) hashCode = hashCode * 59 + AddSrc.GetHashCode();
+                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Remove != null) hashCode = hashCode * 59 + Remove.GetHashCode();
                 if (RemoveArray != null) hashCode = hashCode * 59 + RemoveArray.GetHashCode();
-                if (AddSrc != null) hashCode = hashCode * 59 + AddSrc.GetHashCode();
                 if (RemoveSrc != null) hashCode = hashCode * 59 + RemoveSrc.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 return hashCode;
             }
         }

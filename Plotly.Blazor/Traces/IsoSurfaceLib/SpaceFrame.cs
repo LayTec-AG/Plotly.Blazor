@@ -18,14 +18,6 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
     public class SpaceFrame : IEquatable<SpaceFrame>
     {
         /// <summary>
-        ///     Displays/hides tetrahedron shapes between minimum and maximum iso-values.
-        ///     Often useful when either caps or surfaces are disabled or filled with values
-        ///     less than 1.
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
         ///     Sets the fill ratio of the <c>spaceframe</c> elements. The default fill
         ///     value is 0.15 meaning that only 15% of the area of every faces of tetras
         ///     would be shaded. Applying a greater <c>fill</c> ratio would allow the creation
@@ -34,6 +26,14 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         /// </summary>
         [JsonPropertyName(@"fill")]
         public decimal? Fill { get; set;} 
+
+        /// <summary>
+        ///     Displays/hides tetrahedron shapes between minimum and maximum iso-values.
+        ///     Often useful when either caps or surfaces are disabled or filled with values
+        ///     less than 1.
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -51,14 +51,14 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
-                ) && 
-                (
                     Fill == other.Fill ||
                     Fill != null &&
                     Fill.Equals(other.Fill)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
                 );
         }
 
@@ -68,8 +68,8 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 return hashCode;
             }
         }

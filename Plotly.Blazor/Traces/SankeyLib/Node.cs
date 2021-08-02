@@ -21,31 +21,6 @@ namespace Plotly.Blazor.Traces.SankeyLib
     public class Node : IEquatable<Node>
     {
         /// <summary>
-        ///     The shown name of the node.
-        /// </summary>
-        [JsonPropertyName(@"label")]
-        public IList<object> Label { get; set;} 
-
-        /// <summary>
-        ///     Groups of nodes. Each group is defined by an array with the indices of the
-        ///     nodes it contains. Multiple groups can be specified.
-        /// </summary>
-        [JsonPropertyName(@"groups")]
-        public IList<object> Groups { get; set;} 
-
-        /// <summary>
-        ///     The normalized horizontal position of the node.
-        /// </summary>
-        [JsonPropertyName(@"x")]
-        public IList<object> X { get; set;} 
-
-        /// <summary>
-        ///     The normalized vertical position of the node.
-        /// </summary>
-        [JsonPropertyName(@"y")]
-        public IList<object> Y { get; set;} 
-
-        /// <summary>
         ///     Sets the <c>node</c> color. It can be a single value, or an array for specifying
         ///     color for each <c>node</c>. If <c>node.color</c> is omitted, then the default
         ///     <c>Plotly</c> color palette will be cycled through to have a variety of
@@ -67,28 +42,29 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  color .
+        /// </summary>
+        [JsonPropertyName(@"colorsrc")]
+        public string ColorSrc { get; set;} 
+
+        /// <summary>
         ///     Assigns extra data to each node.
         /// </summary>
         [JsonPropertyName(@"customdata")]
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Line.
+        ///     Sets the source reference on Chart Studio Cloud for  customdata .
         /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.SankeyLib.NodeLib.Line Line { get; set;} 
+        [JsonPropertyName(@"customdatasrc")]
+        public string CustomDataSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the padding (in px) between the <c>nodes</c>.
+        ///     Groups of nodes. Each group is defined by an array with the indices of the
+        ///     nodes it contains. Multiple groups can be specified.
         /// </summary>
-        [JsonPropertyName(@"pad")]
-        public decimal? Pad { get; set;} 
-
-        /// <summary>
-        ///     Sets the thickness (in px) of the <c>nodes</c>.
-        /// </summary>
-        [JsonPropertyName(@"thickness")]
-        public decimal? Thickness { get; set;} 
+        [JsonPropertyName(@"groups")]
+        public IList<object> Groups { get; set;} 
 
         /// <summary>
         ///     Determines which trace information appear when hovering nodes. If <c>none</c>
@@ -113,12 +89,12 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     first point. An underscore before or after <c>(x|y)other</c> will add a
         ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
-        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
-        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
-        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
         ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
@@ -137,12 +113,12 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     first point. An underscore before or after <c>(x|y)other</c> will add a
         ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
-        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
-        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
-        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
         ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
@@ -154,10 +130,46 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        /// </summary>
+        [JsonPropertyName(@"hovertemplatesrc")]
+        public string HoverTemplateSrc { get; set;} 
+
+        /// <summary>
+        ///     The shown name of the node.
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public IList<object> Label { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  label .
         /// </summary>
         [JsonPropertyName(@"labelsrc")]
         public string LabelSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.SankeyLib.NodeLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Sets the padding (in px) between the <c>nodes</c>.
+        /// </summary>
+        [JsonPropertyName(@"pad")]
+        public decimal? Pad { get; set;} 
+
+        /// <summary>
+        ///     Sets the thickness (in px) of the <c>nodes</c>.
+        /// </summary>
+        [JsonPropertyName(@"thickness")]
+        public decimal? Thickness { get; set;} 
+
+        /// <summary>
+        ///     The normalized horizontal position of the node.
+        /// </summary>
+        [JsonPropertyName(@"x")]
+        public IList<object> X { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  x .
@@ -166,28 +178,16 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public string XSrc { get; set;} 
 
         /// <summary>
+        ///     The normalized vertical position of the node.
+        /// </summary>
+        [JsonPropertyName(@"y")]
+        public IList<object> Y { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  y .
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
-        /// </summary>
-        [JsonPropertyName(@"colorsrc")]
-        public string ColorSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
-        /// </summary>
-        [JsonPropertyName(@"customdatasrc")]
-        public string CustomDataSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
-        /// </summary>
-        [JsonPropertyName(@"hovertemplatesrc")]
-        public string HoverTemplateSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -205,26 +205,6 @@ namespace Plotly.Blazor.Traces.SankeyLib
 
             return 
                 (
-                    Equals(Label, other.Label) ||
-                    Label != null && other.Label != null &&
-                    Label.SequenceEqual(other.Label)
-                ) &&
-                (
-                    Equals(Groups, other.Groups) ||
-                    Groups != null && other.Groups != null &&
-                    Groups.SequenceEqual(other.Groups)
-                ) &&
-                (
-                    Equals(X, other.X) ||
-                    X != null && other.X != null &&
-                    X.SequenceEqual(other.X)
-                ) &&
-                (
-                    Equals(Y, other.Y) ||
-                    Y != null && other.Y != null &&
-                    Y.SequenceEqual(other.Y)
-                ) &&
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -235,25 +215,25 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
+                    ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
                     Equals(CustomData, other.CustomData) ||
                     CustomData != null && other.CustomData != null &&
                     CustomData.SequenceEqual(other.CustomData)
                 ) &&
                 (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
+                    CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    Pad == other.Pad ||
-                    Pad != null &&
-                    Pad.Equals(other.Pad)
-                ) && 
-                (
-                    Thickness == other.Thickness ||
-                    Thickness != null &&
-                    Thickness.Equals(other.Thickness)
-                ) && 
+                    Equals(Groups, other.Groups) ||
+                    Groups != null && other.Groups != null &&
+                    Groups.SequenceEqual(other.Groups)
+                ) &&
                 (
                     HoverInfo == other.HoverInfo ||
                     HoverInfo != null &&
@@ -275,34 +255,54 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     HoverTemplateArray.SequenceEqual(other.HoverTemplateArray)
                 ) &&
                 (
+                    HoverTemplateSrc == other.HoverTemplateSrc ||
+                    HoverTemplateSrc != null &&
+                    HoverTemplateSrc.Equals(other.HoverTemplateSrc)
+                ) && 
+                (
+                    Equals(Label, other.Label) ||
+                    Label != null && other.Label != null &&
+                    Label.SequenceEqual(other.Label)
+                ) &&
+                (
                     LabelSrc == other.LabelSrc ||
                     LabelSrc != null &&
                     LabelSrc.Equals(other.LabelSrc)
                 ) && 
+                (
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
+                ) && 
+                (
+                    Pad == other.Pad ||
+                    Pad != null &&
+                    Pad.Equals(other.Pad)
+                ) && 
+                (
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
+                    Thickness.Equals(other.Thickness)
+                ) && 
+                (
+                    Equals(X, other.X) ||
+                    X != null && other.X != null &&
+                    X.SequenceEqual(other.X)
+                ) &&
                 (
                     XSrc == other.XSrc ||
                     XSrc != null &&
                     XSrc.Equals(other.XSrc)
                 ) && 
                 (
+                    Equals(Y, other.Y) ||
+                    Y != null && other.Y != null &&
+                    Y.SequenceEqual(other.Y)
+                ) &&
+                (
                     YSrc == other.YSrc ||
                     YSrc != null &&
                     YSrc.Equals(other.YSrc)
-                ) && 
-                (
-                    ColorSrc == other.ColorSrc ||
-                    ColorSrc != null &&
-                    ColorSrc.Equals(other.ColorSrc)
-                ) && 
-                (
-                    CustomDataSrc == other.CustomDataSrc ||
-                    CustomDataSrc != null &&
-                    CustomDataSrc.Equals(other.CustomDataSrc)
-                ) && 
-                (
-                    HoverTemplateSrc == other.HoverTemplateSrc ||
-                    HoverTemplateSrc != null &&
-                    HoverTemplateSrc.Equals(other.HoverTemplateSrc)
                 );
         }
 
@@ -312,26 +312,26 @@ namespace Plotly.Blazor.Traces.SankeyLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
-                if (Groups != null) hashCode = hashCode * 59 + Groups.GetHashCode();
-                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
-                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
-                if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
-                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
+                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
+                if (Groups != null) hashCode = hashCode * 59 + Groups.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
                 if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
                 if (HoverTemplateArray != null) hashCode = hashCode * 59 + HoverTemplateArray.GetHashCode();
-                if (LabelSrc != null) hashCode = hashCode * 59 + LabelSrc.GetHashCode();
-                if (XSrc != null) hashCode = hashCode * 59 + XSrc.GetHashCode();
-                if (YSrc != null) hashCode = hashCode * 59 + YSrc.GetHashCode();
-                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
-                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
                 if (HoverTemplateSrc != null) hashCode = hashCode * 59 + HoverTemplateSrc.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
+                if (LabelSrc != null) hashCode = hashCode * 59 + LabelSrc.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
+                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
+                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
+                if (XSrc != null) hashCode = hashCode * 59 + XSrc.GetHashCode();
+                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
+                if (YSrc != null) hashCode = hashCode * 59 + YSrc.GetHashCode();
                 return hashCode;
             }
         }

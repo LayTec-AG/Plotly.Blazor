@@ -20,13 +20,6 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     public class Line : IEquatable<Line>
     {
         /// <summary>
-        ///     Sets the line width (mapbox.layer.paint.line-width). Has an effect only
-        ///     when <c>type</c> is set to <c>line</c>.
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
         ///     Sets the length of dashes and gaps (mapbox.layer.paint.line-dasharray).
         ///     Has an effect only when <c>type</c> is set to <c>line</c>.
         /// </summary>
@@ -38,6 +31,13 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         /// </summary>
         [JsonPropertyName(@"dashsrc")]
         public string DashSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the line width (mapbox.layer.paint.line-width). Has an effect only
+        ///     when <c>type</c> is set to <c>line</c>.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -55,11 +55,6 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
 
             return 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
                     Equals(Dash, other.Dash) ||
                     Dash != null && other.Dash != null &&
                     Dash.SequenceEqual(other.Dash)
@@ -68,6 +63,11 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
                     DashSrc == other.DashSrc ||
                     DashSrc != null &&
                     DashSrc.Equals(other.DashSrc)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -77,9 +77,9 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
                 if (DashSrc != null) hashCode = hashCode * 59 + DashSrc.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

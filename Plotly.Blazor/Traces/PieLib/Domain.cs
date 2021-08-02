@@ -20,6 +20,20 @@ namespace Plotly.Blazor.Traces.PieLib
     public class Domain : IEquatable<Domain>
     {
         /// <summary>
+        ///     If there is a layout grid, use the domain for this column in the grid for
+        ///     this pie trace .
+        /// </summary>
+        [JsonPropertyName(@"column")]
+        public int? Column { get; set;} 
+
+        /// <summary>
+        ///     If there is a layout grid, use the domain for this row in the grid for this
+        ///     pie trace .
+        /// </summary>
+        [JsonPropertyName(@"row")]
+        public int? Row { get; set;} 
+
+        /// <summary>
         ///     Sets the horizontal domain of this pie trace (in plot fraction).
         /// </summary>
         [JsonPropertyName(@"x")]
@@ -30,20 +44,6 @@ namespace Plotly.Blazor.Traces.PieLib
         /// </summary>
         [JsonPropertyName(@"y")]
         public IList<object> Y { get; set;} 
-
-        /// <summary>
-        ///     If there is a layout grid, use the domain for this row in the grid for this
-        ///     pie trace .
-        /// </summary>
-        [JsonPropertyName(@"row")]
-        public int? Row { get; set;} 
-
-        /// <summary>
-        ///     If there is a layout grid, use the domain for this column in the grid for
-        ///     this pie trace .
-        /// </summary>
-        [JsonPropertyName(@"column")]
-        public int? Column { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -61,6 +61,16 @@ namespace Plotly.Blazor.Traces.PieLib
 
             return 
                 (
+                    Column == other.Column ||
+                    Column != null &&
+                    Column.Equals(other.Column)
+                ) && 
+                (
+                    Row == other.Row ||
+                    Row != null &&
+                    Row.Equals(other.Row)
+                ) && 
+                (
                     Equals(X, other.X) ||
                     X != null && other.X != null &&
                     X.SequenceEqual(other.X)
@@ -69,16 +79,6 @@ namespace Plotly.Blazor.Traces.PieLib
                     Equals(Y, other.Y) ||
                     Y != null && other.Y != null &&
                     Y.SequenceEqual(other.Y)
-                ) &&
-                (
-                    Row == other.Row ||
-                    Row != null &&
-                    Row.Equals(other.Row)
-                ) && 
-                (
-                    Column == other.Column ||
-                    Column != null &&
-                    Column.Equals(other.Column)
                 );
         }
 
@@ -88,10 +88,10 @@ namespace Plotly.Blazor.Traces.PieLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Column != null) hashCode = hashCode * 59 + Column.GetHashCode();
+                if (Row != null) hashCode = hashCode * 59 + Row.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
-                if (Row != null) hashCode = hashCode * 59 + Row.GetHashCode();
-                if (Column != null) hashCode = hashCode * 59 + Column.GetHashCode();
                 return hashCode;
             }
         }

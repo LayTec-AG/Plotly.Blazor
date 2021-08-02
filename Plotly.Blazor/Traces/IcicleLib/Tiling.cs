@@ -18,6 +18,12 @@ namespace Plotly.Blazor.Traces.IcicleLib
     public class Tiling : IEquatable<Tiling>
     {
         /// <summary>
+        ///     Determines if the positions obtained from solver are flipped on each axis.
+        /// </summary>
+        [JsonPropertyName(@"flip")]
+        public Plotly.Blazor.Traces.IcicleLib.TilingLib.FlipFlag? Flip { get; set;} 
+
+        /// <summary>
         ///     When set in conjunction with <c>tiling.flip</c>, determines on which side
         ///     the root nodes are drawn in the chart. If <c>tiling.orientation</c> is <c>v</c>
         ///     and <c>tiling.flip</c> is *&#39;, the root nodes appear at the top. If <c>tiling.orientation</c>
@@ -29,12 +35,6 @@ namespace Plotly.Blazor.Traces.IcicleLib
         /// </summary>
         [JsonPropertyName(@"orientation")]
         public Plotly.Blazor.Traces.IcicleLib.TilingLib.OrientationEnum? Orientation { get; set;} 
-
-        /// <summary>
-        ///     Determines if the positions obtained from solver are flipped on each axis.
-        /// </summary>
-        [JsonPropertyName(@"flip")]
-        public Plotly.Blazor.Traces.IcicleLib.TilingLib.FlipFlag? Flip { get; set;} 
 
         /// <summary>
         ///     Sets the inner padding (in px).
@@ -58,14 +58,14 @@ namespace Plotly.Blazor.Traces.IcicleLib
 
             return 
                 (
-                    Orientation == other.Orientation ||
-                    Orientation != null &&
-                    Orientation.Equals(other.Orientation)
-                ) && 
-                (
                     Flip == other.Flip ||
                     Flip != null &&
                     Flip.Equals(other.Flip)
+                ) && 
+                (
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
+                    Orientation.Equals(other.Orientation)
                 ) && 
                 (
                     Pad == other.Pad ||
@@ -80,8 +80,8 @@ namespace Plotly.Blazor.Traces.IcicleLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Flip != null) hashCode = hashCode * 59 + Flip.GetHashCode();
+                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
                 return hashCode;
             }

@@ -21,107 +21,15 @@ namespace Plotly.Blazor.Traces.ScatterLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
-        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
-        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
-        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
-        ///     to a symbol name.
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
+        ///     effect only if in <c>marker.color</c>is set to a numerical array. In case
+        ///     <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true, the default
+        ///      palette will be chosen according to whether numbers in the <c>color</c>
+        ///     array are all positive, all negative or mixed.
         /// </summary>
-        [JsonPropertyName(@"symbol")]
-        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
-        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
-        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
-        ///     to a symbol name.
-        /// </summary>
-        [JsonPropertyName(@"symbol")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.ScatterLib.MarkerLib.SymbolEnum?> SymbolArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker opacity.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker opacity.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        [Array]
-        public IList<decimal?> OpacityArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker size (in px).
-        /// </summary>
-        [JsonPropertyName(@"size")]
-        public decimal? Size { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker size (in px).
-        /// </summary>
-        [JsonPropertyName(@"size")]
-        [Array]
-        public IList<decimal?> SizeArray { get; set;} 
-
-        /// <summary>
-        ///     Sets a maximum number of points to be drawn on the graph. <c>0</c> corresponds
-        ///     to no limit.
-        /// </summary>
-        [JsonPropertyName(@"maxdisplayed")]
-        public decimal? MaxDisplayed { get; set;} 
-
-        /// <summary>
-        ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
-        ///     the scale factor used to determine the rendered size of marker points. Use
-        ///     with <c>sizemin</c> and <c>sizemode</c>.
-        /// </summary>
-        [JsonPropertyName(@"sizeref")]
-        public decimal? SizeRef { get; set;} 
-
-        /// <summary>
-        ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
-        ///     the minimum size (in px) of the rendered marker points.
-        /// </summary>
-        [JsonPropertyName(@"sizemin")]
-        public decimal? SizeMin { get; set;} 
-
-        /// <summary>
-        ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
-        ///     the rule for which the data in <c>size</c> is converted to pixels.
-        /// </summary>
-        [JsonPropertyName(@"sizemode")]
-        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.SizeModeEnum? SizeMode { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Line.
-        /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.Line Line { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Gradient.
-        /// </summary>
-        [JsonPropertyName(@"gradient")]
-        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.Gradient Gradient { get; set;} 
-
-        /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
-
-        /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        [Array]
-        public IList<object> ColorArray { get; set;} 
+        [JsonPropertyName(@"autocolorscale")]
+        public bool? AutoColorScale { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
@@ -132,14 +40,6 @@ namespace Plotly.Blazor.Traces.ScatterLib
         /// </summary>
         [JsonPropertyName(@"cauto")]
         public bool? CAuto { get; set;} 
-
-        /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>marker.color</c>
-        ///     and if set, <c>marker.cmax</c> must be set as well.
-        /// </summary>
-        [JsonPropertyName(@"cmin")]
-        public decimal? CMin { get; set;} 
 
         /// <summary>
         ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.color</c>is
@@ -160,6 +60,47 @@ namespace Plotly.Blazor.Traces.ScatterLib
         public decimal? CMid { get; set;} 
 
         /// <summary>
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>marker.color</c>
+        ///     and if set, <c>marker.cmax</c> must be set as well.
+        /// </summary>
+        [JsonPropertyName(@"cmin")]
+        public decimal? CMin { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
+        ///     that are mapped to the colorscale relative to the max and min values of
+        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        [Array]
+        public IList<object> ColorArray { get; set;} 
+
+        /// <summary>
+        ///     Sets a reference to a shared color axis. References to these shared color
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
+        /// </summary>
+        [JsonPropertyName(@"coloraxis")]
+        public string ColorAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the ColorBar.
+        /// </summary>
+        [JsonPropertyName(@"colorbar")]
+        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.ColorBar ColorBar { get; set;} 
+
+        /// <summary>
         ///     Sets the colorscale. Has an effect only if in <c>marker.color</c>is set
         ///     to a numerical array. The colorscale must be an array containing arrays
         ///     mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
@@ -167,21 +108,54 @@ namespace Plotly.Blazor.Traces.ScatterLib
         ///     are required. For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
         ///     To control the bounds of the colorscale in color space, use<c>marker.cmin</c>
         ///     and <c>marker.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
-        ///     name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
-        ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
-        ///     effect only if in <c>marker.color</c>is set to a numerical array. In case
-        ///     <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true, the default
-        ///      palette will be chosen according to whether numbers in the <c>color</c>
-        ///     array are all positive, all negative or mixed.
+        ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
-        [JsonPropertyName(@"autocolorscale")]
-        public bool? AutoColorScale { get; set;} 
+        [JsonPropertyName(@"colorsrc")]
+        public string ColorSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Gradient.
+        /// </summary>
+        [JsonPropertyName(@"gradient")]
+        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.Gradient Gradient { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Sets a maximum number of points to be drawn on the graph. <c>0</c> corresponds
+        ///     to no limit.
+        /// </summary>
+        [JsonPropertyName(@"maxdisplayed")]
+        public decimal? MaxDisplayed { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker opacity.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker opacity.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        [Array]
+        public IList<decimal?> OpacityArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  opacity .
+        /// </summary>
+        [JsonPropertyName(@"opacitysrc")]
+        public string OpacitySrc { get; set;} 
 
         /// <summary>
         ///     Reverses the color mapping if true. Has an effect only if in <c>marker.color</c>is
@@ -200,32 +174,39 @@ namespace Plotly.Blazor.Traces.ScatterLib
         public bool? ShowScale { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the ColorBar.
+        ///     Sets the marker size (in px).
         /// </summary>
-        [JsonPropertyName(@"colorbar")]
-        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.ColorBar ColorBar { get; set;} 
+        [JsonPropertyName(@"size")]
+        public decimal? Size { get; set;} 
 
         /// <summary>
-        ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
-        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
-        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
-        ///     to the same color axis.
+        ///     Sets the marker size (in px).
         /// </summary>
-        [JsonPropertyName(@"coloraxis")]
-        public string ColorAxis { get; set;} 
+        [JsonPropertyName(@"size")]
+        [Array]
+        public IList<decimal?> SizeArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  symbol .
+        ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
+        ///     the minimum size (in px) of the rendered marker points.
         /// </summary>
-        [JsonPropertyName(@"symbolsrc")]
-        public string SymbolSrc { get; set;} 
+        [JsonPropertyName(@"sizemin")]
+        public decimal? SizeMin { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  opacity .
+        ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
+        ///     the rule for which the data in <c>size</c> is converted to pixels.
         /// </summary>
-        [JsonPropertyName(@"opacitysrc")]
-        public string OpacitySrc { get; set;} 
+        [JsonPropertyName(@"sizemode")]
+        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.SizeModeEnum? SizeMode { get; set;} 
+
+        /// <summary>
+        ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
+        ///     the scale factor used to determine the rendered size of marker points. Use
+        ///     with <c>sizemin</c> and <c>sizemode</c>.
+        /// </summary>
+        [JsonPropertyName(@"sizeref")]
+        public decimal? SizeRef { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  size .
@@ -234,10 +215,29 @@ namespace Plotly.Blazor.Traces.ScatterLib
         public string SizeSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
+        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
+        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
+        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
+        ///     to a symbol name.
         /// </summary>
-        [JsonPropertyName(@"colorsrc")]
-        public string ColorSrc { get; set;} 
+        [JsonPropertyName(@"symbol")]
+        public Plotly.Blazor.Traces.ScatterLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
+        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
+        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
+        ///     to a symbol name.
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterLib.MarkerLib.SymbolEnum?> SymbolArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  symbol .
+        /// </summary>
+        [JsonPropertyName(@"symbolsrc")]
+        public string SymbolSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -255,84 +255,14 @@ namespace Plotly.Blazor.Traces.ScatterLib
 
             return 
                 (
-                    Symbol == other.Symbol ||
-                    Symbol != null &&
-                    Symbol.Equals(other.Symbol)
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
+                    AutoColorScale.Equals(other.AutoColorScale)
                 ) && 
-                (
-                    Equals(SymbolArray, other.SymbolArray) ||
-                    SymbolArray != null && other.SymbolArray != null &&
-                    SymbolArray.SequenceEqual(other.SymbolArray)
-                ) &&
-                (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
-                    Equals(OpacityArray, other.OpacityArray) ||
-                    OpacityArray != null && other.OpacityArray != null &&
-                    OpacityArray.SequenceEqual(other.OpacityArray)
-                ) &&
-                (
-                    Size == other.Size ||
-                    Size != null &&
-                    Size.Equals(other.Size)
-                ) && 
-                (
-                    Equals(SizeArray, other.SizeArray) ||
-                    SizeArray != null && other.SizeArray != null &&
-                    SizeArray.SequenceEqual(other.SizeArray)
-                ) &&
-                (
-                    MaxDisplayed == other.MaxDisplayed ||
-                    MaxDisplayed != null &&
-                    MaxDisplayed.Equals(other.MaxDisplayed)
-                ) && 
-                (
-                    SizeRef == other.SizeRef ||
-                    SizeRef != null &&
-                    SizeRef.Equals(other.SizeRef)
-                ) && 
-                (
-                    SizeMin == other.SizeMin ||
-                    SizeMin != null &&
-                    SizeMin.Equals(other.SizeMin)
-                ) && 
-                (
-                    SizeMode == other.SizeMode ||
-                    SizeMode != null &&
-                    SizeMode.Equals(other.SizeMode)
-                ) && 
-                (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
-                ) && 
-                (
-                    Gradient == other.Gradient ||
-                    Gradient != null &&
-                    Gradient.Equals(other.Gradient)
-                ) && 
-                (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
-                    Equals(ColorArray, other.ColorArray) ||
-                    ColorArray != null && other.ColorArray != null &&
-                    ColorArray.SequenceEqual(other.ColorArray)
-                ) &&
                 (
                     CAuto == other.CAuto ||
                     CAuto != null &&
                     CAuto.Equals(other.CAuto)
-                ) && 
-                (
-                    CMin == other.CMin ||
-                    CMin != null &&
-                    CMin.Equals(other.CMin)
                 ) && 
                 (
                     CMax == other.CMax ||
@@ -345,14 +275,69 @@ namespace Plotly.Blazor.Traces.ScatterLib
                     CMid.Equals(other.CMid)
                 ) && 
                 (
+                    CMin == other.CMin ||
+                    CMin != null &&
+                    CMin.Equals(other.CMin)
+                ) && 
+                (
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
+                ) && 
+                (
+                    Equals(ColorArray, other.ColorArray) ||
+                    ColorArray != null && other.ColorArray != null &&
+                    ColorArray.SequenceEqual(other.ColorArray)
+                ) &&
+                (
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
+                    ColorAxis.Equals(other.ColorAxis)
+                ) && 
+                (
+                    ColorBar == other.ColorBar ||
+                    ColorBar != null &&
+                    ColorBar.Equals(other.ColorBar)
+                ) && 
+                (
                     ColorScale == other.ColorScale ||
                     ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
-                    AutoColorScale == other.AutoColorScale ||
-                    AutoColorScale != null &&
-                    AutoColorScale.Equals(other.AutoColorScale)
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
+                    ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
+                    Gradient == other.Gradient ||
+                    Gradient != null &&
+                    Gradient.Equals(other.Gradient)
+                ) && 
+                (
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
+                ) && 
+                (
+                    MaxDisplayed == other.MaxDisplayed ||
+                    MaxDisplayed != null &&
+                    MaxDisplayed.Equals(other.MaxDisplayed)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
+                ) && 
+                (
+                    Equals(OpacityArray, other.OpacityArray) ||
+                    OpacityArray != null && other.OpacityArray != null &&
+                    OpacityArray.SequenceEqual(other.OpacityArray)
+                ) &&
+                (
+                    OpacitySrc == other.OpacitySrc ||
+                    OpacitySrc != null &&
+                    OpacitySrc.Equals(other.OpacitySrc)
                 ) && 
                 (
                     ReverseScale == other.ReverseScale ||
@@ -365,24 +350,29 @@ namespace Plotly.Blazor.Traces.ScatterLib
                     ShowScale.Equals(other.ShowScale)
                 ) && 
                 (
-                    ColorBar == other.ColorBar ||
-                    ColorBar != null &&
-                    ColorBar.Equals(other.ColorBar)
+                    Size == other.Size ||
+                    Size != null &&
+                    Size.Equals(other.Size)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis ||
-                    ColorAxis != null &&
-                    ColorAxis.Equals(other.ColorAxis)
+                    Equals(SizeArray, other.SizeArray) ||
+                    SizeArray != null && other.SizeArray != null &&
+                    SizeArray.SequenceEqual(other.SizeArray)
+                ) &&
+                (
+                    SizeMin == other.SizeMin ||
+                    SizeMin != null &&
+                    SizeMin.Equals(other.SizeMin)
                 ) && 
                 (
-                    SymbolSrc == other.SymbolSrc ||
-                    SymbolSrc != null &&
-                    SymbolSrc.Equals(other.SymbolSrc)
+                    SizeMode == other.SizeMode ||
+                    SizeMode != null &&
+                    SizeMode.Equals(other.SizeMode)
                 ) && 
                 (
-                    OpacitySrc == other.OpacitySrc ||
-                    OpacitySrc != null &&
-                    OpacitySrc.Equals(other.OpacitySrc)
+                    SizeRef == other.SizeRef ||
+                    SizeRef != null &&
+                    SizeRef.Equals(other.SizeRef)
                 ) && 
                 (
                     SizeSrc == other.SizeSrc ||
@@ -390,9 +380,19 @@ namespace Plotly.Blazor.Traces.ScatterLib
                     SizeSrc.Equals(other.SizeSrc)
                 ) && 
                 (
-                    ColorSrc == other.ColorSrc ||
-                    ColorSrc != null &&
-                    ColorSrc.Equals(other.ColorSrc)
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
+                    Symbol.Equals(other.Symbol)
+                ) && 
+                (
+                    Equals(SymbolArray, other.SymbolArray) ||
+                    SymbolArray != null && other.SymbolArray != null &&
+                    SymbolArray.SequenceEqual(other.SymbolArray)
+                ) &&
+                (
+                    SymbolSrc == other.SymbolSrc ||
+                    SymbolSrc != null &&
+                    SymbolSrc.Equals(other.SymbolSrc)
                 );
         }
 
@@ -402,34 +402,34 @@ namespace Plotly.Blazor.Traces.ScatterLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
-                if (SymbolArray != null) hashCode = hashCode * 59 + SymbolArray.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (OpacityArray != null) hashCode = hashCode * 59 + OpacityArray.GetHashCode();
-                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
-                if (SizeArray != null) hashCode = hashCode * 59 + SizeArray.GetHashCode();
-                if (MaxDisplayed != null) hashCode = hashCode * 59 + MaxDisplayed.GetHashCode();
-                if (SizeRef != null) hashCode = hashCode * 59 + SizeRef.GetHashCode();
-                if (SizeMin != null) hashCode = hashCode * 59 + SizeMin.GetHashCode();
-                if (SizeMode != null) hashCode = hashCode * 59 + SizeMode.GetHashCode();
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
-                if (Gradient != null) hashCode = hashCode * 59 + Gradient.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
                 if (CAuto != null) hashCode = hashCode * 59 + CAuto.GetHashCode();
-                if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
                 if (CMax != null) hashCode = hashCode * 59 + CMax.GetHashCode();
                 if (CMid != null) hashCode = hashCode * 59 + CMid.GetHashCode();
+                if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
+                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
-                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
+                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Gradient != null) hashCode = hashCode * 59 + Gradient.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (MaxDisplayed != null) hashCode = hashCode * 59 + MaxDisplayed.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
+                if (OpacityArray != null) hashCode = hashCode * 59 + OpacityArray.GetHashCode();
+                if (OpacitySrc != null) hashCode = hashCode * 59 + OpacitySrc.GetHashCode();
                 if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
                 if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
-                if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
-                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
-                if (SymbolSrc != null) hashCode = hashCode * 59 + SymbolSrc.GetHashCode();
-                if (OpacitySrc != null) hashCode = hashCode * 59 + OpacitySrc.GetHashCode();
+                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
+                if (SizeArray != null) hashCode = hashCode * 59 + SizeArray.GetHashCode();
+                if (SizeMin != null) hashCode = hashCode * 59 + SizeMin.GetHashCode();
+                if (SizeMode != null) hashCode = hashCode * 59 + SizeMode.GetHashCode();
+                if (SizeRef != null) hashCode = hashCode * 59 + SizeRef.GetHashCode();
                 if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
-                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
+                if (SymbolArray != null) hashCode = hashCode * 59 + SymbolArray.GetHashCode();
+                if (SymbolSrc != null) hashCode = hashCode * 59 + SymbolSrc.GetHashCode();
                 return hashCode;
             }
         }

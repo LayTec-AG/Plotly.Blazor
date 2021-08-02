@@ -40,6 +40,12 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib.MarkerLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  color .
+        /// </summary>
+        [JsonPropertyName(@"colorsrc")]
+        public string ColorSrc { get; set;} 
+
+        /// <summary>
         ///     Sets the width (in px) of the lines bounding the marker points.
         /// </summary>
         [JsonPropertyName(@"width")]
@@ -51,12 +57,6 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib.MarkerLib
         [JsonPropertyName(@"width")]
         [Array]
         public IList<decimal?> WidthArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
-        /// </summary>
-        [JsonPropertyName(@"colorsrc")]
-        public string ColorSrc { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  width .
@@ -90,6 +90,11 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib.MarkerLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
+                    ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
                     Width == other.Width ||
                     Width != null &&
                     Width.Equals(other.Width)
@@ -99,11 +104,6 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib.MarkerLib
                     WidthArray != null && other.WidthArray != null &&
                     WidthArray.SequenceEqual(other.WidthArray)
                 ) &&
-                (
-                    ColorSrc == other.ColorSrc ||
-                    ColorSrc != null &&
-                    ColorSrc.Equals(other.ColorSrc)
-                ) && 
                 (
                     WidthSrc == other.WidthSrc ||
                     WidthSrc != null &&
@@ -119,9 +119,9 @@ namespace Plotly.Blazor.Traces.ChoroplethMapBoxLib.MarkerLib
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (WidthArray != null) hashCode = hashCode * 59 + WidthArray.GetHashCode();
-                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (WidthSrc != null) hashCode = hashCode * 59 + WidthSrc.GetHashCode();
                 return hashCode;
             }

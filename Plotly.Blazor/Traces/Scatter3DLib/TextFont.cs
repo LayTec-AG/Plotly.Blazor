@@ -34,17 +34,10 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Size.
+        ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
-        [JsonPropertyName(@"size")]
-        public decimal? Size { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Size.
-        /// </summary>
-        [JsonPropertyName(@"size")]
-        [Array]
-        public IList<decimal?> SizeArray { get; set;} 
+        [JsonPropertyName(@"colorsrc")]
+        public string ColorSrc { get; set;} 
 
         /// <summary>
         ///     HTML font family - the typeface that will be applied by the web browser.
@@ -63,10 +56,17 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
         public string Family { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
+        ///     Gets or sets the Size.
         /// </summary>
-        [JsonPropertyName(@"colorsrc")]
-        public string ColorSrc { get; set;} 
+        [JsonPropertyName(@"size")]
+        public decimal? Size { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Size.
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        [Array]
+        public IList<decimal?> SizeArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  size .
@@ -100,6 +100,16 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
+                    ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
+                    Family == other.Family ||
+                    Family != null &&
+                    Family.Equals(other.Family)
+                ) && 
+                (
                     Size == other.Size ||
                     Size != null &&
                     Size.Equals(other.Size)
@@ -109,16 +119,6 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
                     SizeArray != null && other.SizeArray != null &&
                     SizeArray.SequenceEqual(other.SizeArray)
                 ) &&
-                (
-                    Family == other.Family ||
-                    Family != null &&
-                    Family.Equals(other.Family)
-                ) && 
-                (
-                    ColorSrc == other.ColorSrc ||
-                    ColorSrc != null &&
-                    ColorSrc.Equals(other.ColorSrc)
-                ) && 
                 (
                     SizeSrc == other.SizeSrc ||
                     SizeSrc != null &&
@@ -134,10 +134,10 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Family != null) hashCode = hashCode * 59 + Family.GetHashCode();
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 if (SizeArray != null) hashCode = hashCode * 59 + SizeArray.GetHashCode();
-                if (Family != null) hashCode = hashCode * 59 + Family.GetHashCode();
-                if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
                 return hashCode;
             }

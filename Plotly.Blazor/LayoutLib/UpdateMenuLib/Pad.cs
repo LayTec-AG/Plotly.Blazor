@@ -18,18 +18,6 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
     public class Pad : IEquatable<Pad>
     {
         /// <summary>
-        ///     The amount of padding (in px) along the top of the component.
-        /// </summary>
-        [JsonPropertyName(@"t")]
-        public decimal? T { get; set;} 
-
-        /// <summary>
-        ///     The amount of padding (in px) on the right side of the component.
-        /// </summary>
-        [JsonPropertyName(@"r")]
-        public decimal? R { get; set;} 
-
-        /// <summary>
         ///     The amount of padding (in px) along the bottom of the component.
         /// </summary>
         [JsonPropertyName(@"b")]
@@ -40,6 +28,18 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
         /// </summary>
         [JsonPropertyName(@"l")]
         public decimal? L { get; set;} 
+
+        /// <summary>
+        ///     The amount of padding (in px) on the right side of the component.
+        /// </summary>
+        [JsonPropertyName(@"r")]
+        public decimal? R { get; set;} 
+
+        /// <summary>
+        ///     The amount of padding (in px) along the top of the component.
+        /// </summary>
+        [JsonPropertyName(@"t")]
+        public decimal? T { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -57,16 +57,6 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
 
             return 
                 (
-                    T == other.T ||
-                    T != null &&
-                    T.Equals(other.T)
-                ) && 
-                (
-                    R == other.R ||
-                    R != null &&
-                    R.Equals(other.R)
-                ) && 
-                (
                     B == other.B ||
                     B != null &&
                     B.Equals(other.B)
@@ -75,6 +65,16 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
                     L == other.L ||
                     L != null &&
                     L.Equals(other.L)
+                ) && 
+                (
+                    R == other.R ||
+                    R != null &&
+                    R.Equals(other.R)
+                ) && 
+                (
+                    T == other.T ||
+                    T != null &&
+                    T.Equals(other.T)
                 );
         }
 
@@ -84,10 +84,10 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (T != null) hashCode = hashCode * 59 + T.GetHashCode();
-                if (R != null) hashCode = hashCode * 59 + R.GetHashCode();
                 if (B != null) hashCode = hashCode * 59 + B.GetHashCode();
                 if (L != null) hashCode = hashCode * 59 + L.GetHashCode();
+                if (R != null) hashCode = hashCode * 59 + R.GetHashCode();
+                if (T != null) hashCode = hashCode * 59 + T.GetHashCode();
                 return hashCode;
             }
         }

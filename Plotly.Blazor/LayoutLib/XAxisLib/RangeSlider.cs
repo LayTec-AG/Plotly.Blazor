@@ -21,6 +21,14 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     public class RangeSlider : IEquatable<RangeSlider>
     {
         /// <summary>
+        ///     Determines whether or not the range slider range is computed in relation
+        ///     to the input data. If <c>range</c> is provided, then <c>autorange</c> is
+        ///     set to <c>false</c>.
+        /// </summary>
+        [JsonPropertyName(@"autorange")]
+        public bool? AutoRange { get; set;} 
+
+        /// <summary>
         ///     Sets the background color of the range slider.
         /// </summary>
         [JsonPropertyName(@"bgcolor")]
@@ -37,14 +45,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         /// </summary>
         [JsonPropertyName(@"borderwidth")]
         public int? BorderWidth { get; set;} 
-
-        /// <summary>
-        ///     Determines whether or not the range slider range is computed in relation
-        ///     to the input data. If <c>range</c> is provided, then <c>autorange</c> is
-        ///     set to <c>false</c>.
-        /// </summary>
-        [JsonPropertyName(@"autorange")]
-        public bool? AutoRange { get; set;} 
 
         /// <summary>
         ///     Sets the range of the range slider. If not set, defaults to the full xaxis
@@ -94,6 +94,11 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
             return 
                 (
+                    AutoRange == other.AutoRange ||
+                    AutoRange != null &&
+                    AutoRange.Equals(other.AutoRange)
+                ) && 
+                (
                     BgColor == other.BgColor ||
                     BgColor != null &&
                     BgColor.Equals(other.BgColor)
@@ -107,11 +112,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
                     BorderWidth == other.BorderWidth ||
                     BorderWidth != null &&
                     BorderWidth.Equals(other.BorderWidth)
-                ) && 
-                (
-                    AutoRange == other.AutoRange ||
-                    AutoRange != null &&
-                    AutoRange.Equals(other.AutoRange)
                 ) && 
                 (
                     Equals(Range, other.Range) ||
@@ -141,10 +141,10 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
-                if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
                 if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
                 if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();

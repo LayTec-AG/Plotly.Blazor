@@ -17,17 +17,17 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     {
         [EnumMember(Value=@"world")]
         World = 0,
-        [EnumMember(Value=@"usa")]
-        USA,
-        [EnumMember(Value=@"europe")]
-        Europe,
-        [EnumMember(Value=@"asia")]
-        Asia,
         [EnumMember(Value=@"africa")]
         Africa,
+        [EnumMember(Value=@"asia")]
+        Asia,
+        [EnumMember(Value=@"europe")]
+        Europe,
         [EnumMember(Value=@"north america")]
         NorthAmerica,
         [EnumMember(Value=@"south america")]
-        SouthAmerica
+        SouthAmerica,
+        [EnumMember(Value=@"usa")]
+        USA
     }
 }

@@ -18,6 +18,20 @@ namespace Plotly.Blazor.Traces.PointCloudLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
+        ///     Determines if colors are blended together for a translucency effect in case
+        ///     <c>opacity</c> is specified as a value less then <c>1</c>. Setting <c>blend</c>
+        ///     to <c>true</c> reduces zoom/pan speed if used with large numbers of points.
+        /// </summary>
+        [JsonPropertyName(@"blend")]
+        public bool? Blend { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Border.
+        /// </summary>
+        [JsonPropertyName(@"border")]
+        public Plotly.Blazor.Traces.PointCloudLib.MarkerLib.Border Border { get; set;} 
+
+        /// <summary>
         ///     Sets the marker fill color. It accepts a specific color.If the color is
         ///     not fully opaque and there are hundreds of thousandsof points, it may cause
         ///     slower zooming and panning.
@@ -36,21 +50,6 @@ namespace Plotly.Blazor.Traces.PointCloudLib
         public decimal? Opacity { get; set;} 
 
         /// <summary>
-        ///     Determines if colors are blended together for a translucency effect in case
-        ///     <c>opacity</c> is specified as a value less then <c>1</c>. Setting <c>blend</c>
-        ///     to <c>true</c> reduces zoom/pan speed if used with large numbers of points.
-        /// </summary>
-        [JsonPropertyName(@"blend")]
-        public bool? Blend { get; set;} 
-
-        /// <summary>
-        ///     Sets the minimum size (in px) of the rendered marker points, effective when
-        ///     the <c>pointcloud</c> shows a million or more points.
-        /// </summary>
-        [JsonPropertyName(@"sizemin")]
-        public decimal? SizeMin { get; set;} 
-
-        /// <summary>
         ///     Sets the maximum size (in px) of the rendered marker points. Effective when
         ///     the <c>pointcloud</c> shows only few points.
         /// </summary>
@@ -58,10 +57,11 @@ namespace Plotly.Blazor.Traces.PointCloudLib
         public decimal? SizeMax { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Border.
+        ///     Sets the minimum size (in px) of the rendered marker points, effective when
+        ///     the <c>pointcloud</c> shows a million or more points.
         /// </summary>
-        [JsonPropertyName(@"border")]
-        public Plotly.Blazor.Traces.PointCloudLib.MarkerLib.Border Border { get; set;} 
+        [JsonPropertyName(@"sizemin")]
+        public decimal? SizeMin { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -79,6 +79,16 @@ namespace Plotly.Blazor.Traces.PointCloudLib
 
             return 
                 (
+                    Blend == other.Blend ||
+                    Blend != null &&
+                    Blend.Equals(other.Blend)
+                ) && 
+                (
+                    Border == other.Border ||
+                    Border != null &&
+                    Border.Equals(other.Border)
+                ) && 
+                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -89,24 +99,14 @@ namespace Plotly.Blazor.Traces.PointCloudLib
                     Opacity.Equals(other.Opacity)
                 ) && 
                 (
-                    Blend == other.Blend ||
-                    Blend != null &&
-                    Blend.Equals(other.Blend)
-                ) && 
-                (
-                    SizeMin == other.SizeMin ||
-                    SizeMin != null &&
-                    SizeMin.Equals(other.SizeMin)
-                ) && 
-                (
                     SizeMax == other.SizeMax ||
                     SizeMax != null &&
                     SizeMax.Equals(other.SizeMax)
                 ) && 
                 (
-                    Border == other.Border ||
-                    Border != null &&
-                    Border.Equals(other.Border)
+                    SizeMin == other.SizeMin ||
+                    SizeMin != null &&
+                    SizeMin.Equals(other.SizeMin)
                 );
         }
 
@@ -116,12 +116,12 @@ namespace Plotly.Blazor.Traces.PointCloudLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Blend != null) hashCode = hashCode * 59 + Blend.GetHashCode();
+                if (Border != null) hashCode = hashCode * 59 + Border.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (Blend != null) hashCode = hashCode * 59 + Blend.GetHashCode();
-                if (SizeMin != null) hashCode = hashCode * 59 + SizeMin.GetHashCode();
                 if (SizeMax != null) hashCode = hashCode * 59 + SizeMax.GetHashCode();
-                if (Border != null) hashCode = hashCode * 59 + Border.GetHashCode();
+                if (SizeMin != null) hashCode = hashCode * 59 + SizeMin.GetHashCode();
                 return hashCode;
             }
         }

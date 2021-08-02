@@ -20,10 +20,17 @@ namespace Plotly.Blazor.Traces.ParCatsLib
     public class Dimension : IEquatable<Dimension>
     {
         /// <summary>
-        ///     The shown name of the dimension.
+        ///     Sets the order in which categories in this dimension appear. Only has an
+        ///     effect if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
         /// </summary>
-        [JsonPropertyName(@"label")]
-        public string Label { get; set;} 
+        [JsonPropertyName(@"categoryarray")]
+        public IList<object> CategoryArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
+        /// </summary>
+        [JsonPropertyName(@"categoryarraysrc")]
+        public string CategoryArraySrc { get; set;} 
 
         /// <summary>
         ///     Specifies the ordering logic for the categories in the dimension. By default,
@@ -40,11 +47,17 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public Plotly.Blazor.Traces.ParCatsLib.DimensionLib.CategoryOrderEnum? CategoryOrder { get; set;} 
 
         /// <summary>
-        ///     Sets the order in which categories in this dimension appear. Only has an
-        ///     effect if <c>categoryorder</c> is set to <c>array</c>. Used with <c>categoryorder</c>.
+        ///     The display index of dimension, from left to right, zero indexed, defaults
+        ///     to dimension index.
         /// </summary>
-        [JsonPropertyName(@"categoryarray")]
-        public IList<object> CategoryArray { get; set;} 
+        [JsonPropertyName(@"displayindex")]
+        public int? DisplayIndex { get; set;} 
+
+        /// <summary>
+        ///     The shown name of the dimension.
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public string Label { get; set;} 
 
         /// <summary>
         ///     Sets alternative tick labels for the categories in this dimension. Only
@@ -55,6 +68,12 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public IList<object> TickText { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
+        /// </summary>
+        [JsonPropertyName(@"ticktextsrc")]
+        public string TickTextSrc { get; set;} 
+
+        /// <summary>
         ///     Dimension values. <c>values[n]</c> represents the category value of the
         ///     <c>n</c>th point in the dataset, therefore the <c>values</c> vector for
         ///     all dimensions must be the same (longer vectors will be truncated).
@@ -63,11 +82,10 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public IList<object> Values { get; set;} 
 
         /// <summary>
-        ///     The display index of dimension, from left to right, zero indexed, defaults
-        ///     to dimension index.
+        ///     Sets the source reference on Chart Studio Cloud for  values .
         /// </summary>
-        [JsonPropertyName(@"displayindex")]
-        public int? DisplayIndex { get; set;} 
+        [JsonPropertyName(@"valuessrc")]
+        public string ValuesSrc { get; set;} 
 
         /// <summary>
         ///     Shows the dimension when set to <c>true</c> (the default). Hides the dimension
@@ -75,24 +93,6 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         /// </summary>
         [JsonPropertyName(@"visible")]
         public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
-        /// </summary>
-        [JsonPropertyName(@"categoryarraysrc")]
-        public string CategoryArraySrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
-        /// </summary>
-        [JsonPropertyName(@"ticktextsrc")]
-        public string TickTextSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  values .
-        /// </summary>
-        [JsonPropertyName(@"valuessrc")]
-        public string ValuesSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -110,9 +110,14 @@ namespace Plotly.Blazor.Traces.ParCatsLib
 
             return 
                 (
-                    Label == other.Label ||
-                    Label != null &&
-                    Label.Equals(other.Label)
+                    Equals(CategoryArray, other.CategoryArray) ||
+                    CategoryArray != null && other.CategoryArray != null &&
+                    CategoryArray.SequenceEqual(other.CategoryArray)
+                ) &&
+                (
+                    CategoryArraySrc == other.CategoryArraySrc ||
+                    CategoryArraySrc != null &&
+                    CategoryArraySrc.Equals(other.CategoryArraySrc)
                 ) && 
                 (
                     CategoryOrder == other.CategoryOrder ||
@@ -120,44 +125,39 @@ namespace Plotly.Blazor.Traces.ParCatsLib
                     CategoryOrder.Equals(other.CategoryOrder)
                 ) && 
                 (
-                    Equals(CategoryArray, other.CategoryArray) ||
-                    CategoryArray != null && other.CategoryArray != null &&
-                    CategoryArray.SequenceEqual(other.CategoryArray)
-                ) &&
+                    DisplayIndex == other.DisplayIndex ||
+                    DisplayIndex != null &&
+                    DisplayIndex.Equals(other.DisplayIndex)
+                ) && 
+                (
+                    Label == other.Label ||
+                    Label != null &&
+                    Label.Equals(other.Label)
+                ) && 
                 (
                     Equals(TickText, other.TickText) ||
                     TickText != null && other.TickText != null &&
                     TickText.SequenceEqual(other.TickText)
                 ) &&
                 (
-                    Equals(Values, other.Values) ||
-                    Values != null && other.Values != null &&
-                    Values.SequenceEqual(other.Values)
-                ) &&
-                (
-                    DisplayIndex == other.DisplayIndex ||
-                    DisplayIndex != null &&
-                    DisplayIndex.Equals(other.DisplayIndex)
-                ) && 
-                (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    CategoryArraySrc == other.CategoryArraySrc ||
-                    CategoryArraySrc != null &&
-                    CategoryArraySrc.Equals(other.CategoryArraySrc)
-                ) && 
-                (
                     TickTextSrc == other.TickTextSrc ||
                     TickTextSrc != null &&
                     TickTextSrc.Equals(other.TickTextSrc)
                 ) && 
                 (
+                    Equals(Values, other.Values) ||
+                    Values != null && other.Values != null &&
+                    Values.SequenceEqual(other.Values)
+                ) &&
+                (
                     ValuesSrc == other.ValuesSrc ||
                     ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -167,16 +167,16 @@ namespace Plotly.Blazor.Traces.ParCatsLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
-                if (CategoryOrder != null) hashCode = hashCode * 59 + CategoryOrder.GetHashCode();
                 if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
-                if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
-                if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();
-                if (DisplayIndex != null) hashCode = hashCode * 59 + DisplayIndex.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (CategoryArraySrc != null) hashCode = hashCode * 59 + CategoryArraySrc.GetHashCode();
+                if (CategoryOrder != null) hashCode = hashCode * 59 + CategoryOrder.GetHashCode();
+                if (DisplayIndex != null) hashCode = hashCode * 59 + DisplayIndex.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
+                if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
                 if (TickTextSrc != null) hashCode = hashCode * 59 + TickTextSrc.GetHashCode();
+                if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();
                 if (ValuesSrc != null) hashCode = hashCode * 59 + ValuesSrc.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

@@ -20,10 +20,10 @@ namespace Plotly.Blazor.Traces.IndicatorLib
     public class Gauge : IEquatable<Gauge>
     {
         /// <summary>
-        ///     Set the shape of the gauge
+        ///     Gets or sets the Axis.
         /// </summary>
-        [JsonPropertyName(@"shape")]
-        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.ShapeEnum? Shape { get; set;} 
+        [JsonPropertyName(@"axis")]
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Axis Axis { get; set;} 
 
         /// <summary>
         ///     Set the appearance of the gauge&#39;s value
@@ -50,10 +50,10 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         public decimal? BorderWidth { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Axis.
+        ///     Set the shape of the gauge
         /// </summary>
-        [JsonPropertyName(@"axis")]
-        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.Axis Axis { get; set;} 
+        [JsonPropertyName(@"shape")]
+        public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.ShapeEnum? Shape { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Steps.
@@ -83,9 +83,9 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    Shape == other.Shape ||
-                    Shape != null &&
-                    Shape.Equals(other.Shape)
+                    Axis == other.Axis ||
+                    Axis != null &&
+                    Axis.Equals(other.Axis)
                 ) && 
                 (
                     Bar == other.Bar ||
@@ -108,9 +108,9 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
-                    Axis == other.Axis ||
-                    Axis != null &&
-                    Axis.Equals(other.Axis)
+                    Shape == other.Shape ||
+                    Shape != null &&
+                    Shape.Equals(other.Shape)
                 ) && 
                 (
                     Equals(Steps, other.Steps) ||
@@ -130,12 +130,12 @@ namespace Plotly.Blazor.Traces.IndicatorLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
+                if (Axis != null) hashCode = hashCode * 59 + Axis.GetHashCode();
                 if (Bar != null) hashCode = hashCode * 59 + Bar.GetHashCode();
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
-                if (Axis != null) hashCode = hashCode * 59 + Axis.GetHashCode();
+                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
                 if (Steps != null) hashCode = hashCode * 59 + Steps.GetHashCode();
                 if (Threshold != null) hashCode = hashCode * 59 + Threshold.GetHashCode();
                 return hashCode;

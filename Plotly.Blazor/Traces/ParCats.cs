@@ -26,89 +26,46 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum? Type { get; } = TraceTypeEnum.ParCats;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
-        ///     trace is not drawn, but can appear as a legend item (provided that the legend
-        ///     itself is visible).
+        ///     Sets the drag interaction mode for categories and dimensions. If <c>perpendicular</c>,
+        ///     the categories can only move along a line perpendicular to the paths. If
+        ///     <c>freeform</c>, the categories can freely move on the plane. If <c>fixed</c>,
+        ///     the categories and dimensions are stationary.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public Plotly.Blazor.Traces.ParCatsLib.VisibleEnum? Visible { get; set;} 
+        [JsonPropertyName(@"arrangement")]
+        public Plotly.Blazor.Traces.ParCatsLib.ArrangementEnum? Arrangement { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the LegendGroupTitle.
+        ///     Sort paths so that like colors are bundled together within each category.
         /// </summary>
-        [JsonPropertyName(@"legendgrouptitle")]
-        public Plotly.Blazor.Traces.ParCatsLib.LegendGroupTitle LegendGroupTitle { get; set;} 
+        [JsonPropertyName(@"bundlecolors")]
+        public bool? BundleColors { get; set;} 
 
         /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        ///     The number of observations represented by each state. Defaults to 1 so that
+        ///     each state represents one observation
         /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
+        [JsonPropertyName(@"counts")]
+        public decimal? Counts { get; set;} 
 
         /// <summary>
-        ///     Assign an id to this trace, Use this to provide object constancy between
-        ///     traces during animations and transitions.
+        ///     The number of observations represented by each state. Defaults to 1 so that
+        ///     each state represents one observation
         /// </summary>
-        [JsonPropertyName(@"uid")]
-        public string UId { get; set;} 
-
-        /// <summary>
-        ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
-        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
-        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
-        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
-        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
-        ///     item in question. To access trace <c>meta</c> in layout attributes, use
-        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
-        ///     and <c>n</c> is the trace index.
-        /// </summary>
-        [JsonPropertyName(@"meta")]
-        public object Meta { get; set;} 
-
-        /// <summary>
-        ///     Assigns extra meta information associated with this trace that can be used
-        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
-        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
-        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
-        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
-        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
-        ///     item in question. To access trace <c>meta</c> in layout attributes, use
-        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
-        ///     and <c>n</c> is the trace index.
-        /// </summary>
-        [JsonPropertyName(@"meta")]
+        [JsonPropertyName(@"counts")]
         [Array]
-        public IList<object> MetaArray { get; set;} 
+        public IList<decimal?> CountsArray { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Stream.
+        ///     Sets the source reference on Chart Studio Cloud for  counts .
         /// </summary>
-        [JsonPropertyName(@"stream")]
-        public Plotly.Blazor.Traces.ParCatsLib.Stream Stream { get; set;} 
+        [JsonPropertyName(@"countssrc")]
+        public string CountsSrc { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Transforms.
+        ///     Gets or sets the Dimensions.
         /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
-
-        /// <summary>
-        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
-        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
-        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
-        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
-        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
-        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
-        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
-        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
-        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
-        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
-        ///     such that the same trace has a different index, you can still preserve user-driven
-        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
-        /// </summary>
-        [JsonPropertyName(@"uirevision")]
-        public object UiRevision { get; set;} 
+        [JsonPropertyName(@"dimensions")]
+        public IList<Plotly.Blazor.Traces.ParCatsLib.Dimension> Dimensions { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Domain.
@@ -142,12 +99,12 @@ namespace Plotly.Blazor.Traces
         ///     first point. An underscore before or after <c>(x|y)other</c> will add a
         ///     space on that side, only when this field is shown. Numbers are formatted
         ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
-        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format
-        ///     for details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
-        ///     https://github.com/d3/d3-time-format#locale_format for details on the date
-        ///     formatting syntax. The variables available in <c>hovertemplate</c> are the
-        ///     ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
+        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
         ///     that are &#39;arrayOk: true&#39;) are available. variables <c>count</c>,
         ///     <c>probability</c>, <c>category</c>, <c>categorycount</c>, <c>colorcount</c>
@@ -159,19 +116,63 @@ namespace Plotly.Blazor.Traces
         public string HoverTemplate { get; set;} 
 
         /// <summary>
-        ///     Sets the drag interaction mode for categories and dimensions. If <c>perpendicular</c>,
-        ///     the categories can only move along a line perpendicular to the paths. If
-        ///     <c>freeform</c>, the categories can freely move on the plane. If <c>fixed</c>,
-        ///     the categories and dimensions are stationary.
+        ///     Sets the font for the <c>dimension</c> labels.
         /// </summary>
-        [JsonPropertyName(@"arrangement")]
-        public Plotly.Blazor.Traces.ParCatsLib.ArrangementEnum? Arrangement { get; set;} 
+        [JsonPropertyName(@"labelfont")]
+        public Plotly.Blazor.Traces.ParCatsLib.LabelFont LabelFont { get; set;} 
 
         /// <summary>
-        ///     Sort paths so that like colors are bundled together within each category.
+        ///     Gets or sets the LegendGroupTitle.
         /// </summary>
-        [JsonPropertyName(@"bundlecolors")]
-        public bool? BundleColors { get; set;} 
+        [JsonPropertyName(@"legendgrouptitle")]
+        public Plotly.Blazor.Traces.ParCatsLib.LegendGroupTitle LegendGroupTitle { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.ParCatsLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra meta information associated with this trace that can be used
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
+        /// </summary>
+        [JsonPropertyName(@"meta")]
+        public object Meta { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra meta information associated with this trace that can be used
+        ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
+        ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
+        ///     <c>updatemenues</c> and <c>sliders</c> <c>label</c> text all support <c>meta</c>.
+        ///     To access the trace <c>meta</c> values in an attribute in the same trace,
+        ///     simply use <c>%{meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     item in question. To access trace <c>meta</c> in layout attributes, use
+        ///     <c>%{data[n[.meta[i]}</c> where <c>i</c> is the index or key of the <c>meta</c>
+        ///     and <c>n</c> is the trace index.
+        /// </summary>
+        [JsonPropertyName(@"meta")]
+        [Array]
+        public IList<object> MetaArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        /// </summary>
+        [JsonPropertyName(@"metasrc")]
+        public string MetaSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
 
         /// <summary>
         ///     Sets the path sorting algorithm. If <c>forward</c>, sort paths based on
@@ -182,10 +183,10 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ParCatsLib.SortPathsEnum? SortPaths { get; set;} 
 
         /// <summary>
-        ///     Sets the font for the <c>dimension</c> labels.
+        ///     Gets or sets the Stream.
         /// </summary>
-        [JsonPropertyName(@"labelfont")]
-        public Plotly.Blazor.Traces.ParCatsLib.LabelFont LabelFont { get; set;} 
+        [JsonPropertyName(@"stream")]
+        public Plotly.Blazor.Traces.ParCatsLib.Stream Stream { get; set;} 
 
         /// <summary>
         ///     Sets the font for the <c>category</c> labels.
@@ -194,43 +195,42 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ParCatsLib.TickFont TickFont { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Dimensions.
+        ///     Gets or sets the Transforms.
         /// </summary>
-        [JsonPropertyName(@"dimensions")]
-        public IList<Plotly.Blazor.Traces.ParCatsLib.Dimension> Dimensions { get; set;} 
+        [JsonPropertyName(@"transforms")]
+        public IList<ITransform> Transforms { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Line.
+        ///     Assign an id to this trace, Use this to provide object constancy between
+        ///     traces during animations and transitions.
         /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.ParCatsLib.Line Line { get; set;} 
+        [JsonPropertyName(@"uid")]
+        public string UId { get; set;} 
 
         /// <summary>
-        ///     The number of observations represented by each state. Defaults to 1 so that
-        ///     each state represents one observation
+        ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
+        ///     in <c>parcoords</c> traces, as well as some &#39;editable: true&#39; modifications
+        ///     such as <c>name</c> and <c>colorbar.title</c>. Defaults to <c>layout.uirevision</c>.
+        ///     Note that other user-driven trace attribute changes are controlled by <c>layout</c>
+        ///     attributes: <c>trace.visible</c> is controlled by <c>layout.legend.uirevision</c>,
+        ///     <c>selectedpoints</c> is controlled by <c>layout.selectionrevision</c>,
+        ///     and <c>colorbar.(x|y)</c> (accessible with &#39;config: {editable: true}&#39;)
+        ///     is controlled by <c>layout.editrevision</c>. Trace changes are tracked by
+        ///     <c>uid</c>, which only falls back on trace index if no <c>uid</c> is provided.
+        ///     So if your app can add/remove traces before the end of the <c>data</c> array,
+        ///     such that the same trace has a different index, you can still preserve user-driven
+        ///     changes if you give each trace a <c>uid</c> that stays with it as it moves.
         /// </summary>
-        [JsonPropertyName(@"counts")]
-        public decimal? Counts { get; set;} 
+        [JsonPropertyName(@"uirevision")]
+        public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     The number of observations represented by each state. Defaults to 1 so that
-        ///     each state represents one observation
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
+        ///     itself is visible).
         /// </summary>
-        [JsonPropertyName(@"counts")]
-        [Array]
-        public IList<decimal?> CountsArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
-        /// </summary>
-        [JsonPropertyName(@"metasrc")]
-        public string MetaSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  counts .
-        /// </summary>
-        [JsonPropertyName(@"countssrc")]
-        public string CountsSrc { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public Plotly.Blazor.Traces.ParCatsLib.VisibleEnum? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -253,50 +253,35 @@ namespace Plotly.Blazor.Traces
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Arrangement == other.Arrangement ||
+                    Arrangement != null &&
+                    Arrangement.Equals(other.Arrangement)
                 ) && 
                 (
-                    LegendGroupTitle == other.LegendGroupTitle ||
-                    LegendGroupTitle != null &&
-                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                    BundleColors == other.BundleColors ||
+                    BundleColors != null &&
+                    BundleColors.Equals(other.BundleColors)
                 ) && 
                 (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
+                    Counts == other.Counts ||
+                    Counts != null &&
+                    Counts.Equals(other.Counts)
                 ) && 
                 (
-                    UId == other.UId ||
-                    UId != null &&
-                    UId.Equals(other.UId)
-                ) && 
-                (
-                    Meta == other.Meta ||
-                    Meta != null &&
-                    Meta.Equals(other.Meta)
-                ) && 
-                (
-                    Equals(MetaArray, other.MetaArray) ||
-                    MetaArray != null && other.MetaArray != null &&
-                    MetaArray.SequenceEqual(other.MetaArray)
+                    Equals(CountsArray, other.CountsArray) ||
+                    CountsArray != null && other.CountsArray != null &&
+                    CountsArray.SequenceEqual(other.CountsArray)
                 ) &&
                 (
-                    Stream == other.Stream ||
-                    Stream != null &&
-                    Stream.Equals(other.Stream)
+                    CountsSrc == other.CountsSrc ||
+                    CountsSrc != null &&
+                    CountsSrc.Equals(other.CountsSrc)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
+                    Equals(Dimensions, other.Dimensions) ||
+                    Dimensions != null && other.Dimensions != null &&
+                    Dimensions.SequenceEqual(other.Dimensions)
                 ) &&
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
-                ) && 
                 (
                     Domain == other.Domain ||
                     Domain != null &&
@@ -318,49 +303,29 @@ namespace Plotly.Blazor.Traces
                     HoverTemplate.Equals(other.HoverTemplate)
                 ) && 
                 (
-                    Arrangement == other.Arrangement ||
-                    Arrangement != null &&
-                    Arrangement.Equals(other.Arrangement)
-                ) && 
-                (
-                    BundleColors == other.BundleColors ||
-                    BundleColors != null &&
-                    BundleColors.Equals(other.BundleColors)
-                ) && 
-                (
-                    SortPaths == other.SortPaths ||
-                    SortPaths != null &&
-                    SortPaths.Equals(other.SortPaths)
-                ) && 
-                (
                     LabelFont == other.LabelFont ||
                     LabelFont != null &&
                     LabelFont.Equals(other.LabelFont)
                 ) && 
                 (
-                    TickFont == other.TickFont ||
-                    TickFont != null &&
-                    TickFont.Equals(other.TickFont)
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
                 ) && 
-                (
-                    Equals(Dimensions, other.Dimensions) ||
-                    Dimensions != null && other.Dimensions != null &&
-                    Dimensions.SequenceEqual(other.Dimensions)
-                ) &&
                 (
                     Line == other.Line ||
                     Line != null &&
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Counts == other.Counts ||
-                    Counts != null &&
-                    Counts.Equals(other.Counts)
+                    Meta == other.Meta ||
+                    Meta != null &&
+                    Meta.Equals(other.Meta)
                 ) && 
                 (
-                    Equals(CountsArray, other.CountsArray) ||
-                    CountsArray != null && other.CountsArray != null &&
-                    CountsArray.SequenceEqual(other.CountsArray)
+                    Equals(MetaArray, other.MetaArray) ||
+                    MetaArray != null && other.MetaArray != null &&
+                    MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
                     MetaSrc == other.MetaSrc ||
@@ -368,9 +333,44 @@ namespace Plotly.Blazor.Traces
                     MetaSrc.Equals(other.MetaSrc)
                 ) && 
                 (
-                    CountsSrc == other.CountsSrc ||
-                    CountsSrc != null &&
-                    CountsSrc.Equals(other.CountsSrc)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    SortPaths == other.SortPaths ||
+                    SortPaths != null &&
+                    SortPaths.Equals(other.SortPaths)
+                ) && 
+                (
+                    Stream == other.Stream ||
+                    Stream != null &&
+                    Stream.Equals(other.Stream)
+                ) && 
+                (
+                    TickFont == other.TickFont ||
+                    TickFont != null &&
+                    TickFont.Equals(other.TickFont)
+                ) && 
+                (
+                    Equals(Transforms, other.Transforms) ||
+                    Transforms != null && other.Transforms != null &&
+                    Transforms.SequenceEqual(other.Transforms)
+                ) &&
+                (
+                    UId == other.UId ||
+                    UId != null &&
+                    UId.Equals(other.UId)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -381,30 +381,30 @@ namespace Plotly.Blazor.Traces
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
-                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
-                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
-                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Arrangement != null) hashCode = hashCode * 59 + Arrangement.GetHashCode();
+                if (BundleColors != null) hashCode = hashCode * 59 + BundleColors.GetHashCode();
+                if (Counts != null) hashCode = hashCode * 59 + Counts.GetHashCode();
+                if (CountsArray != null) hashCode = hashCode * 59 + CountsArray.GetHashCode();
+                if (CountsSrc != null) hashCode = hashCode * 59 + CountsSrc.GetHashCode();
+                if (Dimensions != null) hashCode = hashCode * 59 + Dimensions.GetHashCode();
                 if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
                 if (HoverOn != null) hashCode = hashCode * 59 + HoverOn.GetHashCode();
                 if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
-                if (Arrangement != null) hashCode = hashCode * 59 + Arrangement.GetHashCode();
-                if (BundleColors != null) hashCode = hashCode * 59 + BundleColors.GetHashCode();
-                if (SortPaths != null) hashCode = hashCode * 59 + SortPaths.GetHashCode();
                 if (LabelFont != null) hashCode = hashCode * 59 + LabelFont.GetHashCode();
-                if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
-                if (Dimensions != null) hashCode = hashCode * 59 + Dimensions.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
-                if (Counts != null) hashCode = hashCode * 59 + Counts.GetHashCode();
-                if (CountsArray != null) hashCode = hashCode * 59 + CountsArray.GetHashCode();
+                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
+                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
                 if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
-                if (CountsSrc != null) hashCode = hashCode * 59 + CountsSrc.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (SortPaths != null) hashCode = hashCode * 59 + SortPaths.GetHashCode();
+                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
+                if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
+                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
+                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

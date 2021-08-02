@@ -20,18 +20,48 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     public class RangeSelector : IEquatable<RangeSelector>
     {
         /// <summary>
-        ///     Determines whether or not this range selector is visible. Note that range
-        ///     selectors are only available for x axes of <c>type</c> set to or auto-typed
-        ///     to <c>date</c>.
+        ///     Sets the background color of the active range selector button.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"activecolor")]
+        public object ActiveColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the background color of the range selector buttons.
+        /// </summary>
+        [JsonPropertyName(@"bgcolor")]
+        public object BgColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the color of the border enclosing the range selector.
+        /// </summary>
+        [JsonPropertyName(@"bordercolor")]
+        public object BorderColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the border enclosing the range selector.
+        /// </summary>
+        [JsonPropertyName(@"borderwidth")]
+        public decimal? BorderWidth { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Buttons.
         /// </summary>
         [JsonPropertyName(@"buttons")]
         public IList<Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.Button> Buttons { get; set;} 
+
+        /// <summary>
+        ///     Sets the font of the range selector button text.
+        /// </summary>
+        [JsonPropertyName(@"font")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not this range selector is visible. Note that range
+        ///     selectors are only available for x axes of <c>type</c> set to or auto-typed
+        ///     to <c>date</c>.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the range selector.
@@ -61,36 +91,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.YAnchorEnum? YAnchor { get; set;} 
 
-        /// <summary>
-        ///     Sets the font of the range selector button text.
-        /// </summary>
-        [JsonPropertyName(@"font")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Sets the background color of the range selector buttons.
-        /// </summary>
-        [JsonPropertyName(@"bgcolor")]
-        public object BgColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the background color of the active range selector button.
-        /// </summary>
-        [JsonPropertyName(@"activecolor")]
-        public object ActiveColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the color of the border enclosing the range selector.
-        /// </summary>
-        [JsonPropertyName(@"bordercolor")]
-        public object BorderColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the width (in px) of the border enclosing the range selector.
-        /// </summary>
-        [JsonPropertyName(@"borderwidth")]
-        public decimal? BorderWidth { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -107,15 +107,40 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    ActiveColor == other.ActiveColor ||
+                    ActiveColor != null &&
+                    ActiveColor.Equals(other.ActiveColor)
+                ) && 
+                (
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
+                    BgColor.Equals(other.BgColor)
+                ) && 
+                (
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
+                    BorderColor.Equals(other.BorderColor)
+                ) && 
+                (
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
+                    BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
                     Equals(Buttons, other.Buttons) ||
                     Buttons != null && other.Buttons != null &&
                     Buttons.SequenceEqual(other.Buttons)
                 ) &&
+                (
+                    Font == other.Font ||
+                    Font != null &&
+                    Font.Equals(other.Font)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
                 (
                     X == other.X ||
                     X != null &&
@@ -135,31 +160,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
                     YAnchor == other.YAnchor ||
                     YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
-                ) && 
-                (
-                    Font == other.Font ||
-                    Font != null &&
-                    Font.Equals(other.Font)
-                ) && 
-                (
-                    BgColor == other.BgColor ||
-                    BgColor != null &&
-                    BgColor.Equals(other.BgColor)
-                ) && 
-                (
-                    ActiveColor == other.ActiveColor ||
-                    ActiveColor != null &&
-                    ActiveColor.Equals(other.ActiveColor)
-                ) && 
-                (
-                    BorderColor == other.BorderColor ||
-                    BorderColor != null &&
-                    BorderColor.Equals(other.BorderColor)
-                ) && 
-                (
-                    BorderWidth == other.BorderWidth ||
-                    BorderWidth != null &&
-                    BorderWidth.Equals(other.BorderWidth)
                 );
         }
 
@@ -169,17 +169,17 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (ActiveColor != null) hashCode = hashCode * 59 + ActiveColor.GetHashCode();
+                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
+                if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
+                if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 if (Buttons != null) hashCode = hashCode * 59 + Buttons.GetHashCode();
+                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
-                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
-                if (ActiveColor != null) hashCode = hashCode * 59 + ActiveColor.GetHashCode();
-                if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
-                if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 return hashCode;
             }
         }

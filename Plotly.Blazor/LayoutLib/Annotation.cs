@@ -18,54 +18,6 @@ namespace Plotly.Blazor.LayoutLib
     public class Annotation : IEquatable<Annotation>
     {
         /// <summary>
-        ///     Determines whether or not this annotation is visible.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Sets the text associated with this annotation. Plotly uses a subset of HTML
-        ///     tags to do things like newline (&lt;br&gt;), bold (&lt;b&gt;&lt;/b&gt;),
-        ///     italics (&lt;i&gt;&lt;/i&gt;), hyperlinks (&lt;a href=<c>...</c>&gt;&lt;/a&gt;).
-        ///     Tags &lt;em&gt;, &lt;sup&gt;, &lt;sub&gt; &lt;span&gt; are also supported.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
-        ///     Sets the angle at which the <c>text</c> is drawn with respect to the horizontal.
-        /// </summary>
-        [JsonPropertyName(@"textangle")]
-        public decimal? TextAngle { get; set;} 
-
-        /// <summary>
-        ///     Sets the annotation text font.
-        /// </summary>
-        [JsonPropertyName(@"font")]
-        public Plotly.Blazor.LayoutLib.AnnotationLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Sets an explicit width for the text box. null (default) lets the text set
-        ///     the box width. Wider text will be clipped. There is no automatic wrapping;
-        ///     use &lt;br&gt; to start a new line.
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
-        ///     Sets an explicit height for the text box. null (default) lets the text set
-        ///     the box height. Taller text will be clipped.
-        /// </summary>
-        [JsonPropertyName(@"height")]
-        public decimal? Height { get; set;} 
-
-        /// <summary>
-        ///     Sets the opacity of the annotation (text + arrow).
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
         ///     Sets the horizontal alignment of the <c>text</c> within the box. Has an
         ///     effect only if <c>text</c> spans two or more lines (i.e. <c>text</c> contains
         ///     one or more &lt;br&gt; HTML tags) or if an explicit width is set to override
@@ -75,11 +27,101 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.AnnotationLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
-        ///     Sets the vertical alignment of the <c>text</c> within the box. Has an effect
-        ///     only if an explicit height is set to override the text height.
+        ///     Sets the color of the annotation arrow.
         /// </summary>
-        [JsonPropertyName(@"valign")]
-        public Plotly.Blazor.LayoutLib.AnnotationLib.VAlignEnum? VAlign { get; set;} 
+        [JsonPropertyName(@"arrowcolor")]
+        public object ArrowColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the end annotation arrow head style.
+        /// </summary>
+        [JsonPropertyName(@"arrowhead")]
+        public int? Arrowhead { get; set;} 
+
+        /// <summary>
+        ///     Sets the annotation arrow head position.
+        /// </summary>
+        [JsonPropertyName(@"arrowside")]
+        public Plotly.Blazor.LayoutLib.AnnotationLib.ArrowSideFlag? ArrowSide { get; set;} 
+
+        /// <summary>
+        ///     Sets the size of the end annotation arrow head, relative to <c>arrowwidth</c>.
+        ///     A value of 1 (default) gives a head about 3x as wide as the line.
+        /// </summary>
+        [JsonPropertyName(@"arrowsize")]
+        public decimal? ArrowSize { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of annotation arrow line.
+        /// </summary>
+        [JsonPropertyName(@"arrowwidth")]
+        public decimal? ArrowWidth { get; set;} 
+
+        /// <summary>
+        ///     Sets the x component of the arrow tail about the arrow head. If <c>axref</c>
+        ///     is <c>pixel</c>, a positive (negative) component corresponds to an arrow
+        ///     pointing from right to left (left to right). If <c>axref</c> is not <c>pixel</c>
+        ///     and is exactly the same as <c>xref</c>, this is an absolute value on that
+        ///     axis, like <c>x</c>, specified in the same coordinates as <c>xref</c>.
+        /// </summary>
+        [JsonPropertyName(@"ax")]
+        public object Ax { get; set;} 
+
+        /// <summary>
+        ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
+        ///     If set to a ax axis id (e.g. <c>ax</c> or <c>ax2</c>), the <c>ax</c> position
+        ///     refers to a ax coordinate. If set to <c>paper</c>, the <c>ax</c> position
+        ///     refers to the distance from the left of the plotting area in normalized
+        ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the left (right). If
+        ///     set to a ax axis ID followed by <c>domain</c> (separated by a space), the
+        ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
+        ///     of the domain length from the left of the domain of that axis: e.g., &#39;ax2
+        ///     domain&#39; refers to the domain of the second ax  axis and a ax position
+        ///     of 0.5 refers to the point between the left and the right of the domain
+        ///     of the second ax axis. In order for absolute positioning of the arrow to
+        ///     work, <c>axref</c> must be exactly the same as <c>xref</c>, otherwise <c>axref</c>
+        ///     will revert to <c>pixel</c> (explained next). For relative positioning,
+        ///     <c>axref</c> can be set to <c>pixel</c>, in which case the <c>ax</c> value
+        ///     is specified in pixels relative to <c>x</c>. Absolute positioning is useful
+        ///     for trendline annotations which should continue to indicate the correct
+        ///     trend when zoomed. Relative positioning is useful for specifying the text
+        ///     offset for an annotated point.
+        /// </summary>
+        [JsonPropertyName(@"axref")]
+        public string AXref { get; set;} 
+
+        /// <summary>
+        ///     Sets the y component of the arrow tail about the arrow head. If <c>ayref</c>
+        ///     is <c>pixel</c>, a positive (negative) component corresponds to an arrow
+        ///     pointing from bottom to top (top to bottom). If <c>ayref</c> is not <c>pixel</c>
+        ///     and is exactly the same as <c>yref</c>, this is an absolute value on that
+        ///     axis, like <c>y</c>, specified in the same coordinates as <c>yref</c>.
+        /// </summary>
+        [JsonPropertyName(@"ay")]
+        public object Ay { get; set;} 
+
+        /// <summary>
+        ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
+        ///     If set to a ay axis id (e.g. <c>ay</c> or <c>ay2</c>), the <c>ay</c> position
+        ///     refers to a ay coordinate. If set to <c>paper</c>, the <c>ay</c> position
+        ///     refers to the distance from the bottom of the plotting area in normalized
+        ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the bottom (top). If
+        ///     set to a ay axis ID followed by <c>domain</c> (separated by a space), the
+        ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
+        ///     of the domain length from the bottom of the domain of that axis: e.g., &#39;ay2
+        ///     domain&#39; refers to the domain of the second ay  axis and a ay position
+        ///     of 0.5 refers to the point between the bottom and the top of the domain
+        ///     of the second ay axis. In order for absolute positioning of the arrow to
+        ///     work, <c>ayref</c> must be exactly the same as <c>yref</c>, otherwise <c>ayref</c>
+        ///     will revert to <c>pixel</c> (explained next). For relative positioning,
+        ///     <c>ayref</c> can be set to <c>pixel</c>, in which case the <c>ay</c> value
+        ///     is specified in pixels relative to <c>y</c>. Absolute positioning is useful
+        ///     for trendline annotations which should continue to indicate the correct
+        ///     trend when zoomed. Relative positioning is useful for specifying the text
+        ///     offset for an annotated point.
+        /// </summary>
+        [JsonPropertyName(@"ayref")]
+        public string AyRef { get; set;} 
 
         /// <summary>
         ///     Sets the background color of the annotation.
@@ -106,56 +148,81 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? BorderWidth { get; set;} 
 
         /// <summary>
+        ///     Determines whether the annotation text box captures mouse move and click
+        ///     events, or allows those events to pass through to data points in the plot
+        ///     that may be behind the annotation. By default <c>captureevents</c> is <c>false</c>
+        ///     unless <c>hovertext</c> is provided. If you use the event <c>plotly_clickannotation</c>
+        ///     without <c>hovertext</c> you must explicitly enable <c>captureevents</c>.
+        /// </summary>
+        [JsonPropertyName(@"captureevents")]
+        public bool? CaptureEvents { get; set;} 
+
+        /// <summary>
+        ///     Makes this annotation respond to clicks on the plot. If you click a data
+        ///     point that exactly matches the <c>x</c> and <c>y</c> values of this annotation,
+        ///     and it is hidden (visible: false), it will appear. In <c>onoff</c> mode,
+        ///     you must click the same point again to make it disappear, so if you click
+        ///     multiple points, you can show multiple annotations. In <c>onout</c> mode,
+        ///     a click anywhere else in the plot (on another data point or not) will hide
+        ///     this annotation. If you need to show/hide this annotation in response to
+        ///     different <c>x</c> or <c>y</c> values, you can set <c>xclick</c> and/or
+        ///     <c>yclick</c>. This is useful for example to label the side of a bar. To
+        ///     label markers though, <c>standoff</c> is preferred over <c>xclick</c> and
+        ///     <c>yclick</c>.
+        /// </summary>
+        [JsonPropertyName(@"clicktoshow")]
+        public Plotly.Blazor.LayoutLib.AnnotationLib.ClickToShowEnum? ClickToShow { get; set;} 
+
+        /// <summary>
+        ///     Sets the annotation text font.
+        /// </summary>
+        [JsonPropertyName(@"font")]
+        public Plotly.Blazor.LayoutLib.AnnotationLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     Sets an explicit height for the text box. null (default) lets the text set
+        ///     the box height. Taller text will be clipped.
+        /// </summary>
+        [JsonPropertyName(@"height")]
+        public decimal? Height { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the HoverLabel.
+        /// </summary>
+        [JsonPropertyName(@"hoverlabel")]
+        public Plotly.Blazor.LayoutLib.AnnotationLib.HoverLabel HoverLabel { get; set;} 
+
+        /// <summary>
+        ///     Sets text to appear when hovering over this annotation. If omitted or blank,
+        ///     no hover label will appear.
+        /// </summary>
+        [JsonPropertyName(@"hovertext")]
+        public string HoverText { get; set;} 
+
+        /// <summary>
+        ///     When used in a template, named items are created in the output figure in
+        ///     addition to any items the figure already has in this array. You can modify
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of the annotation (text + arrow).
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not the annotation is drawn with an arrow. If <c>true</c>,
         ///     <c>text</c> is placed near the arrow&#39;s tail. If <c>false</c>, <c>text</c>
         ///     lines up with the <c>x</c> and <c>y</c> provided.
         /// </summary>
         [JsonPropertyName(@"showarrow")]
         public bool? ShowArrow { get; set;} 
-
-        /// <summary>
-        ///     Sets the color of the annotation arrow.
-        /// </summary>
-        [JsonPropertyName(@"arrowcolor")]
-        public object ArrowColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the end annotation arrow head style.
-        /// </summary>
-        [JsonPropertyName(@"arrowhead")]
-        public int? Arrowhead { get; set;} 
-
-        /// <summary>
-        ///     Sets the start annotation arrow head style.
-        /// </summary>
-        [JsonPropertyName(@"startarrowhead")]
-        public int? StartArrowhead { get; set;} 
-
-        /// <summary>
-        ///     Sets the annotation arrow head position.
-        /// </summary>
-        [JsonPropertyName(@"arrowside")]
-        public Plotly.Blazor.LayoutLib.AnnotationLib.ArrowSideFlag? ArrowSide { get; set;} 
-
-        /// <summary>
-        ///     Sets the size of the end annotation arrow head, relative to <c>arrowwidth</c>.
-        ///     A value of 1 (default) gives a head about 3x as wide as the line.
-        /// </summary>
-        [JsonPropertyName(@"arrowsize")]
-        public decimal? ArrowSize { get; set;} 
-
-        /// <summary>
-        ///     Sets the size of the start annotation arrow head, relative to <c>arrowwidth</c>.
-        ///     A value of 1 (default) gives a head about 3x as wide as the line.
-        /// </summary>
-        [JsonPropertyName(@"startarrowsize")]
-        public decimal? StartArrowSize { get; set;} 
-
-        /// <summary>
-        ///     Sets the width (in px) of annotation arrow line.
-        /// </summary>
-        [JsonPropertyName(@"arrowwidth")]
-        public decimal? ArrowWidth { get; set;} 
 
         /// <summary>
         ///     Sets a distance, in pixels, to move the end arrowhead away from the position
@@ -168,6 +235,19 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? Standoff { get; set;} 
 
         /// <summary>
+        ///     Sets the start annotation arrow head style.
+        /// </summary>
+        [JsonPropertyName(@"startarrowhead")]
+        public int? StartArrowhead { get; set;} 
+
+        /// <summary>
+        ///     Sets the size of the start annotation arrow head, relative to <c>arrowwidth</c>.
+        ///     A value of 1 (default) gives a head about 3x as wide as the line.
+        /// </summary>
+        [JsonPropertyName(@"startarrowsize")]
+        public decimal? StartArrowSize { get; set;} 
+
+        /// <summary>
         ///     Sets a distance, in pixels, to move the start arrowhead away from the position
         ///     it is pointing at, for example to point at the edge of a marker independent
         ///     of zoom. Note that this shortens the arrow from the <c>ax</c> / <c>ay</c>
@@ -178,85 +258,52 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? StartStandoff { get; set;} 
 
         /// <summary>
-        ///     Sets the x component of the arrow tail about the arrow head. If <c>axref</c>
-        ///     is <c>pixel</c>, a positive (negative) component corresponds to an arrow
-        ///     pointing from right to left (left to right). If <c>axref</c> is not <c>pixel</c>
-        ///     and is exactly the same as <c>xref</c>, this is an absolute value on that
-        ///     axis, like <c>x</c>, specified in the same coordinates as <c>xref</c>.
+        ///     Used to refer to a named item in this array in the template. Named items
+        ///     from the template will be created even without a matching item in the input
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
-        [JsonPropertyName(@"ax")]
-        public object Ax { get; set;} 
+        [JsonPropertyName(@"templateitemname")]
+        public string TemplateItemName { get; set;} 
 
         /// <summary>
-        ///     Sets the y component of the arrow tail about the arrow head. If <c>ayref</c>
-        ///     is <c>pixel</c>, a positive (negative) component corresponds to an arrow
-        ///     pointing from bottom to top (top to bottom). If <c>ayref</c> is not <c>pixel</c>
-        ///     and is exactly the same as <c>yref</c>, this is an absolute value on that
-        ///     axis, like <c>y</c>, specified in the same coordinates as <c>yref</c>.
+        ///     Sets the text associated with this annotation. Plotly uses a subset of HTML
+        ///     tags to do things like newline (&lt;br&gt;), bold (&lt;b&gt;&lt;/b&gt;),
+        ///     italics (&lt;i&gt;&lt;/i&gt;), hyperlinks (&lt;a href=<c>...</c>&gt;&lt;/a&gt;).
+        ///     Tags &lt;em&gt;, &lt;sup&gt;, &lt;sub&gt; &lt;span&gt; are also supported.
         /// </summary>
-        [JsonPropertyName(@"ay")]
-        public object Ay { get; set;} 
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
 
         /// <summary>
-        ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
-        ///     If set to a ax axis id (e.g. <c>ax</c> or <c>ax2</c>), the <c>ax</c> position
-        ///     refers to a ax coordinate. If set to <c>paper</c>, the <c>ax</c> position
-        ///     refers to the distance from the left of the plotting area in normalized
-        ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the left (right). If
-        ///     set to a ax axis ID followed by <c>domain</c> (separated by a space), the
-        ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
-        ///     of the domain length from the left of the domain of that axis: e.g., &#39;ax2
-        ///     domain&#39; refers to the domain of the second ax  axis and a ax position
-        ///     of 0.5 refers to the point between the left and the right of the domain
-        ///     of the second ax axis. In order for absolute positioning of the arrow to
-        ///     work, <c>axref</c> must be exactly the same as <c>xref</c>, otherwise <c>axref</c>
-        ///     will revert to <c>pixel</c> (explained next). For relative positioning,
-        ///     <c>axref</c> can be set to <c>pixel</c>, in which case the <c>ax</c> value
-        ///     is specified in pixels relative to <c>x</c>. Absolute positioning is useful
-        ///     for trendline annotations which should continue to indicate the correct
-        ///     trend when zoomed. Relative positioning is useful for specifying the text
-        ///     offset for an annotated point.
+        ///     Sets the angle at which the <c>text</c> is drawn with respect to the horizontal.
         /// </summary>
-        [JsonPropertyName(@"axref")]
-        public string AXref { get; set;} 
+        [JsonPropertyName(@"textangle")]
+        public decimal? TextAngle { get; set;} 
 
         /// <summary>
-        ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
-        ///     If set to a ay axis id (e.g. <c>ay</c> or <c>ay2</c>), the <c>ay</c> position
-        ///     refers to a ay coordinate. If set to <c>paper</c>, the <c>ay</c> position
-        ///     refers to the distance from the bottom of the plotting area in normalized
-        ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the bottom (top). If
-        ///     set to a ay axis ID followed by <c>domain</c> (separated by a space), the
-        ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
-        ///     of the domain length from the bottom of the domain of that axis: e.g., &#39;ay2
-        ///     domain&#39; refers to the domain of the second ay  axis and a ay position
-        ///     of 0.5 refers to the point between the bottom and the top of the domain
-        ///     of the second ay axis. In order for absolute positioning of the arrow to
-        ///     work, <c>ayref</c> must be exactly the same as <c>yref</c>, otherwise <c>ayref</c>
-        ///     will revert to <c>pixel</c> (explained next). For relative positioning,
-        ///     <c>ayref</c> can be set to <c>pixel</c>, in which case the <c>ay</c> value
-        ///     is specified in pixels relative to <c>y</c>. Absolute positioning is useful
-        ///     for trendline annotations which should continue to indicate the correct
-        ///     trend when zoomed. Relative positioning is useful for specifying the text
-        ///     offset for an annotated point.
+        ///     Sets the vertical alignment of the <c>text</c> within the box. Has an effect
+        ///     only if an explicit height is set to override the text height.
         /// </summary>
-        [JsonPropertyName(@"ayref")]
-        public string AyRef { get; set;} 
+        [JsonPropertyName(@"valign")]
+        public Plotly.Blazor.LayoutLib.AnnotationLib.VAlignEnum? VAlign { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation&#39;s x coordinate axis. If set to a x axis id (e.g.
-        ///     <c>x</c> or <c>x2</c>), the <c>x</c> position refers to a x coordinate.
-        ///     If set to <c>paper</c>, the <c>x</c> position refers to the distance from
-        ///     the left of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
-        ///     corresponds to the left (right). If set to a x axis ID followed by <c>domain</c>
-        ///     (separated by a space), the position behaves like for <c>paper</c>, but
-        ///     refers to the distance in fractions of the domain length from the left of
-        ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
-        ///     of the second x  axis and a x position of 0.5 refers to the point between
-        ///     the left and the right of the domain of the second x axis.
+        ///     Determines whether or not this annotation is visible.
         /// </summary>
-        [JsonPropertyName(@"xref")]
-        public string XRef { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
+
+        /// <summary>
+        ///     Sets an explicit width for the text box. null (default) lets the text set
+        ///     the box width. Wider text will be clipped. There is no automatic wrapping;
+        ///     use &lt;br&gt; to start a new line.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <summary>
         ///     Sets the annotation&#39;s x position. If the axis <c>type</c> is <c>log</c>,
@@ -284,26 +331,33 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.AnnotationLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
+        ///     Toggle this annotation when clicking a data point whose <c>x</c> value is
+        ///     <c>xclick</c> rather than the annotation&#39;s <c>x</c> value.
+        /// </summary>
+        [JsonPropertyName(@"xclick")]
+        public object XClick { get; set;} 
+
+        /// <summary>
+        ///     Sets the annotation&#39;s x coordinate axis. If set to a x axis id (e.g.
+        ///     <c>x</c> or <c>x2</c>), the <c>x</c> position refers to a x coordinate.
+        ///     If set to <c>paper</c>, the <c>x</c> position refers to the distance from
+        ///     the left of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the left (right). If set to a x axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the left of
+        ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
+        ///     of the second x  axis and a x position of 0.5 refers to the point between
+        ///     the left and the right of the domain of the second x axis.
+        /// </summary>
+        [JsonPropertyName(@"xref")]
+        public string XRef { get; set;} 
+
+        /// <summary>
         ///     Shifts the position of the whole annotation and arrow to the right (positive)
         ///     or left (negative) by this many pixels.
         /// </summary>
         [JsonPropertyName(@"xshift")]
         public decimal? XShift { get; set;} 
-
-        /// <summary>
-        ///     Sets the annotation&#39;s y coordinate axis. If set to a y axis id (e.g.
-        ///     <c>y</c> or <c>y2</c>), the <c>y</c> position refers to a y coordinate.
-        ///     If set to <c>paper</c>, the <c>y</c> position refers to the distance from
-        ///     the bottom of the plotting area in normalized coordinates where <c>0</c>
-        ///     (<c>1</c>) corresponds to the bottom (top). If set to a y axis ID followed
-        ///     by <c>domain</c> (separated by a space), the position behaves like for <c>paper</c>,
-        ///     but refers to the distance in fractions of the domain length from the bottom
-        ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
-        ///     of the second y  axis and a y position of 0.5 refers to the point between
-        ///     the bottom and the top of the domain of the second y axis.
-        /// </summary>
-        [JsonPropertyName(@"yref")]
-        public string YRef { get; set;} 
 
         /// <summary>
         ///     Sets the annotation&#39;s y position. If the axis <c>type</c> is <c>log</c>,
@@ -331,36 +385,6 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.AnnotationLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
-        ///     Shifts the position of the whole annotation and arrow up (positive) or down
-        ///     (negative) by this many pixels.
-        /// </summary>
-        [JsonPropertyName(@"yshift")]
-        public decimal? YShift { get; set;} 
-
-        /// <summary>
-        ///     Makes this annotation respond to clicks on the plot. If you click a data
-        ///     point that exactly matches the <c>x</c> and <c>y</c> values of this annotation,
-        ///     and it is hidden (visible: false), it will appear. In <c>onoff</c> mode,
-        ///     you must click the same point again to make it disappear, so if you click
-        ///     multiple points, you can show multiple annotations. In <c>onout</c> mode,
-        ///     a click anywhere else in the plot (on another data point or not) will hide
-        ///     this annotation. If you need to show/hide this annotation in response to
-        ///     different <c>x</c> or <c>y</c> values, you can set <c>xclick</c> and/or
-        ///     <c>yclick</c>. This is useful for example to label the side of a bar. To
-        ///     label markers though, <c>standoff</c> is preferred over <c>xclick</c> and
-        ///     <c>yclick</c>.
-        /// </summary>
-        [JsonPropertyName(@"clicktoshow")]
-        public Plotly.Blazor.LayoutLib.AnnotationLib.ClickToShowEnum? ClickToShow { get; set;} 
-
-        /// <summary>
-        ///     Toggle this annotation when clicking a data point whose <c>x</c> value is
-        ///     <c>xclick</c> rather than the annotation&#39;s <c>x</c> value.
-        /// </summary>
-        [JsonPropertyName(@"xclick")]
-        public object XClick { get; set;} 
-
-        /// <summary>
         ///     Toggle this annotation when clicking a data point whose <c>y</c> value is
         ///     <c>yclick</c> rather than the annotation&#39;s <c>y</c> value.
         /// </summary>
@@ -368,50 +392,26 @@ namespace Plotly.Blazor.LayoutLib
         public object YClick { get; set;} 
 
         /// <summary>
-        ///     Sets text to appear when hovering over this annotation. If omitted or blank,
-        ///     no hover label will appear.
+        ///     Sets the annotation&#39;s y coordinate axis. If set to a y axis id (e.g.
+        ///     <c>y</c> or <c>y2</c>), the <c>y</c> position refers to a y coordinate.
+        ///     If set to <c>paper</c>, the <c>y</c> position refers to the distance from
+        ///     the bottom of the plotting area in normalized coordinates where <c>0</c>
+        ///     (<c>1</c>) corresponds to the bottom (top). If set to a y axis ID followed
+        ///     by <c>domain</c> (separated by a space), the position behaves like for <c>paper</c>,
+        ///     but refers to the distance in fractions of the domain length from the bottom
+        ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
+        ///     of the second y  axis and a y position of 0.5 refers to the point between
+        ///     the bottom and the top of the domain of the second y axis.
         /// </summary>
-        [JsonPropertyName(@"hovertext")]
-        public string HoverText { get; set;} 
+        [JsonPropertyName(@"yref")]
+        public string YRef { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the HoverLabel.
+        ///     Shifts the position of the whole annotation and arrow up (positive) or down
+        ///     (negative) by this many pixels.
         /// </summary>
-        [JsonPropertyName(@"hoverlabel")]
-        public Plotly.Blazor.LayoutLib.AnnotationLib.HoverLabel HoverLabel { get; set;} 
-
-        /// <summary>
-        ///     Determines whether the annotation text box captures mouse move and click
-        ///     events, or allows those events to pass through to data points in the plot
-        ///     that may be behind the annotation. By default <c>captureevents</c> is <c>false</c>
-        ///     unless <c>hovertext</c> is provided. If you use the event <c>plotly_clickannotation</c>
-        ///     without <c>hovertext</c> you must explicitly enable <c>captureevents</c>.
-        /// </summary>
-        [JsonPropertyName(@"captureevents")]
-        public bool? CaptureEvents { get; set;} 
-
-        /// <summary>
-        ///     When used in a template, named items are created in the output figure in
-        ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with <c>templateitemname</c>
-        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
-        ///     of a template.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Used to refer to a named item in this array in the template. Named items
-        ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
-        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
-        ///     or no matching item, this item will be hidden unless you explicitly show
-        ///     it with &#39;visible: true&#39;.
-        /// </summary>
-        [JsonPropertyName(@"templateitemname")]
-        public string TemplateItemName { get; set;} 
+        [JsonPropertyName(@"yshift")]
+        public decimal? YShift { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -429,49 +429,54 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
-                    TextAngle == other.TextAngle ||
-                    TextAngle != null &&
-                    TextAngle.Equals(other.TextAngle)
-                ) && 
-                (
-                    Font == other.Font ||
-                    Font != null &&
-                    Font.Equals(other.Font)
-                ) && 
-                (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
-                    Height == other.Height ||
-                    Height != null &&
-                    Height.Equals(other.Height)
-                ) && 
-                (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
                     Align == other.Align ||
                     Align != null &&
                     Align.Equals(other.Align)
                 ) && 
                 (
-                    VAlign == other.VAlign ||
-                    VAlign != null &&
-                    VAlign.Equals(other.VAlign)
+                    ArrowColor == other.ArrowColor ||
+                    ArrowColor != null &&
+                    ArrowColor.Equals(other.ArrowColor)
+                ) && 
+                (
+                    Arrowhead == other.Arrowhead ||
+                    Arrowhead != null &&
+                    Arrowhead.Equals(other.Arrowhead)
+                ) && 
+                (
+                    ArrowSide == other.ArrowSide ||
+                    ArrowSide != null &&
+                    ArrowSide.Equals(other.ArrowSide)
+                ) && 
+                (
+                    ArrowSize == other.ArrowSize ||
+                    ArrowSize != null &&
+                    ArrowSize.Equals(other.ArrowSize)
+                ) && 
+                (
+                    ArrowWidth == other.ArrowWidth ||
+                    ArrowWidth != null &&
+                    ArrowWidth.Equals(other.ArrowWidth)
+                ) && 
+                (
+                    Ax == other.Ax ||
+                    Ax != null &&
+                    Ax.Equals(other.Ax)
+                ) && 
+                (
+                    AXref == other.AXref ||
+                    AXref != null &&
+                    AXref.Equals(other.AXref)
+                ) && 
+                (
+                    Ay == other.Ay ||
+                    Ay != null &&
+                    Ay.Equals(other.Ay)
+                ) && 
+                (
+                    AyRef == other.AyRef ||
+                    AyRef != null &&
+                    AyRef.Equals(other.AyRef)
                 ) && 
                 (
                     BgColor == other.BgColor ||
@@ -494,44 +499,49 @@ namespace Plotly.Blazor.LayoutLib
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
+                    CaptureEvents == other.CaptureEvents ||
+                    CaptureEvents != null &&
+                    CaptureEvents.Equals(other.CaptureEvents)
+                ) && 
+                (
+                    ClickToShow == other.ClickToShow ||
+                    ClickToShow != null &&
+                    ClickToShow.Equals(other.ClickToShow)
+                ) && 
+                (
+                    Font == other.Font ||
+                    Font != null &&
+                    Font.Equals(other.Font)
+                ) && 
+                (
+                    Height == other.Height ||
+                    Height != null &&
+                    Height.Equals(other.Height)
+                ) && 
+                (
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
+                    HoverLabel.Equals(other.HoverLabel)
+                ) && 
+                (
+                    HoverText == other.HoverText ||
+                    HoverText != null &&
+                    HoverText.Equals(other.HoverText)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
+                ) && 
+                (
                     ShowArrow == other.ShowArrow ||
                     ShowArrow != null &&
                     ShowArrow.Equals(other.ShowArrow)
-                ) && 
-                (
-                    ArrowColor == other.ArrowColor ||
-                    ArrowColor != null &&
-                    ArrowColor.Equals(other.ArrowColor)
-                ) && 
-                (
-                    Arrowhead == other.Arrowhead ||
-                    Arrowhead != null &&
-                    Arrowhead.Equals(other.Arrowhead)
-                ) && 
-                (
-                    StartArrowhead == other.StartArrowhead ||
-                    StartArrowhead != null &&
-                    StartArrowhead.Equals(other.StartArrowhead)
-                ) && 
-                (
-                    ArrowSide == other.ArrowSide ||
-                    ArrowSide != null &&
-                    ArrowSide.Equals(other.ArrowSide)
-                ) && 
-                (
-                    ArrowSize == other.ArrowSize ||
-                    ArrowSize != null &&
-                    ArrowSize.Equals(other.ArrowSize)
-                ) && 
-                (
-                    StartArrowSize == other.StartArrowSize ||
-                    StartArrowSize != null &&
-                    StartArrowSize.Equals(other.StartArrowSize)
-                ) && 
-                (
-                    ArrowWidth == other.ArrowWidth ||
-                    ArrowWidth != null &&
-                    ArrowWidth.Equals(other.ArrowWidth)
                 ) && 
                 (
                     Standoff == other.Standoff ||
@@ -539,34 +549,49 @@ namespace Plotly.Blazor.LayoutLib
                     Standoff.Equals(other.Standoff)
                 ) && 
                 (
+                    StartArrowhead == other.StartArrowhead ||
+                    StartArrowhead != null &&
+                    StartArrowhead.Equals(other.StartArrowhead)
+                ) && 
+                (
+                    StartArrowSize == other.StartArrowSize ||
+                    StartArrowSize != null &&
+                    StartArrowSize.Equals(other.StartArrowSize)
+                ) && 
+                (
                     StartStandoff == other.StartStandoff ||
                     StartStandoff != null &&
                     StartStandoff.Equals(other.StartStandoff)
                 ) && 
                 (
-                    Ax == other.Ax ||
-                    Ax != null &&
-                    Ax.Equals(other.Ax)
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
+                    TemplateItemName.Equals(other.TemplateItemName)
                 ) && 
                 (
-                    Ay == other.Ay ||
-                    Ay != null &&
-                    Ay.Equals(other.Ay)
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 ) && 
                 (
-                    AXref == other.AXref ||
-                    AXref != null &&
-                    AXref.Equals(other.AXref)
+                    TextAngle == other.TextAngle ||
+                    TextAngle != null &&
+                    TextAngle.Equals(other.TextAngle)
                 ) && 
                 (
-                    AyRef == other.AyRef ||
-                    AyRef != null &&
-                    AyRef.Equals(other.AyRef)
+                    VAlign == other.VAlign ||
+                    VAlign != null &&
+                    VAlign.Equals(other.VAlign)
                 ) && 
                 (
-                    XRef == other.XRef ||
-                    XRef != null &&
-                    XRef.Equals(other.XRef)
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 ) && 
                 (
                     X == other.X ||
@@ -579,14 +604,19 @@ namespace Plotly.Blazor.LayoutLib
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
+                    XClick == other.XClick ||
+                    XClick != null &&
+                    XClick.Equals(other.XClick)
+                ) && 
+                (
+                    XRef == other.XRef ||
+                    XRef != null &&
+                    XRef.Equals(other.XRef)
+                ) && 
+                (
                     XShift == other.XShift ||
                     XShift != null &&
                     XShift.Equals(other.XShift)
-                ) && 
-                (
-                    YRef == other.YRef ||
-                    YRef != null &&
-                    YRef.Equals(other.YRef)
                 ) && 
                 (
                     Y == other.Y ||
@@ -599,49 +629,19 @@ namespace Plotly.Blazor.LayoutLib
                     YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
-                    YShift == other.YShift ||
-                    YShift != null &&
-                    YShift.Equals(other.YShift)
-                ) && 
-                (
-                    ClickToShow == other.ClickToShow ||
-                    ClickToShow != null &&
-                    ClickToShow.Equals(other.ClickToShow)
-                ) && 
-                (
-                    XClick == other.XClick ||
-                    XClick != null &&
-                    XClick.Equals(other.XClick)
-                ) && 
-                (
                     YClick == other.YClick ||
                     YClick != null &&
                     YClick.Equals(other.YClick)
                 ) && 
                 (
-                    HoverText == other.HoverText ||
-                    HoverText != null &&
-                    HoverText.Equals(other.HoverText)
+                    YRef == other.YRef ||
+                    YRef != null &&
+                    YRef.Equals(other.YRef)
                 ) && 
                 (
-                    HoverLabel == other.HoverLabel ||
-                    HoverLabel != null &&
-                    HoverLabel.Equals(other.HoverLabel)
-                ) && 
-                (
-                    CaptureEvents == other.CaptureEvents ||
-                    CaptureEvents != null &&
-                    CaptureEvents.Equals(other.CaptureEvents)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    TemplateItemName == other.TemplateItemName ||
-                    TemplateItemName != null &&
-                    TemplateItemName.Equals(other.TemplateItemName)
+                    YShift == other.YShift ||
+                    YShift != null &&
+                    YShift.Equals(other.YShift)
                 );
         }
 
@@ -651,49 +651,49 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
-                if (TextAngle != null) hashCode = hashCode * 59 + TextAngle.GetHashCode();
-                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (Height != null) hashCode = hashCode * 59 + Height.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Align != null) hashCode = hashCode * 59 + Align.GetHashCode();
-                if (VAlign != null) hashCode = hashCode * 59 + VAlign.GetHashCode();
+                if (ArrowColor != null) hashCode = hashCode * 59 + ArrowColor.GetHashCode();
+                if (Arrowhead != null) hashCode = hashCode * 59 + Arrowhead.GetHashCode();
+                if (ArrowSide != null) hashCode = hashCode * 59 + ArrowSide.GetHashCode();
+                if (ArrowSize != null) hashCode = hashCode * 59 + ArrowSize.GetHashCode();
+                if (ArrowWidth != null) hashCode = hashCode * 59 + ArrowWidth.GetHashCode();
+                if (Ax != null) hashCode = hashCode * 59 + Ax.GetHashCode();
+                if (AXref != null) hashCode = hashCode * 59 + AXref.GetHashCode();
+                if (Ay != null) hashCode = hashCode * 59 + Ay.GetHashCode();
+                if (AyRef != null) hashCode = hashCode * 59 + AyRef.GetHashCode();
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderPad != null) hashCode = hashCode * 59 + BorderPad.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
+                if (CaptureEvents != null) hashCode = hashCode * 59 + CaptureEvents.GetHashCode();
+                if (ClickToShow != null) hashCode = hashCode * 59 + ClickToShow.GetHashCode();
+                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Height != null) hashCode = hashCode * 59 + Height.GetHashCode();
+                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
+                if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (ShowArrow != null) hashCode = hashCode * 59 + ShowArrow.GetHashCode();
-                if (ArrowColor != null) hashCode = hashCode * 59 + ArrowColor.GetHashCode();
-                if (Arrowhead != null) hashCode = hashCode * 59 + Arrowhead.GetHashCode();
-                if (StartArrowhead != null) hashCode = hashCode * 59 + StartArrowhead.GetHashCode();
-                if (ArrowSide != null) hashCode = hashCode * 59 + ArrowSide.GetHashCode();
-                if (ArrowSize != null) hashCode = hashCode * 59 + ArrowSize.GetHashCode();
-                if (StartArrowSize != null) hashCode = hashCode * 59 + StartArrowSize.GetHashCode();
-                if (ArrowWidth != null) hashCode = hashCode * 59 + ArrowWidth.GetHashCode();
                 if (Standoff != null) hashCode = hashCode * 59 + Standoff.GetHashCode();
+                if (StartArrowhead != null) hashCode = hashCode * 59 + StartArrowhead.GetHashCode();
+                if (StartArrowSize != null) hashCode = hashCode * 59 + StartArrowSize.GetHashCode();
                 if (StartStandoff != null) hashCode = hashCode * 59 + StartStandoff.GetHashCode();
-                if (Ax != null) hashCode = hashCode * 59 + Ax.GetHashCode();
-                if (Ay != null) hashCode = hashCode * 59 + Ay.GetHashCode();
-                if (AXref != null) hashCode = hashCode * 59 + AXref.GetHashCode();
-                if (AyRef != null) hashCode = hashCode * 59 + AyRef.GetHashCode();
-                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
+                if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
+                if (TextAngle != null) hashCode = hashCode * 59 + TextAngle.GetHashCode();
+                if (VAlign != null) hashCode = hashCode * 59 + VAlign.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
+                if (XClick != null) hashCode = hashCode * 59 + XClick.GetHashCode();
+                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
                 if (XShift != null) hashCode = hashCode * 59 + XShift.GetHashCode();
-                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
-                if (YShift != null) hashCode = hashCode * 59 + YShift.GetHashCode();
-                if (ClickToShow != null) hashCode = hashCode * 59 + ClickToShow.GetHashCode();
-                if (XClick != null) hashCode = hashCode * 59 + XClick.GetHashCode();
                 if (YClick != null) hashCode = hashCode * 59 + YClick.GetHashCode();
-                if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
-                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
-                if (CaptureEvents != null) hashCode = hashCode * 59 + CaptureEvents.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
+                if (YShift != null) hashCode = hashCode * 59 + YShift.GetHashCode();
                 return hashCode;
             }
         }

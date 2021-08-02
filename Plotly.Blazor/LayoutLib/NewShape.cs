@@ -18,10 +18,14 @@ namespace Plotly.Blazor.LayoutLib
     public class NewShape : IEquatable<NewShape>
     {
         /// <summary>
-        ///     Gets or sets the Line.
+        ///     When <c>dragmode</c> is set to <c>drawrect</c>, <c>drawline</c> or <c>drawcircle</c>
+        ///     this limits the drag to be horizontal, vertical or diagonal. Using <c>diagonal</c>
+        ///     there is no limit e.g. in drawing lines in any direction. <c>ortho</c> limits
+        ///     the draw to be either horizontal or vertical. <c>horizontal</c> allows horizontal
+        ///     extend. <c>vertical</c> allows vertical extend.
         /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.LayoutLib.NewShapeLib.Line Line { get; set;} 
+        [JsonPropertyName(@"drawdirection")]
+        public Plotly.Blazor.LayoutLib.NewShapeLib.DrawDirectionEnum? DrawDirection { get; set;} 
 
         /// <summary>
         ///     Sets the color filling new shapes&#39; interior. Please note that if using
@@ -38,26 +42,22 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.NewShapeLib.FillRuleEnum? FillRule { get; set;} 
 
         /// <summary>
-        ///     Sets the opacity of new shapes.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
         ///     Specifies whether new shapes are drawn below or above traces.
         /// </summary>
         [JsonPropertyName(@"layer")]
         public Plotly.Blazor.LayoutLib.NewShapeLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
-        ///     When <c>dragmode</c> is set to <c>drawrect</c>, <c>drawline</c> or <c>drawcircle</c>
-        ///     this limits the drag to be horizontal, vertical or diagonal. Using <c>diagonal</c>
-        ///     there is no limit e.g. in drawing lines in any direction. <c>ortho</c> limits
-        ///     the draw to be either horizontal or vertical. <c>horizontal</c> allows horizontal
-        ///     extend. <c>vertical</c> allows vertical extend.
+        ///     Gets or sets the Line.
         /// </summary>
-        [JsonPropertyName(@"drawdirection")]
-        public Plotly.Blazor.LayoutLib.NewShapeLib.DrawDirectionEnum? DrawDirection { get; set;} 
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.LayoutLib.NewShapeLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of new shapes.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -75,9 +75,9 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
+                    DrawDirection == other.DrawDirection ||
+                    DrawDirection != null &&
+                    DrawDirection.Equals(other.DrawDirection)
                 ) && 
                 (
                     FillColor == other.FillColor ||
@@ -90,19 +90,19 @@ namespace Plotly.Blazor.LayoutLib
                     FillRule.Equals(other.FillRule)
                 ) && 
                 (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
                     Layer == other.Layer ||
                     Layer != null &&
                     Layer.Equals(other.Layer)
                 ) && 
                 (
-                    DrawDirection == other.DrawDirection ||
-                    DrawDirection != null &&
-                    DrawDirection.Equals(other.DrawDirection)
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
                 );
         }
 
@@ -112,12 +112,12 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (DrawDirection != null) hashCode = hashCode * 59 + DrawDirection.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
                 if (FillRule != null) hashCode = hashCode * 59 + FillRule.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
-                if (DrawDirection != null) hashCode = hashCode * 59 + DrawDirection.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 return hashCode;
             }
         }

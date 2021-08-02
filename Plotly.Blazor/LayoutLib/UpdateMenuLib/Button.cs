@@ -20,22 +20,6 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
     public class Button : IEquatable<Button>
     {
         /// <summary>
-        ///     Determines whether or not this button is visible.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Sets the Plotly method to be called on click. If the <c>skip</c> method
-        ///     is used, the API updatemenu will function as normal but will perform no
-        ///     API calls and will not bind automatically to state updates. This may be
-        ///     used to create a component interface and attach to updatemenu events manually
-        ///     via JavaScript.
-        /// </summary>
-        [JsonPropertyName(@"method")]
-        public Plotly.Blazor.LayoutLib.UpdateMenuLib.ButtonLib.MethodEnum? Method { get; set;} 
-
-        /// <summary>
         ///     Sets the arguments values to be passed to the Plotly method set in <c>method</c>
         ///     on click.
         /// </summary>
@@ -51,12 +35,6 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
         public IList<object> Args2 { get; set;} 
 
         /// <summary>
-        ///     Sets the text label to appear on the button.
-        /// </summary>
-        [JsonPropertyName(@"label")]
-        public string Label { get; set;} 
-
-        /// <summary>
         ///     When true, the API method is executed. When false, all other behaviors are
         ///     the same and command execution is skipped. This may be useful when hooking
         ///     into, for example, the <c>plotly_buttonclicked</c> method and executing
@@ -66,6 +44,22 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
         /// </summary>
         [JsonPropertyName(@"execute")]
         public bool? Execute { get; set;} 
+
+        /// <summary>
+        ///     Sets the text label to appear on the button.
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public string Label { get; set;} 
+
+        /// <summary>
+        ///     Sets the Plotly method to be called on click. If the <c>skip</c> method
+        ///     is used, the API updatemenu will function as normal but will perform no
+        ///     API calls and will not bind automatically to state updates. This may be
+        ///     used to create a component interface and attach to updatemenu events manually
+        ///     via JavaScript.
+        /// </summary>
+        [JsonPropertyName(@"method")]
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.ButtonLib.MethodEnum? Method { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
@@ -90,6 +84,12 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 
 
+        /// <summary>
+        ///     Determines whether or not this button is visible.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -106,16 +106,6 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Method == other.Method ||
-                    Method != null &&
-                    Method.Equals(other.Method)
-                ) && 
-                (
                     Equals(Args, other.Args) ||
                     Args != null && other.Args != null &&
                     Args.SequenceEqual(other.Args)
@@ -126,14 +116,19 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
                     Args2.SequenceEqual(other.Args2)
                 ) &&
                 (
+                    Execute == other.Execute ||
+                    Execute != null &&
+                    Execute.Equals(other.Execute)
+                ) && 
+                (
                     Label == other.Label ||
                     Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    Execute == other.Execute ||
-                    Execute != null &&
-                    Execute.Equals(other.Execute)
+                    Method == other.Method ||
+                    Method != null &&
+                    Method.Equals(other.Method)
                 ) && 
                 (
                     Name == other.Name ||
@@ -144,6 +139,11 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -153,14 +153,14 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Method != null) hashCode = hashCode * 59 + Method.GetHashCode();
                 if (Args != null) hashCode = hashCode * 59 + Args.GetHashCode();
                 if (Args2 != null) hashCode = hashCode * 59 + Args2.GetHashCode();
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (Execute != null) hashCode = hashCode * 59 + Execute.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
+                if (Method != null) hashCode = hashCode * 59 + Method.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

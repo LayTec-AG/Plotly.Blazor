@@ -18,19 +18,19 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     public class Center : IEquatable<Center>
     {
         /// <summary>
+        ///     Sets the latitude of the map&#39;s center. For all projection types, the
+        ///     map&#39;s latitude center lies at the middle of the latitude range by default.
+        /// </summary>
+        [JsonPropertyName(@"lat")]
+        public decimal? Lat { get; set;} 
+
+        /// <summary>
         ///     Sets the longitude of the map&#39;s center. By default, the map&#39;s longitude
         ///     center lies at the middle of the longitude range for scoped projection and
         ///     above <c>projection.rotation.lon</c> otherwise.
         /// </summary>
         [JsonPropertyName(@"lon")]
         public decimal? Lon { get; set;} 
-
-        /// <summary>
-        ///     Sets the latitude of the map&#39;s center. For all projection types, the
-        ///     map&#39;s latitude center lies at the middle of the latitude range by default.
-        /// </summary>
-        [JsonPropertyName(@"lat")]
-        public decimal? Lat { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -48,14 +48,14 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
 
             return 
                 (
-                    Lon == other.Lon ||
-                    Lon != null &&
-                    Lon.Equals(other.Lon)
-                ) && 
-                (
                     Lat == other.Lat ||
                     Lat != null &&
                     Lat.Equals(other.Lat)
+                ) && 
+                (
+                    Lon == other.Lon ||
+                    Lon != null &&
+                    Lon.Equals(other.Lon)
                 );
         }
 
@@ -65,8 +65,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 if (Lat != null) hashCode = hashCode * 59 + Lat.GetHashCode();
+                if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,16 +18,16 @@ namespace Plotly.Blazor.Traces.IndicatorLib.DeltaLib
     public class Increasing : IEquatable<Increasing>
     {
         /// <summary>
-        ///     Sets the symbol to display for increasing value
-        /// </summary>
-        [JsonPropertyName(@"symbol")]
-        public string Symbol { get; set;} 
-
-        /// <summary>
         ///     Sets the color for increasing value.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets the symbol to display for increasing value
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        public string Symbol { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -45,14 +45,14 @@ namespace Plotly.Blazor.Traces.IndicatorLib.DeltaLib
 
             return 
                 (
-                    Symbol == other.Symbol ||
-                    Symbol != null &&
-                    Symbol.Equals(other.Symbol)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
+                ) && 
+                (
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
+                    Symbol.Equals(other.Symbol)
                 );
         }
 
@@ -62,8 +62,8 @@ namespace Plotly.Blazor.Traces.IndicatorLib.DeltaLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
                 return hashCode;
             }
         }

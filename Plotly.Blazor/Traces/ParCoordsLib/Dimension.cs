@@ -20,51 +20,6 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
     public class Dimension : IEquatable<Dimension>
     {
         /// <summary>
-        ///     The shown name of the dimension.
-        /// </summary>
-        [JsonPropertyName(@"label")]
-        public string Label { get; set;} 
-
-        /// <summary>
-        ///     Sets the values at which ticks on this axis appear.
-        /// </summary>
-        [JsonPropertyName(@"tickvals")]
-        public IList<object> TickVals { get; set;} 
-
-        /// <summary>
-        ///     Sets the text displayed at the ticks position via <c>tickvals</c>.
-        /// </summary>
-        [JsonPropertyName(@"ticktext")]
-        public IList<object> TickText { get; set;} 
-
-        /// <summary>
-        ///     Sets the tick label formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
-        ///     And for dates see: https://github.com/d3/d3-time-format#locale_format. We
-        ///     add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
-        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
-        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
-        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
-        /// </summary>
-        [JsonPropertyName(@"tickformat")]
-        public string TickFormat { get; set;} 
-
-        /// <summary>
-        ///     Shows the dimension when set to <c>true</c> (the default). Hides the dimension
-        ///     for <c>false</c>.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     The domain range that represents the full, shown axis extent. Defaults to
-        ///     the <c>values</c> extent. Must be an array of &#39;[fromValue, toValue]&#39;
-        ///     with finite numbers as elements.
-        /// </summary>
-        [JsonPropertyName(@"range")]
-        public IList<object> Range { get; set;} 
-
-        /// <summary>
         ///     The domain range to which the filter on the dimension is constrained. Must
         ///     be an array of &#39;[fromValue, toValue]&#39; with &#39;fromValue &lt;=
         ///     toValue&#39;, or if <c>multiselect</c> is not disabled, you may give an
@@ -74,19 +29,16 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
         public IList<object> ConstraintRange { get; set;} 
 
         /// <summary>
+        ///     The shown name of the dimension.
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public string Label { get; set;} 
+
+        /// <summary>
         ///     Do we allow multiple selection ranges or just a single range?
         /// </summary>
         [JsonPropertyName(@"multiselect")]
         public bool? MultiSelect { get; set;} 
-
-        /// <summary>
-        ///     Dimension values. <c>values[n]</c> represents the value of the <c>n</c>th
-        ///     point in the dataset, therefore the <c>values</c> vector for all dimensions
-        ///     must be the same (longer vectors will be truncated). Each value must be
-        ///     a finite number.
-        /// </summary>
-        [JsonPropertyName(@"values")]
-        public IList<object> Values { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
@@ -98,6 +50,14 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
+
+        /// <summary>
+        ///     The domain range that represents the full, shown axis extent. Defaults to
+        ///     the <c>values</c> extent. Must be an array of &#39;[fromValue, toValue]&#39;
+        ///     with finite numbers as elements.
+        /// </summary>
+        [JsonPropertyName(@"range")]
+        public IList<object> Range { get; set;} 
 
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
@@ -112,10 +72,22 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
         public string TemplateItemName { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
+        ///     Sets the tick label formatting rule using d3 formatting mini-languages which
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+        ///     And for dates see: https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format.
+        ///     We add two items to d3&#39;s date formatter: <c>%h</c> for half of the year
+        ///     as a decimal number as well as <c>%{n}f</c> for fractional seconds with
+        ///     n digits. For example, &#39;2016-10-13 09:15:23.456&#39; with tickformat
+        ///     <c>%H~%M~%S.%2f</c> would display <c>09~15~23.46</c>
         /// </summary>
-        [JsonPropertyName(@"tickvalssrc")]
-        public string TickValsSrc { get; set;} 
+        [JsonPropertyName(@"tickformat")]
+        public string TickFormat { get; set;} 
+
+        /// <summary>
+        ///     Sets the text displayed at the ticks position via <c>tickvals</c>.
+        /// </summary>
+        [JsonPropertyName(@"ticktext")]
+        public IList<object> TickText { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  ticktext .
@@ -124,10 +96,38 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
         public string TickTextSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the values at which ticks on this axis appear.
+        /// </summary>
+        [JsonPropertyName(@"tickvals")]
+        public IList<object> TickVals { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
+        /// </summary>
+        [JsonPropertyName(@"tickvalssrc")]
+        public string TickValsSrc { get; set;} 
+
+        /// <summary>
+        ///     Dimension values. <c>values[n]</c> represents the value of the <c>n</c>th
+        ///     point in the dataset, therefore the <c>values</c> vector for all dimensions
+        ///     must be the same (longer vectors will be truncated). Each value must be
+        ///     a finite number.
+        /// </summary>
+        [JsonPropertyName(@"values")]
+        public IList<object> Values { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  values .
         /// </summary>
         [JsonPropertyName(@"valuessrc")]
         public string ValuesSrc { get; set;} 
+
+        /// <summary>
+        ///     Shows the dimension when set to <c>true</c> (the default). Hides the dimension
+        ///     for <c>false</c>.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -145,29 +145,24 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
 
             return 
                 (
+                    Equals(ConstraintRange, other.ConstraintRange) ||
+                    ConstraintRange != null && other.ConstraintRange != null &&
+                    ConstraintRange.SequenceEqual(other.ConstraintRange)
+                ) &&
+                (
                     Label == other.Label ||
                     Label != null &&
                     Label.Equals(other.Label)
                 ) && 
                 (
-                    Equals(TickVals, other.TickVals) ||
-                    TickVals != null && other.TickVals != null &&
-                    TickVals.SequenceEqual(other.TickVals)
-                ) &&
-                (
-                    Equals(TickText, other.TickText) ||
-                    TickText != null && other.TickText != null &&
-                    TickText.SequenceEqual(other.TickText)
-                ) &&
-                (
-                    TickFormat == other.TickFormat ||
-                    TickFormat != null &&
-                    TickFormat.Equals(other.TickFormat)
+                    MultiSelect == other.MultiSelect ||
+                    MultiSelect != null &&
+                    MultiSelect.Equals(other.MultiSelect)
                 ) && 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 ) && 
                 (
                     Equals(Range, other.Range) ||
@@ -175,14 +170,34 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
                     Range.SequenceEqual(other.Range)
                 ) &&
                 (
-                    Equals(ConstraintRange, other.ConstraintRange) ||
-                    ConstraintRange != null && other.ConstraintRange != null &&
-                    ConstraintRange.SequenceEqual(other.ConstraintRange)
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
+                    TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    TickFormat == other.TickFormat ||
+                    TickFormat != null &&
+                    TickFormat.Equals(other.TickFormat)
+                ) && 
+                (
+                    Equals(TickText, other.TickText) ||
+                    TickText != null && other.TickText != null &&
+                    TickText.SequenceEqual(other.TickText)
                 ) &&
                 (
-                    MultiSelect == other.MultiSelect ||
-                    MultiSelect != null &&
-                    MultiSelect.Equals(other.MultiSelect)
+                    TickTextSrc == other.TickTextSrc ||
+                    TickTextSrc != null &&
+                    TickTextSrc.Equals(other.TickTextSrc)
+                ) && 
+                (
+                    Equals(TickVals, other.TickVals) ||
+                    TickVals != null && other.TickVals != null &&
+                    TickVals.SequenceEqual(other.TickVals)
+                ) &&
+                (
+                    TickValsSrc == other.TickValsSrc ||
+                    TickValsSrc != null &&
+                    TickValsSrc.Equals(other.TickValsSrc)
                 ) && 
                 (
                     Equals(Values, other.Values) ||
@@ -190,29 +205,14 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
                     Values.SequenceEqual(other.Values)
                 ) &&
                 (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    TemplateItemName == other.TemplateItemName ||
-                    TemplateItemName != null &&
-                    TemplateItemName.Equals(other.TemplateItemName)
-                ) && 
-                (
-                    TickValsSrc == other.TickValsSrc ||
-                    TickValsSrc != null &&
-                    TickValsSrc.Equals(other.TickValsSrc)
-                ) && 
-                (
-                    TickTextSrc == other.TickTextSrc ||
-                    TickTextSrc != null &&
-                    TickTextSrc.Equals(other.TickTextSrc)
-                ) && 
-                (
                     ValuesSrc == other.ValuesSrc ||
                     ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -222,20 +222,20 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
-                if (TickVals != null) hashCode = hashCode * 59 + TickVals.GetHashCode();
-                if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
-                if (TickFormat != null) hashCode = hashCode * 59 + TickFormat.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
                 if (ConstraintRange != null) hashCode = hashCode * 59 + ConstraintRange.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (MultiSelect != null) hashCode = hashCode * 59 + MultiSelect.GetHashCode();
-                if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
-                if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();
+                if (TickFormat != null) hashCode = hashCode * 59 + TickFormat.GetHashCode();
+                if (TickText != null) hashCode = hashCode * 59 + TickText.GetHashCode();
                 if (TickTextSrc != null) hashCode = hashCode * 59 + TickTextSrc.GetHashCode();
+                if (TickVals != null) hashCode = hashCode * 59 + TickVals.GetHashCode();
+                if (TickValsSrc != null) hashCode = hashCode * 59 + TickValsSrc.GetHashCode();
+                if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();
                 if (ValuesSrc != null) hashCode = hashCode * 59 + ValuesSrc.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

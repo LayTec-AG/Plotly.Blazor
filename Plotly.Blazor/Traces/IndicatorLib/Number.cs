@@ -18,13 +18,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib
     public class Number : IEquatable<Number>
     {
         /// <summary>
-        ///     Sets the value formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
-        /// </summary>
-        [JsonPropertyName(@"valueformat")]
-        public string ValueFormat { get; set;} 
-
-        /// <summary>
         ///     Set the font used to display main number
         /// </summary>
         [JsonPropertyName(@"font")]
@@ -42,6 +35,13 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         [JsonPropertyName(@"suffix")]
         public string Suffix { get; set;} 
 
+        /// <summary>
+        ///     Sets the value formatting rule using d3 formatting mini-languages which
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+        /// </summary>
+        [JsonPropertyName(@"valueformat")]
+        public string ValueFormat { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -58,11 +58,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    ValueFormat == other.ValueFormat ||
-                    ValueFormat != null &&
-                    ValueFormat.Equals(other.ValueFormat)
-                ) && 
-                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
@@ -76,6 +71,11 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     Suffix == other.Suffix ||
                     Suffix != null &&
                     Suffix.Equals(other.Suffix)
+                ) && 
+                (
+                    ValueFormat == other.ValueFormat ||
+                    ValueFormat != null &&
+                    ValueFormat.Equals(other.ValueFormat)
                 );
         }
 
@@ -85,10 +85,10 @@ namespace Plotly.Blazor.Traces.IndicatorLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (ValueFormat != null) hashCode = hashCode * 59 + ValueFormat.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Prefix != null) hashCode = hashCode * 59 + Prefix.GetHashCode();
                 if (Suffix != null) hashCode = hashCode * 59 + Suffix.GetHashCode();
+                if (ValueFormat != null) hashCode = hashCode * 59 + ValueFormat.GetHashCode();
                 return hashCode;
             }
         }

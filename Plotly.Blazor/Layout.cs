@@ -21,6 +21,18 @@ namespace Plotly.Blazor
     public class Layout : IEquatable<Layout>
     {
         /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
+        /// </summary>
+        [JsonPropertyName(@"bargap")]
+        public decimal? BarGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
+        /// </summary>
+        [JsonPropertyName(@"bargroupgap")]
+        public decimal? BarGroupGap { get; set;} 
+
+        /// <summary>
         ///     Determines how bars at the same location coordinate are displayed on the
         ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
         ///     <c>relative</c>, the bars are stacked on top of one another, with negative
@@ -41,28 +53,6 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.BarNormEnum? BarNorm { get; set;} 
 
         /// <summary>
-        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
-        /// </summary>
-        [JsonPropertyName(@"bargap")]
-        public decimal? BarGap { get; set;} 
-
-        /// <summary>
-        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
-        /// </summary>
-        [JsonPropertyName(@"bargroupgap")]
-        public decimal? BarGroupGap { get; set;} 
-
-        /// <summary>
-        ///     Determines how boxes at the same location coordinate are displayed on the
-        ///     graph. If <c>group</c>, the boxes are plotted next to one another centered
-        ///     around the shared location. If <c>overlay</c>, the boxes are plotted over
-        ///     one another, you might need to set <c>opacity</c> to see them multiple boxes.
-        ///     Has no effect on traces that have <c>width</c> set.
-        /// </summary>
-        [JsonPropertyName(@"boxmode")]
-        public Plotly.Blazor.LayoutLib.BoxModeEnum? BoxMode { get; set;} 
-
-        /// <summary>
         ///     Sets the gap (in plot fraction) between boxes of adjacent location coordinates.
         ///     Has no effect on traces that have <c>width</c> set.
         /// </summary>
@@ -77,14 +67,145 @@ namespace Plotly.Blazor
         public decimal? BoxGroupGap { get; set;} 
 
         /// <summary>
-        ///     Determines how violins at the same location coordinate are displayed on
-        ///     the graph. If <c>group</c>, the violins are plotted next to one another
-        ///     centered around the shared location. If <c>overlay</c>, the violins are
-        ///     plotted over one another, you might need to set <c>opacity</c> to see them
-        ///     multiple violins. Has no effect on traces that have <c>width</c> set.
+        ///     Determines how boxes at the same location coordinate are displayed on the
+        ///     graph. If <c>group</c>, the boxes are plotted next to one another centered
+        ///     around the shared location. If <c>overlay</c>, the boxes are plotted over
+        ///     one another, you might need to set <c>opacity</c> to see them multiple boxes.
+        ///     Has no effect on traces that have <c>width</c> set.
         /// </summary>
-        [JsonPropertyName(@"violinmode")]
-        public Plotly.Blazor.LayoutLib.ViolinModeEnum? ViolinMode { get; set;} 
+        [JsonPropertyName(@"boxmode")]
+        public Plotly.Blazor.LayoutLib.BoxModeEnum? BoxMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
+        /// </summary>
+        [JsonPropertyName(@"funnelgap")]
+        public decimal? FunnelGap { get; set;} 
+
+        /// <summary>
+        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
+        /// </summary>
+        [JsonPropertyName(@"funnelgroupgap")]
+        public decimal? FunnelGroupGap { get; set;} 
+
+        /// <summary>
+        ///     Determines how bars at the same location coordinate are displayed on the
+        ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
+        ///     <c>group</c>, the bars are plotted next to one another centered around the
+        ///     shared location. With <c>overlay</c>, the bars are plotted over one another,
+        ///     you might need to an <c>opacity</c> to see multiple bars.
+        /// </summary>
+        [JsonPropertyName(@"funnelmode")]
+        public Plotly.Blazor.LayoutLib.FunnelModeEnum? FunnelMode { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the funnelarea slice colors (whether given by <c>funnelareacolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendfunnelareacolors")]
+        public bool? ExtendFunnelAreaColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default funnelarea slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendfunnelareacolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"funnelareacolorway")]
+        public IList<object> FunnelAreaColorway { get; set;} 
+
+        /// <summary>
+        ///     hiddenlabels is the funnelarea &amp; pie chart analog of visible:<c>legendonly</c>
+        ///     but it can contain many labels, and can simultaneously hide slices from
+        ///     several pies/funnelarea charts
+        /// </summary>
+        [JsonPropertyName(@"hiddenlabels")]
+        public IList<object> HiddenLabels { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  hiddenlabels .
+        /// </summary>
+        [JsonPropertyName(@"hiddenlabelssrc")]
+        public string HiddenLabelsSrc { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the icicle slice colors (whether given by <c>iciclecolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendiciclecolors")]
+        public bool? ExtendIcicleColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default icicle slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendiciclecolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"iciclecolorway")]
+        public IList<object> IcicleColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the pie slice colors (whether given by <c>piecolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendpiecolors")]
+        public bool? ExtendPieColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default pie slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendpiecolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"piecolorway")]
+        public IList<object> PieColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the sunburst slice colors (whether given by <c>sunburstcolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendsunburstcolors")]
+        public bool? ExtendSunburstColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default sunburst slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendsunburstcolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"sunburstcolorway")]
+        public IList<object> SunburstColorway { get; set;} 
+
+        /// <summary>
+        ///     If <c>true</c>, the treemap slice colors (whether given by <c>treemapcolorway</c>
+        ///     or inherited from <c>colorway</c>) will be extended to three times its original
+        ///     length by first repeating every color 20% lighter then each color 20% darker.
+        ///     This is intended to reduce the likelihood of reusing the same color when
+        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
+        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        /// </summary>
+        [JsonPropertyName(@"extendtreemapcolors")]
+        public bool? ExtendTreeMapColors { get; set;} 
+
+        /// <summary>
+        ///     Sets the default treemap slice colors. Defaults to the main <c>colorway</c>
+        ///     used for trace colors. If you specify a new list here it can still be extended
+        ///     with lighter and darker colors, see <c>extendtreemapcolors</c>.
+        /// </summary>
+        [JsonPropertyName(@"treemapcolorway")]
+        public IList<object> TreeMapColorway { get; set;} 
 
         /// <summary>
         ///     Sets the gap (in plot fraction) between violins of adjacent location coordinates.
@@ -101,35 +222,14 @@ namespace Plotly.Blazor
         public decimal? ViolinGroupGap { get; set;} 
 
         /// <summary>
-        ///     Determines how bars at the same location coordinate are displayed on the
-        ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
-        ///     <c>group</c>, the bars are plotted next to one another centered around the
-        ///     shared location. With <c>overlay</c>, the bars are plotted over one another,
-        ///     you might need to an <c>opacity</c> to see multiple bars.
+        ///     Determines how violins at the same location coordinate are displayed on
+        ///     the graph. If <c>group</c>, the violins are plotted next to one another
+        ///     centered around the shared location. If <c>overlay</c>, the violins are
+        ///     plotted over one another, you might need to set <c>opacity</c> to see them
+        ///     multiple violins. Has no effect on traces that have <c>width</c> set.
         /// </summary>
-        [JsonPropertyName(@"funnelmode")]
-        public Plotly.Blazor.LayoutLib.FunnelModeEnum? FunnelMode { get; set;} 
-
-        /// <summary>
-        ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
-        /// </summary>
-        [JsonPropertyName(@"funnelgap")]
-        public decimal? FunnelGap { get; set;} 
-
-        /// <summary>
-        ///     Sets the gap (in plot fraction) between bars of the same location coordinate.
-        /// </summary>
-        [JsonPropertyName(@"funnelgroupgap")]
-        public decimal? FunnelGroupGap { get; set;} 
-
-        /// <summary>
-        ///     Determines how bars at the same location coordinate are displayed on the
-        ///     graph. With <c>group</c>, the bars are plotted next to one another centered
-        ///     around the shared location. With <c>overlay</c>, the bars are plotted over
-        ///     one another, you might need to an <c>opacity</c> to see multiple bars.
-        /// </summary>
-        [JsonPropertyName(@"waterfallmode")]
-        public Plotly.Blazor.LayoutLib.WaterfallModeEnum? WaterfallMode { get; set;} 
+        [JsonPropertyName(@"violinmode")]
+        public Plotly.Blazor.LayoutLib.ViolinModeEnum? ViolinMode { get; set;} 
 
         /// <summary>
         ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
@@ -144,132 +244,25 @@ namespace Plotly.Blazor
         public decimal? WaterfallGroupGap { get; set;} 
 
         /// <summary>
-        ///     hiddenlabels is the funnelarea &amp; pie chart analog of visible:<c>legendonly</c>
-        ///     but it can contain many labels, and can simultaneously hide slices from
-        ///     several pies/funnelarea charts
+        ///     Determines how bars at the same location coordinate are displayed on the
+        ///     graph. With <c>group</c>, the bars are plotted next to one another centered
+        ///     around the shared location. With <c>overlay</c>, the bars are plotted over
+        ///     one another, you might need to an <c>opacity</c> to see multiple bars.
         /// </summary>
-        [JsonPropertyName(@"hiddenlabels")]
-        public IList<object> HiddenLabels { get; set;} 
+        [JsonPropertyName(@"waterfallmode")]
+        public Plotly.Blazor.LayoutLib.WaterfallModeEnum? WaterfallMode { get; set;} 
 
         /// <summary>
-        ///     Sets the default pie slice colors. Defaults to the main <c>colorway</c>
-        ///     used for trace colors. If you specify a new list here it can still be extended
-        ///     with lighter and darker colors, see <c>extendpiecolors</c>.
+        ///     Gets or sets the ActiveShape.
         /// </summary>
-        [JsonPropertyName(@"piecolorway")]
-        public IList<object> PieColorway { get; set;} 
+        [JsonPropertyName(@"activeshape")]
+        public Plotly.Blazor.LayoutLib.ActiveShape ActiveShape { get; set;} 
 
         /// <summary>
-        ///     If <c>true</c>, the pie slice colors (whether given by <c>piecolorway</c>
-        ///     or inherited from <c>colorway</c>) will be extended to three times its original
-        ///     length by first repeating every color 20% lighter then each color 20% darker.
-        ///     This is intended to reduce the likelihood of reusing the same color when
-        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
-        ///     in the trace, using <c>marker.colors</c>, are never extended.
+        ///     Gets or sets the Annotations.
         /// </summary>
-        [JsonPropertyName(@"extendpiecolors")]
-        public bool? ExtendPieColors { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hiddenlabels .
-        /// </summary>
-        [JsonPropertyName(@"hiddenlabelssrc")]
-        public string HiddenLabelsSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the default sunburst slice colors. Defaults to the main <c>colorway</c>
-        ///     used for trace colors. If you specify a new list here it can still be extended
-        ///     with lighter and darker colors, see <c>extendsunburstcolors</c>.
-        /// </summary>
-        [JsonPropertyName(@"sunburstcolorway")]
-        public IList<object> SunburstColorway { get; set;} 
-
-        /// <summary>
-        ///     If <c>true</c>, the sunburst slice colors (whether given by <c>sunburstcolorway</c>
-        ///     or inherited from <c>colorway</c>) will be extended to three times its original
-        ///     length by first repeating every color 20% lighter then each color 20% darker.
-        ///     This is intended to reduce the likelihood of reusing the same color when
-        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
-        ///     in the trace, using <c>marker.colors</c>, are never extended.
-        /// </summary>
-        [JsonPropertyName(@"extendsunburstcolors")]
-        public bool? ExtendSunburstColors { get; set;} 
-
-        /// <summary>
-        ///     Sets the default treemap slice colors. Defaults to the main <c>colorway</c>
-        ///     used for trace colors. If you specify a new list here it can still be extended
-        ///     with lighter and darker colors, see <c>extendtreemapcolors</c>.
-        /// </summary>
-        [JsonPropertyName(@"treemapcolorway")]
-        public IList<object> TreeMapColorway { get; set;} 
-
-        /// <summary>
-        ///     If <c>true</c>, the treemap slice colors (whether given by <c>treemapcolorway</c>
-        ///     or inherited from <c>colorway</c>) will be extended to three times its original
-        ///     length by first repeating every color 20% lighter then each color 20% darker.
-        ///     This is intended to reduce the likelihood of reusing the same color when
-        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
-        ///     in the trace, using <c>marker.colors</c>, are never extended.
-        /// </summary>
-        [JsonPropertyName(@"extendtreemapcolors")]
-        public bool? ExtendTreeMapColors { get; set;} 
-
-        /// <summary>
-        ///     Sets the default icicle slice colors. Defaults to the main <c>colorway</c>
-        ///     used for trace colors. If you specify a new list here it can still be extended
-        ///     with lighter and darker colors, see <c>extendiciclecolors</c>.
-        /// </summary>
-        [JsonPropertyName(@"iciclecolorway")]
-        public IList<object> IcicleColorway { get; set;} 
-
-        /// <summary>
-        ///     If <c>true</c>, the icicle slice colors (whether given by <c>iciclecolorway</c>
-        ///     or inherited from <c>colorway</c>) will be extended to three times its original
-        ///     length by first repeating every color 20% lighter then each color 20% darker.
-        ///     This is intended to reduce the likelihood of reusing the same color when
-        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
-        ///     in the trace, using <c>marker.colors</c>, are never extended.
-        /// </summary>
-        [JsonPropertyName(@"extendiciclecolors")]
-        public bool? ExtendIcicleColors { get; set;} 
-
-        /// <summary>
-        ///     Sets the default funnelarea slice colors. Defaults to the main <c>colorway</c>
-        ///     used for trace colors. If you specify a new list here it can still be extended
-        ///     with lighter and darker colors, see <c>extendfunnelareacolors</c>.
-        /// </summary>
-        [JsonPropertyName(@"funnelareacolorway")]
-        public IList<object> FunnelAreaColorway { get; set;} 
-
-        /// <summary>
-        ///     If <c>true</c>, the funnelarea slice colors (whether given by <c>funnelareacolorway</c>
-        ///     or inherited from <c>colorway</c>) will be extended to three times its original
-        ///     length by first repeating every color 20% lighter then each color 20% darker.
-        ///     This is intended to reduce the likelihood of reusing the same color when
-        ///     you have many slices, but you can set <c>false</c> to disable. Colors provided
-        ///     in the trace, using <c>marker.colors</c>, are never extended.
-        /// </summary>
-        [JsonPropertyName(@"extendfunnelareacolors")]
-        public bool? ExtendFunnelAreaColors { get; set;} 
-
-        /// <summary>
-        ///     Sets the global font. Note that fonts used in traces and other layout components
-        ///     inherit from the global font.
-        /// </summary>
-        [JsonPropertyName(@"font")]
-        public Plotly.Blazor.LayoutLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Title.
-        /// </summary>
-        [JsonPropertyName(@"title")]
-        public Plotly.Blazor.LayoutLib.Title Title { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the UniformText.
-        /// </summary>
-        [JsonPropertyName(@"uniformtext")]
-        public Plotly.Blazor.LayoutLib.UniformText UniformText { get; set;} 
+        [JsonPropertyName(@"annotations")]
+        public IList<Plotly.Blazor.LayoutLib.Annotation> Annotations { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a layout width or height that has been left undefined
@@ -281,44 +274,6 @@ namespace Plotly.Blazor
         public bool? AutoSize { get; set;} 
 
         /// <summary>
-        ///     Sets the plot&#39;s width (in px).
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
-        ///     Sets the plot&#39;s height (in px).
-        /// </summary>
-        [JsonPropertyName(@"height")]
-        public decimal? Height { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Margin.
-        /// </summary>
-        [JsonPropertyName(@"margin")]
-        public Plotly.Blazor.LayoutLib.Margin Margin { get; set;} 
-
-        /// <summary>
-        ///     Placeholder for exporting automargin-impacting values namely <c>margin.t</c>,
-        ///     <c>margin.b</c>, <c>margin.l</c> and <c>margin.r</c> in <c>full-json</c>
-        ///     mode.
-        /// </summary>
-        [JsonPropertyName(@"computed")]
-        public object Computed { get; set;} 
-
-        /// <summary>
-        ///     Sets the background color of the paper where the graph is drawn.
-        /// </summary>
-        [JsonPropertyName(@"paper_bgcolor")]
-        public object PaperBgColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the background color of the plotting area in-between x and y axes.
-        /// </summary>
-        [JsonPropertyName(@"plot_bgcolor")]
-        public object PlotBgColor { get; set;} 
-
-        /// <summary>
         ///     Using <c>strict</c> a numeric string in trace data is not converted to a
         ///     number. Using &#39;convert types&#39; a numeric string in trace data may
         ///     be treated as a number during automatic axis <c>type</c> detection. This
@@ -328,36 +283,55 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.AutoTypeNumbersEnum? AutoTypeNumbers { get; set;} 
 
         /// <summary>
-        ///     Sets the decimal and thousand separators. For example, &#39;. &#39; puts
-        ///     a <c>.</c> before decimals and a space between thousands. In English locales,
-        ///     dflt is <c>.,</c> but other locales may alter this default.
+        ///     Sets the default calendar system to use for interpreting and displaying
+        ///     dates throughout the plot.
         /// </summary>
-        [JsonPropertyName(@"separators")]
-        public string Separators { get; set;} 
+        [JsonPropertyName(@"calendar")]
+        public Plotly.Blazor.LayoutLib.CalendarEnum? Calendar { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not a text link citing the data source is placed at
-        ///     the bottom-right cored of the figure. Has only an effect only on graphs
-        ///     that have been generated via forked graphs from the Chart Studio Cloud (at
-        ///     https://chart-studio.plotly.com or on-premise).
+        ///     Determines the mode of single click interactions. <c>event</c> is the default
+        ///     value and emits the <c>plotly_click</c> event. In addition this mode emits
+        ///     the <c>plotly_selected</c> event in drag modes <c>lasso</c> and <c>select</c>,
+        ///     but with no event data attached (kept for compatibility reasons). The <c>select</c>
+        ///     flag enables selecting single data points via click. This mode also supports
+        ///     persistent selections, meaning that pressing Shift while clicking, adds
+        ///     to / subtracts from an existing selection. <c>select</c> with <c>hovermode</c>:
+        ///     <c>x</c> can be confusing, consider explicitly setting <c>hovermode</c>:
+        ///     <c>closest</c> when using this feature. Selection events are sent accordingly
+        ///     as long as <c>event</c> flag is set as well. When the <c>event</c> flag
+        ///     is missing, <c>plotly_click</c> and <c>plotly_selected</c> events are not
+        ///     fired.
         /// </summary>
-        [JsonPropertyName(@"hidesources")]
-        public bool? HideSources { get; set;} 
+        [JsonPropertyName(@"clickmode")]
+        public Plotly.Blazor.LayoutLib.ClickModeFlag? ClickMode { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not a legend is drawn. Default is <c>true</c> if there
-        ///     is a trace to show and any of these: a) Two or more traces would by default
-        ///     be shown in the legend. b) One pie trace is shown in the legend. c) One
-        ///     trace is explicitly given with &#39;showlegend: true&#39;.
+        ///     Gets or sets the ColorAxis.
         /// </summary>
-        [JsonPropertyName(@"showlegend")]
-        public bool? ShowLegend { get; set;} 
+        [JsonPropertyName(@"coloraxis")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.ColorAxis> ColorAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the ColorScale.
+        /// </summary>
+        [JsonPropertyName(@"colorscale")]
+        public Plotly.Blazor.LayoutLib.ColorScale ColorScale { get; set;} 
 
         /// <summary>
         ///     Sets the default trace colors.
         /// </summary>
         [JsonPropertyName(@"colorway")]
         public IList<object> Colorway { get; set;} 
+
+        /// <summary>
+        ///     Placeholder for exporting automargin-impacting values namely <c>margin.t</c>,
+        ///     <c>margin.b</c>, <c>margin.l</c> and <c>margin.r</c> in <c>full-json</c>
+        ///     mode.
+        /// </summary>
+        [JsonPropertyName(@"computed")]
+        public object Computed { get; set;} 
 
         /// <summary>
         ///     If provided, a changed value tells <c>Plotly.react</c> that one or more
@@ -371,22 +345,12 @@ namespace Plotly.Blazor
         public object DataRevision { get; set;} 
 
         /// <summary>
-        ///     Used to allow user interactions with the plot to persist after <c>Plotly.react</c>
-        ///     calls that are unaware of these interactions. If <c>uirevision</c> is omitted,
-        ///     or if it is given and it changed from the previous <c>Plotly.react</c> call,
-        ///     the exact new figure is used. If <c>uirevision</c> is truthy and did NOT
-        ///     change, any attribute that has been affected by user interactions and did
-        ///     not receive a different value in the new figure will keep the interaction
-        ///     value. <c>layout.uirevision</c> attribute serves as the default for <c>uirevision</c>
-        ///     attributes in various sub-containers. For finer control you can set these
-        ///     sub-attributes directly. For example, if your app separately controls the
-        ///     data on the x and y axes you might set <c>xaxis.uirevision=<c>time</c></c>
-        ///     and <c>yaxis.uirevision=<c>cost</c></c>. Then if only the y data is changed,
-        ///     you can update <c>yaxis.uirevision=<c>quantity</c></c> and the y axis range
-        ///     will reset but the x axis range will retain any user-driven zoom.
+        ///     Determines the mode of drag interactions. <c>select</c> and <c>lasso</c>
+        ///     apply only to scatter traces with markers or text. <c>orbit</c> and <c>turntable</c>
+        ///     apply only to 3D scenes.
         /// </summary>
-        [JsonPropertyName(@"uirevision")]
-        public object UiRevision { get; set;} 
+        [JsonPropertyName(@"dragmode")]
+        public Plotly.Blazor.LayoutLib.DragModeEnum? DragMode { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in &#39;editable: true&#39;
@@ -396,43 +360,96 @@ namespace Plotly.Blazor
         public object EditRevision { get; set;} 
 
         /// <summary>
-        ///     Controls persistence of user-driven changes in selected points from all
-        ///     traces.
+        ///     Sets the global font. Note that fonts used in traces and other layout components
+        ///     inherit from the global font.
         /// </summary>
-        [JsonPropertyName(@"selectionrevision")]
-        public object SelectionRevision { get; set;} 
+        [JsonPropertyName(@"font")]
+        public Plotly.Blazor.LayoutLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Default attributes to be applied to the plot. Templates can be created from
-        ///     existing plots using <c>Plotly.makeTemplate</c>, or created manually. They
-        ///     should be objects with format: &#39;{layout: layoutTemplate, data: {[type]:
-        ///     [traceTemplate, ...]}, ...}&#39; <c>layoutTemplate</c> and <c>traceTemplate</c>
-        ///     are objects matching the attribute structure of <c>layout</c> and a data
-        ///     trace.  Trace templates are applied cyclically to traces of each type. Container
-        ///     arrays (eg <c>annotations</c>) have special handling: An object ending in
-        ///     <c>defaults</c> (eg <c>annotationdefaults</c>) is applied to each array
-        ///     item. But if an item has a <c>templateitemname</c> key we look in the template
-        ///     array for an item with matching <c>name</c> and apply that instead. If no
-        ///     matching <c>name</c> is found we mark the item invisible. Any named template
-        ///     item not referenced is appended to the end of the array, so you can use
-        ///     this for a watermark annotation or a logo image, for example. To omit one
-        ///     of these items on the plot, make an item with matching <c>templateitemname</c>
-        ///     and &#39;visible: false&#39;.
+        ///     Gets or sets the Geo.
         /// </summary>
-        [JsonPropertyName(@"template")]
-        public object Template { get; set;} 
+        [JsonPropertyName(@"geo")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Geo> Geo { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the NewShape.
+        ///     Gets or sets the Grid.
         /// </summary>
-        [JsonPropertyName(@"newshape")]
-        public Plotly.Blazor.LayoutLib.NewShape NewShape { get; set;} 
+        [JsonPropertyName(@"grid")]
+        public Plotly.Blazor.LayoutLib.Grid Grid { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the ActiveShape.
+        ///     Sets the plot&#39;s height (in px).
         /// </summary>
-        [JsonPropertyName(@"activeshape")]
-        public Plotly.Blazor.LayoutLib.ActiveShape ActiveShape { get; set;} 
+        [JsonPropertyName(@"height")]
+        public decimal? Height { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not a text link citing the data source is placed at
+        ///     the bottom-right cored of the figure. Has only an effect only on graphs
+        ///     that have been generated via forked graphs from the Chart Studio Cloud (at
+        ///     https://chart-studio.plotly.com or on-premise).
+        /// </summary>
+        [JsonPropertyName(@"hidesources")]
+        public bool? HideSources { get; set;} 
+
+        /// <summary>
+        ///     Sets the default distance (in pixels) to look for data to add hover labels
+        ///     (-1 means no cutoff, 0 means no looking for data). This is only a real distance
+        ///     for hovering on point-like objects, like scatter points. For area-like objects
+        ///     (bars, scatter fills, etc) hovering is on inside the area and off outside,
+        ///     but these objects will not supersede hover on point-like objects in case
+        ///     of conflict.
+        /// </summary>
+        [JsonPropertyName(@"hoverdistance")]
+        public int? HoverDistance { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the HoverLabel.
+        /// </summary>
+        [JsonPropertyName(@"hoverlabel")]
+        public Plotly.Blazor.LayoutLib.HoverLabel HoverLabel { get; set;} 
+
+        /// <summary>
+        ///     Determines the mode of hover interactions. If <c>closest</c>, a single hoverlabel
+        ///     will appear for the <c>closest</c> point within the <c>hoverdistance</c>.
+        ///     If <c>x</c> (or <c>y</c>), multiple hoverlabels will appear for multiple
+        ///     points at the <c>closest</c> x- (or y-) coordinate within the <c>hoverdistance</c>,
+        ///     with the caveat that no more than one hoverlabel will appear per trace.
+        ///     If &#39;x unified&#39; (or &#39;y unified&#39;), a single hoverlabel will
+        ///     appear multiple points at the closest x- (or y-) coordinate within the <c>hoverdistance</c>
+        ///     with the caveat that no more than one hoverlabel will appear per trace.
+        ///     In this mode, spikelines are enabled by default perpendicular to the specified
+        ///     axis. If false, hover interactions are disabled.
+        /// </summary>
+        [JsonPropertyName(@"hovermode")]
+        public Plotly.Blazor.LayoutLib.HoverModeEnum? HoverMode { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Images.
+        /// </summary>
+        [JsonPropertyName(@"images")]
+        public IList<Plotly.Blazor.LayoutLib.Image> Images { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Legend.
+        /// </summary>
+        [JsonPropertyName(@"legend")]
+        public Plotly.Blazor.LayoutLib.Legend Legend { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the MapBox.
+        /// </summary>
+        [JsonPropertyName(@"mapbox")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.MapBox> MapBox { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Margin.
+        /// </summary>
+        [JsonPropertyName(@"margin")]
+        public Plotly.Blazor.LayoutLib.Margin Margin { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information that can be used in various <c>text</c> attributes.
@@ -460,76 +477,48 @@ namespace Plotly.Blazor
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets transition options used during Plotly.react updates.
+        ///     Sets the source reference on Chart Studio Cloud for  meta .
         /// </summary>
-        [JsonPropertyName(@"transition")]
-        public Plotly.Blazor.LayoutLib.Transition Transition { get; set;} 
+        [JsonPropertyName(@"metasrc")]
+        public string MetaSrc { get; set;} 
 
         /// <summary>
-        ///     Determines the mode of single click interactions. <c>event</c> is the default
-        ///     value and emits the <c>plotly_click</c> event. In addition this mode emits
-        ///     the <c>plotly_selected</c> event in drag modes <c>lasso</c> and <c>select</c>,
-        ///     but with no event data attached (kept for compatibility reasons). The <c>select</c>
-        ///     flag enables selecting single data points via click. This mode also supports
-        ///     persistent selections, meaning that pressing Shift while clicking, adds
-        ///     to / subtracts from an existing selection. <c>select</c> with <c>hovermode</c>:
-        ///     <c>x</c> can be confusing, consider explicitly setting <c>hovermode</c>:
-        ///     <c>closest</c> when using this feature. Selection events are sent accordingly
-        ///     as long as <c>event</c> flag is set as well. When the <c>event</c> flag
-        ///     is missing, <c>plotly_click</c> and <c>plotly_selected</c> events are not
-        ///     fired.
+        ///     Gets or sets the ModeBar.
         /// </summary>
-        [JsonPropertyName(@"clickmode")]
-        public Plotly.Blazor.LayoutLib.ClickModeFlag? ClickMode { get; set;} 
+        [JsonPropertyName(@"modebar")]
+        public Plotly.Blazor.LayoutLib.ModeBar ModeBar { get; set;} 
 
         /// <summary>
-        ///     Determines the mode of drag interactions. <c>select</c> and <c>lasso</c>
-        ///     apply only to scatter traces with markers or text. <c>orbit</c> and <c>turntable</c>
-        ///     apply only to 3D scenes.
+        ///     Gets or sets the NewShape.
         /// </summary>
-        [JsonPropertyName(@"dragmode")]
-        public Plotly.Blazor.LayoutLib.DragModeEnum? DragMode { get; set;} 
+        [JsonPropertyName(@"newshape")]
+        public Plotly.Blazor.LayoutLib.NewShape NewShape { get; set;} 
 
         /// <summary>
-        ///     Determines the mode of hover interactions. If <c>closest</c>, a single hoverlabel
-        ///     will appear for the <c>closest</c> point within the <c>hoverdistance</c>.
-        ///     If <c>x</c> (or <c>y</c>), multiple hoverlabels will appear for multiple
-        ///     points at the <c>closest</c> x- (or y-) coordinate within the <c>hoverdistance</c>,
-        ///     with the caveat that no more than one hoverlabel will appear per trace.
-        ///     If &#39;x unified&#39; (or &#39;y unified&#39;), a single hoverlabel will
-        ///     appear multiple points at the closest x- (or y-) coordinate within the <c>hoverdistance</c>
-        ///     with the caveat that no more than one hoverlabel will appear per trace.
-        ///     In this mode, spikelines are enabled by default perpendicular to the specified
-        ///     axis. If false, hover interactions are disabled.
+        ///     Sets the background color of the paper where the graph is drawn.
         /// </summary>
-        [JsonPropertyName(@"hovermode")]
-        public Plotly.Blazor.LayoutLib.HoverModeEnum? HoverMode { get; set;} 
+        [JsonPropertyName(@"paper_bgcolor")]
+        public object PaperBgColor { get; set;} 
 
         /// <summary>
-        ///     Sets the default distance (in pixels) to look for data to add hover labels
-        ///     (-1 means no cutoff, 0 means no looking for data). This is only a real distance
-        ///     for hovering on point-like objects, like scatter points. For area-like objects
-        ///     (bars, scatter fills, etc) hovering is on inside the area and off outside,
-        ///     but these objects will not supersede hover on point-like objects in case
-        ///     of conflict.
+        ///     Sets the background color of the plotting area in-between x and y axes.
         /// </summary>
-        [JsonPropertyName(@"hoverdistance")]
-        public int? HoverDistance { get; set;} 
+        [JsonPropertyName(@"plot_bgcolor")]
+        public object PlotBgColor { get; set;} 
 
         /// <summary>
-        ///     Sets the default distance (in pixels) to look for data to draw spikelines
-        ///     to (-1 means no cutoff, 0 means no looking for data). As with hoverdistance,
-        ///     distance does not apply to area-like objects. In addition, some objects
-        ///     can be hovered on but will not generate spikelines, such as scatter fills.
+        ///     Gets or sets the Polar.
         /// </summary>
-        [JsonPropertyName(@"spikedistance")]
-        public int? SpikeDistance { get; set;} 
+        [JsonPropertyName(@"polar")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Polar> Polar { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the HoverLabel.
+        ///     Gets or sets the Scene.
         /// </summary>
-        [JsonPropertyName(@"hoverlabel")]
-        public Plotly.Blazor.LayoutLib.HoverLabel HoverLabel { get; set;} 
+        [JsonPropertyName(@"scene")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Scene> Scene { get; set;} 
 
         /// <summary>
         ///     When <c>dragmode</c> is set to <c>select</c>, this limits the selection
@@ -541,17 +530,124 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.SelectDirectionEnum? SelectDirection { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Grid.
+        ///     Controls persistence of user-driven changes in selected points from all
+        ///     traces.
         /// </summary>
-        [JsonPropertyName(@"grid")]
-        public Plotly.Blazor.LayoutLib.Grid Grid { get; set;} 
+        [JsonPropertyName(@"selectionrevision")]
+        public object SelectionRevision { get; set;} 
 
         /// <summary>
-        ///     Sets the default calendar system to use for interpreting and displaying
-        ///     dates throughout the plot.
+        ///     Sets the decimal and thousand separators. For example, &#39;. &#39; puts
+        ///     a <c>.</c> before decimals and a space between thousands. In English locales,
+        ///     dflt is <c>.,</c> but other locales may alter this default.
         /// </summary>
-        [JsonPropertyName(@"calendar")]
-        public Plotly.Blazor.LayoutLib.CalendarEnum? Calendar { get; set;} 
+        [JsonPropertyName(@"separators")]
+        public string Separators { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Shapes.
+        /// </summary>
+        [JsonPropertyName(@"shapes")]
+        public IList<Plotly.Blazor.LayoutLib.Shape> Shapes { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not a legend is drawn. Default is <c>true</c> if there
+        ///     is a trace to show and any of these: a) Two or more traces would by default
+        ///     be shown in the legend. b) One pie trace is shown in the legend. c) One
+        ///     trace is explicitly given with &#39;showlegend: true&#39;.
+        /// </summary>
+        [JsonPropertyName(@"showlegend")]
+        public bool? ShowLegend { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Sliders.
+        /// </summary>
+        [JsonPropertyName(@"sliders")]
+        public IList<Plotly.Blazor.LayoutLib.Slider> Sliders { get; set;} 
+
+        /// <summary>
+        ///     Sets the default distance (in pixels) to look for data to draw spikelines
+        ///     to (-1 means no cutoff, 0 means no looking for data). As with hoverdistance,
+        ///     distance does not apply to area-like objects. In addition, some objects
+        ///     can be hovered on but will not generate spikelines, such as scatter fills.
+        /// </summary>
+        [JsonPropertyName(@"spikedistance")]
+        public int? SpikeDistance { get; set;} 
+
+        /// <summary>
+        ///     Default attributes to be applied to the plot. Templates can be created from
+        ///     existing plots using <c>Plotly.makeTemplate</c>, or created manually. They
+        ///     should be objects with format: &#39;{layout: layoutTemplate, data: {[type]:
+        ///     [traceTemplate, ...]}, ...}&#39; <c>layoutTemplate</c> and <c>traceTemplate</c>
+        ///     are objects matching the attribute structure of <c>layout</c> and a data
+        ///     trace.  Trace templates are applied cyclically to traces of each type. Container
+        ///     arrays (eg <c>annotations</c>) have special handling: An object ending in
+        ///     <c>defaults</c> (eg <c>annotationdefaults</c>) is applied to each array
+        ///     item. But if an item has a <c>templateitemname</c> key we look in the template
+        ///     array for an item with matching <c>name</c> and apply that instead. If no
+        ///     matching <c>name</c> is found we mark the item invisible. Any named template
+        ///     item not referenced is appended to the end of the array, so you can use
+        ///     this for a watermark annotation or a logo image, for example. To omit one
+        ///     of these items on the plot, make an item with matching <c>templateitemname</c>
+        ///     and &#39;visible: false&#39;.
+        /// </summary>
+        [JsonPropertyName(@"template")]
+        public object Template { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Ternary.
+        /// </summary>
+        [JsonPropertyName(@"ternary")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Ternary> Ternary { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Title.
+        /// </summary>
+        [JsonPropertyName(@"title")]
+        public Plotly.Blazor.LayoutLib.Title Title { get; set;} 
+
+        /// <summary>
+        ///     Sets transition options used during Plotly.react updates.
+        /// </summary>
+        [JsonPropertyName(@"transition")]
+        public Plotly.Blazor.LayoutLib.Transition Transition { get; set;} 
+
+        /// <summary>
+        ///     Used to allow user interactions with the plot to persist after <c>Plotly.react</c>
+        ///     calls that are unaware of these interactions. If <c>uirevision</c> is omitted,
+        ///     or if it is given and it changed from the previous <c>Plotly.react</c> call,
+        ///     the exact new figure is used. If <c>uirevision</c> is truthy and did NOT
+        ///     change, any attribute that has been affected by user interactions and did
+        ///     not receive a different value in the new figure will keep the interaction
+        ///     value. <c>layout.uirevision</c> attribute serves as the default for <c>uirevision</c>
+        ///     attributes in various sub-containers. For finer control you can set these
+        ///     sub-attributes directly. For example, if your app separately controls the
+        ///     data on the x and y axes you might set <c>xaxis.uirevision=<c>time</c></c>
+        ///     and <c>yaxis.uirevision=<c>cost</c></c>. Then if only the y data is changed,
+        ///     you can update <c>yaxis.uirevision=<c>quantity</c></c> and the y axis range
+        ///     will reset but the x axis range will retain any user-driven zoom.
+        /// </summary>
+        [JsonPropertyName(@"uirevision")]
+        public object UiRevision { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the UniformText.
+        /// </summary>
+        [JsonPropertyName(@"uniformtext")]
+        public Plotly.Blazor.LayoutLib.UniformText UniformText { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the UpdateMenus.
+        /// </summary>
+        [JsonPropertyName(@"updatemenus")]
+        public IList<Plotly.Blazor.LayoutLib.UpdateMenu> UpdateMenus { get; set;} 
+
+        /// <summary>
+        ///     Sets the plot&#39;s width (in px).
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <summary>
         ///     Gets or sets the XAxis.
@@ -566,102 +662,6 @@ namespace Plotly.Blazor
         [JsonPropertyName(@"yaxis")]
         [Subplot]
         public IList<Plotly.Blazor.LayoutLib.YAxis> YAxis { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Ternary.
-        /// </summary>
-        [JsonPropertyName(@"ternary")]
-        [Subplot]
-        public IList<Plotly.Blazor.LayoutLib.Ternary> Ternary { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Scene.
-        /// </summary>
-        [JsonPropertyName(@"scene")]
-        [Subplot]
-        public IList<Plotly.Blazor.LayoutLib.Scene> Scene { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Geo.
-        /// </summary>
-        [JsonPropertyName(@"geo")]
-        [Subplot]
-        public IList<Plotly.Blazor.LayoutLib.Geo> Geo { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the MapBox.
-        /// </summary>
-        [JsonPropertyName(@"mapbox")]
-        [Subplot]
-        public IList<Plotly.Blazor.LayoutLib.MapBox> MapBox { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Polar.
-        /// </summary>
-        [JsonPropertyName(@"polar")]
-        [Subplot]
-        public IList<Plotly.Blazor.LayoutLib.Polar> Polar { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Legend.
-        /// </summary>
-        [JsonPropertyName(@"legend")]
-        public Plotly.Blazor.LayoutLib.Legend Legend { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Annotations.
-        /// </summary>
-        [JsonPropertyName(@"annotations")]
-        public IList<Plotly.Blazor.LayoutLib.Annotation> Annotations { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Shapes.
-        /// </summary>
-        [JsonPropertyName(@"shapes")]
-        public IList<Plotly.Blazor.LayoutLib.Shape> Shapes { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Images.
-        /// </summary>
-        [JsonPropertyName(@"images")]
-        public IList<Plotly.Blazor.LayoutLib.Image> Images { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the UpdateMenus.
-        /// </summary>
-        [JsonPropertyName(@"updatemenus")]
-        public IList<Plotly.Blazor.LayoutLib.UpdateMenu> UpdateMenus { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Sliders.
-        /// </summary>
-        [JsonPropertyName(@"sliders")]
-        public IList<Plotly.Blazor.LayoutLib.Slider> Sliders { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the ColorScale.
-        /// </summary>
-        [JsonPropertyName(@"colorscale")]
-        public Plotly.Blazor.LayoutLib.ColorScale ColorScale { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the ColorAxis.
-        /// </summary>
-        [JsonPropertyName(@"coloraxis")]
-        [Subplot]
-        public IList<Plotly.Blazor.LayoutLib.ColorAxis> ColorAxis { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the ModeBar.
-        /// </summary>
-        [JsonPropertyName(@"modebar")]
-        public Plotly.Blazor.LayoutLib.ModeBar ModeBar { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
-        /// </summary>
-        [JsonPropertyName(@"metasrc")]
-        public string MetaSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -679,16 +679,6 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    BarMode == other.BarMode ||
-                    BarMode != null &&
-                    BarMode.Equals(other.BarMode)
-                ) && 
-                (
-                    BarNorm == other.BarNorm ||
-                    BarNorm != null &&
-                    BarNorm.Equals(other.BarNorm)
-                ) && 
-                (
                     BarGap == other.BarGap ||
                     BarGap != null &&
                     BarGap.Equals(other.BarGap)
@@ -699,9 +689,14 @@ namespace Plotly.Blazor
                     BarGroupGap.Equals(other.BarGroupGap)
                 ) && 
                 (
-                    BoxMode == other.BoxMode ||
-                    BoxMode != null &&
-                    BoxMode.Equals(other.BoxMode)
+                    BarMode == other.BarMode ||
+                    BarMode != null &&
+                    BarMode.Equals(other.BarMode)
+                ) && 
+                (
+                    BarNorm == other.BarNorm ||
+                    BarNorm != null &&
+                    BarNorm.Equals(other.BarNorm)
                 ) && 
                 (
                     BoxGap == other.BoxGap ||
@@ -714,24 +709,9 @@ namespace Plotly.Blazor
                     BoxGroupGap.Equals(other.BoxGroupGap)
                 ) && 
                 (
-                    ViolinMode == other.ViolinMode ||
-                    ViolinMode != null &&
-                    ViolinMode.Equals(other.ViolinMode)
-                ) && 
-                (
-                    ViolinGap == other.ViolinGap ||
-                    ViolinGap != null &&
-                    ViolinGap.Equals(other.ViolinGap)
-                ) && 
-                (
-                    ViolinGroupGap == other.ViolinGroupGap ||
-                    ViolinGroupGap != null &&
-                    ViolinGroupGap.Equals(other.ViolinGroupGap)
-                ) && 
-                (
-                    FunnelMode == other.FunnelMode ||
-                    FunnelMode != null &&
-                    FunnelMode.Equals(other.FunnelMode)
+                    BoxMode == other.BoxMode ||
+                    BoxMode != null &&
+                    BoxMode.Equals(other.BoxMode)
                 ) && 
                 (
                     FunnelGap == other.FunnelGap ||
@@ -744,9 +724,84 @@ namespace Plotly.Blazor
                     FunnelGroupGap.Equals(other.FunnelGroupGap)
                 ) && 
                 (
-                    WaterfallMode == other.WaterfallMode ||
-                    WaterfallMode != null &&
-                    WaterfallMode.Equals(other.WaterfallMode)
+                    FunnelMode == other.FunnelMode ||
+                    FunnelMode != null &&
+                    FunnelMode.Equals(other.FunnelMode)
+                ) && 
+                (
+                    ExtendFunnelAreaColors == other.ExtendFunnelAreaColors ||
+                    ExtendFunnelAreaColors != null &&
+                    ExtendFunnelAreaColors.Equals(other.ExtendFunnelAreaColors)
+                ) && 
+                (
+                    Equals(FunnelAreaColorway, other.FunnelAreaColorway) ||
+                    FunnelAreaColorway != null && other.FunnelAreaColorway != null &&
+                    FunnelAreaColorway.SequenceEqual(other.FunnelAreaColorway)
+                ) &&
+                (
+                    Equals(HiddenLabels, other.HiddenLabels) ||
+                    HiddenLabels != null && other.HiddenLabels != null &&
+                    HiddenLabels.SequenceEqual(other.HiddenLabels)
+                ) &&
+                (
+                    HiddenLabelsSrc == other.HiddenLabelsSrc ||
+                    HiddenLabelsSrc != null &&
+                    HiddenLabelsSrc.Equals(other.HiddenLabelsSrc)
+                ) && 
+                (
+                    ExtendIcicleColors == other.ExtendIcicleColors ||
+                    ExtendIcicleColors != null &&
+                    ExtendIcicleColors.Equals(other.ExtendIcicleColors)
+                ) && 
+                (
+                    Equals(IcicleColorway, other.IcicleColorway) ||
+                    IcicleColorway != null && other.IcicleColorway != null &&
+                    IcicleColorway.SequenceEqual(other.IcicleColorway)
+                ) &&
+                (
+                    ExtendPieColors == other.ExtendPieColors ||
+                    ExtendPieColors != null &&
+                    ExtendPieColors.Equals(other.ExtendPieColors)
+                ) && 
+                (
+                    Equals(PieColorway, other.PieColorway) ||
+                    PieColorway != null && other.PieColorway != null &&
+                    PieColorway.SequenceEqual(other.PieColorway)
+                ) &&
+                (
+                    ExtendSunburstColors == other.ExtendSunburstColors ||
+                    ExtendSunburstColors != null &&
+                    ExtendSunburstColors.Equals(other.ExtendSunburstColors)
+                ) && 
+                (
+                    Equals(SunburstColorway, other.SunburstColorway) ||
+                    SunburstColorway != null && other.SunburstColorway != null &&
+                    SunburstColorway.SequenceEqual(other.SunburstColorway)
+                ) &&
+                (
+                    ExtendTreeMapColors == other.ExtendTreeMapColors ||
+                    ExtendTreeMapColors != null &&
+                    ExtendTreeMapColors.Equals(other.ExtendTreeMapColors)
+                ) && 
+                (
+                    Equals(TreeMapColorway, other.TreeMapColorway) ||
+                    TreeMapColorway != null && other.TreeMapColorway != null &&
+                    TreeMapColorway.SequenceEqual(other.TreeMapColorway)
+                ) &&
+                (
+                    ViolinGap == other.ViolinGap ||
+                    ViolinGap != null &&
+                    ViolinGap.Equals(other.ViolinGap)
+                ) && 
+                (
+                    ViolinGroupGap == other.ViolinGroupGap ||
+                    ViolinGroupGap != null &&
+                    ViolinGroupGap.Equals(other.ViolinGroupGap)
+                ) && 
+                (
+                    ViolinMode == other.ViolinMode ||
+                    ViolinMode != null &&
+                    ViolinMode.Equals(other.ViolinMode)
                 ) && 
                 (
                     WaterfallGap == other.WaterfallGap ||
@@ -759,114 +814,24 @@ namespace Plotly.Blazor
                     WaterfallGroupGap.Equals(other.WaterfallGroupGap)
                 ) && 
                 (
-                    Equals(HiddenLabels, other.HiddenLabels) ||
-                    HiddenLabels != null && other.HiddenLabels != null &&
-                    HiddenLabels.SequenceEqual(other.HiddenLabels)
+                    WaterfallMode == other.WaterfallMode ||
+                    WaterfallMode != null &&
+                    WaterfallMode.Equals(other.WaterfallMode)
+                ) && 
+                (
+                    ActiveShape == other.ActiveShape ||
+                    ActiveShape != null &&
+                    ActiveShape.Equals(other.ActiveShape)
+                ) && 
+                (
+                    Equals(Annotations, other.Annotations) ||
+                    Annotations != null && other.Annotations != null &&
+                    Annotations.SequenceEqual(other.Annotations)
                 ) &&
-                (
-                    Equals(PieColorway, other.PieColorway) ||
-                    PieColorway != null && other.PieColorway != null &&
-                    PieColorway.SequenceEqual(other.PieColorway)
-                ) &&
-                (
-                    ExtendPieColors == other.ExtendPieColors ||
-                    ExtendPieColors != null &&
-                    ExtendPieColors.Equals(other.ExtendPieColors)
-                ) && 
-                (
-                    HiddenLabelsSrc == other.HiddenLabelsSrc ||
-                    HiddenLabelsSrc != null &&
-                    HiddenLabelsSrc.Equals(other.HiddenLabelsSrc)
-                ) && 
-                (
-                    Equals(SunburstColorway, other.SunburstColorway) ||
-                    SunburstColorway != null && other.SunburstColorway != null &&
-                    SunburstColorway.SequenceEqual(other.SunburstColorway)
-                ) &&
-                (
-                    ExtendSunburstColors == other.ExtendSunburstColors ||
-                    ExtendSunburstColors != null &&
-                    ExtendSunburstColors.Equals(other.ExtendSunburstColors)
-                ) && 
-                (
-                    Equals(TreeMapColorway, other.TreeMapColorway) ||
-                    TreeMapColorway != null && other.TreeMapColorway != null &&
-                    TreeMapColorway.SequenceEqual(other.TreeMapColorway)
-                ) &&
-                (
-                    ExtendTreeMapColors == other.ExtendTreeMapColors ||
-                    ExtendTreeMapColors != null &&
-                    ExtendTreeMapColors.Equals(other.ExtendTreeMapColors)
-                ) && 
-                (
-                    Equals(IcicleColorway, other.IcicleColorway) ||
-                    IcicleColorway != null && other.IcicleColorway != null &&
-                    IcicleColorway.SequenceEqual(other.IcicleColorway)
-                ) &&
-                (
-                    ExtendIcicleColors == other.ExtendIcicleColors ||
-                    ExtendIcicleColors != null &&
-                    ExtendIcicleColors.Equals(other.ExtendIcicleColors)
-                ) && 
-                (
-                    Equals(FunnelAreaColorway, other.FunnelAreaColorway) ||
-                    FunnelAreaColorway != null && other.FunnelAreaColorway != null &&
-                    FunnelAreaColorway.SequenceEqual(other.FunnelAreaColorway)
-                ) &&
-                (
-                    ExtendFunnelAreaColors == other.ExtendFunnelAreaColors ||
-                    ExtendFunnelAreaColors != null &&
-                    ExtendFunnelAreaColors.Equals(other.ExtendFunnelAreaColors)
-                ) && 
-                (
-                    Font == other.Font ||
-                    Font != null &&
-                    Font.Equals(other.Font)
-                ) && 
-                (
-                    Title == other.Title ||
-                    Title != null &&
-                    Title.Equals(other.Title)
-                ) && 
-                (
-                    UniformText == other.UniformText ||
-                    UniformText != null &&
-                    UniformText.Equals(other.UniformText)
-                ) && 
                 (
                     AutoSize == other.AutoSize ||
                     AutoSize != null &&
                     AutoSize.Equals(other.AutoSize)
-                ) && 
-                (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
-                    Height == other.Height ||
-                    Height != null &&
-                    Height.Equals(other.Height)
-                ) && 
-                (
-                    Margin == other.Margin ||
-                    Margin != null &&
-                    Margin.Equals(other.Margin)
-                ) && 
-                (
-                    Computed == other.Computed ||
-                    Computed != null &&
-                    Computed.Equals(other.Computed)
-                ) && 
-                (
-                    PaperBgColor == other.PaperBgColor ||
-                    PaperBgColor != null &&
-                    PaperBgColor.Equals(other.PaperBgColor)
-                ) && 
-                (
-                    PlotBgColor == other.PlotBgColor ||
-                    PlotBgColor != null &&
-                    PlotBgColor.Equals(other.PlotBgColor)
                 ) && 
                 (
                     AutoTypeNumbers == other.AutoTypeNumbers ||
@@ -874,19 +839,24 @@ namespace Plotly.Blazor
                     AutoTypeNumbers.Equals(other.AutoTypeNumbers)
                 ) && 
                 (
-                    Separators == other.Separators ||
-                    Separators != null &&
-                    Separators.Equals(other.Separators)
+                    Calendar == other.Calendar ||
+                    Calendar != null &&
+                    Calendar.Equals(other.Calendar)
                 ) && 
                 (
-                    HideSources == other.HideSources ||
-                    HideSources != null &&
-                    HideSources.Equals(other.HideSources)
+                    ClickMode == other.ClickMode ||
+                    ClickMode != null &&
+                    ClickMode.Equals(other.ClickMode)
                 ) && 
                 (
-                    ShowLegend == other.ShowLegend ||
-                    ShowLegend != null &&
-                    ShowLegend.Equals(other.ShowLegend)
+                    Equals(ColorAxis, other.ColorAxis) ||
+                    ColorAxis != null && other.ColorAxis != null &&
+                    ColorAxis.SequenceEqual(other.ColorAxis)
+                ) &&
+                (
+                    ColorScale == other.ColorScale ||
+                    ColorScale != null &&
+                    ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
                     Equals(Colorway, other.Colorway) ||
@@ -894,14 +864,19 @@ namespace Plotly.Blazor
                     Colorway.SequenceEqual(other.Colorway)
                 ) &&
                 (
+                    Computed == other.Computed ||
+                    Computed != null &&
+                    Computed.Equals(other.Computed)
+                ) && 
+                (
                     DataRevision == other.DataRevision ||
                     DataRevision != null &&
                     DataRevision.Equals(other.DataRevision)
                 ) && 
                 (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
+                    DragMode == other.DragMode ||
+                    DragMode != null &&
+                    DragMode.Equals(other.DragMode)
                 ) && 
                 (
                     EditRevision == other.EditRevision ||
@@ -909,24 +884,64 @@ namespace Plotly.Blazor
                     EditRevision.Equals(other.EditRevision)
                 ) && 
                 (
-                    SelectionRevision == other.SelectionRevision ||
-                    SelectionRevision != null &&
-                    SelectionRevision.Equals(other.SelectionRevision)
+                    Font == other.Font ||
+                    Font != null &&
+                    Font.Equals(other.Font)
                 ) && 
                 (
-                    Template == other.Template ||
-                    Template != null &&
-                    Template.Equals(other.Template)
+                    Equals(Geo, other.Geo) ||
+                    Geo != null && other.Geo != null &&
+                    Geo.SequenceEqual(other.Geo)
+                ) &&
+                (
+                    Grid == other.Grid ||
+                    Grid != null &&
+                    Grid.Equals(other.Grid)
                 ) && 
                 (
-                    NewShape == other.NewShape ||
-                    NewShape != null &&
-                    NewShape.Equals(other.NewShape)
+                    Height == other.Height ||
+                    Height != null &&
+                    Height.Equals(other.Height)
                 ) && 
                 (
-                    ActiveShape == other.ActiveShape ||
-                    ActiveShape != null &&
-                    ActiveShape.Equals(other.ActiveShape)
+                    HideSources == other.HideSources ||
+                    HideSources != null &&
+                    HideSources.Equals(other.HideSources)
+                ) && 
+                (
+                    HoverDistance == other.HoverDistance ||
+                    HoverDistance != null &&
+                    HoverDistance.Equals(other.HoverDistance)
+                ) && 
+                (
+                    HoverLabel == other.HoverLabel ||
+                    HoverLabel != null &&
+                    HoverLabel.Equals(other.HoverLabel)
+                ) && 
+                (
+                    HoverMode == other.HoverMode ||
+                    HoverMode != null &&
+                    HoverMode.Equals(other.HoverMode)
+                ) && 
+                (
+                    Equals(Images, other.Images) ||
+                    Images != null && other.Images != null &&
+                    Images.SequenceEqual(other.Images)
+                ) &&
+                (
+                    Legend == other.Legend ||
+                    Legend != null &&
+                    Legend.Equals(other.Legend)
+                ) && 
+                (
+                    Equals(MapBox, other.MapBox) ||
+                    MapBox != null && other.MapBox != null &&
+                    MapBox.SequenceEqual(other.MapBox)
+                ) &&
+                (
+                    Margin == other.Margin ||
+                    Margin != null &&
+                    Margin.Equals(other.Margin)
                 ) && 
                 (
                     Meta == other.Meta ||
@@ -939,54 +954,114 @@ namespace Plotly.Blazor
                     MetaArray.SequenceEqual(other.MetaArray)
                 ) &&
                 (
-                    Transition == other.Transition ||
-                    Transition != null &&
-                    Transition.Equals(other.Transition)
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
+                    MetaSrc.Equals(other.MetaSrc)
                 ) && 
                 (
-                    ClickMode == other.ClickMode ||
-                    ClickMode != null &&
-                    ClickMode.Equals(other.ClickMode)
+                    ModeBar == other.ModeBar ||
+                    ModeBar != null &&
+                    ModeBar.Equals(other.ModeBar)
                 ) && 
                 (
-                    DragMode == other.DragMode ||
-                    DragMode != null &&
-                    DragMode.Equals(other.DragMode)
+                    NewShape == other.NewShape ||
+                    NewShape != null &&
+                    NewShape.Equals(other.NewShape)
                 ) && 
                 (
-                    HoverMode == other.HoverMode ||
-                    HoverMode != null &&
-                    HoverMode.Equals(other.HoverMode)
+                    PaperBgColor == other.PaperBgColor ||
+                    PaperBgColor != null &&
+                    PaperBgColor.Equals(other.PaperBgColor)
                 ) && 
                 (
-                    HoverDistance == other.HoverDistance ||
-                    HoverDistance != null &&
-                    HoverDistance.Equals(other.HoverDistance)
+                    PlotBgColor == other.PlotBgColor ||
+                    PlotBgColor != null &&
+                    PlotBgColor.Equals(other.PlotBgColor)
                 ) && 
                 (
-                    SpikeDistance == other.SpikeDistance ||
-                    SpikeDistance != null &&
-                    SpikeDistance.Equals(other.SpikeDistance)
-                ) && 
+                    Equals(Polar, other.Polar) ||
+                    Polar != null && other.Polar != null &&
+                    Polar.SequenceEqual(other.Polar)
+                ) &&
                 (
-                    HoverLabel == other.HoverLabel ||
-                    HoverLabel != null &&
-                    HoverLabel.Equals(other.HoverLabel)
-                ) && 
+                    Equals(Scene, other.Scene) ||
+                    Scene != null && other.Scene != null &&
+                    Scene.SequenceEqual(other.Scene)
+                ) &&
                 (
                     SelectDirection == other.SelectDirection ||
                     SelectDirection != null &&
                     SelectDirection.Equals(other.SelectDirection)
                 ) && 
                 (
-                    Grid == other.Grid ||
-                    Grid != null &&
-                    Grid.Equals(other.Grid)
+                    SelectionRevision == other.SelectionRevision ||
+                    SelectionRevision != null &&
+                    SelectionRevision.Equals(other.SelectionRevision)
                 ) && 
                 (
-                    Calendar == other.Calendar ||
-                    Calendar != null &&
-                    Calendar.Equals(other.Calendar)
+                    Separators == other.Separators ||
+                    Separators != null &&
+                    Separators.Equals(other.Separators)
+                ) && 
+                (
+                    Equals(Shapes, other.Shapes) ||
+                    Shapes != null && other.Shapes != null &&
+                    Shapes.SequenceEqual(other.Shapes)
+                ) &&
+                (
+                    ShowLegend == other.ShowLegend ||
+                    ShowLegend != null &&
+                    ShowLegend.Equals(other.ShowLegend)
+                ) && 
+                (
+                    Equals(Sliders, other.Sliders) ||
+                    Sliders != null && other.Sliders != null &&
+                    Sliders.SequenceEqual(other.Sliders)
+                ) &&
+                (
+                    SpikeDistance == other.SpikeDistance ||
+                    SpikeDistance != null &&
+                    SpikeDistance.Equals(other.SpikeDistance)
+                ) && 
+                (
+                    Template == other.Template ||
+                    Template != null &&
+                    Template.Equals(other.Template)
+                ) && 
+                (
+                    Equals(Ternary, other.Ternary) ||
+                    Ternary != null && other.Ternary != null &&
+                    Ternary.SequenceEqual(other.Ternary)
+                ) &&
+                (
+                    Title == other.Title ||
+                    Title != null &&
+                    Title.Equals(other.Title)
+                ) && 
+                (
+                    Transition == other.Transition ||
+                    Transition != null &&
+                    Transition.Equals(other.Transition)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
+                ) && 
+                (
+                    UniformText == other.UniformText ||
+                    UniformText != null &&
+                    UniformText.Equals(other.UniformText)
+                ) && 
+                (
+                    Equals(UpdateMenus, other.UpdateMenus) ||
+                    UpdateMenus != null && other.UpdateMenus != null &&
+                    UpdateMenus.SequenceEqual(other.UpdateMenus)
+                ) &&
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 ) && 
                 (
                     Equals(XAxis, other.XAxis) ||
@@ -997,81 +1072,6 @@ namespace Plotly.Blazor
                     Equals(YAxis, other.YAxis) ||
                     YAxis != null && other.YAxis != null &&
                     YAxis.SequenceEqual(other.YAxis)
-                ) &&
-                (
-                    Equals(Ternary, other.Ternary) ||
-                    Ternary != null && other.Ternary != null &&
-                    Ternary.SequenceEqual(other.Ternary)
-                ) &&
-                (
-                    Equals(Scene, other.Scene) ||
-                    Scene != null && other.Scene != null &&
-                    Scene.SequenceEqual(other.Scene)
-                ) &&
-                (
-                    Equals(Geo, other.Geo) ||
-                    Geo != null && other.Geo != null &&
-                    Geo.SequenceEqual(other.Geo)
-                ) &&
-                (
-                    Equals(MapBox, other.MapBox) ||
-                    MapBox != null && other.MapBox != null &&
-                    MapBox.SequenceEqual(other.MapBox)
-                ) &&
-                (
-                    Equals(Polar, other.Polar) ||
-                    Polar != null && other.Polar != null &&
-                    Polar.SequenceEqual(other.Polar)
-                ) &&
-                (
-                    Legend == other.Legend ||
-                    Legend != null &&
-                    Legend.Equals(other.Legend)
-                ) && 
-                (
-                    Equals(Annotations, other.Annotations) ||
-                    Annotations != null && other.Annotations != null &&
-                    Annotations.SequenceEqual(other.Annotations)
-                ) &&
-                (
-                    Equals(Shapes, other.Shapes) ||
-                    Shapes != null && other.Shapes != null &&
-                    Shapes.SequenceEqual(other.Shapes)
-                ) &&
-                (
-                    Equals(Images, other.Images) ||
-                    Images != null && other.Images != null &&
-                    Images.SequenceEqual(other.Images)
-                ) &&
-                (
-                    Equals(UpdateMenus, other.UpdateMenus) ||
-                    UpdateMenus != null && other.UpdateMenus != null &&
-                    UpdateMenus.SequenceEqual(other.UpdateMenus)
-                ) &&
-                (
-                    Equals(Sliders, other.Sliders) ||
-                    Sliders != null && other.Sliders != null &&
-                    Sliders.SequenceEqual(other.Sliders)
-                ) &&
-                (
-                    ColorScale == other.ColorScale ||
-                    ColorScale != null &&
-                    ColorScale.Equals(other.ColorScale)
-                ) && 
-                (
-                    Equals(ColorAxis, other.ColorAxis) ||
-                    ColorAxis != null && other.ColorAxis != null &&
-                    ColorAxis.SequenceEqual(other.ColorAxis)
-                ) &&
-                (
-                    ModeBar == other.ModeBar ||
-                    ModeBar != null &&
-                    ModeBar.Equals(other.ModeBar)
-                ) && 
-                (
-                    MetaSrc == other.MetaSrc ||
-                    MetaSrc != null &&
-                    MetaSrc.Equals(other.MetaSrc)
                 );
         }
 
@@ -1081,85 +1081,85 @@ namespace Plotly.Blazor
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (BarMode != null) hashCode = hashCode * 59 + BarMode.GetHashCode();
-                if (BarNorm != null) hashCode = hashCode * 59 + BarNorm.GetHashCode();
                 if (BarGap != null) hashCode = hashCode * 59 + BarGap.GetHashCode();
                 if (BarGroupGap != null) hashCode = hashCode * 59 + BarGroupGap.GetHashCode();
-                if (BoxMode != null) hashCode = hashCode * 59 + BoxMode.GetHashCode();
+                if (BarMode != null) hashCode = hashCode * 59 + BarMode.GetHashCode();
+                if (BarNorm != null) hashCode = hashCode * 59 + BarNorm.GetHashCode();
                 if (BoxGap != null) hashCode = hashCode * 59 + BoxGap.GetHashCode();
                 if (BoxGroupGap != null) hashCode = hashCode * 59 + BoxGroupGap.GetHashCode();
-                if (ViolinMode != null) hashCode = hashCode * 59 + ViolinMode.GetHashCode();
-                if (ViolinGap != null) hashCode = hashCode * 59 + ViolinGap.GetHashCode();
-                if (ViolinGroupGap != null) hashCode = hashCode * 59 + ViolinGroupGap.GetHashCode();
-                if (FunnelMode != null) hashCode = hashCode * 59 + FunnelMode.GetHashCode();
+                if (BoxMode != null) hashCode = hashCode * 59 + BoxMode.GetHashCode();
                 if (FunnelGap != null) hashCode = hashCode * 59 + FunnelGap.GetHashCode();
                 if (FunnelGroupGap != null) hashCode = hashCode * 59 + FunnelGroupGap.GetHashCode();
-                if (WaterfallMode != null) hashCode = hashCode * 59 + WaterfallMode.GetHashCode();
+                if (FunnelMode != null) hashCode = hashCode * 59 + FunnelMode.GetHashCode();
+                if (ExtendFunnelAreaColors != null) hashCode = hashCode * 59 + ExtendFunnelAreaColors.GetHashCode();
+                if (FunnelAreaColorway != null) hashCode = hashCode * 59 + FunnelAreaColorway.GetHashCode();
+                if (HiddenLabels != null) hashCode = hashCode * 59 + HiddenLabels.GetHashCode();
+                if (HiddenLabelsSrc != null) hashCode = hashCode * 59 + HiddenLabelsSrc.GetHashCode();
+                if (ExtendIcicleColors != null) hashCode = hashCode * 59 + ExtendIcicleColors.GetHashCode();
+                if (IcicleColorway != null) hashCode = hashCode * 59 + IcicleColorway.GetHashCode();
+                if (ExtendPieColors != null) hashCode = hashCode * 59 + ExtendPieColors.GetHashCode();
+                if (PieColorway != null) hashCode = hashCode * 59 + PieColorway.GetHashCode();
+                if (ExtendSunburstColors != null) hashCode = hashCode * 59 + ExtendSunburstColors.GetHashCode();
+                if (SunburstColorway != null) hashCode = hashCode * 59 + SunburstColorway.GetHashCode();
+                if (ExtendTreeMapColors != null) hashCode = hashCode * 59 + ExtendTreeMapColors.GetHashCode();
+                if (TreeMapColorway != null) hashCode = hashCode * 59 + TreeMapColorway.GetHashCode();
+                if (ViolinGap != null) hashCode = hashCode * 59 + ViolinGap.GetHashCode();
+                if (ViolinGroupGap != null) hashCode = hashCode * 59 + ViolinGroupGap.GetHashCode();
+                if (ViolinMode != null) hashCode = hashCode * 59 + ViolinMode.GetHashCode();
                 if (WaterfallGap != null) hashCode = hashCode * 59 + WaterfallGap.GetHashCode();
                 if (WaterfallGroupGap != null) hashCode = hashCode * 59 + WaterfallGroupGap.GetHashCode();
-                if (HiddenLabels != null) hashCode = hashCode * 59 + HiddenLabels.GetHashCode();
-                if (PieColorway != null) hashCode = hashCode * 59 + PieColorway.GetHashCode();
-                if (ExtendPieColors != null) hashCode = hashCode * 59 + ExtendPieColors.GetHashCode();
-                if (HiddenLabelsSrc != null) hashCode = hashCode * 59 + HiddenLabelsSrc.GetHashCode();
-                if (SunburstColorway != null) hashCode = hashCode * 59 + SunburstColorway.GetHashCode();
-                if (ExtendSunburstColors != null) hashCode = hashCode * 59 + ExtendSunburstColors.GetHashCode();
-                if (TreeMapColorway != null) hashCode = hashCode * 59 + TreeMapColorway.GetHashCode();
-                if (ExtendTreeMapColors != null) hashCode = hashCode * 59 + ExtendTreeMapColors.GetHashCode();
-                if (IcicleColorway != null) hashCode = hashCode * 59 + IcicleColorway.GetHashCode();
-                if (ExtendIcicleColors != null) hashCode = hashCode * 59 + ExtendIcicleColors.GetHashCode();
-                if (FunnelAreaColorway != null) hashCode = hashCode * 59 + FunnelAreaColorway.GetHashCode();
-                if (ExtendFunnelAreaColors != null) hashCode = hashCode * 59 + ExtendFunnelAreaColors.GetHashCode();
-                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
-                if (UniformText != null) hashCode = hashCode * 59 + UniformText.GetHashCode();
-                if (AutoSize != null) hashCode = hashCode * 59 + AutoSize.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (Height != null) hashCode = hashCode * 59 + Height.GetHashCode();
-                if (Margin != null) hashCode = hashCode * 59 + Margin.GetHashCode();
-                if (Computed != null) hashCode = hashCode * 59 + Computed.GetHashCode();
-                if (PaperBgColor != null) hashCode = hashCode * 59 + PaperBgColor.GetHashCode();
-                if (PlotBgColor != null) hashCode = hashCode * 59 + PlotBgColor.GetHashCode();
-                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
-                if (Separators != null) hashCode = hashCode * 59 + Separators.GetHashCode();
-                if (HideSources != null) hashCode = hashCode * 59 + HideSources.GetHashCode();
-                if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
-                if (Colorway != null) hashCode = hashCode * 59 + Colorway.GetHashCode();
-                if (DataRevision != null) hashCode = hashCode * 59 + DataRevision.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (EditRevision != null) hashCode = hashCode * 59 + EditRevision.GetHashCode();
-                if (SelectionRevision != null) hashCode = hashCode * 59 + SelectionRevision.GetHashCode();
-                if (Template != null) hashCode = hashCode * 59 + Template.GetHashCode();
-                if (NewShape != null) hashCode = hashCode * 59 + NewShape.GetHashCode();
+                if (WaterfallMode != null) hashCode = hashCode * 59 + WaterfallMode.GetHashCode();
                 if (ActiveShape != null) hashCode = hashCode * 59 + ActiveShape.GetHashCode();
+                if (Annotations != null) hashCode = hashCode * 59 + Annotations.GetHashCode();
+                if (AutoSize != null) hashCode = hashCode * 59 + AutoSize.GetHashCode();
+                if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
+                if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
+                if (ClickMode != null) hashCode = hashCode * 59 + ClickMode.GetHashCode();
+                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
+                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
+                if (Colorway != null) hashCode = hashCode * 59 + Colorway.GetHashCode();
+                if (Computed != null) hashCode = hashCode * 59 + Computed.GetHashCode();
+                if (DataRevision != null) hashCode = hashCode * 59 + DataRevision.GetHashCode();
+                if (DragMode != null) hashCode = hashCode * 59 + DragMode.GetHashCode();
+                if (EditRevision != null) hashCode = hashCode * 59 + EditRevision.GetHashCode();
+                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Geo != null) hashCode = hashCode * 59 + Geo.GetHashCode();
+                if (Grid != null) hashCode = hashCode * 59 + Grid.GetHashCode();
+                if (Height != null) hashCode = hashCode * 59 + Height.GetHashCode();
+                if (HideSources != null) hashCode = hashCode * 59 + HideSources.GetHashCode();
+                if (HoverDistance != null) hashCode = hashCode * 59 + HoverDistance.GetHashCode();
+                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
+                if (HoverMode != null) hashCode = hashCode * 59 + HoverMode.GetHashCode();
+                if (Images != null) hashCode = hashCode * 59 + Images.GetHashCode();
+                if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
+                if (MapBox != null) hashCode = hashCode * 59 + MapBox.GetHashCode();
+                if (Margin != null) hashCode = hashCode * 59 + Margin.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
                 if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
-                if (Transition != null) hashCode = hashCode * 59 + Transition.GetHashCode();
-                if (ClickMode != null) hashCode = hashCode * 59 + ClickMode.GetHashCode();
-                if (DragMode != null) hashCode = hashCode * 59 + DragMode.GetHashCode();
-                if (HoverMode != null) hashCode = hashCode * 59 + HoverMode.GetHashCode();
-                if (HoverDistance != null) hashCode = hashCode * 59 + HoverDistance.GetHashCode();
-                if (SpikeDistance != null) hashCode = hashCode * 59 + SpikeDistance.GetHashCode();
-                if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
+                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (ModeBar != null) hashCode = hashCode * 59 + ModeBar.GetHashCode();
+                if (NewShape != null) hashCode = hashCode * 59 + NewShape.GetHashCode();
+                if (PaperBgColor != null) hashCode = hashCode * 59 + PaperBgColor.GetHashCode();
+                if (PlotBgColor != null) hashCode = hashCode * 59 + PlotBgColor.GetHashCode();
+                if (Polar != null) hashCode = hashCode * 59 + Polar.GetHashCode();
+                if (Scene != null) hashCode = hashCode * 59 + Scene.GetHashCode();
                 if (SelectDirection != null) hashCode = hashCode * 59 + SelectDirection.GetHashCode();
-                if (Grid != null) hashCode = hashCode * 59 + Grid.GetHashCode();
-                if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
+                if (SelectionRevision != null) hashCode = hashCode * 59 + SelectionRevision.GetHashCode();
+                if (Separators != null) hashCode = hashCode * 59 + Separators.GetHashCode();
+                if (Shapes != null) hashCode = hashCode * 59 + Shapes.GetHashCode();
+                if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
+                if (Sliders != null) hashCode = hashCode * 59 + Sliders.GetHashCode();
+                if (SpikeDistance != null) hashCode = hashCode * 59 + SpikeDistance.GetHashCode();
+                if (Template != null) hashCode = hashCode * 59 + Template.GetHashCode();
+                if (Ternary != null) hashCode = hashCode * 59 + Ternary.GetHashCode();
+                if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
+                if (Transition != null) hashCode = hashCode * 59 + Transition.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (UniformText != null) hashCode = hashCode * 59 + UniformText.GetHashCode();
+                if (UpdateMenus != null) hashCode = hashCode * 59 + UpdateMenus.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (XAxis != null) hashCode = hashCode * 59 + XAxis.GetHashCode();
                 if (YAxis != null) hashCode = hashCode * 59 + YAxis.GetHashCode();
-                if (Ternary != null) hashCode = hashCode * 59 + Ternary.GetHashCode();
-                if (Scene != null) hashCode = hashCode * 59 + Scene.GetHashCode();
-                if (Geo != null) hashCode = hashCode * 59 + Geo.GetHashCode();
-                if (MapBox != null) hashCode = hashCode * 59 + MapBox.GetHashCode();
-                if (Polar != null) hashCode = hashCode * 59 + Polar.GetHashCode();
-                if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
-                if (Annotations != null) hashCode = hashCode * 59 + Annotations.GetHashCode();
-                if (Shapes != null) hashCode = hashCode * 59 + Shapes.GetHashCode();
-                if (Images != null) hashCode = hashCode * 59 + Images.GetHashCode();
-                if (UpdateMenus != null) hashCode = hashCode * 59 + UpdateMenus.GetHashCode();
-                if (Sliders != null) hashCode = hashCode * 59 + Sliders.GetHashCode();
-                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
-                if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
-                if (ModeBar != null) hashCode = hashCode * 59 + ModeBar.GetHashCode();
-                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
                 return hashCode;
             }
         }

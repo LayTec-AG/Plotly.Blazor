@@ -20,24 +20,6 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     public class LonAxis : IEquatable<LonAxis>
     {
         /// <summary>
-        ///     Sets the range of this axis (in degrees), sets the map&#39;s clipped coordinates.
-        /// </summary>
-        [JsonPropertyName(@"range")]
-        public IList<object> Range { get; set;} 
-
-        /// <summary>
-        ///     Sets whether or not graticule are shown on the map.
-        /// </summary>
-        [JsonPropertyName(@"showgrid")]
-        public bool? ShowGrid { get; set;} 
-
-        /// <summary>
-        ///     Sets the graticule&#39;s starting tick longitude/latitude.
-        /// </summary>
-        [JsonPropertyName(@"tick0")]
-        public decimal? Tick0 { get; set;} 
-
-        /// <summary>
         ///     Sets the graticule&#39;s longitude/latitude tick step.
         /// </summary>
         [JsonPropertyName(@"dtick")]
@@ -55,6 +37,24 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         [JsonPropertyName(@"gridwidth")]
         public decimal? GridWidth { get; set;} 
 
+        /// <summary>
+        ///     Sets the range of this axis (in degrees), sets the map&#39;s clipped coordinates.
+        /// </summary>
+        [JsonPropertyName(@"range")]
+        public IList<object> Range { get; set;} 
+
+        /// <summary>
+        ///     Sets whether or not graticule are shown on the map.
+        /// </summary>
+        [JsonPropertyName(@"showgrid")]
+        public bool? ShowGrid { get; set;} 
+
+        /// <summary>
+        ///     Sets the graticule&#39;s starting tick longitude/latitude.
+        /// </summary>
+        [JsonPropertyName(@"tick0")]
+        public decimal? Tick0 { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -71,21 +71,6 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
 
             return 
                 (
-                    Equals(Range, other.Range) ||
-                    Range != null && other.Range != null &&
-                    Range.SequenceEqual(other.Range)
-                ) &&
-                (
-                    ShowGrid == other.ShowGrid ||
-                    ShowGrid != null &&
-                    ShowGrid.Equals(other.ShowGrid)
-                ) && 
-                (
-                    Tick0 == other.Tick0 ||
-                    Tick0 != null &&
-                    Tick0.Equals(other.Tick0)
-                ) && 
-                (
                     DTick == other.DTick ||
                     DTick != null &&
                     DTick.Equals(other.DTick)
@@ -99,6 +84,21 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
                     GridWidth == other.GridWidth ||
                     GridWidth != null &&
                     GridWidth.Equals(other.GridWidth)
+                ) && 
+                (
+                    Equals(Range, other.Range) ||
+                    Range != null && other.Range != null &&
+                    Range.SequenceEqual(other.Range)
+                ) &&
+                (
+                    ShowGrid == other.ShowGrid ||
+                    ShowGrid != null &&
+                    ShowGrid.Equals(other.ShowGrid)
+                ) && 
+                (
+                    Tick0 == other.Tick0 ||
+                    Tick0 != null &&
+                    Tick0.Equals(other.Tick0)
                 );
         }
 
@@ -108,12 +108,12 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
-                if (ShowGrid != null) hashCode = hashCode * 59 + ShowGrid.GetHashCode();
-                if (Tick0 != null) hashCode = hashCode * 59 + Tick0.GetHashCode();
                 if (DTick != null) hashCode = hashCode * 59 + DTick.GetHashCode();
                 if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
+                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
+                if (ShowGrid != null) hashCode = hashCode * 59 + ShowGrid.GetHashCode();
+                if (Tick0 != null) hashCode = hashCode * 59 + Tick0.GetHashCode();
                 return hashCode;
             }
         }

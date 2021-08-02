@@ -20,17 +20,34 @@ namespace Plotly.Blazor.LayoutLib
     public class UpdateMenu : IEquatable<UpdateMenu>
     {
         /// <summary>
-        ///     Determines whether or not the update menu is visible.
+        ///     Determines which button (by index starting from 0) is considered active.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"active")]
+        public int? Active { get; set;} 
 
         /// <summary>
-        ///     Determines whether the buttons are accessible via a dropdown menu or whether
-        ///     the buttons are stacked horizontally or vertically
+        ///     Sets the background color of the update menu buttons.
         /// </summary>
-        [JsonPropertyName(@"type")]
-        public Plotly.Blazor.LayoutLib.UpdateMenuLib.TypeEnum? Type { get; set;} 
+        [JsonPropertyName(@"bgcolor")]
+        public object BgColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the color of the border enclosing the update menu.
+        /// </summary>
+        [JsonPropertyName(@"bordercolor")]
+        public object BorderColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the border enclosing the update menu.
+        /// </summary>
+        [JsonPropertyName(@"borderwidth")]
+        public decimal? BorderWidth { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Buttons.
+        /// </summary>
+        [JsonPropertyName(@"buttons")]
+        public IList<Plotly.Blazor.LayoutLib.UpdateMenuLib.Button> Buttons { get; set;} 
 
         /// <summary>
         ///     Determines the direction in which the buttons are laid out, whether in a
@@ -41,10 +58,27 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.UpdateMenuLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
-        ///     Determines which button (by index starting from 0) is considered active.
+        ///     Sets the font of the update menu button text.
         /// </summary>
-        [JsonPropertyName(@"active")]
-        public int? Active { get; set;} 
+        [JsonPropertyName(@"font")]
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     When used in a template, named items are created in the output figure in
+        ///     addition to any items the figure already has in this array. You can modify
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     Sets the padding around the buttons or dropdown menu.
+        /// </summary>
+        [JsonPropertyName(@"pad")]
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.Pad Pad { get; set;} 
 
         /// <summary>
         ///     Highlights active dropdown item or active button if true.
@@ -53,10 +87,29 @@ namespace Plotly.Blazor.LayoutLib
         public bool? ShowActive { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Buttons.
+        ///     Used to refer to a named item in this array in the template. Named items
+        ///     from the template will be created even without a matching item in the input
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
         /// </summary>
-        [JsonPropertyName(@"buttons")]
-        public IList<Plotly.Blazor.LayoutLib.UpdateMenuLib.Button> Buttons { get; set;} 
+        [JsonPropertyName(@"templateitemname")]
+        public string TemplateItemName { get; set;} 
+
+        /// <summary>
+        ///     Determines whether the buttons are accessible via a dropdown menu or whether
+        ///     the buttons are stacked horizontally or vertically
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        public Plotly.Blazor.LayoutLib.UpdateMenuLib.TypeEnum? Type { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not the update menu is visible.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the x position (in normalized coordinates) of the update menu.
@@ -86,59 +139,6 @@ namespace Plotly.Blazor.LayoutLib
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.UpdateMenuLib.YAnchorEnum? YAnchor { get; set;} 
 
-        /// <summary>
-        ///     Sets the padding around the buttons or dropdown menu.
-        /// </summary>
-        [JsonPropertyName(@"pad")]
-        public Plotly.Blazor.LayoutLib.UpdateMenuLib.Pad Pad { get; set;} 
-
-        /// <summary>
-        ///     Sets the font of the update menu button text.
-        /// </summary>
-        [JsonPropertyName(@"font")]
-        public Plotly.Blazor.LayoutLib.UpdateMenuLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Sets the background color of the update menu buttons.
-        /// </summary>
-        [JsonPropertyName(@"bgcolor")]
-        public object BgColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the color of the border enclosing the update menu.
-        /// </summary>
-        [JsonPropertyName(@"bordercolor")]
-        public object BorderColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the width (in px) of the border enclosing the update menu.
-        /// </summary>
-        [JsonPropertyName(@"borderwidth")]
-        public decimal? BorderWidth { get; set;} 
-
-        /// <summary>
-        ///     When used in a template, named items are created in the output figure in
-        ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with <c>templateitemname</c>
-        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
-        ///     of a template.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Used to refer to a named item in this array in the template. Named items
-        ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
-        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
-        ///     or no matching item, this item will be hidden unless you explicitly show
-        ///     it with &#39;visible: true&#39;.
-        /// </summary>
-        [JsonPropertyName(@"templateitemname")]
-        public string TemplateItemName { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -155,24 +155,49 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Active == other.Active ||
+                    Active != null &&
+                    Active.Equals(other.Active)
                 ) && 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
+                    BgColor == other.BgColor ||
+                    BgColor != null &&
+                    BgColor.Equals(other.BgColor)
                 ) && 
+                (
+                    BorderColor == other.BorderColor ||
+                    BorderColor != null &&
+                    BorderColor.Equals(other.BorderColor)
+                ) && 
+                (
+                    BorderWidth == other.BorderWidth ||
+                    BorderWidth != null &&
+                    BorderWidth.Equals(other.BorderWidth)
+                ) && 
+                (
+                    Equals(Buttons, other.Buttons) ||
+                    Buttons != null && other.Buttons != null &&
+                    Buttons.SequenceEqual(other.Buttons)
+                ) &&
                 (
                     Direction == other.Direction ||
                     Direction != null &&
                     Direction.Equals(other.Direction)
                 ) && 
                 (
-                    Active == other.Active ||
-                    Active != null &&
-                    Active.Equals(other.Active)
+                    Font == other.Font ||
+                    Font != null &&
+                    Font.Equals(other.Font)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    Pad == other.Pad ||
+                    Pad != null &&
+                    Pad.Equals(other.Pad)
                 ) && 
                 (
                     ShowActive == other.ShowActive ||
@@ -180,10 +205,20 @@ namespace Plotly.Blazor.LayoutLib
                     ShowActive.Equals(other.ShowActive)
                 ) && 
                 (
-                    Equals(Buttons, other.Buttons) ||
-                    Buttons != null && other.Buttons != null &&
-                    Buttons.SequenceEqual(other.Buttons)
-                ) &&
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
+                    TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
                 (
                     X == other.X ||
                     X != null &&
@@ -203,41 +238,6 @@ namespace Plotly.Blazor.LayoutLib
                     YAnchor == other.YAnchor ||
                     YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
-                ) && 
-                (
-                    Pad == other.Pad ||
-                    Pad != null &&
-                    Pad.Equals(other.Pad)
-                ) && 
-                (
-                    Font == other.Font ||
-                    Font != null &&
-                    Font.Equals(other.Font)
-                ) && 
-                (
-                    BgColor == other.BgColor ||
-                    BgColor != null &&
-                    BgColor.Equals(other.BgColor)
-                ) && 
-                (
-                    BorderColor == other.BorderColor ||
-                    BorderColor != null &&
-                    BorderColor.Equals(other.BorderColor)
-                ) && 
-                (
-                    BorderWidth == other.BorderWidth ||
-                    BorderWidth != null &&
-                    BorderWidth.Equals(other.BorderWidth)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    TemplateItemName == other.TemplateItemName ||
-                    TemplateItemName != null &&
-                    TemplateItemName.Equals(other.TemplateItemName)
                 );
         }
 
@@ -247,23 +247,23 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Direction != null) hashCode = hashCode * 59 + Direction.GetHashCode();
                 if (Active != null) hashCode = hashCode * 59 + Active.GetHashCode();
-                if (ShowActive != null) hashCode = hashCode * 59 + ShowActive.GetHashCode();
+                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
+                if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
+                if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 if (Buttons != null) hashCode = hashCode * 59 + Buttons.GetHashCode();
+                if (Direction != null) hashCode = hashCode * 59 + Direction.GetHashCode();
+                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
+                if (ShowActive != null) hashCode = hashCode * 59 + ShowActive.GetHashCode();
+                if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
-                if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
-                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
-                if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
-                if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
                 return hashCode;
             }
         }

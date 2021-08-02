@@ -15,49 +15,171 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {
-        [EnumMember(Value=@"equirectangular")]
-        EquiRectangular,
-        [EnumMember(Value=@"mercator")]
-        Mercator,
-        [EnumMember(Value=@"orthographic")]
-        Orthographic,
-        [EnumMember(Value=@"natural earth")]
-        NaturalEarth,
-        [EnumMember(Value=@"kavrayskiy7")]
-        Kavrayskiy7,
-        [EnumMember(Value=@"miller")]
-        Miller,
-        [EnumMember(Value=@"robinson")]
-        Robinson,
-        [EnumMember(Value=@"eckert4")]
-        Eckert4,
+        [EnumMember(Value=@"airy")]
+        Airy,
+        [EnumMember(Value=@"aitoff")]
+        Aitoff,
+        [EnumMember(Value=@"albers")]
+        Albers,
+        [EnumMember(Value=@"albers usa")]
+        AlbersUSA,
+        [EnumMember(Value=@"august")]
+        August,
         [EnumMember(Value=@"azimuthal equal area")]
         AzimuthalEqualArea,
         [EnumMember(Value=@"azimuthal equidistant")]
         AzimuthalEquidistant,
-        [EnumMember(Value=@"conic equal area")]
-        ConicEqualArea,
+        [EnumMember(Value=@"baker")]
+        Baker,
+        [EnumMember(Value=@"bertin1953")]
+        Bertin1953,
+        [EnumMember(Value=@"boggs")]
+        BogGs,
+        [EnumMember(Value=@"bonne")]
+        Bonne,
+        [EnumMember(Value=@"bottomley")]
+        Bottomley,
+        [EnumMember(Value=@"bromley")]
+        Bromley,
+        [EnumMember(Value=@"collignon")]
+        Collignon,
         [EnumMember(Value=@"conic conformal")]
         ConicConFormal,
+        [EnumMember(Value=@"conic equal area")]
+        ConicEqualArea,
         [EnumMember(Value=@"conic equidistant")]
         ConicEquidistant,
+        [EnumMember(Value=@"craig")]
+        Craig,
+        [EnumMember(Value=@"craster")]
+        CRaster,
+        [EnumMember(Value=@"cylindrical equal area")]
+        CylindricalEqualArea,
+        [EnumMember(Value=@"cylindrical stereographic")]
+        CylindricalStereoGraphic,
+        [EnumMember(Value=@"eckert1")]
+        Eckert1,
+        [EnumMember(Value=@"eckert2")]
+        Eckert2,
+        [EnumMember(Value=@"eckert3")]
+        Eckert3,
+        [EnumMember(Value=@"eckert4")]
+        Eckert4,
+        [EnumMember(Value=@"eckert5")]
+        Eckert5,
+        [EnumMember(Value=@"eckert6")]
+        Eckert6,
+        [EnumMember(Value=@"eisenlohr")]
+        Eisenlohr,
+        [EnumMember(Value=@"equirectangular")]
+        EquiRectangular,
+        [EnumMember(Value=@"fahey")]
+        FaHey,
+        [EnumMember(Value=@"foucaut")]
+        Foucaut,
+        [EnumMember(Value=@"foucaut sinusoidal")]
+        FoucautSinusoidal,
+        [EnumMember(Value=@"ginzburg4")]
+        Ginzburg4,
+        [EnumMember(Value=@"ginzburg5")]
+        Ginzburg5,
+        [EnumMember(Value=@"ginzburg6")]
+        Ginzburg6,
+        [EnumMember(Value=@"ginzburg8")]
+        Ginzburg8,
+        [EnumMember(Value=@"ginzburg9")]
+        Ginzburg9,
         [EnumMember(Value=@"gnomonic")]
         Gnomonic,
-        [EnumMember(Value=@"stereographic")]
-        StereoGraphic,
-        [EnumMember(Value=@"mollweide")]
-        Mollweide,
+        [EnumMember(Value=@"gringorten")]
+        Gringorten,
+        [EnumMember(Value=@"gringorten quincuncial")]
+        GringortenQuincuncial,
+        [EnumMember(Value=@"guyou")]
+        Guyou,
         [EnumMember(Value=@"hammer")]
         Hammer,
+        [EnumMember(Value=@"hill")]
+        Hill,
+        [EnumMember(Value=@"homolosine")]
+        Homolosine,
+        [EnumMember(Value=@"hufnagel")]
+        Hufnagel,
+        [EnumMember(Value=@"hyperelliptical")]
+        HyperElliptical,
+        [EnumMember(Value=@"kavrayskiy7")]
+        Kavrayskiy7,
+        [EnumMember(Value=@"lagrange")]
+        Lagrange,
+        [EnumMember(Value=@"larrivee")]
+        Larrivee,
+        [EnumMember(Value=@"laskowski")]
+        Laskowski,
+        [EnumMember(Value=@"loximuthal")]
+        Loximuthal,
+        [EnumMember(Value=@"mercator")]
+        Mercator,
+        [EnumMember(Value=@"miller")]
+        Miller,
+        [EnumMember(Value=@"mollweide")]
+        Mollweide,
+        [EnumMember(Value=@"mt flat polar parabolic")]
+        MtFlatPolarParabolic,
+        [EnumMember(Value=@"mt flat polar quartic")]
+        MtFlatPolarQuartic,
+        [EnumMember(Value=@"mt flat polar sinusoidal")]
+        MtFlatPolarSinusoidal,
+        [EnumMember(Value=@"natural earth")]
+        NaturalEarth,
+        [EnumMember(Value=@"natural earth1")]
+        NaturalEarth1,
+        [EnumMember(Value=@"natural earth2")]
+        NaturalEarth2,
+        [EnumMember(Value=@"nell hammer")]
+        NellHammer,
+        [EnumMember(Value=@"nicolosi")]
+        Nicolosi,
+        [EnumMember(Value=@"orthographic")]
+        Orthographic,
+        [EnumMember(Value=@"patterson")]
+        Patterson,
+        [EnumMember(Value=@"peirce quincuncial")]
+        PeirceQuincuncial,
+        [EnumMember(Value=@"polyconic")]
+        PolyConic,
+        [EnumMember(Value=@"rectangular polyconic")]
+        RectangularPolyConic,
+        [EnumMember(Value=@"robinson")]
+        Robinson,
+        [EnumMember(Value=@"satellite")]
+        Satellite,
+        [EnumMember(Value=@"sinu mollweide")]
+        SinuMollweide,
+        [EnumMember(Value=@"sinusoidal")]
+        Sinusoidal,
+        [EnumMember(Value=@"stereographic")]
+        StereoGraphic,
+        [EnumMember(Value=@"times")]
+        Times,
         [EnumMember(Value=@"transverse mercator")]
         TransverseMercator,
-        [EnumMember(Value=@"albers usa")]
-        AlbersUSA,
+        [EnumMember(Value=@"van der grinten")]
+        VanDErGrinTen,
+        [EnumMember(Value=@"van der grinten2")]
+        VanDErGrinten2,
+        [EnumMember(Value=@"van der grinten3")]
+        VanDErGrinten3,
+        [EnumMember(Value=@"van der grinten4")]
+        VanDErGrinten4,
+        [EnumMember(Value=@"wagner4")]
+        Wagner4,
+        [EnumMember(Value=@"wagner6")]
+        Wagner6,
+        [EnumMember(Value=@"wiechel")]
+        Wiechel,
         [EnumMember(Value=@"winkel tripel")]
         WinkelTripeL,
-        [EnumMember(Value=@"aitoff")]
-        Aitoff,
-        [EnumMember(Value=@"sinusoidal")]
-        Sinusoidal
+        [EnumMember(Value=@"winkel3")]
+        Winkel3
     }
 }

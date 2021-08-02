@@ -18,12 +18,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets the title of this indicator.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
         ///     Sets the horizontal alignment of the title. It defaults to <c>center</c>
         ///     except for bullet charts for which it defaults to right.
         /// </summary>
@@ -35,6 +29,12 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.IndicatorLib.TitleLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     Sets the title of this indicator.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -52,11 +52,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Align == other.Align ||
                     Align != null &&
                     Align.Equals(other.Align)
@@ -65,6 +60,11 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -74,9 +74,9 @@ namespace Plotly.Blazor.Traces.IndicatorLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Align != null) hashCode = hashCode * 59 + Align.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

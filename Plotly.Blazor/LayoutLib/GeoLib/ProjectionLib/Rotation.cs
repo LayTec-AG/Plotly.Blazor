@@ -18,17 +18,17 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
     public class Rotation : IEquatable<Rotation>
     {
         /// <summary>
+        ///     Rotates the map along meridians (in degrees North).
+        /// </summary>
+        [JsonPropertyName(@"lat")]
+        public decimal? Lat { get; set;} 
+
+        /// <summary>
         ///     Rotates the map along parallels (in degrees East). Defaults to the center
         ///     of the <c>lonaxis.range</c> values.
         /// </summary>
         [JsonPropertyName(@"lon")]
         public decimal? Lon { get; set;} 
-
-        /// <summary>
-        ///     Rotates the map along meridians (in degrees North).
-        /// </summary>
-        [JsonPropertyName(@"lat")]
-        public decimal? Lat { get; set;} 
 
         /// <summary>
         ///     Roll the map (in degrees) For example, a roll of <c>180</c> makes the map
@@ -53,14 +53,14 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
 
             return 
                 (
-                    Lon == other.Lon ||
-                    Lon != null &&
-                    Lon.Equals(other.Lon)
-                ) && 
-                (
                     Lat == other.Lat ||
                     Lat != null &&
                     Lat.Equals(other.Lat)
+                ) && 
+                (
+                    Lon == other.Lon ||
+                    Lon != null &&
+                    Lon.Equals(other.Lon)
                 ) && 
                 (
                     Roll == other.Roll ||
@@ -75,8 +75,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 if (Lat != null) hashCode = hashCode * 59 + Lat.GetHashCode();
+                if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 if (Roll != null) hashCode = hashCode * 59 + Roll.GetHashCode();
                 return hashCode;
             }

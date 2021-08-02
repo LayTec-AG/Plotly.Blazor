@@ -26,28 +26,28 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public IList<object> X { get; set;} 
 
         /// <summary>
-        ///     Sets the y components of the starting position of the streamtubes
-        /// </summary>
-        [JsonPropertyName(@"y")]
-        public IList<object> Y { get; set;} 
-
-        /// <summary>
-        ///     Sets the z components of the starting position of the streamtubes
-        /// </summary>
-        [JsonPropertyName(@"z")]
-        public IList<object> Z { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  x .
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the y components of the starting position of the streamtubes
+        /// </summary>
+        [JsonPropertyName(@"y")]
+        public IList<object> Y { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  y .
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the z components of the starting position of the streamtubes
+        /// </summary>
+        [JsonPropertyName(@"z")]
+        public IList<object> Z { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  z .
@@ -76,25 +76,25 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
                     X.SequenceEqual(other.X)
                 ) &&
                 (
-                    Equals(Y, other.Y) ||
-                    Y != null && other.Y != null &&
-                    Y.SequenceEqual(other.Y)
-                ) &&
-                (
-                    Equals(Z, other.Z) ||
-                    Z != null && other.Z != null &&
-                    Z.SequenceEqual(other.Z)
-                ) &&
-                (
                     XSrc == other.XSrc ||
                     XSrc != null &&
                     XSrc.Equals(other.XSrc)
                 ) && 
                 (
+                    Equals(Y, other.Y) ||
+                    Y != null && other.Y != null &&
+                    Y.SequenceEqual(other.Y)
+                ) &&
+                (
                     YSrc == other.YSrc ||
                     YSrc != null &&
                     YSrc.Equals(other.YSrc)
                 ) && 
+                (
+                    Equals(Z, other.Z) ||
+                    Z != null && other.Z != null &&
+                    Z.SequenceEqual(other.Z)
+                ) &&
                 (
                     ZSrc == other.ZSrc ||
                     ZSrc != null &&
@@ -109,10 +109,10 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
             {
                 var hashCode = 41;
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
-                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
-                if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
                 if (XSrc != null) hashCode = hashCode * 59 + XSrc.GetHashCode();
+                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YSrc != null) hashCode = hashCode * 59 + YSrc.GetHashCode();
+                if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
                 if (ZSrc != null) hashCode = hashCode * 59 + ZSrc.GetHashCode();
                 return hashCode;
             }

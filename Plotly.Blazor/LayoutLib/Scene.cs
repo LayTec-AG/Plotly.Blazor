@@ -20,22 +20,10 @@ namespace Plotly.Blazor.LayoutLib
     public class Scene : IEquatable<Scene>
     {
         /// <summary>
-        ///     Gets or sets the BgColor.
+        ///     Gets or sets the Annotations.
         /// </summary>
-        [JsonPropertyName(@"bgcolor")]
-        public object BgColor { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Camera.
-        /// </summary>
-        [JsonPropertyName(@"camera")]
-        public Plotly.Blazor.LayoutLib.SceneLib.Camera Camera { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Domain.
-        /// </summary>
-        [JsonPropertyName(@"domain")]
-        public Plotly.Blazor.LayoutLib.SceneLib.Domain Domain { get; set;} 
+        [JsonPropertyName(@"annotations")]
+        public IList<Plotly.Blazor.LayoutLib.SceneLib.Annotation> Annotations { get; set;} 
 
         /// <summary>
         ///     If <c>cube</c>, this scene&#39;s axes are drawn as a cube, regardless of
@@ -57,22 +45,22 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.SceneLib.AspectRatio AspectRatio { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the XAxis.
+        ///     Gets or sets the BgColor.
         /// </summary>
-        [JsonPropertyName(@"xaxis")]
-        public Plotly.Blazor.LayoutLib.SceneLib.XAxis XAxis { get; set;} 
+        [JsonPropertyName(@"bgcolor")]
+        public object BgColor { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the YAxis.
+        ///     Gets or sets the Camera.
         /// </summary>
-        [JsonPropertyName(@"yaxis")]
-        public Plotly.Blazor.LayoutLib.SceneLib.YAxis YAxis { get; set;} 
+        [JsonPropertyName(@"camera")]
+        public Plotly.Blazor.LayoutLib.SceneLib.Camera Camera { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the ZAxis.
+        ///     Gets or sets the Domain.
         /// </summary>
-        [JsonPropertyName(@"zaxis")]
-        public Plotly.Blazor.LayoutLib.SceneLib.ZAxis ZAxis { get; set;} 
+        [JsonPropertyName(@"domain")]
+        public Plotly.Blazor.LayoutLib.SceneLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Determines the mode of drag interactions for this scene.
@@ -94,10 +82,22 @@ namespace Plotly.Blazor.LayoutLib
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Annotations.
+        ///     Gets or sets the XAxis.
         /// </summary>
-        [JsonPropertyName(@"annotations")]
-        public IList<Plotly.Blazor.LayoutLib.SceneLib.Annotation> Annotations { get; set;} 
+        [JsonPropertyName(@"xaxis")]
+        public Plotly.Blazor.LayoutLib.SceneLib.XAxis XAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the YAxis.
+        /// </summary>
+        [JsonPropertyName(@"yaxis")]
+        public Plotly.Blazor.LayoutLib.SceneLib.YAxis YAxis { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the ZAxis.
+        /// </summary>
+        [JsonPropertyName(@"zaxis")]
+        public Plotly.Blazor.LayoutLib.SceneLib.ZAxis ZAxis { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -115,6 +115,21 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
+                    Equals(Annotations, other.Annotations) ||
+                    Annotations != null && other.Annotations != null &&
+                    Annotations.SequenceEqual(other.Annotations)
+                ) &&
+                (
+                    AspectMode == other.AspectMode ||
+                    AspectMode != null &&
+                    AspectMode.Equals(other.AspectMode)
+                ) && 
+                (
+                    AspectRatio == other.AspectRatio ||
+                    AspectRatio != null &&
+                    AspectRatio.Equals(other.AspectRatio)
+                ) && 
+                (
                     BgColor == other.BgColor ||
                     BgColor != null &&
                     BgColor.Equals(other.BgColor)
@@ -128,31 +143,6 @@ namespace Plotly.Blazor.LayoutLib
                     Domain == other.Domain ||
                     Domain != null &&
                     Domain.Equals(other.Domain)
-                ) && 
-                (
-                    AspectMode == other.AspectMode ||
-                    AspectMode != null &&
-                    AspectMode.Equals(other.AspectMode)
-                ) && 
-                (
-                    AspectRatio == other.AspectRatio ||
-                    AspectRatio != null &&
-                    AspectRatio.Equals(other.AspectRatio)
-                ) && 
-                (
-                    XAxis == other.XAxis ||
-                    XAxis != null &&
-                    XAxis.Equals(other.XAxis)
-                ) && 
-                (
-                    YAxis == other.YAxis ||
-                    YAxis != null &&
-                    YAxis.Equals(other.YAxis)
-                ) && 
-                (
-                    ZAxis == other.ZAxis ||
-                    ZAxis != null &&
-                    ZAxis.Equals(other.ZAxis)
                 ) && 
                 (
                     DragMode == other.DragMode ||
@@ -170,9 +160,19 @@ namespace Plotly.Blazor.LayoutLib
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
-                    Equals(Annotations, other.Annotations) ||
-                    Annotations != null && other.Annotations != null &&
-                    Annotations.SequenceEqual(other.Annotations)
+                    XAxis == other.XAxis ||
+                    XAxis != null &&
+                    XAxis.Equals(other.XAxis)
+                ) && 
+                (
+                    YAxis == other.YAxis ||
+                    YAxis != null &&
+                    YAxis.Equals(other.YAxis)
+                ) && 
+                (
+                    ZAxis == other.ZAxis ||
+                    ZAxis != null &&
+                    ZAxis.Equals(other.ZAxis)
                 );
         }
 
@@ -182,18 +182,18 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Annotations != null) hashCode = hashCode * 59 + Annotations.GetHashCode();
+                if (AspectMode != null) hashCode = hashCode * 59 + AspectMode.GetHashCode();
+                if (AspectRatio != null) hashCode = hashCode * 59 + AspectRatio.GetHashCode();
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (Camera != null) hashCode = hashCode * 59 + Camera.GetHashCode();
                 if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
-                if (AspectMode != null) hashCode = hashCode * 59 + AspectMode.GetHashCode();
-                if (AspectRatio != null) hashCode = hashCode * 59 + AspectRatio.GetHashCode();
-                if (XAxis != null) hashCode = hashCode * 59 + XAxis.GetHashCode();
-                if (YAxis != null) hashCode = hashCode * 59 + YAxis.GetHashCode();
-                if (ZAxis != null) hashCode = hashCode * 59 + ZAxis.GetHashCode();
                 if (DragMode != null) hashCode = hashCode * 59 + DragMode.GetHashCode();
                 if (HoverMode != null) hashCode = hashCode * 59 + HoverMode.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
-                if (Annotations != null) hashCode = hashCode * 59 + Annotations.GetHashCode();
+                if (XAxis != null) hashCode = hashCode * 59 + XAxis.GetHashCode();
+                if (YAxis != null) hashCode = hashCode * 59 + YAxis.GetHashCode();
+                if (ZAxis != null) hashCode = hashCode * 59 + ZAxis.GetHashCode();
                 return hashCode;
             }
         }

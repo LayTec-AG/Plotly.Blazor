@@ -18,6 +18,12 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
     public class TickFont : IEquatable<TickFont>
     {
         /// <summary>
+        ///     Gets or sets the Color.
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
         ///     HTML font family - the typeface that will be applied by the web browser.
         ///     The web browser will only be able to apply a font if it is available on
         ///     the system which it operates. Provide multiple font families, separated
@@ -39,12 +45,6 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
         [JsonPropertyName(@"size")]
         public decimal? Size { get; set;} 
 
-        /// <summary>
-        ///     Gets or sets the Color.
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
-
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -61,6 +61,11 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
 
             return 
                 (
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
+                ) && 
+                (
                     Family == other.Family ||
                     Family != null &&
                     Family.Equals(other.Family)
@@ -69,11 +74,6 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
                     Size == other.Size ||
                     Size != null &&
                     Size.Equals(other.Size)
-                ) && 
-                (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
                 );
         }
 
@@ -83,9 +83,9 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Family != null) hashCode = hashCode * 59 + Family.GetHashCode();
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 return hashCode;
             }
         }

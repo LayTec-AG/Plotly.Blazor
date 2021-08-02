@@ -20,6 +20,24 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     public class Domain : IEquatable<Domain>
     {
         /// <summary>
+        ///     If there is a layout grid, use the domain for this column in the grid for
+        ///     this geo subplot . Note that geo subplots are constrained by domain. In
+        ///     general, when <c>projection.scale</c> is set to 1. a map will fit either
+        ///     its x or y domain, but not both.
+        /// </summary>
+        [JsonPropertyName(@"column")]
+        public int? Column { get; set;} 
+
+        /// <summary>
+        ///     If there is a layout grid, use the domain for this row in the grid for this
+        ///     geo subplot . Note that geo subplots are constrained by domain. In general,
+        ///     when <c>projection.scale</c> is set to 1. a map will fit either its x or
+        ///     y domain, but not both.
+        /// </summary>
+        [JsonPropertyName(@"row")]
+        public int? Row { get; set;} 
+
+        /// <summary>
         ///     Sets the horizontal domain of this geo subplot (in plot fraction). Note
         ///     that geo subplots are constrained by domain. In general, when <c>projection.scale</c>
         ///     is set to 1. a map will fit either its x or y domain, but not both.
@@ -34,24 +52,6 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         /// </summary>
         [JsonPropertyName(@"y")]
         public IList<object> Y { get; set;} 
-
-        /// <summary>
-        ///     If there is a layout grid, use the domain for this row in the grid for this
-        ///     geo subplot . Note that geo subplots are constrained by domain. In general,
-        ///     when <c>projection.scale</c> is set to 1. a map will fit either its x or
-        ///     y domain, but not both.
-        /// </summary>
-        [JsonPropertyName(@"row")]
-        public int? Row { get; set;} 
-
-        /// <summary>
-        ///     If there is a layout grid, use the domain for this column in the grid for
-        ///     this geo subplot . Note that geo subplots are constrained by domain. In
-        ///     general, when <c>projection.scale</c> is set to 1. a map will fit either
-        ///     its x or y domain, but not both.
-        /// </summary>
-        [JsonPropertyName(@"column")]
-        public int? Column { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -69,6 +69,16 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
 
             return 
                 (
+                    Column == other.Column ||
+                    Column != null &&
+                    Column.Equals(other.Column)
+                ) && 
+                (
+                    Row == other.Row ||
+                    Row != null &&
+                    Row.Equals(other.Row)
+                ) && 
+                (
                     Equals(X, other.X) ||
                     X != null && other.X != null &&
                     X.SequenceEqual(other.X)
@@ -77,16 +87,6 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
                     Equals(Y, other.Y) ||
                     Y != null && other.Y != null &&
                     Y.SequenceEqual(other.Y)
-                ) &&
-                (
-                    Row == other.Row ||
-                    Row != null &&
-                    Row.Equals(other.Row)
-                ) && 
-                (
-                    Column == other.Column ||
-                    Column != null &&
-                    Column.Equals(other.Column)
                 );
         }
 
@@ -96,10 +96,10 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Column != null) hashCode = hashCode * 59 + Column.GetHashCode();
+                if (Row != null) hashCode = hashCode * 59 + Row.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
-                if (Row != null) hashCode = hashCode * 59 + Row.GetHashCode();
-                if (Column != null) hashCode = hashCode * 59 + Column.GetHashCode();
                 return hashCode;
             }
         }

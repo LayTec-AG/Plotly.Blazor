@@ -26,12 +26,65 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum? Type { get; } = TraceTypeEnum.Sankey;
 
         /// <summary>
-        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
-        ///     trace is not drawn, but can appear as a legend item (provided that the legend
-        ///     itself is visible).
+        ///     If value is <c>snap</c> (the default), the node arrangement is assisted
+        ///     by automatic snapping of elements to preserve space between nodes specified
+        ///     via <c>nodepad</c>. If value is <c>perpendicular</c>, the nodes can only
+        ///     move along a line perpendicular to the flow. If value is <c>freeform</c>,
+        ///     the nodes can freely move on the plane. If value is <c>fixed</c>, the nodes
+        ///     are stationary.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public Plotly.Blazor.Traces.SankeyLib.VisibleEnum? Visible { get; set;} 
+        [JsonPropertyName(@"arrangement")]
+        public Plotly.Blazor.Traces.SankeyLib.ArrangementEnum? Arrangement { get; set;} 
+
+        /// <summary>
+        ///     Assigns extra data each datum. This may be useful when listening to hover,
+        ///     click and selection events. Note that, <c>scatter</c> traces also appends
+        ///     customdata items in the markers DOM elements
+        /// </summary>
+        [JsonPropertyName(@"customdata")]
+        public IList<object> CustomData { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        /// </summary>
+        [JsonPropertyName(@"customdatasrc")]
+        public string CustomDataSrc { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Domain.
+        /// </summary>
+        [JsonPropertyName(@"domain")]
+        public Plotly.Blazor.Traces.SankeyLib.Domain Domain { get; set;} 
+
+        /// <summary>
+        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
+        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
+        ///     is set, click and hover events are still fired. Note that this attribute
+        ///     is superseded by <c>node.hoverinfo</c> and <c>node.hoverinfo</c> for nodes
+        ///     and links respectively.
+        /// </summary>
+        [JsonPropertyName(@"hoverinfo")]
+        public Plotly.Blazor.Traces.SankeyLib.HoverInfoFlag? HoverInfo { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the HoverLabel.
+        /// </summary>
+        [JsonPropertyName(@"hoverlabel")]
+        public Plotly.Blazor.Traces.SankeyLib.HoverLabel HoverLabel { get; set;} 
+
+        /// <summary>
+        ///     Assigns id labels to each datum. These ids for object constancy of data
+        ///     points during animation. Should be an array of strings, not numbers or any
+        ///     other type.
+        /// </summary>
+        [JsonPropertyName(@"ids")]
+        public IList<object> Ids { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        /// </summary>
+        [JsonPropertyName(@"idssrc")]
+        public string IdsSrc { get; set;} 
 
         /// <summary>
         ///     Gets or sets the LegendGroupTitle.
@@ -50,33 +103,10 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendRank { get; set;} 
 
         /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        ///     The links of the Sankey plot.
         /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Assign an id to this trace, Use this to provide object constancy between
-        ///     traces during animations and transitions.
-        /// </summary>
-        [JsonPropertyName(@"uid")]
-        public string UId { get; set;} 
-
-        /// <summary>
-        ///     Assigns id labels to each datum. These ids for object constancy of data
-        ///     points during animation. Should be an array of strings, not numbers or any
-        ///     other type.
-        /// </summary>
-        [JsonPropertyName(@"ids")]
-        public IList<object> Ids { get; set;} 
-
-        /// <summary>
-        ///     Assigns extra data each datum. This may be useful when listening to hover,
-        ///     click and selection events. Note that, <c>scatter</c> traces also appends
-        ///     customdata items in the markers DOM elements
-        /// </summary>
-        [JsonPropertyName(@"customdata")]
-        public IList<object> CustomData { get; set;} 
+        [JsonPropertyName(@"link")]
+        public Plotly.Blazor.Traces.SankeyLib.Link Link { get; set;} 
 
         /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
@@ -108,6 +138,30 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        /// </summary>
+        [JsonPropertyName(@"metasrc")]
+        public string MetaSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     The nodes of the Sankey plot.
+        /// </summary>
+        [JsonPropertyName(@"node")]
+        public Plotly.Blazor.Traces.SankeyLib.Node Node { get; set;} 
+
+        /// <summary>
+        ///     Sets the orientation of the Sankey diagram.
+        /// </summary>
+        [JsonPropertyName(@"orientation")]
+        public Plotly.Blazor.Traces.SankeyLib.OrientationEnum? Orientation { get; set;} 
+
+        /// <summary>
         ///     Array containing integer indices of selected points. Has an effect only
         ///     for traces that support selections. Note that an empty array means an empty
         ///     selection where the <c>unselected</c> are turned on for all points, whereas,
@@ -122,6 +176,19 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"stream")]
         public Plotly.Blazor.Traces.SankeyLib.Stream Stream { get; set;} 
+
+        /// <summary>
+        ///     Sets the font for node labels
+        /// </summary>
+        [JsonPropertyName(@"textfont")]
+        public Plotly.Blazor.Traces.SankeyLib.TextFont TextFont { get; set;} 
+
+        /// <summary>
+        ///     Assign an id to this trace, Use this to provide object constancy between
+        ///     traces during animations and transitions.
+        /// </summary>
+        [JsonPropertyName(@"uid")]
+        public string UId { get; set;} 
 
         /// <summary>
         ///     Controls persistence of some user-driven changes to the trace: <c>constraintrange</c>
@@ -141,36 +208,8 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
-        ///     Determines which trace information appear on hover. If <c>none</c> or <c>skip</c>
-        ///     are set, no information is displayed upon hovering. But, if <c>none</c>
-        ///     is set, click and hover events are still fired. Note that this attribute
-        ///     is superseded by <c>node.hoverinfo</c> and <c>node.hoverinfo</c> for nodes
-        ///     and links respectively.
-        /// </summary>
-        [JsonPropertyName(@"hoverinfo")]
-        public Plotly.Blazor.Traces.SankeyLib.HoverInfoFlag? HoverInfo { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the HoverLabel.
-        /// </summary>
-        [JsonPropertyName(@"hoverlabel")]
-        public Plotly.Blazor.Traces.SankeyLib.HoverLabel HoverLabel { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Domain.
-        /// </summary>
-        [JsonPropertyName(@"domain")]
-        public Plotly.Blazor.Traces.SankeyLib.Domain Domain { get; set;} 
-
-        /// <summary>
-        ///     Sets the orientation of the Sankey diagram.
-        /// </summary>
-        [JsonPropertyName(@"orientation")]
-        public Plotly.Blazor.Traces.SankeyLib.OrientationEnum? Orientation { get; set;} 
-
-        /// <summary>
         ///     Sets the value formatting rule using d3 formatting mini-languages which
-        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-3.x-api-reference/blob/master/Formatting.md#d3_format.
+        ///     are very similar to those in Python. For numbers, see: https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
         /// </summary>
         [JsonPropertyName(@"valueformat")]
         public string ValueFormat { get; set;} 
@@ -183,51 +222,12 @@ namespace Plotly.Blazor.Traces
         public string ValueSuffix { get; set;} 
 
         /// <summary>
-        ///     If value is <c>snap</c> (the default), the node arrangement is assisted
-        ///     by automatic snapping of elements to preserve space between nodes specified
-        ///     via <c>nodepad</c>. If value is <c>perpendicular</c>, the nodes can only
-        ///     move along a line perpendicular to the flow. If value is <c>freeform</c>,
-        ///     the nodes can freely move on the plane. If value is <c>fixed</c>, the nodes
-        ///     are stationary.
+        ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
+        ///     trace is not drawn, but can appear as a legend item (provided that the legend
+        ///     itself is visible).
         /// </summary>
-        [JsonPropertyName(@"arrangement")]
-        public Plotly.Blazor.Traces.SankeyLib.ArrangementEnum? Arrangement { get; set;} 
-
-        /// <summary>
-        ///     Sets the font for node labels
-        /// </summary>
-        [JsonPropertyName(@"textfont")]
-        public Plotly.Blazor.Traces.SankeyLib.TextFont TextFont { get; set;} 
-
-        /// <summary>
-        ///     The nodes of the Sankey plot.
-        /// </summary>
-        [JsonPropertyName(@"node")]
-        public Plotly.Blazor.Traces.SankeyLib.Node Node { get; set;} 
-
-        /// <summary>
-        ///     The links of the Sankey plot.
-        /// </summary>
-        [JsonPropertyName(@"link")]
-        public Plotly.Blazor.Traces.SankeyLib.Link Link { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
-        /// </summary>
-        [JsonPropertyName(@"idssrc")]
-        public string IdsSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
-        /// </summary>
-        [JsonPropertyName(@"customdatasrc")]
-        public string CustomDataSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
-        /// </summary>
-        [JsonPropertyName(@"metasrc")]
-        public string MetaSrc { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public Plotly.Blazor.Traces.SankeyLib.VisibleEnum? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -250,64 +250,24 @@ namespace Plotly.Blazor.Traces
                     Type.Equals(other.Type)
                 ) && 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Arrangement == other.Arrangement ||
+                    Arrangement != null &&
+                    Arrangement.Equals(other.Arrangement)
                 ) && 
-                (
-                    LegendGroupTitle == other.LegendGroupTitle ||
-                    LegendGroupTitle != null &&
-                    LegendGroupTitle.Equals(other.LegendGroupTitle)
-                ) && 
-                (
-                    LegendRank == other.LegendRank ||
-                    LegendRank != null &&
-                    LegendRank.Equals(other.LegendRank)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    UId == other.UId ||
-                    UId != null &&
-                    UId.Equals(other.UId)
-                ) && 
-                (
-                    Equals(Ids, other.Ids) ||
-                    Ids != null && other.Ids != null &&
-                    Ids.SequenceEqual(other.Ids)
-                ) &&
                 (
                     Equals(CustomData, other.CustomData) ||
                     CustomData != null && other.CustomData != null &&
                     CustomData.SequenceEqual(other.CustomData)
                 ) &&
                 (
-                    Meta == other.Meta ||
-                    Meta != null &&
-                    Meta.Equals(other.Meta)
+                    CustomDataSrc == other.CustomDataSrc ||
+                    CustomDataSrc != null &&
+                    CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
-                    Equals(MetaArray, other.MetaArray) ||
-                    MetaArray != null && other.MetaArray != null &&
-                    MetaArray.SequenceEqual(other.MetaArray)
-                ) &&
-                (
-                    SelectedPoints == other.SelectedPoints ||
-                    SelectedPoints != null &&
-                    SelectedPoints.Equals(other.SelectedPoints)
-                ) && 
-                (
-                    Stream == other.Stream ||
-                    Stream != null &&
-                    Stream.Equals(other.Stream)
-                ) && 
-                (
-                    UiRevision == other.UiRevision ||
-                    UiRevision != null &&
-                    UiRevision.Equals(other.UiRevision)
+                    Domain == other.Domain ||
+                    Domain != null &&
+                    Domain.Equals(other.Domain)
                 ) && 
                 (
                     HoverInfo == other.HoverInfo ||
@@ -320,14 +280,84 @@ namespace Plotly.Blazor.Traces
                     HoverLabel.Equals(other.HoverLabel)
                 ) && 
                 (
-                    Domain == other.Domain ||
-                    Domain != null &&
-                    Domain.Equals(other.Domain)
+                    Equals(Ids, other.Ids) ||
+                    Ids != null && other.Ids != null &&
+                    Ids.SequenceEqual(other.Ids)
+                ) &&
+                (
+                    IdsSrc == other.IdsSrc ||
+                    IdsSrc != null &&
+                    IdsSrc.Equals(other.IdsSrc)
+                ) && 
+                (
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                ) && 
+                (
+                    LegendRank == other.LegendRank ||
+                    LegendRank != null &&
+                    LegendRank.Equals(other.LegendRank)
+                ) && 
+                (
+                    Link == other.Link ||
+                    Link != null &&
+                    Link.Equals(other.Link)
+                ) && 
+                (
+                    Meta == other.Meta ||
+                    Meta != null &&
+                    Meta.Equals(other.Meta)
+                ) && 
+                (
+                    Equals(MetaArray, other.MetaArray) ||
+                    MetaArray != null && other.MetaArray != null &&
+                    MetaArray.SequenceEqual(other.MetaArray)
+                ) &&
+                (
+                    MetaSrc == other.MetaSrc ||
+                    MetaSrc != null &&
+                    MetaSrc.Equals(other.MetaSrc)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    Node == other.Node ||
+                    Node != null &&
+                    Node.Equals(other.Node)
                 ) && 
                 (
                     Orientation == other.Orientation ||
                     Orientation != null &&
                     Orientation.Equals(other.Orientation)
+                ) && 
+                (
+                    SelectedPoints == other.SelectedPoints ||
+                    SelectedPoints != null &&
+                    SelectedPoints.Equals(other.SelectedPoints)
+                ) && 
+                (
+                    Stream == other.Stream ||
+                    Stream != null &&
+                    Stream.Equals(other.Stream)
+                ) && 
+                (
+                    TextFont == other.TextFont ||
+                    TextFont != null &&
+                    TextFont.Equals(other.TextFont)
+                ) && 
+                (
+                    UId == other.UId ||
+                    UId != null &&
+                    UId.Equals(other.UId)
+                ) && 
+                (
+                    UiRevision == other.UiRevision ||
+                    UiRevision != null &&
+                    UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
                     ValueFormat == other.ValueFormat ||
@@ -340,39 +370,9 @@ namespace Plotly.Blazor.Traces
                     ValueSuffix.Equals(other.ValueSuffix)
                 ) && 
                 (
-                    Arrangement == other.Arrangement ||
-                    Arrangement != null &&
-                    Arrangement.Equals(other.Arrangement)
-                ) && 
-                (
-                    TextFont == other.TextFont ||
-                    TextFont != null &&
-                    TextFont.Equals(other.TextFont)
-                ) && 
-                (
-                    Node == other.Node ||
-                    Node != null &&
-                    Node.Equals(other.Node)
-                ) && 
-                (
-                    Link == other.Link ||
-                    Link != null &&
-                    Link.Equals(other.Link)
-                ) && 
-                (
-                    IdsSrc == other.IdsSrc ||
-                    IdsSrc != null &&
-                    IdsSrc.Equals(other.IdsSrc)
-                ) && 
-                (
-                    CustomDataSrc == other.CustomDataSrc ||
-                    CustomDataSrc != null &&
-                    CustomDataSrc.Equals(other.CustomDataSrc)
-                ) && 
-                (
-                    MetaSrc == other.MetaSrc ||
-                    MetaSrc != null &&
-                    MetaSrc.Equals(other.MetaSrc)
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -383,31 +383,31 @@ namespace Plotly.Blazor.Traces
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
-                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
-                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
+                if (Arrangement != null) hashCode = hashCode * 59 + Arrangement.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
-                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
-                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
-                if (SelectedPoints != null) hashCode = hashCode * 59 + SelectedPoints.GetHashCode();
-                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
-                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
+                if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
+                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (Link != null) hashCode = hashCode * 59 + Link.GetHashCode();
+                if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
+                if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
+                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Node != null) hashCode = hashCode * 59 + Node.GetHashCode();
                 if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
+                if (SelectedPoints != null) hashCode = hashCode * 59 + SelectedPoints.GetHashCode();
+                if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
+                if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
+                if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
+                if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (ValueFormat != null) hashCode = hashCode * 59 + ValueFormat.GetHashCode();
                 if (ValueSuffix != null) hashCode = hashCode * 59 + ValueSuffix.GetHashCode();
-                if (Arrangement != null) hashCode = hashCode * 59 + Arrangement.GetHashCode();
-                if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
-                if (Node != null) hashCode = hashCode * 59 + Node.GetHashCode();
-                if (Link != null) hashCode = hashCode * 59 + Link.GetHashCode();
-                if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
-                if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
-                if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

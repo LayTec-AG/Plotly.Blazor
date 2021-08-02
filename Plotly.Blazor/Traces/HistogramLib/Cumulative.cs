@@ -18,15 +18,14 @@ namespace Plotly.Blazor.Traces.HistogramLib
     public class Cumulative : IEquatable<Cumulative>
     {
         /// <summary>
-        ///     If true, display the cumulative distribution by summing the binned values.
-        ///     Use the <c>direction</c> and <c>centralbin</c> attributes to tune the accumulation
-        ///     method. Note: in this mode, the <c>density</c> <c>histnorm</c> settings
-        ///     behave the same as their equivalents without <c>density</c>: *&#39; and
-        ///     <c>density</c> both rise to the number of data points, and <c>probability</c>
-        ///     and &#39;probability density* both rise to the number of sample points.
+        ///     Only applies if cumulative is enabled. Sets whether the current bin is included,
+        ///     excluded, or has half of its value included in the current cumulative value.
+        ///     <c>include</c> is the default for compatibility with various other tools,
+        ///     however it introduces a half-bin bias to the results. <c>exclude</c> makes
+        ///     the opposite half-bin bias, and <c>half</c> removes it.
         /// </summary>
-        [JsonPropertyName(@"enabled")]
-        public bool? Enabled { get; set;} 
+        [JsonPropertyName(@"currentbin")]
+        public Plotly.Blazor.Traces.HistogramLib.CumulativeLib.CurrentBinEnum? CurrentBin { get; set;} 
 
         /// <summary>
         ///     Only applies if cumulative is enabled. If <c>increasing</c> (default) we
@@ -37,14 +36,15 @@ namespace Plotly.Blazor.Traces.HistogramLib
         public Plotly.Blazor.Traces.HistogramLib.CumulativeLib.DirectionEnum? Direction { get; set;} 
 
         /// <summary>
-        ///     Only applies if cumulative is enabled. Sets whether the current bin is included,
-        ///     excluded, or has half of its value included in the current cumulative value.
-        ///     <c>include</c> is the default for compatibility with various other tools,
-        ///     however it introduces a half-bin bias to the results. <c>exclude</c> makes
-        ///     the opposite half-bin bias, and <c>half</c> removes it.
+        ///     If true, display the cumulative distribution by summing the binned values.
+        ///     Use the <c>direction</c> and <c>centralbin</c> attributes to tune the accumulation
+        ///     method. Note: in this mode, the <c>density</c> <c>histnorm</c> settings
+        ///     behave the same as their equivalents without <c>density</c>: *&#39; and
+        ///     <c>density</c> both rise to the number of data points, and <c>probability</c>
+        ///     and &#39;probability density* both rise to the number of sample points.
         /// </summary>
-        [JsonPropertyName(@"currentbin")]
-        public Plotly.Blazor.Traces.HistogramLib.CumulativeLib.CurrentBinEnum? CurrentBin { get; set;} 
+        [JsonPropertyName(@"enabled")]
+        public bool? Enabled { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -62,9 +62,9 @@ namespace Plotly.Blazor.Traces.HistogramLib
 
             return 
                 (
-                    Enabled == other.Enabled ||
-                    Enabled != null &&
-                    Enabled.Equals(other.Enabled)
+                    CurrentBin == other.CurrentBin ||
+                    CurrentBin != null &&
+                    CurrentBin.Equals(other.CurrentBin)
                 ) && 
                 (
                     Direction == other.Direction ||
@@ -72,9 +72,9 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     Direction.Equals(other.Direction)
                 ) && 
                 (
-                    CurrentBin == other.CurrentBin ||
-                    CurrentBin != null &&
-                    CurrentBin.Equals(other.CurrentBin)
+                    Enabled == other.Enabled ||
+                    Enabled != null &&
+                    Enabled.Equals(other.Enabled)
                 );
         }
 
@@ -84,9 +84,9 @@ namespace Plotly.Blazor.Traces.HistogramLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
-                if (Direction != null) hashCode = hashCode * 59 + Direction.GetHashCode();
                 if (CurrentBin != null) hashCode = hashCode * 59 + CurrentBin.GetHashCode();
+                if (Direction != null) hashCode = hashCode * 59 + Direction.GetHashCode();
+                if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
                 return hashCode;
             }
         }

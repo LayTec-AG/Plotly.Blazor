@@ -18,18 +18,18 @@ namespace Plotly.Blazor.Traces.PointCloudLib.MarkerLib
     public class Border : IEquatable<Border>
     {
         /// <summary>
+        ///     Specifies what fraction of the marker area is covered with the border.
+        /// </summary>
+        [JsonPropertyName(@"arearatio")]
+        public decimal? AreaRatio { get; set;} 
+
+        /// <summary>
         ///     Sets the stroke color. It accepts a specific color. If the color is not
         ///     fully opaque and there are hundreds of thousands of points, it may cause
         ///     slower zooming and panning.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
-
-        /// <summary>
-        ///     Specifies what fraction of the marker area is covered with the border.
-        /// </summary>
-        [JsonPropertyName(@"arearatio")]
-        public decimal? AreaRatio { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -47,14 +47,14 @@ namespace Plotly.Blazor.Traces.PointCloudLib.MarkerLib
 
             return 
                 (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
                     AreaRatio == other.AreaRatio ||
                     AreaRatio != null &&
                     AreaRatio.Equals(other.AreaRatio)
+                ) && 
+                (
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
                 );
         }
 
@@ -64,8 +64,8 @@ namespace Plotly.Blazor.Traces.PointCloudLib.MarkerLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (AreaRatio != null) hashCode = hashCode * 59 + AreaRatio.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 return hashCode;
             }
         }

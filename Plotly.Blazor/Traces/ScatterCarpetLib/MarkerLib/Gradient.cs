@@ -21,19 +21,6 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
     public class Gradient : IEquatable<Gradient>
     {
         /// <summary>
-        ///     Sets the type of gradient used to fill the markers
-        /// </summary>
-        [JsonPropertyName(@"type")]
-        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.GradientLib.TypeEnum? Type { get; set;} 
-
-        /// <summary>
-        ///     Sets the type of gradient used to fill the markers
-        /// </summary>
-        [JsonPropertyName(@"type")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.GradientLib.TypeEnum?> TypeArray { get; set;} 
-
-        /// <summary>
         ///     Sets the final color of the gradient fill: the center color for radial,
         ///     the right for horizontal, or the bottom for vertical.
         /// </summary>
@@ -49,16 +36,29 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  type .
-        /// </summary>
-        [JsonPropertyName(@"typesrc")]
-        public string TypeSrc { get; set;} 
-
-        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
         [JsonPropertyName(@"colorsrc")]
         public string ColorSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the type of gradient used to fill the markers
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        public Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.GradientLib.TypeEnum? Type { get; set;} 
+
+        /// <summary>
+        ///     Sets the type of gradient used to fill the markers
+        /// </summary>
+        [JsonPropertyName(@"type")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib.GradientLib.TypeEnum?> TypeArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  type .
+        /// </summary>
+        [JsonPropertyName(@"typesrc")]
+        public string TypeSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -76,16 +76,6 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
 
             return 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    Equals(TypeArray, other.TypeArray) ||
-                    TypeArray != null && other.TypeArray != null &&
-                    TypeArray.SequenceEqual(other.TypeArray)
-                ) &&
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -96,14 +86,24 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
                     ColorArray.SequenceEqual(other.ColorArray)
                 ) &&
                 (
-                    TypeSrc == other.TypeSrc ||
-                    TypeSrc != null &&
-                    TypeSrc.Equals(other.TypeSrc)
-                ) && 
-                (
                     ColorSrc == other.ColorSrc ||
                     ColorSrc != null &&
                     ColorSrc.Equals(other.ColorSrc)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
+                    Equals(TypeArray, other.TypeArray) ||
+                    TypeArray != null && other.TypeArray != null &&
+                    TypeArray.SequenceEqual(other.TypeArray)
+                ) &&
+                (
+                    TypeSrc == other.TypeSrc ||
+                    TypeSrc != null &&
+                    TypeSrc.Equals(other.TypeSrc)
                 );
         }
 
@@ -113,12 +113,12 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (TypeArray != null) hashCode = hashCode * 59 + TypeArray.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
-                if (TypeSrc != null) hashCode = hashCode * 59 + TypeSrc.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (TypeArray != null) hashCode = hashCode * 59 + TypeArray.GetHashCode();
+                if (TypeSrc != null) hashCode = hashCode * 59 + TypeSrc.GetHashCode();
                 return hashCode;
             }
         }

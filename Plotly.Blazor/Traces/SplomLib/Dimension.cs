@@ -20,30 +20,16 @@ namespace Plotly.Blazor.Traces.SplomLib
     public class Dimension : IEquatable<Dimension>
     {
         /// <summary>
-        ///     Determines whether or not this dimension is shown on the graph. Note that
-        ///     even visible false dimension contribute to the default grid generate by
-        ///     this splom trace.
+        ///     Gets or sets the Axis.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"axis")]
+        public Plotly.Blazor.Traces.SplomLib.DimensionLib.Axis Axis { get; set;} 
 
         /// <summary>
         ///     Sets the label corresponding to this splom dimension.
         /// </summary>
         [JsonPropertyName(@"label")]
         public string Label { get; set;} 
-
-        /// <summary>
-        ///     Sets the dimension values to be plotted.
-        /// </summary>
-        [JsonPropertyName(@"values")]
-        public IList<object> Values { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Axis.
-        /// </summary>
-        [JsonPropertyName(@"axis")]
-        public Plotly.Blazor.Traces.SplomLib.DimensionLib.Axis Axis { get; set;} 
 
         /// <summary>
         ///     When used in a template, named items are created in the output figure in
@@ -69,10 +55,24 @@ namespace Plotly.Blazor.Traces.SplomLib
         public string TemplateItemName { get; set;} 
 
         /// <summary>
+        ///     Sets the dimension values to be plotted.
+        /// </summary>
+        [JsonPropertyName(@"values")]
+        public IList<object> Values { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  values .
         /// </summary>
         [JsonPropertyName(@"valuessrc")]
         public string ValuesSrc { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not this dimension is shown on the graph. Note that
+        ///     even visible false dimension contribute to the default grid generate by
+        ///     this splom trace.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -90,24 +90,14 @@ namespace Plotly.Blazor.Traces.SplomLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
+                    Axis == other.Axis ||
+                    Axis != null &&
+                    Axis.Equals(other.Axis)
                 ) && 
                 (
                     Label == other.Label ||
                     Label != null &&
                     Label.Equals(other.Label)
-                ) && 
-                (
-                    Equals(Values, other.Values) ||
-                    Values != null && other.Values != null &&
-                    Values.SequenceEqual(other.Values)
-                ) &&
-                (
-                    Axis == other.Axis ||
-                    Axis != null &&
-                    Axis.Equals(other.Axis)
                 ) && 
                 (
                     Name == other.Name ||
@@ -120,9 +110,19 @@ namespace Plotly.Blazor.Traces.SplomLib
                     TemplateItemName.Equals(other.TemplateItemName)
                 ) && 
                 (
+                    Equals(Values, other.Values) ||
+                    Values != null && other.Values != null &&
+                    Values.SequenceEqual(other.Values)
+                ) &&
+                (
                     ValuesSrc == other.ValuesSrc ||
                     ValuesSrc != null &&
                     ValuesSrc.Equals(other.ValuesSrc)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -132,13 +132,13 @@ namespace Plotly.Blazor.Traces.SplomLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
-                if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();
                 if (Axis != null) hashCode = hashCode * 59 + Axis.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();
                 if (ValuesSrc != null) hashCode = hashCode * 59 + ValuesSrc.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

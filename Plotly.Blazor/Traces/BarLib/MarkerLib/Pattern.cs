@@ -21,28 +21,6 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
     public class Pattern : IEquatable<Pattern>
     {
         /// <summary>
-        ///     Sets the shape of the pattern fill. By default, no pattern is used for filling
-        ///     the area.
-        /// </summary>
-        [JsonPropertyName(@"shape")]
-        public Plotly.Blazor.Traces.BarLib.MarkerLib.PatternLib.ShapeEnum? Shape { get; set;} 
-
-        /// <summary>
-        ///     Sets the shape of the pattern fill. By default, no pattern is used for filling
-        ///     the area.
-        /// </summary>
-        [JsonPropertyName(@"shape")]
-        [Array]
-        public IList<Plotly.Blazor.Traces.BarLib.MarkerLib.PatternLib.ShapeEnum?> ShapeArray { get; set;} 
-
-        /// <summary>
-        ///     Determines whether <c>marker.color</c> should be used as a default to <c>bgcolor</c>
-        ///     or a <c>fgcolor</c>.
-        /// </summary>
-        [JsonPropertyName(@"fillmode")]
-        public Plotly.Blazor.Traces.BarLib.MarkerLib.PatternLib.FillModeEnum? FillMode { get; set;} 
-
-        /// <summary>
         ///     When there is no colorscale sets the color of background pattern fill. Defaults
         ///     to a <c>marker.color</c> background when <c>fillmode</c> is <c>overlay</c>.
         ///     Otherwise, defaults to a transparent background.
@@ -58,6 +36,12 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
         [JsonPropertyName(@"bgcolor")]
         [Array]
         public IList<object> BgColorArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  bgcolor .
+        /// </summary>
+        [JsonPropertyName(@"bgcolorsrc")]
+        public string BgColorSrc { get; set;} 
 
         /// <summary>
         ///     When there is no colorscale sets the color of foreground pattern fill. Defaults
@@ -79,11 +63,45 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
         public IList<object> FgColorArray { get; set;} 
 
         /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  fgcolor .
+        /// </summary>
+        [JsonPropertyName(@"fgcolorsrc")]
+        public string FgColorSrc { get; set;} 
+
+        /// <summary>
         ///     Sets the opacity of the foreground pattern fill. Defaults to a 0.5 when
         ///     <c>fillmode</c> is <c>overlay</c>. Otherwise, defaults to 1.
         /// </summary>
         [JsonPropertyName(@"fgopacity")]
         public decimal? FgOpacity { get; set;} 
+
+        /// <summary>
+        ///     Determines whether <c>marker.color</c> should be used as a default to <c>bgcolor</c>
+        ///     or a <c>fgcolor</c>.
+        /// </summary>
+        [JsonPropertyName(@"fillmode")]
+        public Plotly.Blazor.Traces.BarLib.MarkerLib.PatternLib.FillModeEnum? FillMode { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape of the pattern fill. By default, no pattern is used for filling
+        ///     the area.
+        /// </summary>
+        [JsonPropertyName(@"shape")]
+        public Plotly.Blazor.Traces.BarLib.MarkerLib.PatternLib.ShapeEnum? Shape { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape of the pattern fill. By default, no pattern is used for filling
+        ///     the area.
+        /// </summary>
+        [JsonPropertyName(@"shape")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.BarLib.MarkerLib.PatternLib.ShapeEnum?> ShapeArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  shape .
+        /// </summary>
+        [JsonPropertyName(@"shapesrc")]
+        public string ShapeSrc { get; set;} 
 
         /// <summary>
         ///     Sets the size of unit squares of the pattern fill in pixels, which corresponds
@@ -99,6 +117,12 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
         [JsonPropertyName(@"size")]
         [Array]
         public IList<decimal?> SizeArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  size .
+        /// </summary>
+        [JsonPropertyName(@"sizesrc")]
+        public string SizeSrc { get; set;} 
 
         /// <summary>
         ///     Sets the solidity of the pattern fill. Solidity is roughly the fraction
@@ -118,30 +142,6 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
         [JsonPropertyName(@"solidity")]
         [Array]
         public IList<decimal?> SolidityArray { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  shape .
-        /// </summary>
-        [JsonPropertyName(@"shapesrc")]
-        public string ShapeSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  bgcolor .
-        /// </summary>
-        [JsonPropertyName(@"bgcolorsrc")]
-        public string BgColorSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  fgcolor .
-        /// </summary>
-        [JsonPropertyName(@"fgcolorsrc")]
-        public string FgColorSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  size .
-        /// </summary>
-        [JsonPropertyName(@"sizesrc")]
-        public string SizeSrc { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  solidity .
@@ -165,21 +165,6 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
 
             return 
                 (
-                    Shape == other.Shape ||
-                    Shape != null &&
-                    Shape.Equals(other.Shape)
-                ) && 
-                (
-                    Equals(ShapeArray, other.ShapeArray) ||
-                    ShapeArray != null && other.ShapeArray != null &&
-                    ShapeArray.SequenceEqual(other.ShapeArray)
-                ) &&
-                (
-                    FillMode == other.FillMode ||
-                    FillMode != null &&
-                    FillMode.Equals(other.FillMode)
-                ) && 
-                (
                     BgColor == other.BgColor ||
                     BgColor != null &&
                     BgColor.Equals(other.BgColor)
@@ -189,6 +174,11 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
                     BgColorArray != null && other.BgColorArray != null &&
                     BgColorArray.SequenceEqual(other.BgColorArray)
                 ) &&
+                (
+                    BgColorSrc == other.BgColorSrc ||
+                    BgColorSrc != null &&
+                    BgColorSrc.Equals(other.BgColorSrc)
+                ) && 
                 (
                     FgColor == other.FgColor ||
                     FgColor != null &&
@@ -200,9 +190,34 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
                     FgColorArray.SequenceEqual(other.FgColorArray)
                 ) &&
                 (
+                    FgColorSrc == other.FgColorSrc ||
+                    FgColorSrc != null &&
+                    FgColorSrc.Equals(other.FgColorSrc)
+                ) && 
+                (
                     FgOpacity == other.FgOpacity ||
                     FgOpacity != null &&
                     FgOpacity.Equals(other.FgOpacity)
+                ) && 
+                (
+                    FillMode == other.FillMode ||
+                    FillMode != null &&
+                    FillMode.Equals(other.FillMode)
+                ) && 
+                (
+                    Shape == other.Shape ||
+                    Shape != null &&
+                    Shape.Equals(other.Shape)
+                ) && 
+                (
+                    Equals(ShapeArray, other.ShapeArray) ||
+                    ShapeArray != null && other.ShapeArray != null &&
+                    ShapeArray.SequenceEqual(other.ShapeArray)
+                ) &&
+                (
+                    ShapeSrc == other.ShapeSrc ||
+                    ShapeSrc != null &&
+                    ShapeSrc.Equals(other.ShapeSrc)
                 ) && 
                 (
                     Size == other.Size ||
@@ -215,6 +230,11 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
                     SizeArray.SequenceEqual(other.SizeArray)
                 ) &&
                 (
+                    SizeSrc == other.SizeSrc ||
+                    SizeSrc != null &&
+                    SizeSrc.Equals(other.SizeSrc)
+                ) && 
+                (
                     Solidity == other.Solidity ||
                     Solidity != null &&
                     Solidity.Equals(other.Solidity)
@@ -224,26 +244,6 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
                     SolidityArray != null && other.SolidityArray != null &&
                     SolidityArray.SequenceEqual(other.SolidityArray)
                 ) &&
-                (
-                    ShapeSrc == other.ShapeSrc ||
-                    ShapeSrc != null &&
-                    ShapeSrc.Equals(other.ShapeSrc)
-                ) && 
-                (
-                    BgColorSrc == other.BgColorSrc ||
-                    BgColorSrc != null &&
-                    BgColorSrc.Equals(other.BgColorSrc)
-                ) && 
-                (
-                    FgColorSrc == other.FgColorSrc ||
-                    FgColorSrc != null &&
-                    FgColorSrc.Equals(other.FgColorSrc)
-                ) && 
-                (
-                    SizeSrc == other.SizeSrc ||
-                    SizeSrc != null &&
-                    SizeSrc.Equals(other.SizeSrc)
-                ) && 
                 (
                     SoliditySrc == other.SoliditySrc ||
                     SoliditySrc != null &&
@@ -257,22 +257,22 @@ namespace Plotly.Blazor.Traces.BarLib.MarkerLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
-                if (ShapeArray != null) hashCode = hashCode * 59 + ShapeArray.GetHashCode();
-                if (FillMode != null) hashCode = hashCode * 59 + FillMode.GetHashCode();
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BgColorArray != null) hashCode = hashCode * 59 + BgColorArray.GetHashCode();
+                if (BgColorSrc != null) hashCode = hashCode * 59 + BgColorSrc.GetHashCode();
                 if (FgColor != null) hashCode = hashCode * 59 + FgColor.GetHashCode();
                 if (FgColorArray != null) hashCode = hashCode * 59 + FgColorArray.GetHashCode();
+                if (FgColorSrc != null) hashCode = hashCode * 59 + FgColorSrc.GetHashCode();
                 if (FgOpacity != null) hashCode = hashCode * 59 + FgOpacity.GetHashCode();
+                if (FillMode != null) hashCode = hashCode * 59 + FillMode.GetHashCode();
+                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
+                if (ShapeArray != null) hashCode = hashCode * 59 + ShapeArray.GetHashCode();
+                if (ShapeSrc != null) hashCode = hashCode * 59 + ShapeSrc.GetHashCode();
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 if (SizeArray != null) hashCode = hashCode * 59 + SizeArray.GetHashCode();
+                if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
                 if (Solidity != null) hashCode = hashCode * 59 + Solidity.GetHashCode();
                 if (SolidityArray != null) hashCode = hashCode * 59 + SolidityArray.GetHashCode();
-                if (ShapeSrc != null) hashCode = hashCode * 59 + ShapeSrc.GetHashCode();
-                if (BgColorSrc != null) hashCode = hashCode * 59 + BgColorSrc.GetHashCode();
-                if (FgColorSrc != null) hashCode = hashCode * 59 + FgColorSrc.GetHashCode();
-                if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
                 if (SoliditySrc != null) hashCode = hashCode * 59 + SoliditySrc.GetHashCode();
                 return hashCode;
             }

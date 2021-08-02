@@ -18,16 +18,16 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
     public class Center : IEquatable<Center>
     {
         /// <summary>
-        ///     Sets the longitude of the center of the map (in degrees East).
-        /// </summary>
-        [JsonPropertyName(@"lon")]
-        public decimal? Lon { get; set;} 
-
-        /// <summary>
         ///     Sets the latitude of the center of the map (in degrees North).
         /// </summary>
         [JsonPropertyName(@"lat")]
         public decimal? Lat { get; set;} 
+
+        /// <summary>
+        ///     Sets the longitude of the center of the map (in degrees East).
+        /// </summary>
+        [JsonPropertyName(@"lon")]
+        public decimal? Lon { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -45,14 +45,14 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
 
             return 
                 (
-                    Lon == other.Lon ||
-                    Lon != null &&
-                    Lon.Equals(other.Lon)
-                ) && 
-                (
                     Lat == other.Lat ||
                     Lat != null &&
                     Lat.Equals(other.Lat)
+                ) && 
+                (
+                    Lon == other.Lon ||
+                    Lon != null &&
+                    Lon.Equals(other.Lon)
                 );
         }
 
@@ -62,8 +62,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 if (Lat != null) hashCode = hashCode * 59 + Lat.GetHashCode();
+                if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,12 +18,6 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets the title of the legend.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
         ///     Sets this legend&#39;s title font. Defaults to <c>legend.font</c> with its
         ///     size increased about 20%.
         /// </summary>
@@ -38,6 +32,12 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.SideEnum? Side { get; set;} 
+
+        /// <summary>
+        ///     Sets the title of the legend.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -55,11 +55,6 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
@@ -68,6 +63,11 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
                     Side == other.Side ||
                     Side != null &&
                     Side.Equals(other.Side)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -77,9 +77,9 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Side != null) hashCode = hashCode * 59 + Side.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

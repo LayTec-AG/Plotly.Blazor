@@ -18,16 +18,10 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
     public class CurrentValue : IEquatable<CurrentValue>
     {
         /// <summary>
-        ///     Shows the currently-selected value above the slider.
+        ///     Sets the font of the current value label text.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     The alignment of the value readout relative to the length of the slider.
-        /// </summary>
-        [JsonPropertyName(@"xanchor")]
-        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib.XAnchorEnum? XAnchor { get; set;} 
+        [JsonPropertyName(@"font")]
+        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib.Font Font { get; set;} 
 
         /// <summary>
         ///     The amount of space, in pixels, between the current value label and the
@@ -49,10 +43,16 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
         public string Suffix { get; set;} 
 
         /// <summary>
-        ///     Sets the font of the current value label text.
+        ///     Shows the currently-selected value above the slider.
         /// </summary>
-        [JsonPropertyName(@"font")]
-        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib.Font Font { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
+
+        /// <summary>
+        ///     The alignment of the value readout relative to the length of the slider.
+        /// </summary>
+        [JsonPropertyName(@"xanchor")]
+        public Plotly.Blazor.LayoutLib.SliderLib.CurrentValueLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -70,14 +70,9 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    XAnchor == other.XAnchor ||
-                    XAnchor != null &&
-                    XAnchor.Equals(other.XAnchor)
+                    Font == other.Font ||
+                    Font != null &&
+                    Font.Equals(other.Font)
                 ) && 
                 (
                     Offset == other.Offset ||
@@ -95,9 +90,14 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
                     Suffix.Equals(other.Suffix)
                 ) && 
                 (
-                    Font == other.Font ||
-                    Font != null &&
-                    Font.Equals(other.Font)
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
+                (
+                    XAnchor == other.XAnchor ||
+                    XAnchor != null &&
+                    XAnchor.Equals(other.XAnchor)
                 );
         }
 
@@ -107,12 +107,12 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
+                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Offset != null) hashCode = hashCode * 59 + Offset.GetHashCode();
                 if (Prefix != null) hashCode = hashCode * 59 + Prefix.GetHashCode();
                 if (Suffix != null) hashCode = hashCode * 59 + Suffix.GetHashCode();
-                if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 return hashCode;
             }
         }

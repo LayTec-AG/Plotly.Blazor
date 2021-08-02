@@ -18,10 +18,22 @@ namespace Plotly.Blazor.Traces.TreeMapLib
     public class Tiling : IEquatable<Tiling>
     {
         /// <summary>
+        ///     Determines if the positions obtained from solver are flipped on each axis.
+        /// </summary>
+        [JsonPropertyName(@"flip")]
+        public Plotly.Blazor.Traces.TreeMapLib.TilingLib.FlipFlag? Flip { get; set;} 
+
+        /// <summary>
         ///     Determines d3 treemap solver. For more info please refer to https://github.com/d3/d3-hierarchy#treemap-tiling
         /// </summary>
         [JsonPropertyName(@"packing")]
         public Plotly.Blazor.Traces.TreeMapLib.TilingLib.PackingEnum? Packing { get; set;} 
+
+        /// <summary>
+        ///     Sets the inner padding (in px).
+        /// </summary>
+        [JsonPropertyName(@"pad")]
+        public decimal? Pad { get; set;} 
 
         /// <summary>
         ///     When using <c>squarify</c> <c>packing</c> algorithm, according to https://github.com/d3/d3-hierarchy/blob/master/README.md#squarify_ratio
@@ -35,18 +47,6 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         /// </summary>
         [JsonPropertyName(@"squarifyratio")]
         public decimal? SquarifyRatio { get; set;} 
-
-        /// <summary>
-        ///     Determines if the positions obtained from solver are flipped on each axis.
-        /// </summary>
-        [JsonPropertyName(@"flip")]
-        public Plotly.Blazor.Traces.TreeMapLib.TilingLib.FlipFlag? Flip { get; set;} 
-
-        /// <summary>
-        ///     Sets the inner padding (in px).
-        /// </summary>
-        [JsonPropertyName(@"pad")]
-        public decimal? Pad { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -64,24 +64,24 @@ namespace Plotly.Blazor.Traces.TreeMapLib
 
             return 
                 (
-                    Packing == other.Packing ||
-                    Packing != null &&
-                    Packing.Equals(other.Packing)
-                ) && 
-                (
-                    SquarifyRatio == other.SquarifyRatio ||
-                    SquarifyRatio != null &&
-                    SquarifyRatio.Equals(other.SquarifyRatio)
-                ) && 
-                (
                     Flip == other.Flip ||
                     Flip != null &&
                     Flip.Equals(other.Flip)
                 ) && 
                 (
+                    Packing == other.Packing ||
+                    Packing != null &&
+                    Packing.Equals(other.Packing)
+                ) && 
+                (
                     Pad == other.Pad ||
                     Pad != null &&
                     Pad.Equals(other.Pad)
+                ) && 
+                (
+                    SquarifyRatio == other.SquarifyRatio ||
+                    SquarifyRatio != null &&
+                    SquarifyRatio.Equals(other.SquarifyRatio)
                 );
         }
 
@@ -91,10 +91,10 @@ namespace Plotly.Blazor.Traces.TreeMapLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Packing != null) hashCode = hashCode * 59 + Packing.GetHashCode();
-                if (SquarifyRatio != null) hashCode = hashCode * 59 + SquarifyRatio.GetHashCode();
                 if (Flip != null) hashCode = hashCode * 59 + Flip.GetHashCode();
+                if (Packing != null) hashCode = hashCode * 59 + Packing.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
+                if (SquarifyRatio != null) hashCode = hashCode * 59 + SquarifyRatio.GetHashCode();
                 return hashCode;
             }
         }

@@ -24,18 +24,18 @@ namespace Plotly.Blazor.Traces.FunnelLib.ConnectorLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets the line width (in px).
-        /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
-
-        /// <summary>
         ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
         ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
         ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
         /// </summary>
         [JsonPropertyName(@"dash")]
         public string Dash { get; set;} 
+
+        /// <summary>
+        ///     Sets the line width (in px).
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -58,14 +58,14 @@ namespace Plotly.Blazor.Traces.FunnelLib.ConnectorLib
                     Color.Equals(other.Color)
                 ) && 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
-                ) && 
-                (
                     Dash == other.Dash ||
                     Dash != null &&
                     Dash.Equals(other.Dash)
+                ) && 
+                (
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 );
         }
 
@@ -76,8 +76,8 @@ namespace Plotly.Blazor.Traces.FunnelLib.ConnectorLib
             {
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }
         }

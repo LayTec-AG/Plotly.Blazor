@@ -20,19 +20,6 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
     public class Z : IEquatable<Z>
     {
         /// <summary>
-        ///     Determines whether or not slice planes about the z dimension are drawn.
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
-        ///     Specifies the location(s) of slices on the axis. When not specified slices
-        ///     would be created for all points of the axis z except start and end.
-        /// </summary>
-        [JsonPropertyName(@"locations")]
-        public IList<object> Locations { get; set;} 
-
-        /// <summary>
         ///     Sets the fill ratio of the <c>slices</c>. The default fill value of the
         ///     <c>slices</c> is 1 meaning that they are entirely shaded. On the other hand
         ///     Applying a <c>fill</c> ratio less than one would allow the creation of openings
@@ -42,10 +29,23 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
         public decimal? Fill { get; set;} 
 
         /// <summary>
+        ///     Specifies the location(s) of slices on the axis. When not specified slices
+        ///     would be created for all points of the axis z except start and end.
+        /// </summary>
+        [JsonPropertyName(@"locations")]
+        public IList<object> Locations { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  locations .
         /// </summary>
         [JsonPropertyName(@"locationssrc")]
         public string LocationsSrc { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not slice planes about the z dimension are drawn.
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -63,9 +63,9 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
+                    Fill == other.Fill ||
+                    Fill != null &&
+                    Fill.Equals(other.Fill)
                 ) && 
                 (
                     Equals(Locations, other.Locations) ||
@@ -73,14 +73,14 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
                     Locations.SequenceEqual(other.Locations)
                 ) &&
                 (
-                    Fill == other.Fill ||
-                    Fill != null &&
-                    Fill.Equals(other.Fill)
-                ) && 
-                (
                     LocationsSrc == other.LocationsSrc ||
                     LocationsSrc != null &&
                     LocationsSrc.Equals(other.LocationsSrc)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
                 );
         }
 
@@ -90,10 +90,10 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
-                if (Locations != null) hashCode = hashCode * 59 + Locations.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
+                if (Locations != null) hashCode = hashCode * 59 + Locations.GetHashCode();
                 if (LocationsSrc != null) hashCode = hashCode * 59 + LocationsSrc.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 return hashCode;
             }
         }

@@ -21,17 +21,51 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
     public class Line : IEquatable<Line>
     {
         /// <summary>
-        ///     Sets the width (in px) of the lines bounding the marker points.
+        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
+        ///     true&#39;) or the palette determined by <c>marker.line.colorscale</c>. Has
+        ///     an effect only if in <c>marker.line.color</c>is set to a numerical array.
+        ///     In case <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true,
+        ///     the default  palette will be chosen according to whether numbers in the
+        ///     <c>color</c> array are all positive, all negative or mixed.
         /// </summary>
-        [JsonPropertyName(@"width")]
-        public decimal? Width { get; set;} 
+        [JsonPropertyName(@"autocolorscale")]
+        public bool? AutoColorScale { get; set;} 
 
         /// <summary>
-        ///     Sets the width (in px) of the lines bounding the marker points.
+        ///     Determines whether or not the color domain is computed with respect to the
+        ///     input data (here in <c>marker.line.color</c>) or the bounds set in <c>marker.line.cmin</c>
+        ///     and <c>marker.line.cmax</c>  Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. Defaults to <c>false</c> when <c>marker.line.cmin</c>
+        ///     and <c>marker.line.cmax</c> are set by the user.
         /// </summary>
-        [JsonPropertyName(@"width")]
-        [Array]
-        public IList<decimal?> WidthArray { get; set;} 
+        [JsonPropertyName(@"cauto")]
+        public bool? CAuto { get; set;} 
+
+        /// <summary>
+        ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>marker.line.color</c>
+        ///     and if set, <c>marker.line.cmin</c> must be set as well.
+        /// </summary>
+        [JsonPropertyName(@"cmax")]
+        public decimal? CMax { get; set;} 
+
+        /// <summary>
+        ///     Sets the mid-point of the color domain by scaling <c>marker.line.cmin</c>
+        ///     and/or <c>marker.line.cmax</c> to be equidistant to this point. Has an effect
+        ///     only if in <c>marker.line.color</c>is set to a numerical array. Value should
+        ///     have the same units as in <c>marker.line.color</c>. Has no effect when <c>marker.line.cauto</c>
+        ///     is <c>false</c>.
+        /// </summary>
+        [JsonPropertyName(@"cmid")]
+        public decimal? CMid { get; set;} 
+
+        /// <summary>
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.line.color</c>is
+        ///     set to a numerical array. Value should have the same units as in <c>marker.line.color</c>
+        ///     and if set, <c>marker.line.cmax</c> must be set as well.
+        /// </summary>
+        [JsonPropertyName(@"cmin")]
+        public decimal? CMin { get; set;} 
 
         /// <summary>
         ///     Sets themarker.linecolor. It accepts either a specific color or an array
@@ -53,40 +87,14 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not the color domain is computed with respect to the
-        ///     input data (here in <c>marker.line.color</c>) or the bounds set in <c>marker.line.cmin</c>
-        ///     and <c>marker.line.cmax</c>  Has an effect only if in <c>marker.line.color</c>is
-        ///     set to a numerical array. Defaults to <c>false</c> when <c>marker.line.cmin</c>
-        ///     and <c>marker.line.cmax</c> are set by the user.
+        ///     Sets a reference to a shared color axis. References to these shared color
+        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
+        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
+        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
+        ///     to the same color axis.
         /// </summary>
-        [JsonPropertyName(@"cauto")]
-        public bool? CAuto { get; set;} 
-
-        /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.line.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>marker.line.color</c>
-        ///     and if set, <c>marker.line.cmax</c> must be set as well.
-        /// </summary>
-        [JsonPropertyName(@"cmin")]
-        public decimal? CMin { get; set;} 
-
-        /// <summary>
-        ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.line.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>marker.line.color</c>
-        ///     and if set, <c>marker.line.cmin</c> must be set as well.
-        /// </summary>
-        [JsonPropertyName(@"cmax")]
-        public decimal? CMax { get; set;} 
-
-        /// <summary>
-        ///     Sets the mid-point of the color domain by scaling <c>marker.line.cmin</c>
-        ///     and/or <c>marker.line.cmax</c> to be equidistant to this point. Has an effect
-        ///     only if in <c>marker.line.color</c>is set to a numerical array. Value should
-        ///     have the same units as in <c>marker.line.color</c>. Has no effect when <c>marker.line.cauto</c>
-        ///     is <c>false</c>.
-        /// </summary>
-        [JsonPropertyName(@"cmid")]
-        public decimal? CMid { get; set;} 
+        [JsonPropertyName(@"coloraxis")]
+        public string ColorAxis { get; set;} 
 
         /// <summary>
         ///     Sets the colorscale. Has an effect only if in <c>marker.line.color</c>is
@@ -96,21 +104,16 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
         ///     are required. For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
         ///     To control the bounds of the colorscale in color space, use<c>marker.line.cmin</c>
         ///     and <c>marker.line.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
-        ///     name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+        ///     name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
-        ///     true&#39;) or the palette determined by <c>marker.line.colorscale</c>. Has
-        ///     an effect only if in <c>marker.line.color</c>is set to a numerical array.
-        ///     In case <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true,
-        ///     the default  palette will be chosen according to whether numbers in the
-        ///     <c>color</c> array are all positive, all negative or mixed.
+        ///     Sets the source reference on Chart Studio Cloud for  color .
         /// </summary>
-        [JsonPropertyName(@"autocolorscale")]
-        public bool? AutoColorScale { get; set;} 
+        [JsonPropertyName(@"colorsrc")]
+        public string ColorSrc { get; set;} 
 
         /// <summary>
         ///     Reverses the color mapping if true. Has an effect only if in <c>marker.line.color</c>is
@@ -122,26 +125,23 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
         public bool? ReverseScale { get; set;} 
 
         /// <summary>
-        ///     Sets a reference to a shared color axis. References to these shared color
-        ///     axes are <c>coloraxis</c>, <c>coloraxis2</c>, <c>coloraxis3</c>, etc. Settings
-        ///     for these shared color axes are set in the layout, under <c>layout.coloraxis</c>,
-        ///     <c>layout.coloraxis2</c>, etc. Note that multiple color scales can be linked
-        ///     to the same color axis.
+        ///     Sets the width (in px) of the lines bounding the marker points.
         /// </summary>
-        [JsonPropertyName(@"coloraxis")]
-        public string ColorAxis { get; set;} 
+        [JsonPropertyName(@"width")]
+        public decimal? Width { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px) of the lines bounding the marker points.
+        /// </summary>
+        [JsonPropertyName(@"width")]
+        [Array]
+        public IList<decimal?> WidthArray { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for  width .
         /// </summary>
         [JsonPropertyName(@"widthsrc")]
         public string WidthSrc { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
-        /// </summary>
-        [JsonPropertyName(@"colorsrc")]
-        public string ColorSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -159,34 +159,14 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
 
             return 
                 (
-                    Width == other.Width ||
-                    Width != null &&
-                    Width.Equals(other.Width)
+                    AutoColorScale == other.AutoColorScale ||
+                    AutoColorScale != null &&
+                    AutoColorScale.Equals(other.AutoColorScale)
                 ) && 
-                (
-                    Equals(WidthArray, other.WidthArray) ||
-                    WidthArray != null && other.WidthArray != null &&
-                    WidthArray.SequenceEqual(other.WidthArray)
-                ) &&
-                (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
-                    Equals(ColorArray, other.ColorArray) ||
-                    ColorArray != null && other.ColorArray != null &&
-                    ColorArray.SequenceEqual(other.ColorArray)
-                ) &&
                 (
                     CAuto == other.CAuto ||
                     CAuto != null &&
                     CAuto.Equals(other.CAuto)
-                ) && 
-                (
-                    CMin == other.CMin ||
-                    CMin != null &&
-                    CMin.Equals(other.CMin)
                 ) && 
                 (
                     CMax == other.CMax ||
@@ -199,14 +179,34 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
                     CMid.Equals(other.CMid)
                 ) && 
                 (
+                    CMin == other.CMin ||
+                    CMin != null &&
+                    CMin.Equals(other.CMin)
+                ) && 
+                (
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
+                ) && 
+                (
+                    Equals(ColorArray, other.ColorArray) ||
+                    ColorArray != null && other.ColorArray != null &&
+                    ColorArray.SequenceEqual(other.ColorArray)
+                ) &&
+                (
+                    ColorAxis == other.ColorAxis ||
+                    ColorAxis != null &&
+                    ColorAxis.Equals(other.ColorAxis)
+                ) && 
+                (
                     ColorScale == other.ColorScale ||
                     ColorScale != null &&
                     ColorScale.Equals(other.ColorScale)
                 ) && 
                 (
-                    AutoColorScale == other.AutoColorScale ||
-                    AutoColorScale != null &&
-                    AutoColorScale.Equals(other.AutoColorScale)
+                    ColorSrc == other.ColorSrc ||
+                    ColorSrc != null &&
+                    ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
                     ReverseScale == other.ReverseScale ||
@@ -214,19 +214,19 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
                     ReverseScale.Equals(other.ReverseScale)
                 ) && 
                 (
-                    ColorAxis == other.ColorAxis ||
-                    ColorAxis != null &&
-                    ColorAxis.Equals(other.ColorAxis)
+                    Width == other.Width ||
+                    Width != null &&
+                    Width.Equals(other.Width)
                 ) && 
+                (
+                    Equals(WidthArray, other.WidthArray) ||
+                    WidthArray != null && other.WidthArray != null &&
+                    WidthArray.SequenceEqual(other.WidthArray)
+                ) &&
                 (
                     WidthSrc == other.WidthSrc ||
                     WidthSrc != null &&
                     WidthSrc.Equals(other.WidthSrc)
-                ) && 
-                (
-                    ColorSrc == other.ColorSrc ||
-                    ColorSrc != null &&
-                    ColorSrc.Equals(other.ColorSrc)
                 );
         }
 
@@ -236,20 +236,20 @@ namespace Plotly.Blazor.Traces.ScatterLib.MarkerLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
-                if (WidthArray != null) hashCode = hashCode * 59 + WidthArray.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
+                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
                 if (CAuto != null) hashCode = hashCode * 59 + CAuto.GetHashCode();
-                if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
                 if (CMax != null) hashCode = hashCode * 59 + CMax.GetHashCode();
                 if (CMid != null) hashCode = hashCode * 59 + CMid.GetHashCode();
-                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
-                if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
-                if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
+                if (CMin != null) hashCode = hashCode * 59 + CMin.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
                 if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
-                if (WidthSrc != null) hashCode = hashCode * 59 + WidthSrc.GetHashCode();
+                if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
+                if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
+                if (WidthArray != null) hashCode = hashCode * 59 + WidthArray.GetHashCode();
+                if (WidthSrc != null) hashCode = hashCode * 59 + WidthSrc.GetHashCode();
                 return hashCode;
             }
         }

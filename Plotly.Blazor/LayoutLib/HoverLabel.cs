@@ -18,6 +18,13 @@ namespace Plotly.Blazor.LayoutLib
     public class HoverLabel : IEquatable<HoverLabel>
     {
         /// <summary>
+        ///     Sets the horizontal alignment of the text content within hover label box.
+        ///     Has an effect only if the hover label text spans more two or more lines
+        /// </summary>
+        [JsonPropertyName(@"align")]
+        public Plotly.Blazor.LayoutLib.HoverLabelLib.AlignEnum? Align { get; set;} 
+
+        /// <summary>
         ///     Sets the background color of all hover labels on graph
         /// </summary>
         [JsonPropertyName(@"bgcolor")]
@@ -34,13 +41,6 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.HoverLabelLib.Font Font { get; set;} 
-
-        /// <summary>
-        ///     Sets the horizontal alignment of the text content within hover label box.
-        ///     Has an effect only if the hover label text spans more two or more lines
-        /// </summary>
-        [JsonPropertyName(@"align")]
-        public Plotly.Blazor.LayoutLib.HoverLabelLib.AlignEnum? Align { get; set;} 
 
         /// <summary>
         ///     Sets the default length (in number of characters) of the trace name in the
@@ -68,6 +68,11 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
+                    Align == other.Align ||
+                    Align != null &&
+                    Align.Equals(other.Align)
+                ) && 
+                (
                     BgColor == other.BgColor ||
                     BgColor != null &&
                     BgColor.Equals(other.BgColor)
@@ -83,11 +88,6 @@ namespace Plotly.Blazor.LayoutLib
                     Font.Equals(other.Font)
                 ) && 
                 (
-                    Align == other.Align ||
-                    Align != null &&
-                    Align.Equals(other.Align)
-                ) && 
-                (
                     NameLength == other.NameLength ||
                     NameLength != null &&
                     NameLength.Equals(other.NameLength)
@@ -100,10 +100,10 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Align != null) hashCode = hashCode * 59 + Align.GetHashCode();
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
-                if (Align != null) hashCode = hashCode * 59 + Align.GetHashCode();
                 if (NameLength != null) hashCode = hashCode * 59 + NameLength.GetHashCode();
                 return hashCode;
             }

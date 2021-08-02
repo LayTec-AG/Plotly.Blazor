@@ -18,26 +18,6 @@ namespace Plotly.Blazor
     public class Frames : IEquatable<Frames>
     {
         /// <summary>
-        ///     An identifier that specifies the group to which the frame belongs, used
-        ///     by animate to select a subset of frames.
-        /// </summary>
-        [JsonPropertyName(@"group")]
-        public string Group { get; set;} 
-
-        /// <summary>
-        ///     A label by which to identify the frame
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     A list of trace indices that identify the respective traces in the data
-        ///     attribute
-        /// </summary>
-        [JsonPropertyName(@"traces")]
-        public object Traces { get; set;} 
-
-        /// <summary>
         ///     The name of the frame into which this frame&#39;s properties are merged
         ///     before applying. This is used to unify properties and avoid needing to specify
         ///     the same values for the same properties in multiple frames.
@@ -53,11 +33,31 @@ namespace Plotly.Blazor
         public ITrace Data { get; set;} 
 
         /// <summary>
+        ///     An identifier that specifies the group to which the frame belongs, used
+        ///     by animate to select a subset of frames.
+        /// </summary>
+        [JsonPropertyName(@"group")]
+        public string Group { get; set;} 
+
+        /// <summary>
         ///     Layout properties which this frame modifies. The format is identical to
         ///     the normal layout definition.
         /// </summary>
         [JsonPropertyName(@"layout")]
         public Layout Layout { get; set;} 
+
+        /// <summary>
+        ///     A label by which to identify the frame
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     A list of trace indices that identify the respective traces in the data
+        ///     attribute
+        /// </summary>
+        [JsonPropertyName(@"traces")]
+        public object Traces { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -75,21 +75,6 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    Group == other.Group ||
-                    Group != null &&
-                    Group.Equals(other.Group)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    Traces == other.Traces ||
-                    Traces != null &&
-                    Traces.Equals(other.Traces)
-                ) && 
-                (
                     BaseFrame == other.BaseFrame ||
                     BaseFrame != null &&
                     BaseFrame.Equals(other.BaseFrame)
@@ -100,9 +85,24 @@ namespace Plotly.Blazor
                     Data.Equals(other.Data)
                 ) && 
                 (
+                    Group == other.Group ||
+                    Group != null &&
+                    Group.Equals(other.Group)
+                ) && 
+                (
                     Layout == other.Layout ||
                     Layout != null &&
                     Layout.Equals(other.Layout)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    Traces == other.Traces ||
+                    Traces != null &&
+                    Traces.Equals(other.Traces)
                 );
         }
 
@@ -112,12 +112,12 @@ namespace Plotly.Blazor
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Group != null) hashCode = hashCode * 59 + Group.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
-                if (Traces != null) hashCode = hashCode * 59 + Traces.GetHashCode();
                 if (BaseFrame != null) hashCode = hashCode * 59 + BaseFrame.GetHashCode();
                 if (Data != null) hashCode = hashCode * 59 + Data.GetHashCode();
+                if (Group != null) hashCode = hashCode * 59 + Group.GetHashCode();
                 if (Layout != null) hashCode = hashCode * 59 + Layout.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Traces != null) hashCode = hashCode * 59 + Traces.GetHashCode();
                 return hashCode;
             }
         }

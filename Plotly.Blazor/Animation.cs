@@ -18,20 +18,16 @@ namespace Plotly.Blazor
     public class Animation : IEquatable<Animation>
     {
         /// <summary>
-        ///     Describes how a new animate call interacts with currently-running animations.
-        ///     If <c>immediate</c>, current animations are interrupted and the new animation
-        ///     is started. If <c>next</c>, the current frame is allowed to complete, after
-        ///     which the new animation is started. If <c>afterall</c> all existing frames
-        ///     are animated to completion before the new animation is started.
-        /// </summary>
-        [JsonPropertyName(@"mode")]
-        public Plotly.Blazor.AnimationLib.ModeEnum? Mode { get; set;} 
-
-        /// <summary>
         ///     The direction in which to play the frames triggered by the animation call
         /// </summary>
         [JsonPropertyName(@"direction")]
         public Plotly.Blazor.AnimationLib.DirectionEnum? Direction { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Frame.
+        /// </summary>
+        [JsonPropertyName(@"frame")]
+        public Plotly.Blazor.AnimationLib.Frame Frame { get; set;} 
 
         /// <summary>
         ///     Play frames starting at the current frame instead of the beginning.
@@ -40,10 +36,14 @@ namespace Plotly.Blazor
         public bool? FromCurrent { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Frame.
+        ///     Describes how a new animate call interacts with currently-running animations.
+        ///     If <c>immediate</c>, current animations are interrupted and the new animation
+        ///     is started. If <c>next</c>, the current frame is allowed to complete, after
+        ///     which the new animation is started. If <c>afterall</c> all existing frames
+        ///     are animated to completion before the new animation is started.
         /// </summary>
-        [JsonPropertyName(@"frame")]
-        public Plotly.Blazor.AnimationLib.Frame Frame { get; set;} 
+        [JsonPropertyName(@"mode")]
+        public Plotly.Blazor.AnimationLib.ModeEnum? Mode { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transition.
@@ -67,14 +67,14 @@ namespace Plotly.Blazor
 
             return 
                 (
-                    Mode == other.Mode ||
-                    Mode != null &&
-                    Mode.Equals(other.Mode)
-                ) && 
-                (
                     Direction == other.Direction ||
                     Direction != null &&
                     Direction.Equals(other.Direction)
+                ) && 
+                (
+                    Frame == other.Frame ||
+                    Frame != null &&
+                    Frame.Equals(other.Frame)
                 ) && 
                 (
                     FromCurrent == other.FromCurrent ||
@@ -82,9 +82,9 @@ namespace Plotly.Blazor
                     FromCurrent.Equals(other.FromCurrent)
                 ) && 
                 (
-                    Frame == other.Frame ||
-                    Frame != null &&
-                    Frame.Equals(other.Frame)
+                    Mode == other.Mode ||
+                    Mode != null &&
+                    Mode.Equals(other.Mode)
                 ) && 
                 (
                     Transition == other.Transition ||
@@ -99,10 +99,10 @@ namespace Plotly.Blazor
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Mode != null) hashCode = hashCode * 59 + Mode.GetHashCode();
                 if (Direction != null) hashCode = hashCode * 59 + Direction.GetHashCode();
-                if (FromCurrent != null) hashCode = hashCode * 59 + FromCurrent.GetHashCode();
                 if (Frame != null) hashCode = hashCode * 59 + Frame.GetHashCode();
+                if (FromCurrent != null) hashCode = hashCode * 59 + FromCurrent.GetHashCode();
+                if (Mode != null) hashCode = hashCode * 59 + Mode.GetHashCode();
                 if (Transition != null) hashCode = hashCode * 59 + Transition.GetHashCode();
                 return hashCode;
             }

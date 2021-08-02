@@ -18,18 +18,18 @@ namespace Plotly.Blazor.Traces.HistogramLib.UnselectedLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
-        ///     Sets the marker opacity of unselected points, applied only when a selection
-        ///     exists.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
         ///     Sets the marker color of unselected points, applied only when a selection
         ///     exists.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker opacity of unselected points, applied only when a selection
+        ///     exists.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -47,14 +47,14 @@ namespace Plotly.Blazor.Traces.HistogramLib.UnselectedLib
 
             return 
                 (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
                 );
         }
 
@@ -64,8 +64,8 @@ namespace Plotly.Blazor.Traces.HistogramLib.UnselectedLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 return hashCode;
             }
         }

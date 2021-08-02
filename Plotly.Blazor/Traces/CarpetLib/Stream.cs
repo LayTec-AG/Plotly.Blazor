@@ -18,19 +18,19 @@ namespace Plotly.Blazor.Traces.CarpetLib
     public class Stream : IEquatable<Stream>
     {
         /// <summary>
-        ///     The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings
-        ///     for more details.
-        /// </summary>
-        [JsonPropertyName(@"token")]
-        public string Token { get; set;} 
-
-        /// <summary>
         ///     Sets the maximum number of points to keep on the plots from an incoming
         ///     stream. If <c>maxpoints</c> is set to <c>50</c>, only the newest 50 points
         ///     will be displayed on the plot.
         /// </summary>
         [JsonPropertyName(@"maxpoints")]
         public decimal? MaxPoints { get; set;} 
+
+        /// <summary>
+        ///     The stream id number links a data trace on a plot with a stream. See https://chart-studio.plotly.com/settings
+        ///     for more details.
+        /// </summary>
+        [JsonPropertyName(@"token")]
+        public string Token { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -48,14 +48,14 @@ namespace Plotly.Blazor.Traces.CarpetLib
 
             return 
                 (
-                    Token == other.Token ||
-                    Token != null &&
-                    Token.Equals(other.Token)
-                ) && 
-                (
                     MaxPoints == other.MaxPoints ||
                     MaxPoints != null &&
                     MaxPoints.Equals(other.MaxPoints)
+                ) && 
+                (
+                    Token == other.Token ||
+                    Token != null &&
+                    Token.Equals(other.Token)
                 );
         }
 
@@ -65,8 +65,8 @@ namespace Plotly.Blazor.Traces.CarpetLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Token != null) hashCode = hashCode * 59 + Token.GetHashCode();
                 if (MaxPoints != null) hashCode = hashCode * 59 + MaxPoints.GetHashCode();
+                if (Token != null) hashCode = hashCode * 59 + Token.GetHashCode();
                 return hashCode;
             }
         }

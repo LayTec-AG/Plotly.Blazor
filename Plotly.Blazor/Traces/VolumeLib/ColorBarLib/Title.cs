@@ -18,14 +18,6 @@ namespace Plotly.Blazor.Traces.VolumeLib.ColorBarLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets the title of the color bar. Note that before the existence of <c>title.text</c>,
-        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
-        ///     itself. This behavior has been deprecated.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
         ///     Sets this color bar&#39;s title font. Note that the title&#39;s font used
         ///     to be set by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
@@ -39,6 +31,14 @@ namespace Plotly.Blazor.Traces.VolumeLib.ColorBarLib
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.Traces.VolumeLib.ColorBarLib.TitleLib.SideEnum? Side { get; set;} 
+
+        /// <summary>
+        ///     Sets the title of the color bar. Note that before the existence of <c>title.text</c>,
+        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
+        ///     itself. This behavior has been deprecated.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -56,11 +56,6 @@ namespace Plotly.Blazor.Traces.VolumeLib.ColorBarLib
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
@@ -69,6 +64,11 @@ namespace Plotly.Blazor.Traces.VolumeLib.ColorBarLib
                     Side == other.Side ||
                     Side != null &&
                     Side.Equals(other.Side)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -78,9 +78,9 @@ namespace Plotly.Blazor.Traces.VolumeLib.ColorBarLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Side != null) hashCode = hashCode * 59 + Side.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

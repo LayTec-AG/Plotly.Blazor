@@ -18,16 +18,84 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
     public class Layer : IEquatable<Layer>
     {
         /// <summary>
-        ///     Determines whether this layer is displayed
+        ///     Determines if the layer will be inserted before the layer with the specified
+        ///     ID. If omitted or set to &#39;&#39;, the layer will be inserted above every
+        ///     existing layer.
         /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        [JsonPropertyName(@"below")]
+        public string Below { get; set;} 
 
         /// <summary>
-        ///     Sets the source type for this layer, that is the type of the layer data.
+        ///     Gets or sets the Circle.
         /// </summary>
-        [JsonPropertyName(@"sourcetype")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SourceTypeEnum? SourceType { get; set;} 
+        [JsonPropertyName(@"circle")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Circle Circle { get; set;} 
+
+        /// <summary>
+        ///     Sets the primary layer color. If <c>type</c> is <c>circle</c>, color corresponds
+        ///     to the circle color (mapbox.layer.paint.circle-color) If <c>type</c> is
+        ///     <c>line</c>, color corresponds to the line color (mapbox.layer.paint.line-color)
+        ///     If <c>type</c> is <c>fill</c>, color corresponds to the fill color (mapbox.layer.paint.fill-color)
+        ///     If <c>type</c> is <c>symbol</c>, color corresponds to the icon color (mapbox.layer.paint.icon-color)
+        /// </summary>
+        [JsonPropertyName(@"color")]
+        public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets the coordinates array contains [longitude, latitude] pairs for the
+        ///     image corners listed in clockwise order: top left, top right, bottom right,
+        ///     bottom left. Only has an effect for <c>image</c> <c>sourcetype</c>.
+        /// </summary>
+        [JsonPropertyName(@"coordinates")]
+        public object Coordinates { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Fill.
+        /// </summary>
+        [JsonPropertyName(@"fill")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Fill Fill { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Sets the maximum zoom level (mapbox.layer.maxzoom). At zoom levels equal
+        ///     to or greater than the maxzoom, the layer will be hidden.
+        /// </summary>
+        [JsonPropertyName(@"maxzoom")]
+        public decimal? MaxZoom { get; set;} 
+
+        /// <summary>
+        ///     Sets the minimum zoom level (mapbox.layer.minzoom). At zoom levels less
+        ///     than the minzoom, the layer will be hidden.
+        /// </summary>
+        [JsonPropertyName(@"minzoom")]
+        public decimal? MinZoom { get; set;} 
+
+        /// <summary>
+        ///     When used in a template, named items are created in the output figure in
+        ///     addition to any items the figure already has in this array. You can modify
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of the layer. If <c>type</c> is <c>circle</c>, opacity
+        ///     corresponds to the circle opacity (mapbox.layer.paint.circle-opacity) If
+        ///     <c>type</c> is <c>line</c>, opacity corresponds to the line opacity (mapbox.layer.paint.line-opacity)
+        ///     If <c>type</c> is <c>fill</c>, opacity corresponds to the fill opacity (mapbox.layer.paint.fill-opacity)
+        ///     If <c>type</c> is <c>symbol</c>, opacity corresponds to the icon/text opacity
+        ///     (mapbox.layer.paint.text-opacity)
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
 
         /// <summary>
         ///     Sets the source data for this layer (mapbox.layer.source). When <c>sourcetype</c>
@@ -40,6 +108,12 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         public object Source { get; set;} 
 
         /// <summary>
+        ///     Sets the attribution for this source.
+        /// </summary>
+        [JsonPropertyName(@"sourceattribution")]
+        public string SourceAttribution { get; set;} 
+
+        /// <summary>
         ///     Specifies the layer to use from a vector tile source (mapbox.layer.source-layer).
         ///     Required for <c>vector</c> source type that supports multiple layers.
         /// </summary>
@@ -47,10 +121,28 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         public string SourceLayer { get; set;} 
 
         /// <summary>
-        ///     Sets the attribution for this source.
+        ///     Sets the source type for this layer, that is the type of the layer data.
         /// </summary>
-        [JsonPropertyName(@"sourceattribution")]
-        public string SourceAttribution { get; set;} 
+        [JsonPropertyName(@"sourcetype")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SourceTypeEnum? SourceType { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Symbol.
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Symbol Symbol { get; set;} 
+
+        /// <summary>
+        ///     Used to refer to a named item in this array in the template. Named items
+        ///     from the template will be created even without a matching item in the input
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
+        /// </summary>
+        [JsonPropertyName(@"templateitemname")]
+        public string TemplateItemName { get; set;} 
 
         /// <summary>
         ///     Sets the layer type, that is the how the layer data set in <c>source</c>
@@ -66,102 +158,10 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
         public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
-        ///     Sets the coordinates array contains [longitude, latitude] pairs for the
-        ///     image corners listed in clockwise order: top left, top right, bottom right,
-        ///     bottom left. Only has an effect for <c>image</c> <c>sourcetype</c>.
+        ///     Determines whether this layer is displayed
         /// </summary>
-        [JsonPropertyName(@"coordinates")]
-        public object Coordinates { get; set;} 
-
-        /// <summary>
-        ///     Determines if the layer will be inserted before the layer with the specified
-        ///     ID. If omitted or set to &#39;&#39;, the layer will be inserted above every
-        ///     existing layer.
-        /// </summary>
-        [JsonPropertyName(@"below")]
-        public string Below { get; set;} 
-
-        /// <summary>
-        ///     Sets the primary layer color. If <c>type</c> is <c>circle</c>, color corresponds
-        ///     to the circle color (mapbox.layer.paint.circle-color) If <c>type</c> is
-        ///     <c>line</c>, color corresponds to the line color (mapbox.layer.paint.line-color)
-        ///     If <c>type</c> is <c>fill</c>, color corresponds to the fill color (mapbox.layer.paint.fill-color)
-        ///     If <c>type</c> is <c>symbol</c>, color corresponds to the icon color (mapbox.layer.paint.icon-color)
-        /// </summary>
-        [JsonPropertyName(@"color")]
-        public object Color { get; set;} 
-
-        /// <summary>
-        ///     Sets the opacity of the layer. If <c>type</c> is <c>circle</c>, opacity
-        ///     corresponds to the circle opacity (mapbox.layer.paint.circle-opacity) If
-        ///     <c>type</c> is <c>line</c>, opacity corresponds to the line opacity (mapbox.layer.paint.line-opacity)
-        ///     If <c>type</c> is <c>fill</c>, opacity corresponds to the fill opacity (mapbox.layer.paint.fill-opacity)
-        ///     If <c>type</c> is <c>symbol</c>, opacity corresponds to the icon/text opacity
-        ///     (mapbox.layer.paint.text-opacity)
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
-        ///     Sets the minimum zoom level (mapbox.layer.minzoom). At zoom levels less
-        ///     than the minzoom, the layer will be hidden.
-        /// </summary>
-        [JsonPropertyName(@"minzoom")]
-        public decimal? MinZoom { get; set;} 
-
-        /// <summary>
-        ///     Sets the maximum zoom level (mapbox.layer.maxzoom). At zoom levels equal
-        ///     to or greater than the maxzoom, the layer will be hidden.
-        /// </summary>
-        [JsonPropertyName(@"maxzoom")]
-        public decimal? MaxZoom { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Circle.
-        /// </summary>
-        [JsonPropertyName(@"circle")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Circle Circle { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Line.
-        /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Line Line { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Fill.
-        /// </summary>
-        [JsonPropertyName(@"fill")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Fill Fill { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Symbol.
-        /// </summary>
-        [JsonPropertyName(@"symbol")]
-        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.Symbol Symbol { get; set;} 
-
-        /// <summary>
-        ///     When used in a template, named items are created in the output figure in
-        ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with <c>templateitemname</c>
-        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
-        ///     of a template.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Used to refer to a named item in this array in the template. Named items
-        ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
-        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
-        ///     or no matching item, this item will be hidden unless you explicitly show
-        ///     it with &#39;visible: true&#39;.
-        /// </summary>
-        [JsonPropertyName(@"templateitemname")]
-        public string TemplateItemName { get; set;} 
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -179,64 +179,9 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    SourceType == other.SourceType ||
-                    SourceType != null &&
-                    SourceType.Equals(other.SourceType)
-                ) && 
-                (
-                    Source == other.Source ||
-                    Source != null &&
-                    Source.Equals(other.Source)
-                ) && 
-                (
-                    SourceLayer == other.SourceLayer ||
-                    SourceLayer != null &&
-                    SourceLayer.Equals(other.SourceLayer)
-                ) && 
-                (
-                    SourceAttribution == other.SourceAttribution ||
-                    SourceAttribution != null &&
-                    SourceAttribution.Equals(other.SourceAttribution)
-                ) && 
-                (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    Coordinates == other.Coordinates ||
-                    Coordinates != null &&
-                    Coordinates.Equals(other.Coordinates)
-                ) && 
-                (
                     Below == other.Below ||
                     Below != null &&
                     Below.Equals(other.Below)
-                ) && 
-                (
-                    Color == other.Color ||
-                    Color != null &&
-                    Color.Equals(other.Color)
-                ) && 
-                (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
-                    MinZoom == other.MinZoom ||
-                    MinZoom != null &&
-                    MinZoom.Equals(other.MinZoom)
-                ) && 
-                (
-                    MaxZoom == other.MaxZoom ||
-                    MaxZoom != null &&
-                    MaxZoom.Equals(other.MaxZoom)
                 ) && 
                 (
                     Circle == other.Circle ||
@@ -244,9 +189,14 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
                     Circle.Equals(other.Circle)
                 ) && 
                 (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
+                    Color == other.Color ||
+                    Color != null &&
+                    Color.Equals(other.Color)
+                ) && 
+                (
+                    Coordinates == other.Coordinates ||
+                    Coordinates != null &&
+                    Coordinates.Equals(other.Coordinates)
                 ) && 
                 (
                     Fill == other.Fill ||
@@ -254,9 +204,19 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
                     Fill.Equals(other.Fill)
                 ) && 
                 (
-                    Symbol == other.Symbol ||
-                    Symbol != null &&
-                    Symbol.Equals(other.Symbol)
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
+                ) && 
+                (
+                    MaxZoom == other.MaxZoom ||
+                    MaxZoom != null &&
+                    MaxZoom.Equals(other.MaxZoom)
+                ) && 
+                (
+                    MinZoom == other.MinZoom ||
+                    MinZoom != null &&
+                    MinZoom.Equals(other.MinZoom)
                 ) && 
                 (
                     Name == other.Name ||
@@ -264,9 +224,49 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
                     Name.Equals(other.Name)
                 ) && 
                 (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
+                ) && 
+                (
+                    Source == other.Source ||
+                    Source != null &&
+                    Source.Equals(other.Source)
+                ) && 
+                (
+                    SourceAttribution == other.SourceAttribution ||
+                    SourceAttribution != null &&
+                    SourceAttribution.Equals(other.SourceAttribution)
+                ) && 
+                (
+                    SourceLayer == other.SourceLayer ||
+                    SourceLayer != null &&
+                    SourceLayer.Equals(other.SourceLayer)
+                ) && 
+                (
+                    SourceType == other.SourceType ||
+                    SourceType != null &&
+                    SourceType.Equals(other.SourceType)
+                ) && 
+                (
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
+                    Symbol.Equals(other.Symbol)
+                ) && 
+                (
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -276,24 +276,24 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (SourceType != null) hashCode = hashCode * 59 + SourceType.GetHashCode();
-                if (Source != null) hashCode = hashCode * 59 + Source.GetHashCode();
-                if (SourceLayer != null) hashCode = hashCode * 59 + SourceLayer.GetHashCode();
-                if (SourceAttribution != null) hashCode = hashCode * 59 + SourceAttribution.GetHashCode();
-                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Coordinates != null) hashCode = hashCode * 59 + Coordinates.GetHashCode();
                 if (Below != null) hashCode = hashCode * 59 + Below.GetHashCode();
-                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (MinZoom != null) hashCode = hashCode * 59 + MinZoom.GetHashCode();
-                if (MaxZoom != null) hashCode = hashCode * 59 + MaxZoom.GetHashCode();
                 if (Circle != null) hashCode = hashCode * 59 + Circle.GetHashCode();
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Coordinates != null) hashCode = hashCode * 59 + Coordinates.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
-                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (MaxZoom != null) hashCode = hashCode * 59 + MaxZoom.GetHashCode();
+                if (MinZoom != null) hashCode = hashCode * 59 + MinZoom.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
+                if (Source != null) hashCode = hashCode * 59 + Source.GetHashCode();
+                if (SourceAttribution != null) hashCode = hashCode * 59 + SourceAttribution.GetHashCode();
+                if (SourceLayer != null) hashCode = hashCode * 59 + SourceLayer.GetHashCode();
+                if (SourceType != null) hashCode = hashCode * 59 + SourceType.GetHashCode();
+                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

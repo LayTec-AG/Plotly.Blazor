@@ -19,16 +19,16 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.MarkerLib
         Circle = 0,
         [EnumMember(Value=@"circle-open")]
         CircleOpen,
-        [EnumMember(Value=@"square")]
-        Square,
-        [EnumMember(Value=@"square-open")]
-        SquareOpen,
+        [EnumMember(Value=@"cross")]
+        Cross,
         [EnumMember(Value=@"diamond")]
         Diamond,
         [EnumMember(Value=@"diamond-open")]
         DiamondOpen,
-        [EnumMember(Value=@"cross")]
-        Cross,
+        [EnumMember(Value=@"square")]
+        Square,
+        [EnumMember(Value=@"square-open")]
+        SquareOpen,
         [EnumMember(Value=@"x")]
         X
     }

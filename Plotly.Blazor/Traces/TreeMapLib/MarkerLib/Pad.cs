@@ -18,10 +18,10 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
     public class Pad : IEquatable<Pad>
     {
         /// <summary>
-        ///     Sets the padding form the top (in px).
+        ///     Sets the padding form the bottom (in px).
         /// </summary>
-        [JsonPropertyName(@"t")]
-        public decimal? T { get; set;} 
+        [JsonPropertyName(@"b")]
+        public decimal? B { get; set;} 
 
         /// <summary>
         ///     Sets the padding form the left (in px).
@@ -36,10 +36,10 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
         public decimal? R { get; set;} 
 
         /// <summary>
-        ///     Sets the padding form the bottom (in px).
+        ///     Sets the padding form the top (in px).
         /// </summary>
-        [JsonPropertyName(@"b")]
-        public decimal? B { get; set;} 
+        [JsonPropertyName(@"t")]
+        public decimal? T { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -57,9 +57,9 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
 
             return 
                 (
-                    T == other.T ||
-                    T != null &&
-                    T.Equals(other.T)
+                    B == other.B ||
+                    B != null &&
+                    B.Equals(other.B)
                 ) && 
                 (
                     L == other.L ||
@@ -72,9 +72,9 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
                     R.Equals(other.R)
                 ) && 
                 (
-                    B == other.B ||
-                    B != null &&
-                    B.Equals(other.B)
+                    T == other.T ||
+                    T != null &&
+                    T.Equals(other.T)
                 );
         }
 
@@ -84,10 +84,10 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (T != null) hashCode = hashCode * 59 + T.GetHashCode();
+                if (B != null) hashCode = hashCode * 59 + B.GetHashCode();
                 if (L != null) hashCode = hashCode * 59 + L.GetHashCode();
                 if (R != null) hashCode = hashCode * 59 + R.GetHashCode();
-                if (B != null) hashCode = hashCode * 59 + B.GetHashCode();
+                if (T != null) hashCode = hashCode * 59 + T.GetHashCode();
                 return hashCode;
             }
         }

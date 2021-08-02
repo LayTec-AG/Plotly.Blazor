@@ -32,6 +32,35 @@ namespace Plotly.Blazor.Transforms
         public bool? Enabled { get; set;} 
 
         /// <summary>
+        ///     Sets the filter operation. <c>=</c> keeps items equal to <c>value</c> <c>!=</c>
+        ///     keeps items not equal to <c>value</c> <c>&lt;</c> keeps items less than
+        ///     <c>value</c> <c>&lt;=</c> keeps items less than or equal to <c>value</c>
+        ///     <c>&gt;</c> keeps items greater than <c>value</c> <c>&gt;=</c> keeps items
+        ///     greater than or equal to <c>value</c> <c>[]</c> keeps items inside <c>value[0]</c>
+        ///     to <c>value[1]</c> including both bounds <c>()</c> keeps items inside <c>value[0]</c>
+        ///     to <c>value[1]</c> excluding both bounds <c>[)</c> keeps items inside <c>value[0]</c>
+        ///     to <c>value[1]</c> including <c>value[0]</c> but excluding &#39;value[1]
+        ///     <c>(]</c> keeps items inside <c>value[0]</c> to <c>value[1]</c> excluding
+        ///     <c>value[0]</c> but including &#39;value[1] <c>][</c> keeps items outside
+        ///     <c>value[0]</c> to <c>value[1]</c> and equal to both bounds <c>)(</c> keeps
+        ///     items outside <c>value[0]</c> to <c>value[1]</c> <c>](</c> keeps items outside
+        ///     <c>value[0]</c> to <c>value[1]</c> and equal to <c>value[0]</c> <c>)[</c>
+        ///     keeps items outside <c>value[0]</c> to <c>value[1]</c> and equal to <c>value[1]</c>
+        ///     <c>{}</c> keeps items present in a set of values <c>}{</c> keeps items not
+        ///     present in a set of values
+        /// </summary>
+        [JsonPropertyName(@"operation")]
+        public Plotly.Blazor.Transforms.FilterLib.OperationEnum? Operation { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not gaps in data arrays produced by the filter operation
+        ///     are preserved. Setting this to <c>true</c> might be useful when plotting
+        ///     a line chart with <c>connectgaps</c> set to <c>false</c>.
+        /// </summary>
+        [JsonPropertyName(@"preservegaps")]
+        public bool? PreserveGaps { get; set;} 
+
+        /// <summary>
         ///     Sets the filter target by which the filter is applied. If a string, <c>target</c>
         ///     is assumed to be a reference to a data array in the parent trace object.
         ///     To filter about nested variables, use <c>.</c> to access them. For example,
@@ -55,25 +84,20 @@ namespace Plotly.Blazor.Transforms
         public IList<string> TargetArray { get; set;} 
 
         /// <summary>
-        ///     Sets the filter operation. <c>=</c> keeps items equal to <c>value</c> <c>!=</c>
-        ///     keeps items not equal to <c>value</c> <c>&lt;</c> keeps items less than
-        ///     <c>value</c> <c>&lt;=</c> keeps items less than or equal to <c>value</c>
-        ///     <c>&gt;</c> keeps items greater than <c>value</c> <c>&gt;=</c> keeps items
-        ///     greater than or equal to <c>value</c> <c>[]</c> keeps items inside <c>value[0]</c>
-        ///     to <c>value[1]</c> including both bounds <c>()</c> keeps items inside <c>value[0]</c>
-        ///     to <c>value[1]</c> excluding both bounds <c>[)</c> keeps items inside <c>value[0]</c>
-        ///     to <c>value[1]</c> including <c>value[0]</c> but excluding &#39;value[1]
-        ///     <c>(]</c> keeps items inside <c>value[0]</c> to <c>value[1]</c> excluding
-        ///     <c>value[0]</c> but including &#39;value[1] <c>][</c> keeps items outside
-        ///     <c>value[0]</c> to <c>value[1]</c> and equal to both bounds <c>)(</c> keeps
-        ///     items outside <c>value[0]</c> to <c>value[1]</c> <c>](</c> keeps items outside
-        ///     <c>value[0]</c> to <c>value[1]</c> and equal to <c>value[0]</c> <c>)[</c>
-        ///     keeps items outside <c>value[0]</c> to <c>value[1]</c> and equal to <c>value[1]</c>
-        ///     <c>{}</c> keeps items present in a set of values <c>}{</c> keeps items not
-        ///     present in a set of values
+        ///     WARNING: All transforms are deprecated and may be removed from the API in
+        ///     next major version. Sets the calendar system to use for <c>target</c>, if
+        ///     it is an array of dates. If <c>target</c> is a string (eg <c>x</c>) we use
+        ///     the corresponding trace attribute (eg <c>xcalendar</c>) if it exists, even
+        ///     if <c>targetcalendar</c> is provided.
         /// </summary>
-        [JsonPropertyName(@"operation")]
-        public Plotly.Blazor.Transforms.FilterLib.OperationEnum? Operation { get; set;} 
+        [JsonPropertyName(@"targetcalendar")]
+        public Plotly.Blazor.Transforms.FilterLib.TargetCalendarEnum? TargetCalendar { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for  target .
+        /// </summary>
+        [JsonPropertyName(@"targetsrc")]
+        public string TargetSrc { get; set;} 
 
         /// <summary>
         ///     Sets the value or values by which to filter. Values are expected to be in
@@ -90,36 +114,12 @@ namespace Plotly.Blazor.Transforms
         public object Value { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not gaps in data arrays produced by the filter operation
-        ///     are preserved. Setting this to <c>true</c> might be useful when plotting
-        ///     a line chart with <c>connectgaps</c> set to <c>false</c>.
-        /// </summary>
-        [JsonPropertyName(@"preservegaps")]
-        public bool? PreserveGaps { get; set;} 
-
-        /// <summary>
         ///     WARNING: All transforms are deprecated and may be removed from the API in
         ///     next major version. Sets the calendar system to use for <c>value</c>, if
         ///     it is a date.
         /// </summary>
         [JsonPropertyName(@"valuecalendar")]
         public Plotly.Blazor.Transforms.FilterLib.ValueCalendarEnum? ValueCalendar { get; set;} 
-
-        /// <summary>
-        ///     WARNING: All transforms are deprecated and may be removed from the API in
-        ///     next major version. Sets the calendar system to use for <c>target</c>, if
-        ///     it is an array of dates. If <c>target</c> is a string (eg <c>x</c>) we use
-        ///     the corresponding trace attribute (eg <c>xcalendar</c>) if it exists, even
-        ///     if <c>targetcalendar</c> is provided.
-        /// </summary>
-        [JsonPropertyName(@"targetcalendar")]
-        public Plotly.Blazor.Transforms.FilterLib.TargetCalendarEnum? TargetCalendar { get; set;} 
-
-        /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  target .
-        /// </summary>
-        [JsonPropertyName(@"targetsrc")]
-        public string TargetSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -147,6 +147,16 @@ namespace Plotly.Blazor.Transforms
                     Enabled.Equals(other.Enabled)
                 ) && 
                 (
+                    Operation == other.Operation ||
+                    Operation != null &&
+                    Operation.Equals(other.Operation)
+                ) && 
+                (
+                    PreserveGaps == other.PreserveGaps ||
+                    PreserveGaps != null &&
+                    PreserveGaps.Equals(other.PreserveGaps)
+                ) && 
+                (
                     Target == other.Target ||
                     Target != null &&
                     Target.Equals(other.Target)
@@ -157,26 +167,6 @@ namespace Plotly.Blazor.Transforms
                     TargetArray.SequenceEqual(other.TargetArray)
                 ) &&
                 (
-                    Operation == other.Operation ||
-                    Operation != null &&
-                    Operation.Equals(other.Operation)
-                ) && 
-                (
-                    Value == other.Value ||
-                    Value != null &&
-                    Value.Equals(other.Value)
-                ) && 
-                (
-                    PreserveGaps == other.PreserveGaps ||
-                    PreserveGaps != null &&
-                    PreserveGaps.Equals(other.PreserveGaps)
-                ) && 
-                (
-                    ValueCalendar == other.ValueCalendar ||
-                    ValueCalendar != null &&
-                    ValueCalendar.Equals(other.ValueCalendar)
-                ) && 
-                (
                     TargetCalendar == other.TargetCalendar ||
                     TargetCalendar != null &&
                     TargetCalendar.Equals(other.TargetCalendar)
@@ -185,6 +175,16 @@ namespace Plotly.Blazor.Transforms
                     TargetSrc == other.TargetSrc ||
                     TargetSrc != null &&
                     TargetSrc.Equals(other.TargetSrc)
+                ) && 
+                (
+                    Value == other.Value ||
+                    Value != null &&
+                    Value.Equals(other.Value)
+                ) && 
+                (
+                    ValueCalendar == other.ValueCalendar ||
+                    ValueCalendar != null &&
+                    ValueCalendar.Equals(other.ValueCalendar)
                 );
         }
 
@@ -196,14 +196,14 @@ namespace Plotly.Blazor.Transforms
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Enabled != null) hashCode = hashCode * 59 + Enabled.GetHashCode();
+                if (Operation != null) hashCode = hashCode * 59 + Operation.GetHashCode();
+                if (PreserveGaps != null) hashCode = hashCode * 59 + PreserveGaps.GetHashCode();
                 if (Target != null) hashCode = hashCode * 59 + Target.GetHashCode();
                 if (TargetArray != null) hashCode = hashCode * 59 + TargetArray.GetHashCode();
-                if (Operation != null) hashCode = hashCode * 59 + Operation.GetHashCode();
-                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
-                if (PreserveGaps != null) hashCode = hashCode * 59 + PreserveGaps.GetHashCode();
-                if (ValueCalendar != null) hashCode = hashCode * 59 + ValueCalendar.GetHashCode();
                 if (TargetCalendar != null) hashCode = hashCode * 59 + TargetCalendar.GetHashCode();
                 if (TargetSrc != null) hashCode = hashCode * 59 + TargetSrc.GetHashCode();
+                if (Value != null) hashCode = hashCode * 59 + Value.GetHashCode();
+                if (ValueCalendar != null) hashCode = hashCode * 59 + ValueCalendar.GetHashCode();
                 return hashCode;
             }
         }

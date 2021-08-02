@@ -18,25 +18,29 @@ namespace Plotly.Blazor.LayoutLib
     public class Image : IEquatable<Image>
     {
         /// <summary>
-        ///     Determines whether or not this image is visible.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     Specifies the URL of the image to be used. The URL must be accessible from
-        ///     the domain where the plot code is run, and can be either relative or absolute.
-        /// </summary>
-        [JsonPropertyName(@"source")]
-        public string Source { get; set;} 
-
-        /// <summary>
         ///     Specifies whether images are drawn below or above traces. When <c>xref</c>
         ///     and <c>yref</c> are both set to <c>paper</c>, image is drawn below the entire
         ///     plot area.
         /// </summary>
         [JsonPropertyName(@"layer")]
         public Plotly.Blazor.LayoutLib.ImageLib.LayerEnum? Layer { get; set;} 
+
+        /// <summary>
+        ///     When used in a template, named items are created in the output figure in
+        ///     addition to any items the figure already has in this array. You can modify
+        ///     these items in the output figure by making your own item with <c>templateitemname</c>
+        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
+        ///     of a template.
+        /// </summary>
+        [JsonPropertyName(@"name")]
+        public string Name { get; set;} 
+
+        /// <summary>
+        ///     Sets the opacity of the image.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
 
         /// <summary>
         ///     Sets the image container size horizontally. The image will be sized based
@@ -63,10 +67,29 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ImageLib.SizingEnum? Sizing { get; set;} 
 
         /// <summary>
-        ///     Sets the opacity of the image.
+        ///     Specifies the URL of the image to be used. The URL must be accessible from
+        ///     the domain where the plot code is run, and can be either relative or absolute.
         /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
+        [JsonPropertyName(@"source")]
+        public string Source { get; set;} 
+
+        /// <summary>
+        ///     Used to refer to a named item in this array in the template. Named items
+        ///     from the template will be created even without a matching item in the input
+        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
+        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
+        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
+        ///     or no matching item, this item will be hidden unless you explicitly show
+        ///     it with &#39;visible: true&#39;.
+        /// </summary>
+        [JsonPropertyName(@"templateitemname")]
+        public string TemplateItemName { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not this image is visible.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the image&#39;s x position. When <c>xref</c> is set to <c>paper</c>,
@@ -76,23 +99,10 @@ namespace Plotly.Blazor.LayoutLib
         public object X { get; set;} 
 
         /// <summary>
-        ///     Sets the image&#39;s y position. When <c>yref</c> is set to <c>paper</c>,
-        ///     units are sized relative to the plot height. See <c>yref</c> for more info
-        /// </summary>
-        [JsonPropertyName(@"y")]
-        public object Y { get; set;} 
-
-        /// <summary>
         ///     Sets the anchor for the x position
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.LayoutLib.ImageLib.XAnchorEnum? XAnchor { get; set;} 
-
-        /// <summary>
-        ///     Sets the anchor for the y position.
-        /// </summary>
-        [JsonPropertyName(@"yanchor")]
-        public Plotly.Blazor.LayoutLib.ImageLib.YAnchorEnum? YAnchor { get; set;} 
 
         /// <summary>
         ///     Sets the images&#39;s x coordinate axis. If set to a x axis id (e.g. <c>x</c>
@@ -110,6 +120,19 @@ namespace Plotly.Blazor.LayoutLib
         public string XRef { get; set;} 
 
         /// <summary>
+        ///     Sets the image&#39;s y position. When <c>yref</c> is set to <c>paper</c>,
+        ///     units are sized relative to the plot height. See <c>yref</c> for more info
+        /// </summary>
+        [JsonPropertyName(@"y")]
+        public object Y { get; set;} 
+
+        /// <summary>
+        ///     Sets the anchor for the y position.
+        /// </summary>
+        [JsonPropertyName(@"yanchor")]
+        public Plotly.Blazor.LayoutLib.ImageLib.YAnchorEnum? YAnchor { get; set;} 
+
+        /// <summary>
         ///     Sets the images&#39;s y coordinate axis. If set to a y axis id (e.g. <c>y</c>
         ///     or <c>y2</c>), the <c>y</c> position refers to a y coordinate. If set to
         ///     <c>paper</c>, the <c>y</c> position refers to the distance from the bottom
@@ -123,29 +146,6 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"yref")]
         public string YRef { get; set;} 
-
-        /// <summary>
-        ///     When used in a template, named items are created in the output figure in
-        ///     addition to any items the figure already has in this array. You can modify
-        ///     these items in the output figure by making your own item with <c>templateitemname</c>
-        ///     matching this <c>name</c> alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). Has no effect outside
-        ///     of a template.
-        /// </summary>
-        [JsonPropertyName(@"name")]
-        public string Name { get; set;} 
-
-        /// <summary>
-        ///     Used to refer to a named item in this array in the template. Named items
-        ///     from the template will be created even without a matching item in the input
-        ///     figure, but you can modify one by making an item with <c>templateitemname</c>
-        ///     matching its <c>name</c>, alongside your modifications (including &#39;visible:
-        ///     false&#39; or &#39;enabled: false&#39; to hide it). If there is no template
-        ///     or no matching item, this item will be hidden unless you explicitly show
-        ///     it with &#39;visible: true&#39;.
-        /// </summary>
-        [JsonPropertyName(@"templateitemname")]
-        public string TemplateItemName { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -163,19 +163,19 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Source == other.Source ||
-                    Source != null &&
-                    Source.Equals(other.Source)
-                ) && 
-                (
                     Layer == other.Layer ||
                     Layer != null &&
                     Layer.Equals(other.Layer)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
                 ) && 
                 (
                     SizeX == other.SizeX ||
@@ -193,9 +193,19 @@ namespace Plotly.Blazor.LayoutLib
                     Sizing.Equals(other.Sizing)
                 ) && 
                 (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
+                    Source == other.Source ||
+                    Source != null &&
+                    Source.Equals(other.Source)
+                ) && 
+                (
+                    TemplateItemName == other.TemplateItemName ||
+                    TemplateItemName != null &&
+                    TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 ) && 
                 (
                     X == other.X ||
@@ -203,19 +213,9 @@ namespace Plotly.Blazor.LayoutLib
                     X.Equals(other.X)
                 ) && 
                 (
-                    Y == other.Y ||
-                    Y != null &&
-                    Y.Equals(other.Y)
-                ) && 
-                (
                     XAnchor == other.XAnchor ||
                     XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
-                ) && 
-                (
-                    YAnchor == other.YAnchor ||
-                    YAnchor != null &&
-                    YAnchor.Equals(other.YAnchor)
                 ) && 
                 (
                     XRef == other.XRef ||
@@ -223,19 +223,19 @@ namespace Plotly.Blazor.LayoutLib
                     XRef.Equals(other.XRef)
                 ) && 
                 (
+                    Y == other.Y ||
+                    Y != null &&
+                    Y.Equals(other.Y)
+                ) && 
+                (
+                    YAnchor == other.YAnchor ||
+                    YAnchor != null &&
+                    YAnchor.Equals(other.YAnchor)
+                ) && 
+                (
                     YRef == other.YRef ||
                     YRef != null &&
                     YRef.Equals(other.YRef)
-                ) && 
-                (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
-                    TemplateItemName == other.TemplateItemName ||
-                    TemplateItemName != null &&
-                    TemplateItemName.Equals(other.TemplateItemName)
                 );
         }
 
@@ -245,21 +245,21 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Source != null) hashCode = hashCode * 59 + Source.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
+                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (SizeX != null) hashCode = hashCode * 59 + SizeX.GetHashCode();
                 if (SizeY != null) hashCode = hashCode * 59 + SizeY.GetHashCode();
                 if (Sizing != null) hashCode = hashCode * 59 + Sizing.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
-                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
-                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
-                if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
-                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
-                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
-                if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Source != null) hashCode = hashCode * 59 + Source.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
+                if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
+                if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
+                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
+                if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
+                if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
+                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
                 return hashCode;
             }
         }

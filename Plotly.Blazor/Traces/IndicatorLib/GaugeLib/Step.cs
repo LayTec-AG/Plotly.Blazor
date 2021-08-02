@@ -32,19 +32,6 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.StepLib.Line Line { get; set;} 
 
         /// <summary>
-        ///     Sets the thickness of the bar as a fraction of the total thickness of the
-        ///     gauge.
-        /// </summary>
-        [JsonPropertyName(@"thickness")]
-        public decimal? Thickness { get; set;} 
-
-        /// <summary>
-        ///     Sets the range of this axis.
-        /// </summary>
-        [JsonPropertyName(@"range")]
-        public IList<object> Range { get; set;} 
-
-        /// <summary>
         ///     When used in a template, named items are created in the output figure in
         ///     addition to any items the figure already has in this array. You can modify
         ///     these items in the output figure by making your own item with <c>templateitemname</c>
@@ -54,6 +41,12 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
+
+        /// <summary>
+        ///     Sets the range of this axis.
+        /// </summary>
+        [JsonPropertyName(@"range")]
+        public IList<object> Range { get; set;} 
 
         /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
@@ -66,6 +59,13 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 
+
+        /// <summary>
+        ///     Sets the thickness of the bar as a fraction of the total thickness of the
+        ///     gauge.
+        /// </summary>
+        [JsonPropertyName(@"thickness")]
+        public decimal? Thickness { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -93,9 +93,9 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                     Line.Equals(other.Line)
                 ) && 
                 (
-                    Thickness == other.Thickness ||
-                    Thickness != null &&
-                    Thickness.Equals(other.Thickness)
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 ) && 
                 (
                     Equals(Range, other.Range) ||
@@ -103,14 +103,14 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                     Range.SequenceEqual(other.Range)
                 ) &&
                 (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Thickness == other.Thickness ||
+                    Thickness != null &&
+                    Thickness.Equals(other.Thickness)
                 );
         }
 
@@ -122,10 +122,10 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
-                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
-                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Thickness != null) hashCode = hashCode * 59 + Thickness.GetHashCode();
                 return hashCode;
             }
         }

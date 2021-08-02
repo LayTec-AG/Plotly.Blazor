@@ -18,16 +18,16 @@ namespace Plotly.Blazor.Traces.ContourLib
     public class LegendGroupTitle : IEquatable<LegendGroupTitle>
     {
         /// <summary>
-        ///     Sets the title of the legend group.
-        /// </summary>
-        [JsonPropertyName(@"text")]
-        public string Text { get; set;} 
-
-        /// <summary>
         ///     Sets this legend group&#39;s title font.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.ContourLib.LegendGroupTitleLib.Font Font { get; set;} 
+
+        /// <summary>
+        ///     Sets the title of the legend group.
+        /// </summary>
+        [JsonPropertyName(@"text")]
+        public string Text { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -45,14 +45,14 @@ namespace Plotly.Blazor.Traces.ContourLib
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -62,8 +62,8 @@ namespace Plotly.Blazor.Traces.ContourLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

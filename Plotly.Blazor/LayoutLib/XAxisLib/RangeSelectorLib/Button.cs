@@ -18,31 +18,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
     public class Button : IEquatable<Button>
     {
         /// <summary>
-        ///     Determines whether or not this button is visible.
-        /// </summary>
-        [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
-
-        /// <summary>
-        ///     The unit of measurement that the <c>count</c> value will set the range by.
-        /// </summary>
-        [JsonPropertyName(@"step")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib.StepEnum? Step { get; set;} 
-
-        /// <summary>
-        ///     Sets the range update mode. If <c>backward</c>, the range update shifts
-        ///     the start of range back <c>count</c> times <c>step</c> milliseconds. If
-        ///     <c>todate</c>, the range update shifts the start of range back to the first
-        ///     timestamp from <c>count</c> times <c>step</c> milliseconds back. For example,
-        ///     with <c>step</c> set to <c>year</c> and <c>count</c> set to <c>1</c> the
-        ///     range update shifts the start of the range back to January 01 of the current
-        ///     year. Month and year <c>todate</c> are currently available only for the
-        ///     built-in (Gregorian) calendar.
-        /// </summary>
-        [JsonPropertyName(@"stepmode")]
-        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib.StepModeEnum? StepMode { get; set;} 
-
-        /// <summary>
         ///     Sets the number of steps to take to update the range. Use with <c>step</c>
         ///     to specify the update interval.
         /// </summary>
@@ -67,6 +42,25 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
         public string Name { get; set;} 
 
         /// <summary>
+        ///     The unit of measurement that the <c>count</c> value will set the range by.
+        /// </summary>
+        [JsonPropertyName(@"step")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib.StepEnum? Step { get; set;} 
+
+        /// <summary>
+        ///     Sets the range update mode. If <c>backward</c>, the range update shifts
+        ///     the start of range back <c>count</c> times <c>step</c> milliseconds. If
+        ///     <c>todate</c>, the range update shifts the start of range back to the first
+        ///     timestamp from <c>count</c> times <c>step</c> milliseconds back. For example,
+        ///     with <c>step</c> set to <c>year</c> and <c>count</c> set to <c>1</c> the
+        ///     range update shifts the start of the range back to January 01 of the current
+        ///     year. Month and year <c>todate</c> are currently available only for the
+        ///     built-in (Gregorian) calendar.
+        /// </summary>
+        [JsonPropertyName(@"stepmode")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib.StepModeEnum? StepMode { get; set;} 
+
+        /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
         ///     figure, but you can modify one by making an item with <c>templateitemname</c>
@@ -77,6 +71,12 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
         /// </summary>
         [JsonPropertyName(@"templateitemname")]
         public string TemplateItemName { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not this button is visible.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -94,21 +94,6 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
 
             return 
                 (
-                    Visible == other.Visible ||
-                    Visible != null &&
-                    Visible.Equals(other.Visible)
-                ) && 
-                (
-                    Step == other.Step ||
-                    Step != null &&
-                    Step.Equals(other.Step)
-                ) && 
-                (
-                    StepMode == other.StepMode ||
-                    StepMode != null &&
-                    StepMode.Equals(other.StepMode)
-                ) && 
-                (
                     Count == other.Count ||
                     Count != null &&
                     Count.Equals(other.Count)
@@ -124,9 +109,24 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
                     Name.Equals(other.Name)
                 ) && 
                 (
+                    Step == other.Step ||
+                    Step != null &&
+                    Step.Equals(other.Step)
+                ) && 
+                (
+                    StepMode == other.StepMode ||
+                    StepMode != null &&
+                    StepMode.Equals(other.StepMode)
+                ) && 
+                (
                     TemplateItemName == other.TemplateItemName ||
                     TemplateItemName != null &&
                     TemplateItemName.Equals(other.TemplateItemName)
+                ) && 
+                (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
                 );
         }
 
@@ -136,13 +136,13 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
-                if (Step != null) hashCode = hashCode * 59 + Step.GetHashCode();
-                if (StepMode != null) hashCode = hashCode * 59 + StepMode.GetHashCode();
                 if (Count != null) hashCode = hashCode * 59 + Count.GetHashCode();
                 if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Step != null) hashCode = hashCode * 59 + Step.GetHashCode();
+                if (StepMode != null) hashCode = hashCode * 59 + StepMode.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }
         }

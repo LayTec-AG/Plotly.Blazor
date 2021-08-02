@@ -18,16 +18,16 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.SelectedLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
-        ///     Sets the marker opacity of selected points.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
         ///     Sets the marker color of selected points.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker opacity of selected points.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
 
         /// <summary>
         ///     Sets the marker size of selected points.
@@ -51,14 +51,14 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.SelectedLib
 
             return 
                 (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
                 ) && 
                 (
                     Size == other.Size ||
@@ -73,8 +73,8 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.SelectedLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 return hashCode;
             }

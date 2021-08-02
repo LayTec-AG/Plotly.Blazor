@@ -18,17 +18,17 @@ namespace Plotly.Blazor.Traces.CandlestickLib
     public class Decreasing : IEquatable<Decreasing>
     {
         /// <summary>
-        ///     Gets or sets the Line.
-        /// </summary>
-        [JsonPropertyName(@"line")]
-        public Plotly.Blazor.Traces.CandlestickLib.DecreasingLib.Line Line { get; set;} 
-
-        /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
         ///     color, marker color, or marker line color, whichever is available.
         /// </summary>
         [JsonPropertyName(@"fillcolor")]
         public object FillColor { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Line.
+        /// </summary>
+        [JsonPropertyName(@"line")]
+        public Plotly.Blazor.Traces.CandlestickLib.DecreasingLib.Line Line { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -46,14 +46,14 @@ namespace Plotly.Blazor.Traces.CandlestickLib
 
             return 
                 (
-                    Line == other.Line ||
-                    Line != null &&
-                    Line.Equals(other.Line)
-                ) && 
-                (
                     FillColor == other.FillColor ||
                     FillColor != null &&
                     FillColor.Equals(other.FillColor)
+                ) && 
+                (
+                    Line == other.Line ||
+                    Line != null &&
+                    Line.Equals(other.Line)
                 );
         }
 
@@ -63,8 +63,8 @@ namespace Plotly.Blazor.Traces.CandlestickLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
+                if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 return hashCode;
             }
         }

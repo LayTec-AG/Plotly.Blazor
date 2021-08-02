@@ -29,6 +29,8 @@ namespace Plotly.Blazor.Traces.Histogram2DLib
         Hebrew,
         [EnumMember(Value=@"islamic")]
         Islamic,
+        [EnumMember(Value=@"jalali")]
+        Jalali,
         [EnumMember(Value=@"julian")]
         Julian,
         [EnumMember(Value=@"mayan")]
@@ -39,8 +41,6 @@ namespace Plotly.Blazor.Traces.Histogram2DLib
         Nepali,
         [EnumMember(Value=@"persian")]
         Persian,
-        [EnumMember(Value=@"jalali")]
-        Jalali,
         [EnumMember(Value=@"taiwan")]
         Taiwan,
         [EnumMember(Value=@"thai")]

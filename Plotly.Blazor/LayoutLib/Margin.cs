@@ -18,10 +18,31 @@ namespace Plotly.Blazor.LayoutLib
     public class Margin : IEquatable<Margin>
     {
         /// <summary>
+        ///     Turns on/off margin expansion computations. Legends, colorbars, updatemenus,
+        ///     sliders, axis rangeselector and rangeslider are allowed to push the margins
+        ///     by defaults.
+        /// </summary>
+        [JsonPropertyName(@"autoexpand")]
+        public bool? AutoExpand { get; set;} 
+
+        /// <summary>
+        ///     Sets the bottom margin (in px).
+        /// </summary>
+        [JsonPropertyName(@"b")]
+        public decimal? B { get; set;} 
+
+        /// <summary>
         ///     Sets the left margin (in px).
         /// </summary>
         [JsonPropertyName(@"l")]
         public decimal? L { get; set;} 
+
+        /// <summary>
+        ///     Sets the amount of padding (in px) between the plotting area and the axis
+        ///     lines
+        /// </summary>
+        [JsonPropertyName(@"pad")]
+        public decimal? Pad { get; set;} 
 
         /// <summary>
         ///     Sets the right margin (in px).
@@ -34,27 +55,6 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"t")]
         public decimal? T { get; set;} 
-
-        /// <summary>
-        ///     Sets the bottom margin (in px).
-        /// </summary>
-        [JsonPropertyName(@"b")]
-        public decimal? B { get; set;} 
-
-        /// <summary>
-        ///     Sets the amount of padding (in px) between the plotting area and the axis
-        ///     lines
-        /// </summary>
-        [JsonPropertyName(@"pad")]
-        public decimal? Pad { get; set;} 
-
-        /// <summary>
-        ///     Turns on/off margin expansion computations. Legends, colorbars, updatemenus,
-        ///     sliders, axis rangeselector and rangeslider are allowed to push the margins
-        ///     by defaults.
-        /// </summary>
-        [JsonPropertyName(@"autoexpand")]
-        public bool? AutoExpand { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -72,9 +72,24 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
+                    AutoExpand == other.AutoExpand ||
+                    AutoExpand != null &&
+                    AutoExpand.Equals(other.AutoExpand)
+                ) && 
+                (
+                    B == other.B ||
+                    B != null &&
+                    B.Equals(other.B)
+                ) && 
+                (
                     L == other.L ||
                     L != null &&
                     L.Equals(other.L)
+                ) && 
+                (
+                    Pad == other.Pad ||
+                    Pad != null &&
+                    Pad.Equals(other.Pad)
                 ) && 
                 (
                     R == other.R ||
@@ -85,21 +100,6 @@ namespace Plotly.Blazor.LayoutLib
                     T == other.T ||
                     T != null &&
                     T.Equals(other.T)
-                ) && 
-                (
-                    B == other.B ||
-                    B != null &&
-                    B.Equals(other.B)
-                ) && 
-                (
-                    Pad == other.Pad ||
-                    Pad != null &&
-                    Pad.Equals(other.Pad)
-                ) && 
-                (
-                    AutoExpand == other.AutoExpand ||
-                    AutoExpand != null &&
-                    AutoExpand.Equals(other.AutoExpand)
                 );
         }
 
@@ -109,12 +109,12 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (AutoExpand != null) hashCode = hashCode * 59 + AutoExpand.GetHashCode();
+                if (B != null) hashCode = hashCode * 59 + B.GetHashCode();
                 if (L != null) hashCode = hashCode * 59 + L.GetHashCode();
+                if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
                 if (R != null) hashCode = hashCode * 59 + R.GetHashCode();
                 if (T != null) hashCode = hashCode * 59 + T.GetHashCode();
-                if (B != null) hashCode = hashCode * 59 + B.GetHashCode();
-                if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
-                if (AutoExpand != null) hashCode = hashCode * 59 + AutoExpand.GetHashCode();
                 return hashCode;
             }
         }

@@ -18,15 +18,6 @@ namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
     public class Z : IEquatable<Z>
     {
         /// <summary>
-        ///     Sets the fill ratio of the <c>slices</c>. The default fill value of the
-        ///     z <c>slices</c> is 1 meaning that they are entirely shaded. On the other
-        ///     hand Applying a <c>fill</c> ratio less than one would allow the creation
-        ///     of openings parallel to the edges.
-        /// </summary>
-        [JsonPropertyName(@"show")]
-        public bool? Show { get; set;} 
-
-        /// <summary>
         ///     Sets the fill ratio of the <c>caps</c>. The default fill value of the <c>caps</c>
         ///     is 1 meaning that they are entirely shaded. On the other hand Applying a
         ///     <c>fill</c> ratio less than one would allow the creation of openings parallel
@@ -34,6 +25,15 @@ namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
         /// </summary>
         [JsonPropertyName(@"fill")]
         public decimal? Fill { get; set;} 
+
+        /// <summary>
+        ///     Sets the fill ratio of the <c>slices</c>. The default fill value of the
+        ///     z <c>slices</c> is 1 meaning that they are entirely shaded. On the other
+        ///     hand Applying a <c>fill</c> ratio less than one would allow the creation
+        ///     of openings parallel to the edges.
+        /// </summary>
+        [JsonPropertyName(@"show")]
+        public bool? Show { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -51,14 +51,14 @@ namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
 
             return 
                 (
-                    Show == other.Show ||
-                    Show != null &&
-                    Show.Equals(other.Show)
-                ) && 
-                (
                     Fill == other.Fill ||
                     Fill != null &&
                     Fill.Equals(other.Fill)
+                ) && 
+                (
+                    Show == other.Show ||
+                    Show != null &&
+                    Show.Equals(other.Show)
                 );
         }
 
@@ -68,8 +68,8 @@ namespace Plotly.Blazor.Traces.VolumeLib.CapsLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
+                if (Show != null) hashCode = hashCode * 59 + Show.GetHashCode();
                 return hashCode;
             }
         }

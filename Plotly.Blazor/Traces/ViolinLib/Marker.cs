@@ -18,33 +18,6 @@ namespace Plotly.Blazor.Traces.ViolinLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
-        ///     Sets the color of the outlier sample points.
-        /// </summary>
-        [JsonPropertyName(@"outliercolor")]
-        public object OutlierColor { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
-        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
-        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
-        ///     to a symbol name.
-        /// </summary>
-        [JsonPropertyName(@"symbol")]
-        public Plotly.Blazor.Traces.ViolinLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker opacity.
-        /// </summary>
-        [JsonPropertyName(@"opacity")]
-        public decimal? Opacity { get; set;} 
-
-        /// <summary>
-        ///     Sets the marker size (in px).
-        /// </summary>
-        [JsonPropertyName(@"size")]
-        public decimal? Size { get; set;} 
-
-        /// <summary>
         ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
         ///     that are mapped to the colorscale relative to the max and min values of
         ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
@@ -57,6 +30,33 @@ namespace Plotly.Blazor.Traces.ViolinLib
         /// </summary>
         [JsonPropertyName(@"line")]
         public Plotly.Blazor.Traces.ViolinLib.MarkerLib.Line Line { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker opacity.
+        /// </summary>
+        [JsonPropertyName(@"opacity")]
+        public decimal? Opacity { get; set;} 
+
+        /// <summary>
+        ///     Sets the color of the outlier sample points.
+        /// </summary>
+        [JsonPropertyName(@"outliercolor")]
+        public object OutlierColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker size (in px).
+        /// </summary>
+        [JsonPropertyName(@"size")]
+        public decimal? Size { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
+        ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
+        ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
+        ///     to a symbol name.
+        /// </summary>
+        [JsonPropertyName(@"symbol")]
+        public Plotly.Blazor.Traces.ViolinLib.MarkerLib.SymbolEnum? Symbol { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -74,26 +74,6 @@ namespace Plotly.Blazor.Traces.ViolinLib
 
             return 
                 (
-                    OutlierColor == other.OutlierColor ||
-                    OutlierColor != null &&
-                    OutlierColor.Equals(other.OutlierColor)
-                ) && 
-                (
-                    Symbol == other.Symbol ||
-                    Symbol != null &&
-                    Symbol.Equals(other.Symbol)
-                ) && 
-                (
-                    Opacity == other.Opacity ||
-                    Opacity != null &&
-                    Opacity.Equals(other.Opacity)
-                ) && 
-                (
-                    Size == other.Size ||
-                    Size != null &&
-                    Size.Equals(other.Size)
-                ) && 
-                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -102,6 +82,26 @@ namespace Plotly.Blazor.Traces.ViolinLib
                     Line == other.Line ||
                     Line != null &&
                     Line.Equals(other.Line)
+                ) && 
+                (
+                    Opacity == other.Opacity ||
+                    Opacity != null &&
+                    Opacity.Equals(other.Opacity)
+                ) && 
+                (
+                    OutlierColor == other.OutlierColor ||
+                    OutlierColor != null &&
+                    OutlierColor.Equals(other.OutlierColor)
+                ) && 
+                (
+                    Size == other.Size ||
+                    Size != null &&
+                    Size.Equals(other.Size)
+                ) && 
+                (
+                    Symbol == other.Symbol ||
+                    Symbol != null &&
+                    Symbol.Equals(other.Symbol)
                 );
         }
 
@@ -111,12 +111,12 @@ namespace Plotly.Blazor.Traces.ViolinLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (OutlierColor != null) hashCode = hashCode * 59 + OutlierColor.GetHashCode();
-                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
-                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
-                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
+                if (OutlierColor != null) hashCode = hashCode * 59 + OutlierColor.GetHashCode();
+                if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
+                if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
                 return hashCode;
             }
         }

@@ -20,24 +20,10 @@ namespace Plotly.Blazor.LayoutLib
     public class Polar : IEquatable<Polar>
     {
         /// <summary>
-        ///     Gets or sets the Domain.
+        ///     Gets or sets the AngularAxis.
         /// </summary>
-        [JsonPropertyName(@"domain")]
-        public Plotly.Blazor.LayoutLib.PolarLib.Domain Domain { get; set;} 
-
-        /// <summary>
-        ///     Sets angular span of this polar subplot with two angles (in degrees). Sector
-        ///     are assumed to be spanned in the counterclockwise direction with <c>0</c>
-        ///     corresponding to rightmost limit of the polar subplot.
-        /// </summary>
-        [JsonPropertyName(@"sector")]
-        public IList<object> Sector { get; set;} 
-
-        /// <summary>
-        ///     Sets the fraction of the radius to cut out of the polar subplot.
-        /// </summary>
-        [JsonPropertyName(@"hole")]
-        public decimal? Hole { get; set;} 
+        [JsonPropertyName(@"angularaxis")]
+        public Plotly.Blazor.LayoutLib.PolarLib.AngularAxis AngularAxis { get; set;} 
 
         /// <summary>
         ///     Set the background color of the subplot
@@ -46,16 +32,10 @@ namespace Plotly.Blazor.LayoutLib
         public object BgColor { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the RadialAxis.
+        ///     Gets or sets the Domain.
         /// </summary>
-        [JsonPropertyName(@"radialaxis")]
-        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxis RadialAxis { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the AngularAxis.
-        /// </summary>
-        [JsonPropertyName(@"angularaxis")]
-        public Plotly.Blazor.LayoutLib.PolarLib.AngularAxis AngularAxis { get; set;} 
+        [JsonPropertyName(@"domain")]
+        public Plotly.Blazor.LayoutLib.PolarLib.Domain Domain { get; set;} 
 
         /// <summary>
         ///     Determines if the radial axis grid lines and angular axis line are drawn
@@ -67,6 +47,26 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"gridshape")]
         public Plotly.Blazor.LayoutLib.PolarLib.GridShapeEnum? GridShape { get; set;} 
+
+        /// <summary>
+        ///     Sets the fraction of the radius to cut out of the polar subplot.
+        /// </summary>
+        [JsonPropertyName(@"hole")]
+        public decimal? Hole { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the RadialAxis.
+        /// </summary>
+        [JsonPropertyName(@"radialaxis")]
+        public Plotly.Blazor.LayoutLib.PolarLib.RadialAxis RadialAxis { get; set;} 
+
+        /// <summary>
+        ///     Sets angular span of this polar subplot with two angles (in degrees). Sector
+        ///     are assumed to be spanned in the counterclockwise direction with <c>0</c>
+        ///     corresponding to rightmost limit of the polar subplot.
+        /// </summary>
+        [JsonPropertyName(@"sector")]
+        public IList<object> Sector { get; set;} 
 
         /// <summary>
         ///     Controls persistence of user-driven changes in axis attributes, if not overridden
@@ -91,19 +91,9 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
-                    Domain == other.Domain ||
-                    Domain != null &&
-                    Domain.Equals(other.Domain)
-                ) && 
-                (
-                    Equals(Sector, other.Sector) ||
-                    Sector != null && other.Sector != null &&
-                    Sector.SequenceEqual(other.Sector)
-                ) &&
-                (
-                    Hole == other.Hole ||
-                    Hole != null &&
-                    Hole.Equals(other.Hole)
+                    AngularAxis == other.AngularAxis ||
+                    AngularAxis != null &&
+                    AngularAxis.Equals(other.AngularAxis)
                 ) && 
                 (
                     BgColor == other.BgColor ||
@@ -111,20 +101,30 @@ namespace Plotly.Blazor.LayoutLib
                     BgColor.Equals(other.BgColor)
                 ) && 
                 (
-                    RadialAxis == other.RadialAxis ||
-                    RadialAxis != null &&
-                    RadialAxis.Equals(other.RadialAxis)
-                ) && 
-                (
-                    AngularAxis == other.AngularAxis ||
-                    AngularAxis != null &&
-                    AngularAxis.Equals(other.AngularAxis)
+                    Domain == other.Domain ||
+                    Domain != null &&
+                    Domain.Equals(other.Domain)
                 ) && 
                 (
                     GridShape == other.GridShape ||
                     GridShape != null &&
                     GridShape.Equals(other.GridShape)
                 ) && 
+                (
+                    Hole == other.Hole ||
+                    Hole != null &&
+                    Hole.Equals(other.Hole)
+                ) && 
+                (
+                    RadialAxis == other.RadialAxis ||
+                    RadialAxis != null &&
+                    RadialAxis.Equals(other.RadialAxis)
+                ) && 
+                (
+                    Equals(Sector, other.Sector) ||
+                    Sector != null && other.Sector != null &&
+                    Sector.SequenceEqual(other.Sector)
+                ) &&
                 (
                     UiRevision == other.UiRevision ||
                     UiRevision != null &&
@@ -138,13 +138,13 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
-                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
-                if (Sector != null) hashCode = hashCode * 59 + Sector.GetHashCode();
-                if (Hole != null) hashCode = hashCode * 59 + Hole.GetHashCode();
-                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
-                if (RadialAxis != null) hashCode = hashCode * 59 + RadialAxis.GetHashCode();
                 if (AngularAxis != null) hashCode = hashCode * 59 + AngularAxis.GetHashCode();
+                if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
+                if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (GridShape != null) hashCode = hashCode * 59 + GridShape.GetHashCode();
+                if (Hole != null) hashCode = hashCode * 59 + Hole.GetHashCode();
+                if (RadialAxis != null) hashCode = hashCode * 59 + RadialAxis.GetHashCode();
+                if (Sector != null) hashCode = hashCode * 59 + Sector.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 return hashCode;
             }

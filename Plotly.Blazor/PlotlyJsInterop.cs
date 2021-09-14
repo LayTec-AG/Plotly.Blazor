@@ -61,6 +61,25 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     This function has comparable performance to <see cref="React" /> and is faster than redrawing the whole plot with <see cref="NewPlot" />.
+        ///     Essentially a combination of <see cref="Restyle" /> and <see cref="Relayout" />, however you can update single traces using this function.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="data">The data to update the chart.</param>
+        /// <param name="layout">The data to update the layout</param>
+        /// <param name="indices">The indices of the traces to be updated.</param>
+        /// <returns>Task</returns>
+        public static async Task Update(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, Dictionary<string, object> data, Dictionary<string, object> layout, IEnumerable<int> indices)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.update",
+                objectReference.Value.Id,
+                data,
+                layout,
+                indices);
+        }
+
+        /// <summary>
         ///     Can be used to add data to an existing trace.
         /// </summary>
         /// <param name="jsRuntime">The js runtime.</param>
@@ -139,6 +158,20 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     An efficient means of updating the layout object of an existing plot.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="data">The data to update the layout with.</param>
+        /// <returns>Task</returns>
+        public static async Task Relayout(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, Dictionary<string, object> data)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.relayout",
+                objectReference.Value.Id,
+                data);
+        }
+
+        /// <summary>
         ///     Can be used to add data to an existing trace.
         /// </summary>
         /// <param name="jsRuntime">The js runtime.</param>
@@ -151,8 +184,15 @@ namespace Plotly.Blazor
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
         }
 
-
-
-
+        /// <summary>
+        ///     Subscribes the chart to listen for the plotly_relayouting event.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <returns>Task</returns>
+        public static async Task SubscribeRelayoutingEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeRelayoutingEvent", objectReference, objectReference.Value.Id);
+        }
     }
 }

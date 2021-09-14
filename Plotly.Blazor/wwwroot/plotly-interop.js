@@ -52,5 +52,14 @@
     },
     restyle: function (id, data, indizes) {
         window.Plotly.restyle(id, data, indizes);
+    },
+    update: function (id, data = {}, layout = {}, traces = []) {
+        window.Plotly.update(id, data, layout, traces);
+    },
+    subscribeRelayoutingEvent: function (dotNetObj, id) {
+        var plot = document.getElementById(id);
+        plot.on('plotly_relayouting', function (data) {
+            dotNetObj.invokeMethodAsync('RelayoutingEvent', data);
+        });
     }
 }

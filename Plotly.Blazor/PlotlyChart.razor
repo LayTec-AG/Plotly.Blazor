@@ -9,6 +9,40 @@
 @code {
 
     /// <summary>
+    /// JSInvokable function that can be subscribed to be called
+    /// every time the plotly_relayputing event is fired using the <see cref="SubscribeRelayoutingEvent"/>.
+    /// Invokes <see cref="RelayoutingAction"/>.
+    /// </summary>
+    /// <param name="data"></param>
+    [JSInvokable]
+    public void RelayoutingEvent(Dictionary<string, double> data)
+    {
+        List<double> Lefts = new List<double>(), Rights = new List<double>(),
+            Bottoms = new List<double>(), Tops = new List<double>();
+        for(int i = 0; i < data.Values.Count; i++)
+        {
+            switch(i % 4)
+            {
+                case 0:
+                    Lefts.Add(data.Values.ElementAt(i));
+                    break;
+                case 1:
+                    Rights.Add(data.Values.ElementAt(i));
+                    break;
+                case 2:
+                    Bottoms.Add(data.Values.ElementAt(i));
+                    break;
+                case 3:
+                    Tops.Add(data.Values.ElementAt(i));
+                    break;
+                default:
+                    throw new ArgumentException("Data object is formatted wrong");
+            }
+        }
+        RelayoutingAction?.Invoke(Lefts, Rights, Bottoms, Tops);
+    }
+
+    /// <summary>
     ///     Id of the div element.
     /// </summary>
     [Parameter]
@@ -69,6 +103,12 @@
     public EventCallback<IList<Frames>> FramesChanged { get; set; }
 
     /// <summary>
+    /// Action when the relayouting event is fired.
+    /// </summary>
+    [Parameter]
+    public Action<List<double>, List<double>, List<double>, List<double>> RelayoutingAction { get; set; }
+
+    /// <summary>
     ///     Additional attributes for the div-Element.
     /// </summary>
     [Parameter(CaptureUnmatchedValues = true)]
@@ -121,6 +161,10 @@
         if (firstRender)
         {
             await NewPlot();
+            if (RelayoutingAction != null)
+            {
+                await SubscribeRelayoutingEvent();
+            }
         }
         await base.OnAfterRenderAsync(firstRender);
     }
@@ -141,6 +185,16 @@
     public async Task Relayout()
     {
         await JsRuntime.Relayout(objectReference);
+    }
+
+    /// <summary>
+    /// Updates specific parts of the layout object usng the data passed to it.
+    /// </summary>
+    /// <param name="data">The new layout data.</param>
+    /// <returns>Task</returns>
+    public async Task Relayout(Dictionary<string, object> data)
+    {
+        await JsRuntime.Relayout(objectReference, data);
     }
 
     /// <summary>
@@ -199,12 +253,24 @@
     }
 
     /// <summary>
-    ///     Same as <see cref="React"/>.
+    ///     Updates the chart, layout, and data using specified data and trace indices.
     /// </summary>
+    /// <param name="data">The new chart information.</param>
+    /// <param name="layout">The new layout information.</param>
+    /// <param name="indices">The indices of the traces to update.</param>
     /// <returns>Task</returns>
-    public async Task Update()
+    public async Task Update(Dictionary<string, object> data, Dictionary<string, object> layout, IEnumerable<int> indices = null)
     {
-        await React();
+        object x;
+        object y;
+        if (data.TryGetValue("x", out x) && data.TryGetValue("y", out y))
+        {
+            if (((double[][])y).LongLength != ((double[][])x).LongLength)
+            {
+                throw new Exception("X and Y arrays need same number of elements.");
+            }
+        }
+        await JsRuntime.Update(objectReference, data, layout, indices);
     }
 
     /// <summary>
@@ -510,13 +576,13 @@
                 var xData = currentXData as object[] ?? currentXData.ToArray();
 
                 var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
-               
+
                 if (xData.Length > 0)
                 {
                     list.InsertRange(0, xData);
 
                 }
-                
+
                 if (max != null)
                 {
                     traceType.GetProperty("X")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
@@ -530,12 +596,12 @@
                 var yData = currentYData as object[] ?? currentYData.ToArray();
 
                 var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
-               
+
                 if (yData.Length > 0)
                 {
                     list.InsertRange(0, yData);
                 }
-                
+
                 if (max != null)
                 {
                     traceType.GetProperty("Y")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
@@ -576,6 +642,15 @@
         await FramesChanged.InvokeAsync(Frames);
 
         await JsRuntime.Purge(objectReference);
+    }
+
+    /// <summary>
+    /// Subscribes the chart to call the <see cref="RelayoutingEvent"/> function whenever the plotly_relayouting event is fired.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task SubscribeRelayoutingEvent()
+    {
+        await JsRuntime.SubscribeRelayoutingEvent(objectReference);
     }
 
     /// <inheritdoc />

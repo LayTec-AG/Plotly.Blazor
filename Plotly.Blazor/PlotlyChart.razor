@@ -9,40 +9,6 @@
 @code {
 
     /// <summary>
-    /// JSInvokable function that can be subscribed to be called
-    /// every time the plotly_relayputing event is fired using the <see cref="SubscribeRelayoutingEvent"/>.
-    /// Invokes <see cref="RelayoutingAction"/>.
-    /// </summary>
-    /// <param name="data"></param>
-    [JSInvokable]
-    public void RelayoutingEvent(Dictionary<string, double> data)
-    {
-        List<double> Lefts = new List<double>(), Rights = new List<double>(),
-            Bottoms = new List<double>(), Tops = new List<double>();
-        for(int i = 0; i < data.Values.Count; i++)
-        {
-            switch(i % 4)
-            {
-                case 0:
-                    Lefts.Add(data.Values.ElementAt(i));
-                    break;
-                case 1:
-                    Rights.Add(data.Values.ElementAt(i));
-                    break;
-                case 2:
-                    Bottoms.Add(data.Values.ElementAt(i));
-                    break;
-                case 3:
-                    Tops.Add(data.Values.ElementAt(i));
-                    break;
-                default:
-                    throw new ArgumentException("Data object is formatted wrong");
-            }
-        }
-        RelayoutingAction?.Invoke(Lefts, Rights, Bottoms, Tops);
-    }
-
-    /// <summary>
     ///     Id of the div element.
     /// </summary>
     [Parameter]
@@ -651,6 +617,26 @@
     public async Task SubscribeRelayoutingEvent()
     {
         await JsRuntime.SubscribeRelayoutingEvent(objectReference);
+    }
+
+    /// <summary>
+    /// JSInvokable function that can be subscribed to be called
+    /// every time the plotly_relayputing event is fired using the <see cref="SubscribeRelayoutingEvent"/>.
+    /// Invokes <see cref="RelayoutingAction"/>.
+    /// </summary>
+    /// <param name="data"></param>
+    [JSInvokable]
+    public void RelayoutingEvent(Dictionary<string, double> data)
+    {
+        List<double> Lefts = new List<double>(), Rights = new List<double>(),
+            Bottoms = new List<double>(), Tops = new List<double>();
+
+        Lefts.AddRange(data.Where(d => d.Key.StartsWith("x") && d.Key.Contains("[0]")).Select(d => d.Value));
+        Rights.AddRange(data.Where(d => d.Key.StartsWith("x") && d.Key.Contains("[1]")).Select(d => d.Value));
+        Bottoms.AddRange(data.Where(d => d.Key.StartsWith("y") && d.Key.Contains("[0]")).Select(d => d.Value));
+        Tops.AddRange(data.Where(d => d.Key.StartsWith("y") && d.Key.Contains("[1]")).Select(d => d.Value));
+
+        RelayoutingAction?.Invoke(Lefts, Rights, Bottoms, Tops);
     }
 
     /// <inheritdoc />

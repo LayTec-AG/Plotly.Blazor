@@ -52,5 +52,11 @@
     },
     restyle: function (id, data, indizes) {
         window.Plotly.restyle(id, data, indizes);
+    },
+    subscribeClickEvent: function (dotNetObj, id) {
+        var plot = document.getElementById(id);
+        plot.on('plotly_click', function (data) {
+            dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].x, data.points[0].y);
+        })
     }
 }

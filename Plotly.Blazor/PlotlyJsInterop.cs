@@ -152,7 +152,15 @@ namespace Plotly.Blazor
         }
 
 
-
-
+        /// <summary>
+        ///  Can be used to subscribe click events for Plot points.
+        /// </summary>
+        /// <param name="jsRuntime"></param>
+        /// <param name="objectReference"></param>
+        /// <returns></returns>
+        public static async Task SubscribeClickEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeClickEvent", objectReference, objectReference.Value.Id);
+        }
     }
 }

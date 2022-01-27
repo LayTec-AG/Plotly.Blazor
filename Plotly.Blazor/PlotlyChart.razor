@@ -510,13 +510,13 @@
                 var xData = currentXData as object[] ?? currentXData.ToArray();
 
                 var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
-               
+
                 if (xData.Length > 0)
                 {
                     list.InsertRange(0, xData);
 
                 }
-                
+
                 if (max != null)
                 {
                     traceType.GetProperty("X")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
@@ -530,12 +530,12 @@
                 var yData = currentYData as object[] ?? currentYData.ToArray();
 
                 var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
-               
+
                 if (yData.Length > 0)
                 {
                     list.InsertRange(0, yData);
                 }
-                
+
                 if (max != null)
                 {
                     traceType.GetProperty("Y")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
@@ -582,5 +582,29 @@
     public void Dispose()
     {
         objectReference?.Dispose();
+    }
+
+    /// <summary>
+    /// Defines the action that should happen when the ClickEvent is triggered.
+    /// Objects are currently required for accomodating different plot value types
+    /// </summary>
+    [Parameter]
+    public Action<object, object> ClickAction { get; set; }
+
+    /// <summary>
+    /// Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in Action
+    /// Objects are currently required for accomodating different plot value types
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    [JSInvokable("ClickEvent")]
+    public void ClickEvent(object x, object y)
+    {
+        ClickAction?.Invoke(x, y);
+    }
+
+    public async Task SubscribeClickEvent()
+    {
+        await JsRuntime.SubscribeClickEvent(objectReference);
     }
 }

@@ -36,7 +36,7 @@ namespace Plotly.Blazor.Traces.VolumeLib.SlicesLib
         public IList<object> Locations { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  locations .
+        ///     Sets the source reference on Chart Studio Cloud for <c>locations</c>.
         /// </summary>
         [JsonPropertyName(@"locationssrc")]
         public string LocationsSrc { get; set;} 

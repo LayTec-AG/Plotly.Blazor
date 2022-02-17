@@ -11,7 +11,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     /// <summary>
     ///     Determines the behavior on legend item double-click. <c>toggle</c> toggles
     ///     the visibility of the item clicked on the graph. <c>toggleothers</c> makes
-    ///     the clicked item the sole visible item on the graph. <c>false</c> disable
+    ///     the clicked item the sole visible item on the graph. <c>false</c> disables
     ///     legend item double-click interactions.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]

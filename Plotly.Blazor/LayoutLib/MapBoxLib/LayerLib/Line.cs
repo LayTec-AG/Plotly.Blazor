@@ -27,7 +27,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
         public IList<object> Dash { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  dash .
+        ///     Sets the source reference on Chart Studio Cloud for <c>dash</c>.
         /// </summary>
         [JsonPropertyName(@"dashsrc")]
         public string DashSrc { get; set;} 

@@ -27,7 +27,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public IList<object> CategoryArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
+        ///     Sets the source reference on Chart Studio Cloud for <c>categoryarray</c>.
         /// </summary>
         [JsonPropertyName(@"categoryarraysrc")]
         public string CategoryArraySrc { get; set;} 
@@ -68,7 +68,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"ticktextsrc")]
         public string TickTextSrc { get; set;} 
@@ -82,7 +82,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public IList<object> Values { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  values .
+        ///     Sets the source reference on Chart Studio Cloud for <c>values</c>.
         /// </summary>
         [JsonPropertyName(@"valuessrc")]
         public string ValuesSrc { get; set;} 

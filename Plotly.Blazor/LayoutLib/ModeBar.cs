@@ -50,7 +50,7 @@ namespace Plotly.Blazor.LayoutLib
         public IList<string> AddArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  add .
+        ///     Sets the source reference on Chart Studio Cloud for <c>add</c>.
         /// </summary>
         [JsonPropertyName(@"addsrc")]
         public string AddSrc { get; set;} 
@@ -113,7 +113,7 @@ namespace Plotly.Blazor.LayoutLib
         public IList<string> RemoveArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  remove .
+        ///     Sets the source reference on Chart Studio Cloud for <c>remove</c>.
         /// </summary>
         [JsonPropertyName(@"removesrc")]
         public string RemoveSrc { get; set;} 

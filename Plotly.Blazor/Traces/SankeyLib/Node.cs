@@ -42,7 +42,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
+        ///     Sets the source reference on Chart Studio Cloud for <c>color</c>.
         /// </summary>
         [JsonPropertyName(@"colorsrc")]
         public string ColorSrc { get; set;} 
@@ -54,7 +54,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -130,7 +130,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplatesrc")]
         public string HoverTemplateSrc { get; set;} 
@@ -142,7 +142,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> Label { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  label .
+        ///     Sets the source reference on Chart Studio Cloud for <c>label</c>.
         /// </summary>
         [JsonPropertyName(@"labelsrc")]
         public string LabelSrc { get; set;} 
@@ -172,7 +172,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> X { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -184,7 +184,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public IList<object> Y { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 

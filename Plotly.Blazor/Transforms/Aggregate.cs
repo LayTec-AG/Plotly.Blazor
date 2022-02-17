@@ -65,7 +65,7 @@ namespace Plotly.Blazor.Transforms
         public IList<string> GroupsArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  groups .
+        ///     Sets the source reference on Chart Studio Cloud for <c>groups</c>.
         /// </summary>
         [JsonPropertyName(@"groupssrc")]
         public string GroupsSrc { get; set;} 

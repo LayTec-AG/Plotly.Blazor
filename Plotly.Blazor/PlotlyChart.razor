@@ -37,6 +37,12 @@
     /// </summary>
     [Parameter]
     public IList<Frames> Frames { get; set; }
+    
+    /// <summary>
+    ///     Sets which event names will be bubbled up from Plotly.
+    /// </summary>
+    [Parameter]
+    public PlotlyEventNames EmitEvents { get; set; }
 
     /// <summary>
     ///     Callback when the ID changed.
@@ -214,7 +220,26 @@
     public async Task NewPlot()
     {
         await JsRuntime.NewPlot(objectReference);
+        
+        if (this.EmitEvents != PlotlyEventNames.None)
+        {
+            await RegisterEmitEvents();
+        }
+        
     }
+
+    private async Task RegisterEmitEvents()
+    {
+        IEnumerable<PlotlyEventNames> GetFlags(PlotlyEventNames input)
+        {
+            foreach (PlotlyEventNames value in Enum.GetValues<PlotlyEventNames>())
+                if (value != PlotlyEventNames.None && input.HasFlag(value))
+                    yield return value;
+        }
+        
+        var eventNames = GetFlags(EmitEvents).Select(x => x.PrepareJsInterop());
+        await JsRuntime.RegisterEmitEvents(objectReference, eventNames);
+    } 
 
     /// <summary>
     ///     Adds a trace to the current data.

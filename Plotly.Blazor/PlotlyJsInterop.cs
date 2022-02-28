@@ -125,6 +125,17 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.purge", objectReference.Value.Id);
         }
+        
+        /// <summary>
+        ///     Register Plotly events that should be bubbled up for Blazor Event Handlers
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="eventNames">Plotly event names</param>
+        public static async Task RegisterEmitEvents(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<object> eventNames)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.registerEmitEvents", objectReference.Value.Id, eventNames);
+        }
 
         /// <summary>
         ///     An efficient means of updating the layout object of an existing plot.

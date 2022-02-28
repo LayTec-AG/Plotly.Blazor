@@ -52,5 +52,20 @@
     },
     restyle: function (id, data, indizes) {
         window.Plotly.restyle(id, data, indizes);
+    },
+    registerEmitEvents: function (id, eventNames) {
+        const plot = document.getElementById(id);
+        if (!plot) {
+            console.error(`Missing plot ${id}`);
+            return;
+        }
+
+        // Bubble up all event names for Blazor Event Handlers
+        for (const eventName of eventNames) {
+            plot.on(eventName, function (data = undefined) {
+                const event = new CustomEvent(eventName, {detail: data, bubbles: true});
+                plot.dispatchEvent(event);
+            });
+        }
     }
 }

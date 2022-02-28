@@ -1,7 +1,8 @@
-﻿<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+﻿<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" EmitEvents="events" @ref="chart" @onplotly_click_pie="OnClick" @onplotly_hover_pie="OnHover" />
 
 @code
 {
+    PlotlyEventNames events = PlotlyEventNames.Click | PlotlyEventNames.Hover;
     PlotlyChart chart;
 
     Config config = new Config
@@ -26,4 +27,14 @@
             Labels = new List<object> {"Residential", "Non-Residential", "Utility"}
         }
     };
+    
+    void OnClick(PieClickEventArgs eventArgs) 
+    {
+        Console.WriteLine($"Click {eventArgs.Label} {eventArgs.Value}");
+    }
+
+    void OnHover(PieHoverEventArgs eventArgs)
+    {
+        Console.WriteLine($"Hover {eventArgs.Label} {eventArgs.Value}");
+    }
 }

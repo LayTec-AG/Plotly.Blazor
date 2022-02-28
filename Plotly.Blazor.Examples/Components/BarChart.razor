@@ -1,8 +1,9 @@
 ﻿@using Plotly.Blazor.LayoutLib
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" EmitEvents="events" @ref="chart" @onplotly_click_xy="OnClick" @onplotly_doubleclick="OnDoubleClick"/>
 
 @code
 {
+    PlotlyEventNames events = PlotlyEventNames.Click | PlotlyEventNames.DoubleClick;
     PlotlyChart chart;
 
     Config config = new Config
@@ -35,4 +36,14 @@
             Name = "LA Zoo"
         }
     };
+
+    void OnClick(XYClickEventArgs eventArgs)
+    {
+        Console.WriteLine($"{eventArgs.X} {eventArgs.Y}");
+    }
+
+    void OnDoubleClick(NoDataEventArgs eventArgs)
+    {
+        Console.WriteLine("OnDoubleClick");
+    }
 }

@@ -94,7 +94,7 @@ namespace Plotly.Blazor.Transforms
         public Plotly.Blazor.Transforms.FilterLib.TargetCalendarEnum? TargetCalendar { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  target .
+        ///     Sets the source reference on Chart Studio Cloud for <c>target</c>.
         /// </summary>
         [JsonPropertyName(@"targetsrc")]
         public string TargetSrc { get; set;} 

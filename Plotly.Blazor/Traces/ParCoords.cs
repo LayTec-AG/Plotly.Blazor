@@ -34,7 +34,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -60,7 +60,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
@@ -141,7 +141,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 

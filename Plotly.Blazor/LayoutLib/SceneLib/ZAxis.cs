@@ -58,7 +58,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public IList<object> CategoryArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
+        ///     Sets the source reference on Chart Studio Cloud for <c>categoryarray</c>.
         /// </summary>
         [JsonPropertyName(@"categoryarraysrc")]
         public string CategoryArraySrc { get; set;} 
@@ -385,7 +385,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"ticktextsrc")]
         public string TickTextSrc { get; set;} 
@@ -398,7 +398,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public IList<object> TickVals { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
+        ///     Sets the source reference on Chart Studio Cloud for <c>tickvals</c>.
         /// </summary>
         [JsonPropertyName(@"tickvalssrc")]
         public string TickValsSrc { get; set;} 

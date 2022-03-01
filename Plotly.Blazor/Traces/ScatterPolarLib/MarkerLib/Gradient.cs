@@ -36,7 +36,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib
         public IList<object> ColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
+        ///     Sets the source reference on Chart Studio Cloud for <c>color</c>.
         /// </summary>
         [JsonPropertyName(@"colorsrc")]
         public string ColorSrc { get; set;} 
@@ -55,7 +55,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib
         public IList<Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib.GradientLib.TypeEnum?> TypeArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  type .
+        ///     Sets the source reference on Chart Studio Cloud for <c>type</c>.
         /// </summary>
         [JsonPropertyName(@"typesrc")]
         public string TypeSrc { get; set;} 

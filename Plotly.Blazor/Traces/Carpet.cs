@@ -45,7 +45,7 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.CarpetLib.AAxis AAxis { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  a .
+        ///     Sets the source reference on Chart Studio Cloud for <c>a</c>.
         /// </summary>
         [JsonPropertyName(@"asrc")]
         public string ASrc { get; set;} 
@@ -70,7 +70,7 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.CarpetLib.BAxis BAxis { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  b .
+        ///     Sets the source reference on Chart Studio Cloud for <c>b</c>.
         /// </summary>
         [JsonPropertyName(@"bsrc")]
         public string BSrc { get; set;} 
@@ -106,7 +106,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -138,7 +138,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
@@ -189,7 +189,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -260,7 +260,7 @@ namespace Plotly.Blazor.Traces
         public string XAxis { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -280,7 +280,7 @@ namespace Plotly.Blazor.Traces
         public string YAxis { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 

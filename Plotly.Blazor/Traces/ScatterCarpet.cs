@@ -32,7 +32,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> A { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  a .
+        ///     Sets the source reference on Chart Studio Cloud for <c>a</c>.
         /// </summary>
         [JsonPropertyName(@"asrc")]
         public string ASrc { get; set;} 
@@ -44,7 +44,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> B { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  b .
+        ///     Sets the source reference on Chart Studio Cloud for <c>b</c>.
         /// </summary>
         [JsonPropertyName(@"bsrc")]
         public string BSrc { get; set;} 
@@ -72,7 +72,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -114,7 +114,7 @@ namespace Plotly.Blazor.Traces
         public IList<Plotly.Blazor.Traces.ScatterCarpetLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hoverinfo</c>.
         /// </summary>
         [JsonPropertyName(@"hoverinfosrc")]
         public string HoverInfoSrc { get; set;} 
@@ -184,7 +184,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplatesrc")]
         public string HoverTemplateSrc { get; set;} 
@@ -209,7 +209,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTextArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertext</c>.
         /// </summary>
         [JsonPropertyName(@"hovertextsrc")]
         public string HoverTextSrc { get; set;} 
@@ -223,7 +223,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
@@ -293,7 +293,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -392,13 +392,13 @@ namespace Plotly.Blazor.Traces
         public IList<Plotly.Blazor.Traces.ScatterCarpetLib.TextPositionEnum?> TextPositionArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  textposition .
+        ///     Sets the source reference on Chart Studio Cloud for <c>textposition</c>.
         /// </summary>
         [JsonPropertyName(@"textpositionsrc")]
         public string TextPositionSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  text .
+        ///     Sets the source reference on Chart Studio Cloud for <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"textsrc")]
         public string TextSrc { get; set;} 
@@ -437,7 +437,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> TextTemplateArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  texttemplate .
+        ///     Sets the source reference on Chart Studio Cloud for <c>texttemplate</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplatesrc")]
         public string TextTemplateSrc { get; set;} 

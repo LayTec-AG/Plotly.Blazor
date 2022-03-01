@@ -35,13 +35,13 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
         public IList<object> ArrayMinus { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  arrayminus .
+        ///     Sets the source reference on Chart Studio Cloud for <c>arrayminus</c>.
         /// </summary>
         [JsonPropertyName(@"arrayminussrc")]
         public string ArrayMinusSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  array .
+        ///     Sets the source reference on Chart Studio Cloud for <c>array</c>.
         /// </summary>
         [JsonPropertyName(@"arraysrc")]
         public string ArraySrc { get; set;} 

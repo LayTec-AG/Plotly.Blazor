@@ -26,7 +26,7 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public IList<object> X { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -38,7 +38,7 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public IList<object> Y { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 
@@ -50,7 +50,7 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public IList<object> Z { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  z .
+        ///     Sets the source reference on Chart Studio Cloud for <c>z</c>.
         /// </summary>
         [JsonPropertyName(@"zsrc")]
         public string ZSrc { get; set;} 

@@ -85,7 +85,10 @@
     /// <inheritdoc />
     public override async Task SetParametersAsync(ParameterView parameters)
     {
-        objectReference = DotNetObjectReference.Create(this);
+        await base.SetParametersAsync(parameters);
+        
+        objectReference ??= DotNetObjectReference.Create(this);
+
         if (string.IsNullOrWhiteSpace(Id))
         {
             var random = new Random();
@@ -112,7 +115,6 @@
             Frames = new List<Frames>();
             await FramesChanged.InvokeAsync(Frames);
         }
-        await base.SetParametersAsync(parameters);
     }
 
     /// <inheritdoc />

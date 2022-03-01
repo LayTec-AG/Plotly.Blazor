@@ -117,11 +117,11 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - Delete multiple traces with one call
 - plotly.animate
 - plotly.addFrames
-- plotly.downloadImage
+- <s>plotly.downloadImage</s>
 - plotly.moveTraces
 - <s>plotly.relayout</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
 - <s>plotly.restyle</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
-- plotly.toImage
+- <s>plotly.toImage</s>
 
 ## Versioning
 
@@ -130,6 +130,9 @@ We implement [SemVer](http://semver.org/) using [GitVersion](https://github.com/
 ## Authors
 
 * **Sean McLeish** - *Initial work* - [sean-mcleish](https://github.com/sean-mcleish)
+* **PeopleCanFly** - *Contributor* - [PeopleCanFly](https://github.com/Peop1eCanF1y)
+* **Matthew R. Johnson** - *Contributor* - [Matthew R. Johnson](https://github.com/centreboard)
+
 
 See also the list of [contributors](https://github.com/LayTec-AG/Plotly.Blazor/contributors) who participated in this project.
 

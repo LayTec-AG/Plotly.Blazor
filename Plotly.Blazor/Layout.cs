@@ -126,7 +126,7 @@ namespace Plotly.Blazor
         public IList<object> HiddenLabels { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hiddenlabels .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hiddenlabels</c>.
         /// </summary>
         [JsonPropertyName(@"hiddenlabelssrc")]
         public string HiddenLabelsSrc { get; set;} 
@@ -477,7 +477,7 @@ namespace Plotly.Blazor
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -564,6 +564,13 @@ namespace Plotly.Blazor
         /// </summary>
         [JsonPropertyName(@"sliders")]
         public IList<Plotly.Blazor.LayoutLib.Slider> Sliders { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Smith.
+        /// </summary>
+        [JsonPropertyName(@"smith")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Smith> Smith { get; set;} 
 
         /// <summary>
         ///     Sets the default distance (in pixels) to look for data to draw spikelines
@@ -1019,6 +1026,11 @@ namespace Plotly.Blazor
                     Sliders.SequenceEqual(other.Sliders)
                 ) &&
                 (
+                    Equals(Smith, other.Smith) ||
+                    Smith != null && other.Smith != null &&
+                    Smith.SequenceEqual(other.Smith)
+                ) &&
+                (
                     SpikeDistance == other.SpikeDistance ||
                     SpikeDistance != null &&
                     SpikeDistance.Equals(other.SpikeDistance)
@@ -1149,6 +1161,7 @@ namespace Plotly.Blazor
                 if (Shapes != null) hashCode = hashCode * 59 + Shapes.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
                 if (Sliders != null) hashCode = hashCode * 59 + Sliders.GetHashCode();
+                if (Smith != null) hashCode = hashCode * 59 + Smith.GetHashCode();
                 if (SpikeDistance != null) hashCode = hashCode * 59 + SpikeDistance.GetHashCode();
                 if (Template != null) hashCode = hashCode * 59 + Template.GetHashCode();
                 if (Ternary != null) hashCode = hashCode * 59 + Ternary.GetHashCode();

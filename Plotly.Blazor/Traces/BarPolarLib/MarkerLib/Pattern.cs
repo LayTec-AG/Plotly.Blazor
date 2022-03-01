@@ -38,7 +38,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib
         public IList<object> BgColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  bgcolor .
+        ///     Sets the source reference on Chart Studio Cloud for <c>bgcolor</c>.
         /// </summary>
         [JsonPropertyName(@"bgcolorsrc")]
         public string BgColorSrc { get; set;} 
@@ -63,7 +63,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib
         public IList<object> FgColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  fgcolor .
+        ///     Sets the source reference on Chart Studio Cloud for <c>fgcolor</c>.
         /// </summary>
         [JsonPropertyName(@"fgcolorsrc")]
         public string FgColorSrc { get; set;} 
@@ -98,7 +98,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib
         public IList<Plotly.Blazor.Traces.BarPolarLib.MarkerLib.PatternLib.ShapeEnum?> ShapeArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  shape .
+        ///     Sets the source reference on Chart Studio Cloud for <c>shape</c>.
         /// </summary>
         [JsonPropertyName(@"shapesrc")]
         public string ShapeSrc { get; set;} 
@@ -119,7 +119,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib
         public IList<decimal?> SizeArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  size .
+        ///     Sets the source reference on Chart Studio Cloud for <c>size</c>.
         /// </summary>
         [JsonPropertyName(@"sizesrc")]
         public string SizeSrc { get; set;} 
@@ -144,7 +144,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib
         public IList<decimal?> SolidityArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  solidity .
+        ///     Sets the source reference on Chart Studio Cloud for <c>solidity</c>.
         /// </summary>
         [JsonPropertyName(@"soliditysrc")]
         public string SoliditySrc { get; set;} 

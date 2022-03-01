@@ -61,7 +61,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         public IList<object> CategoryArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  categoryarray .
+        ///     Sets the source reference on Chart Studio Cloud for <c>categoryarray</c>.
         /// </summary>
         [JsonPropertyName(@"categoryarraysrc")]
         public string CategoryArraySrc { get; set;} 
@@ -312,6 +312,17 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         public IList<Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
+        ///     Sets the spacing between tick labels as compared to the spacing between
+        ///     ticks. A value of 1 (default) means each tick gets a label. A value of 2
+        ///     means shows every 2nd label. A larger value n means only every nth tick
+        ///     is labeled. <c>tick0</c> determines which labels are shown. Not implemented
+        ///     for axes with <c>type</c> <c>log</c> or <c>multicategory</c>, or when <c>tickmode</c>
+        ///     is <c>array</c>.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelstep")]
+        public int? TickLabelStep { get; set;} 
+
+        /// <summary>
         ///     Sets the tick length (in px).
         /// </summary>
         [JsonPropertyName(@"ticklen")]
@@ -357,7 +368,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"ticktextsrc")]
         public string TickTextSrc { get; set;} 
@@ -370,7 +381,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         public IList<object> TickVals { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
+        ///     Sets the source reference on Chart Studio Cloud for <c>tickvals</c>.
         /// </summary>
         [JsonPropertyName(@"tickvalssrc")]
         public string TickValsSrc { get; set;} 
@@ -595,6 +606,11 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     TickFormatStops.SequenceEqual(other.TickFormatStops)
                 ) &&
                 (
+                    TickLabelStep == other.TickLabelStep ||
+                    TickLabelStep != null &&
+                    TickLabelStep.Equals(other.TickLabelStep)
+                ) && 
+                (
                     TickLen == other.TickLen ||
                     TickLen != null &&
                     TickLen.Equals(other.TickLen)
@@ -706,6 +722,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                 if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
                 if (TickFormat != null) hashCode = hashCode * 59 + TickFormat.GetHashCode();
                 if (TickFormatStops != null) hashCode = hashCode * 59 + TickFormatStops.GetHashCode();
+                if (TickLabelStep != null) hashCode = hashCode * 59 + TickLabelStep.GetHashCode();
                 if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickMode != null) hashCode = hashCode * 59 + TickMode.GetHashCode();
                 if (TickPrefix != null) hashCode = hashCode * 59 + TickPrefix.GetHashCode();

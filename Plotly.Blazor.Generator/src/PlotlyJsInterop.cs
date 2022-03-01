@@ -160,7 +160,7 @@ namespace Plotly.Blazor
         /// <param name="format">Format of the image.</param>
         /// <param name="height">Height of the image.</param>
         /// <param name="width">Width of the image.</param>
-        /// <returns>Binary string to the exported image.</returns>
+        /// <returns>Binary string of the exported image.</returns>
         public static async Task<string> ToImage(this IJSRuntime jsRuntime,
             DotNetObjectReference<PlotlyChart> objectReference, ExportFormatEnum format, uint height, uint width)
         {

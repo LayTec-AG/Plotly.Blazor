@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
@@ -15,10 +16,10 @@ namespace Plotly.Blazor
         // Should be fixed in future blazor wasm releases
         private const string PlotlyInterop = "plotlyInterop";
 
-        internal static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions
+        internal static readonly JsonSerializerOptions SerializerOptions = new()
         {
             PropertyNamingPolicy = null,
-            IgnoreNullValues = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             Converters = {
                 new PolymorphicConverter<ITrace>(),
                 new PolymorphicConverter<ITransform>(),
@@ -150,9 +151,5 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
         }
-
-
-
-
     }
 }

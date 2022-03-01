@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #pragma warning disable 1591
 
@@ -102,7 +103,7 @@ namespace Plotly.Blazor
             // Set default serializer options if necessary
             serializerOptions ??= new JsonSerializerOptions
             {
-                IgnoreNullValues = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 PropertyNamingPolicy = null
             };
 

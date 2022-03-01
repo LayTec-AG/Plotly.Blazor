@@ -43,14 +43,18 @@ namespace Plotly.Blazor.Tests
 
         [JsonPropertyName("testProperty2")]
         [Array]
+#pragma warning disable CA1822 // Mark members as static
         public IList<string> TestProperty2Array => new List<string>();
+#pragma warning restore CA1822 // Mark members as static
 
         [JsonPropertyName("testProperty3")]
         public string TestProperty3 { get; set; }
 
         [JsonPropertyName("testProperty3")]
         [Array]
+#pragma warning disable CA1822 // Mark members as static
         public IList<string> TestProperty3Array => new List<string>();
+#pragma warning restore CA1822 // Mark members as static
 
         [Subplot]
         public IList<TestClass> Items { get; set; }
@@ -117,7 +121,7 @@ namespace Plotly.Blazor.Tests
         {
             serializerOptions = new JsonSerializerOptions
             {
-                IgnoreNullValues = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 PropertyNamingPolicy = null,
                 Converters = { new DateTimeConverter(), new DateTimeOffsetConverter()}
             };

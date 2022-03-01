@@ -176,7 +176,7 @@ namespace Plotly.Blazor
                 {
                     if (propertyValue == null)
                     {
-                        if (!options.IgnoreNullValues)
+                        if (!options.DefaultIgnoreCondition.HasFlag(JsonIgnoreCondition.WhenWritingNull))
                         {
                             writer.WritePropertyName(propertyName);
                             writer.WriteNullValue();
@@ -188,7 +188,7 @@ namespace Plotly.Blazor
                 }
                 else if (containsArrayAttr)
                 {
-                    if (propertyValue == null && options.IgnoreNullValues)
+                    if (propertyValue == null && options.DefaultIgnoreCondition.HasFlag(JsonIgnoreCondition.WhenWritingNull))
                     {
                         continue;
                     }
@@ -215,14 +215,14 @@ namespace Plotly.Blazor
 
                     if (propertyValue == null)
                     {
-                        if (!options.IgnoreNullValues)
+                        if (!options.DefaultIgnoreCondition.HasFlag(JsonIgnoreCondition.WhenWritingNull))
                         {
                             writer.WriteNullValue();
                         }
                         continue;
                     }
 
-                    if (!(propertyValue is IEnumerable asEnumerable))
+                    if (propertyValue is not IEnumerable asEnumerable)
                     {
                         throw new NotSupportedException(
                             $"{nameof(SubplotAttribute)} is only supported for IEnumerables.");

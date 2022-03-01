@@ -18,6 +18,7 @@
     <button type="button" class="btn btn-primary" @onclick="() => PrependWithLimit()">Prepend First (Max. 100)</button>
     <button type="button" class="btn btn-primary" @onclick="() => ExtendWithLimit()">Extend First (Max. 100)</button>
     <button type="button" class="btn btn-primary" @onclick="() => ExportImage()">Show as image below</button>
+    <button type="button" class="btn btn-primary" @onclick="() => DownloadImage()">Download</button>
 </div>
 
 @if (imgSource != null)
@@ -89,7 +90,12 @@
 
     private async Task ExportImage()
     {
-        imgSource = await chart.ToImage(ExportFormatEnum.Png, 400, 800);
+        imgSource = await chart.ToImage(ImageFormat.Png, 400, 800);
+    }
+
+    private async Task DownloadImage()
+    {
+        await chart.DownloadImage(ImageFormat.Png, 400, 800, "ScatterExample");
     }
 
     private async Task ExtendData(int count = 100)

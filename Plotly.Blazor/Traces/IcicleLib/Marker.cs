@@ -101,7 +101,7 @@ namespace Plotly.Blazor.Traces.IcicleLib
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  colors .
+        ///     Sets the source reference on Chart Studio Cloud for <c>colors</c>.
         /// </summary>
         [JsonPropertyName(@"colorssrc")]
         public string ColorsSrc { get; set;} 

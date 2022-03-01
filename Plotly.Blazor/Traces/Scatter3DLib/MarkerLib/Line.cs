@@ -110,7 +110,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.MarkerLib
         public object ColorScale { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  color .
+        ///     Sets the source reference on Chart Studio Cloud for <c>color</c>.
         /// </summary>
         [JsonPropertyName(@"colorsrc")]
         public string ColorSrc { get; set;} 

@@ -40,7 +40,7 @@ namespace Plotly.Blazor.Traces.TableLib
         public IList<Plotly.Blazor.Traces.TableLib.CellsLib.AlignEnum?> AlignArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  align .
+        ///     Sets the source reference on Chart Studio Cloud for <c>align</c>.
         /// </summary>
         [JsonPropertyName(@"alignsrc")]
         public string AlignSrc { get; set;} 
@@ -65,7 +65,7 @@ namespace Plotly.Blazor.Traces.TableLib
         public IList<object> Format { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  format .
+        ///     Sets the source reference on Chart Studio Cloud for <c>format</c>.
         /// </summary>
         [JsonPropertyName(@"formatsrc")]
         public string FormatSrc { get; set;} 
@@ -96,7 +96,7 @@ namespace Plotly.Blazor.Traces.TableLib
         public IList<string> PrefixArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  prefix .
+        ///     Sets the source reference on Chart Studio Cloud for <c>prefix</c>.
         /// </summary>
         [JsonPropertyName(@"prefixsrc")]
         public string PrefixSrc { get; set;} 
@@ -115,7 +115,7 @@ namespace Plotly.Blazor.Traces.TableLib
         public IList<string> SuffixArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  suffix .
+        ///     Sets the source reference on Chart Studio Cloud for <c>suffix</c>.
         /// </summary>
         [JsonPropertyName(@"suffixsrc")]
         public string SuffixSrc { get; set;} 
@@ -130,7 +130,7 @@ namespace Plotly.Blazor.Traces.TableLib
         public IList<object> Values { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  values .
+        ///     Sets the source reference on Chart Studio Cloud for <c>values</c>.
         /// </summary>
         [JsonPropertyName(@"valuessrc")]
         public string ValuesSrc { get; set;} 

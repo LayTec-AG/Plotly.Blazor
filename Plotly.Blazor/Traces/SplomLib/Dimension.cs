@@ -61,7 +61,7 @@ namespace Plotly.Blazor.Traces.SplomLib
         public IList<object> Values { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  values .
+        ///     Sets the source reference on Chart Studio Cloud for <c>values</c>.
         /// </summary>
         [JsonPropertyName(@"valuessrc")]
         public string ValuesSrc { get; set;} 

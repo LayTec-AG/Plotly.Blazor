@@ -151,5 +151,20 @@ namespace Plotly.Blazor
         {
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
         }
+
+        /// <summary>
+        ///     Can be used to export graphs as static images and returns a binary string of the exported image.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="format">Format of the image.</param>
+        /// <param name="height">Height of the image.</param>
+        /// <param name="width">Width of the image.</param>
+        /// <returns>Binary string of the exported image.</returns>
+        public static async Task<string> ToImage(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, ExportFormatEnum format, uint height, uint width)
+        {
+            return await jsRuntime.InvokeAsync<string>($"{PlotlyInterop}.toImage", objectReference.Value.Id, format, height, width);
+        }
     }
 }

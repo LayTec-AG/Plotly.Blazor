@@ -6,11 +6,11 @@ using System.Text.Json.Serialization;
 namespace Plotly.Blazor
 {
     /// <summary>
-    ///     Determines the format of the static image export. 
+    ///     Determines the format an image. 
     ///     Formats like 'EPS', 'SVG' and 'PDF' are not supported, they would require a personal or professional subscription.
     /// </summary>
     [JsonConverter(typeof(EnumConverter))]
-    public enum ExportFormatEnum
+    public enum ImageFormat
     {
         [EnumMember(Value = @"jpg")]
         Jpg,

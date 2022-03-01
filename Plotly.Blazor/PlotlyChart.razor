@@ -184,9 +184,22 @@
     /// <param name="height">Height of the image.</param>
     /// <param name="width">Width of the image.</param>
     /// <returns>A binary string of the exported image</returns>
-    public async Task<string> ToImage(ExportFormatEnum format, uint height, uint width)
+    public async Task<string> ToImage(ImageFormat format, uint height, uint width)
     {
         return await JsRuntime.ToImage(objectReference, format, height, width);
+    }
+
+    /// <summary>
+    ///     Can be used to download the chart as an image.
+    /// </summary>
+    /// <param name="format">Format of the image.</param>
+    /// <param name="height">Height of the image.</param>
+    /// <param name="width">Width of the image.</param>
+    /// <param name="fileName">Name od the image file.</param>
+    /// <returns>Task</returns>
+    public async Task DownloadImage(ImageFormat format, uint height, uint width, string fileName)
+    {
+        await JsRuntime.DownloadImage(objectReference, format, height, width, fileName);
     }
 
     /// <summary>

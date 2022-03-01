@@ -9,8 +9,8 @@
     <Compile Remove="src\ArrayAttribute.cs" />
     <Compile Remove="src\DateTimeConverter.cs" />
     <Compile Remove="src\EnumConverter.cs" />
-    <Compile Remove="src\ExportFormatEnum.cs" />
     <Compile Remove="src\Extensions.cs" />
+    <Compile Remove="src\ImageFormat.cs" />
     <Compile Remove="src\PlotlyConverter.cs" />
     <Compile Remove="src\PlotlyJsInterop.cs" />
     <Compile Remove="src\PolymorphicConverter.cs" />
@@ -27,10 +27,10 @@
     <None Include="src\EnumConverter.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="src\ExportFormatEnum.cs">
+    <None Include="src\Extensions.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="src\Extensions.cs">
+    <None Include="src\ImageFormat.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\PlotlyConverter.cs">

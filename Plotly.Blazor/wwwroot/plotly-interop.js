@@ -55,5 +55,8 @@
     },
     toImage: function (id, format, height, width) {
         return window.Plotly.toImage(id, { format: format, height: height, width: width });
+    },
+    downloadImage: function (id, format, height, width, filename) {
+        return window.Plotly.downloadImage(id, { format: format, height: height, width: width, filename: filename });
     }
 }

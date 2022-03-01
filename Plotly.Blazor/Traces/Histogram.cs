@@ -64,6 +64,21 @@ namespace Plotly.Blazor.Traces
         public string BinGroup { get; set;} 
 
         /// <summary>
+        ///     Determines whether the text nodes are clipped about the subplot axes. To
+        ///     show the text nodes above axis lines and tick labels, make sure to set <c>xaxis.layer</c>
+        ///     and <c>yaxis.layer</c> to &#39;below traces&#39;.
+        /// </summary>
+        [JsonPropertyName(@"cliponaxis")]
+        public bool? ClipOnAxis { get; set;} 
+
+        /// <summary>
+        ///     Constrain the size of text inside or outside a bar to be no larger than
+        ///     the bar itself.
+        /// </summary>
+        [JsonPropertyName(@"constraintext")]
+        public Plotly.Blazor.Traces.HistogramLib.ConstrainTextEnum? ConstrainText { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Cumulative.
         /// </summary>
         [JsonPropertyName(@"cumulative")]
@@ -78,7 +93,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -139,7 +154,7 @@ namespace Plotly.Blazor.Traces
         public IList<Plotly.Blazor.Traces.HistogramLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hoverinfo</c>.
         /// </summary>
         [JsonPropertyName(@"hoverinfosrc")]
         public string HoverInfoSrc { get; set;} 
@@ -200,7 +215,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplatesrc")]
         public string HoverTemplateSrc { get; set;} 
@@ -219,7 +234,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTextArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertext</c>.
         /// </summary>
         [JsonPropertyName(@"hovertextsrc")]
         public string HoverTextSrc { get; set;} 
@@ -233,10 +248,23 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
+
+        /// <summary>
+        ///     Determines if texts are kept at center or start/end points in <c>textposition</c>
+        ///     <c>inside</c> mode.
+        /// </summary>
+        [JsonPropertyName(@"insidetextanchor")]
+        public Plotly.Blazor.Traces.HistogramLib.InsideTextAnchorEnum? InsideTextAnchor { get; set;} 
+
+        /// <summary>
+        ///     Sets the font used for <c>text</c> lying inside the bar.
+        /// </summary>
+        [JsonPropertyName(@"insidetextfont")]
+        public Plotly.Blazor.Traces.HistogramLib.InsideTextFont InsideTextFont { get; set;} 
 
         /// <summary>
         ///     Sets the legend group for this trace. Traces part of the same legend group
@@ -297,7 +325,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -348,6 +376,12 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.HistogramLib.OrientationEnum? Orientation { get; set;} 
 
         /// <summary>
+        ///     Sets the font used for <c>text</c> lying outside the bar.
+        /// </summary>
+        [JsonPropertyName(@"outsidetextfont")]
+        public Plotly.Blazor.Traces.HistogramLib.OutsideTextFont OutsideTextFont { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Selected.
         /// </summary>
         [JsonPropertyName(@"selected")]
@@ -394,10 +428,52 @@ namespace Plotly.Blazor.Traces
         public IList<string> TextArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  text .
+        ///     Sets the angle of the tick labels with respect to the bar. For example,
+        ///     a <c>tickangle</c> of -90 draws the tick labels vertically. With <c>auto</c>
+        ///     the texts may automatically be rotated to fit with the maximum size in bars.
+        /// </summary>
+        [JsonPropertyName(@"textangle")]
+        public decimal? TextAngle { get; set;} 
+
+        /// <summary>
+        ///     Sets the text font.
+        /// </summary>
+        [JsonPropertyName(@"textfont")]
+        public Plotly.Blazor.Traces.HistogramLib.TextFont TextFont { get; set;} 
+
+        /// <summary>
+        ///     Specifies the location of the <c>text</c>. <c>inside</c> positions <c>text</c>
+        ///     inside, next to the bar end (rotated and scaled if needed). <c>outside</c>
+        ///     positions <c>text</c> outside, next to the bar end (scaled if needed), unless
+        ///     there is another bar stacked on this one, then the text gets pushed inside.
+        ///     <c>auto</c> tries to position <c>text</c> inside the bar, but if the bar
+        ///     is too small and no bar is stacked on this one the text is moved outside.
+        ///     If <c>none</c>, no text appears.
+        /// </summary>
+        [JsonPropertyName(@"textposition")]
+        public Plotly.Blazor.Traces.HistogramLib.TextPositionEnum? TextPosition { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"textsrc")]
         public string TextSrc { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the information text that appear on points.
+        ///     Note that this will override <c>textinfo</c>. Variables are inserted using
+        ///     %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted using
+        ///     d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price: %{y:$.2f}&quot;.
+        ///     https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the
+        ///     formatting syntax. Dates are formatted using d3-time-format&#39;s syntax
+        ///     %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. Every attributes that can be specified per-point
+        ///     (the ones that are &#39;arrayOk: true&#39;) are available. variables <c>label</c>
+        ///     and <c>value</c>.
+        /// </summary>
+        [JsonPropertyName(@"texttemplate")]
+        public string TextTemplate { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
@@ -483,7 +559,7 @@ namespace Plotly.Blazor.Traces
         public string XHoverFormat { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -528,7 +604,7 @@ namespace Plotly.Blazor.Traces
         public string YHoverFormat { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 
@@ -572,6 +648,16 @@ namespace Plotly.Blazor.Traces
                     BinGroup == other.BinGroup ||
                     BinGroup != null &&
                     BinGroup.Equals(other.BinGroup)
+                ) && 
+                (
+                    ClipOnAxis == other.ClipOnAxis ||
+                    ClipOnAxis != null &&
+                    ClipOnAxis.Equals(other.ClipOnAxis)
+                ) && 
+                (
+                    ConstrainText == other.ConstrainText ||
+                    ConstrainText != null &&
+                    ConstrainText.Equals(other.ConstrainText)
                 ) && 
                 (
                     Cumulative == other.Cumulative ||
@@ -669,6 +755,16 @@ namespace Plotly.Blazor.Traces
                     IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
+                    InsideTextAnchor == other.InsideTextAnchor ||
+                    InsideTextAnchor != null &&
+                    InsideTextAnchor.Equals(other.InsideTextAnchor)
+                ) && 
+                (
+                    InsideTextFont == other.InsideTextFont ||
+                    InsideTextFont != null &&
+                    InsideTextFont.Equals(other.InsideTextFont)
+                ) && 
+                (
                     LegendGroup == other.LegendGroup ||
                     LegendGroup != null &&
                     LegendGroup.Equals(other.LegendGroup)
@@ -734,6 +830,11 @@ namespace Plotly.Blazor.Traces
                     Orientation.Equals(other.Orientation)
                 ) && 
                 (
+                    OutsideTextFont == other.OutsideTextFont ||
+                    OutsideTextFont != null &&
+                    OutsideTextFont.Equals(other.OutsideTextFont)
+                ) && 
+                (
                     Selected == other.Selected ||
                     Selected != null &&
                     Selected.Equals(other.Selected)
@@ -764,9 +865,29 @@ namespace Plotly.Blazor.Traces
                     TextArray.SequenceEqual(other.TextArray)
                 ) &&
                 (
+                    TextAngle == other.TextAngle ||
+                    TextAngle != null &&
+                    TextAngle.Equals(other.TextAngle)
+                ) && 
+                (
+                    TextFont == other.TextFont ||
+                    TextFont != null &&
+                    TextFont.Equals(other.TextFont)
+                ) && 
+                (
+                    TextPosition == other.TextPosition ||
+                    TextPosition != null &&
+                    TextPosition.Equals(other.TextPosition)
+                ) && 
+                (
                     TextSrc == other.TextSrc ||
                     TextSrc != null &&
                     TextSrc.Equals(other.TextSrc)
+                ) && 
+                (
+                    TextTemplate == other.TextTemplate ||
+                    TextTemplate != null &&
+                    TextTemplate.Equals(other.TextTemplate)
                 ) && 
                 (
                     Equals(Transforms, other.Transforms) ||
@@ -866,6 +987,8 @@ namespace Plotly.Blazor.Traces
                 if (AutoBinX != null) hashCode = hashCode * 59 + AutoBinX.GetHashCode();
                 if (AutoBinY != null) hashCode = hashCode * 59 + AutoBinY.GetHashCode();
                 if (BinGroup != null) hashCode = hashCode * 59 + BinGroup.GetHashCode();
+                if (ClipOnAxis != null) hashCode = hashCode * 59 + ClipOnAxis.GetHashCode();
+                if (ConstrainText != null) hashCode = hashCode * 59 + ConstrainText.GetHashCode();
                 if (Cumulative != null) hashCode = hashCode * 59 + Cumulative.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
                 if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
@@ -885,6 +1008,8 @@ namespace Plotly.Blazor.Traces
                 if (HoverTextSrc != null) hashCode = hashCode * 59 + HoverTextSrc.GetHashCode();
                 if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
+                if (InsideTextAnchor != null) hashCode = hashCode * 59 + InsideTextAnchor.GetHashCode();
+                if (InsideTextFont != null) hashCode = hashCode * 59 + InsideTextFont.GetHashCode();
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
@@ -898,13 +1023,18 @@ namespace Plotly.Blazor.Traces
                 if (OffsetGroup != null) hashCode = hashCode * 59 + OffsetGroup.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
+                if (OutsideTextFont != null) hashCode = hashCode * 59 + OutsideTextFont.GetHashCode();
                 if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();
                 if (SelectedPoints != null) hashCode = hashCode * 59 + SelectedPoints.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
                 if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (TextArray != null) hashCode = hashCode * 59 + TextArray.GetHashCode();
+                if (TextAngle != null) hashCode = hashCode * 59 + TextAngle.GetHashCode();
+                if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
+                if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
                 if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
+                if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
                 if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();

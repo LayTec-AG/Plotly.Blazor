@@ -89,6 +89,8 @@ namespace Plotly.Blazor
         ScatterPolar,
         [EnumMember(Value=@"scatterpolargl")]
         ScatterPolarGl,
+        [EnumMember(Value=@"scattersmith")]
+        ScatterSmith,
         [EnumMember(Value=@"scatterternary")]
         ScatterTernary,
         [EnumMember(Value=@"splom")]

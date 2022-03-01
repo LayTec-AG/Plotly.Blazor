@@ -9,7 +9,9 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib.ColorBarLib
 {
     /// <summary>
-    ///     Determines where tick labels are drawn.
+    ///     Determines where tick labels are drawn relative to the ticks. Left and right
+    ///     options are used when <c>orientation</c> is <c>h</c>, top and bottom when
+    ///     <c>orientation</c> is <c>v</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
@@ -23,6 +25,14 @@ namespace Plotly.Blazor.Traces.TreeMapLib.MarkerLib.ColorBarLib
         OutsideTop,
         [EnumMember(Value=@"inside top")]
         InsideTop,
+        [EnumMember(Value=@"outside left")]
+        OutsideLeft,
+        [EnumMember(Value=@"inside left")]
+        InsideLeft,
+        [EnumMember(Value=@"outside right")]
+        OutsideRight,
+        [EnumMember(Value=@"inside right")]
+        InsideRight,
         [EnumMember(Value=@"outside bottom")]
         OutsideBottom,
         [EnumMember(Value=@"inside bottom")]

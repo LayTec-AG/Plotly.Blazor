@@ -98,7 +98,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -147,7 +147,7 @@ namespace Plotly.Blazor.Traces
         public IList<Plotly.Blazor.Traces.Histogram2DLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hoverinfo</c>.
         /// </summary>
         [JsonPropertyName(@"hoverinfosrc")]
         public string HoverInfoSrc { get; set;} 
@@ -208,7 +208,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplatesrc")]
         public string HoverTemplateSrc { get; set;} 
@@ -222,7 +222,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
@@ -286,7 +286,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -347,6 +347,27 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"stream")]
         public Plotly.Blazor.Traces.Histogram2DLib.Stream Stream { get; set;} 
+
+        /// <summary>
+        ///     Sets the text font.
+        /// </summary>
+        [JsonPropertyName(@"textfont")]
+        public Plotly.Blazor.Traces.Histogram2DLib.TextFont TextFont { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the information text that appear on points.
+        ///     Note that this will override <c>textinfo</c>. Variables are inserted using
+        ///     %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted using
+        ///     d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price: %{y:$.2f}&quot;.
+        ///     https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the
+        ///     formatting syntax. Dates are formatted using d3-time-format&#39;s syntax
+        ///     %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. Every attributes that can be specified per-point
+        ///     (the ones that are &#39;arrayOk: true&#39;) are available. variable <c>z</c>
+        /// </summary>
+        [JsonPropertyName(@"texttemplate")]
+        public string TextTemplate { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Transforms.
@@ -441,7 +462,7 @@ namespace Plotly.Blazor.Traces
         public string XHoverFormat { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -501,7 +522,7 @@ namespace Plotly.Blazor.Traces
         public string YHoverFormat { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 
@@ -558,7 +579,7 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.Histogram2DLib.ZSmoothEnum? ZSmooth { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  z .
+        ///     Sets the source reference on Chart Studio Cloud for <c>z</c>.
         /// </summary>
         [JsonPropertyName(@"zsrc")]
         public string ZSrc { get; set;} 
@@ -759,6 +780,16 @@ namespace Plotly.Blazor.Traces
                     Stream.Equals(other.Stream)
                 ) && 
                 (
+                    TextFont == other.TextFont ||
+                    TextFont != null &&
+                    TextFont.Equals(other.TextFont)
+                ) && 
+                (
+                    TextTemplate == other.TextTemplate ||
+                    TextTemplate != null &&
+                    TextTemplate.Equals(other.TextTemplate)
+                ) && 
+                (
                     Equals(Transforms, other.Transforms) ||
                     Transforms != null && other.Transforms != null &&
                     Transforms.SequenceEqual(other.Transforms)
@@ -942,6 +973,8 @@ namespace Plotly.Blazor.Traces
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
                 if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
+                if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
+                if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
                 if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();

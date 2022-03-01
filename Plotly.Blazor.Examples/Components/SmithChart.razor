@@ -1,0 +1,55 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.SmithLib
+@using Plotly.Blazor.Traces.ScatterSmithLib
+@using Plotly.Blazor.Traces.ScatterSmithLib.MarkerLib
+<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+
+@code
+{
+    PlotlyChart chart;
+
+    Config config = new Config
+    {
+        Responsive = true
+    };
+
+    Layout layout = new Layout
+    {
+        Title = new Title
+        {
+            Text = "Smith"
+        },
+        Height = 500,
+        Smith = new List<Smith> {
+            new Smith {
+                RealAxis = new RealAxis {
+                    GridColor = "red"
+                },
+                ImaginaryAxis = new ImaginaryAxis {
+                    GridColor = "blue"
+                }
+            }
+        }
+    };
+
+    List<ITrace> data = new List<ITrace>
+    {
+        new ScatterSmith
+        {
+            Real = new List<object> {1},
+            Imag = new List<object> {1},
+            Marker = new Marker
+            {
+                Symbol = SymbolEnum.X,
+                Size = 30
+            },
+            Name = "Marker"
+        },
+        new ScatterSmith
+        {
+            Real = new List<object> {0.5, 1, 2, 3},
+            Imag = new List<object> {0.5, 1, 2, 3},
+            Name = "Series"
+        }
+    };
+}

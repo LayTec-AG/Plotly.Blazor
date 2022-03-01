@@ -26,8 +26,9 @@ namespace Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib
 
         /// <summary>
         ///     Determines the location of color bar&#39;s title with respect to the color
-        ///     bar. Note that the title&#39;s location used to be set by the now deprecated
-        ///     <c>titleside</c> attribute.
+        ///     bar. Defaults to <c>top</c> when <c>orientation</c> if <c>v</c> and  defaults
+        ///     to <c>right</c> when <c>orientation</c> if <c>h</c>. Note that the title&#39;s
+        ///     location used to be set by the now deprecated <c>titleside</c> attribute.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.Traces.ParCoordsLib.LineLib.ColorBarLib.TitleLib.SideEnum? Side { get; set;} 

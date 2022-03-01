@@ -11,16 +11,17 @@ namespace Plotly.Blazor.Traces.ContourLib.ColorBarLib
     /// <summary>
     ///     Sets this color bar&#39;s vertical position anchor This anchor binds the
     ///     <c>y</c> position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the
-    ///     color bar.
+    ///     color bar. Defaults to <c>middle</c> when <c>orientation</c> is <c>v</c>
+    ///     and <c>bottom</c> when <c>orientation</c> is <c>h</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum YAnchorEnum
     {
-        [EnumMember(Value=@"middle")]
-        Middle = 0,
         [EnumMember(Value=@"top")]
         Top,
+        [EnumMember(Value=@"middle")]
+        Middle,
         [EnumMember(Value=@"bottom")]
         Bottom
     }

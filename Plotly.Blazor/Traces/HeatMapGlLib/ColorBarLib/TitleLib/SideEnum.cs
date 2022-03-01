@@ -10,17 +10,18 @@ namespace Plotly.Blazor.Traces.HeatMapGlLib.ColorBarLib.TitleLib
 {
     /// <summary>
     ///     Determines the location of color bar&#39;s title with respect to the color
-    ///     bar. Note that the title&#39;s location used to be set by the now deprecated
-    ///     <c>titleside</c> attribute.
+    ///     bar. Defaults to <c>top</c> when <c>orientation</c> if <c>v</c> and  defaults
+    ///     to <c>right</c> when <c>orientation</c> if <c>h</c>. Note that the title&#39;s
+    ///     location used to be set by the now deprecated <c>titleside</c> attribute.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum SideEnum
     {
-        [EnumMember(Value=@"top")]
-        Top = 0,
         [EnumMember(Value=@"right")]
         Right,
+        [EnumMember(Value=@"top")]
+        Top,
         [EnumMember(Value=@"bottom")]
         Bottom
     }

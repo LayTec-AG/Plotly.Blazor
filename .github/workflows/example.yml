@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'Plotly.Blazor/**'
       - 'Plotly.Blazor.Examples/**'

@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master # Default release branch
+      - main # Default release branch
       - develop
       - 'releases/**'
     paths:

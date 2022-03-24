@@ -102,6 +102,12 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public int? NTicks { get; set;} 
 
         /// <summary>
+        ///     Sets the orientation of the colorbar.
+        /// </summary>
+        [JsonPropertyName(@"orientation")]
+        public Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.OrientationEnum? Orientation { get; set;} 
+
+        /// <summary>
         ///     Sets the axis line color.
         /// </summary>
         [JsonPropertyName(@"outlinecolor")]
@@ -223,10 +229,23 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.TickLabelOverflowEnum? TickLabelOverflow { get; set;} 
 
         /// <summary>
-        ///     Determines where tick labels are drawn.
+        ///     Determines where tick labels are drawn relative to the ticks. Left and right
+        ///     options are used when <c>orientation</c> is <c>h</c>, top and bottom when
+        ///     <c>orientation</c> is <c>v</c>.
         /// </summary>
         [JsonPropertyName(@"ticklabelposition")]
         public Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
+
+        /// <summary>
+        ///     Sets the spacing between tick labels as compared to the spacing between
+        ///     ticks. A value of 1 (default) means each tick gets a label. A value of 2
+        ///     means shows every 2nd label. A larger value n means only every nth tick
+        ///     is labeled. <c>tick0</c> determines which labels are shown. Not implemented
+        ///     for axes with <c>type</c> <c>log</c> or <c>multicategory</c>, or when <c>tickmode</c>
+        ///     is <c>array</c>.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelstep")]
+        public int? TickLabelStep { get; set;} 
 
         /// <summary>
         ///     Sets the tick length (in px).
@@ -274,7 +293,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public IList<object> TickText { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ticktext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ticktext</c>.
         /// </summary>
         [JsonPropertyName(@"ticktextsrc")]
         public string TickTextSrc { get; set;} 
@@ -287,7 +306,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public IList<object> TickVals { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  tickvals .
+        ///     Sets the source reference on Chart Studio Cloud for <c>tickvals</c>.
         /// </summary>
         [JsonPropertyName(@"tickvalssrc")]
         public string TickValsSrc { get; set;} 
@@ -305,7 +324,8 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.Title Title { get; set;} 
 
         /// <summary>
-        ///     Sets the x position of the color bar (in plot fraction).
+        ///     Sets the x position of the color bar (in plot fraction). Defaults to 1.02
+        ///     when <c>orientation</c> is <c>v</c> and 0.5 when <c>orientation</c> is <c>h</c>.
         /// </summary>
         [JsonPropertyName(@"x")]
         public decimal? X { get; set;} 
@@ -313,7 +333,8 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         /// <summary>
         ///     Sets this color bar&#39;s horizontal position anchor. This anchor binds
         ///     the <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c>
-        ///     of the color bar.
+        ///     of the color bar. Defaults to <c>left</c> when <c>orientation</c> is <c>v</c>
+        ///     and <c>center</c> when <c>orientation</c> is <c>h</c>.
         /// </summary>
         [JsonPropertyName(@"xanchor")]
         public Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.XAnchorEnum? XAnchor { get; set;} 
@@ -325,7 +346,9 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         public decimal? XPad { get; set;} 
 
         /// <summary>
-        ///     Sets the y position of the color bar (in plot fraction).
+        ///     Sets the y position of the color bar (in plot fraction). Defaults to 0.5
+        ///     when <c>orientation</c> is <c>v</c> and 1.02 when <c>orientation</c> is
+        ///     <c>h</c>.
         /// </summary>
         [JsonPropertyName(@"y")]
         public decimal? Y { get; set;} 
@@ -333,7 +356,8 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
         /// <summary>
         ///     Sets this color bar&#39;s vertical position anchor This anchor binds the
         ///     <c>y</c> position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the
-        ///     color bar.
+        ///     color bar. Defaults to <c>middle</c> when <c>orientation</c> is <c>v</c>
+        ///     and <c>bottom</c> when <c>orientation</c> is <c>h</c>.
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.YAnchorEnum? YAnchor { get; set;} 
@@ -403,6 +427,11 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                     NTicks == other.NTicks ||
                     NTicks != null &&
                     NTicks.Equals(other.NTicks)
+                ) && 
+                (
+                    Orientation == other.Orientation ||
+                    Orientation != null &&
+                    Orientation.Equals(other.Orientation)
                 ) && 
                 (
                     OutlineColor == other.OutlineColor ||
@@ -488,6 +517,11 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                     TickLabelPosition == other.TickLabelPosition ||
                     TickLabelPosition != null &&
                     TickLabelPosition.Equals(other.TickLabelPosition)
+                ) && 
+                (
+                    TickLabelStep == other.TickLabelStep ||
+                    TickLabelStep != null &&
+                    TickLabelStep.Equals(other.TickLabelStep)
                 ) && 
                 (
                     TickLen == other.TickLen ||
@@ -591,6 +625,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                 if (LenMode != null) hashCode = hashCode * 59 + LenMode.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
+                if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (OutlineColor != null) hashCode = hashCode * 59 + OutlineColor.GetHashCode();
                 if (OutlineWidth != null) hashCode = hashCode * 59 + OutlineWidth.GetHashCode();
                 if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
@@ -608,6 +643,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib
                 if (TickFormatStops != null) hashCode = hashCode * 59 + TickFormatStops.GetHashCode();
                 if (TickLabelOverflow != null) hashCode = hashCode * 59 + TickLabelOverflow.GetHashCode();
                 if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
+                if (TickLabelStep != null) hashCode = hashCode * 59 + TickLabelStep.GetHashCode();
                 if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickMode != null) hashCode = hashCode * 59 + TickMode.GetHashCode();
                 if (TickPrefix != null) hashCode = hashCode * 59 + TickPrefix.GetHashCode();

@@ -41,7 +41,13 @@ namespace Plotly.Blazor.Examples
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services
+                .AddServerSideBlazor()
+                .AddHubOptions(o =>
+                {
+                    o.MaximumReceiveMessageSize = 102400000; // Increase the message size, so images can be send from JS to .NET
+                });
+
             // Server Side Blazor doesn't register HttpClient by default
             if (services.All(x => x.ServiceType != typeof(HttpClient)))
             {
@@ -52,11 +58,10 @@ namespace Plotly.Blazor.Examples
                 });
             }
 
-            services
-                .AddBlazorise(options =>
-                {
-                    options.ChangeTextOnKeyPress = true; // optional
-                })
+            services.AddBlazorise(options =>
+            {
+                    options.ChangeTextOnKeyPress = true;
+            })
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();
         }

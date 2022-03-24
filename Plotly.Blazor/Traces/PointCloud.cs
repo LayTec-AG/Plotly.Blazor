@@ -34,7 +34,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -57,7 +57,7 @@ namespace Plotly.Blazor.Traces
         public IList<Plotly.Blazor.Traces.PointCloudLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hoverinfo</c>.
         /// </summary>
         [JsonPropertyName(@"hoverinfosrc")]
         public string HoverInfoSrc { get; set;} 
@@ -77,7 +77,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
@@ -94,7 +94,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Indices { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  indices .
+        ///     Sets the source reference on Chart Studio Cloud for <c>indices</c>.
         /// </summary>
         [JsonPropertyName(@"indicessrc")]
         public string IndicesSrc { get; set;} 
@@ -158,7 +158,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -210,7 +210,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> TextArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  text .
+        ///     Sets the source reference on Chart Studio Cloud for <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"textsrc")]
         public string TextSrc { get; set;} 
@@ -270,13 +270,13 @@ namespace Plotly.Blazor.Traces
         public IList<object> XBounds { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  xbounds .
+        ///     Sets the source reference on Chart Studio Cloud for <c>xbounds</c>.
         /// </summary>
         [JsonPropertyName(@"xboundssrc")]
         public string XBoundsSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -290,7 +290,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> XY { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  xy .
+        ///     Sets the source reference on Chart Studio Cloud for <c>xy</c>.
         /// </summary>
         [JsonPropertyName(@"xysrc")]
         public string XYSrc { get; set;} 
@@ -318,13 +318,13 @@ namespace Plotly.Blazor.Traces
         public IList<object> YBounds { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ybounds .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ybounds</c>.
         /// </summary>
         [JsonPropertyName(@"yboundssrc")]
         public string YBoundsSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 

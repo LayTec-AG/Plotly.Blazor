@@ -43,6 +43,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.HoverLabelLib.Font Font { get; set;} 
 
         /// <summary>
+        ///     Sets the font for group titles in hover (unified modes). Defaults to <c>hoverlabel.font</c>.
+        /// </summary>
+        [JsonPropertyName(@"grouptitlefont")]
+        public Plotly.Blazor.LayoutLib.HoverLabelLib.GroupTitleFont GroupTitleFont { get; set;} 
+
+        /// <summary>
         ///     Sets the default length (in number of characters) of the trace name in the
         ///     hover labels for all traces. -1 shows the whole name regardless of length.
         ///     0-3 shows the first 0-3 characters, and an integer &gt;3 will show the whole
@@ -88,6 +94,11 @@ namespace Plotly.Blazor.LayoutLib
                     Font.Equals(other.Font)
                 ) && 
                 (
+                    GroupTitleFont == other.GroupTitleFont ||
+                    GroupTitleFont != null &&
+                    GroupTitleFont.Equals(other.GroupTitleFont)
+                ) && 
+                (
                     NameLength == other.NameLength ||
                     NameLength != null &&
                     NameLength.Equals(other.NameLength)
@@ -104,6 +115,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (GroupTitleFont != null) hashCode = hashCode * 59 + GroupTitleFont.GetHashCode();
                 if (NameLength != null) hashCode = hashCode * 59 + NameLength.GetHashCode();
                 return hashCode;
             }

@@ -64,7 +64,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> CustomData { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  customdata .
+        ///     Sets the source reference on Chart Studio Cloud for <c>customdata</c>.
         /// </summary>
         [JsonPropertyName(@"customdatasrc")]
         public string CustomDataSrc { get; set;} 
@@ -106,7 +106,7 @@ namespace Plotly.Blazor.Traces
         public IList<Plotly.Blazor.Traces.BoxLib.HoverInfoFlag?> HoverInfoArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hoverinfo .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hoverinfo</c>.
         /// </summary>
         [JsonPropertyName(@"hoverinfosrc")]
         public string HoverInfoSrc { get; set;} 
@@ -173,7 +173,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTemplateArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertemplate .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplatesrc")]
         public string HoverTemplateSrc { get; set;} 
@@ -192,7 +192,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> HoverTextArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  hovertext .
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovertext</c>.
         /// </summary>
         [JsonPropertyName(@"hovertextsrc")]
         public string HoverTextSrc { get; set;} 
@@ -206,7 +206,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Ids { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  ids .
+        ///     Sets the source reference on Chart Studio Cloud for <c>ids</c>.
         /// </summary>
         [JsonPropertyName(@"idssrc")]
         public string IdsSrc { get; set;} 
@@ -259,7 +259,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> LowerFence { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  lowerfence .
+        ///     Sets the source reference on Chart Studio Cloud for <c>lowerfence</c>.
         /// </summary>
         [JsonPropertyName(@"lowerfencesrc")]
         public string LowerFenceSrc { get; set;} 
@@ -280,7 +280,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Mean { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  mean .
+        ///     Sets the source reference on Chart Studio Cloud for <c>mean</c>.
         /// </summary>
         [JsonPropertyName(@"meansrc")]
         public string MeanSrc { get; set;} 
@@ -293,7 +293,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Median { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  median .
+        ///     Sets the source reference on Chart Studio Cloud for <c>median</c>.
         /// </summary>
         [JsonPropertyName(@"mediansrc")]
         public string MedianSrc { get; set;} 
@@ -328,7 +328,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> MetaArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  meta .
+        ///     Sets the source reference on Chart Studio Cloud for <c>meta</c>.
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
@@ -365,7 +365,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> NotchSpan { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  notchspan .
+        ///     Sets the source reference on Chart Studio Cloud for <c>notchspan</c>.
         /// </summary>
         [JsonPropertyName(@"notchspansrc")]
         public string NotchSpanSrc { get; set;} 
@@ -415,7 +415,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Q1 { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  q1 .
+        ///     Sets the source reference on Chart Studio Cloud for <c>q1</c>.
         /// </summary>
         [JsonPropertyName(@"q1src")]
         public string Q1Src { get; set;} 
@@ -428,7 +428,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> Q3 { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  q3 .
+        ///     Sets the source reference on Chart Studio Cloud for <c>q3</c>.
         /// </summary>
         [JsonPropertyName(@"q3src")]
         public string Q3Src { get; set;} 
@@ -459,7 +459,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> SD { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  sd .
+        ///     Sets the source reference on Chart Studio Cloud for <c>sd</c>.
         /// </summary>
         [JsonPropertyName(@"sdsrc")]
         public string SdSrc { get; set;} 
@@ -513,7 +513,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> TextArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  text .
+        ///     Sets the source reference on Chart Studio Cloud for <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"textsrc")]
         public string TextSrc { get; set;} 
@@ -565,7 +565,7 @@ namespace Plotly.Blazor.Traces
         public IList<object> UpperFence { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  upperfence .
+        ///     Sets the source reference on Chart Studio Cloud for <c>upperfence</c>.
         /// </summary>
         [JsonPropertyName(@"upperfencesrc")]
         public string UpperFenceSrc { get; set;} 
@@ -659,7 +659,7 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.BoxLib.XPeriodAlignmentEnum? XPeriodAlignment { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  x .
+        ///     Sets the source reference on Chart Studio Cloud for <c>x</c>.
         /// </summary>
         [JsonPropertyName(@"xsrc")]
         public string XSrc { get; set;} 
@@ -730,7 +730,7 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.BoxLib.YPeriodAlignmentEnum? YPeriodAlignment { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  y .
+        ///     Sets the source reference on Chart Studio Cloud for <c>y</c>.
         /// </summary>
         [JsonPropertyName(@"ysrc")]
         public string YSrc { get; set;} 

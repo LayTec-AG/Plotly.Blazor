@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RazorLangVersion>3.0</RazorLangVersion>
         <Authors>sean-laytec</Authors>
         <Company>LayTec AG</Company>
@@ -22,24 +22,14 @@
 
 
     <ItemGroup>
-        <PackageReference Include="GitVersion.MsBuild" Version="5.6.11">
+        <PackageReference Include="GitVersion.MsBuild" Version="5.8.2">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.8" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.8" />
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-        <PackageReference Include="System.Text.Json" Version="5.0.2" />
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <Content Update="wwwroot\plotly-interop.js">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Update="wwwroot\plotly-latest.min.js">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+        <PackageReference Include="System.Text.Json" Version="6.0.2" />
     </ItemGroup>
 
 </Project>

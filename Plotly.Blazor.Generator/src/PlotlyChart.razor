@@ -85,7 +85,10 @@
     /// <inheritdoc />
     public override async Task SetParametersAsync(ParameterView parameters)
     {
-        objectReference = DotNetObjectReference.Create(this);
+        await base.SetParametersAsync(parameters);
+
+        objectReference ??= DotNetObjectReference.Create(this);
+
         if (string.IsNullOrWhiteSpace(Id))
         {
             var random = new Random();
@@ -112,7 +115,6 @@
             Frames = new List<Frames>();
             await FramesChanged.InvokeAsync(Frames);
         }
-        await base.SetParametersAsync(parameters);
     }
 
     /// <inheritdoc />
@@ -162,6 +164,42 @@
     public async Task Restyle(ITrace trace, int index)
     {
         await Restyle(trace, new[] { index });
+    }
+
+    /// <summary>
+    ///     Exports the given chart as a binary image string.
+    ///     For example, this string can be used as src attribute for an &lt;img&gt; element.
+    ///     If you use Blazor Server, make sure that the size limit of SignalR messages is large enough to process your image.
+    ///     You can set set the bufferSize in the Startup.cs or Program.cs
+    /// <code>
+    ///     services
+    ///        .AddServerSideBlazor()
+    ///        .AddHubOptions(o =>
+    ///        {
+    ///            o.MaximumReceiveMessageSize = 102400000;
+    ///        });
+    /// </code>
+    /// </summary>
+    /// <param name="format">Format of the image.</param>
+    /// <param name="height">Height of the image.</param>
+    /// <param name="width">Width of the image.</param>
+    /// <returns>A binary string of the exported image</returns>
+    public async Task<string> ToImage(ImageFormat format, uint height, uint width)
+    {
+        return await JsRuntime.ToImage(objectReference, format, height, width);
+    }
+
+    /// <summary>
+    ///     Can be used to download the chart as an image.
+    /// </summary>
+    /// <param name="format">Format of the image.</param>
+    /// <param name="height">Height of the image.</param>
+    /// <param name="width">Width of the image.</param>
+    /// <param name="fileName">Name od the image file.</param>
+    /// <returns>Task</returns>
+    public async Task DownloadImage(ImageFormat format, uint height, uint width, string fileName)
+    {
+        await JsRuntime.DownloadImage(objectReference, format, height, width, fileName);
     }
 
     /// <summary>
@@ -401,7 +439,7 @@
                 var yData = currentYData as object[] ?? currentYData.ToArray();
                 if (yData.Length > 0)
                 {
-                    var list = (IList<object>) traceType.GetProperty("Y")?.GetValue(currentTrace);
+                    var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
                     list.AddRange(yData);
                     if (max != null)
                     {
@@ -510,13 +548,13 @@
                 var xData = currentXData as object[] ?? currentXData.ToArray();
 
                 var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
-               
+
                 if (xData.Length > 0)
                 {
                     list.InsertRange(0, xData);
 
                 }
-                
+
                 if (max != null)
                 {
                     traceType.GetProperty("X")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
@@ -530,12 +568,12 @@
                 var yData = currentYData as object[] ?? currentYData.ToArray();
 
                 var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
-               
+
                 if (yData.Length > 0)
                 {
                     list.InsertRange(0, yData);
                 }
-                
+
                 if (max != null)
                 {
                     traceType.GetProperty("Y")?.SetValue(currentTrace, list?.Take(max.Value).ToList());

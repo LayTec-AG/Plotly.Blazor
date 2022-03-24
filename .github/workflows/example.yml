@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'Plotly.Blazor/**'
       - 'Plotly.Blazor.Examples/**'
@@ -21,10 +21,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Setup .NET Core
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.201'
+        dotnet-version: '6.0.x'
 
     - name: Build
       run: dotnet build '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}' --configuration Release

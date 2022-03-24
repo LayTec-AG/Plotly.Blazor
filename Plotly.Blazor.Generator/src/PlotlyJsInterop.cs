@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
@@ -15,10 +16,10 @@ namespace Plotly.Blazor
         // Should be fixed in future blazor wasm releases
         private const string PlotlyInterop = "plotlyInterop";
 
-        internal static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions
+        internal static readonly JsonSerializerOptions SerializerOptions = new()
         {
             PropertyNamingPolicy = null,
-            IgnoreNullValues = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             Converters = {
                 new PolymorphicConverter<ITrace>(),
                 new PolymorphicConverter<ITransform>(),
@@ -151,8 +152,34 @@ namespace Plotly.Blazor
             await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
         }
 
+        /// <summary>
+        ///     Can be used to export the chart as a static image and returns a binary string of the exported image.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="format">Format of the image.</param>
+        /// <param name="height">Height of the image.</param>
+        /// <param name="width">Width of the image.</param>
+        /// <returns>Binary string of the exported image.</returns>
+        public static async Task<string> ToImage(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, ImageFormat format, uint height, uint width)
+        {
+            return await jsRuntime.InvokeAsync<string>($"{PlotlyInterop}.toImage", objectReference.Value.Id, format, height, width);
+        }
 
-
-
+        /// <summary>
+        ///     Can be used to download the chart as an image.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <param name="format">Format of the image.</param>
+        /// <param name="height">Height of the image.</param>
+        /// <param name="width">Width of the image.</param>
+        /// <param name="fileName">Name od the image file.</param>
+        public static async Task<string> DownloadImage(this IJSRuntime jsRuntime,
+            DotNetObjectReference<PlotlyChart> objectReference, ImageFormat format, uint height, uint width, string fileName)
+        {
+            return await jsRuntime.InvokeAsync<string>($"{PlotlyInterop}.downloadImage", objectReference.Value.Id, format, height, width, fileName);
+        }
     }
 }

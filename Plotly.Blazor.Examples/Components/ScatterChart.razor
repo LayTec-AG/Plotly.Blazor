@@ -1,6 +1,10 @@
 ﻿@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.Traces.ScatterLib
 @using System.Diagnostics
+@using Blazor_Layout = Plotly.Blazor.Layout
+@using Examples_Helper = Plotly.Blazor.Examples.Helper
+@using Title = Plotly.Blazor.LayoutLib.Title
+@using YAxis = Plotly.Blazor.LayoutLib.YAxis
 
 <PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
 
@@ -13,36 +17,29 @@
     <button type="button" class="btn btn-primary" @onclick="() => ExtendData()">Extend First</button>
     <button type="button" class="btn btn-primary" @onclick="() => PrependWithLimit()">Prepend First (Max. 100)</button>
     <button type="button" class="btn btn-primary" @onclick="() => ExtendWithLimit()">Extend First (Max. 100)</button>
+    <button type="button" class="btn btn-primary" @onclick="() => ExportImage()">Show as image below</button>
+    <button type="button" class="btn btn-primary" @onclick="() => DownloadImage()">Download</button>
 </div>
+
+@if (imgSource != null)
+{
+    <div style="margin-top:auto; margin-bottom:auto;text-align:center;">
+        <br />
+        <h2>Export as an image</h2>
+        <img src="@imgSource" />
+    </div>
+}
 
 @code
 {
-    PlotlyChart chart;
-
-    Config config = new Config
-    {
-        Responsive = true
-    };
-
-    Layout layout = new Layout
-    {
-        Title = new Title
+    private PlotlyChart chart;
+    private Config config = new()
         {
-            Text = "Scatter"
-        },
-        YAxis = new List<YAxis>
-    {
-            new YAxis
-            {
-                Title = new LayoutLib.YAxisLib.Title
-                {
-                    Text = "Scatter Unit"
-                }
-            }
-        }
-    };
+            Responsive = true
+        };
 
-    IList<ITrace> data = new List<ITrace>{
+    private IList<ITrace> data = new List<ITrace>
+    {
         new Scatter
         {
             Name = "ScatterTrace",
@@ -52,14 +49,64 @@
         }
     };
 
+    private string imgSource;
+
+    private Layout layout = new()
+        {
+            Title = new Title { Text = "Scatter" },
+            YAxis = new List<YAxis>
+        {
+            new()
+            {
+                Title = new LayoutLib.YAxisLib.Title { Text = "Scatter Unit" }
+            }
+        }
+        };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ExtendData();
+        }
+    }
+
+    private async Task AddScatter()
+    {
+        var (x, y) = Helper.GenerateData(0, 100);
+        await chart.AddTrace(new Scatter
+            {
+                Name = $"ScatterTrace{data.Count + 1}",
+                Mode = ModeFlag.Lines | ModeFlag.Markers,
+                X = x,
+                Y = y
+            });
+    }
+
+    private async Task DeleteScatter()
+    {
+        await chart.DeleteTrace(0);
+    }
+
+    private async Task ExportImage()
+    {
+        imgSource = await chart.ToImage(ImageFormat.Png, 400, 800);
+    }
+
+    private async Task DownloadImage()
+    {
+        await chart.DownloadImage(ImageFormat.Png, 400, 800, "ScatterExample");
+    }
+
     private async Task ExtendData(int count = 100)
     {
-        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter))
+        {
+            return;
+        }
 
         var max = (int?)scatter.X?.Max();
         var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
-
-
         if (!scatter.X.Any() || !scatter.Y.Any())
         {
             scatter.X.AddRange(x);
@@ -74,12 +121,13 @@
 
     private async Task ExtendWithLimit(int count = 100, int limit = 100)
     {
-        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
+        if (chart.Data.FirstOrDefault() is not Scatter scatter)
+        {
+            return;
+        }
 
         var max = (int?)scatter.X?.Max();
         var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
-
-
         if (!scatter.X.Any() || !scatter.Y.Any())
         {
             scatter.X.AddRange(x);
@@ -92,32 +140,15 @@
         }
     }
 
-    private async Task PrependWithLimit(int count = 100, int limit = 100)
-    {
-        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
-
-        var min = (int?)scatter.X?.Min();
-        var (x, y) = Helper.GenerateData(min - 1 ?? 0, min - 1 - count ?? count * -1);
-
-        if (!scatter.X.Any() || !scatter.Y.Any())
-        {
-            scatter.X.AddRange(x);
-            scatter.Y.AddRange(y);
-            await chart.React();
-        }
-        else
-        {
-            await chart.PrependTrace(x, y, data.IndexOf(scatter), limit);
-        }
-    }
-
     private async Task PrependData(int count = 100)
     {
-        if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter))
+        {
+            return;
+        }
 
         var min = (int?)scatter.X?.Min();
         var (x, y) = Helper.GenerateData(min - 1 ?? 0, min - 1 - count ?? count * -1);
-
         if (!scatter.X.Any() || !scatter.Y.Any())
         {
             scatter.X.AddRange(x);
@@ -130,38 +161,31 @@
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    private async Task PrependWithLimit(int count = 100, int limit = 100)
     {
-        if (firstRender)
+        if (chart.Data.FirstOrDefault() is not Scatter scatter)
         {
-            await ExtendData();
+            return;
+        }
+
+        var min = (int?)scatter.X?.Min();
+        var (x, y) = Helper.GenerateData(min - 1 ?? 0, min - 1 - count ?? count * -1);
+        if (!scatter.X.Any() || !scatter.Y.Any())
+        {
+            scatter.X.AddRange(x);
+            scatter.Y.AddRange(y);
+            await chart.React();
+        }
+        else
+        {
+            await chart.PrependTrace(x, y, data.IndexOf(scatter), limit);
         }
     }
 
     private async Task Restyle()
     {
-        var updateScatterChart = new Scatter
-        {
-            Name = "Restyled Name"
-        };
+        var updateScatterChart = new Scatter { Name = "Restyled Name" };
         await chart.Restyle(updateScatterChart, 0);
     }
 
-    private async Task DeleteScatter()
-    {
-        await chart.DeleteTrace(0);
-    }
-
-    private async Task AddScatter()
-    {
-        var (x, y) = Helper.GenerateData(0,100);
-        await chart.AddTrace(new Scatter
-        {
-
-            Name = $"ScatterTrace{data.Count+1}",
-            Mode = ModeFlag.Lines | ModeFlag.Markers,
-            X = x,
-            Y = y
-        });
-    }
 }

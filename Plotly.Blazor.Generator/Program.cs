@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Plotly.Blazor.Generator.Schema;
 using Plotly.Blazor.Generator.Templates;
@@ -34,7 +35,7 @@ namespace Plotly.Blazor.Generator
 
         #region Main
 
-        private static async Task Main(string[] args)
+        private static async Task Main()
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -79,11 +80,11 @@ namespace Plotly.Blazor.Generator
             var outputDir = @".\src\wwwroot";
             Directory.CreateDirectory(outputDir);
             await File.WriteAllTextAsync($"{outputDir}\\plotly-latest.min.js",
-                await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-2.3.0.min.js"));
+                await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-2.9.0.min.js"));
 
             var serializerOptions = new JsonSerializerOptions
             {
-                IgnoreNullValues = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 PropertyNameCaseInsensitive = true
             };
             return JsonSerializer.Deserialize<SchemaRoot>(schemaJson, serializerOptions);

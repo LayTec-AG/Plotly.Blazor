@@ -11,14 +11,15 @@ namespace Plotly.Blazor.Traces.HeatMapGlLib.ColorBarLib
     /// <summary>
     ///     Sets this color bar&#39;s horizontal position anchor. This anchor binds
     ///     the <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c>
-    ///     of the color bar.
+    ///     of the color bar. Defaults to <c>left</c> when <c>orientation</c> is <c>v</c>
+    ///     and <c>center</c> when <c>orientation</c> is <c>h</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XAnchorEnum
     {
         [EnumMember(Value=@"left")]
-        Left = 0,
+        Left,
         [EnumMember(Value=@"center")]
         Center,
         [EnumMember(Value=@"right")]

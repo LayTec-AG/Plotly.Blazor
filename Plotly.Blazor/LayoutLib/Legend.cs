@@ -42,9 +42,25 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.Font Font { get; set;} 
 
         /// <summary>
+        ///     Determines the behavior on legend group item click. <c>toggleitem</c> toggles
+        ///     the visibility of the individual item clicked on the graph. <c>togglegroup</c>
+        ///     toggles the visibility of all items in the same legendgroup as the item
+        ///     clicked on the graph.
+        /// </summary>
+        [JsonPropertyName(@"groupclick")]
+        public Plotly.Blazor.LayoutLib.LegendLib.GroupClickEnum? GroupClick { get; set;} 
+
+        /// <summary>
+        ///     Sets the font for group titles in legend. Defaults to <c>legend.font</c>
+        ///     with its size increased about 10%.
+        /// </summary>
+        [JsonPropertyName(@"grouptitlefont")]
+        public Plotly.Blazor.LayoutLib.LegendLib.GroupTitleFont GroupTitleFont { get; set;} 
+
+        /// <summary>
         ///     Determines the behavior on legend item click. <c>toggle</c> toggles the
         ///     visibility of the item clicked on the graph. <c>toggleothers</c> makes the
-        ///     clicked item the sole visible item on the graph. <c>false</c> disable legend
+        ///     clicked item the sole visible item on the graph. <c>false</c> disables legend
         ///     item click interactions.
         /// </summary>
         [JsonPropertyName(@"itemclick")]
@@ -53,7 +69,7 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Determines the behavior on legend item double-click. <c>toggle</c> toggles
         ///     the visibility of the item clicked on the graph. <c>toggleothers</c> makes
-        ///     the clicked item the sole visible item on the graph. <c>false</c> disable
+        ///     the clicked item the sole visible item on the graph. <c>false</c> disables
         ///     legend item double-click interactions.
         /// </summary>
         [JsonPropertyName(@"itemdoubleclick")]
@@ -192,6 +208,16 @@ namespace Plotly.Blazor.LayoutLib
                     Font.Equals(other.Font)
                 ) && 
                 (
+                    GroupClick == other.GroupClick ||
+                    GroupClick != null &&
+                    GroupClick.Equals(other.GroupClick)
+                ) && 
+                (
+                    GroupTitleFont == other.GroupTitleFont ||
+                    GroupTitleFont != null &&
+                    GroupTitleFont.Equals(other.GroupTitleFont)
+                ) && 
+                (
                     ItemClick == other.ItemClick ||
                     ItemClick != null &&
                     ItemClick.Equals(other.ItemClick)
@@ -273,6 +299,8 @@ namespace Plotly.Blazor.LayoutLib
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
+                if (GroupClick != null) hashCode = hashCode * 59 + GroupClick.GetHashCode();
+                if (GroupTitleFont != null) hashCode = hashCode * 59 + GroupTitleFont.GetHashCode();
                 if (ItemClick != null) hashCode = hashCode * 59 + ItemClick.GetHashCode();
                 if (ItemDoubleClick != null) hashCode = hashCode * 59 + ItemDoubleClick.GetHashCode();
                 if (ItemSizing != null) hashCode = hashCode * 59 + ItemSizing.GetHashCode();

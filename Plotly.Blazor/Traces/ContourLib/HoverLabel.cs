@@ -36,7 +36,7 @@ namespace Plotly.Blazor.Traces.ContourLib
         public IList<Plotly.Blazor.Traces.ContourLib.HoverLabelLib.AlignEnum?> AlignArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  align .
+        ///     Sets the source reference on Chart Studio Cloud for <c>align</c>.
         /// </summary>
         [JsonPropertyName(@"alignsrc")]
         public string AlignSrc { get; set;} 
@@ -55,7 +55,7 @@ namespace Plotly.Blazor.Traces.ContourLib
         public IList<object> BgColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  bgcolor .
+        ///     Sets the source reference on Chart Studio Cloud for <c>bgcolor</c>.
         /// </summary>
         [JsonPropertyName(@"bgcolorsrc")]
         public string BgColorSrc { get; set;} 
@@ -74,7 +74,7 @@ namespace Plotly.Blazor.Traces.ContourLib
         public IList<object> BorderColorArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  bordercolor .
+        ///     Sets the source reference on Chart Studio Cloud for <c>bordercolor</c>.
         /// </summary>
         [JsonPropertyName(@"bordercolorsrc")]
         public string BorderColorSrc { get; set;} 
@@ -107,7 +107,7 @@ namespace Plotly.Blazor.Traces.ContourLib
         public IList<int?> NameLengthArray { get; set;} 
 
         /// <summary>
-        ///     Sets the source reference on Chart Studio Cloud for  namelength .
+        ///     Sets the source reference on Chart Studio Cloud for <c>namelength</c>.
         /// </summary>
         [JsonPropertyName(@"namelengthsrc")]
         public string NameLengthSrc { get; set;} 

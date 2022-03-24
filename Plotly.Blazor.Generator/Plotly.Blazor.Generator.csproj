@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +10,7 @@
     <Compile Remove="src\DateTimeConverter.cs" />
     <Compile Remove="src\EnumConverter.cs" />
     <Compile Remove="src\Extensions.cs" />
+    <Compile Remove="src\ImageFormat.cs" />
     <Compile Remove="src\PlotlyConverter.cs" />
     <Compile Remove="src\PlotlyJsInterop.cs" />
     <Compile Remove="src\PolymorphicConverter.cs" />
@@ -29,6 +30,9 @@
     <None Include="src\Extensions.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="src\ImageFormat.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="src\PlotlyConverter.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -44,9 +48,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.JSInterop" Version="5.0.5" />
+    <PackageReference Include="Microsoft.JSInterop" Version="6.0.2" />
     <PackageReference Include="Stubble.Core" Version="1.9.3" />
-    <PackageReference Include="WeCantSpell.Hunspell" Version="3.0.1" />
+    <PackageReference Include="WeCantSpell.Hunspell" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>

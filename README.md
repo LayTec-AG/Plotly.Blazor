@@ -12,7 +12,7 @@ To create Blazor Server Apps, install the latest version of Visual Studio 2019 w
 For Blazor WebAssembly you need at least Visual Studio 2019 16.6+.
 Another alternative would be to use Visual Studio code. Click [here](https://docs.microsoft.com/en-us/aspnet/core/blazor/get-started?view=aspnetcore-3.1&tabs=visual-studio-code) for more information.
 
-**Plotly.Blazor with version >= 2.0.0 requires .NET 5 or higher.**
+**Plotly.Blazor with version >= 2.0.0 requires .NET 6 or higher.**
 
 
 ### Installing
@@ -117,11 +117,11 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 - Delete multiple traces with one call
 - plotly.animate
 - plotly.addFrames
-- plotly.downloadImage
+- <s>plotly.downloadImage</s>
 - plotly.moveTraces
 - <s>plotly.relayout</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
 - <s>plotly.restyle</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
-- plotly.toImage
+- <s>plotly.toImage</s>
 
 ## Versioning
 
@@ -130,6 +130,9 @@ We implement [SemVer](http://semver.org/) using [GitVersion](https://github.com/
 ## Authors
 
 * **Sean McLeish** - *Initial work* - [sean-mcleish](https://github.com/sean-mcleish)
+* **PeopleCanFly** - *Contributor* - [PeopleCanFly](https://github.com/Peop1eCanF1y)
+* **Matthew R. Johnson** - *Contributor* - [Matthew R. Johnson](https://github.com/centreboard)
+
 
 See also the list of [contributors](https://github.com/LayTec-AG/Plotly.Blazor/contributors) who participated in this project.
 

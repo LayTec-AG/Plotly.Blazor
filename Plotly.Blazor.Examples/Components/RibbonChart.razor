@@ -1,0 +1,73 @@
+﻿@using Plotly.Blazor.LayoutLib
+@inject NavigationManager MyNavigationManager
+
+<PlotlyChart style="height: 60vh; min-height: 350px; margin-left: 30%" Id="RibbonChart" Config="config" Layout="layout" Data="data" @ref="plotlyChart"/>
+
+@code {
+    const string Url = "https://raw.githubusercontent.com/plotly/datasets/master/3d-ribbon.json";
+    
+    PlotlyChart plotlyChart;
+    Layout layout;
+    Config config;
+    IList<ITrace> data;
+    
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = "Ribbon chart"
+            },
+            Height = 600,
+            Width = 600,
+            ShowLegend = false,
+            Scene = new[]
+            {
+                new Scene()
+                {
+                    XAxis = new LayoutLib.SceneLib.XAxis(){Title = new LayoutLib.SceneLib.XAxisLib.Title(){Text = "Sample #"}},
+                    YAxis = new LayoutLib.SceneLib.YAxis(){Title = new LayoutLib.SceneLib.YAxisLib.Title(){Text = "Wave length"}},
+                    ZAxis = new LayoutLib.SceneLib.ZAxis(){Title = new LayoutLib.SceneLib.ZAxisLib.Title(){Text = "OD"}}
+                }
+            }
+        };
+
+        config = new Config
+        {
+            ShowLink = false,
+            Responsive = true,
+            DisplayLogo = false
+        };
+        
+        data = GetRibbonsData().ToList();
+    }
+
+    IEnumerable<ITrace> GetRibbonsData()
+    {
+        var client = new HttpClient
+        {
+            BaseAddress = new Uri(MyNavigationManager.BaseUri)
+        };
+        
+        var jsonResponse = client.GetStringAsync(Url).Result;
+        var jasonObject = Newtonsoft.Json.Linq.JObject.Parse(jsonResponse);
+        var results = jasonObject["data"].Children().ToList();
+
+        return results.Select(result =>
+        {
+            var ribbon = result.ToObject<Ribbon>();
+            return new Surface()
+            {
+                X = ribbon.X,
+                Y = ribbon.Y,
+                Z = ribbon.Z,
+                ShowLegend = false,
+                ShowScale = false
+            };
+        });
+    }
+    
+    record Ribbon(object[][] X, object[][] Y, object[][] Z, string[][] ColorScale);
+}

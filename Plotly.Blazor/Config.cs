@@ -308,6 +308,13 @@ namespace Plotly.Blazor
         public string TopoJsonUrl { get; set;} 
 
         /// <summary>
+        ///     Determines whether math should be typeset or not, when MathJax (either v2
+        ///     or v3) is present on the page.
+        /// </summary>
+        [JsonPropertyName(@"typesetMath")]
+        public bool? TypesetMath { get; set;} 
+
+        /// <summary>
         ///     watermark the images with the company&#39;s logo
         /// </summary>
         [JsonPropertyName(@"watermark")]
@@ -509,6 +516,11 @@ namespace Plotly.Blazor
                     TopoJsonUrl.Equals(other.TopoJsonUrl)
                 ) && 
                 (
+                    TypesetMath == other.TypesetMath ||
+                    TypesetMath != null &&
+                    TypesetMath.Equals(other.TypesetMath)
+                ) && 
+                (
                     Watermark == other.Watermark ||
                     Watermark != null &&
                     Watermark.Equals(other.Watermark)
@@ -557,6 +569,7 @@ namespace Plotly.Blazor
                 if (StaticPlot != null) hashCode = hashCode * 59 + StaticPlot.GetHashCode();
                 if (ToImageButtonOptions != null) hashCode = hashCode * 59 + ToImageButtonOptions.GetHashCode();
                 if (TopoJsonUrl != null) hashCode = hashCode * 59 + TopoJsonUrl.GetHashCode();
+                if (TypesetMath != null) hashCode = hashCode * 59 + TypesetMath.GetHashCode();
                 if (Watermark != null) hashCode = hashCode * 59 + Watermark.GetHashCode();
                 return hashCode;
             }

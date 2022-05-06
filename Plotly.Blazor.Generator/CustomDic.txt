@@ -315,3 +315,4 @@ grouptitlefont=groupTitleFont
 imagsrc=imagSrc
 realsrc=realSrc
 imag=imag
+minorgriddash=minorGridDash

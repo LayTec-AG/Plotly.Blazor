@@ -182,6 +182,14 @@ namespace Plotly.Blazor.LayoutLib
         public object GridColor { get; set;} 
 
         /// <summary>
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        /// </summary>
+        [JsonPropertyName(@"griddash")]
+        public string GridDash { get; set;} 
+
+        /// <summary>
         ///     Sets the width (in px) of the grid lines.
         /// </summary>
         [JsonPropertyName(@"gridwidth")]
@@ -239,6 +247,12 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"minexponent")]
         public decimal? MinExponent { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Minor.
+        /// </summary>
+        [JsonPropertyName(@"minor")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.Minor Minor { get; set;} 
 
         /// <summary>
         ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
@@ -772,6 +786,11 @@ namespace Plotly.Blazor.LayoutLib
                     GridColor.Equals(other.GridColor)
                 ) && 
                 (
+                    GridDash == other.GridDash ||
+                    GridDash != null &&
+                    GridDash.Equals(other.GridDash)
+                ) && 
+                (
                     GridWidth == other.GridWidth ||
                     GridWidth != null &&
                     GridWidth.Equals(other.GridWidth)
@@ -805,6 +824,11 @@ namespace Plotly.Blazor.LayoutLib
                     MinExponent == other.MinExponent ||
                     MinExponent != null &&
                     MinExponent.Equals(other.MinExponent)
+                ) && 
+                (
+                    Minor == other.Minor ||
+                    Minor != null &&
+                    Minor.Equals(other.Minor)
                 ) && 
                 (
                     Mirror == other.Mirror ||
@@ -1102,6 +1126,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
                 if (FixedRange != null) hashCode = hashCode * 59 + FixedRange.GetHashCode();
                 if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
+                if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
@@ -1109,6 +1134,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();
                 if (Matches != null) hashCode = hashCode * 59 + Matches.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
+                if (Minor != null) hashCode = hashCode * 59 + Minor.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();
                 if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
                 if (Overlaying != null) hashCode = hashCode * 59 + Overlaying.GetHashCode();

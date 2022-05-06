@@ -60,7 +60,7 @@ namespace Plotly.Blazor.Examples
 
             services.AddBlazorise(options =>
             {
-                    options.ChangeTextOnKeyPress = true;
+                    options.Immediate = true;
             })
                 .AddBootstrapProviders()
                 .AddFontAwesomeIcons();

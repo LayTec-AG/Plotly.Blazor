@@ -137,6 +137,14 @@ namespace Plotly.Blazor.Traces.CarpetLib
         public object GridColor { get; set;} 
 
         /// <summary>
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        /// </summary>
+        [JsonPropertyName(@"griddash")]
+        public string GridDash { get; set;} 
+
+        /// <summary>
         ///     Sets the width (in px) of the axis line.
         /// </summary>
         [JsonPropertyName(@"gridwidth")]
@@ -189,6 +197,14 @@ namespace Plotly.Blazor.Traces.CarpetLib
         /// </summary>
         [JsonPropertyName(@"minorgridcount")]
         public int? MinorGridCount { get; set;} 
+
+        /// <summary>
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        /// </summary>
+        [JsonPropertyName(@"minorgriddash")]
+        public string MinorGridDash { get; set;} 
 
         /// <summary>
         ///     Sets the width (in px) of the grid lines.
@@ -489,6 +505,11 @@ namespace Plotly.Blazor.Traces.CarpetLib
                     GridColor.Equals(other.GridColor)
                 ) && 
                 (
+                    GridDash == other.GridDash ||
+                    GridDash != null &&
+                    GridDash.Equals(other.GridDash)
+                ) && 
+                (
                     GridWidth == other.GridWidth ||
                     GridWidth != null &&
                     GridWidth.Equals(other.GridWidth)
@@ -532,6 +553,11 @@ namespace Plotly.Blazor.Traces.CarpetLib
                     MinorGridCount == other.MinorGridCount ||
                     MinorGridCount != null &&
                     MinorGridCount.Equals(other.MinorGridCount)
+                ) && 
+                (
+                    MinorGridDash == other.MinorGridDash ||
+                    MinorGridDash != null &&
+                    MinorGridDash.Equals(other.MinorGridDash)
                 ) && 
                 (
                     MinorGridWidth == other.MinorGridWidth ||
@@ -702,6 +728,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
                 if (FixedRange != null) hashCode = hashCode * 59 + FixedRange.GetHashCode();
                 if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
+                if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (LabelPadding != null) hashCode = hashCode * 59 + LabelPadding.GetHashCode();
                 if (LabelPrefix != null) hashCode = hashCode * 59 + LabelPrefix.GetHashCode();
@@ -711,6 +738,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (MinorGridColor != null) hashCode = hashCode * 59 + MinorGridColor.GetHashCode();
                 if (MinorGridCount != null) hashCode = hashCode * 59 + MinorGridCount.GetHashCode();
+                if (MinorGridDash != null) hashCode = hashCode * 59 + MinorGridDash.GetHashCode();
                 if (MinorGridWidth != null) hashCode = hashCode * 59 + MinorGridWidth.GetHashCode();
                 if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
                 if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();

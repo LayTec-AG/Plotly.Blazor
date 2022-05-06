@@ -34,6 +34,14 @@ namespace Plotly.Blazor.LayoutLib.SmithLib
         public object GridColor { get; set;} 
 
         /// <summary>
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        /// </summary>
+        [JsonPropertyName(@"griddash")]
+        public string GridDash { get; set;} 
+
+        /// <summary>
         ///     Sets the width (in px) of the grid lines.
         /// </summary>
         [JsonPropertyName(@"gridwidth")]
@@ -222,6 +230,11 @@ namespace Plotly.Blazor.LayoutLib.SmithLib
                     GridColor.Equals(other.GridColor)
                 ) && 
                 (
+                    GridDash == other.GridDash ||
+                    GridDash != null &&
+                    GridDash.Equals(other.GridDash)
+                ) && 
+                (
                     GridWidth == other.GridWidth ||
                     GridWidth != null &&
                     GridWidth.Equals(other.GridWidth)
@@ -346,6 +359,7 @@ namespace Plotly.Blazor.LayoutLib.SmithLib
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
+                if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();

@@ -108,6 +108,12 @@ namespace Plotly.Blazor.Traces
         public object FillColor { get; set;} 
 
         /// <summary>
+        ///     Sets the pattern within the marker.
+        /// </summary>
+        [JsonPropertyName(@"fillpattern")]
+        public Plotly.Blazor.Traces.ScatterLib.FillPattern FillPattern { get; set;} 
+
+        /// <summary>
         ///     Only relevant when <c>stackgroup</c> is used, and only the first <c>groupnorm</c>
         ///     found in the <c>stackgroup</c> will be used - including if <c>visible</c>
         ///     is <c>legendonly</c> but not if it is <c>false</c>. Sets the normalization
@@ -758,6 +764,11 @@ namespace Plotly.Blazor.Traces
                     FillColor.Equals(other.FillColor)
                 ) && 
                 (
+                    FillPattern == other.FillPattern ||
+                    FillPattern != null &&
+                    FillPattern.Equals(other.FillPattern)
+                ) && 
+                (
                     GroupNorm == other.GroupNorm ||
                     GroupNorm != null &&
                     GroupNorm.Equals(other.GroupNorm)
@@ -1101,6 +1112,7 @@ namespace Plotly.Blazor.Traces
                 if (ErrorY != null) hashCode = hashCode * 59 + ErrorY.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
+                if (FillPattern != null) hashCode = hashCode * 59 + FillPattern.GetHashCode();
                 if (GroupNorm != null) hashCode = hashCode * 59 + GroupNorm.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
                 if (HoverInfoArray != null) hashCode = hashCode * 59 + HoverInfoArray.GetHashCode();

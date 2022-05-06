@@ -29,7 +29,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.4" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.4" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-        <PackageReference Include="System.Text.Json" Version="6.0.2" />
+        <PackageReference Include="System.Text.Json" Version="6.0.3" />
     </ItemGroup>
 
 </Project>

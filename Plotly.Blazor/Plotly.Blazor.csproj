@@ -26,10 +26,10 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.5" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-        <PackageReference Include="System.Text.Json" Version="6.0.3" />
+        <PackageReference Include="System.Text.Json" Version="6.0.4" />
     </ItemGroup>
     <ItemGroup>
       <Content Update="wwwroot\plotly-interop.js">

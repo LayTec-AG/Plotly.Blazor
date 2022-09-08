@@ -289,7 +289,7 @@ namespace Plotly.Blazor.Generator
         }
 
         /// <summary>
-        ///     Tries converts a JsonElement to an object.
+        ///     Tries to convert a JsonElement to an object.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="element">The element.</param>
@@ -310,7 +310,7 @@ namespace Plotly.Blazor.Generator
         }
 
         /// <summary>
-        /// Escapes the XML special chars.
+        ///     Escapes the XML special chars.
         /// </summary>
         /// <param name="s">The s.</param>
         /// <returns>System.String.</returns>

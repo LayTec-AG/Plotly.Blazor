@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ViolinLib.MarkerLib
     public class Line : IEquatable<Line>
     {
         /// <summary>
-        ///     Sets themarker.linecolor. It accepts either a specific color or an array
+        ///     Sets the marker.line color. It accepts either a specific color or an array
         ///     of numbers that are mapped to the colorscale relative to the max and min
         ///     values of the array or relative to <c>marker.line.cmin</c> and <c>marker.line.cmax</c>
         ///     if set.

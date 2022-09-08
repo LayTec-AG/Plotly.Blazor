@@ -329,6 +329,21 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ViolinLib.PointsEnum? Points { get; set;} 
 
         /// <summary>
+        ///     Sets the method used to compute the sample&#39;s Q1 and Q3 quartiles. The
+        ///     <c>linear</c> method uses the 25th percentile for Q1 and 75th percentile
+        ///     for Q3 as computed using method #10 (listed on http://jse.amstat.org/v14n3/langford.html).
+        ///     The <c>exclusive</c> method uses the median to divide the ordered dataset
+        ///     into two halves if the sample is odd, it does not include the median in
+        ///     either half - Q1 is then the median of the lower half and Q3 the median
+        ///     of the upper half. The <c>inclusive</c> method also uses the median to divide
+        ///     the ordered dataset into two halves but if the sample is odd, it includes
+        ///     the median in both halves - Q1 is then the median of the lower half and
+        ///     Q3 the median of the upper half.
+        /// </summary>
+        [JsonPropertyName(@"quartilemethod")]
+        public Plotly.Blazor.Traces.ViolinLib.QuartileMethodEnum? QuartileMethod { get; set;} 
+
+        /// <summary>
         ///     If there are multiple violins that should be sized according to to some
         ///     metric (see <c>scalemode</c>), link them by providing a non-empty group
         ///     id here shared by every trace in the same group. If a violin&#39;s <c>width</c>
@@ -339,9 +354,9 @@ namespace Plotly.Blazor.Traces
         public string ScaleGroup { get; set;} 
 
         /// <summary>
-        ///     Sets the metric by which the width of each violin is determined.<c>width</c>
-        ///     means each violin has the same (max) width<c>count</c> means the violins
-        ///     are scaled by the number of sample points makingup each violin.
+        ///     Sets the metric by which the width of each violin is determined. <c>width</c>
+        ///     means each violin has the same (max) width <c>count</c> means the violins
+        ///     are scaled by the number of sample points making up each violin.
         /// </summary>
         [JsonPropertyName(@"scalemode")]
         public Plotly.Blazor.Traces.ViolinLib.ScaleModeEnum? ScaleMode { get; set;} 
@@ -755,6 +770,11 @@ namespace Plotly.Blazor.Traces
                     Points.Equals(other.Points)
                 ) && 
                 (
+                    QuartileMethod == other.QuartileMethod ||
+                    QuartileMethod != null &&
+                    QuartileMethod.Equals(other.QuartileMethod)
+                ) && 
+                (
                     ScaleGroup == other.ScaleGroup ||
                     ScaleGroup != null &&
                     ScaleGroup.Equals(other.ScaleGroup)
@@ -938,6 +958,7 @@ namespace Plotly.Blazor.Traces
                 if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (PointPos != null) hashCode = hashCode * 59 + PointPos.GetHashCode();
                 if (Points != null) hashCode = hashCode * 59 + Points.GetHashCode();
+                if (QuartileMethod != null) hashCode = hashCode * 59 + QuartileMethod.GetHashCode();
                 if (ScaleGroup != null) hashCode = hashCode * 59 + ScaleGroup.GetHashCode();
                 if (ScaleMode != null) hashCode = hashCode * 59 + ScaleMode.GetHashCode();
                 if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();

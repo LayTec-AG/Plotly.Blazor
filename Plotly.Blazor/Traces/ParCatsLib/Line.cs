@@ -23,8 +23,8 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         /// <summary>
         ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
         ///     true&#39;) or the palette determined by <c>line.colorscale</c>. Has an effect
-        ///     only if in <c>line.color</c>is set to a numerical array. In case <c>colorscale</c>
-        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     only if in <c>line.color</c> is set to a numerical array. In case <c>colorscale</c>
+        ///     is unspecified or <c>autocolorscale</c> is true, the default palette will
         ///     be chosen according to whether numbers in the <c>color</c> array are all
         ///     positive, all negative or mixed.
         /// </summary>
@@ -34,7 +34,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
         ///     input data (here in <c>line.color</c>) or the bounds set in <c>line.cmin</c>
-        ///     and <c>line.cmax</c>  Has an effect only if in <c>line.color</c>is set to
+        ///     and <c>line.cmax</c> Has an effect only if in <c>line.color</c> is set to
         ///     a numerical array. Defaults to <c>false</c> when <c>line.cmin</c> and <c>line.cmax</c>
         ///     are set by the user.
         /// </summary>
@@ -42,8 +42,8 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public bool? CAuto { get; set;} 
 
         /// <summary>
-        ///     Sets the upper bound of the color domain. Has an effect only if in <c>line.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>line.color</c>
+        ///     Sets the upper bound of the color domain. Has an effect only if in <c>line.color</c>
+        ///     is set to a numerical array. Value should have the same units as in <c>line.color</c>
         ///     and if set, <c>line.cmin</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmax")]
@@ -52,22 +52,23 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         /// <summary>
         ///     Sets the mid-point of the color domain by scaling <c>line.cmin</c> and/or
         ///     <c>line.cmax</c> to be equidistant to this point. Has an effect only if
-        ///     in <c>line.color</c>is set to a numerical array. Value should have the same
-        ///     units as in <c>line.color</c>. Has no effect when <c>line.cauto</c> is <c>false</c>.
+        ///     in <c>line.color</c> is set to a numerical array. Value should have the
+        ///     same units as in <c>line.color</c>. Has no effect when <c>line.cauto</c>
+        ///     is <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"cmid")]
         public decimal? CMid { get; set;} 
 
         /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in <c>line.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>line.color</c>
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>line.color</c>
+        ///     is set to a numerical array. Value should have the same units as in <c>line.color</c>
         ///     and if set, <c>line.cmax</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmin")]
         public decimal? CMin { get; set;} 
 
         /// <summary>
-        ///     Sets thelinecolor. It accepts either a specific color or an array of numbers
+        ///     Sets the line color. It accepts either a specific color or an array of numbers
         ///     that are mapped to the colorscale relative to the max and min values of
         ///     the array or relative to <c>line.cmin</c> and <c>line.cmax</c> if set.
         /// </summary>
@@ -75,7 +76,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets thelinecolor. It accepts either a specific color or an array of numbers
+        ///     Sets the line color. It accepts either a specific color or an array of numbers
         ///     that are mapped to the colorscale relative to the max and min values of
         ///     the array or relative to <c>line.cmin</c> and <c>line.cmax</c> if set.
         /// </summary>
@@ -100,12 +101,12 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public Plotly.Blazor.Traces.ParCatsLib.LineLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. Has an effect only if in <c>line.color</c>is set to
+        ///     Sets the colorscale. Has an effect only if in <c>line.color</c> is set to
         ///     a numerical array. The colorscale must be an array containing arrays mapping
         ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
         ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
         ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
-        ///     To control the bounds of the colorscale in color space, use<c>line.cmin</c>
+        ///     To control the bounds of the colorscale in color space, use <c>line.cmin</c>
         ///     and <c>line.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
         ///     name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
@@ -143,10 +144,10 @@ namespace Plotly.Blazor.Traces.ParCatsLib
         public string HoverTemplate { get; set;} 
 
         /// <summary>
-        ///     Reverses the color mapping if true. Has an effect only if in <c>line.color</c>is
-        ///     set to a numerical array. If true, <c>line.cmin</c> will correspond to the
-        ///     last color in the array and <c>line.cmax</c> will correspond to the first
-        ///     color.
+        ///     Reverses the color mapping if true. Has an effect only if in <c>line.color</c>
+        ///     is set to a numerical array. If true, <c>line.cmin</c> will correspond to
+        ///     the last color in the array and <c>line.cmax</c> will correspond to the
+        ///     first color.
         /// </summary>
         [JsonPropertyName(@"reversescale")]
         public bool? ReverseScale { get; set;} 
@@ -160,7 +161,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
 
         /// <summary>
         ///     Determines whether or not a colorbar is displayed for this trace. Has an
-        ///     effect only if in <c>line.color</c>is set to a numerical array.
+        ///     effect only if in <c>line.color</c> is set to a numerical array.
         /// </summary>
         [JsonPropertyName(@"showscale")]
         public bool? ShowScale { get; set;} 

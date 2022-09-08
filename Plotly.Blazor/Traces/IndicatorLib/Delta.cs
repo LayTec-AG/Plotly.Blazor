@@ -42,6 +42,12 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         public Plotly.Blazor.Traces.IndicatorLib.DeltaLib.PositionEnum? Position { get; set;} 
 
         /// <summary>
+        ///     Sets a prefix appearing before the delta.
+        /// </summary>
+        [JsonPropertyName(@"prefix")]
+        public string Prefix { get; set;} 
+
+        /// <summary>
         ///     Sets the reference value to compute the delta. By default, it is set to
         ///     the current value.
         /// </summary>
@@ -53,6 +59,12 @@ namespace Plotly.Blazor.Traces.IndicatorLib
         /// </summary>
         [JsonPropertyName(@"relative")]
         public bool? Relative { get; set;} 
+
+        /// <summary>
+        ///     Sets a suffix appearing next to the delta.
+        /// </summary>
+        [JsonPropertyName(@"suffix")]
+        public string Suffix { get; set;} 
 
         /// <summary>
         ///     Sets the value formatting rule using d3 formatting mini-languages which
@@ -97,6 +109,11 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     Position.Equals(other.Position)
                 ) && 
                 (
+                    Prefix == other.Prefix ||
+                    Prefix != null &&
+                    Prefix.Equals(other.Prefix)
+                ) && 
+                (
                     Reference == other.Reference ||
                     Reference != null &&
                     Reference.Equals(other.Reference)
@@ -105,6 +122,11 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                     Relative == other.Relative ||
                     Relative != null &&
                     Relative.Equals(other.Relative)
+                ) && 
+                (
+                    Suffix == other.Suffix ||
+                    Suffix != null &&
+                    Suffix.Equals(other.Suffix)
                 ) && 
                 (
                     ValueFormat == other.ValueFormat ||
@@ -123,8 +145,10 @@ namespace Plotly.Blazor.Traces.IndicatorLib
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Increasing != null) hashCode = hashCode * 59 + Increasing.GetHashCode();
                 if (Position != null) hashCode = hashCode * 59 + Position.GetHashCode();
+                if (Prefix != null) hashCode = hashCode * 59 + Prefix.GetHashCode();
                 if (Reference != null) hashCode = hashCode * 59 + Reference.GetHashCode();
                 if (Relative != null) hashCode = hashCode * 59 + Relative.GetHashCode();
+                if (Suffix != null) hashCode = hashCode * 59 + Suffix.GetHashCode();
                 if (ValueFormat != null) hashCode = hashCode * 59 + ValueFormat.GetHashCode();
                 return hashCode;
             }

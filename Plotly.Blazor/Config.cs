@@ -73,6 +73,12 @@ namespace Plotly.Blazor
         public Plotly.Blazor.ConfigLib.Edits Edits { get; set;} 
 
         /// <summary>
+        ///     Enables moving selections.
+        /// </summary>
+        [JsonPropertyName(@"editSelection")]
+        public bool? EditSelection { get; set;} 
+
+        /// <summary>
         ///     When <c>layout.autosize</c> is turned on, determines whether the graph fills
         ///     the container (the default) or the screen (if set to <c>true</c>).
         /// </summary>
@@ -371,6 +377,11 @@ namespace Plotly.Blazor
                     Edits.Equals(other.Edits)
                 ) && 
                 (
+                    EditSelection == other.EditSelection ||
+                    EditSelection != null &&
+                    EditSelection.Equals(other.EditSelection)
+                ) && 
+                (
                     FillFrame == other.FillFrame ||
                     FillFrame != null &&
                     FillFrame.Equals(other.FillFrame)
@@ -540,6 +551,7 @@ namespace Plotly.Blazor
                 if (DoubleClickDelay != null) hashCode = hashCode * 59 + DoubleClickDelay.GetHashCode();
                 if (Editable != null) hashCode = hashCode * 59 + Editable.GetHashCode();
                 if (Edits != null) hashCode = hashCode * 59 + Edits.GetHashCode();
+                if (EditSelection != null) hashCode = hashCode * 59 + EditSelection.GetHashCode();
                 if (FillFrame != null) hashCode = hashCode * 59 + FillFrame.GetHashCode();
                 if (FrameMargins != null) hashCode = hashCode * 59 + FrameMargins.GetHashCode();
                 if (GlobalTransforms != null) hashCode = hashCode * 59 + GlobalTransforms.GetHashCode();

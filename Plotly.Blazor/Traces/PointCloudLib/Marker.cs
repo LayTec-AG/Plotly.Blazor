@@ -32,8 +32,8 @@ namespace Plotly.Blazor.Traces.PointCloudLib
         public Plotly.Blazor.Traces.PointCloudLib.MarkerLib.Border Border { get; set;} 
 
         /// <summary>
-        ///     Sets the marker fill color. It accepts a specific color.If the color is
-        ///     not fully opaque and there are hundreds of thousandsof points, it may cause
+        ///     Sets the marker fill color. It accepts a specific color. If the color is
+        ///     not fully opaque and there are hundreds of thousands of points, it may cause
         ///     slower zooming and panning.
         /// </summary>
         [JsonPropertyName(@"color")]

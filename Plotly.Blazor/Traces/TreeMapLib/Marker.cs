@@ -22,8 +22,8 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         /// <summary>
         ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
         ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
-        ///     effect only if colorsis set to a numerical array. In case <c>colorscale</c>
-        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     effect only if colors is set to a numerical array. In case <c>colorscale</c>
+        ///     is unspecified or <c>autocolorscale</c> is true, the default palette will
         ///     be chosen according to whether numbers in the <c>color</c> array are all
         ///     positive, all negative or mixed.
         /// </summary>
@@ -33,14 +33,14 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
         ///     input data (here colors) or the bounds set in <c>marker.cmin</c> and <c>marker.cmax</c>
-        ///      Has an effect only if colorsis set to a numerical array. Defaults to <c>false</c>
+        ///     Has an effect only if colors is set to a numerical array. Defaults to <c>false</c>
         ///     when <c>marker.cmin</c> and <c>marker.cmax</c> are set by the user.
         /// </summary>
         [JsonPropertyName(@"cauto")]
         public bool? CAuto { get; set;} 
 
         /// <summary>
-        ///     Sets the upper bound of the color domain. Has an effect only if colorsis
+        ///     Sets the upper bound of the color domain. Has an effect only if colors is
         ///     set to a numerical array. Value should have the same units as colors and
         ///     if set, <c>marker.cmin</c> must be set as well.
         /// </summary>
@@ -50,14 +50,14 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         /// <summary>
         ///     Sets the mid-point of the color domain by scaling <c>marker.cmin</c> and/or
         ///     <c>marker.cmax</c> to be equidistant to this point. Has an effect only if
-        ///     colorsis set to a numerical array. Value should have the same units as colors.
-        ///     Has no effect when <c>marker.cauto</c> is <c>false</c>.
+        ///     colors is set to a numerical array. Value should have the same units as
+        ///     colors. Has no effect when <c>marker.cauto</c> is <c>false</c>.
         /// </summary>
         [JsonPropertyName(@"cmid")]
         public decimal? CMid { get; set;} 
 
         /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if colorsis
+        ///     Sets the lower bound of the color domain. Has an effect only if colors is
         ///     set to a numerical array. Value should have the same units as colors and
         ///     if set, <c>marker.cmax</c> must be set as well.
         /// </summary>
@@ -88,14 +88,14 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         public IList<object> Colors { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. Has an effect only if colorsis set to a numerical array.
-        ///     The colorscale must be an array containing arrays mapping a normalized value
-        ///     to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping
-        ///     for the lowest (0) and highest (1) values are required. For example, &#39;[[0,
-        ///     <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;. To control the bounds
-        ///     of the colorscale in color space, use<c>marker.cmin</c> and <c>marker.cmax</c>.
-        ///     Alternatively, <c>colorscale</c> may be a palette name string of the following
-        ///     list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+        ///     Sets the colorscale. Has an effect only if colors is set to a numerical
+        ///     array. The colorscale must be an array containing arrays mapping a normalized
+        ///     value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum,
+        ///     a mapping for the lowest (0) and highest (1) values are required. For example,
+        ///     &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;. To control
+        ///     the bounds of the colorscale in color space, use <c>marker.cmin</c> and
+        ///     <c>marker.cmax</c>. Alternatively, <c>colorscale</c> may be a palette name
+        ///     string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
@@ -130,16 +130,17 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.Pad Pad { get; set;} 
 
         /// <summary>
-        ///     Reverses the color mapping if true. Has an effect only if colorsis set to
-        ///     a numerical array. If true, <c>marker.cmin</c> will correspond to the last
-        ///     color in the array and <c>marker.cmax</c> will correspond to the first color.
+        ///     Reverses the color mapping if true. Has an effect only if colors is set
+        ///     to a numerical array. If true, <c>marker.cmin</c> will correspond to the
+        ///     last color in the array and <c>marker.cmax</c> will correspond to the first
+        ///     color.
         /// </summary>
         [JsonPropertyName(@"reversescale")]
         public bool? ReverseScale { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a colorbar is displayed for this trace. Has an
-        ///     effect only if colorsis set to a numerical array.
+        ///     effect only if colors is set to a numerical array.
         /// </summary>
         [JsonPropertyName(@"showscale")]
         public bool? ShowScale { get; set;} 

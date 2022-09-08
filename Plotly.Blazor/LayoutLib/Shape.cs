@@ -155,10 +155,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     refers to the distance in fractions of the domain length from the left of
         ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
         ///     of the second x  axis and a x position of 0.5 refers to the point between
-        ///     the left and the right of the domain of the second x axis. If the axis <c>type</c>
-        ///     is <c>log</c>, then you must take the log of your desired range. If the
-        ///     axis <c>type</c> is <c>date</c>, then you must convert the date to unix
-        ///     time in milliseconds.
+        ///     the left and the right of the domain of the second x axis.
         /// </summary>
         [JsonPropertyName(@"xref")]
         public string XRef { get; set;} 
@@ -201,13 +198,13 @@ namespace Plotly.Blazor.LayoutLib
         public object YAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the annotation&#39;s y coordinate axis. If set to a y axis id (e.g.
-        ///     <c>y</c> or <c>y2</c>), the <c>y</c> position refers to a y coordinate.
-        ///     If set to <c>paper</c>, the <c>y</c> position refers to the distance from
-        ///     the bottom of the plotting area in normalized coordinates where <c>0</c>
-        ///     (<c>1</c>) corresponds to the bottom (top). If set to a y axis ID followed
-        ///     by <c>domain</c> (separated by a space), the position behaves like for <c>paper</c>,
-        ///     but refers to the distance in fractions of the domain length from the bottom
+        ///     Sets the shape&#39;s y coordinate axis. If set to a y axis id (e.g. <c>y</c>
+        ///     or <c>y2</c>), the <c>y</c> position refers to a y coordinate. If set to
+        ///     <c>paper</c>, the <c>y</c> position refers to the distance from the bottom
+        ///     of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the bottom (top). If set to a y axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the bottom
         ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
         ///     of the second y  axis and a y position of 0.5 refers to the point between
         ///     the bottom and the top of the domain of the second y axis.

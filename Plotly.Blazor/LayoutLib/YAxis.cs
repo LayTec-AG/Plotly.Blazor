@@ -31,7 +31,7 @@ namespace Plotly.Blazor.LayoutLib
         ///     Determines whether long tick labels automatically grow the figure margins.
         /// </summary>
         [JsonPropertyName(@"automargin")]
-        public bool? AutoMargin { get; set;} 
+        public Plotly.Blazor.LayoutLib.YAxisLib.AutoMarginFlag? AutoMargin { get; set;} 
 
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation

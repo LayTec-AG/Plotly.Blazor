@@ -253,6 +253,12 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.WaterfallModeEnum? WaterfallMode { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the ActiveSelection.
+        /// </summary>
+        [JsonPropertyName(@"activeselection")]
+        public Plotly.Blazor.LayoutLib.ActiveSelection ActiveSelection { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the ActiveShape.
         /// </summary>
         [JsonPropertyName(@"activeshape")]
@@ -489,6 +495,12 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.ModeBar ModeBar { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the NewSelection.
+        /// </summary>
+        [JsonPropertyName(@"newselection")]
+        public Plotly.Blazor.LayoutLib.NewSelection NewSelection { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the NewShape.
         /// </summary>
         [JsonPropertyName(@"newshape")]
@@ -535,6 +547,12 @@ namespace Plotly.Blazor
         /// </summary>
         [JsonPropertyName(@"selectionrevision")]
         public object SelectionRevision { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the Selections.
+        /// </summary>
+        [JsonPropertyName(@"selections")]
+        public IList<Plotly.Blazor.LayoutLib.Selection> Selections { get; set;} 
 
         /// <summary>
         ///     Sets the decimal and thousand separators. For example, &#39;. &#39; puts
@@ -826,6 +844,11 @@ namespace Plotly.Blazor
                     WaterfallMode.Equals(other.WaterfallMode)
                 ) && 
                 (
+                    ActiveSelection == other.ActiveSelection ||
+                    ActiveSelection != null &&
+                    ActiveSelection.Equals(other.ActiveSelection)
+                ) && 
+                (
                     ActiveShape == other.ActiveShape ||
                     ActiveShape != null &&
                     ActiveShape.Equals(other.ActiveShape)
@@ -971,6 +994,11 @@ namespace Plotly.Blazor
                     ModeBar.Equals(other.ModeBar)
                 ) && 
                 (
+                    NewSelection == other.NewSelection ||
+                    NewSelection != null &&
+                    NewSelection.Equals(other.NewSelection)
+                ) && 
+                (
                     NewShape == other.NewShape ||
                     NewShape != null &&
                     NewShape.Equals(other.NewShape)
@@ -1005,6 +1033,11 @@ namespace Plotly.Blazor
                     SelectionRevision != null &&
                     SelectionRevision.Equals(other.SelectionRevision)
                 ) && 
+                (
+                    Equals(Selections, other.Selections) ||
+                    Selections != null && other.Selections != null &&
+                    Selections.SequenceEqual(other.Selections)
+                ) &&
                 (
                     Separators == other.Separators ||
                     Separators != null &&
@@ -1121,6 +1154,7 @@ namespace Plotly.Blazor
                 if (WaterfallGap != null) hashCode = hashCode * 59 + WaterfallGap.GetHashCode();
                 if (WaterfallGroupGap != null) hashCode = hashCode * 59 + WaterfallGroupGap.GetHashCode();
                 if (WaterfallMode != null) hashCode = hashCode * 59 + WaterfallMode.GetHashCode();
+                if (ActiveSelection != null) hashCode = hashCode * 59 + ActiveSelection.GetHashCode();
                 if (ActiveShape != null) hashCode = hashCode * 59 + ActiveShape.GetHashCode();
                 if (Annotations != null) hashCode = hashCode * 59 + Annotations.GetHashCode();
                 if (AutoSize != null) hashCode = hashCode * 59 + AutoSize.GetHashCode();
@@ -1150,6 +1184,7 @@ namespace Plotly.Blazor
                 if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
                 if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
                 if (ModeBar != null) hashCode = hashCode * 59 + ModeBar.GetHashCode();
+                if (NewSelection != null) hashCode = hashCode * 59 + NewSelection.GetHashCode();
                 if (NewShape != null) hashCode = hashCode * 59 + NewShape.GetHashCode();
                 if (PaperBgColor != null) hashCode = hashCode * 59 + PaperBgColor.GetHashCode();
                 if (PlotBgColor != null) hashCode = hashCode * 59 + PlotBgColor.GetHashCode();
@@ -1157,6 +1192,7 @@ namespace Plotly.Blazor
                 if (Scene != null) hashCode = hashCode * 59 + Scene.GetHashCode();
                 if (SelectDirection != null) hashCode = hashCode * 59 + SelectDirection.GetHashCode();
                 if (SelectionRevision != null) hashCode = hashCode * 59 + SelectionRevision.GetHashCode();
+                if (Selections != null) hashCode = hashCode * 59 + Selections.GetHashCode();
                 if (Separators != null) hashCode = hashCode * 59 + Separators.GetHashCode();
                 if (Shapes != null) hashCode = hashCode * 59 + Shapes.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();

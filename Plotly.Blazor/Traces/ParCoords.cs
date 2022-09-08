@@ -201,6 +201,12 @@ namespace Plotly.Blazor.Traces
         public object UiRevision { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Unselected.
+        /// </summary>
+        [JsonPropertyName(@"unselected")]
+        public Plotly.Blazor.Traces.ParCoordsLib.Unselected Unselected { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not this trace is visible. If <c>legendonly</c>, the
         ///     trace is not drawn, but can appear as a legend item (provided that the legend
         ///     itself is visible).
@@ -339,6 +345,11 @@ namespace Plotly.Blazor.Traces
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
+                    Unselected == other.Unselected ||
+                    Unselected != null &&
+                    Unselected.Equals(other.Unselected)
+                ) && 
+                (
                     Visible == other.Visible ||
                     Visible != null &&
                     Visible.Equals(other.Visible)
@@ -374,6 +385,7 @@ namespace Plotly.Blazor.Traces
                 if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (Unselected != null) hashCode = hashCode * 59 + Unselected.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 return hashCode;
             }

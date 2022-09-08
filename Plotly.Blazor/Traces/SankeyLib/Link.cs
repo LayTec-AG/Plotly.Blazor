@@ -21,6 +21,12 @@ namespace Plotly.Blazor.Traces.SankeyLib
     public class Link : IEquatable<Link>
     {
         /// <summary>
+        ///     Sets the length (in px) of the links arrow, if 0 no arrow will be drawn.
+        /// </summary>
+        [JsonPropertyName(@"arrowlen")]
+        public decimal? ArrowLen { get; set;} 
+
+        /// <summary>
         ///     Sets the <c>link</c> color. It can be a single value, or an array for specifying
         ///     color for each <c>link</c>. If <c>link.color</c> is omitted, then by default,
         ///     a translucent grey link will be used.
@@ -202,6 +208,11 @@ namespace Plotly.Blazor.Traces.SankeyLib
 
             return 
                 (
+                    ArrowLen == other.ArrowLen ||
+                    ArrowLen != null &&
+                    ArrowLen.Equals(other.ArrowLen)
+                ) && 
+                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -309,6 +320,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (ArrowLen != null) hashCode = hashCode * 59 + ArrowLen.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
                 if (ColorScales != null) hashCode = hashCode * 59 + ColorScales.GetHashCode();

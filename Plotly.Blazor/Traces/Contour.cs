@@ -28,7 +28,7 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
         ///     true&#39;) or the palette determined by <c>colorscale</c>. In case <c>colorscale</c>
-        ///     is unspecified or <c>autocolorscale</c> is true, the default  palette will
+        ///     is unspecified or <c>autocolorscale</c> is true, the default palette will
         ///     be chosen according to whether numbers in the <c>color</c> array are all
         ///     positive, all negative or mixed.
         /// </summary>
@@ -64,9 +64,9 @@ namespace Plotly.Blazor.Traces
         ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
         ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
         ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
-        ///     To control the bounds of the colorscale in color space, use<c>zmin</c> and
-        ///     <c>zmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
-        ///     of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+        ///     To control the bounds of the colorscale in color space, use <c>zmin</c>
+        ///     and <c>zmax</c>. Alternatively, <c>colorscale</c> may be a palette name
+        ///     string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 
@@ -597,7 +597,7 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
         ///     input data (here in <c>z</c>) or the bounds set in <c>zmin</c> and <c>zmax</c>
-        ///      Defaults to <c>false</c> when <c>zmin</c> and <c>zmax</c> are set by the
+        ///     Defaults to <c>false</c> when <c>zmin</c> and <c>zmax</c> are set by the
         ///     user.
         /// </summary>
         [JsonPropertyName(@"zauto")]

@@ -34,9 +34,9 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
         ///     a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string.
         ///     At minimum, a mapping for the lowest (0) and highest (1) values are required.
         ///     For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
-        ///     To control the bounds of the colorscale in color space, use<c>cmin</c> and
-        ///     <c>cmax</c>. Alternatively, <c>colorscale</c> may be a palette name string
-        ///     of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
+        ///     To control the bounds of the colorscale in color space, use <c>cmin</c>
+        ///     and <c>cmax</c>. Alternatively, <c>colorscale</c> may be a palette name
+        ///     string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
         [JsonPropertyName(@"colorscale")]
         public object ColorScale { get; set;} 

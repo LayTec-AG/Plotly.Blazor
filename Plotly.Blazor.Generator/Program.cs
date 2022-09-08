@@ -27,7 +27,9 @@ namespace Plotly.Blazor.Generator
     /// </summary>
     internal class Program
     {
-        private const string Namespace = "Plotly.Blazor";
+        private const string NAMESPACE = "Plotly.Blazor";
+        private const string PLOTLY_JS_URL = "https://cdn.plot.ly/plotly-2.14.0.min.js";
+
         private static SchemaRoot _schema;
         private static StubbleVisitorRenderer _stubble;
         private static WordList _dictionary;
@@ -80,7 +82,7 @@ namespace Plotly.Blazor.Generator
             var outputDir = @".\src\wwwroot";
             Directory.CreateDirectory(outputDir);
             await File.WriteAllTextAsync($"{outputDir}\\plotly-latest.min.js",
-                await httpClient.GetStringAsync("https://cdn.plot.ly/plotly-2.9.0.min.js"));
+                await httpClient.GetStringAsync(PLOTLY_JS_URL));
 
             var serializerOptions = new JsonSerializerOptions
             {
@@ -98,10 +100,10 @@ namespace Plotly.Blazor.Generator
         {
             foreach (var (key, value) in _schema.Animation)
             {
-                AddJob(key, value, $"{Namespace}.AnimationLib");
+                AddJob(key, value, $"{NAMESPACE}.AnimationLib");
             }
 
-            AddClassJob("Animation", _schema.Animation, Namespace);
+            AddClassJob("Animation", _schema.Animation, NAMESPACE);
         }
 
         #endregion
@@ -112,10 +114,10 @@ namespace Plotly.Blazor.Generator
         {
             foreach (var (key, value) in _schema.Config)
             {
-                AddJob(key, value, $"{Namespace}.ConfigLib");
+                AddJob(key, value, $"{NAMESPACE}.ConfigLib");
             }
 
-            AddClassJob("Config", _schema.Config, Namespace);
+            AddClassJob("Config", _schema.Config, NAMESPACE);
         }
 
         #endregion
@@ -124,7 +126,7 @@ namespace Plotly.Blazor.Generator
 
         private static void CreateFrames()
         {
-            AddClassJob("Frames", _schema.Frames.Items.Frames_Entry.OtherAttributes, Namespace);
+            AddClassJob("Frames", _schema.Frames.Items.Frames_Entry.OtherAttributes, NAMESPACE);
         }
 
 
@@ -155,11 +157,11 @@ namespace Plotly.Blazor.Generator
             {
                 if (value != null)
                 {
-                    AddJob(key, value, $"{Namespace}.LayoutLib");
+                    AddJob(key, value, $"{NAMESPACE}.LayoutLib");
                 }
             }
 
-            AddClassJob("Layout", traceLayoutAttributes, Namespace);
+            AddClassJob("Layout", traceLayoutAttributes, NAMESPACE);
         }
 
         #endregion
@@ -179,7 +181,7 @@ namespace Plotly.Blazor.Generator
                     }
 
                     AddJob(key, attributeDescription,
-                        $"{Namespace}.Transforms.{transformKey.ToDotNetFriendlyName(_dictionary)}Lib");
+                        $"{NAMESPACE}.Transforms.{transformKey.ToDotNetFriendlyName(_dictionary)}Lib");
                 }
             }
 
@@ -193,7 +195,7 @@ namespace Plotly.Blazor.Generator
             var interfaceData = new InterfaceData
             {
                 Name = "ITransform",
-                Namespace = Namespace,
+                Namespace = NAMESPACE,
                 Description = new[] {"The transform interface."},
                 Properties = new List<Property>
                 {
@@ -216,7 +218,7 @@ namespace Plotly.Blazor.Generator
             var typeEnumData = new EnumeratedData
             {
                 Name = "TransformTypeEnum",
-                Namespace = Namespace,
+                Namespace = NAMESPACE,
                 Description = new[] {"Determines the type of the transform."},
                 Values = _schema.Transforms.Select(keyValue => new EnumeratedValue
                 {
@@ -241,7 +243,7 @@ namespace Plotly.Blazor.Generator
                     DefaultValue = $"TransformTypeEnum.{friendlyName}",
                     IsInherited = true
                 };
-                AddClassJob(transformKey, transformValue.Attributes, $"{Namespace}.Transforms", "ITransform",
+                AddClassJob(transformKey, transformValue.Attributes, $"{NAMESPACE}.Transforms", "ITransform",
                     new[] {typeProperty});
             }
         }
@@ -262,7 +264,7 @@ namespace Plotly.Blazor.Generator
             var interfaceData = new InterfaceData
             {
                 Name = "ITrace",
-                Namespace = $"{Namespace}",
+                Namespace = $"{NAMESPACE}",
                 Description = new[] {"The trace interface."},
                 Properties = new List<Property>
                 {
@@ -286,7 +288,7 @@ namespace Plotly.Blazor.Generator
             var typeEnumData = new EnumeratedData
             {
                 Name = "TraceTypeEnum",
-                Namespace = $"{Namespace}",
+                Namespace = $"{NAMESPACE}",
                 Description = new[] {"Determines the type of the trace."},
                 Values = _schema.Traces.Select(keyValue => new EnumeratedValue
                 {
@@ -312,7 +314,7 @@ namespace Plotly.Blazor.Generator
                     }
 
                     AddJob(attributeKey, attributeDescription,
-                        $"{Namespace}.Traces.{traceKey.ToDotNetFriendlyName(_dictionary)}Lib");
+                        $"{NAMESPACE}.Traces.{traceKey.ToDotNetFriendlyName(_dictionary)}Lib");
                 }
 
                 var friendlyName = traceKey.ToDotNetFriendlyName(_dictionary);
@@ -326,7 +328,7 @@ namespace Plotly.Blazor.Generator
                     IsInherited = true
                 };
 
-                AddClassJob(traceKey, traceValue.Attributes, $"{Namespace}.Traces",
+                AddClassJob(traceKey, traceValue.Attributes, $"{NAMESPACE}.Traces",
                     "ITrace", new[] {typeProperty});
             });
         }
@@ -336,7 +338,7 @@ namespace Plotly.Blazor.Generator
         #region Jobs
 
         private static void AddJob(string name, AttributeDescription attributeDescription,
-            string customNamespace = Namespace)
+            string customNamespace = NAMESPACE)
         {
             // Call it recursively for all nested attributes if its an array
             if (attributeDescription.IsArray)

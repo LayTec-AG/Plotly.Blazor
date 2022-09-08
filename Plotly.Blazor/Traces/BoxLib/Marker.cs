@@ -18,9 +18,10 @@ namespace Plotly.Blazor.Traces.BoxLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        ///     Sets the marker color. It accepts either a specific color or an array of
+        ///     numbers that are mapped to the colorscale relative to the max and min values
+        ///     of the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if
+        ///     set.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 

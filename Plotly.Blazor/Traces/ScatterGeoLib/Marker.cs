@@ -23,9 +23,9 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         /// <summary>
         ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
         ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
-        ///     effect only if in <c>marker.color</c>is set to a numerical array. In case
+        ///     effect only if in <c>marker.color</c> is set to a numerical array. In case
         ///     <c>colorscale</c> is unspecified or <c>autocolorscale</c> is true, the default
-        ///      palette will be chosen according to whether numbers in the <c>color</c>
+        ///     palette will be chosen according to whether numbers in the <c>color</c>
         ///     array are all positive, all negative or mixed.
         /// </summary>
         [JsonPropertyName(@"autocolorscale")]
@@ -34,7 +34,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         /// <summary>
         ///     Determines whether or not the color domain is computed with respect to the
         ///     input data (here in <c>marker.color</c>) or the bounds set in <c>marker.cmin</c>
-        ///     and <c>marker.cmax</c>  Has an effect only if in <c>marker.color</c>is set
+        ///     and <c>marker.cmax</c> Has an effect only if in <c>marker.color</c> is set
         ///     to a numerical array. Defaults to <c>false</c> when <c>marker.cmin</c> and
         ///     <c>marker.cmax</c> are set by the user.
         /// </summary>
@@ -42,8 +42,8 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         public bool? CAuto { get; set;} 
 
         /// <summary>
-        ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>marker.color</c>
+        ///     Sets the upper bound of the color domain. Has an effect only if in <c>marker.color</c>
+        ///     is set to a numerical array. Value should have the same units as in <c>marker.color</c>
         ///     and if set, <c>marker.cmin</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmax")]
@@ -52,7 +52,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         /// <summary>
         ///     Sets the mid-point of the color domain by scaling <c>marker.cmin</c> and/or
         ///     <c>marker.cmax</c> to be equidistant to this point. Has an effect only if
-        ///     in <c>marker.color</c>is set to a numerical array. Value should have the
+        ///     in <c>marker.color</c> is set to a numerical array. Value should have the
         ///     same units as in <c>marker.color</c>. Has no effect when <c>marker.cauto</c>
         ///     is <c>false</c>.
         /// </summary>
@@ -60,25 +60,27 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         public decimal? CMid { get; set;} 
 
         /// <summary>
-        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.color</c>is
-        ///     set to a numerical array. Value should have the same units as in <c>marker.color</c>
+        ///     Sets the lower bound of the color domain. Has an effect only if in <c>marker.color</c>
+        ///     is set to a numerical array. Value should have the same units as in <c>marker.color</c>
         ///     and if set, <c>marker.cmax</c> must be set as well.
         /// </summary>
         [JsonPropertyName(@"cmin")]
         public decimal? CMin { get; set;} 
 
         /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        ///     Sets the marker color. It accepts either a specific color or an array of
+        ///     numbers that are mapped to the colorscale relative to the max and min values
+        ///     of the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if
+        ///     set.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 
 
         /// <summary>
-        ///     Sets themarkercolor. It accepts either a specific color or an array of numbers
-        ///     that are mapped to the colorscale relative to the max and min values of
-        ///     the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if set.
+        ///     Sets the marker color. It accepts either a specific color or an array of
+        ///     numbers that are mapped to the colorscale relative to the max and min values
+        ///     of the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if
+        ///     set.
         /// </summary>
         [JsonPropertyName(@"color")]
         [Array]
@@ -101,12 +103,12 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         public Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib.ColorBar ColorBar { get; set;} 
 
         /// <summary>
-        ///     Sets the colorscale. Has an effect only if in <c>marker.color</c>is set
+        ///     Sets the colorscale. Has an effect only if in <c>marker.color</c> is set
         ///     to a numerical array. The colorscale must be an array containing arrays
         ///     mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color
         ///     string. At minimum, a mapping for the lowest (0) and highest (1) values
         ///     are required. For example, &#39;[[0, <c>rgb(0,0,255)</c>], [1, <c>rgb(255,0,0)</c>]]&#39;.
-        ///     To control the bounds of the colorscale in color space, use<c>marker.cmin</c>
+        ///     To control the bounds of the colorscale in color space, use <c>marker.cmin</c>
         ///     and <c>marker.cmax</c>. Alternatively, <c>colorscale</c> may be a palette
         ///     name string of the following list: Blackbody,Bluered,Blues,Cividis,Earth,Electric,Greens,Greys,Hot,Jet,Picnic,Portland,Rainbow,RdBu,Reds,Viridis,YlGnBu,YlOrRd.
         /// </summary>
@@ -151,17 +153,17 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
         public string OpacitySrc { get; set;} 
 
         /// <summary>
-        ///     Reverses the color mapping if true. Has an effect only if in <c>marker.color</c>is
-        ///     set to a numerical array. If true, <c>marker.cmin</c> will correspond to
-        ///     the last color in the array and <c>marker.cmax</c> will correspond to the
-        ///     first color.
+        ///     Reverses the color mapping if true. Has an effect only if in <c>marker.color</c>
+        ///     is set to a numerical array. If true, <c>marker.cmin</c> will correspond
+        ///     to the last color in the array and <c>marker.cmax</c> will correspond to
+        ///     the first color.
         /// </summary>
         [JsonPropertyName(@"reversescale")]
         public bool? ReverseScale { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a colorbar is displayed for this trace. Has an
-        ///     effect only if in <c>marker.color</c>is set to a numerical array.
+        ///     effect only if in <c>marker.color</c> is set to a numerical array.
         /// </summary>
         [JsonPropertyName(@"showscale")]
         public bool? ShowScale { get; set;} 

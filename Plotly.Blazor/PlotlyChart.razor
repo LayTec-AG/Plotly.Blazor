@@ -585,6 +585,34 @@
     }
 
     /// <summary>
+    ///     Defines the action that should happen when the ClickEvent is triggered.
+    ///     Objects are currently required for accomodating different plot value types
+    /// </summary>
+    [Parameter]
+    public Action<object, object> ClickAction { get; set; }
+
+    /// <summary>
+    ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
+    ///     Objects are currently required for accomodating different plot value types.
+    /// </summary>
+    /// <param name="x">The x coordinate of the click.</param>
+    /// <param name="y">The y coordinate of the click.</param>
+    [JSInvokable("ClickEvent")]
+    public void ClickEvent(object x, object y)
+    {
+        ClickAction?.Invoke(x, y);
+    }
+
+    /// <summary>
+    ///     Subscribes to the click event of the chart.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task SubscribeClickEvent()
+    {
+        await JsRuntime.SubscribeClickEvent(objectReference);
+    }
+
+    /// <summary>
     ///     Clears the traces from the current chart.
     /// </summary>
     /// <returns>Task</returns>

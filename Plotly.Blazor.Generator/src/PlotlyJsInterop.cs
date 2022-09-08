@@ -181,5 +181,16 @@ namespace Plotly.Blazor
         {
             return await jsRuntime.InvokeAsync<string>($"{PlotlyInterop}.downloadImage", objectReference.Value.Id, format, height, width, fileName);
         }
+
+        /// <summary>
+        ///     Can be used to subscribe click events for Plot points.
+        /// </summary>
+        /// <param name="jsRuntime">The js runtime.</param>
+        /// <param name="objectReference">The object reference.</param>
+        /// <returns></returns>
+        public static async Task SubscribeClickEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference)
+        {
+            await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeClickEvent", objectReference, objectReference.Value.Id);
+        }
     }
 }

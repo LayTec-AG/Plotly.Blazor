@@ -49,7 +49,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.JSInterop" Version="6.0.8" />
-    <PackageReference Include="Stubble.Core" Version="1.9.3" />
+    <PackageReference Include="Stubble.Core" Version="1.10.8" />
     <PackageReference Include="WeCantSpell.Hunspell" Version="4.0.0" />
   </ItemGroup>
 

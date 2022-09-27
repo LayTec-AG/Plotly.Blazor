@@ -1,4 +1,4 @@
-name: Add contributors
+name: Update contributors
 on:
   workflow_dispatch:
   schedule:
@@ -23,3 +23,4 @@ jobs:
         COMMIT_MESSAGE: 'docs(README): Update contributors'
         AVATAR_SHAPE: 'round'
         PULL_REQUEST: 'main'
+        BRANCH: 'main'

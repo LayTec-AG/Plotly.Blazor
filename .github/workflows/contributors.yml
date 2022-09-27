@@ -20,5 +20,6 @@ jobs:
         IMG_WIDTH: '100'
         FONT_SIZE: '14'
         PATH: '/README.md'
-        COMMIT_MESSAGE: 'docs(README): update contributors'
+        COMMIT_MESSAGE: 'docs(README): Update contributors'
         AVATAR_SHAPE: 'round'
+        PULL_REQUEST: 'main'

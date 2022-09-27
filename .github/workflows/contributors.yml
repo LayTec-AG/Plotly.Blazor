@@ -1,5 +1,6 @@
 name: Add contributors
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '20 20 * * *'
 # push:

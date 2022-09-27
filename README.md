@@ -113,16 +113,13 @@ private async Task AddData(int count = 100)
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 
 ## Missing Implementations
+
 - Events
 - Add multiple traces with one call
 - Delete multiple traces with one call
 - plotly.animate
 - plotly.addFrames
-- <s>plotly.downloadImage</s>
 - plotly.moveTraces
-- <s>plotly.relayout</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
-- <s>plotly.restyle</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
-- <s>plotly.toImage</s>
 
 ## Contributors
 
@@ -172,8 +169,6 @@ private async Task AddData(int count = 100)
     </td>
 </tr>
 </table>
-
-
 
 ## Versioning
 

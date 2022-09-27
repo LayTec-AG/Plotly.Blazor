@@ -111,9 +111,7 @@ private async Task AddData(int count = 100)
 
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 
-## Known issues
-
-### Missing Implementations
+## Missing Implementations
 - Events
 - Add multiple traces with one call
 - Delete multiple traces with one call
@@ -124,6 +122,8 @@ private async Task AddData(int count = 100)
 - <s>plotly.relayout</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
 - <s>plotly.restyle</s> Thanks to [PeopleCanFly](https://github.com/Peop1eCanF1y)!
 - <s>plotly.toImage</s>
+
+## Contributors
 
 ## Versioning
 

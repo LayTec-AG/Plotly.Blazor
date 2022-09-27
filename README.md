@@ -1,5 +1,11 @@
 # Plotly.Blazor 
-[![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build?label=build)](https://www.nuget.org/packages/Plotly.Blazor/) [![Publish Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Publish?label=publish)](https://www.nuget.org/packages/Plotly.Blazor/) [![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Examples?label=examples)](https://plotly-blazor.azurewebsites.net/) [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/)
+[![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build?label=build)](https://www.nuget.org/packages/Plotly.Blazor/)
+[![Publish Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Publish?label=publish)](https://www.nuget.org/packages/Plotly.Blazor/)
+[![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Deploy%20Examples?label=examples)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
+[![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/) 
+[![Forks](https://img.shields.io/github/forks/LayTec-AG/Plotly.Blazor)](https://github.com/LayTec-AG/Plotly.Blazor/network/members)
+![Stars](https://img.shields.io/github/stars/LayTec-AG/Plotly.Blazor)
+![License](https://img.shields.io/github/license/LayTec-AG/Plotly.Blazor)
 
 This library packages the well-known charting library [plotly.js](https://github.com/plotly/plotly.js) into a Razor component that can be used in a Blazor project.
 The advantage of this wrapper is that the plotly scheme itself is used to generate the classes. So you can automatically update to the latest plotly.js version with the help of the generator.
@@ -99,17 +105,13 @@ private async Task AddData(int count = 100)
 
 ## Examples
 
-[Here](https://plotly-blazor.azurewebsites.net/) you can find a running instance of the [examples](Plotly.Blazor.Examples/). This is always up-to-date with the current state of the develop branch.
+[Here](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/) you can find a running instance of the [examples](Plotly.Blazor.Examples/). This is always up-to-date with the current state of the develop branch.
 
 **What it might look like!**
 
 ![Image of Example](https://i.imgur.com/WU4tdSA.png)
 
 ## Known issues
-### Performance
-- Blazor WebAssembly is (currently) not intended for performance purposes! We therefore recommend Blazor Server.
-This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
-- IJSRuntime (currently) does not allow to adjust the serialization of objects. Accordingly, a conversion is carried out beforehand, which consumes a comparatively large amount of time. You can find this issue [here](https://github.com/dotnet/aspnetcore/issues/12685).
 
 ### Missing Implementations
 - Events
@@ -126,15 +128,6 @@ This issue is tracked [here](https://github.com/dotnet/aspnetcore/issues/5466).
 ## Versioning
 
 We implement [SemVer](http://semver.org/) using [GitVersion](https://github.com/GitTools/GitVersion/)
-
-## Authors
-
-* **Sean McLeish** - *Initial work* - [sean-mcleish](https://github.com/sean-mcleish)
-* **PeopleCanFly** - *Contributor* - [PeopleCanFly](https://github.com/Peop1eCanF1y)
-* **Matthew R. Johnson** - *Contributor* - [Matthew R. Johnson](https://github.com/centreboard)
-
-
-See also the list of [contributors](https://github.com/LayTec-AG/Plotly.Blazor/contributors) who participated in this project.
 
 ## License
 

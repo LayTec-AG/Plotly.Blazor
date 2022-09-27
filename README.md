@@ -1,4 +1,5 @@
-# Plotly.Blazor 
+# Plotly.Blazor
+
 [![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build?label=build)](https://www.nuget.org/packages/Plotly.Blazor/)
 [![Publish Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Publish?label=publish)](https://www.nuget.org/packages/Plotly.Blazor/)
 [![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Deploy%20Examples?label=examples)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
@@ -10,8 +11,8 @@
 This library packages the well-known charting library [plotly.js](https://github.com/plotly/plotly.js) into a Razor component that can be used in a Blazor project.
 The advantage of this wrapper is that the plotly scheme itself is used to generate the classes. So you can automatically update to the latest plotly.js version with the help of the generator.
 
-
 ## Getting Started
+
 ### Prerequisites
 
 To create Blazor Server Apps, install the latest version of Visual Studio 2019 with the ASP.NET and web development workload.
@@ -124,6 +125,8 @@ private async Task AddData(int count = 100)
 - <s>plotly.toImage</s>
 
 ## Contributors
+
+
 
 ## Versioning
 

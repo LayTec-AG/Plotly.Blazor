@@ -9,16 +9,16 @@
 <PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
 
 <div class="text-right">
-    <button type="button" class="btn btn-primary" @onclick="() => chart.Clear()">Clear</button>
-    <button type="button" class="btn btn-primary" @onclick="() => DeleteScatter()">Pop</button>
-    <button type="button" class="btn btn-primary" @onclick="() => AddScatter()">Push</button>
-    <button type="button" class="btn btn-primary" @onclick="() => Restyle()">Rename First</button>
-    <button type="button" class="btn btn-primary" @onclick="() => PrependData()">Prepend First</button>
-    <button type="button" class="btn btn-primary" @onclick="() => ExtendData()">Extend First</button>
-    <button type="button" class="btn btn-primary" @onclick="() => PrependWithLimit()">Prepend First (Max. 100)</button>
-    <button type="button" class="btn btn-primary" @onclick="() => ExtendWithLimit()">Extend First (Max. 100)</button>
-    <button type="button" class="btn btn-primary" @onclick="() => ExportImage()">Show as image below</button>
-    <button type="button" class="btn btn-primary" @onclick="() => DownloadImage()">Download</button>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => chart.Clear()">Clear</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => DeleteScatter()">Pop</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddScatter()">Push</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => Restyle()">Rename</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => PrependData()">Prepend</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => ExtendData()">Extend</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => PrependWithLimit()">Prepend (Max. 100)</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => ExtendWithLimit()">Extend (Max. 100)</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => ExportImage()">Show Image</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => DownloadImage()">Download</MudButton>
 </div>
 
 @if (imgSource != null)

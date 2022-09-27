@@ -9,18 +9,18 @@
 
 @implements IDisposable
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="traces" @ref="chart"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="traces" @ref="chart" />
 
 @code {
 
     private PlotlyChart chart;
     private Config config;
     private Layout layout;
-    private DataQueue dataQueue;
     private IList<ITrace> traces;
+    private IDisposable interval;
 
-    private EventHandler<DataEventArgs> DataChanged;
     private CancellationTokenSource cancellationToken;
+    private IScheduler scheduler;
 
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -28,9 +28,9 @@
         config = CreateConfig();
         layout = CreateLayout();
         traces = CreateTraces();
-        dataQueue = new DataQueue();
-        dataQueue.RegisterHandler<DataJob>(async job => await UpdateData(job));
         cancellationToken = new CancellationTokenSource();
+        scheduler = new TaskPoolScheduler(new TaskFactory(cancellationToken.Token));
+
         base.OnParametersSet();
     }
 
@@ -39,8 +39,7 @@
     {
         if (firstRender)
         {
-            DataChanged += OnDataChanged;
-            StartDataSimulation(100, cancellationToken.Token);
+            interval = StartDataSimulation(50, 30);
         }
 
         await base.OnAfterRenderAsync(firstRender);
@@ -50,40 +49,25 @@
     public void Dispose()
     {
         cancellationToken?.Cancel();
-        DataChanged -= DataChanged;
+        interval.Dispose();
     }
 
     /// <summary>
     ///     Fires the data changed event periodically by the given milliseconds.
     /// </summary>
     /// <param name="milliseconds"></param>
-    /// <param name="cancellationToken"></param>
-    private void StartDataSimulation(int milliseconds, CancellationToken cancellationToken)
+    /// /// <param name="count"></param>
+    private IDisposable StartDataSimulation(int milliseconds, int count)
     {
-        Task.Run(async () => 
-        {
-             while (!cancellationToken.IsCancellationRequested)
-             {
-                 (var x, var y) = Helper.GenerateData(0, 1000, GenerateMethod.Sin);
-                 (var x2, var y2) = Helper.GenerateData(0, 1000, GenerateMethod.Cos);
+        return Observable.Interval(TimeSpan.FromMilliseconds(milliseconds), scheduler)
+            .Subscribe(async l =>
+            {
+                (var x, var y) = Helper.GenerateData(0, count, GenerateMethod.Sin);
+                (var x2, var y2) = Helper.GenerateData(0, count, GenerateMethod.Cos);
 
-                 DataChanged?.Invoke(this, new DataEventArgs(x, y, 0));
-                 DataChanged?.Invoke(this, new DataEventArgs(x2, y2, 1));
-                 await Task.Delay(TimeSpan.FromMilliseconds(milliseconds), cancellationToken);
-             }
-        }, cancellationToken);
-    }
-
-    /// <summary>
-    ///     Enqueues a data job by using the given data event args.
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="args">DataEventArgs</param>
-    private void OnDataChanged(object sender, DataEventArgs args)
-    {
-        if (args == null || chart == null || traces == null) return;
-
-        dataQueue?.Enqueue(new DataJob(args, chart, traces));
+                await UpdateData(new DataJob(new DataEventArgs(x,y, 0), chart, traces));
+                await UpdateData(new DataJob(new DataEventArgs(x2, y2, 1), chart, traces));
+            });
     }
 
     /// <summary>
@@ -93,17 +77,27 @@
     /// <returns>Task</returns>
     private async Task UpdateData(DataJob job)
     {
-        if ((!job?.DataEventArgs?.X?.Any() ?? true) || (!job?.DataEventArgs?.Y?.Any() ?? true) || job.Chart == null || job.Traces == null || job.DataEventArgs.TraceIndex < 0) return;
+        if ((!job?.DataEventArgs?.X?.Any() ?? true) || (!job?.DataEventArgs?.Y?.Any() ?? true) || job.Chart == null || job.Traces == null || job.DataEventArgs.TraceIndex < 0)
+        {
+            return;
+        }
 
         var stopwatch = new Stopwatch();
         stopwatch.Restart();
 
         var count = job.DataEventArgs.X.Count();
 
-        await InvokeAsync(async () =>
+        try
         {
-            await job.Chart.ExtendTrace(job.DataEventArgs.X, job.DataEventArgs.Y, job.DataEventArgs.TraceIndex, count);
-        });
+            await InvokeAsync(async () => await job.Chart.ExtendTrace(job.DataEventArgs.X, job.DataEventArgs.Y, job.DataEventArgs.TraceIndex, count));
+        }
+        catch (Exception ex)
+        {
+            stopwatch.Stop();
+            Console.WriteLine($"Render of {count} points failed after {stopwatch.ElapsedMilliseconds}ms");
+            Console.WriteLine(ex);
+            return;
+        }
 
         stopwatch.Stop();
         Console.WriteLine($"Render of {count} points took {stopwatch.ElapsedMilliseconds}ms");
@@ -116,9 +110,9 @@
     private Config CreateConfig()
     {
         return new Config
-        {
-            Responsive = true
-        };
+            {
+                Responsive = true
+            };
     }
 
     /// <summary>
@@ -128,13 +122,13 @@
     private Layout CreateLayout()
     {
         return new Layout
-        {
-            Title = new Title
             {
-                Text = "Live Data Simulation"
-            },
-            XAxis = new[]
-            {
+                Title = new Title
+                {
+                    Text = "Live Data Simulation"
+                },
+                XAxis = new[]
+                {
                 new XAxis
                 {
                     Title = new Plotly.Blazor.LayoutLib.XAxisLib.Title
@@ -143,8 +137,8 @@
                     },
                 }
             },
-            YAxis = new[]
-            {
+                YAxis = new[]
+                {
                 new YAxis
                 {
                     Title = new Plotly.Blazor.LayoutLib.YAxisLib.Title
@@ -153,7 +147,7 @@
                     }
                 }
             }
-        };
+            };
     }
 
     /// <summary>
@@ -203,33 +197,6 @@
     }
 
     /// <summary>
-    ///     Creates a queue, that takes data jobs and processes them sequentially.
-    ///     Each data job adds data to the chart.
-    ///     This queue prevents deadlocks if the events are fired faster than they are processed.
-    /// </summary>
-    internal class DataQueue
-    {
-        private Subject<DataJob> jobs = new();
-        private IConnectableObservable<DataJob> connectableObservable;
-
-        public DataQueue()
-        {
-            connectableObservable = jobs.ObserveOn(Scheduler.Default).Publish();
-            connectableObservable.Connect();
-        }
-
-        internal void Enqueue(DataJob job)
-        {
-            jobs.OnNext(job);
-        }
-
-        internal void RegisterHandler<T>(Action<T> handleAction) where T : DataJob
-        {
-            connectableObservable.OfType<T>().Subscribe(handleAction);
-        }
-    }
-
-    /// <summary>
     ///     Defines a job, that will be enqueued with the passed data.
     /// </summary>
     internal class DataJob
@@ -247,4 +214,5 @@
             Traces = traces;
         }
     }
+    
 }

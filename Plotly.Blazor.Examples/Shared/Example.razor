@@ -1,6 +1,35 @@
-﻿<h1>@Title</h1>
+﻿<PageTitle>@Title</PageTitle>
 
-<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+<MudContainer>
+    <MudTabs Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" @bind-ActivePanelIndex="SelectedTab">
+        <MudTabPanel Text="Example">
+            @ChildContent
+        </MudTabPanel>
+        <MudTabPanel Text="Code">
+            <CodeSnippet Url="@Url"/>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
+
+@code
+{
+    int SelectedTab;
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Url { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}
+
+
+
+@*<h1>@Title</h1>
+
+@*<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
     <Items>
         <Tab Name="example">Example</Tab>
         <Tab Name="code">Code</Tab>
@@ -38,4 +67,4 @@
         selectedTab = name;
     }
 
-}
+}*@

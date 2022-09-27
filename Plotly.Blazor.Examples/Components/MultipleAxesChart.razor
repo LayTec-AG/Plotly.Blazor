@@ -5,8 +5,8 @@
 <PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
 
 <div class="text-right">
-    <button type="button" class="btn btn-primary" @onclick="() => Clear()">Clear</button>
-    <button type="button" class="btn btn-primary" @onclick="() => AddData()">Add data</button>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => Clear()">Clear</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => AddData()">Add data</MudButton>
 </div>
 
 @code

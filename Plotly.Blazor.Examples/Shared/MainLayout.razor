@@ -1,15 +1,12 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu/>
-</div>
+<PageTitle>Plotly Blazor Examples</PageTitle>
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-    </div>
-
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+<MudLayout>
+    <NavMenu />
+    <MudMainContent Class="my-1 py-3">
+        <MudContainer>
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>

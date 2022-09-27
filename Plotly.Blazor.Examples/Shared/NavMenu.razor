@@ -1,98 +1,28 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Plotly.Blazor.Examples</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿<MudPaper Elevation="1" Style="position: sticky; top: 0px; z-index: 100">
+    <MudToolBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" OnClick="OpenOrCloseDrawer" Edge="Edge.Start" />
+    </MudToolBar>
+</MudPaper>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                Scatter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="live-data">
-                Live Data
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="bar">
-                Bar
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="pie">
-                Pie
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="box">
-                Box
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="candlestick">
-                Candlestick
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="multipleaxes">
-                Multiple Axes
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="shapes">
-                Shapes
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="map">
-                Map
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="surface">
-                Surface
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="ribbon">
-                Ribbon
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="heatmap">
-                HeatMap
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="scattergl">
-                ScatterGl
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="indicator">
-                Indicator
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="smith">
-                Smith
-            </NavLink>
-        </li>
-    </ul>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-
-}
+<MudDrawer @bind-Open="@open" ClipMode="DrawerClipMode.Never" Breakpoint="Breakpoint.Xl" Elevation="0" Variant="@DrawerVariant.Responsive">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6">Examples</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu>
+        <MudNavLink Match="NavLinkMatch.All" Href="/">Scatter</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/live-data">Live Data</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/bar">Bar</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/pie">Pie</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/box">Box</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/candlestick">Candlestick</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/multipleaxes">Multiple Axes</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/shapes">Shapes</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/map">Map</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/surface">Surface</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/ribbon">Ribbon</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/heatmap">HeatMap</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/scattergl">ScatterGl</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/indicator">Indicator</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/smith">Smith</MudNavLink>
+    </MudNavMenu>
+</MudDrawer>

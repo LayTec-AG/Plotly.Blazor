@@ -15,6 +15,7 @@ jobs:
     - uses: BobAnkh/add-contributors@master
       with:
         CONTRIBUTOR: '## Contributors'
+        BRANCH: 'update/contributors'
         COLUMN_PER_ROW: '6'
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
         IMG_WIDTH: '100'
@@ -23,4 +24,4 @@ jobs:
         COMMIT_MESSAGE: 'docs(README): Update contributors'
         AVATAR_SHAPE: 'round'
         PULL_REQUEST: 'main'
-        BRANCH: 'contributors'
+        

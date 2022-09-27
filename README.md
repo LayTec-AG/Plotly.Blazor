@@ -126,6 +126,53 @@ private async Task AddData(int count = 100)
 
 ## Contributors
 
+<table>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/sean-mcl>
+            <img src=https://avatars.githubusercontent.com/u/64470948?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Sean McLeish/>
+            <br />
+            <sub style="font-size:14px"><b>Sean McLeish</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/guido-altmann>
+            <img src=https://avatars.githubusercontent.com/u/61827902?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Guido Altmann/>
+            <br />
+            <sub style="font-size:14px"><b>Guido Altmann</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/centreboard>
+            <img src=https://avatars.githubusercontent.com/u/10487726?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Matthew R Johnson/>
+            <br />
+            <sub style="font-size:14px"><b>Matthew R Johnson</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/yaqian256>
+            <img src=https://avatars.githubusercontent.com/u/83148975?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=yaqian256/>
+            <br />
+            <sub style="font-size:14px"><b>yaqian256</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/jvaque>
+            <img src=https://avatars.githubusercontent.com/u/32816191?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Jesus Vaquerizo/>
+            <br />
+            <sub style="font-size:14px"><b>Jesus Vaquerizo</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/parnold75>
+            <img src=https://avatars.githubusercontent.com/u/11851030?v=4 width="100;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=parnold75/>
+            <br />
+            <sub style="font-size:14px"><b>parnold75</b></sub>
+        </a>
+    </td>
+</tr>
+</table>
+
 
 
 ## Versioning

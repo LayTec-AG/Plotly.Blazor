@@ -39,16 +39,10 @@ Using .NET CLI
 dotnet add package Plotly.Blazor
 ```
 
-
-**Add the following lines to your index.html or _Host.cshtml below or above the blazor.webassembly.js**
-
-Info: *These files are already included in the NuGet Package!*
+Add the following lines to your _Layout.cshtml **above** the `_/framework/blazor.webassembly.js` or `_/framework/blazor.server.js`
 
 ```
-<!-- Import the plotly.js library -->
 <script src="_content/Plotly.Blazor/plotly-latest.min.js" type="text/javascript"></script>
-
-<!-- Import the plotly.js interop functions -->
 <script src="_content/Plotly.Blazor/plotly-interop.js" type="text/javascript"></script>
 ```
 

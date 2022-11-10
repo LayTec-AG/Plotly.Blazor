@@ -39,7 +39,7 @@ namespace Plotly.Blazor
         ///     values below the axis, positive values above With <c>group</c>, the bars
         ///     are plotted next to one another centered around the shared location. With
         ///     <c>overlay</c>, the bars are plotted over one another, you might need to
-        ///     an <c>opacity</c> to see multiple bars.
+        ///     reduce <c>opacity</c> to see multiple bars.
         /// </summary>
         [JsonPropertyName(@"barmode")]
         public Plotly.Blazor.LayoutLib.BarModeEnum? BarMode { get; set;} 
@@ -93,7 +93,7 @@ namespace Plotly.Blazor
         ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
         ///     <c>group</c>, the bars are plotted next to one another centered around the
         ///     shared location. With <c>overlay</c>, the bars are plotted over one another,
-        ///     you might need to an <c>opacity</c> to see multiple bars.
+        ///     you might need to reduce <c>opacity</c> to see multiple bars.
         /// </summary>
         [JsonPropertyName(@"funnelmode")]
         public Plotly.Blazor.LayoutLib.FunnelModeEnum? FunnelMode { get; set;} 
@@ -247,7 +247,7 @@ namespace Plotly.Blazor
         ///     Determines how bars at the same location coordinate are displayed on the
         ///     graph. With <c>group</c>, the bars are plotted next to one another centered
         ///     around the shared location. With <c>overlay</c>, the bars are plotted over
-        ///     one another, you might need to an <c>opacity</c> to see multiple bars.
+        ///     one another, you might need to reduce <c>opacity</c> to see multiple bars.
         /// </summary>
         [JsonPropertyName(@"waterfallmode")]
         public Plotly.Blazor.LayoutLib.WaterfallModeEnum? WaterfallMode { get; set;} 
@@ -487,6 +487,18 @@ namespace Plotly.Blazor
         /// </summary>
         [JsonPropertyName(@"metasrc")]
         public string MetaSrc { get; set;} 
+
+        /// <summary>
+        ///     Minimum height of the plot with margin.automargin applied (in px)
+        /// </summary>
+        [JsonPropertyName(@"minreducedheight")]
+        public decimal? MinReducedHeight { get; set;} 
+
+        /// <summary>
+        ///     Minimum width of the plot with margin.automargin applied (in px)
+        /// </summary>
+        [JsonPropertyName(@"minreducedwidth")]
+        public decimal? MinReducedWidth { get; set;} 
 
         /// <summary>
         ///     Gets or sets the ModeBar.
@@ -989,6 +1001,16 @@ namespace Plotly.Blazor
                     MetaSrc.Equals(other.MetaSrc)
                 ) && 
                 (
+                    MinReducedHeight == other.MinReducedHeight ||
+                    MinReducedHeight != null &&
+                    MinReducedHeight.Equals(other.MinReducedHeight)
+                ) && 
+                (
+                    MinReducedWidth == other.MinReducedWidth ||
+                    MinReducedWidth != null &&
+                    MinReducedWidth.Equals(other.MinReducedWidth)
+                ) && 
+                (
                     ModeBar == other.ModeBar ||
                     ModeBar != null &&
                     ModeBar.Equals(other.ModeBar)
@@ -1183,6 +1205,8 @@ namespace Plotly.Blazor
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
                 if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
                 if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
+                if (MinReducedHeight != null) hashCode = hashCode * 59 + MinReducedHeight.GetHashCode();
+                if (MinReducedWidth != null) hashCode = hashCode * 59 + MinReducedWidth.GetHashCode();
                 if (ModeBar != null) hashCode = hashCode * 59 + ModeBar.GetHashCode();
                 if (NewSelection != null) hashCode = hashCode * 59 + NewSelection.GetHashCode();
                 if (NewShape != null) hashCode = hashCode * 59 + NewShape.GetHashCode();

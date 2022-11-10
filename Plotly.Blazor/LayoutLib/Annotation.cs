@@ -69,16 +69,16 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
-        ///     If set to a ax axis id (e.g. <c>ax</c> or <c>ax2</c>), the <c>ax</c> position
-        ///     refers to a ax coordinate. If set to <c>paper</c>, the <c>ax</c> position
+        ///     If set to a x axis id (e.g. <c>x</c> or <c>x2</c>), the <c>x</c> position
+        ///     refers to a x coordinate. If set to <c>paper</c>, the <c>x</c> position
         ///     refers to the distance from the left of the plotting area in normalized
         ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the left (right). If
-        ///     set to a ax axis ID followed by <c>domain</c> (separated by a space), the
+        ///     set to a x axis ID followed by <c>domain</c> (separated by a space), the
         ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
-        ///     of the domain length from the left of the domain of that axis: e.g., &#39;ax2
-        ///     domain&#39; refers to the domain of the second ax  axis and a ax position
+        ///     of the domain length from the left of the domain of that axis: e.g., &#39;x2
+        ///     domain&#39; refers to the domain of the second x  axis and a x position
         ///     of 0.5 refers to the point between the left and the right of the domain
-        ///     of the second ax axis. In order for absolute positioning of the arrow to
+        ///     of the second x axis. In order for absolute positioning of the arrow to
         ///     work, <c>axref</c> must be exactly the same as <c>xref</c>, otherwise <c>axref</c>
         ///     will revert to <c>pixel</c> (explained next). For relative positioning,
         ///     <c>axref</c> can be set to <c>pixel</c>, in which case the <c>ax</c> value
@@ -102,16 +102,16 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     Indicates in what coordinates the tail of the annotation (ax,ay) is specified.
-        ///     If set to a ay axis id (e.g. <c>ay</c> or <c>ay2</c>), the <c>ay</c> position
-        ///     refers to a ay coordinate. If set to <c>paper</c>, the <c>ay</c> position
+        ///     If set to a y axis id (e.g. <c>y</c> or <c>y2</c>), the <c>y</c> position
+        ///     refers to a y coordinate. If set to <c>paper</c>, the <c>y</c> position
         ///     refers to the distance from the bottom of the plotting area in normalized
         ///     coordinates where <c>0</c> (<c>1</c>) corresponds to the bottom (top). If
-        ///     set to a ay axis ID followed by <c>domain</c> (separated by a space), the
+        ///     set to a y axis ID followed by <c>domain</c> (separated by a space), the
         ///     position behaves like for <c>paper</c>, but refers to the distance in fractions
-        ///     of the domain length from the bottom of the domain of that axis: e.g., &#39;ay2
-        ///     domain&#39; refers to the domain of the second ay  axis and a ay position
+        ///     of the domain length from the bottom of the domain of that axis: e.g., &#39;y2
+        ///     domain&#39; refers to the domain of the second y  axis and a y position
         ///     of 0.5 refers to the point between the bottom and the top of the domain
-        ///     of the second ay axis. In order for absolute positioning of the arrow to
+        ///     of the second y axis. In order for absolute positioning of the arrow to
         ///     work, <c>ayref</c> must be exactly the same as <c>yref</c>, otherwise <c>ayref</c>
         ///     will revert to <c>pixel</c> (explained next). For relative positioning,
         ///     <c>ayref</c> can be set to <c>pixel</c>, in which case the <c>ay</c> value

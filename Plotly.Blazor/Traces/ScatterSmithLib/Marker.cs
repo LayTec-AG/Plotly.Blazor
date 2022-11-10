@@ -21,6 +21,33 @@ namespace Plotly.Blazor.Traces.ScatterSmithLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
+        ///     Sets the marker angle in respect to <c>angleref</c>.
+        /// </summary>
+        [JsonPropertyName(@"angle")]
+        public decimal? Angle { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker angle in respect to <c>angleref</c>.
+        /// </summary>
+        [JsonPropertyName(@"angle")]
+        [Array]
+        public IList<decimal?> AngleArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the reference for marker angle. With <c>previous</c>, angle 0 points
+        ///     along the line from the previous point to this one. With <c>up</c>, angle
+        ///     0 points toward the top of the screen.
+        /// </summary>
+        [JsonPropertyName(@"angleref")]
+        public Plotly.Blazor.Traces.ScatterSmithLib.MarkerLib.AngleRefEnum? AngleRef { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>angle</c>.
+        /// </summary>
+        [JsonPropertyName(@"anglesrc")]
+        public string AngleSrc { get; set;} 
+
+        /// <summary>
         ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
         ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
         ///     effect only if in <c>marker.color</c> is set to a numerical array. In case
@@ -217,6 +244,29 @@ namespace Plotly.Blazor.Traces.ScatterSmithLib
         public string SizeSrc { get; set;} 
 
         /// <summary>
+        ///     Moves the marker away from the data point in the direction of <c>angle</c>
+        ///     (in px). This can be useful for example if you have another marker at this
+        ///     location and you want to point an arrowhead marker at it.
+        /// </summary>
+        [JsonPropertyName(@"standoff")]
+        public decimal? Standoff { get; set;} 
+
+        /// <summary>
+        ///     Moves the marker away from the data point in the direction of <c>angle</c>
+        ///     (in px). This can be useful for example if you have another marker at this
+        ///     location and you want to point an arrowhead marker at it.
+        /// </summary>
+        [JsonPropertyName(@"standoff")]
+        [Array]
+        public IList<decimal?> StandoffArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>standoff</c>.
+        /// </summary>
+        [JsonPropertyName(@"standoffsrc")]
+        public string StandoffSrc { get; set;} 
+
+        /// <summary>
         ///     Sets the marker symbol type. Adding 100 is equivalent to appending <c>-open</c>
         ///     to a symbol name. Adding 200 is equivalent to appending <c>-dot</c> to a
         ///     symbol name. Adding 300 is equivalent to appending <c>-open-dot</c> or <c>dot-open</c>
@@ -256,6 +306,26 @@ namespace Plotly.Blazor.Traces.ScatterSmithLib
             if (ReferenceEquals(this, other)) return true;
 
             return 
+                (
+                    Angle == other.Angle ||
+                    Angle != null &&
+                    Angle.Equals(other.Angle)
+                ) && 
+                (
+                    Equals(AngleArray, other.AngleArray) ||
+                    AngleArray != null && other.AngleArray != null &&
+                    AngleArray.SequenceEqual(other.AngleArray)
+                ) &&
+                (
+                    AngleRef == other.AngleRef ||
+                    AngleRef != null &&
+                    AngleRef.Equals(other.AngleRef)
+                ) && 
+                (
+                    AngleSrc == other.AngleSrc ||
+                    AngleSrc != null &&
+                    AngleSrc.Equals(other.AngleSrc)
+                ) && 
                 (
                     AutoColorScale == other.AutoColorScale ||
                     AutoColorScale != null &&
@@ -382,6 +452,21 @@ namespace Plotly.Blazor.Traces.ScatterSmithLib
                     SizeSrc.Equals(other.SizeSrc)
                 ) && 
                 (
+                    Standoff == other.Standoff ||
+                    Standoff != null &&
+                    Standoff.Equals(other.Standoff)
+                ) && 
+                (
+                    Equals(StandoffArray, other.StandoffArray) ||
+                    StandoffArray != null && other.StandoffArray != null &&
+                    StandoffArray.SequenceEqual(other.StandoffArray)
+                ) &&
+                (
+                    StandoffSrc == other.StandoffSrc ||
+                    StandoffSrc != null &&
+                    StandoffSrc.Equals(other.StandoffSrc)
+                ) && 
+                (
                     Symbol == other.Symbol ||
                     Symbol != null &&
                     Symbol.Equals(other.Symbol)
@@ -404,6 +489,10 @@ namespace Plotly.Blazor.Traces.ScatterSmithLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Angle != null) hashCode = hashCode * 59 + Angle.GetHashCode();
+                if (AngleArray != null) hashCode = hashCode * 59 + AngleArray.GetHashCode();
+                if (AngleRef != null) hashCode = hashCode * 59 + AngleRef.GetHashCode();
+                if (AngleSrc != null) hashCode = hashCode * 59 + AngleSrc.GetHashCode();
                 if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
                 if (CAuto != null) hashCode = hashCode * 59 + CAuto.GetHashCode();
                 if (CMax != null) hashCode = hashCode * 59 + CMax.GetHashCode();
@@ -429,6 +518,9 @@ namespace Plotly.Blazor.Traces.ScatterSmithLib
                 if (SizeMode != null) hashCode = hashCode * 59 + SizeMode.GetHashCode();
                 if (SizeRef != null) hashCode = hashCode * 59 + SizeRef.GetHashCode();
                 if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
+                if (Standoff != null) hashCode = hashCode * 59 + Standoff.GetHashCode();
+                if (StandoffArray != null) hashCode = hashCode * 59 + StandoffArray.GetHashCode();
+                if (StandoffSrc != null) hashCode = hashCode * 59 + StandoffSrc.GetHashCode();
                 if (Symbol != null) hashCode = hashCode * 59 + Symbol.GetHashCode();
                 if (SymbolArray != null) hashCode = hashCode * 59 + SymbolArray.GetHashCode();
                 if (SymbolSrc != null) hashCode = hashCode * 59 + SymbolSrc.GetHashCode();

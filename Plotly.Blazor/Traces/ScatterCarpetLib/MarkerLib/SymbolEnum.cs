@@ -649,6 +649,22 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
         [EnumMember(Value=@"152")]
         _152,
         [EnumMember(Value=@"arrow-bar-right-open")]
-        ArrowBarRightOpen
+        ArrowBarRightOpen,
+        [EnumMember(Value=@"53")]
+        _53,
+        [EnumMember(Value=@"arrow")]
+        Arrow,
+        [EnumMember(Value=@"153")]
+        _153,
+        [EnumMember(Value=@"arrow-open")]
+        ArrowOpen,
+        [EnumMember(Value=@"54")]
+        _54,
+        [EnumMember(Value=@"arrow-wide")]
+        ArrowWide,
+        [EnumMember(Value=@"154")]
+        _154,
+        [EnumMember(Value=@"arrow-wide-open")]
+        ArrowWideOpen
     }
 }

@@ -222,6 +222,12 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendRank { get; set;} 
 
         /// <summary>
+        ///     Sets the width (in px or fraction) of the legend for this trace.
+        /// </summary>
+        [JsonPropertyName(@"legendwidth")]
+        public decimal? LegendWidth { get; set;} 
+
+        /// <summary>
         ///     Sets the level from which this trace hierarchy is rendered. Set <c>level</c>
         ///     to <c>&#39;&#39;</c> to start from the root node in the hierarchy. Must
         ///     be an <c>id</c> if <c>ids</c> is filled in, otherwise plotly attempts to
@@ -601,6 +607,11 @@ namespace Plotly.Blazor.Traces
                     LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
+                    LegendWidth == other.LegendWidth ||
+                    LegendWidth != null &&
+                    LegendWidth.Equals(other.LegendWidth)
+                ) && 
+                (
                     Level == other.Level ||
                     Level != null &&
                     Level.Equals(other.Level)
@@ -781,6 +792,7 @@ namespace Plotly.Blazor.Traces
                 if (LabelsSrc != null) hashCode = hashCode * 59 + LabelsSrc.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();
                 if (Level != null) hashCode = hashCode * 59 + Level.GetHashCode();
                 if (Marker != null) hashCode = hashCode * 59 + Marker.GetHashCode();
                 if (MaxDepth != null) hashCode = hashCode * 59 + MaxDepth.GetHashCode();

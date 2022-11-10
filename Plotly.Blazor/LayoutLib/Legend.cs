@@ -36,6 +36,19 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? BorderWidth { get; set;} 
 
         /// <summary>
+        ///     Sets the width (in px or fraction) of the legend. Use 0 to size the entry
+        ///     based on the text width, when <c>entrywidthmode</c> is set to <c>pixels</c>.
+        /// </summary>
+        [JsonPropertyName(@"entrywidth")]
+        public decimal? EntryWidth { get; set;} 
+
+        /// <summary>
+        ///     Determines what entrywidth means.
+        /// </summary>
+        [JsonPropertyName(@"entrywidthmode")]
+        public Plotly.Blazor.LayoutLib.LegendLib.EntryWidthModeEnum? EntryWidthMode { get; set;} 
+
+        /// <summary>
         ///     Sets the font used to text the legend items.
         /// </summary>
         [JsonPropertyName(@"font")]
@@ -203,6 +216,16 @@ namespace Plotly.Blazor.LayoutLib
                     BorderWidth.Equals(other.BorderWidth)
                 ) && 
                 (
+                    EntryWidth == other.EntryWidth ||
+                    EntryWidth != null &&
+                    EntryWidth.Equals(other.EntryWidth)
+                ) && 
+                (
+                    EntryWidthMode == other.EntryWidthMode ||
+                    EntryWidthMode != null &&
+                    EntryWidthMode.Equals(other.EntryWidthMode)
+                ) && 
+                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
@@ -298,6 +321,8 @@ namespace Plotly.Blazor.LayoutLib
                 if (BgColor != null) hashCode = hashCode * 59 + BgColor.GetHashCode();
                 if (BorderColor != null) hashCode = hashCode * 59 + BorderColor.GetHashCode();
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
+                if (EntryWidth != null) hashCode = hashCode * 59 + EntryWidth.GetHashCode();
+                if (EntryWidthMode != null) hashCode = hashCode * 59 + EntryWidthMode.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (GroupClick != null) hashCode = hashCode * 59 + GroupClick.GetHashCode();
                 if (GroupTitleFont != null) hashCode = hashCode * 59 + GroupTitleFont.GetHashCode();

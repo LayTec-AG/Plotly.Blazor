@@ -12,7 +12,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder
     .Services
-    .AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://raw.githubusercontent.com/LayTec-AG/Plotly.Blazor/master/") });
+    .AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://raw.githubusercontent.com/LayTec-AG/Plotly.Blazor/main/") });
 
 builder.Services.AddMudServices(config =>
 {

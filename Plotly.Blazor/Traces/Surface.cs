@@ -270,6 +270,12 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendRank { get; set;} 
 
         /// <summary>
+        ///     Sets the width (in px or fraction) of the legend for this trace.
+        /// </summary>
+        [JsonPropertyName(@"legendwidth")]
+        public decimal? LegendWidth { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Lighting.
         /// </summary>
         [JsonPropertyName(@"lighting")]
@@ -703,6 +709,11 @@ namespace Plotly.Blazor.Traces
                     LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
+                    LegendWidth == other.LegendWidth ||
+                    LegendWidth != null &&
+                    LegendWidth.Equals(other.LegendWidth)
+                ) && 
+                (
                     Lighting == other.Lighting ||
                     Lighting != null &&
                     Lighting.Equals(other.Lighting)
@@ -904,6 +915,7 @@ namespace Plotly.Blazor.Traces
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();
                 if (Lighting != null) hashCode = hashCode * 59 + Lighting.GetHashCode();
                 if (LightPosition != null) hashCode = hashCode * 59 + LightPosition.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();

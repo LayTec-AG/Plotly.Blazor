@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     Determines how bars at the same location coordinate are displayed on the
     ///     graph. With <c>group</c>, the bars are plotted next to one another centered
     ///     around the shared location. With <c>overlay</c>, the bars are plotted over
-    ///     one another, you might need to an <c>opacity</c> to see multiple bars.
+    ///     one another, you might need to reduce <c>opacity</c> to see multiple bars.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

@@ -37,6 +37,12 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? Bearing { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Bounds.
+        /// </summary>
+        [JsonPropertyName(@"bounds")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.Bounds Bounds { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Center.
         /// </summary>
         [JsonPropertyName(@"center")]
@@ -121,6 +127,11 @@ namespace Plotly.Blazor.LayoutLib
                     Bearing.Equals(other.Bearing)
                 ) && 
                 (
+                    Bounds == other.Bounds ||
+                    Bounds != null &&
+                    Bounds.Equals(other.Bounds)
+                ) && 
+                (
                     Center == other.Center ||
                     Center != null &&
                     Center.Equals(other.Center)
@@ -165,6 +176,7 @@ namespace Plotly.Blazor.LayoutLib
                 var hashCode = 41;
                 if (AccessToken != null) hashCode = hashCode * 59 + AccessToken.GetHashCode();
                 if (Bearing != null) hashCode = hashCode * 59 + Bearing.GetHashCode();
+                if (Bounds != null) hashCode = hashCode * 59 + Bounds.GetHashCode();
                 if (Center != null) hashCode = hashCode * 59 + Center.GetHashCode();
                 if (Domain != null) hashCode = hashCode * 59 + Domain.GetHashCode();
                 if (Layers != null) hashCode = hashCode * 59 + Layers.GetHashCode();

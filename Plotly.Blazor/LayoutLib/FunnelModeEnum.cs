@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     graph. With <c>stack</c>, the bars are stacked on top of one another With
     ///     <c>group</c>, the bars are plotted next to one another centered around the
     ///     shared location. With <c>overlay</c>, the bars are plotted over one another,
-    ///     you might need to an <c>opacity</c> to see multiple bars.
+    ///     you might need to reduce <c>opacity</c> to see multiple bars.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]

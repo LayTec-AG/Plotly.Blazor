@@ -61,7 +61,6 @@
     },
     subscribeClickEvent: function (dotNetObj, id) {
         var plot = document.getElementById(id);
-        if (plot == null) return;
         plot.on('plotly_click', function (data) {
             dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].x, data.points[0].y);
         })

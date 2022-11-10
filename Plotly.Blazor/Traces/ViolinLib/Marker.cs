@@ -18,6 +18,12 @@ namespace Plotly.Blazor.Traces.ViolinLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
+        ///     Sets the marker angle in respect to <c>angleref</c>.
+        /// </summary>
+        [JsonPropertyName(@"angle")]
+        public decimal? Angle { get; set;} 
+
+        /// <summary>
         ///     Sets the marker color. It accepts either a specific color or an array of
         ///     numbers that are mapped to the colorscale relative to the max and min values
         ///     of the array or relative to <c>marker.cmin</c> and <c>marker.cmax</c> if
@@ -75,6 +81,11 @@ namespace Plotly.Blazor.Traces.ViolinLib
 
             return 
                 (
+                    Angle == other.Angle ||
+                    Angle != null &&
+                    Angle.Equals(other.Angle)
+                ) && 
+                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -112,6 +123,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Angle != null) hashCode = hashCode * 59 + Angle.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();

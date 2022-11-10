@@ -3,8 +3,10 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json.Serialization;
 
@@ -14,9 +16,35 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
     ///     The Line class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Line : IEquatable<Line>
     {
+        /// <summary>
+        ///     Sets the line back off from the end point of the nth line segment (in px).
+        ///     This option is useful e.g. to avoid overlap with arrowhead markers. With
+        ///     <c>auto</c> the lines would trim before markers if <c>marker.angleref</c>
+        ///     is set to <c>previous</c>.
+        /// </summary>
+        [JsonPropertyName(@"backoff")]
+        public decimal? BackOff { get; set;} 
+
+        /// <summary>
+        ///     Sets the line back off from the end point of the nth line segment (in px).
+        ///     This option is useful e.g. to avoid overlap with arrowhead markers. With
+        ///     <c>auto</c> the lines would trim before markers if <c>marker.angleref</c>
+        ///     is set to <c>previous</c>.
+        /// </summary>
+        [JsonPropertyName(@"backoff")]
+        [Array]
+        public IList<decimal?> BackOffArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>backoff</c>.
+        /// </summary>
+        [JsonPropertyName(@"backoffsrc")]
+        public string BackoffSrc { get; set;} 
+
         /// <summary>
         ///     Sets the line color.
         /// </summary>
@@ -69,6 +97,21 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
 
             return 
                 (
+                    BackOff == other.BackOff ||
+                    BackOff != null &&
+                    BackOff.Equals(other.BackOff)
+                ) && 
+                (
+                    Equals(BackOffArray, other.BackOffArray) ||
+                    BackOffArray != null && other.BackOffArray != null &&
+                    BackOffArray.SequenceEqual(other.BackOffArray)
+                ) &&
+                (
+                    BackoffSrc == other.BackoffSrc ||
+                    BackoffSrc != null &&
+                    BackoffSrc.Equals(other.BackoffSrc)
+                ) && 
+                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -101,6 +144,9 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (BackOff != null) hashCode = hashCode * 59 + BackOff.GetHashCode();
+                if (BackOffArray != null) hashCode = hashCode * 59 + BackOffArray.GetHashCode();
+                if (BackoffSrc != null) hashCode = hashCode * 59 + BackoffSrc.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
                 if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();

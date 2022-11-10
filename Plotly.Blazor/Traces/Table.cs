@@ -152,6 +152,12 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendRank { get; set;} 
 
         /// <summary>
+        ///     Sets the width (in px or fraction) of the legend for this trace.
+        /// </summary>
+        [JsonPropertyName(@"legendwidth")]
+        public decimal? LegendWidth { get; set;} 
+
+        /// <summary>
         ///     Assigns extra meta information associated with this trace that can be used
         ///     in various text attributes. Attributes such as trace <c>name</c>, graph,
         ///     axis and colorbar <c>title.text</c>, annotation <c>text</c> <c>rangeselector</c>,
@@ -341,6 +347,11 @@ namespace Plotly.Blazor.Traces
                     LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
+                    LegendWidth == other.LegendWidth ||
+                    LegendWidth != null &&
+                    LegendWidth.Equals(other.LegendWidth)
+                ) && 
+                (
                     Meta == other.Meta ||
                     Meta != null &&
                     Meta.Equals(other.Meta)
@@ -407,6 +418,7 @@ namespace Plotly.Blazor.Traces
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();
                 if (MetaArray != null) hashCode = hashCode * 59 + MetaArray.GetHashCode();
                 if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();

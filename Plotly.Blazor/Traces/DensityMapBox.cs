@@ -247,6 +247,12 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendRank { get; set;} 
 
         /// <summary>
+        ///     Sets the width (in px or fraction) of the legend for this trace.
+        /// </summary>
+        [JsonPropertyName(@"legendwidth")]
+        public decimal? LegendWidth { get; set;} 
+
+        /// <summary>
         ///     Sets the longitude coordinates (in degrees East).
         /// </summary>
         [JsonPropertyName(@"lon")]
@@ -611,6 +617,11 @@ namespace Plotly.Blazor.Traces
                     LegendRank.Equals(other.LegendRank)
                 ) && 
                 (
+                    LegendWidth == other.LegendWidth ||
+                    LegendWidth != null &&
+                    LegendWidth.Equals(other.LegendWidth)
+                ) && 
+                (
                     Equals(Lon, other.Lon) ||
                     Lon != null && other.Lon != null &&
                     Lon.SequenceEqual(other.Lon)
@@ -783,6 +794,7 @@ namespace Plotly.Blazor.Traces
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();
                 if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 if (LonSrc != null) hashCode = hashCode * 59 + LonSrc.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();

@@ -35,6 +35,12 @@ namespace Plotly.Blazor.Traces
         public string Below { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Cluster.
+        /// </summary>
+        [JsonPropertyName(@"cluster")]
+        public Plotly.Blazor.Traces.ScatterMapBoxLib.Cluster Cluster { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not gaps (i.e. {nan} or missing values) in the provided
         ///     data arrays are connected.
         /// </summary>
@@ -229,6 +235,12 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"legendrank")]
         public decimal? LegendRank { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px or fraction) of the legend for this trace.
+        /// </summary>
+        [JsonPropertyName(@"legendwidth")]
+        public decimal? LegendWidth { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Line.
@@ -496,6 +508,11 @@ namespace Plotly.Blazor.Traces
                     Below.Equals(other.Below)
                 ) && 
                 (
+                    Cluster == other.Cluster ||
+                    Cluster != null &&
+                    Cluster.Equals(other.Cluster)
+                ) && 
+                (
                     ConnectGaps == other.ConnectGaps ||
                     ConnectGaps != null &&
                     ConnectGaps.Equals(other.ConnectGaps)
@@ -604,6 +621,11 @@ namespace Plotly.Blazor.Traces
                     LegendRank == other.LegendRank ||
                     LegendRank != null &&
                     LegendRank.Equals(other.LegendRank)
+                ) && 
+                (
+                    LegendWidth == other.LegendWidth ||
+                    LegendWidth != null &&
+                    LegendWidth.Equals(other.LegendWidth)
                 ) && 
                 (
                     Line == other.Line ||
@@ -755,6 +777,7 @@ namespace Plotly.Blazor.Traces
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Below != null) hashCode = hashCode * 59 + Below.GetHashCode();
+                if (Cluster != null) hashCode = hashCode * 59 + Cluster.GetHashCode();
                 if (ConnectGaps != null) hashCode = hashCode * 59 + ConnectGaps.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
                 if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
@@ -777,6 +800,7 @@ namespace Plotly.Blazor.Traces
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Lon != null) hashCode = hashCode * 59 + Lon.GetHashCode();
                 if (LonSrc != null) hashCode = hashCode * 59 + LonSrc.GetHashCode();

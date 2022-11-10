@@ -21,6 +21,25 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
     public class Marker : IEquatable<Marker>
     {
         /// <summary>
+        ///     Sets the marker angle in respect to <c>angleref</c>.
+        /// </summary>
+        [JsonPropertyName(@"angle")]
+        public decimal? Angle { get; set;} 
+
+        /// <summary>
+        ///     Sets the marker angle in respect to <c>angleref</c>.
+        /// </summary>
+        [JsonPropertyName(@"angle")]
+        [Array]
+        public IList<decimal?> AngleArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>angle</c>.
+        /// </summary>
+        [JsonPropertyName(@"anglesrc")]
+        public string AngleSrc { get; set;} 
+
+        /// <summary>
         ///     Determines whether the colorscale is a default palette (&#39;autocolorscale:
         ///     true&#39;) or the palette determined by <c>marker.colorscale</c>. Has an
         ///     effect only if in <c>marker.color</c> is set to a numerical array. In case
@@ -244,6 +263,21 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
 
             return 
                 (
+                    Angle == other.Angle ||
+                    Angle != null &&
+                    Angle.Equals(other.Angle)
+                ) && 
+                (
+                    Equals(AngleArray, other.AngleArray) ||
+                    AngleArray != null && other.AngleArray != null &&
+                    AngleArray.SequenceEqual(other.AngleArray)
+                ) &&
+                (
+                    AngleSrc == other.AngleSrc ||
+                    AngleSrc != null &&
+                    AngleSrc.Equals(other.AngleSrc)
+                ) && 
+                (
                     AutoColorScale == other.AutoColorScale ||
                     AutoColorScale != null &&
                     AutoColorScale.Equals(other.AutoColorScale)
@@ -381,6 +415,9 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Angle != null) hashCode = hashCode * 59 + Angle.GetHashCode();
+                if (AngleArray != null) hashCode = hashCode * 59 + AngleArray.GetHashCode();
+                if (AngleSrc != null) hashCode = hashCode * 59 + AngleSrc.GetHashCode();
                 if (AutoColorScale != null) hashCode = hashCode * 59 + AutoColorScale.GetHashCode();
                 if (CAuto != null) hashCode = hashCode * 59 + CAuto.GetHashCode();
                 if (CMax != null) hashCode = hashCode * 59 + CMax.GetHashCode();

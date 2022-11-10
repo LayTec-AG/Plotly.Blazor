@@ -11,6 +11,7 @@
     <Compile Remove="src\EnumConverter.cs" />
     <Compile Remove="src\Extensions.cs" />
     <Compile Remove="src\ImageFormat.cs" />
+    <Compile Remove="src\Interop\HoverEventDataPoint.cs" />
     <Compile Remove="src\PlotlyConverter.cs" />
     <Compile Remove="src\PlotlyJsInterop.cs" />
     <Compile Remove="src\PolymorphicConverter.cs" />
@@ -31,6 +32,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\ImageFormat.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="src\Interop\HoverEventDataPoint.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\PlotlyConverter.cs">

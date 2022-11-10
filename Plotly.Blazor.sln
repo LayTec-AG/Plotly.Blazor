@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plotly.Blazor", "Plotly.Bla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plotly.Blazor.Generator", "Plotly.Blazor.Generator\Plotly.Blazor.Generator.csproj", "{F37F1F91-0597-4132-B152-BB2415DC42A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plotly.Blazor.Examples", "Plotly.Blazor.Examples\Plotly.Blazor.Examples.csproj", "{139CF173-C330-4541-8B98-F2C3D5789108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plotly.Blazor.Examples", "Plotly.Blazor.Examples\Plotly.Blazor.Examples.csproj", "{139CF173-C330-4541-8B98-F2C3D5789108}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

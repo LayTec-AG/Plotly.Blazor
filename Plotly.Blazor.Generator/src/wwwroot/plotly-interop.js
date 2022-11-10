@@ -64,5 +64,19 @@
         plot.on('plotly_click', function (data) {
             dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].x, data.points[0].y);
         })
+    },
+    subscribeHoverEvent: function (dotNetObj, id) {
+        var plot = document.getElementById(id);
+        plot.on('plotly_hover', function (data) {
+            dotNetObj.invokeMethodAsync('HoverEvent',
+                data.points.map(function (d) {
+                    return ({
+                        TraceIndex: d.fullData.index,
+                        PointIndex: d.pointIndex,
+                        X: d.x,
+                        Y: d.y
+                    });
+                }));
+        })
     }
 }

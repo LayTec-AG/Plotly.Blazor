@@ -1,0 +1,74 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Traces.ScatterLib
+@using Plotly.Blazor.Interop
+@using System.Text.Json
+<PlotlyChart style="height: 60vh; min-height: 350px"
+             @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             HoverAction="HoverAction" AfterRender="async () => await SubscribeEvents()"/>
+
+@if (HoverInfos != null && HoverInfos.Count() > 0)
+{
+    <MudText>Current X: @HoverInfos.First().X</MudText>
+    <MudText>Current Y: @HoverInfos.FirstOrDefault(d => d.TraceIndex == 0)?.Y</MudText>
+    <MudText>Current Y2: @HoverInfos.FirstOrDefault(d => d.TraceIndex == 1)?.Y</MudText>
+}
+
+@code
+{
+    PlotlyChart chart;
+
+    IEnumerable<HoverEventDataPoint> HoverInfos { get; set; }
+
+    Config config = new()
+    {
+        Responsive = true
+    };
+
+    Layout layout = new()
+    {
+        Title = new Title
+        {
+            Text = "Scatter with Hover Events"
+        },
+        YAxis = new List<YAxis>
+        {
+            new()
+            {
+                Title = new LayoutLib.YAxisLib.Title
+                {
+                    Text = "Scatter Unit"
+                }
+            }
+        },
+        HoverMode = HoverModeEnum.XUnified
+    };
+
+    IList<ITrace> data = new List<ITrace>
+    {
+        new Scatter
+        {
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Markers,
+            X = Enumerable.Range(0, 30).Cast<object>().ToList(),
+            Y = Helper.GenerateData(0, 30).Y
+        },
+        new Scatter
+        {
+            Name = "ScatterTrace 2",
+            Mode = ModeFlag.Markers,
+            X = Enumerable.Range(0, 30).Cast<object>().ToList(),
+            Y = Helper.GenerateData(0, 30).Y
+        }
+    };
+
+    public void HoverAction(IEnumerable<HoverEventDataPoint> eventData)
+    {
+        HoverInfos = eventData;
+        StateHasChanged();
+    }
+
+    public async Task SubscribeEvents()
+    {
+        await chart.SubscribeHoverEvent();
+    }
+}

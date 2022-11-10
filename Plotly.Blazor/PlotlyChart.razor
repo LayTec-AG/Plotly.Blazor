@@ -1,7 +1,8 @@
 ﻿@inject IJSRuntime JsRuntime
 @using Microsoft.JSInterop
-@using System.Text.Json;
+@using System.Text.Json
 @using System.Collections
+@using Plotly.Blazor.Interop
 @implements IDisposable
 
 <div style="min-height: 350px; height: 100%" @attributes="AdditionalAttributes" id="@Id"></div>
@@ -75,6 +76,13 @@
     public IDictionary<string, object> AdditionalAttributes { get; set; }
 
     /// <summary>
+    ///     Action, that should be executed after the chart has been rendered.
+    ///     Useful, to subscribe to events.
+    /// </summary>
+    [Parameter]
+    public Action AfterRender { get; set; }
+
+    /// <summary>
     ///     Can be used later to invoke methods from javaScript to .NET.
     /// </summary>
     private DotNetObjectReference<PlotlyChart> objectReference;
@@ -123,6 +131,7 @@
         if (firstRender)
         {
             await NewPlot();
+            AfterRender?.Invoke();
         }
         await base.OnAfterRenderAsync(firstRender);
     }
@@ -592,6 +601,13 @@
     public Action<object, object> ClickAction { get; set; }
 
     /// <summary>
+    ///     Defines the action that should happen when the HoverEvent is triggered.
+    ///     Objects are currently required for accomodating different plot value types
+    /// </summary>
+    [Parameter]
+    public Action<IEnumerable<HoverEventDataPoint>> HoverAction { get; set; }
+
+    /// <summary>
     ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
     ///     Objects are currently required for accomodating different plot value types.
     /// </summary>
@@ -604,12 +620,32 @@
     }
 
     /// <summary>
+    ///     Method which is called by JSRuntime once a you hover over plot points, to invoke the passed in HoverAction.
+    ///     Objects are currently required for accomodating different plot value types.
+    /// </summary>
+    /// <param name="eventData"></param>
+    [JSInvokable("HoverEvent")]
+    public void HoverEvent(IEnumerable<HoverEventDataPoint> eventData)
+    {
+        HoverAction?.Invoke(eventData);
+    }
+
+    /// <summary>
     ///     Subscribes to the click event of the chart.
     /// </summary>
     /// <returns>Task</returns>
     public async Task SubscribeClickEvent()
     {
         await JsRuntime.SubscribeClickEvent(objectReference);
+    }
+
+    /// <summary>
+    ///     Subscribes to the hover event of the chart.
+    /// </summary>
+    /// <returns>Task</returns>
+    public async Task SubscribeHoverEvent()
+    {
+        await JsRuntime.SubscribeHoverEvent(objectReference);
     }
 
     /// <summary>

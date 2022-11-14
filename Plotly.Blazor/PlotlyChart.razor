@@ -5,7 +5,7 @@
 @using Plotly.Blazor.Interop
 @implements IDisposable
 
-<div style="min-height: 350px; height: 100%" @attributes="AdditionalAttributes" id="@Id"></div>
+<div style="@InlineStyle" @attributes="AdditionalAttributes" id="@Id"></div>
 
 @code {
 
@@ -38,6 +38,12 @@
     /// </summary>
     [Parameter]
     public IList<Frames> Frames { get; set; }
+
+    /// <summary>
+    ///     Styling applied directly to the chart area.
+    /// </summary>
+    [Parameter]
+    public string InlineStyle { get; set; } = "min-height: 350px; height: 100%";
 
     /// <summary>
     ///     Callback when the ID changed.

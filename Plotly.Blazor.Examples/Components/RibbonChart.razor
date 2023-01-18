@@ -13,7 +13,6 @@
     
     public override async Task SetParametersAsync(ParameterView parameters)
     {
-        await base.SetParametersAsync(parameters);
         layout = new Layout
         {
             Title = new Title
@@ -41,17 +40,18 @@
             DisplayLogo = false
         };
         
-        data = GetRibbonsData().ToList();
+        data = (await GetRibbonsData()).ToList();
+        await base.SetParametersAsync(ParameterView.Empty);
     }
 
-    IEnumerable<ITrace> GetRibbonsData()
+    async Task <IEnumerable<ITrace>> GetRibbonsData()
     {
         var client = new HttpClient
         {
             BaseAddress = new Uri(MyNavigationManager.BaseUri)
         };
         
-        var jsonResponse = client.GetStringAsync(Url).Result;
+        var jsonResponse = await client.GetStringAsync(Url);
         var jasonObject = Newtonsoft.Json.Linq.JObject.Parse(jsonResponse);
         var results = jasonObject["data"].Children().ToList();
 

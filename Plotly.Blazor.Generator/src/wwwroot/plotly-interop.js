@@ -62,7 +62,10 @@
     subscribeClickEvent: function (dotNetObj, id) {
         var plot = document.getElementById(id);
         plot.on('plotly_click', function (data) {
-            dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].x, data.points[0].y);
+            if(data.points[0].x != null)
+                dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].x, data.points[0].y);
+            else
+                dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].value, data.points[0].label);
         })
     },
     subscribeHoverEvent: function (dotNetObj, id) {
@@ -70,12 +73,22 @@
         plot.on('plotly_hover', function (data) {
             dotNetObj.invokeMethodAsync('HoverEvent',
                 data.points.map(function (d) {
-                    return ({
-                        TraceIndex: d.fullData.index,
-                        PointIndex: d.pointIndex,
-                        X: d.x,
-                        Y: d.y
-                    });
+                    if (d.x != null) {
+                        return ({
+                            TraceIndex: d.fullData.index,
+                            PointIndex: d.pointIndex,
+                            X: d.x,
+                            Y: d.y
+                        });
+                    }
+                    else {
+                        return ({
+                            TraceIndex: d.fullData.index,
+                            PointIndex: d.pointIndex,
+                            X: d.value,
+                            Y: d.label
+                        });
+                    }
                 }));
         })
     }

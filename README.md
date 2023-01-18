@@ -2,7 +2,7 @@
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/build.yml?branch=main&label=Build)
 ![Publish Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/publish.yml?branch=main&label=Publish)
-[![Examples Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/azure-static-web-apps-delightful-pebble-00ab3ee10.yml?branch=main&label=Publish)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
+[![Examples Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/azure-static-web-apps-delightful-pebble-00ab3ee10.yml?branch=main&label=Examples)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
 [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/) 
 [![Forks](https://img.shields.io/github/forks/LayTec-AG/Plotly.Blazor)](https://github.com/LayTec-AG/Plotly.Blazor/network/members)
 ![Stars](https://img.shields.io/github/stars/LayTec-AG/Plotly.Blazor)

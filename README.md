@@ -1,8 +1,8 @@
 # Plotly.Blazor
 
-[![Build Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Build?label=build)](https://www.nuget.org/packages/Plotly.Blazor/)
-[![Publish Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Publish?label=publish)](https://www.nuget.org/packages/Plotly.Blazor/)
-[![Examples Status](https://img.shields.io/github/workflow/status/LayTec-AG/Plotly.Blazor/Deploy%20Examples?label=examples)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
+![Build Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/build.yml?branch=main&label=Build)
+![Publish Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/publish.yml?branch=main&label=Publish)
+[![Examples Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/azure-static-web-apps-delightful-pebble-00ab3ee10.yml?branch=main&label=Publish)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
 [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/) 
 [![Forks](https://img.shields.io/github/forks/LayTec-AG/Plotly.Blazor)](https://github.com/LayTec-AG/Plotly.Blazor/network/members)
 ![Stars](https://img.shields.io/github/stars/LayTec-AG/Plotly.Blazor)

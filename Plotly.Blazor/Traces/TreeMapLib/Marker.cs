@@ -107,6 +107,12 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         public string ColorsSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the maximum rounding of corners (in px).
+        /// </summary>
+        [JsonPropertyName(@"cornerradius")]
+        public decimal? CornerRadius { get; set;} 
+
+        /// <summary>
         ///     Determines if the sector colors are faded towards the background from the
         ///     leaves up to the headers. This option is unavailable when a <c>colorscale</c>
         ///     is present, defaults to false when <c>marker.colors</c> is set, but otherwise
@@ -211,6 +217,11 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                     ColorsSrc.Equals(other.ColorsSrc)
                 ) && 
                 (
+                    CornerRadius == other.CornerRadius ||
+                    CornerRadius != null &&
+                    CornerRadius.Equals(other.CornerRadius)
+                ) && 
+                (
                     DepthFade == other.DepthFade ||
                     DepthFade != null &&
                     DepthFade.Equals(other.DepthFade)
@@ -253,6 +264,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                 if (Colors != null) hashCode = hashCode * 59 + Colors.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (ColorsSrc != null) hashCode = hashCode * 59 + ColorsSrc.GetHashCode();
+                if (CornerRadius != null) hashCode = hashCode * 59 + CornerRadius.GetHashCode();
                 if (DepthFade != null) hashCode = hashCode * 59 + DepthFade.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();

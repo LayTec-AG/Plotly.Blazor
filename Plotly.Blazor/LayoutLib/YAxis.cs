@@ -42,6 +42,15 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.YAxisLib.AutoRangeEnum? AutoRange { get; set;} 
 
         /// <summary>
+        ///     Automatically reposition the axis to avoid overlap with other axes with
+        ///     the same <c>overlaying</c> value. This repositioning will account for any
+        ///     <c>shift</c> amount applied to other axes on the same side with <c>autoshift</c>
+        ///     is set to true. Only has an effect if <c>anchor</c> is set to <c>free</c>.
+        /// </summary>
+        [JsonPropertyName(@"autoshift")]
+        public bool? AutoShift { get; set;} 
+
+        /// <summary>
         ///     Using <c>strict</c> a numeric string in trace data is not converted to a
         ///     number. Using &#39;convert types&#39; a numeric string in trace data may
         ///     be treated as a number during automatic axis <c>type</c> detection. Defaults
@@ -349,6 +358,17 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"separatethousands")]
         public bool? SeparateThousands { get; set;} 
+
+        /// <summary>
+        ///     Moves the axis a given number of pixels from where it would have been otherwise.
+        ///     Accepts both positive and negative values, which will shift the axis either
+        ///     right or left, respectively. If <c>autoshift</c> is set to true, then this
+        ///     defaults to a padding of -3 if <c>side</c> is set to <c>left</c>. and defaults
+        ///     to +3 if <c>side</c> is set to <c>right</c>. Defaults to 0 if <c>autoshift</c>
+        ///     is set to false. Only has an effect if <c>anchor</c> is set to <c>free</c>.
+        /// </summary>
+        [JsonPropertyName(@"shift")]
+        public decimal? Shift { get; set;} 
 
         /// <summary>
         ///     Determines whether or not a dividers are drawn between the category levels
@@ -699,6 +719,11 @@ namespace Plotly.Blazor.LayoutLib
                     AutoRange.Equals(other.AutoRange)
                 ) && 
                 (
+                    AutoShift == other.AutoShift ||
+                    AutoShift != null &&
+                    AutoShift.Equals(other.AutoShift)
+                ) && 
+                (
                     AutoTypeNumbers == other.AutoTypeNumbers ||
                     AutoTypeNumbers != null &&
                     AutoTypeNumbers.Equals(other.AutoTypeNumbers)
@@ -867,6 +892,11 @@ namespace Plotly.Blazor.LayoutLib
                     SeparateThousands == other.SeparateThousands ||
                     SeparateThousands != null &&
                     SeparateThousands.Equals(other.SeparateThousands)
+                ) && 
+                (
+                    Shift == other.Shift ||
+                    Shift != null &&
+                    Shift.Equals(other.Shift)
                 ) && 
                 (
                     ShowDividers == other.ShowDividers ||
@@ -1089,6 +1119,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (Anchor != null) hashCode = hashCode * 59 + Anchor.GetHashCode();
                 if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
                 if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
+                if (AutoShift != null) hashCode = hashCode * 59 + AutoShift.GetHashCode();
                 if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
                 if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
@@ -1123,6 +1154,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (ScaleAnchor != null) hashCode = hashCode * 59 + ScaleAnchor.GetHashCode();
                 if (ScaleRatio != null) hashCode = hashCode * 59 + ScaleRatio.GetHashCode();
                 if (SeparateThousands != null) hashCode = hashCode * 59 + SeparateThousands.GetHashCode();
+                if (Shift != null) hashCode = hashCode * 59 + Shift.GetHashCode();
                 if (ShowDividers != null) hashCode = hashCode * 59 + ShowDividers.GetHashCode();
                 if (ShowExponent != null) hashCode = hashCode * 59 + ShowExponent.GetHashCode();
                 if (ShowGrid != null) hashCode = hashCode * 59 + ShowGrid.GetHashCode();

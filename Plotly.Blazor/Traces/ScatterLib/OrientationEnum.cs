@@ -9,7 +9,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterLib
 {
     /// <summary>
-    ///     Only relevant when <c>stackgroup</c> is used, and only the first <c>orientation</c>
+    ///     Only relevant in the following cases: 1. when <c>scattermode</c> is set
+    ///     to <c>group</c>. 2. when <c>stackgroup</c> is used, and only the first <c>orientation</c>
     ///     found in the <c>stackgroup</c> will be used - including if <c>visible</c>
     ///     is <c>legendonly</c> but not if it is <c>false</c>. Sets the stacking direction.
     ///     With <c>v</c> (<c>h</c>), the y (x) values of subsequent traces are added.

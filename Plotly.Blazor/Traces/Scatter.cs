@@ -26,6 +26,14 @@ namespace Plotly.Blazor.Traces
         public TraceTypeEnum? Type { get; } = TraceTypeEnum.Scatter;
 
         /// <summary>
+        ///     Set several traces linked to the same position axis or matching axes to
+        ///     the same alignmentgroup. This controls whether bars compute their positional
+        ///     range dependently or independently.
+        /// </summary>
+        [JsonPropertyName(@"alignmentgroup")]
+        public string AlignmentGroup { get; set;} 
+
+        /// <summary>
         ///     Determines whether or not markers and text nodes are clipped about the subplot
         ///     axes. To show markers and text nodes above axis lines and tick labels, make
         ///     sure to set <c>xaxis.layer</c> and <c>yaxis.layer</c> to &#39;below traces&#39;.
@@ -351,13 +359,22 @@ namespace Plotly.Blazor.Traces
         public string Name { get; set;} 
 
         /// <summary>
+        ///     Set several traces linked to the same position axis or matching axes to
+        ///     the same offsetgroup where bars of the same position coordinate will line
+        ///     up.
+        /// </summary>
+        [JsonPropertyName(@"offsetgroup")]
+        public string OffsetGroup { get; set;} 
+
+        /// <summary>
         ///     Sets the opacity of the trace.
         /// </summary>
         [JsonPropertyName(@"opacity")]
         public decimal? Opacity { get; set;} 
 
         /// <summary>
-        ///     Only relevant when <c>stackgroup</c> is used, and only the first <c>orientation</c>
+        ///     Only relevant in the following cases: 1. when <c>scattermode</c> is set
+        ///     to <c>group</c>. 2. when <c>stackgroup</c> is used, and only the first <c>orientation</c>
         ///     found in the <c>stackgroup</c> will be used - including if <c>visible</c>
         ///     is <c>legendonly</c> but not if it is <c>false</c>. Sets the stacking direction.
         ///     With <c>v</c> (<c>h</c>), the y (x) values of subsequent traces are added.
@@ -720,6 +737,11 @@ namespace Plotly.Blazor.Traces
                     Type.Equals(other.Type)
                 ) && 
                 (
+                    AlignmentGroup == other.AlignmentGroup ||
+                    AlignmentGroup != null &&
+                    AlignmentGroup.Equals(other.AlignmentGroup)
+                ) && 
+                (
                     ClipOnAxis == other.ClipOnAxis ||
                     ClipOnAxis != null &&
                     ClipOnAxis.Equals(other.ClipOnAxis)
@@ -898,6 +920,11 @@ namespace Plotly.Blazor.Traces
                     Name == other.Name ||
                     Name != null &&
                     Name.Equals(other.Name)
+                ) && 
+                (
+                    OffsetGroup == other.OffsetGroup ||
+                    OffsetGroup != null &&
+                    OffsetGroup.Equals(other.OffsetGroup)
                 ) && 
                 (
                     Opacity == other.Opacity ||
@@ -1113,6 +1140,7 @@ namespace Plotly.Blazor.Traces
             {
                 var hashCode = 41;
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
+                if (AlignmentGroup != null) hashCode = hashCode * 59 + AlignmentGroup.GetHashCode();
                 if (ClipOnAxis != null) hashCode = hashCode * 59 + ClipOnAxis.GetHashCode();
                 if (ConnectGaps != null) hashCode = hashCode * 59 + ConnectGaps.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
@@ -1149,6 +1177,7 @@ namespace Plotly.Blazor.Traces
                 if (MetaSrc != null) hashCode = hashCode * 59 + MetaSrc.GetHashCode();
                 if (Mode != null) hashCode = hashCode * 59 + Mode.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
+                if (OffsetGroup != null) hashCode = hashCode * 59 + OffsetGroup.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();

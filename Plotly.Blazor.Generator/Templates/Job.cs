@@ -56,10 +56,10 @@ namespace Plotly.Blazor.Generator.Templates
         {
             var templatePath = type switch
             {
-                JobType.Class => @".\Templates\Class\Class.txt",
-                JobType.Flag => @".\Templates\Flag\Flag.txt",
-                JobType.Enumerated => @".\Templates\Enumerated\Enumerated.txt",
-                JobType.Interface => @".\Templates\Interface\Interface.txt",
+                JobType.Class => @".\Templates\Class\Class.txt".ReplaceDirectorySeparatorChar(),
+                JobType.Flag => @".\Templates\Flag\Flag.txt".ReplaceDirectorySeparatorChar(),
+                JobType.Enumerated => @".\Templates\Enumerated\Enumerated.txt".ReplaceDirectorySeparatorChar(),
+                JobType.Interface => @".\Templates\Interface\Interface.txt".ReplaceDirectorySeparatorChar(),
                 _ => throw new ArgumentException()
             };
 
@@ -69,7 +69,7 @@ namespace Plotly.Blazor.Generator.Templates
             using var streamReader = new StreamReader(templatePath, Encoding.UTF8);
             var output = await stubble.RenderAsync(await streamReader.ReadToEndAsync(), data);
 
-            await File.WriteAllTextAsync($"{outputDir}\\{data.Name}.cs", output);
+            await File.WriteAllTextAsync($"{outputDir}\\{data.Name}.cs".ReplaceDirectorySeparatorChar(), output);
         }
     }
 }

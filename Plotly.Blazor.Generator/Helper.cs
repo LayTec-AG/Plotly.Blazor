@@ -264,7 +264,7 @@ namespace Plotly.Blazor.Generator
         {
             if (nameSpace == refNameSpace)
             {
-                return @".\src\";
+                return @".\src\".ReplaceDirectorySeparatorChar();
             }
 
             if (!nameSpace.Contains($"{refNameSpace}."))
@@ -273,7 +273,7 @@ namespace Plotly.Blazor.Generator
             }
 
             return nameSpace.Replace($"{refNameSpace}.", string.Empty).Split('.')
-                .Aggregate(@".\src\", (s1, s2) => $"{s1}\\{s2}");
+                .Aggregate(@".\src\".ReplaceDirectorySeparatorChar(), (s1, s2) => $"{s1}\\{s2}".ReplaceDirectorySeparatorChar());
         }
 
         /// <summary>
@@ -318,6 +318,11 @@ namespace Plotly.Blazor.Generator
 
         {
             return WebUtility.HtmlEncode(s);
+        }
+
+        public static string ReplaceDirectorySeparatorChar(this string path)
+        {
+            return path.Replace('\\', System.IO.Path.DirectorySeparatorChar);
         }
     }
 }

@@ -170,6 +170,23 @@ namespace Plotly.Blazor
         public IList<object> PieColorway { get; set;} 
 
         /// <summary>
+        ///     Sets the gap (in plot fraction) between scatter points of adjacent location
+        ///     coordinates. Defaults to <c>bargap</c>.
+        /// </summary>
+        [JsonPropertyName(@"scattergap")]
+        public decimal? ScatterGap { get; set;} 
+
+        /// <summary>
+        ///     Determines how scatter points at the same location coordinate are displayed
+        ///     on the graph. With <c>group</c>, the scatter points are plotted next to
+        ///     one another centered around the shared location. With <c>overlay</c>, the
+        ///     scatter points are plotted over one another, you might need to reduce <c>opacity</c>
+        ///     to see multiple scatter points.
+        /// </summary>
+        [JsonPropertyName(@"scattermode")]
+        public Plotly.Blazor.LayoutLib.ScatterModeEnum? ScatterMode { get; set;} 
+
+        /// <summary>
         ///     If <c>true</c>, the sunburst slice colors (whether given by <c>sunburstcolorway</c>
         ///     or inherited from <c>colorway</c>) will be extended to three times its original
         ///     length by first repeating every color 20% lighter then each color 20% darker.
@@ -806,6 +823,16 @@ namespace Plotly.Blazor
                     PieColorway.SequenceEqual(other.PieColorway)
                 ) &&
                 (
+                    ScatterGap == other.ScatterGap ||
+                    ScatterGap != null &&
+                    ScatterGap.Equals(other.ScatterGap)
+                ) && 
+                (
+                    ScatterMode == other.ScatterMode ||
+                    ScatterMode != null &&
+                    ScatterMode.Equals(other.ScatterMode)
+                ) && 
+                (
                     ExtendSunburstColors == other.ExtendSunburstColors ||
                     ExtendSunburstColors != null &&
                     ExtendSunburstColors.Equals(other.ExtendSunburstColors)
@@ -1166,6 +1193,8 @@ namespace Plotly.Blazor
                 if (IcicleColorway != null) hashCode = hashCode * 59 + IcicleColorway.GetHashCode();
                 if (ExtendPieColors != null) hashCode = hashCode * 59 + ExtendPieColors.GetHashCode();
                 if (PieColorway != null) hashCode = hashCode * 59 + PieColorway.GetHashCode();
+                if (ScatterGap != null) hashCode = hashCode * 59 + ScatterGap.GetHashCode();
+                if (ScatterMode != null) hashCode = hashCode * 59 + ScatterMode.GetHashCode();
                 if (ExtendSunburstColors != null) hashCode = hashCode * 59 + ExtendSunburstColors.GetHashCode();
                 if (SunburstColorway != null) hashCode = hashCode * 59 + SunburstColorway.GetHashCode();
                 if (ExtendTreeMapColors != null) hashCode = hashCode * 59 + ExtendTreeMapColors.GetHashCode();

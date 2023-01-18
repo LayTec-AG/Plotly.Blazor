@@ -14,7 +14,6 @@
     /// <inheritdoc />
     public override async Task SetParametersAsync(ParameterView parameters)
     {
-        await base.SetParametersAsync(parameters);
         layout = new Layout
         {
             Title = new Title
@@ -36,10 +35,11 @@
             Responsive = true,
             DisplayLogo = false
         };
-        data = GetMapData();
+        data = await GetMapData();
+        await base.SetParametersAsync(ParameterView.Empty);
     }
 
-    IList<ITrace> GetMapData()
+    async Task<IList<ITrace>> GetMapData()
     {
         IList<ITrace> mapData = new List<ITrace>();
 
@@ -48,7 +48,7 @@
             BaseAddress = new Uri(MyNavigationManager.BaseUri)
         };
 
-        var csv = client.GetStringAsync("/mt_bruno_elevation.csv").Result
+        var csv = (await client.GetStringAsync("/mt_bruno_elevation.csv"))
             .Split("\n")
             .Skip(1)
             .Where(s => !string.IsNullOrWhiteSpace(s))

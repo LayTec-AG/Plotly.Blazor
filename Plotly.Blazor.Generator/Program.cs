@@ -28,7 +28,7 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string PLOTLY_JS_URL = "https://cdn.plot.ly/plotly-2.17.1.min.js";
+        private const string PLOTLY_JS_URL = "https://cdn.plot.ly/plotly-2.18.0.min.js";
 
         private static SchemaRoot _schema;
         private static StubbleVisitorRenderer _stubble;

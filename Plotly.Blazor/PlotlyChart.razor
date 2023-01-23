@@ -3,6 +3,7 @@
 @using System.Text.Json
 @using System.Collections
 @using Plotly.Blazor.Interop
+@using System.Threading
 @implements IDisposable
 
 <div style="min-height: 350px; height: 100%" @attributes="AdditionalAttributes" id="@Id"></div>
@@ -139,29 +140,32 @@
     /// <summary>
     ///     Updates the chart using the current properties.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task React()
+    public async Task React(CancellationToken cancellationToken = default)
     {
-        await JsRuntime.React(objectReference);
+        await JsRuntime.React(objectReference, cancellationToken);
     }
 
     /// <summary>
     ///     Updates the chart layout using the current properties.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Relayout()
+    public async Task Relayout(CancellationToken cancellationToken = default)
     {
-        await JsRuntime.Relayout(objectReference);
+        await JsRuntime.Relayout(objectReference, cancellationToken);
     }
 
     /// <summary>
     ///     Updates all the traces using the provided parameter
     /// </summary>
     /// <param name="trace">New trace parameter, create new object and assign only update value</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Restyle(ITrace trace)
+    public async Task Restyle(ITrace trace, CancellationToken cancellationToken = default)
     {
-        await Restyle(trace, Data?.Select((v, index) => index).ToArray());
+        await Restyle(trace, Data?.Select((v, index) => index).ToArray(), cancellationToken);
     }
 
     /// <summary>
@@ -169,10 +173,11 @@
     /// </summary>
     /// <param name="trace">New trace parameter, create new object and assign only update value</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Restyle(ITrace trace, int index)
+    public async Task Restyle(ITrace trace, int index, CancellationToken cancellationToken = default)
     {
-        await Restyle(trace, new[] { index });
+        await Restyle(trace, new[] { index }, cancellationToken);
     }
 
     /// <summary>
@@ -192,10 +197,11 @@
     /// <param name="format">Format of the image.</param>
     /// <param name="height">Height of the image.</param>
     /// <param name="width">Width of the image.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>A binary string of the exported image</returns>
-    public async Task<string> ToImage(ImageFormat format, uint height, uint width)
+    public async Task<string> ToImage(ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
     {
-        return await JsRuntime.ToImage(objectReference, format, height, width);
+        return await JsRuntime.ToImage(objectReference, format, height, width, cancellationToken);
     }
 
     /// <summary>
@@ -205,10 +211,11 @@
     /// <param name="height">Height of the image.</param>
     /// <param name="width">Width of the image.</param>
     /// <param name="fileName">Name od the image file.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task DownloadImage(ImageFormat format, uint height, uint width, string fileName)
+    public async Task DownloadImage(ImageFormat format, uint height, uint width, string fileName, CancellationToken cancellationToken = default)
     {
-        await JsRuntime.DownloadImage(objectReference, format, height, width, fileName);
+        await JsRuntime.DownloadImage(objectReference, format, height, width, fileName, cancellationToken);
     }
 
     /// <summary>
@@ -216,8 +223,9 @@
     /// </summary>
     /// <param name="trace">New trace parameter, create new object and assign only update value</param>
     /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Restyle(ITrace trace, IEnumerable<int> indizes)
+    public async Task Restyle(ITrace trace, IEnumerable<int> indizes, CancellationToken cancellationToken = default)
     {
         if (indizes == null || !indizes.Any())
         {
@@ -242,25 +250,27 @@
         {
             currentTrace.Populate(json, PlotlyJsInterop.SerializerOptions); // apply changes to the existing object
         }
-        await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray());
+        await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray(), cancellationToken);
     }
 
     /// <summary>
     ///     Same as <see cref="React"/>.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Update()
+    public async Task Update(CancellationToken cancellationToken = default)
     {
-        await React();
+        await React(cancellationToken);
     }
 
     /// <summary>
     ///     (Re-)Creates the chart using the current parameters.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns></returns>
-    public async Task NewPlot()
+    public async Task NewPlot(CancellationToken cancellationToken = default)
     {
-        await JsRuntime.NewPlot(objectReference);
+        await JsRuntime.NewPlot(objectReference, cancellationToken);
     }
 
     /// <summary>
@@ -269,8 +279,9 @@
     /// </summary>
     /// <param name="trace">Trace to be added.</param>
     /// <param name="index">Optional index.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task AddTrace(ITrace trace, int? index = null)
+    public async Task AddTrace(ITrace trace, int? index = null, CancellationToken cancellationToken = default)
     {
         Data ??= new List<ITrace>();
 
@@ -288,15 +299,16 @@
             Data.Insert(index.Value, trace);
         }
         await DataChanged.InvokeAsync(Data);
-        await JsRuntime.AddTrace(objectReference, trace, index);
+        await JsRuntime.AddTrace(objectReference, trace, index, cancellationToken);
     }
 
     /// <summary>
     ///     Removes a trace from the current data.
     /// </summary>
     /// <param name="trace">Trace to be removed.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task DeleteTrace(ITrace trace)
+    public async Task DeleteTrace(ITrace trace, CancellationToken cancellationToken = default)
     {
         if (Data == null)
         {
@@ -311,15 +323,16 @@
         {
             return;
         }
-        await DeleteTrace(index);
+        await DeleteTrace(index, cancellationToken);
     }
 
     /// <summary>
     ///     Removes a trace with the specified index.
     /// </summary>
     /// <param name="index">Optional index.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task DeleteTrace(int index)
+    public async Task DeleteTrace(int index, CancellationToken cancellationToken = default)
     {
         if (Data == null)
         {
@@ -334,7 +347,7 @@
 
         Data.RemoveAt(index);
         await DataChanged.InvokeAsync(Data);
-        await JsRuntime.DeleteTrace(objectReference, index);
+        await JsRuntime.DeleteTrace(objectReference, index, cancellationToken);
     }
 
     /// <summary>
@@ -344,8 +357,9 @@
     /// <param name="y">Y-Value.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
     /// <param name="max">Limits the number of points in the trace.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task ExtendTrace(object x, object y, int index, int? max = null)
+    public async Task ExtendTrace(object x, object y, int index, int? max = null, CancellationToken cancellationToken = default)
     {
         if (x == null && y == null)
         {
@@ -353,15 +367,15 @@
         }
         if (x == null)
         {
-            await ExtendTrace(null, new[] { y }, index, max);
+            await ExtendTrace(null, new[] { y }, index, max, cancellationToken);
         }
         else if (y == null)
         {
-            await ExtendTrace(new[] { x }, null, index, max);
+            await ExtendTrace(new[] { x }, null, index, max, cancellationToken);
         }
         else
         {
-            await ExtendTrace(new[] { x }, new[] { y }, index, max);
+            await ExtendTrace(new[] { x }, new[] { y }, index, max, cancellationToken);
         }
     }
 
@@ -372,8 +386,9 @@
     /// <param name="y">Y-Values.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
     /// <param name="max">Limits the number of points in the trace.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task ExtendTrace(IEnumerable<object> x, IEnumerable<object> y, int index, int? max = null)
+    public async Task ExtendTrace(IEnumerable<object> x, IEnumerable<object> y, int index, int? max = null, CancellationToken cancellationToken = default)
     {
         if (x == null && y == null)
         {
@@ -381,15 +396,15 @@
         }
         if (x == null)
         {
-            await ExtendTraces(null, new[] { y }, new[] { index }, max);
+            await ExtendTraces(null, new[] { y }, new[] { index }, max, cancellationToken);
         }
         else if (y == null)
         {
-            await ExtendTraces(new[] { x }, null, new[] { index }, max);
+            await ExtendTraces(new[] { x }, null, new[] { index }, max, cancellationToken);
         }
         else
         {
-            await ExtendTraces(new[] { x }, new[] { y }, new[] { index }, max);
+            await ExtendTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
         }
     }
 
@@ -400,8 +415,9 @@
     /// <param name="y">Y-Values.</param>
     /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
     /// <param name="max">Limits the number of points in the trace.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null)
+    public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null, CancellationToken cancellationToken = default)
     {
         if (indizes == null || !indizes.Any())
         {
@@ -459,7 +475,7 @@
         }
 
         await DataChanged.InvokeAsync(Data);
-        await JsRuntime.ExtendTraces(objectReference, x, y, indizesArr, max);
+        await JsRuntime.ExtendTraces(objectReference, x, y, indizesArr, max, cancellationToken);
     }
 
     /// <summary>
@@ -469,8 +485,9 @@
     /// <param name="y">Y-Value.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
     /// <param name="max">Limits the number of points in the trace.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task PrependTrace(object x, object y, int index, int? max = null)
+    public async Task PrependTrace(object x, object y, int index, int? max = null, CancellationToken cancellationToken = default)
     {
         if (x == null && y == null)
         {
@@ -478,15 +495,15 @@
         }
         if (x == null)
         {
-            await PrependTrace(null, new[] { y }, index, max);
+            await PrependTrace(null, new[] { y }, index, max, cancellationToken);
         }
         else if (y == null)
         {
-            await PrependTrace(new[] { x }, null, index, max);
+            await PrependTrace(new[] { x }, null, index, max, cancellationToken);
         }
         else
         {
-            await PrependTrace(new[] { x }, new[] { y }, index, max);
+            await PrependTrace(new[] { x }, new[] { y }, index, max, cancellationToken);
         }
     }
 
@@ -497,8 +514,9 @@
     /// <param name="y">Y-Values.</param>
     /// <param name="index">Index of the trace. Use -1 e.g. to get the last one.</param>
     /// <param name="max">Limits the number of points in the trace.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task PrependTrace(IEnumerable<object> x, IEnumerable<object> y, int index, int? max = null)
+    public async Task PrependTrace(IEnumerable<object> x, IEnumerable<object> y, int index, int? max = null, CancellationToken cancellationToken = default)
     {
         if (x == null && y == null)
         {
@@ -506,15 +524,15 @@
         }
         if (x == null)
         {
-            await PrependTraces(null, new[] { y }, new[] { index }, max);
+            await PrependTraces(null, new[] { y }, new[] { index }, max, cancellationToken);
         }
         else if (y == null)
         {
-            await PrependTraces(new[] { x }, null, new[] { index }, max);
+            await PrependTraces(new[] { x }, null, new[] { index }, max, cancellationToken);
         }
         else
         {
-            await PrependTraces(new[] { x }, new[] { y }, new[] { index }, max);
+            await PrependTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
         }
     }
 
@@ -525,8 +543,9 @@
     /// <param name="y">Y-Values.</param>
     /// <param name="indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
     /// <param name="max">Limits the number of points in the trace.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null)
+    public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null, CancellationToken cancellationToken = default)
     {
         if (indizes == null || !indizes.Any())
         {
@@ -590,7 +609,7 @@
             }
         }
         await DataChanged.InvokeAsync(Data);
-        await JsRuntime.PrependTraces(objectReference, x, y, indizes, max);
+        await JsRuntime.PrependTraces(objectReference, x, y, indizes, max, cancellationToken);
     }
 
     /// <summary>
@@ -633,37 +652,41 @@
     /// <summary>
     ///     Subscribes to the click event of the chart.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task SubscribeClickEvent()
+    public async Task SubscribeClickEvent(CancellationToken cancellationToken = default)
     {
-        await JsRuntime.SubscribeClickEvent(objectReference);
+        await JsRuntime.SubscribeClickEvent(objectReference, cancellationToken);
     }
 
     /// <summary>
     ///     Subscribes to the hover event of the chart.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task SubscribeHoverEvent()
+    public async Task SubscribeHoverEvent(CancellationToken cancellationToken = default)
     {
-        await JsRuntime.SubscribeHoverEvent(objectReference);
+        await JsRuntime.SubscribeHoverEvent(objectReference, cancellationToken);
     }
 
     /// <summary>
     ///     Clears the traces from the current chart.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Clear()
+    public async Task Clear(CancellationToken cancellationToken = default)
     {
         Data.Clear();
         await DataChanged.InvokeAsync(Data);
-        await React();
+        await React(cancellationToken);
     }
 
     /// <summary>
     ///     Will clear the div, and remove any Plotly plots that have been placed in it.
     /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
     /// <returns>Task</returns>
-    public async Task Purge()
+    public async Task Purge(CancellationToken cancellationToken = default)
     {
         Data.Clear();
         await DataChanged.InvokeAsync(Data);
@@ -677,7 +700,7 @@
         Frames.Clear();
         await FramesChanged.InvokeAsync(Frames);
 
-        await JsRuntime.Purge(objectReference);
+        await JsRuntime.Purge(objectReference, cancellationToken);
     }
 
     /// <inheritdoc />

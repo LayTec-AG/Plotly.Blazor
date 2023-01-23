@@ -575,7 +575,8 @@ namespace Plotly.Blazor.LayoutLib
         ///     is the default value if <c>tick0</c> and <c>dtick</c> are provided). If
         ///     <c>array</c>, the placement of the ticks is set via <c>tickvals</c> and
         ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
-        ///     <c>tickvals</c> is provided).
+        ///     <c>tickvals</c> is provided). If <c>sync</c>, the number of ticks will sync
+        ///     with the overlayed axis set by <c>overlaying</c> property.
         /// </summary>
         [JsonPropertyName(@"tickmode")]
         public Plotly.Blazor.LayoutLib.YAxisLib.TickModeEnum? TickMode { get; set;} 

@@ -6,6 +6,7 @@
 @using System.Reactive.Subjects
 @using System.Threading
 @using System.Diagnostics
+@using System.Collections.Concurrent
 
 @implements IDisposable
 
@@ -17,10 +18,11 @@
     private Config config;
     private Layout layout;
     private IList<ITrace> traces;
-    private IDisposable interval;
 
     private CancellationTokenSource cancellationToken;
-    private IScheduler scheduler;
+    private BlockingCollection<DataJob> queue;
+    private event EventHandler<DataJob> dataEvent;
+
 
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -29,8 +31,7 @@
         layout = CreateLayout();
         traces = CreateTraces();
         cancellationToken = new CancellationTokenSource();
-        scheduler = new TaskPoolScheduler(new TaskFactory(cancellationToken.Token));
-
+        queue = new BlockingCollection<DataJob>();
         base.OnParametersSet();
     }
 
@@ -39,7 +40,8 @@
     {
         if (firstRender)
         {
-            interval = StartDataSimulation(50, 30);
+            dataEvent += UpdateData;
+            _ = WriteData(50, 30);
         }
 
         await base.OnAfterRenderAsync(firstRender);
@@ -48,34 +50,39 @@
     /// <inheritdoc />
     public void Dispose()
     {
+        dataEvent -= UpdateData;
         cancellationToken?.Cancel();
-        interval.Dispose();
     }
 
     /// <summary>
-    ///     Fires the data changed event periodically by the given milliseconds.
+    ///     Writes data to the queue.
     /// </summary>
     /// <param name="milliseconds"></param>
     /// /// <param name="count"></param>
-    private IDisposable StartDataSimulation(int milliseconds, int count)
+    private Task WriteData(int milliseconds, int count)
     {
-        return Observable.Interval(TimeSpan.FromMilliseconds(milliseconds), scheduler)
-            .Subscribe(async l =>
+        return Task.Run(async () =>
+        {
+            // Repeat until cancellation is requested
+            while (!cancellationToken.IsCancellationRequested)
             {
                 (var x, var y) = Helper.GenerateData(0, count, GenerateMethod.Sin);
                 (var x2, var y2) = Helper.GenerateData(0, count, GenerateMethod.Cos);
 
-                await UpdateData(new DataJob(new DataEventArgs(x,y, 0), chart, traces));
-                await UpdateData(new DataJob(new DataEventArgs(x2, y2, 1), chart, traces));
-            });
+                dataEvent?.Invoke(this, new DataJob(new DataEventArgs(x, y, 0), chart, traces));
+                dataEvent?.Invoke(this, new DataJob(new DataEventArgs(x2, y2, 1), chart, traces));
+
+                await Task.Delay(TimeSpan.FromMilliseconds(milliseconds));
+            }
+        });
     }
+
 
     /// <summary>
     ///     Updates the chart by using the given data job.
     /// </summary>
     /// <param name="job">DataJob</param>
-    /// <returns>Task</returns>
-    private async Task UpdateData(DataJob job)
+    private async void UpdateData(object sender, DataJob job)
     {
         if ((!job?.DataEventArgs?.X?.Any() ?? true) || (!job?.DataEventArgs?.Y?.Any() ?? true) || job.Chart == null || job.Traces == null || job.DataEventArgs.TraceIndex < 0)
         {
@@ -89,7 +96,7 @@
 
         try
         {
-            await InvokeAsync(async () => await job.Chart.ExtendTrace(job.DataEventArgs.X, job.DataEventArgs.Y, job.DataEventArgs.TraceIndex, count));
+            await InvokeAsync(async () => await job.Chart.ExtendTrace(job.DataEventArgs.X, job.DataEventArgs.Y, job.DataEventArgs.TraceIndex, count, cancellationToken.Token));
         }
         catch (Exception ex)
         {
@@ -128,7 +135,7 @@
                     Text = "Live Data Simulation"
                 },
                 XAxis = new[]
-                {
+                        {
                 new XAxis
                 {
                     Title = new Plotly.Blazor.LayoutLib.XAxisLib.Title
@@ -138,7 +145,7 @@
                 }
             },
                 YAxis = new[]
-                {
+                        {
                 new YAxis
                 {
                     Title = new Plotly.Blazor.LayoutLib.YAxisLib.Title
@@ -214,5 +221,5 @@
             Traces = traces;
         }
     }
-    
+
 }

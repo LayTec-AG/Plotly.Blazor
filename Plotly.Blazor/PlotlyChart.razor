@@ -626,6 +626,13 @@
     [Parameter]
     public Action<IEnumerable<HoverEventDataPoint>> HoverAction { get; set; }
 
+
+    /// <summary>
+    ///     Defines the action that should happen when the RelayoutEvent is triggered.
+    /// </summary>
+    [Parameter]
+    public Action<RelayoutEventData> RelayoutAction { get; set; }
+
     /// <summary>
     ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
     ///     Objects are currently required for accomodating different plot value types.
@@ -649,6 +656,15 @@
         HoverAction?.Invoke(eventData);
     }
 
+    //// <summary>
+    ///     Method which is called by JSRuntime when the chart's layout has changed. 
+    /// </summary>
+    [JSInvokable("RelayoutEvent")]
+    public void RelayoutEvent(RelayoutEventData obj)
+    {
+        RelayoutAction?.Invoke(obj);
+    }
+
     /// <summary>
     ///     Subscribes to the click event of the chart.
     /// </summary>
@@ -667,6 +683,16 @@
     public async Task SubscribeHoverEvent(CancellationToken cancellationToken = default)
     {
         await JsRuntime.SubscribeHoverEvent(objectReference, cancellationToken);
+    }
+
+    /// <summary>
+    ///     Subscribes to the relayout event of the chart.
+    /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
+    /// <returns>Task</returns>
+    public async Task SubscribeRelayoutEvent(CancellationToken cancellationToken = default)
+    {
+        await JsRuntime.SubscribeRelayoutEvent(objectReference, cancellationToken);
     }
 
     /// <summary>

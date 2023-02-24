@@ -1,0 +1,91 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Traces.ScatterLib
+@using Plotly.Blazor.Interop
+@using System.Text.Json
+
+
+<PlotlyChart style="height: 60vh; min-height: 350px" 
+             @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             RelayoutAction="RelayoutAction" AfterRender="async () => await SubscribeEvents()" />
+
+@if(relayoutData?.XRange?.Count() == 2)
+{
+    <MudText>X: @relayoutData.XRange[0], @relayoutData.XRange[1]</MudText>
+}
+
+@if (relayoutData?.YRange?.Count() == 2)
+{
+    <MudText>Y: @relayoutData.YRange[0], @relayoutData.YRange[1]</MudText>
+}
+
+@code {
+    RelayoutEventData relayoutData; 
+    
+    PlotlyChart chart;
+    private Config config = new()
+        {
+            Responsive = true
+        };
+
+    private IList<ITrace> data = new List<ITrace>
+    {
+        new Scatter
+        {
+            Name = "ScatterTrace",
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            X = new List<object>(),
+            Y = new List<object>()
+        }
+    };
+    private Layout layout = new()
+        {
+            Title = new Title { Text = "Scatter with Relayout Event" },
+            YAxis = new List<YAxis>
+        {
+            new()
+            {
+                Title = new LayoutLib.YAxisLib.Title { Text = "Scatter Unit" }
+            }
+        }
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ExtendData();
+        }
+    }
+
+    private async Task ExtendData(int count = 100)
+    {
+        if (!(chart.Data.FirstOrDefault() is Scatter scatter))
+        {
+            return;
+        }
+
+        var max = (int?)scatter.X?.Max();
+        var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
+        if (!scatter.X.Any() || !scatter.Y.Any())
+        {
+            scatter.X.AddRange(x);
+            scatter.Y.AddRange(y);
+            await chart.React();
+        }
+        else
+        {
+            await chart.ExtendTrace(x, y, data.IndexOf(scatter));
+        }
+    }
+
+    public void RelayoutAction(RelayoutEventData data)
+    {
+        relayoutData = data;
+        StateHasChanged();
+    }
+
+    public async Task SubscribeEvents()
+    {
+        await chart.SubscribeRelayoutEvent();
+    }
+}

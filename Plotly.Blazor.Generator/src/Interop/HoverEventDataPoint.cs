@@ -17,6 +17,22 @@
         public int PointIndex { get; set; }
 
         /// <summary>
+        ///     The zero-based point number. Can be used to identify the point in combination with CurveNumber.
+        /// </summary>
+        public int? PointNumber { get; set; }
+
+        /// <summary>
+        ///     The zero-based point number. Can be used to identify the point in combination with PointNumber or PointIndex.
+        /// </summary>
+        public int? CurveNumber { get; set; }
+
+        /// <summary>
+        ///     The text-value as an object to be compatible to multiple data types.
+        ///     Has to be casted manually.
+        /// </summary>
+        public object Text { get; set; }
+
+        /// <summary>
         ///     The X-Value as an object to be compatible to multiple data types.
         ///     Has to be casted manually.
         /// </summary>
@@ -27,5 +43,11 @@
         ///     Has to be casted manually.
         /// </summary>
         public object Y { get; set; }
+
+        /// <summary>
+        ///     The Z-Value as an object to be compatible to multiple data types.
+        ///     Has to be casted manually.
+        /// </summary>
+        public object Z { get; set; }
     }
 }

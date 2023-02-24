@@ -77,19 +77,51 @@
                         return ({
                             TraceIndex: d.fullData.index,
                             PointIndex: d.pointIndex,
+                            PointNumber: d.pointNumber,
+                            CurveNumber: d.curveNumber,
+                            Text: d.text,
                             X: d.x,
-                            Y: d.y
+                            Y: d.y,
+                            Z: d.z
                         });
                     }
                     else {
                         return ({
                             TraceIndex: d.fullData.index,
                             PointIndex: d.pointIndex,
+                            PointNumber: d.pointNumber,
+                            CurveNumber: d.curveNumber,
+                            Text: d.text,
                             X: d.value,
-                            Y: d.label
+                            Y: d.label,
+                            Z: null
                         });
                     }
                 }));
         })
+    },
+    subscribeRelayoutEvent: function (dotNetObj, id) {
+        var plot = document.getElementById(id);
+        plot.on('plotly_relayout', function (data) {
+
+            var x1 = data["xaxis.range[0]"];
+            var x2 = data["xaxis.range[1]"];
+
+            var y1 = data["yaxis.range[0]"]
+            var y2 = data["yaxis.range[1]"]
+
+            var result = {};
+
+            if (x1 && x2)
+            {
+                result.XRange = [x1, x2];
+            } 
+
+            if (y1 && y2)
+            {
+                result.YRange = [y1, y2];
+            }
+            dotNetObj.invokeMethodAsync('RelayoutEvent', result);
+        });
     }
 }

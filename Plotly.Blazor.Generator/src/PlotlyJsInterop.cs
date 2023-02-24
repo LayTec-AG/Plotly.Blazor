@@ -214,6 +214,17 @@ public static class PlotlyJsInterop
     {
         await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeHoverEvent", cancellationToken, objectReference, objectReference.Value.Id);
     }
+    
+    /// <summary>
+    ///     Can be used to subscribe to relayout events.
+    /// </summary>
+    /// <param name="jsRuntime"></param>
+    /// <param name="objectReference"></param>
+    /// <param name="cancellationToken"></param>
+    public static async Task SubscribeRelayoutEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    {
+        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeRelayoutEvent", cancellationToken, objectReference, objectReference.Value.Id);
+    }
 
     /// <summary>
     ///     Can be used to export the chart as a static image and returns a binary string of the exported image.

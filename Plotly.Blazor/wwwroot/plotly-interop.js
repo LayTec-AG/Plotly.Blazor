@@ -77,16 +77,24 @@
                         return ({
                             TraceIndex: d.fullData.index,
                             PointIndex: d.pointIndex,
+                            PointNumber: d.pointNumber,
+                            CurveNumber: d.curveNumber,
+                            Text: d.text,
                             X: d.x,
-                            Y: d.y
+                            Y: d.y,
+                            Z: d.z
                         });
                     }
                     else {
                         return ({
                             TraceIndex: d.fullData.index,
                             PointIndex: d.pointIndex,
+                            PointNumber: d.pointNumber,
+                            CurveNumber: d.curveNumber,
+                            Text: d.text,
                             X: d.value,
-                            Y: d.label
+                            Y: d.label,
+                            Z: null
                         });
                     }
                 }));

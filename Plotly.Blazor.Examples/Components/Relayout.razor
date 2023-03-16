@@ -20,7 +20,7 @@
 
 @code {
     RelayoutEventData relayoutData; 
-    
+
     PlotlyChart chart;
     private Config config = new()
         {
@@ -65,7 +65,17 @@
         }
 
         var max = (int?)scatter.X?.Max();
-        var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
+        var (_, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
+
+        var xDate = new DateTime(2015, 2, 12);
+        var x = new List<object>();
+
+        for (int i = 0; i < count; i++)
+        {
+            x.Add(xDate);
+            xDate = xDate.AddHours(1);
+        }
+
         if (!scatter.X.Any() || !scatter.Y.Any())
         {
             scatter.X.AddRange(x);

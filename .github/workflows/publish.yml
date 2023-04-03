@@ -25,8 +25,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Pack nuget package
-        run: dotnet pack ./Plotly.Blazor/Plotly.Blazor.csproj --configuration Release
+        run: dotnet pack ./Plotly.Blazor/Plotly.Blazor.csproj --configuration Release /p:ContinuousIntegrationBuild=true
         env:
           MSBUILDSINGLELOADCONTEXT: 1
       - name: Push package to nuget
-        run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate -n
+        run: dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate

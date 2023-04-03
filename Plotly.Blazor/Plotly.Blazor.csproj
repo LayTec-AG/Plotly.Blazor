@@ -35,6 +35,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.13" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
         <PackageReference Include="System.Text.Json" Version="6.0.7" />
     </ItemGroup>
     <ItemGroup>

@@ -60,6 +60,16 @@ namespace Plotly.Blazor.LayoutLib.SmithLib
         public string HoverFormat { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. labelalias can be used with any axis type, and both keys
+        ///     (if needed) and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Sets the layer on which this axis is displayed. If &#39;above traces&#39;,
         ///     this axis is displayed above all the subplot&#39;s traces If &#39;below
         ///     traces&#39;, this axis is displayed below all the subplot&#39;s traces,
@@ -245,6 +255,11 @@ namespace Plotly.Blazor.LayoutLib.SmithLib
                     HoverFormat.Equals(other.HoverFormat)
                 ) && 
                 (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
+                ) && 
+                (
                     Layer == other.Layer ||
                     Layer != null &&
                     Layer.Equals(other.Layer)
@@ -362,6 +377,7 @@ namespace Plotly.Blazor.LayoutLib.SmithLib
                 if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
                 if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();
                 if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();

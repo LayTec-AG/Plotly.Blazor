@@ -151,6 +151,16 @@ namespace Plotly.Blazor.Traces.CarpetLib
         public decimal? GridWidth { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. labelalias can be used with any axis type, and both keys
+        ///     (if needed) and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Extra padding between label and the axis
         /// </summary>
         [JsonPropertyName(@"labelpadding")]
@@ -515,6 +525,11 @@ namespace Plotly.Blazor.Traces.CarpetLib
                     GridWidth.Equals(other.GridWidth)
                 ) && 
                 (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
+                ) && 
+                (
                     LabelPadding == other.LabelPadding ||
                     LabelPadding != null &&
                     LabelPadding.Equals(other.LabelPadding)
@@ -730,6 +745,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
                 if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
                 if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (LabelPadding != null) hashCode = hashCode * 59 + LabelPadding.GetHashCode();
                 if (LabelPrefix != null) hashCode = hashCode * 59 + LabelPrefix.GetHashCode();
                 if (LabelSuffix != null) hashCode = hashCode * 59 + LabelSuffix.GetHashCode();

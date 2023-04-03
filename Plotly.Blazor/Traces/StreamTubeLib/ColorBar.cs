@@ -71,6 +71,16 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
         public Plotly.Blazor.Traces.StreamTubeLib.ColorBarLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. labelalias can be used with any axis type, and both keys
+        ///     (if needed) and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Sets the length of the color bar This measure excludes the padding of both
         ///     ends. That is, the color bar length is this length minus the padding on
         ///     both ends.
@@ -409,6 +419,11 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
                     ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
+                ) && 
+                (
                     Len == other.Len ||
                     Len != null &&
                     Len.Equals(other.Len)
@@ -621,6 +636,7 @@ namespace Plotly.Blazor.Traces.StreamTubeLib
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 if (DTick != null) hashCode = hashCode * 59 + DTick.GetHashCode();
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (Len != null) hashCode = hashCode * 59 + Len.GetHashCode();
                 if (LenMode != null) hashCode = hashCode * 59 + LenMode.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();

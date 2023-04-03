@@ -18,6 +18,20 @@ namespace Plotly.Blazor.LayoutLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
+        ///     Determines whether the title can automatically push the figure margins.
+        ///     If <c>yref=<c>paper</c></c> then the margin will expand to ensure that the
+        ///     title doesn’t overlap with the edges of the container. If <c>yref=<c>container</c></c>
+        ///     then the margins will ensure that the title doesn’t overlap with the plot
+        ///     area, tick labels, and axis titles. If <c>automargin=true</c> and the margins
+        ///     need to be expanded, then y will be set to a default 1 and yanchor will
+        ///     be set to an appropriate default to ensure that minimal margin space is
+        ///     needed. Note that when <c>yref=<c>paper</c></c>, only 1 or 0 are allowed
+        ///     y values. Invalid values will be reset to the default 1.
+        /// </summary>
+        [JsonPropertyName(@"automargin")]
+        public bool? AutoMargin { get; set;} 
+
+        /// <summary>
         ///     Sets the title font. Note that the title&#39;s font used to be customized
         ///     by the now deprecated <c>titlefont</c> attribute.
         /// </summary>
@@ -109,6 +123,11 @@ namespace Plotly.Blazor.LayoutLib
 
             return 
                 (
+                    AutoMargin == other.AutoMargin ||
+                    AutoMargin != null &&
+                    AutoMargin.Equals(other.AutoMargin)
+                ) && 
+                (
                     Font == other.Font ||
                     Font != null &&
                     Font.Equals(other.Font)
@@ -161,6 +180,7 @@ namespace Plotly.Blazor.LayoutLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
                 if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();

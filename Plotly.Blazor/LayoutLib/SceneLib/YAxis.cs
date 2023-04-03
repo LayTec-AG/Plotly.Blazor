@@ -146,6 +146,16 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
         public string HoverFormat { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. labelalias can be used with any axis type, and both keys
+        ///     (if needed) and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Sets the axis line color.
         /// </summary>
         [JsonPropertyName(@"linecolor")]
@@ -529,6 +539,11 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                     HoverFormat.Equals(other.HoverFormat)
                 ) && 
                 (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
+                ) && 
+                (
                     LineColor == other.LineColor ||
                     LineColor != null &&
                     LineColor.Equals(other.LineColor)
@@ -759,6 +774,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
                 if (GridColor != null) hashCode = hashCode * 59 + GridColor.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();
                 if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();

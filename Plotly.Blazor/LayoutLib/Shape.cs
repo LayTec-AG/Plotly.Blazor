@@ -40,6 +40,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.FillRuleEnum? FillRule { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Label.
+        /// </summary>
+        [JsonPropertyName(@"label")]
+        public Plotly.Blazor.LayoutLib.ShapeLib.Label Label { get; set;} 
+
+        /// <summary>
         ///     Specifies whether shapes are drawn below or above traces.
         /// </summary>
         [JsonPropertyName(@"layer")]
@@ -256,6 +262,11 @@ namespace Plotly.Blazor.LayoutLib
                     FillRule.Equals(other.FillRule)
                 ) && 
                 (
+                    Label == other.Label ||
+                    Label != null &&
+                    Label.Equals(other.Label)
+                ) && 
+                (
                     Layer == other.Layer ||
                     Layer != null &&
                     Layer.Equals(other.Layer)
@@ -356,6 +367,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (Editable != null) hashCode = hashCode * 59 + Editable.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
                 if (FillRule != null) hashCode = hashCode * 59 + FillRule.GetHashCode();
+                if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();

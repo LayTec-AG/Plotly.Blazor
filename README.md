@@ -30,25 +30,25 @@ After you have created your Blazor project, you need to do the following steps:
 **Install the latest NuGet Package**
 
 Using Package Manager
-```
+```powershell
 Install-Package Plotly.Blazor
 ```
 
 Using .NET CLI
-```
+```cmd
 dotnet add package Plotly.Blazor
 ```
 
 Add the following lines to your _Layout.cshtml **above** the `_/framework/blazor.webassembly.js` or `_/framework/blazor.server.js`
 
-```
+```razor
 <script src="_content/Plotly.Blazor/plotly-latest.min.js" type="text/javascript"></script>
 <script src="_content/Plotly.Blazor/plotly-interop.js" type="text/javascript"></script>
 ```
 
 **Add the following lines to your _Imports.razor**
 
-```
+```razor
 @using Plotly.Blazor
 @using Plotly.Blazor.Traces
 ```
@@ -61,13 +61,13 @@ Add the following lines to your _Layout.cshtml **above** the `_/framework/blazor
 
 Info: *The chart reference is important so that we can update the chart later.*
 
-```
+```razor
 <PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 ```
 
 **Generate some initial data for your plot.**
 
-```
+```razor
 @code {
     PlotlyChart chart;
     Config config = new Config();
@@ -88,7 +88,7 @@ Info: *The chart reference is important so that we can update the chart later.*
 
 **Generate some additional data for your plot.**
 
-```
+```csharp
 private async Task AddData(int count = 100)
 {
     if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;

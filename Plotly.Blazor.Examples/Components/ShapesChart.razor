@@ -2,7 +2,9 @@
 @using Plotly.Blazor.LayoutLib.ShapeLib
 @using Plotly.Blazor.Traces.ScatterLib
 @using Line = Plotly.Blazor.LayoutLib.ShapeLib.Line
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
+<br/>
 <div class="d-flex gap-1 justify-end">
     <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Remove" OnClick="RemoveLine">Remove Line</MudButton>
     <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddLine">Add Line</MudButton>
@@ -10,86 +12,92 @@
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    Config config = new()
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
     {
-        Responsive = true
-    };
+        config = new Config
+        {
+            Responsive = true
+        };
 
-    Layout layout = new()
-    {
-        Title = new Title
+        layout = new Layout
         {
-            Text = "Scatter"
-        },
-        YAxis = new List<YAxis>
-        {
-            new()
+            Title = new Title
             {
-                Title = new LayoutLib.YAxisLib.Title
-                {
-                    Text = "Scatter Unit"
-                }
-            }
-        },
-
-        Shapes = new List<Shape>
-        {
-            new()
-            {
-                Type = TypeEnum.Rect,
-                XRef = "x",
-                YRef = "y",
-                X0 = 20,
-                Y0 = 0,
-                X1 = 40,
-                Y1 = 100,
-                FillColor = "#d3d3d3",
-                Opacity = new decimal(0.3),
-                Line = new Line
-                {
-                    Width = 0
-                }
+                Text = GetType().Name
             },
-            new()
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
             {
-                Type = TypeEnum.Rect,
-                XRef = "x",
-                YRef = "y",
-                X0 = 70,
-                Y0 = 0,
-                X1 = 90,
-                Y1 = 100,
-                FillColor = "#d3d3d3",
-                Opacity = new decimal(0.3),
-                Line = new Line
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            Shapes = new List<Shape>
+            {
+                new()
                 {
-                    Width = 0
+                    Type = TypeEnum.Rect,
+                    XRef = "x",
+                    YRef = "y",
+                    X0 = 20,
+                    Y0 = 0,
+                    X1 = 40,
+                    Y1 = 100,
+                    FillColor = "#d3d3d3",
+                    Opacity = new decimal(0.3),
+                    Line = new Line
+                    {
+                        Width = 0
+                    }
+                },
+                new()
+                {
+                    Type = TypeEnum.Rect,
+                    XRef = "x",
+                    YRef = "y",
+                    X0 = 70,
+                    Y0 = 0,
+                    X1 = 90,
+                    Y1 = 100,
+                    FillColor = "#d3d3d3",
+                    Opacity = new decimal(0.3),
+                    Line = new Line
+                    {
+                        Width = 0
+                    }
                 }
             }
-        },
-        Height = 500
-    };
+        };
 
-    List<ITrace> data = new()
-    {
-        new Scatter
+        data = new List<ITrace>
         {
-            Name = "ScatterTrace",
-            Mode = ModeFlag.Lines | ModeFlag.Markers,
-            X = Enumerable.Range(0, 100).Cast<object>().ToList(),
-            Y = Enumerable.Range(0, 100).Cast<object>().ToList()
-        },
-        new Scatter
-        {
-            Name = "TextTrace",
-            X = new List<object> { 30, 80 },
-            Y = new List<object> { 50, 50 },
-            TextArray = new List<string> { "Test1", "Test2" },
-            Mode = ModeFlag.Text
-        }
-    };
+            new Scatter
+            {
+                Name = "ScatterTrace",
+                Mode = ModeFlag.Lines | ModeFlag.Markers,
+                X = Enumerable.Range(0, 100).Cast<object>().ToList(),
+                Y = Enumerable.Range(0, 100).Cast<object>().ToList()
+            },
+            new Scatter
+            {
+                Name = "TextTrace",
+                X = new List<object> { 30, 80 },
+                Y = new List<object> { 50, 50 },
+                TextArray = new List<string> { "Test1", "Test2" },
+                Mode = ModeFlag.Text
+            }
+        };
+
+        base.OnInitialized();
+    }
 
     private void RemoveLine()
     {
@@ -113,7 +121,8 @@
             Y1 = 1,
             Line = new Line
             {
-                Width = 3
+                Width = 3,
+                Color = "#d3d3d3"
             }
         });
         _ = chart.Relayout(CancellationToken.None);

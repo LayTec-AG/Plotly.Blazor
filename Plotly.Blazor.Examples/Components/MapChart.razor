@@ -1,33 +1,56 @@
 ﻿@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.GeoLib
 @using Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
-@using System.Globalization
 @using Plotly.Blazor.Traces.ScatterGeoLib
+@using System.Globalization
 @inject NavigationManager MyNavigationManager
 
-<PlotlyChart Layout="layout" Config="config" Data="data" Id="MapChart" @ref="plotlyChart"/>
+@if (!IsInitialized)
+{
+    <MudPaper>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+    </MudPaper>
+}
 
-@code {
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" AfterRender="LoadData"/>
 
-    PlotlyChart plotlyChart;
-    Layout layout;
-    Config config;
-    IList<ITrace> data;
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    private bool IsInitialized { get; set; }
 
     /// <inheritdoc />
-    public override async Task SetParametersAsync(ParameterView parameters)
+    protected override async Task OnInitializedAsync()
     {
+        config = new Config
+        {
+            Responsive = true,
+            ShowLink = false
+        };
+
         layout = new Layout
         {
             Title = new Title
             {
                 Text = "Feb. 2011 American Airline flight paths"
             },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
             ShowLegend = false,
             Geo = new List<Geo>
             {
-                new Geo
+                new()
                 {
                     Scope = ScopeEnum.NorthAmerica,
                     Projection = new Projection
@@ -35,32 +58,24 @@
                         Type = TypeEnum.AzimuthalEqualArea
                     },
                     ShowLand = true,
-                    LandColor = "rgb(243,243,243)",
-                    CountryColor = "rgb(204,204,204)"
+                    BgColor = "rgb(48, 48, 48)"
                 }
-            },
-            Height = 500
+            }
         };
 
-        config = new Config
-        {
-            ShowLink = false,
-            Responsive = true
-        };
-        data = await GetMapData();
-        await base.SetParametersAsync(ParameterView.Empty);
+        data = new List<ITrace>();
+
+        await base.OnInitializedAsync();
     }
 
-    async Task<IList<ITrace>> GetMapData()
+    private async Task<IList<ITrace>> GetMapData()
     {
-        IList<ITrace> mapData = new List<ITrace>();
-
         var client = new HttpClient
         {
             BaseAddress = new Uri(MyNavigationManager.BaseUri)
         };
 
-        var csv = (await client.GetStringAsync("/2011_february_aa_flight_paths.csv"))
+        var csv = (await client.GetStringAsync($"{MyNavigationManager.BaseUri}2011_february_aa_flight_paths.csv"))
             .Split("\n")
             .Skip(1)
             .Where(s => !string.IsNullOrWhiteSpace(s))
@@ -81,24 +96,30 @@
             count.Add(int.Parse(row[7], NumberStyles.Any, CultureInfo.InvariantCulture));
         }
 
-        var max = (float) count.Max();
+        var max = (float)count.Max();
 
-        for (var i = 0; i < count.Count; i++)
+        return count.Select((t, i) => new ScatterGeo
         {
-            mapData.Add(new ScatterGeo
+            LocationMode = LocationModeEnum.USAStates, Lon = new List<object> { startLon[i], endLon[i] }, Lat = new List<object> { startLat[i], endLat[i] }, Mode = ModeFlag.Lines, Line = new Line
             {
-                LocationMode = LocationModeEnum.USAStates,
-                Lon = new List<object> {startLon[i], endLon[i]},
-                Lat = new List<object> {startLat[i], endLat[i]},
-                Mode = ModeFlag.Lines,
-                Line = new Line
-                {
-                    Width = 1,
-                    Color = "red"
-                },
-                Opacity = new decimal(count[i] / max)
-            });
-        }
-        return mapData;
+                Width = 1, Color = "red"
+            },
+            Opacity = new decimal(t / max)
+        }).Cast<ITrace>().ToList();
+    }
+
+    private void LoadData()
+    {
+        Task.Run(async () =>
+        {
+            foreach (var trace in await GetMapData())
+            {
+                await InvokeAsync(async () => await chart.AddTrace(trace));
+                // Add the delay to keep the UI responsive
+                await Task.Delay(10);
+            }
+            IsInitialized = true;
+            await InvokeAsync(StateHasChanged);
+        });
     }
 }

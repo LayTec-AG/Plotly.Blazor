@@ -1,32 +1,44 @@
-﻿@using System.Globalization
-@using Plotly.Blazor.LayoutLib
+﻿@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.XAxisLib
-@using Font = Plotly.Blazor.LayoutLib.AnnotationLib.Font
+@using System.Globalization
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
-<PlotlyChart style="height: 60vh; min-height: 350px" Layout="layout" Config="config" Data="data" Id="HeatMapChart" @ref="plotlyChart" />
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-@code {
-
-    PlotlyChart plotlyChart;
-    Layout layout;
-    Config config;
-    IList<ITrace> data;
-
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
 
     /// <inheritdoc />
-    public override async Task SetParametersAsync(ParameterView parameters)
+    protected override void OnInitialized()
     {
-        await base.SetParametersAsync(parameters);
+        config = new Config
+        {
+            ShowLink = false,
+            Responsive = true,
+            DisplayLogo = false
+        };
+
         layout = new Layout
         {
             Title = new Title
             {
-                Text = "Annotated Heatmap"
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
             },
             Annotations = new List<Annotation>(),
             XAxis = new List<XAxis>
             {
-                new ()
+                new()
                 {
                     Ticks = TicksEnum.Empty,
                     Side = SideEnum.Top
@@ -34,26 +46,22 @@
             },
             YAxis = new List<YAxis>
             {
-                new ()
+                new()
                 {
                     Ticks = LayoutLib.YAxisLib.TicksEnum.Empty,
-                    TickSuffix = " ",
+                    TickSuffix = " "
                 }
             }
         };
 
-        config = new Config
-        {
-            ShowLink = false,
-            Responsive = true,
-            DisplayLogo = false
-        };
-        data = GetMapData();
+        data = GetMapData().ToList();
 
         AddAnnotations(layout, data.First());
+
+        base.OnInitialized();
     }
 
-    IList<ITrace> GetMapData()
+    private IList<ITrace> GetMapData()
     {
         IList<ITrace> mapData = new List<ITrace>();
 
@@ -63,21 +71,21 @@
 
         var zValues = new[]
         {
-            new double? []{0.00, 0.00, 0.75, 0.75, 0.00},
-            new double? []{0.00, 0.00, 0.75, 0.75, 0.00},
-            new double? []{0.75, 0.75, 0.75, 0.75, 0.75},
-            new double? []{null, 0.00, 0.00, 0.75, 0.00}
+            new double?[] { 0.00, 0.00, 0.75, 0.75, 0.00 },
+            new double?[] { 0.00, 0.00, 0.75, 0.75, 0.00 },
+            new double?[] { 0.75, 0.75, 0.75, 0.75, 0.75 },
+            new double?[] { null, 0.00, 0.00, 0.75, 0.00 }
         };
 
-        mapData.Add(new HeatMap()
+        mapData.Add(new HeatMap
         {
             X = xValues.Cast<object>().ToList(),
             Y = yValues.Cast<object>().ToList(),
             Z = zValues.Cast<object>().ToList(),
             ColorScale = new[]
             {
-                new [] {"0", "#3D9970"},
-                new [] {"1", "#001f3f"},
+                new[] { "0", "#3D9970" },
+                new[] { "1", "#001f3f" }
             },
             ShowScale = false
         });
@@ -85,7 +93,7 @@
         return mapData;
     }
 
-    static void AddAnnotations(Layout layout, ITrace trace)
+    private static void AddAnnotations(Layout layout, ITrace trace)
     {
         if (trace is not HeatMap { Z: List<object> zValues } heatMap) return;
 
@@ -103,13 +111,13 @@
                     X = heatMap.X[j],
                     Y = heatMap.Y[i],
                     Text = currentValue.HasValue ? currentValue.Value.ToString(CultureInfo.InvariantCulture) : string.Empty,
-                    Font = new Font
+                    Font = new LayoutLib.AnnotationLib.Font
                     {
                         Family = "Arial",
                         Size = 12,
                         Color = textColor
                     },
-                    ShowArrow = false,
+                    ShowArrow = false
                 };
                 layout.Annotations.Add(result);
             }

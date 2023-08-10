@@ -38,4 +38,8 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\css\highlight\" />
+    </ItemGroup>
 </Project>

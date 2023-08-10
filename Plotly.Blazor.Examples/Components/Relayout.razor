@@ -1,14 +1,11 @@
-﻿@using Plotly.Blazor.LayoutLib
+﻿@using Plotly.Blazor.Interop
+@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.Traces.ScatterLib
-@using Plotly.Blazor.Interop
-@using System.Text.Json
-
-
-<PlotlyChart style="height: 60vh; min-height: 350px" 
+<PlotlyChart style="height: 60vh; min-height: 350px"
              @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
-             RelayoutAction="RelayoutAction" AfterRender="async () => await SubscribeEvents()" />
+             RelayoutAction="RelayoutAction" AfterRender="Init"/>
 
-@if(relayoutData?.XRange?.Count() == 2)
+@if (relayoutData?.XRange?.Count() == 2)
 {
     <MudText>X: @relayoutData.XRange[0], @relayoutData.XRange[1]</MudText>
 }
@@ -18,36 +15,59 @@
     <MudText>Y: @relayoutData.YRange[0], @relayoutData.YRange[1]</MudText>
 }
 
-@code {
-    RelayoutEventData relayoutData; 
-    
-    PlotlyChart chart;
-    private Config config = new()
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+    private RelayoutEventData relayoutData;
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        config = new Config
         {
             Responsive = true
         };
 
-    private IList<ITrace> data = new List<ITrace>
-    {
-        new Scatter
+        layout = new Layout
         {
-            Name = "ScatterTrace",
-            Mode = ModeFlag.Lines | ModeFlag.Markers,
-            X = new List<object>(),
-            Y = new List<object>()
-        }
-    };
-    private Layout layout = new()
-        {
-            Title = new Title { Text = "Scatter with Relayout Event" },
-            YAxis = new List<YAxis>
-        {
-            new()
+            Title = new Title
             {
-                Title = new LayoutLib.YAxisLib.Title { Text = "Scatter Unit" }
+                Text = "Scatter with Relayout Event"
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            YAxis = new List<YAxis>
+            {
+                new()
+                {
+                    Title = new LayoutLib.YAxisLib.Title { Text = "Scatter Unit" }
+                }
             }
-        }
-    };
+        };
+
+        data = new List<ITrace>
+        {
+            new Scatter
+            {
+                Name = "ScatterTrace",
+                Mode = ModeFlag.Lines | ModeFlag.Markers,
+                X = new List<object>(),
+                Y = new List<object>()
+            }
+        };
+
+        base.OnInitialized();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -57,12 +77,15 @@
         }
     }
 
+    private async void Init()
+    {
+        await ExtendData();
+        await chart.SubscribeRelayoutEvent();
+    }
+
     private async Task ExtendData(int count = 100)
     {
-        if (!(chart.Data.FirstOrDefault() is Scatter scatter))
-        {
-            return;
-        }
+        if (chart.Data.FirstOrDefault() is not Scatter scatter) return;
 
         var max = (int?)scatter.X?.Max();
         var (x, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
@@ -82,10 +105,5 @@
     {
         relayoutData = data;
         StateHasChanged();
-    }
-
-    public async Task SubscribeEvents()
-    {
-        await chart.SubscribeRelayoutEvent();
     }
 }

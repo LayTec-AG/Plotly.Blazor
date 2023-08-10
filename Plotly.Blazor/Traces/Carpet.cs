@@ -144,6 +144,15 @@ namespace Plotly.Blazor.Traces
         public string IdsSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the reference to a legend to show this trace in. References to these
+        ///     legends are <c>legend</c>, <c>legend2</c>, <c>legend3</c>, etc. Settings
+        ///     for these legends are set in the layout, under <c>layout.legend</c>, <c>layout.legend2</c>,
+        ///     etc.
+        /// </summary>
+        [JsonPropertyName(@"legend")]
+        public string Legend { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the LegendGroupTitle.
         /// </summary>
         [JsonPropertyName(@"legendgrouptitle")]
@@ -151,10 +160,12 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Sets the legend rank for this trace. Items and groups with smaller ranks
-        ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
+        ///     are presented on top/left side while with <c>reversed</c> <c>legend.traceorder</c>
         ///     they are on bottom/right side. The default legendrank is 1000, so that you
         ///     can use ranks less than 1000 to place certain items before all unranked
-        ///     items, and ranks greater than 1000 to go after all unranked items.
+        ///     items, and ranks greater than 1000 to go after all unranked items. When
+        ///     having unranked or equal rank items shapes would be displayed after traces
+        ///     i.e. according to their order in data and layout.
         /// </summary>
         [JsonPropertyName(@"legendrank")]
         public decimal? LegendRank { get; set;} 
@@ -201,7 +212,7 @@ namespace Plotly.Blazor.Traces
         public string MetaSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        ///     Sets the trace name. The trace name appears as the legend item and on hover.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -402,6 +413,11 @@ namespace Plotly.Blazor.Traces
                     IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
+                    Legend == other.Legend ||
+                    Legend != null &&
+                    Legend.Equals(other.Legend)
+                ) && 
+                (
                     LegendGroupTitle == other.LegendGroupTitle ||
                     LegendGroupTitle != null &&
                     LegendGroupTitle.Equals(other.LegendGroupTitle)
@@ -518,6 +534,7 @@ namespace Plotly.Blazor.Traces
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
+                if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
                 if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();

@@ -188,10 +188,10 @@ namespace Plotly.Blazor.Traces
         ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variable <c>z</c> Anything
-        ///     contained in tag <c>&lt;extra&gt;</c> is displayed in the secondary box,
-        ///     for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the
-        ///     secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        ///     that are &#39;arrayOk: true&#39;) are available. Finally, the template string
+        ///     has access to variable <c>z</c> Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
@@ -212,10 +212,10 @@ namespace Plotly.Blazor.Traces
         ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variable <c>z</c> Anything
-        ///     contained in tag <c>&lt;extra&gt;</c> is displayed in the secondary box,
-        ///     for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the
-        ///     secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        ///     that are &#39;arrayOk: true&#39;) are available. Finally, the template string
+        ///     has access to variable <c>z</c> Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         [Array]
@@ -242,8 +242,17 @@ namespace Plotly.Blazor.Traces
         public string IdsSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the legend group for this trace. Traces part of the same legend group
-        ///     hide/show at the same time when toggling legend items.
+        ///     Sets the reference to a legend to show this trace in. References to these
+        ///     legends are <c>legend</c>, <c>legend2</c>, <c>legend3</c>, etc. Settings
+        ///     for these legends are set in the layout, under <c>layout.legend</c>, <c>layout.legend2</c>,
+        ///     etc.
+        /// </summary>
+        [JsonPropertyName(@"legend")]
+        public string Legend { get; set;} 
+
+        /// <summary>
+        ///     Sets the legend group for this trace. Traces and shapes part of the same
+        ///     legend group hide/show at the same time when toggling legend items.
         /// </summary>
         [JsonPropertyName(@"legendgroup")]
         public string LegendGroup { get; set;} 
@@ -256,10 +265,12 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Sets the legend rank for this trace. Items and groups with smaller ranks
-        ///     are presented on top/left side while with `<c>reversed</c> <c>legend.traceorder</c>
+        ///     are presented on top/left side while with <c>reversed</c> <c>legend.traceorder</c>
         ///     they are on bottom/right side. The default legendrank is 1000, so that you
         ///     can use ranks less than 1000 to place certain items before all unranked
-        ///     items, and ranks greater than 1000 to go after all unranked items.
+        ///     items, and ranks greater than 1000 to go after all unranked items. When
+        ///     having unranked or equal rank items shapes would be displayed after traces
+        ///     i.e. according to their order in data and layout.
         /// </summary>
         [JsonPropertyName(@"legendrank")]
         public decimal? LegendRank { get; set;} 
@@ -318,7 +329,7 @@ namespace Plotly.Blazor.Traces
         public string MetaSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        ///     Sets the trace name. The trace name appears as the legend item and on hover.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 
@@ -401,8 +412,9 @@ namespace Plotly.Blazor.Traces
         ///     %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
         ///     on the date formatting syntax. Every attributes that can be specified per-point
-        ///     (the ones that are &#39;arrayOk: true&#39;) are available. variables <c>x</c>,
-        ///     <c>y</c>, <c>z</c> and <c>text</c>.
+        ///     (the ones that are &#39;arrayOk: true&#39;) are available. Finally, the
+        ///     template string has access to variables <c>x</c>, <c>y</c>, <c>z</c> and
+        ///     <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         public string TextTemplate { get; set;} 
@@ -735,6 +747,11 @@ namespace Plotly.Blazor.Traces
                     IdsSrc.Equals(other.IdsSrc)
                 ) && 
                 (
+                    Legend == other.Legend ||
+                    Legend != null &&
+                    Legend.Equals(other.Legend)
+                ) && 
+                (
                     LegendGroup == other.LegendGroup ||
                     LegendGroup != null &&
                     LegendGroup.Equals(other.LegendGroup)
@@ -990,6 +1007,7 @@ namespace Plotly.Blazor.Traces
                 if (HoverTemplateSrc != null) hashCode = hashCode * 59 + HoverTemplateSrc.GetHashCode();
                 if (Ids != null) hashCode = hashCode * 59 + Ids.GetHashCode();
                 if (IdsSrc != null) hashCode = hashCode * 59 + IdsSrc.GetHashCode();
+                if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
                 if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
                 if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
                 if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();

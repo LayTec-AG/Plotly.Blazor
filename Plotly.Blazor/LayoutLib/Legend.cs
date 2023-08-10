@@ -147,9 +147,19 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.VAlignEnum? VAlign { get; set;} 
 
         /// <summary>
-        ///     Sets the x position (in normalized coordinates) of the legend. Defaults
-        ///     to <c>1.02</c> for vertical legends and defaults to <c>0</c> for horizontal
-        ///     legends.
+        ///     Determines whether or not this legend is visible.
+        /// </summary>
+        [JsonPropertyName(@"visible")]
+        public bool? Visible { get; set;} 
+
+        /// <summary>
+        ///     Sets the x position with respect to <c>xref</c> (in normalized coordinates)
+        ///     of the legend. When <c>xref</c> is <c>paper</c>, defaults to <c>1.02</c>
+        ///     for vertical legends and defaults to <c>0</c> for horizontal legends. When
+        ///     <c>xref</c> is <c>container</c>, defaults to <c>1</c> for vertical legends
+        ///     and defaults to <c>0</c> for horizontal legends. Must be between <c>0</c>
+        ///     and <c>1</c> if <c>xref</c> is <c>container</c>. and between <c>-2</c> and
+        ///     <c>3</c> if <c>xref</c> is <c>paper</c>.
         /// </summary>
         [JsonPropertyName(@"x")]
         public decimal? X { get; set;} 
@@ -166,10 +176,22 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.XAnchorEnum? XAnchor { get; set;} 
 
         /// <summary>
-        ///     Sets the y position (in normalized coordinates) of the legend. Defaults
-        ///     to <c>1</c> for vertical legends, defaults to <c>-0.1</c> for horizontal
-        ///     legends on graphs w/o range sliders and defaults to <c>1.1</c> for horizontal
-        ///     legends on graph with one or multiple range sliders.
+        ///     Sets the container <c>x</c> refers to. <c>container</c> spans the entire
+        ///     <c>width</c> of the plot. <c>paper</c> refers to the width of the plotting
+        ///     area only.
+        /// </summary>
+        [JsonPropertyName(@"xref")]
+        public Plotly.Blazor.LayoutLib.LegendLib.XRefEnum? XRef { get; set;} 
+
+        /// <summary>
+        ///     Sets the y position with respect to <c>yref</c> (in normalized coordinates)
+        ///     of the legend. When <c>yref</c> is <c>paper</c>, defaults to <c>1</c> for
+        ///     vertical legends, defaults to <c>-0.1</c> for horizontal legends on graphs
+        ///     w/o range sliders and defaults to <c>1.1</c> for horizontal legends on graph
+        ///     with one or multiple range sliders. When <c>yref</c> is <c>container</c>,
+        ///     defaults to <c>1</c>. Must be between <c>0</c> and <c>1</c> if <c>yref</c>
+        ///     is <c>container</c> and between <c>-2</c> and <c>3</c> if <c>yref</c> is
+        ///     <c>paper</c>.
         /// </summary>
         [JsonPropertyName(@"y")]
         public decimal? Y { get; set;} 
@@ -184,6 +206,14 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"yanchor")]
         public Plotly.Blazor.LayoutLib.LegendLib.YAnchorEnum? YAnchor { get; set;} 
+
+        /// <summary>
+        ///     Sets the container <c>y</c> refers to. <c>container</c> spans the entire
+        ///     <c>height</c> of the plot. <c>paper</c> refers to the height of the plotting
+        ///     area only.
+        /// </summary>
+        [JsonPropertyName(@"yref")]
+        public Plotly.Blazor.LayoutLib.LegendLib.YRefEnum? YRef { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -291,6 +321,11 @@ namespace Plotly.Blazor.LayoutLib
                     VAlign.Equals(other.VAlign)
                 ) && 
                 (
+                    Visible == other.Visible ||
+                    Visible != null &&
+                    Visible.Equals(other.Visible)
+                ) && 
+                (
                     X == other.X ||
                     X != null &&
                     X.Equals(other.X)
@@ -301,6 +336,11 @@ namespace Plotly.Blazor.LayoutLib
                     XAnchor.Equals(other.XAnchor)
                 ) && 
                 (
+                    XRef == other.XRef ||
+                    XRef != null &&
+                    XRef.Equals(other.XRef)
+                ) && 
+                (
                     Y == other.Y ||
                     Y != null &&
                     Y.Equals(other.Y)
@@ -309,6 +349,11 @@ namespace Plotly.Blazor.LayoutLib
                     YAnchor == other.YAnchor ||
                     YAnchor != null &&
                     YAnchor.Equals(other.YAnchor)
+                ) && 
+                (
+                    YRef == other.YRef ||
+                    YRef != null &&
+                    YRef.Equals(other.YRef)
                 );
         }
 
@@ -336,10 +381,13 @@ namespace Plotly.Blazor.LayoutLib
                 if (TraceOrder != null) hashCode = hashCode * 59 + TraceOrder.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (VAlign != null) hashCode = hashCode * 59 + VAlign.GetHashCode();
+                if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
+                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
+                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
                 return hashCode;
             }
         }

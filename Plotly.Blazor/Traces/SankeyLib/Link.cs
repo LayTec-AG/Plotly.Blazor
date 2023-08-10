@@ -97,9 +97,10 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
-        ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
-        ///     in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     that are &#39;arrayOk: true&#39;) are available.  Variables <c>source</c>
+        ///     and <c>target</c> are node objects.Finally, the template string has access
+        ///     to variables <c>value</c> and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
         ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
@@ -121,9 +122,10 @@ namespace Plotly.Blazor.Traces.SankeyLib
         ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>value</c>
-        ///     and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c> is displayed
-        ///     in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
+        ///     that are &#39;arrayOk: true&#39;) are available.  Variables <c>source</c>
+        ///     and <c>target</c> are node objects.Finally, the template string has access
+        ///     to variables <c>value</c> and <c>label</c>. Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
         ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]

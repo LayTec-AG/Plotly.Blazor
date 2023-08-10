@@ -30,7 +30,8 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
         public decimal? Padding { get; set;} 
 
         /// <summary>
-        ///     Sets the text to display with shape.
+        ///     Sets the text to display with shape. It is also used for legend item if
+        ///     <c>name</c> is not provided.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 
@@ -54,6 +55,28 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
         /// </summary>
         [JsonPropertyName(@"textposition")]
         public Plotly.Blazor.LayoutLib.ShapeLib.LabelLib.TextPositionEnum? TextPosition { get; set;} 
+
+        /// <summary>
+        ///     Template string used for rendering the shape&#39;s label. Note that this
+        ///     will override <c>text</c>. Variables are inserted using %{variable}, for
+        ///     example &quot;x0: %{x0}&quot;. Numbers are formatted using d3-format&#39;s
+        ///     syntax %{variable:d3-format}, for example &quot;Price: %{x0:$.2f}&quot;.
+        ///     See https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on
+        ///     the formatting syntax. Dates are formatted using d3-time-format&#39;s syntax
+        ///     %{variable|d3-time-format}, for example &quot;Day: %{x0|%m %b %Y}&quot;.
+        ///     See https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
+        ///     on the date formatting syntax. A single multiplication or division operation
+        ///     may be applied to numeric variables, and combined with d3 number formatting,
+        ///     for example &quot;Length in cm: %{x0&#39;2.54}&quot;, &quot;%{slope&#39;60:.1f}
+        ///     meters per second.&quot; For log axes, variable values are given in log
+        ///     units. For date axes, x/y coordinate variables and center variables use
+        ///     datetimes, while all other variable values use values in ms. Finally, the
+        ///     template string has access to variables <c>x0</c>, <c>x1</c>, <c>y0</c>,
+        ///     <c>y1</c>, <c>slope</c>, <c>dx</c>, <c>dy</c>, <c>width</c>, <c>height</c>,
+        ///     <c>length</c>, <c>xcenter</c> and <c>ycenter</c>.
+        /// </summary>
+        [JsonPropertyName(@"texttemplate")]
+        public string TextTemplate { get; set;} 
 
         /// <summary>
         ///     Sets the label&#39;s horizontal position anchor This anchor binds the specified
@@ -116,6 +139,11 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
                     TextPosition.Equals(other.TextPosition)
                 ) && 
                 (
+                    TextTemplate == other.TextTemplate ||
+                    TextTemplate != null &&
+                    TextTemplate.Equals(other.TextTemplate)
+                ) && 
+                (
                     XAnchor == other.XAnchor ||
                     XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
@@ -138,6 +166,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
                 if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (TextAngle != null) hashCode = hashCode * 59 + TextAngle.GetHashCode();
                 if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
+                if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
                 return hashCode;

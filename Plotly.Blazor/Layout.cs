@@ -459,7 +459,8 @@ namespace Plotly.Blazor
         ///     Gets or sets the Legend.
         /// </summary>
         [JsonPropertyName(@"legend")]
-        public Plotly.Blazor.LayoutLib.Legend Legend { get; set;} 
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Legend> Legend { get; set;} 
 
         /// <summary>
         ///     Gets or sets the MapBox.
@@ -998,10 +999,10 @@ namespace Plotly.Blazor
                     Images.SequenceEqual(other.Images)
                 ) &&
                 (
-                    Legend == other.Legend ||
-                    Legend != null &&
-                    Legend.Equals(other.Legend)
-                ) && 
+                    Equals(Legend, other.Legend) ||
+                    Legend != null && other.Legend != null &&
+                    Legend.SequenceEqual(other.Legend)
+                ) &&
                 (
                     Equals(MapBox, other.MapBox) ||
                     MapBox != null && other.MapBox != null &&

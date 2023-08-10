@@ -4,6 +4,7 @@
 @using System.Collections
 @using Plotly.Blazor.Interop
 @using System.Threading
+@using Plotly.Blazor;
 @implements IDisposable
 
 <div style="min-height: 350px; height: 100%" @attributes="AdditionalAttributes" id="@Id"></div>
@@ -656,8 +657,8 @@
         HoverAction?.Invoke(eventData);
     }
 
-    //// <summary>
-    ///     Method which is called by JSRuntime when the chart's layout has changed. 
+    /// <summary>
+    ///     Method which is called by JSRuntime when the chart's layout has changed.
     /// </summary>
     [JSInvokable("RelayoutEvent")]
     public void RelayoutEvent(RelayoutEventData obj)

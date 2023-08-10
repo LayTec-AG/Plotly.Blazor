@@ -52,6 +52,46 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.LayerEnum? Layer { get; set;} 
 
         /// <summary>
+        ///     Sets the reference to a legend to show this shape in. References to these
+        ///     legends are <c>legend</c>, <c>legend2</c>, <c>legend3</c>, etc. Settings
+        ///     for these legends are set in the layout, under <c>layout.legend</c>, <c>layout.legend2</c>,
+        ///     etc.
+        /// </summary>
+        [JsonPropertyName(@"legend")]
+        public string Legend { get; set;} 
+
+        /// <summary>
+        ///     Sets the legend group for this shape. Traces and shapes part of the same
+        ///     legend group hide/show at the same time when toggling legend items.
+        /// </summary>
+        [JsonPropertyName(@"legendgroup")]
+        public string LegendGroup { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the LegendGroupTitle.
+        /// </summary>
+        [JsonPropertyName(@"legendgrouptitle")]
+        public Plotly.Blazor.LayoutLib.ShapeLib.LegendGroupTitle LegendGroupTitle { get; set;} 
+
+        /// <summary>
+        ///     Sets the legend rank for this shape. Items and groups with smaller ranks
+        ///     are presented on top/left side while with <c>reversed</c> <c>legend.traceorder</c>
+        ///     they are on bottom/right side. The default legendrank is 1000, so that you
+        ///     can use ranks less than 1000 to place certain items before all unranked
+        ///     items, and ranks greater than 1000 to go after all unranked items. When
+        ///     having unranked or equal rank items shapes would be displayed after traces
+        ///     i.e. according to their order in data and layout.
+        /// </summary>
+        [JsonPropertyName(@"legendrank")]
+        public decimal? LegendRank { get; set;} 
+
+        /// <summary>
+        ///     Sets the width (in px or fraction) of the legend for this shape.
+        /// </summary>
+        [JsonPropertyName(@"legendwidth")]
+        public decimal? LegendWidth { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
@@ -96,6 +136,12 @@ namespace Plotly.Blazor.LayoutLib
         public string Path { get; set;} 
 
         /// <summary>
+        ///     Determines whether or not this shape is shown in the legend.
+        /// </summary>
+        [JsonPropertyName(@"showlegend")]
+        public bool? ShowLegend { get; set;} 
+
+        /// <summary>
         ///     Used to refer to a named item in this array in the template. Named items
         ///     from the template will be created even without a matching item in the input
         ///     figure, but you can modify one by making an item with <c>templateitemname</c>
@@ -122,10 +168,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.TypeEnum? Type { get; set;} 
 
         /// <summary>
-        ///     Determines whether or not this shape is visible.
+        ///     Determines whether or not this shape is visible. If <c>legendonly</c>, the
+        ///     shape is not drawn, but can appear as a legend item (provided that the legend
+        ///     itself is visible).
         /// </summary>
         [JsonPropertyName(@"visible")]
-        public bool? Visible { get; set;} 
+        public Plotly.Blazor.LayoutLib.ShapeLib.VisibleEnum? Visible { get; set;} 
 
         /// <summary>
         ///     Sets the shape&#39;s starting x position. See <c>type</c> and <c>xsizemode</c>
@@ -272,6 +320,31 @@ namespace Plotly.Blazor.LayoutLib
                     Layer.Equals(other.Layer)
                 ) && 
                 (
+                    Legend == other.Legend ||
+                    Legend != null &&
+                    Legend.Equals(other.Legend)
+                ) && 
+                (
+                    LegendGroup == other.LegendGroup ||
+                    LegendGroup != null &&
+                    LegendGroup.Equals(other.LegendGroup)
+                ) && 
+                (
+                    LegendGroupTitle == other.LegendGroupTitle ||
+                    LegendGroupTitle != null &&
+                    LegendGroupTitle.Equals(other.LegendGroupTitle)
+                ) && 
+                (
+                    LegendRank == other.LegendRank ||
+                    LegendRank != null &&
+                    LegendRank.Equals(other.LegendRank)
+                ) && 
+                (
+                    LegendWidth == other.LegendWidth ||
+                    LegendWidth != null &&
+                    LegendWidth.Equals(other.LegendWidth)
+                ) && 
+                (
                     Line == other.Line ||
                     Line != null &&
                     Line.Equals(other.Line)
@@ -290,6 +363,11 @@ namespace Plotly.Blazor.LayoutLib
                     Path == other.Path ||
                     Path != null &&
                     Path.Equals(other.Path)
+                ) && 
+                (
+                    ShowLegend == other.ShowLegend ||
+                    ShowLegend != null &&
+                    ShowLegend.Equals(other.ShowLegend)
                 ) && 
                 (
                     TemplateItemName == other.TemplateItemName ||
@@ -369,10 +447,16 @@ namespace Plotly.Blazor.LayoutLib
                 if (FillRule != null) hashCode = hashCode * 59 + FillRule.GetHashCode();
                 if (Label != null) hashCode = hashCode * 59 + Label.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
+                if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
+                if (LegendGroup != null) hashCode = hashCode * 59 + LegendGroup.GetHashCode();
+                if (LegendGroupTitle != null) hashCode = hashCode * 59 + LegendGroupTitle.GetHashCode();
+                if (LegendRank != null) hashCode = hashCode * 59 + LegendRank.GetHashCode();
+                if (LegendWidth != null) hashCode = hashCode * 59 + LegendWidth.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Name != null) hashCode = hashCode * 59 + Name.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (Path != null) hashCode = hashCode * 59 + Path.GetHashCode();
+                if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
                 if (TemplateItemName != null) hashCode = hashCode * 59 + TemplateItemName.GetHashCode();
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();

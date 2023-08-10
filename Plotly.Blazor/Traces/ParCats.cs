@@ -106,9 +106,12 @@ namespace Plotly.Blazor.Traces
         ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
         ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
         ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available. variables <c>count</c>,
-        ///     <c>probability</c>, <c>category</c>, <c>categorycount</c>, <c>colorcount</c>
-        ///     and <c>bandcolorcount</c>. Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     that are &#39;arrayOk: true&#39;) are available.  This value here applies
+        ///     when hovering over dimensions. Note that <c>*categorycount</c>, <c>colorcount</c>
+        ///     and <c>bandcolorcount</c> are only available when <c>hoveron</c> contains
+        ///     the <c>color</c> flagFinally, the template string has access to variables
+        ///     <c>count</c>, <c>probability</c>, <c>category</c>, <c>categorycount</c>,
+        ///     <c>colorcount</c> and <c>bandcolorcount</c>. Anything contained in tag <c>&lt;extra&gt;</c>
         ///     is displayed in the secondary box, for example <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>.
         ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
@@ -175,7 +178,7 @@ namespace Plotly.Blazor.Traces
         public string MetaSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the trace name. The trace name appear as the legend item and on hover.
+        ///     Sets the trace name. The trace name appears as the legend item and on hover.
         /// </summary>
         [JsonPropertyName(@"name")]
         public string Name { get; set;} 

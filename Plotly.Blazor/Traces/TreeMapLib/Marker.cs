@@ -136,6 +136,12 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.Pad Pad { get; set;} 
 
         /// <summary>
+        ///     Sets the pattern within the marker.
+        /// </summary>
+        [JsonPropertyName(@"pattern")]
+        public Plotly.Blazor.Traces.TreeMapLib.MarkerLib.Pattern Pattern { get; set;} 
+
+        /// <summary>
         ///     Reverses the color mapping if true. Has an effect only if colors is set
         ///     to a numerical array. If true, <c>marker.cmin</c> will correspond to the
         ///     last color in the array and <c>marker.cmax</c> will correspond to the first
@@ -237,6 +243,11 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                     Pad.Equals(other.Pad)
                 ) && 
                 (
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
+                    Pattern.Equals(other.Pattern)
+                ) && 
+                (
                     ReverseScale == other.ReverseScale ||
                     ReverseScale != null &&
                     ReverseScale.Equals(other.ReverseScale)
@@ -268,6 +279,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                 if (DepthFade != null) hashCode = hashCode * 59 + DepthFade.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
+                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
                 if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
                 if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
                 return hashCode;

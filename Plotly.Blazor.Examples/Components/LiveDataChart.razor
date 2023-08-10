@@ -1,38 +1,93 @@
-﻿@using Plotly.Blazor.LayoutLib
-@using Plotly.Blazor.Traces.ScatterLib
-
-@using System.Reactive.Concurrency
-@using System.Reactive.Linq
-@using System.Reactive.Subjects
-@using System.Threading
+﻿@using System.Collections.Concurrent
 @using System.Diagnostics
-@using System.Collections.Concurrent
-
+@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Traces.ScatterLib
 @implements IDisposable
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="traces" @ref="chart" />
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
-@code {
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
     private PlotlyChart chart;
     private Config config;
     private Layout layout;
-    private IList<ITrace> traces;
+    private IList<ITrace> data;
 
     private CancellationTokenSource cancellationToken;
     private BlockingCollection<DataJob> queue;
-    private event EventHandler<DataJob> dataEvent;
-
+    private event EventHandler<DataJob> DataEvent;
 
     /// <inheritdoc />
-    protected override void OnParametersSet()
+    protected override void OnInitialized()
     {
-        config = CreateConfig();
-        layout = CreateLayout();
-        traces = CreateTraces();
+        config = new Config
+        {
+            Responsive = true
+        };
+
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            XAxis = new[]
+            {
+                new XAxis
+                {
+                    Title = new LayoutLib.XAxisLib.Title
+                    {
+                        Text = "Index"
+                    }
+                }
+            },
+            YAxis = new[]
+            {
+                new YAxis
+                {
+                    Title = new LayoutLib.YAxisLib.Title
+                    {
+                        Text = "Value"
+                    }
+                }
+            }
+        };
+
+        data = new List<ITrace>
+        {
+            new Scatter
+            {
+                Name = "Trace 1",
+                Mode = ModeFlag.Lines,
+                X = new List<object>(),
+                Y = new List<object>(),
+                XAxis = "x",
+                YAxis = "y"
+            },
+            new Scatter
+            {
+                Name = "Trace 2",
+                Mode = ModeFlag.Lines,
+                X = new List<object>(),
+                Y = new List<object>(),
+                XAxis = "x",
+                YAxis = "y"
+            }
+        };
+
         cancellationToken = new CancellationTokenSource();
         queue = new BlockingCollection<DataJob>();
-        base.OnParametersSet();
+
+        base.OnInitialized();
     }
 
     /// <inheritdoc />
@@ -40,7 +95,7 @@
     {
         if (firstRender)
         {
-            dataEvent += UpdateData;
+            DataEvent += UpdateData;
             _ = WriteData(50, 30);
         }
 
@@ -50,7 +105,7 @@
     /// <inheritdoc />
     public void Dispose()
     {
-        dataEvent -= UpdateData;
+        DataEvent -= UpdateData;
         cancellationToken?.Cancel();
     }
 
@@ -58,19 +113,20 @@
     ///     Writes data to the queue.
     /// </summary>
     /// <param name="milliseconds"></param>
-    /// /// <param name="count"></param>
+    /// ///
+    /// <param name="count"></param>
     private Task WriteData(int milliseconds, int count)
     {
         return Task.Run(async () =>
         {
-            // Repeat until cancellation is requested
+    // Repeat until cancellation is requested
             while (!cancellationToken.IsCancellationRequested)
             {
-                (var x, var y) = Helper.GenerateData(0, count, GenerateMethod.Sin);
-                (var x2, var y2) = Helper.GenerateData(0, count, GenerateMethod.Cos);
+                var (x, y) = Helper.GenerateData(0, count);
+                var (x2, y2) = Helper.GenerateData(0, count, GenerateMethod.Cos);
 
-                dataEvent?.Invoke(this, new DataJob(new DataEventArgs(x, y, 0), chart, traces));
-                dataEvent?.Invoke(this, new DataJob(new DataEventArgs(x2, y2, 1), chart, traces));
+                DataEvent?.Invoke(this, new DataJob(new DataEventArgs(x, y, 0), chart, data));
+                DataEvent?.Invoke(this, new DataJob(new DataEventArgs(x2, y2, 1), chart, data));
 
                 await Task.Delay(TimeSpan.FromMilliseconds(milliseconds));
             }
@@ -110,97 +166,22 @@
         Console.WriteLine($"Render of {count} points took {stopwatch.ElapsedMilliseconds}ms");
     }
 
-    /// <summary>
-    ///     Creates an initial config.
-    /// </summary>
-    /// <returns>Config</returns>
-    private Config CreateConfig()
-    {
-        return new Config
-            {
-                Responsive = true
-            };
-    }
-
-    /// <summary>
-    ///     Creates an initial layout.
-    /// </summary>
-    /// <returns>Layout</returns>
-    private Layout CreateLayout()
-    {
-        return new Layout
-            {
-                Title = new Title
-                {
-                    Text = "Live Data Simulation"
-                },
-                XAxis = new[]
-                        {
-                new XAxis
-                {
-                    Title = new Plotly.Blazor.LayoutLib.XAxisLib.Title
-                    {
-                        Text = "Index"
-                    },
-                }
-            },
-                YAxis = new[]
-                        {
-                new YAxis
-                {
-                    Title = new Plotly.Blazor.LayoutLib.YAxisLib.Title
-                    {
-                        Text = "Value"
-                    }
-                }
-            }
-            };
-    }
-
-    /// <summary>
-    ///     Creates an initial list of traces.
-    /// </summary>
-    /// <returns>IList&lt;ITrace&gt;</returns>
-    private IList<ITrace> CreateTraces()
-    {
-        return new List<ITrace>
-        {
-            new Scatter
-            {
-                Name = "Trace 1",
-                Mode = ModeFlag.Lines,
-                X = new List<object>(),
-                Y = new List<object>(),
-                XAxis = "x",
-                YAxis = "y"
-            },
-            new Scatter
-            {
-                Name = "Trace 2",
-                Mode = ModeFlag.Lines,
-                X = new List<object>(),
-                Y = new List<object>(),
-                XAxis = "x",
-                YAxis = "y"
-            }
-        };
-    }
 
     /// <summary>
     ///     Event Arguments for the Live Data Simulation.
     /// </summary>
     internal class DataEventArgs : EventArgs
     {
-        public IEnumerable<object> X { get; set; }
-        public IEnumerable<object> Y { get; set; }
-        public int TraceIndex { get; set; }
-
         public DataEventArgs(IEnumerable<object> x, IEnumerable<object> y, int traceIndex)
         {
             X = x;
             Y = y;
             TraceIndex = traceIndex;
         }
+
+        public IEnumerable<object> X { get; set; }
+        public IEnumerable<object> Y { get; set; }
+        public int TraceIndex { get; set; }
     }
 
     /// <summary>
@@ -208,18 +189,18 @@
     /// </summary>
     internal class DataJob
     {
-        public DataEventArgs DataEventArgs { get; set; }
-
-        public PlotlyChart Chart { get; set; }
-
-        public IList<ITrace> Traces { get; set; }
-
         public DataJob(DataEventArgs dataEventArgs, PlotlyChart chart, IList<ITrace> traces)
         {
             DataEventArgs = dataEventArgs;
             Chart = chart;
             Traces = traces;
         }
+
+        public DataEventArgs DataEventArgs { get; set; }
+
+        public PlotlyChart Chart { get; set; }
+
+        public IList<ITrace> Traces { get; set; }
     }
 
 }

@@ -1,38 +1,55 @@
 ﻿@using Plotly.Blazor.LayoutLib
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    Config config = new Config
-    {
-        Responsive = true
-    };
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
 
-    Layout layout = new Layout
+    /// <inheritdoc />
+    protected override void OnInitialized()
     {
-        Title = new Title
+        config = new Config
         {
-            Text = "Bar"
-        },
-        BarMode = BarModeEnum.Stack,
-        Height = 500
-    };
+            Responsive = true
+        };
 
-    List<ITrace> data = new List<ITrace>
-    {
-        new Bar
+        layout = new Layout
         {
-            X = new List<object> {"giraffes", "orangutans", "monkeys"},
-            Y = new List<object> {20, 14, 23},
-            Name = "SF Zoo"
-        },
-        new Bar
+            Title = new Title
+            {
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            BarMode = BarModeEnum.Stack
+        };
+
+        data = new List<ITrace>
         {
-            X = new List<object> {"giraffes", "orangutans", "monkeys"},
-            Y = new List<object> {12, 18, 29},
-            Name = "LA Zoo"
-        }
-    };
+            new Bar
+            {
+                X = new List<object> { "giraffes", "orangutans", "monkeys" },
+                Y = new List<object> { 20, 14, 23 },
+                Name = "SF Zoo"
+            },
+            new Bar
+            {
+                X = new List<object> { "giraffes", "orangutans", "monkeys" },
+                Y = new List<object> { 12, 18, 29 },
+                Name = "LA Zoo"
+            }
+        };
+
+        base.OnInitialized();
+    }
 }

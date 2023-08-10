@@ -1,7 +1,7 @@
 ﻿<PageTitle>@Title</PageTitle>
 
 <MudContainer>
-    <MudTabs Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" @bind-ActivePanelIndex="SelectedTab">
+    <MudTabs KeepPanelsAlive="true" Rounded="true" ApplyEffectsToContainer="true" @bind-ActivePanelIndex="SelectedTab">
         <MudTabPanel Text="Example">
             @ChildContent
         </MudTabPanel>

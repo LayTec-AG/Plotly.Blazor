@@ -1,55 +1,69 @@
 ﻿@using Plotly.Blazor.LayoutLib
-@using Plotly.Blazor.LayoutLib.SmithLib
 @using Plotly.Blazor.Traces.ScatterSmithLib
 @using Plotly.Blazor.Traces.ScatterSmithLib.MarkerLib
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    Config config = new Config
-    {
-        Responsive = true
-    };
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
 
-    Layout layout = new Layout
+    /// <inheritdoc />
+    protected override void OnInitialized()
     {
-        Title = new Title
+        config = new Config
         {
-            Text = "Smith"
-        },
-        Height = 500,
-        Smith = new List<Smith> {
-            new Smith {
-                RealAxis = new RealAxis {
-                    GridColor = "red"
-                },
-                ImaginaryAxis = new ImaginaryAxis {
-                    GridColor = "blue"
+            Responsive = true
+        };
+
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            Smith = new List<Smith>
+            {
+                new()
+                {
+                    BgColor = "rgb(48, 48, 48)"
                 }
             }
-        }
-    };
+        };
 
-    List<ITrace> data = new List<ITrace>
-    {
-        new ScatterSmith
+        data = new List<ITrace>
         {
-            Real = new List<object> {1},
-            Imag = new List<object> {1},
-            Marker = new Marker
+            new ScatterSmith
             {
-                Symbol = SymbolEnum.X,
-                Size = 30
+                Real = new List<object> { 1 },
+                Imag = new List<object> { 1 },
+                Marker = new Marker
+                {
+                    Symbol = SymbolEnum.X,
+                    Size = 30
+                },
+                Name = "Marker"
             },
-            Name = "Marker"
-        },
-        new ScatterSmith
-        {
-            Real = new List<object> {0.5, 1, 2, 3},
-            Imag = new List<object> {0.5, 1, 2, 3},
-            Name = "Series"
-        }
-    };
+            new ScatterSmith
+            {
+                Real = new List<object> { 0.5, 1, 2, 3 },
+                Imag = new List<object> { 0.5, 1, 2, 3 },
+                Name = "Series"
+            }
+        };
+
+        base.OnInitialized();
+    }
 }

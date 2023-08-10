@@ -1,73 +1,104 @@
 ﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.SceneLib
+@using XAxis = Plotly.Blazor.LayoutLib.SceneLib.XAxis
+@using YAxis = Plotly.Blazor.LayoutLib.SceneLib.YAxis
+@using Newtonsoft.Json.Linq
 @inject NavigationManager MyNavigationManager
 
-<PlotlyChart style="height: 60vh; min-height: 350px; margin-left: 30%" Id="RibbonChart" Config="config" Layout="layout" Data="data" @ref="plotlyChart"/>
+@if (!IsInitialized)
+{
+    <MudPaper>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+    </MudPaper>
+}
 
-@code {
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" AfterRender="LoadData"/>
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    private bool IsInitialized { get; set; }
     const string Url = "https://raw.githubusercontent.com/plotly/datasets/master/3d-ribbon.json";
-    
-    PlotlyChart plotlyChart;
-    Layout layout;
-    Config config;
-    IList<ITrace> data;
-    
-    public override async Task SetParametersAsync(ParameterView parameters)
-    {
-        layout = new Layout
-        {
-            Title = new Title
-            {
-                Text = "Ribbon chart"
-            },
-            Height = 600,
-            Width = 600,
-            ShowLegend = false,
-            Scene = new[]
-            {
-                new Scene()
-                {
-                    XAxis = new LayoutLib.SceneLib.XAxis(){Title = new LayoutLib.SceneLib.XAxisLib.Title(){Text = "Sample #"}},
-                    YAxis = new LayoutLib.SceneLib.YAxis(){Title = new LayoutLib.SceneLib.YAxisLib.Title(){Text = "Wave length"}},
-                    ZAxis = new LayoutLib.SceneLib.ZAxis(){Title = new LayoutLib.SceneLib.ZAxisLib.Title(){Text = "OD"}}
-                }
-            }
-        };
 
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
         config = new Config
         {
             ShowLink = false,
             Responsive = true,
             DisplayLogo = false
         };
-        
-        data = (await GetRibbonsData()).ToList();
-        await base.SetParametersAsync(ParameterView.Empty);
+
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            ShowLegend = false,
+            Scene = new[]
+            {
+                new Scene
+                {
+                    XAxis = new XAxis { Title = new LayoutLib.SceneLib.XAxisLib.Title { Text = "Sample #" } },
+                    YAxis = new YAxis { Title = new LayoutLib.SceneLib.YAxisLib.Title { Text = "Wave length" } },
+                    ZAxis = new ZAxis { Title = new LayoutLib.SceneLib.ZAxisLib.Title { Text = "OD" } }
+                }
+            }
+        };
+
+        data = new List<ITrace>();
+        base.OnInitialized();
     }
 
-    async Task <IEnumerable<ITrace>> GetRibbonsData()
+    private void LoadData()
     {
-        var client = new HttpClient
+        Task.Run(async () =>
         {
-            BaseAddress = new Uri(MyNavigationManager.BaseUri)
-        };
-        
-        var jsonResponse = await client.GetStringAsync(Url);
-        var jasonObject = Newtonsoft.Json.Linq.JObject.Parse(jsonResponse);
-        var results = jasonObject["data"].Children().ToList();
-
-        return results.Select(result =>
-        {
-            var ribbon = result.ToObject<Ribbon>();
-            return new Surface()
+            using var client = new HttpClient
             {
-                X = ribbon.X,
-                Y = ribbon.Y,
-                Z = ribbon.Z,
-                ShowLegend = false,
-                ShowScale = false
+                BaseAddress = new Uri(MyNavigationManager.BaseUri)
             };
+
+            var jsonResponse = await client.GetStringAsync(Url);
+            var jsonObject = JObject.Parse(jsonResponse);
+            var results = jsonObject["data"]?.Children().ToList();
+
+            if (!results?.Any() ?? true) return;
+
+            foreach (var ribbon in results.Select(obj => obj.ToObject<Ribbon>()))
+            {
+                await InvokeAsync(async () => await chart.AddTrace(new Surface
+                {
+                    X = ribbon.X,
+                    Y = ribbon.Y,
+                    Z = ribbon.Z,
+                    ShowLegend = false,
+                    ShowScale = false
+                }));
+
+                // Add the delay to keep the UI responsive
+                await Task.Delay(10);
+            }
+            IsInitialized = true;
+            await InvokeAsync(StateHasChanged);
         });
     }
-    
+
     record Ribbon(object[][] X, object[][] Y, object[][] Z, string[][] ColorScale);
 }

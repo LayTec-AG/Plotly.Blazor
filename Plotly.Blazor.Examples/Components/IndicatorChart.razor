@@ -2,111 +2,133 @@
 @using Plotly.Blazor.LayoutLib.GridLib
 @using Plotly.Blazor.Traces.IndicatorLib
 @using Domain = Plotly.Blazor.Traces.IndicatorLib.Domain
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    Config config = new()
-    {
-        Responsive = true
-    };
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
 
-    Layout layout = new()
+    /// <inheritdoc />
+    protected override void OnInitialized()
     {
-        Margin = new Margin
+        config = new Config
         {
-            L = 25,
-            B = 25,
-            R = 25,
-            T = 25
-        },
-        Grid = new Grid
-        {
-            Columns = 2,
-            Rows = 2,
-            Pattern = PatternEnum.Independent
-        }
-    };
+            Responsive = true
+        };
 
-    IList<ITrace> data = new List<ITrace>
-    {
-        new Indicator
+        layout = new Layout
         {
-            Mode = ModeFlag.Number,
-            Title = new Traces.IndicatorLib.Title
+            Title = new Title
             {
-                Text = "Number Indicator"
+                Text = GetType().Name
             },
-            Value = 500,
-            Domain = new Domain
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
             {
-                Row = 0,
-                Column = 0
+                Color = Theme.PaletteDark.TextPrimary.ToString()
             },
-            Delta = new Delta
+            Margin = new Margin
             {
-                Reference = 400,
-                Relative = true
+                L = 25,
+                B = 25,
+                R = 25,
+                T = 25
+            },
+            Grid = new Grid
+            {
+                Columns = 2,
+                Rows = 2,
+                Pattern = PatternEnum.Independent
             }
-        },
-        new Indicator
+        };
+
+        data = new List<ITrace>
         {
-            Mode = ModeFlag.Number | ModeFlag.Delta,
-            Title = new Traces.IndicatorLib.Title
+            new Indicator
             {
-                Text = "Number+Delta Indicator"
+                Mode = ModeFlag.Number,
+                Title = new Traces.IndicatorLib.Title
+                {
+                    Text = "Number Indicator"
+                },
+                Value = 500,
+                Domain = new Domain
+                {
+                    Row = 0,
+                    Column = 0
+                },
+                Delta = new Delta
+                {
+                    Reference = 400,
+                    Relative = true
+                }
             },
-            Value = 500,
-            Domain = new Domain
+            new Indicator
             {
-                Row = 0,
-                Column = 1
+                Mode = ModeFlag.Number | ModeFlag.Delta,
+                Title = new Traces.IndicatorLib.Title
+                {
+                    Text = "Number+Delta Indicator"
+                },
+                Value = 500,
+                Domain = new Domain
+                {
+                    Row = 0,
+                    Column = 1
+                },
+                Delta = new Delta
+                {
+                    Reference = 400,
+                    Relative = true
+                }
             },
-            Delta = new Delta
+            new Indicator
             {
-                Reference = 400,
-                Relative = true
+                Mode = ModeFlag.Number | ModeFlag.Gauge,
+                Title = new Traces.IndicatorLib.Title
+                {
+                    Text = "Number+Gauge Indicator"
+                },
+                Value = 500,
+                Domain = new Domain
+                {
+                    Row = 1,
+                    Column = 0
+                },
+                Delta = new Delta
+                {
+                    Reference = 400,
+                    Relative = true
+                }
+            },
+            new Indicator
+            {
+                Mode = ModeFlag.Number | ModeFlag.Delta | ModeFlag.Gauge,
+                Title = new Traces.IndicatorLib.Title
+                {
+                    Text = "Number+Delta+Gauge Indicator"
+                },
+                Value = 500,
+                Domain = new Domain
+                {
+                    Row = 1,
+                    Column = 1
+                },
+                Delta = new Delta
+                {
+                    Reference = 400,
+                    Relative = true
+                }
             }
-        },
-        new Indicator
-        {
-            Mode = ModeFlag.Number | ModeFlag.Gauge,
-            Title = new Traces.IndicatorLib.Title
-            {
-                Text = "Number+Gauge Indicator"
-            },
-            Value = 500,
-            Domain = new Domain
-            {
-                Row = 1,
-                Column = 0
-            },
-            Delta = new Delta
-            {
-                Reference = 400,
-                Relative = true
-            }
-        },
-        new Indicator
-        {
-            Mode = ModeFlag.Number | ModeFlag.Delta | ModeFlag.Gauge,
-            Title = new Traces.IndicatorLib.Title
-            {
-                Text = "Number+Delta+Gauge Indicator"
-            },
-            Value = 500,
-            Domain = new Domain
-            {
-                Row = 1,
-                Column = 1
-            },
-            Delta = new Delta
-            {
-                Reference = 400,
-                Relative = true
-            }
-        }
-    };
+        };
+
+        base.OnInitialized();
+    }
 }

@@ -11,9 +11,13 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.21" PrivateAssets="all" />
         <PackageReference Include="MudBlazor" Version="6.8.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />
     </ItemGroup>
+
+    <PropertyGroup>
+        <BaseHref Condition="'$(Configuration)' == 'Release'">/Plotly.Blazor/</BaseHref>
+        <BaseHref Condition="'$(Configuration)' != 'Release'">/</BaseHref>
+    </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
@@ -37,5 +41,12 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
+
+    <Target Name="SetBaseHref" BeforeTargets="BlazorCopyStaticWebAssetsToOutputDirectory">
+        <WriteLinesToFile
+            File="$(BaseOutputPath)$(Configuration)\wwwroot\index.html"
+            Lines="$([System.IO.File]::ReadAllText('$(BaseOutputPath)$(Configuration)\wwwroot\index.html').Replace('&lt;base href=&quot;/&quot;&gt;', '&lt;base href=&quot;$(BaseHref)&quot;&gt;'))"
+            Overwrite="true" />
+    </Target>
 
 </Project>

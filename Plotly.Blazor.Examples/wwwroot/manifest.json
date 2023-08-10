@@ -1,7 +1,7 @@
 {
   "name": "Plotly.Blazor.Examples",
   "short_name": "Plotly.Blazor.Examples",
-  "start_url": "./",
+  "start_url": "/Plotly.Blazor",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#03173d",

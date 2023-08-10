@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
     <PropertyGroup>
         <TargetFrameworks>net6.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+        <GHPages>true</GHPages>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,11 +12,12 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.21" PrivateAssets="all" />
         <PackageReference Include="MudBlazor" Version="6.8.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
+        <ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,5 +38,4 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
-
 </Project>

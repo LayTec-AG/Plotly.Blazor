@@ -3,17 +3,21 @@
 @using Plotly.Blazor.Traces.ScatterLib
 @using Line = Plotly.Blazor.LayoutLib.ShapeLib.Line
 <PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart"/>
+<div class="d-flex gap-1 justify-end">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Remove" OnClick="RemoveLine">Remove Line</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddLine">Add Line</MudButton>
+</div>
 
 @code
 {
     PlotlyChart chart;
 
-    Config config = new Config
+    Config config = new()
     {
         Responsive = true
     };
 
-    Layout layout = new Layout
+    Layout layout = new()
     {
         Title = new Title
         {
@@ -21,7 +25,7 @@
         },
         YAxis = new List<YAxis>
         {
-            new YAxis
+            new()
             {
                 Title = new LayoutLib.YAxisLib.Title
                 {
@@ -29,9 +33,10 @@
                 }
             }
         },
+
         Shapes = new List<Shape>
         {
-            new Shape
+            new()
             {
                 Type = TypeEnum.Rect,
                 XRef = "x",
@@ -47,7 +52,7 @@
                     Width = 0
                 }
             },
-            new Shape
+            new()
             {
                 Type = TypeEnum.Rect,
                 XRef = "x",
@@ -67,7 +72,7 @@
         Height = 500
     };
 
-    List<ITrace> data = new List<ITrace>
+    List<ITrace> data = new()
     {
         new Scatter
         {
@@ -79,10 +84,38 @@
         new Scatter
         {
             Name = "TextTrace",
-            X = new List<object> {30, 80},
-            Y = new List<object> {50, 50},
-            TextArray = new List<string> {"Test1", "Test2"},
+            X = new List<object> { 30, 80 },
+            Y = new List<object> { 50, 50 },
+            TextArray = new List<string> { "Test1", "Test2" },
             Mode = ModeFlag.Text
         }
     };
+
+    private void RemoveLine()
+    {
+        if (layout.Shapes.Count < 3) return;
+        layout.Shapes.RemoveAt(layout.Shapes.Count - 1);
+        _ = chart.Relayout(CancellationToken.None);
+    }
+
+    private void AddLine()
+    {
+        var x = layout.Shapes.Count - 1;
+
+        layout.Shapes.Add(new Shape
+        {
+            Type = TypeEnum.Line,
+            XRef = "x",
+            YRef = "paper",
+            X0 = x,
+            X1 = x,
+            Y0 = 0,
+            Y1 = 1,
+            Line = new Line
+            {
+                Width = 3
+            }
+        });
+        _ = chart.Relayout(CancellationToken.None);
+    }
 }

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
     <PropertyGroup>
         <TargetFrameworks>net6.0</TargetFrameworks>
@@ -10,7 +10,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.21" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.21" PrivateAssets="all" />
-        <PackageReference Include="MudBlazor" Version="6.8.0" />
+        <PackageReference Include="MudBlazor" Version="6.9.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />

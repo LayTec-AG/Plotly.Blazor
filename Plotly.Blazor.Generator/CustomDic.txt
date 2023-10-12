@@ -323,3 +323,7 @@ standoffsrc=standoffSrc
 stepsrc=stepSrc
 minreducedheight=minReducedHeight
 minreducedwidth=minReducedWidth
+quartiles=quartiles
+sdmultiple=sdMultiple
+autorangeoptions=autoRangeOptions
+includesrc=includeSrc

@@ -3,6 +3,7 @@
 @using Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
 @using Plotly.Blazor.Traces.ScatterGeoLib
 @using System.Globalization
+@using Plotly.Blazor.Interop
 @inject NavigationManager MyNavigationManager
 
 @if (!IsInitialized)
@@ -12,7 +13,13 @@
     </MudPaper>
 }
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" AfterRender="LoadData"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" HoverAction="HoverAction" AfterRender="LoadData" />
+
+@if (HoverInfos != null && HoverInfos.Any())
+{
+    <MudText>Current Lat: @HoverInfos.First().Lat</MudText>
+    <MudText>Current Lon: @HoverInfos.First().Lon</MudText>
+}
 
 @code
 {
@@ -23,6 +30,7 @@
     private Config config;
     private Layout layout;
     private IList<ITrace> data;
+    private IEnumerable<EventDataPoint> HoverInfos { get; set; }
 
     private bool IsInitialized { get; set; }
 
@@ -108,6 +116,12 @@
         }).Cast<ITrace>().ToList();
     }
 
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
+    {
+        HoverInfos = eventData;
+        StateHasChanged();
+    }
+
     private void LoadData()
     {
         Task.Run(async () =>
@@ -119,6 +133,7 @@
                 await Task.Delay(10);
             }
             IsInitialized = true;
+            await chart.SubscribeHoverEvent();
             await InvokeAsync(StateHasChanged);
         });
     }

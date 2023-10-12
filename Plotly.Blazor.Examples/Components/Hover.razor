@@ -22,7 +22,7 @@
     private Config config;
     private Layout layout;
     private IList<ITrace> data;
-    private IEnumerable<HoverEventDataPoint> HoverInfos { get; set; }
+    private IEnumerable<EventDataPoint> HoverInfos { get; set; }
 
     /// <inheritdoc />
     protected override void OnInitialized()
@@ -68,7 +68,7 @@
         base.OnInitialized();
     }
 
-    public void HoverAction(IEnumerable<HoverEventDataPoint> eventData)
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
     {
         HoverInfos = eventData;
         StateHasChanged();

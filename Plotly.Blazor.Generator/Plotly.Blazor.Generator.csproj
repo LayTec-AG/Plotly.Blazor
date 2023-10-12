@@ -11,8 +11,9 @@
     <Compile Remove="src\EnumConverter.cs" />
     <Compile Remove="src\Extensions.cs" />
     <Compile Remove="src\ImageFormat.cs" />
-    <Compile Remove="src\Interop\HoverEventDataPoint.cs" />
+    <Compile Remove="src\Interop\EventDataPoint.cs" />
     <Compile Remove="src\Interop\RelayoutEventData.cs" />
+    <Compile Remove="src\PlotlyChart.razor.cs" />
     <Compile Remove="src\PlotlyConverter.cs" />
     <Compile Remove="src\PlotlyJsInterop.cs" />
     <Compile Remove="src\PolymorphicConverter.cs" />
@@ -86,10 +87,13 @@
     <None Include="src\ImageFormat.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="src\Interop\HoverEventDataPoint.cs">
+    <None Include="src\Interop\EventDataPoint.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\Interop\RelayoutEventData.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="src\PlotlyChart.razor.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="src\PlotlyConverter.cs">

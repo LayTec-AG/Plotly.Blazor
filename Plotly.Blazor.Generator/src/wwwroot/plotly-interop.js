@@ -62,10 +62,37 @@
     subscribeClickEvent: function (dotNetObj, id) {
         var plot = document.getElementById(id);
         plot.on('plotly_click', function (data) {
-            if(data.points[0].x != null)
-                dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].x, data.points[0].y);
-            else
-                dotNetObj.invokeMethodAsync('ClickEvent', data.points[0].value, data.points[0].label);
+            dotNetObj.invokeMethodAsync('ClickEvent',
+                data.points.map(function (d) {
+                    if (d.x != null) {
+                        return ({
+                            TraceIndex: d.fullData.index,
+                            PointIndex: d.pointIndex,
+                            PointNumber: d.pointNumber,
+                            CurveNumber: d.curveNumber,
+                            Text: d.text,
+                            X: d.x,
+                            Y: d.y,
+                            Z: d.z,
+                            Lat: d.lat,
+                            Lon: d.lon
+                        });
+                    }
+                    else {
+                        return ({
+                            TraceIndex: d.fullData.index,
+                            PointIndex: d.pointIndex,
+                            PointNumber: d.pointNumber,
+                            CurveNumber: d.curveNumber,
+                            Text: d.text,
+                            X: d.value,
+                            Y: d.label,
+                            Z: null,
+                            Lat: d.lat,
+                            Lon: d.lon
+                        });
+                    }
+                }));
         })
     },
     subscribeHoverEvent: function (dotNetObj, id) {
@@ -82,7 +109,9 @@
                             Text: d.text,
                             X: d.x,
                             Y: d.y,
-                            Z: d.z
+                            Z: d.z,
+                            Lat: d.lat,
+                            Lon: d.lon
                         });
                     }
                     else {
@@ -94,7 +123,9 @@
                             Text: d.text,
                             X: d.value,
                             Y: d.label,
-                            Z: null
+                            Z: null,
+                            Lat: d.lat,
+                            Lon: d.lon
                         });
                     }
                 }));

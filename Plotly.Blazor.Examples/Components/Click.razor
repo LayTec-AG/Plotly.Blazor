@@ -1,0 +1,81 @@
+﻿@using Plotly.Blazor.Interop
+@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Traces.ScatterLib
+
+<PlotlyChart style="height: 60vh; min-height: 350px"
+@bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             ClickAction="ClickAction" AfterRender="SubscribeEvents" />
+
+@if (ClickInfos != null && ClickInfos.Any())
+{
+    <MudText>Current X: @ClickInfos.First().X</MudText>
+    <MudText>Current Y: @ClickInfos.FirstOrDefault(d => d.TraceIndex == 0)?.Y</MudText>
+    <MudText>Current Y2: @ClickInfos.FirstOrDefault(d => d.TraceIndex == 1)?.Y</MudText>
+}
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+    private IEnumerable<EventDataPoint> ClickInfos { get; set; }
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        config = new Config
+            {
+                Responsive = true
+            };
+
+        layout = new Layout
+            {
+                Title = new Title
+                {
+                    Text = GetType().Name
+                },
+                PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+                PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+                Font = new Font
+                {
+                    Color = Theme.PaletteDark.TextPrimary.ToString()
+                },
+                HoverMode = HoverModeEnum.XUnified
+            };
+
+        data = new List<ITrace>
+        {
+            new Scatter
+            {
+                Name = "ScatterTrace",
+                Mode = ModeFlag.Markers,
+                X = Enumerable.Range(0, 30).Cast<object>().ToList(),
+                Y = Helper.GenerateData(0, 30).Y
+            },
+            new Scatter
+            {
+                Name = "ScatterTrace 2",
+                Mode = ModeFlag.Markers,
+                X = Enumerable.Range(0, 30).Cast<object>().ToList(),
+                Y = Helper.GenerateData(0, 30).Y
+            }
+        };
+
+        base.OnInitialized();
+    }
+
+    public void ClickAction(IEnumerable<EventDataPoint> eventData)
+    {
+        ClickInfos = eventData;
+        StateHasChanged();
+    }
+
+    public async void SubscribeEvents()
+    {
+        await chart.SubscribeClickEvent();
+    }
+}

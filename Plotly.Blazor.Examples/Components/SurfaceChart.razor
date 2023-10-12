@@ -1,5 +1,6 @@
 ﻿@using Plotly.Blazor.LayoutLib
 @using System.Globalization
+@using Plotly.Blazor.Interop
 @inject NavigationManager MyNavigationManager
 
 @if (!IsInitialized)
@@ -9,7 +10,14 @@
     </MudPaper>
 }
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" AfterRender="LoadData"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" HoverAction="HoverAction" AfterRender="LoadData" />
+
+@if (HoverInfos != null && HoverInfos.Any())
+{
+    <MudText>Current X: @HoverInfos.First().X</MudText>
+    <MudText>Current Y: @HoverInfos.First().Y</MudText>
+    <MudText>Current Z: @HoverInfos.First().Z</MudText>
+}
 
 @code
 {
@@ -20,6 +28,8 @@
     private Config config;
     private Layout layout;
     private IList<ITrace> data;
+
+    private IEnumerable<EventDataPoint> HoverInfos { get; set; }
 
     private bool IsInitialized { get; set; }
 
@@ -63,18 +73,25 @@
     {
         Task.Run(async () =>
         {
-            foreach (var trace in await GetMapData())
+            foreach (var trace in await GetSurfaceData())
             {
                 await InvokeAsync(async () => await chart.AddTrace(trace));
                 // Add the delay to keep the UI responsive
                 await Task.Delay(10);
             }
             IsInitialized = true;
+            await chart.SubscribeHoverEvent();
             await InvokeAsync(StateHasChanged);
         });
     }
 
-    async Task<IList<ITrace>> GetMapData()
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
+    {
+        HoverInfos = eventData;
+        StateHasChanged();
+    }
+
+    async Task<IList<ITrace>> GetSurfaceData()
     {
         IList<ITrace> mapData = new List<ITrace>();
 

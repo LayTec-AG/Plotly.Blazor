@@ -28,7 +28,8 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
         ///     Determines the location of legend&#39;s title with respect to the legend
         ///     items. Defaulted to <c>top</c> with <c>orientation</c> is <c>h</c>. Defaulted
         ///     to <c>left</c> with <c>orientation</c> is <c>v</c>. The &#39;top left&#39;
-        ///     options could be used to expand legend area in both x and y sides.
+        ///     options could be used to expand top center and top right are for horizontal
+        ///     alignment legend area in both x and y sides.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.LayoutLib.LegendLib.TitleLib.SideEnum? Side { get; set;} 

@@ -476,6 +476,13 @@ namespace Plotly.Blazor.Traces
         public IList<object> SD { get; set;} 
 
         /// <summary>
+        ///     Scales the box size when sizemode=sd Allowing boxes to be drawn across any
+        ///     stddev range For example 1-stddev, 3-stddev, 5-stddev
+        /// </summary>
+        [JsonPropertyName(@"sdmultiple")]
+        public decimal? SdMultiple { get; set;} 
+
+        /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for <c>sd</c>.
         /// </summary>
         [JsonPropertyName(@"sdsrc")]
@@ -503,6 +510,22 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"showlegend")]
         public bool? ShowLegend { get; set;} 
+
+        /// <summary>
+        ///     Determines whether or not whiskers are visible. Defaults to true for <c>sizemode</c>
+        ///     <c>quartiles</c>, false for <c>sd</c>.
+        /// </summary>
+        [JsonPropertyName(@"showwhiskers")]
+        public bool? ShowWhiskers { get; set;} 
+
+        /// <summary>
+        ///     Sets the upper and lower bound for the boxes quartiles means box is drawn
+        ///     between Q1 and Q3 SD means the box is drawn between Mean +- Standard Deviation
+        ///     Argument sdmultiple (default 1) to scale the box size So it could be drawn
+        ///     1-stddev, 3-stddev etc
+        /// </summary>
+        [JsonPropertyName(@"sizemode")]
+        public Plotly.Blazor.Traces.BoxLib.SizeModeEnum? SizeMode { get; set;} 
 
         /// <summary>
         ///     Gets or sets the Stream.
@@ -1038,6 +1061,11 @@ namespace Plotly.Blazor.Traces
                     SD.SequenceEqual(other.SD)
                 ) &&
                 (
+                    SdMultiple == other.SdMultiple ||
+                    SdMultiple != null &&
+                    SdMultiple.Equals(other.SdMultiple)
+                ) && 
+                (
                     SdSrc == other.SdSrc ||
                     SdSrc != null &&
                     SdSrc.Equals(other.SdSrc)
@@ -1056,6 +1084,16 @@ namespace Plotly.Blazor.Traces
                     ShowLegend == other.ShowLegend ||
                     ShowLegend != null &&
                     ShowLegend.Equals(other.ShowLegend)
+                ) && 
+                (
+                    ShowWhiskers == other.ShowWhiskers ||
+                    ShowWhiskers != null &&
+                    ShowWhiskers.Equals(other.ShowWhiskers)
+                ) && 
+                (
+                    SizeMode == other.SizeMode ||
+                    SizeMode != null &&
+                    SizeMode.Equals(other.SizeMode)
                 ) && 
                 (
                     Stream == other.Stream ||
@@ -1274,10 +1312,13 @@ namespace Plotly.Blazor.Traces
                 if (Q3Src != null) hashCode = hashCode * 59 + Q3Src.GetHashCode();
                 if (QuartileMethod != null) hashCode = hashCode * 59 + QuartileMethod.GetHashCode();
                 if (SD != null) hashCode = hashCode * 59 + SD.GetHashCode();
+                if (SdMultiple != null) hashCode = hashCode * 59 + SdMultiple.GetHashCode();
                 if (SdSrc != null) hashCode = hashCode * 59 + SdSrc.GetHashCode();
                 if (Selected != null) hashCode = hashCode * 59 + Selected.GetHashCode();
                 if (SelectedPoints != null) hashCode = hashCode * 59 + SelectedPoints.GetHashCode();
                 if (ShowLegend != null) hashCode = hashCode * 59 + ShowLegend.GetHashCode();
+                if (ShowWhiskers != null) hashCode = hashCode * 59 + ShowWhiskers.GetHashCode();
+                if (SizeMode != null) hashCode = hashCode * 59 + SizeMode.GetHashCode();
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
                 if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (TextArray != null) hashCode = hashCode * 59 + TextArray.GetHashCode();

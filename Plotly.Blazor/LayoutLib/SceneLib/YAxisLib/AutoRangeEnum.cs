@@ -11,7 +11,13 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.YAxisLib
     /// <summary>
     ///     Determines whether or not the range of this axis is computed in relation
     ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
-    ///     provided, then <c>autorange</c> is set to <c>false</c>.
+    ///     provided and it has a value for both the lower and upper bound, <c>autorange</c>
+    ///     is set to <c>false</c>. Using <c>min</c> applies autorange only to set the
+    ///     minimum. Using <c>max</c> applies autorange only to set the maximum. Using
+    ///     &#39;min reversed&#39; applies autorange only to set the minimum on a reversed
+    ///     axis. Using &#39;max reversed&#39; applies autorange only to set the maximum
+    ///     on a reversed axis. Using <c>reversed</c> applies autorange on both ends
+    ///     and reverses the axis direction.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
@@ -22,6 +28,14 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.YAxisLib
         [EnumMember(Value=@"False")]
         False,
         [EnumMember(Value=@"reversed")]
-        Reversed
+        Reversed,
+        [EnumMember(Value=@"min reversed")]
+        MinReversed,
+        [EnumMember(Value=@"max reversed")]
+        MaxReversed,
+        [EnumMember(Value=@"min")]
+        Min,
+        [EnumMember(Value=@"max")]
+        Max
     }
 }

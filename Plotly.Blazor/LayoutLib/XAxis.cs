@@ -36,10 +36,22 @@ namespace Plotly.Blazor.LayoutLib
         /// <summary>
         ///     Determines whether or not the range of this axis is computed in relation
         ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
-        ///     provided, then <c>autorange</c> is set to <c>false</c>.
+        ///     provided and it has a value for both the lower and upper bound, <c>autorange</c>
+        ///     is set to <c>false</c>. Using <c>min</c> applies autorange only to set the
+        ///     minimum. Using <c>max</c> applies autorange only to set the maximum. Using
+        ///     &#39;min reversed&#39; applies autorange only to set the minimum on a reversed
+        ///     axis. Using &#39;max reversed&#39; applies autorange only to set the maximum
+        ///     on a reversed axis. Using <c>reversed</c> applies autorange on both ends
+        ///     and reverses the axis direction.
         /// </summary>
         [JsonPropertyName(@"autorange")]
         public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeEnum? AutoRange { get; set;} 
+
+        /// <summary>
+        ///     Gets or sets the AutoRangeOptions.
+        /// </summary>
+        [JsonPropertyName(@"autorangeoptions")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeOptions AutoRangeOptions { get; set;} 
 
         /// <summary>
         ///     Using <c>strict</c> a numeric string in trace data is not converted to a
@@ -208,6 +220,18 @@ namespace Plotly.Blazor.LayoutLib
         public string HoverFormat { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. For negative numbers the minus sign symbol used (U+2212)
+        ///     is wider than the regular ascii dash. That means you need to use −1 instead
+        ///     of -1. labelalias can be used with any axis type, and both keys (if needed)
+        ///     and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Sets the layer on which this axis is displayed. If &#39;above traces&#39;,
         ///     this axis is displayed above all the subplot&#39;s traces If &#39;below
         ///     traces&#39;, this axis is displayed below all the subplot&#39;s traces,
@@ -240,6 +264,18 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"matches")]
         public string Matches { get; set;} 
+
+        /// <summary>
+        ///     Determines the maximum range of this axis.
+        /// </summary>
+        [JsonPropertyName(@"maxallowed")]
+        public object MaxAllowed { get; set;} 
+
+        /// <summary>
+        ///     Determines the minimum range of this axis.
+        /// </summary>
+        [JsonPropertyName(@"minallowed")]
+        public object MinAllowed { get; set;} 
 
         /// <summary>
         ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
@@ -295,7 +331,8 @@ namespace Plotly.Blazor.LayoutLib
         ///     it should be date strings, like date data, though Date objects and unix
         ///     milliseconds will be accepted and converted to strings. If the axis <c>type</c>
         ///     is <c>category</c>, it should be numbers, using the scale where each category
-        ///     is assigned a serial number from zero in the order it appears.
+        ///     is assigned a serial number from zero in the order it appears. Leaving either
+        ///     or both elements <c>null</c> impacts the default <c>autorange</c>.
         /// </summary>
         [JsonPropertyName(@"range")]
         public IList<object> Range { get; set;} 
@@ -341,7 +378,12 @@ namespace Plotly.Blazor.LayoutLib
         ///     or longer) are redundant and the last constraint encountered will be ignored
         ///     to avoid possible inconsistent constraints via <c>scaleratio</c>. Note that
         ///     setting axes simultaneously in both a <c>scaleanchor</c> and a <c>matches</c>
-        ///     constraint is currently forbidden.
+        ///     constraint is currently forbidden. Setting <c>false</c> allows to remove
+        ///     a default constraint (occasionally, you may need to prevent a default <c>scaleanchor</c>
+        ///     constraint from being applied, eg. when having an image trace &#39;yaxis:
+        ///     {scaleanchor: <c>x</c>}&#39; is set automatically in order for pixels to
+        ///     be rendered as squares, setting &#39;yaxis: {scaleanchor: false}&#39; allows
+        ///     to remove the constraint).
         /// </summary>
         [JsonPropertyName(@"scaleanchor")]
         public string ScaleAnchor { get; set;} 
@@ -712,6 +754,11 @@ namespace Plotly.Blazor.LayoutLib
                     AutoRange.Equals(other.AutoRange)
                 ) && 
                 (
+                    AutoRangeOptions == other.AutoRangeOptions ||
+                    AutoRangeOptions != null &&
+                    AutoRangeOptions.Equals(other.AutoRangeOptions)
+                ) && 
+                (
                     AutoTypeNumbers == other.AutoTypeNumbers ||
                     AutoTypeNumbers != null &&
                     AutoTypeNumbers.Equals(other.AutoTypeNumbers)
@@ -802,6 +849,11 @@ namespace Plotly.Blazor.LayoutLib
                     HoverFormat.Equals(other.HoverFormat)
                 ) && 
                 (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
+                ) && 
+                (
                     Layer == other.Layer ||
                     Layer != null &&
                     Layer.Equals(other.Layer)
@@ -820,6 +872,16 @@ namespace Plotly.Blazor.LayoutLib
                     Matches == other.Matches ||
                     Matches != null &&
                     Matches.Equals(other.Matches)
+                ) && 
+                (
+                    MaxAllowed == other.MaxAllowed ||
+                    MaxAllowed != null &&
+                    MaxAllowed.Equals(other.MaxAllowed)
+                ) && 
+                (
+                    MinAllowed == other.MinAllowed ||
+                    MinAllowed != null &&
+                    MinAllowed.Equals(other.MinAllowed)
                 ) && 
                 (
                     MinExponent == other.MinExponent ||
@@ -1112,6 +1174,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (Anchor != null) hashCode = hashCode * 59 + Anchor.GetHashCode();
                 if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
                 if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
+                if (AutoRangeOptions != null) hashCode = hashCode * 59 + AutoRangeOptions.GetHashCode();
                 if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
                 if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();
@@ -1130,10 +1193,13 @@ namespace Plotly.Blazor.LayoutLib
                 if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
                 if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();
                 if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();
                 if (Matches != null) hashCode = hashCode * 59 + Matches.GetHashCode();
+                if (MaxAllowed != null) hashCode = hashCode * 59 + MaxAllowed.GetHashCode();
+                if (MinAllowed != null) hashCode = hashCode * 59 + MinAllowed.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (Minor != null) hashCode = hashCode * 59 + Minor.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();

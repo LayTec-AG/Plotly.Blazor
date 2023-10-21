@@ -71,6 +71,8 @@ namespace Plotly.Blazor.LayoutLib.GeoLib.ProjectionLib
         Eckert6,
         [EnumMember(Value=@"eisenlohr")]
         Eisenlohr,
+        [EnumMember(Value=@"equal earth")]
+        EqualEarth,
         [EnumMember(Value=@"equirectangular")]
         EquiRectangular,
         [EnumMember(Value=@"fahey")]

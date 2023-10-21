@@ -1,24 +1,59 @@
-﻿@using System.Globalization
+﻿@using Plotly.Blazor.LayoutLib
+@using System.Globalization
+@using Plotly.Blazor.Interop
 @inject NavigationManager MyNavigationManager
 
-<PlotlyChart style="height: 60vh; min-height: 350px" Layout="layout" Config="config" Data="data" Id="MapChart" @ref="plotlyChart" />
+@if (!IsInitialized)
+{
+    <MudPaper>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+    </MudPaper>
+}
 
-@code {
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" HoverAction="HoverAction" AfterRender="LoadData" />
 
-    PlotlyChart plotlyChart;
-    Layout layout;
-    Config config;
-    IList<ITrace> data;
+@if (HoverInfos != null && HoverInfos.Any())
+{
+    <MudText>Current X: @HoverInfos.First().X</MudText>
+    <MudText>Current Y: @HoverInfos.First().Y</MudText>
+    <MudText>Current Z: @HoverInfos.First().Z</MudText>
+}
 
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    private IEnumerable<EventDataPoint> HoverInfos { get; set; }
+
+    private bool IsInitialized { get; set; }
 
     /// <inheritdoc />
-    public override async Task SetParametersAsync(ParameterView parameters)
+    protected override void OnInitialized()
     {
+        config = new Config
+        {
+            ShowLink = false,
+            Responsive = true,
+            DisplayLogo = false
+        };
+
         layout = new Layout
         {
             Title = new Title
             {
                 Text = "Mt Bruno Elevation"
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
             },
             Margin = new Margin
             {
@@ -29,26 +64,43 @@
             }
         };
 
-        config = new Config
-        {
-            ShowLink = false,
-            Responsive = true,
-            DisplayLogo = false
-        };
-        data = await GetMapData();
-        await base.SetParametersAsync(ParameterView.Empty);
+        data = new List<ITrace>();
+
+        base.OnInitialized();
     }
 
-    async Task<IList<ITrace>> GetMapData()
+    private void LoadData()
+    {
+        Task.Run(async () =>
+        {
+            foreach (var trace in await GetSurfaceData())
+            {
+                await InvokeAsync(async () => await chart.AddTrace(trace));
+                // Add the delay to keep the UI responsive
+                await Task.Delay(10);
+            }
+            IsInitialized = true;
+            await chart.SubscribeHoverEvent();
+            await InvokeAsync(StateHasChanged);
+        });
+    }
+
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
+    {
+        HoverInfos = eventData;
+        StateHasChanged();
+    }
+
+    async Task<IList<ITrace>> GetSurfaceData()
     {
         IList<ITrace> mapData = new List<ITrace>();
 
-        var client = new HttpClient
+        using var client = new HttpClient
         {
             BaseAddress = new Uri(MyNavigationManager.BaseUri)
         };
 
-        var csv = (await client.GetStringAsync("/mt_bruno_elevation.csv"))
+        var csv = (await client.GetStringAsync($"{MyNavigationManager.BaseUri}mt_bruno_elevation.csv"))
             .Split("\n")
             .Skip(1)
             .Where(s => !string.IsNullOrWhiteSpace(s))
@@ -60,7 +112,7 @@
         {
             var currentValues = new List<decimal>();
 
-            for(var i=1;i<25;i++)
+            for (var i = 1; i < 25; i++)
             {
                 currentValues.Add(decimal.Parse(row[i], NumberStyles.Any, CultureInfo.InvariantCulture));
             }
@@ -68,12 +120,11 @@
             z.Add(currentValues.ToArray());
         }
 
-        mapData.Add(new Surface()
+        mapData.Add(new Surface
         {
             Z = z.Cast<object>().ToList()
         });
 
         return mapData;
     }
-
 }

@@ -2,7 +2,7 @@
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/build.yml?branch=main&label=Build)
 ![Publish Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/publish.yml?branch=main&label=Publish)
-[![Examples Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/azure-static-web-apps-delightful-pebble-00ab3ee10.yml?branch=main&label=Examples)](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/)
+[![Examples Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/pages%2Fpages-build-deployment?label=Examples)](https://laytec-ag.github.io/Plotly.Blazor)
 [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/) 
 [![Forks](https://img.shields.io/github/forks/LayTec-AG/Plotly.Blazor)](https://github.com/LayTec-AG/Plotly.Blazor/network/members)
 ![Stars](https://img.shields.io/github/stars/LayTec-AG/Plotly.Blazor)
@@ -30,25 +30,25 @@ After you have created your Blazor project, you need to do the following steps:
 **Install the latest NuGet Package**
 
 Using Package Manager
-```
+```powershell
 Install-Package Plotly.Blazor
 ```
 
 Using .NET CLI
-```
+```cmd
 dotnet add package Plotly.Blazor
 ```
 
 Add the following lines to your _Layout.cshtml **above** the `_/framework/blazor.webassembly.js` or `_/framework/blazor.server.js`
 
-```
+```razor
 <script src="_content/Plotly.Blazor/plotly-latest.min.js" type="text/javascript"></script>
 <script src="_content/Plotly.Blazor/plotly-interop.js" type="text/javascript"></script>
 ```
 
 **Add the following lines to your _Imports.razor**
 
-```
+```razor
 @using Plotly.Blazor
 @using Plotly.Blazor.Traces
 ```
@@ -61,13 +61,13 @@ Add the following lines to your _Layout.cshtml **above** the `_/framework/blazor
 
 Info: *The chart reference is important so that we can update the chart later.*
 
-```
+```razor
 <PlotlyChart @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 ```
 
 **Generate some initial data for your plot.**
 
-```
+```razor
 @code {
     PlotlyChart chart;
     Config config = new Config();
@@ -88,7 +88,7 @@ Info: *The chart reference is important so that we can update the chart later.*
 
 **Generate some additional data for your plot.**
 
-```
+```csharp
 private async Task AddData(int count = 100)
 {
     if (!(chart.Data.FirstOrDefault() is Scatter scatter)) return;
@@ -100,7 +100,7 @@ private async Task AddData(int count = 100)
 
 ## Examples
 
-[Here](https://delightful-pebble-00ab3ee10.1.azurestaticapps.net/) you can find a running instance of the [examples](Plotly.Blazor.Examples/). This is always up-to-date with the current state of the develop branch.
+[Here](https://laytec-ag.github.io/Plotly.Blazor) you can find a running instance of the [examples](Plotly.Blazor.Examples/). This is always up-to-date with the current state of the develop branch.
 
 **What it might look like!**
 

@@ -53,6 +53,18 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
         public Plotly.Blazor.Traces.IndicatorLib.GaugeLib.AxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. For negative numbers the minus sign symbol used (U+2212)
+        ///     is wider than the regular ascii dash. That means you need to use −1 instead
+        ///     of -1. labelalias can be used with any axis type, and both keys (if needed)
+        ///     and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Hide SI prefix for 10^n if |n| is below this number. This only has an effect
         ///     when <c>tickformat</c> is <c>SI</c> or <c>B</c>.
         /// </summary>
@@ -272,6 +284,11 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                     ExponentFormat.Equals(other.ExponentFormat)
                 ) && 
                 (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
+                ) && 
+                (
                     MinExponent == other.MinExponent ||
                     MinExponent != null &&
                     MinExponent.Equals(other.MinExponent)
@@ -411,6 +428,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
                 var hashCode = 41;
                 if (DTick != null) hashCode = hashCode * 59 + DTick.GetHashCode();
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
                 if (Range != null) hashCode = hashCode * 59 + Range.GetHashCode();

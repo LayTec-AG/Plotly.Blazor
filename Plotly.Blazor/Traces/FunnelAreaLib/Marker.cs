@@ -38,6 +38,12 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
         [JsonPropertyName(@"line")]
         public Plotly.Blazor.Traces.FunnelAreaLib.MarkerLib.Line Line { get; set;} 
 
+        /// <summary>
+        ///     Sets the pattern within the marker.
+        /// </summary>
+        [JsonPropertyName(@"pattern")]
+        public Plotly.Blazor.Traces.FunnelAreaLib.MarkerLib.Pattern Pattern { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -67,6 +73,11 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
                     Line == other.Line ||
                     Line != null &&
                     Line.Equals(other.Line)
+                ) && 
+                (
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
+                    Pattern.Equals(other.Pattern)
                 );
         }
 
@@ -79,6 +90,7 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib
                 if (Colors != null) hashCode = hashCode * 59 + Colors.GetHashCode();
                 if (ColorsSrc != null) hashCode = hashCode * 59 + ColorsSrc.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
                 return hashCode;
             }
         }

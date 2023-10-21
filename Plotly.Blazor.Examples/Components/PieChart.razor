@@ -1,45 +1,65 @@
-﻿@using System.Text.Json;
-@using Plotly.Blazor.Interop;
-<PlotlyChart Id="TestId" Config="config" Layout="layout" Data="data" @ref="chart" ClickAction="PieClick" HoverAction="HoverAction" AfterRender="async () => await SubscribeEvents()" />
+﻿@using Plotly.Blazor.Interop
+@using Plotly.Blazor.LayoutLib
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    Config config = new Config
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        config = new Config
         {
             Responsive = true
         };
 
-    Layout layout = new Layout
+        layout = new Layout
         {
             Title = new Title
             {
-                Text = "Pie"
+                Text = GetType().Name
             },
-            Height = 500
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            }
         };
 
-    List<ITrace> data = new List<ITrace>
-    {
-        new Pie
+        data = new List<ITrace>
         {
-            Values = new List<object> {19, 26, 55},
-            Labels = new List<object> {"Residential", "Non-Residential", "Utility"}
-        }
-    }; 
+            new Pie
+            {
+                Values = new List<object> { 19, 26, 55 },
+                Labels = new List<object> { "Residential", "Non-Residential", "Utility" }
+            }
+        };
+
+        base.OnInitialized();
+    }
 
     public void PieClick(object value, object label)
     {
-        var l = label.ToString();
-        var v = value.ToString();
+        // Use the values if needed
+        //var l = label.ToString();
+        //var v = value.ToString();
     }
 
-    public void HoverAction(IEnumerable<HoverEventDataPoint> eventData)
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
     {
-        var HoverInfos = eventData;
-        var value = eventData.First().X.ToString();
-        var label = eventData.First().Y.ToString();
+        // Use the values if needed
+        //var first = eventData.First();
+        //var value = first.X.ToString();
+        //var label = first.Y.ToString();
     }
 
     public async Task SubscribeEvents()
@@ -47,6 +67,4 @@
         await chart.SubscribeClickEvent();
         await chart.SubscribeHoverEvent();
     }
-
-
 }

@@ -1,42 +1,69 @@
 ﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Traces.ScatterGlLib
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" AfterRender="LoadData"/>
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    Config config = new()
-    {
-        Responsive = true
-    };
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
 
-    Layout layout = new()
+    /// <inheritdoc />
+    protected override void OnInitialized()
     {
-        Title = new Title
+        config = new Config
         {
-            Text = "ScatterGl with >100k Points"
-        },
-        YAxis = new List<YAxis>
+            Responsive = true
+        };
+
+        layout = new Layout
         {
-            new()
+            Title = new Title
             {
-                Title = new LayoutLib.YAxisLib.Title
+                Text = "ScatterGl with >100k Points"
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            YAxis = new List<YAxis>
+            {
+                new()
                 {
-                    Text = "Scatter Unit"
+                    Title = new LayoutLib.YAxisLib.Title
+                    {
+                        Text = "Scatter Unit"
+                    }
                 }
             }
-        }
-    };
+        };
 
-    IList<ITrace> data = new List<ITrace>
-    {
-        new ScatterGl
+        data = new List<ITrace>
         {
-            Name = "ScatterGlTrace",
-            Mode = Traces.ScatterGlLib.ModeFlag.Lines | Traces.ScatterGlLib.ModeFlag.Markers,
-            X = Enumerable.Range(0, 100000).Cast<object>().ToList(),
-            Y = Helper.GenerateData(0, 100000).Y
-        }
-    };
+            new ScatterGl
+            {
+                Name = "ScatterGlTrace",
+                Mode = ModeFlag.Lines | ModeFlag.Markers,
+                X = new List<object>(),
+                Y = new List<object>()
+            }
+        };
+
+        base.OnInitialized();
+    }
+
+    private void LoadData()
+    {
+        Task.Run(async () =>
+        {
+            await chart.ExtendTrace(Enumerable.Range(0, 100000).Cast<object>().ToList(), Helper.GenerateData(0, 100000).Y, 0);
+        });
+    }
 }

@@ -113,6 +113,12 @@ namespace Plotly.Blazor.Traces.SunburstLib
         public Plotly.Blazor.Traces.SunburstLib.MarkerLib.Line Line { get; set;} 
 
         /// <summary>
+        ///     Sets the pattern within the marker.
+        /// </summary>
+        [JsonPropertyName(@"pattern")]
+        public Plotly.Blazor.Traces.SunburstLib.MarkerLib.Pattern Pattern { get; set;} 
+
+        /// <summary>
         ///     Reverses the color mapping if true. Has an effect only if colors is set
         ///     to a numerical array. If true, <c>marker.cmin</c> will correspond to the
         ///     last color in the array and <c>marker.cmax</c> will correspond to the first
@@ -199,6 +205,11 @@ namespace Plotly.Blazor.Traces.SunburstLib
                     Line.Equals(other.Line)
                 ) && 
                 (
+                    Pattern == other.Pattern ||
+                    Pattern != null &&
+                    Pattern.Equals(other.Pattern)
+                ) && 
+                (
                     ReverseScale == other.ReverseScale ||
                     ReverseScale != null &&
                     ReverseScale.Equals(other.ReverseScale)
@@ -227,6 +238,7 @@ namespace Plotly.Blazor.Traces.SunburstLib
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (ColorsSrc != null) hashCode = hashCode * 59 + ColorsSrc.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
+                if (Pattern != null) hashCode = hashCode * 59 + Pattern.GetHashCode();
                 if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
                 if (ShowScale != null) hashCode = hashCode * 59 + ShowScale.GetHashCode();
                 return hashCode;

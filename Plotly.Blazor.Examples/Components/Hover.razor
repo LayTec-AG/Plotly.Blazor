@@ -1,12 +1,12 @@
-﻿@using Plotly.Blazor.LayoutLib
+﻿@using Plotly.Blazor.Interop
+@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.Traces.ScatterLib
-@using Plotly.Blazor.Interop
-@using System.Text.Json
+
 <PlotlyChart style="height: 60vh; min-height: 350px"
              @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
-             HoverAction="HoverAction" AfterRender="async () => await SubscribeEvents()"/>
+             HoverAction="HoverAction" AfterRender="SubscribeEvents"/>
 
-@if (HoverInfos != null && HoverInfos.Count() > 0)
+@if (HoverInfos != null && HoverInfos.Any())
 {
     <MudText>Current X: @HoverInfos.First().X</MudText>
     <MudText>Current Y: @HoverInfos.FirstOrDefault(d => d.TraceIndex == 0)?.Y</MudText>
@@ -15,59 +15,66 @@
 
 @code
 {
-    PlotlyChart chart;
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
 
-    IEnumerable<HoverEventDataPoint> HoverInfos { get; set; }
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+    private IEnumerable<EventDataPoint> HoverInfos { get; set; }
 
-    Config config = new()
+    /// <inheritdoc />
+    protected override void OnInitialized()
     {
-        Responsive = true
-    };
+        config = new Config
+        {
+            Responsive = true
+        };
 
-    Layout layout = new()
-    {
-        Title = new Title
+        layout = new Layout
         {
-            Text = "Scatter with Hover Events"
-        },
-        YAxis = new List<YAxis>
-        {
-            new()
+            Title = new Title
             {
-                Title = new LayoutLib.YAxisLib.Title
-                {
-                    Text = "Scatter Unit"
-                }
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            HoverMode = HoverModeEnum.XUnified
+        };
+
+        data = new List<ITrace>
+        {
+            new Scatter
+            {
+                Name = "ScatterTrace",
+                Mode = ModeFlag.Markers,
+                X = Enumerable.Range(0, 30).Cast<object>().ToList(),
+                Y = Helper.GenerateData(0, 30).Y
+            },
+            new Scatter
+            {
+                Name = "ScatterTrace 2",
+                Mode = ModeFlag.Markers,
+                X = Enumerable.Range(0, 30).Cast<object>().ToList(),
+                Y = Helper.GenerateData(0, 30).Y
             }
-        },
-        HoverMode = HoverModeEnum.XUnified
-    };
+        };
 
-    IList<ITrace> data = new List<ITrace>
-    {
-        new Scatter
-        {
-            Name = "ScatterTrace",
-            Mode = ModeFlag.Markers,
-            X = Enumerable.Range(0, 30).Cast<object>().ToList(),
-            Y = Helper.GenerateData(0, 30).Y
-        },
-        new Scatter
-        {
-            Name = "ScatterTrace 2",
-            Mode = ModeFlag.Markers,
-            X = Enumerable.Range(0, 30).Cast<object>().ToList(),
-            Y = Helper.GenerateData(0, 30).Y
-        }
-    };
+        base.OnInitialized();
+    }
 
-    public void HoverAction(IEnumerable<HoverEventDataPoint> eventData)
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
     {
         HoverInfos = eventData;
         StateHasChanged();
     }
 
-    public async Task SubscribeEvents()
+    public async void SubscribeEvents()
     {
         await chart.SubscribeHoverEvent();
     }

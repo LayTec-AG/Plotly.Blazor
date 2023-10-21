@@ -71,6 +71,18 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
         public Plotly.Blazor.LayoutLib.ColorAxisLib.ColorBarLib.ExponentFormatEnum? ExponentFormat { get; set;} 
 
         /// <summary>
+        ///     Replacement text for specific tick or hover labels. For example using {US:
+        ///     <c>USA</c>, CA: <c>Canada</c>} changes US to USA and CA to Canada. The labels
+        ///     we would have shown must match the keys exactly, after adding any tickprefix
+        ///     or ticksuffix. For negative numbers the minus sign symbol used (U+2212)
+        ///     is wider than the regular ascii dash. That means you need to use −1 instead
+        ///     of -1. labelalias can be used with any axis type, and both keys (if needed)
+        ///     and values (if desired) can include html-like tags or MathJax.
+        /// </summary>
+        [JsonPropertyName(@"labelalias")]
+        public object LabelAlias { get; set;} 
+
+        /// <summary>
         ///     Sets the length of the color bar This measure excludes the padding of both
         ///     ends. That is, the color bar length is this length minus the padding on
         ///     both ends.
@@ -324,8 +336,13 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
         public Plotly.Blazor.LayoutLib.ColorAxisLib.ColorBarLib.Title Title { get; set;} 
 
         /// <summary>
-        ///     Sets the x position of the color bar (in plot fraction). Defaults to 1.02
-        ///     when <c>orientation</c> is <c>v</c> and 0.5 when <c>orientation</c> is <c>h</c>.
+        ///     Sets the x position with respect to <c>xref</c> of the color bar (in plot
+        ///     fraction). When <c>xref</c> is <c>paper</c>, defaults to 1.02 when <c>orientation</c>
+        ///     is <c>v</c> and 0.5 when <c>orientation</c> is <c>h</c>. When <c>xref</c>
+        ///     is <c>container</c>, defaults to <c>1</c> when <c>orientation</c> is <c>v</c>
+        ///     and 0.5 when <c>orientation</c> is <c>h</c>. Must be between <c>0</c> and
+        ///     <c>1</c> if <c>xref</c> is <c>container</c> and between <c>-2</c> and <c>3</c>
+        ///     if <c>xref</c> is <c>paper</c>.
         /// </summary>
         [JsonPropertyName(@"x")]
         public decimal? X { get; set;} 
@@ -346,9 +363,21 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
         public decimal? XPad { get; set;} 
 
         /// <summary>
-        ///     Sets the y position of the color bar (in plot fraction). Defaults to 0.5
-        ///     when <c>orientation</c> is <c>v</c> and 1.02 when <c>orientation</c> is
-        ///     <c>h</c>.
+        ///     Sets the container <c>x</c> refers to. <c>container</c> spans the entire
+        ///     <c>width</c> of the plot. <c>paper</c> refers to the width of the plotting
+        ///     area only.
+        /// </summary>
+        [JsonPropertyName(@"xref")]
+        public Plotly.Blazor.LayoutLib.ColorAxisLib.ColorBarLib.XRefEnum? XRef { get; set;} 
+
+        /// <summary>
+        ///     Sets the y position with respect to <c>yref</c> of the color bar (in plot
+        ///     fraction). When <c>yref</c> is <c>paper</c>, defaults to 0.5 when <c>orientation</c>
+        ///     is <c>v</c> and 1.02 when <c>orientation</c> is <c>h</c>. When <c>yref</c>
+        ///     is <c>container</c>, defaults to 0.5 when <c>orientation</c> is <c>v</c>
+        ///     and 1 when <c>orientation</c> is <c>h</c>. Must be between <c>0</c> and
+        ///     <c>1</c> if <c>yref</c> is <c>container</c> and between <c>-2</c> and <c>3</c>
+        ///     if <c>yref</c> is <c>paper</c>.
         /// </summary>
         [JsonPropertyName(@"y")]
         public decimal? Y { get; set;} 
@@ -367,6 +396,14 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
         /// </summary>
         [JsonPropertyName(@"ypad")]
         public decimal? YPad { get; set;} 
+
+        /// <summary>
+        ///     Sets the container <c>y</c> refers to. <c>container</c> spans the entire
+        ///     <c>height</c> of the plot. <c>paper</c> refers to the height of the plotting
+        ///     area only.
+        /// </summary>
+        [JsonPropertyName(@"yref")]
+        public Plotly.Blazor.LayoutLib.ColorAxisLib.ColorBarLib.YRefEnum? YRef { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -407,6 +444,11 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
                     ExponentFormat == other.ExponentFormat ||
                     ExponentFormat != null &&
                     ExponentFormat.Equals(other.ExponentFormat)
+                ) && 
+                (
+                    LabelAlias == other.LabelAlias ||
+                    LabelAlias != null &&
+                    LabelAlias.Equals(other.LabelAlias)
                 ) && 
                 (
                     Len == other.Len ||
@@ -594,6 +636,11 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
                     XPad.Equals(other.XPad)
                 ) && 
                 (
+                    XRef == other.XRef ||
+                    XRef != null &&
+                    XRef.Equals(other.XRef)
+                ) && 
+                (
                     Y == other.Y ||
                     Y != null &&
                     Y.Equals(other.Y)
@@ -607,6 +654,11 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
                     YPad == other.YPad ||
                     YPad != null &&
                     YPad.Equals(other.YPad)
+                ) && 
+                (
+                    YRef == other.YRef ||
+                    YRef != null &&
+                    YRef.Equals(other.YRef)
                 );
         }
 
@@ -621,6 +673,7 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
                 if (BorderWidth != null) hashCode = hashCode * 59 + BorderWidth.GetHashCode();
                 if (DTick != null) hashCode = hashCode * 59 + DTick.GetHashCode();
                 if (ExponentFormat != null) hashCode = hashCode * 59 + ExponentFormat.GetHashCode();
+                if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (Len != null) hashCode = hashCode * 59 + Len.GetHashCode();
                 if (LenMode != null) hashCode = hashCode * 59 + LenMode.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
@@ -658,9 +711,11 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (XPad != null) hashCode = hashCode * 59 + XPad.GetHashCode();
+                if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
                 if (Y != null) hashCode = hashCode * 59 + Y.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
                 if (YPad != null) hashCode = hashCode * 59 + YPad.GetHashCode();
+                if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
                 return hashCode;
             }
         }

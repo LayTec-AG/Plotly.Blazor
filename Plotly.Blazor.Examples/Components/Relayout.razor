@@ -2,8 +2,8 @@
 @using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.Traces.ScatterLib
 <PlotlyChart style="height: 60vh; min-height: 350px"
-             @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
-             RelayoutAction="RelayoutAction" AfterRender="Init"/>
+@bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             RelayoutAction="RelayoutAction" AfterRender="Init" />
 
 @if (relayoutData?.XRange?.Count() == 2)
 {
@@ -29,6 +29,8 @@
     /// <inheritdoc />
     protected override void OnInitialized()
     {
+        var startDate = DateTime.Now;
+
         config = new Config
         {
             Responsive = true
@@ -61,54 +63,17 @@
             {
                 Name = "ScatterTrace",
                 Mode = ModeFlag.Lines | ModeFlag.Markers,
-                X = new List<object>(),
-                Y = new List<object>()
+                X = Enumerable.Range(0, 100).Select(i =>  startDate + TimeSpan.FromHours(i)).Cast<object>().ToList(),
+                Y = Helper.GenerateData(0, 100).Y
             }
         };
 
         base.OnInitialized();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await ExtendData();
-        }
-    }
-
     private async void Init()
     {
-        await ExtendData();
         await chart.SubscribeRelayoutEvent();
-    }
-
-    private async Task ExtendData(int count = 100)
-    {
-        if (chart.Data.FirstOrDefault() is not Scatter scatter) return;
-
-        var max = (int?)scatter.X?.Max();
-        var (_, y) = Helper.GenerateData(max + 1 ?? 0, max + 1 + count ?? count);
-
-        var xDate = new DateTime(2015, 2, 12);
-        var x = new List<object>();
-
-        for (int i = 0; i < count; i++)
-        {
-            x.Add(xDate);
-            xDate = xDate.AddHours(1);
-        }
-
-        if (!scatter.X.Any() || !scatter.Y.Any())
-        {
-            scatter.X.AddRange(x);
-            scatter.Y.AddRange(y);
-            await chart.React();
-        }
-        else
-        {
-            await chart.ExtendTrace(x, y, data.IndexOf(scatter));
-        }
     }
 
     public void RelayoutAction(RelayoutEventData data)

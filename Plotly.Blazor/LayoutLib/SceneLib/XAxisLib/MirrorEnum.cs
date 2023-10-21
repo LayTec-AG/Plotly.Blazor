@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.XAxisLib
     ///     If <c>all</c>, axis lines are mirrored on all shared-axes subplots. If <c>allticks</c>,
     ///     axis lines and ticks are mirrored on all shared-axes subplots.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum MirrorEnum
     {

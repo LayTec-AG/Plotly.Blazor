@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.SurfaceLib.ContoursLib.XLib
     /// <summary>
     ///     The Project class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Project : IEquatable<Project>
     {

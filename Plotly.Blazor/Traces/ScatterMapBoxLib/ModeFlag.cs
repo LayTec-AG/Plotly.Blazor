@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib
     ///     includes <c>text</c> then the <c>text</c> elements appear at the coordinates.
     ///     Otherwise, the <c>text</c> elements appear on hover.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum ModeFlag

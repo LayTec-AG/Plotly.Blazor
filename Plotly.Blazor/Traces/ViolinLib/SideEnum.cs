@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
     ///     under <c>overlay</c> mode, where one trace has <c>side</c> set to <c>positive</c>
     ///     and the other to <c>negative</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum SideEnum
     {

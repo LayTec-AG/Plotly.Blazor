@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
     ///     Determines whether this slider length is set in units of plot <c>fraction</c>
     ///     or in *pixels. Use <c>len</c> to set the value.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum LenModeEnum
     {

@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
     ///     take place per color per category. If <c>dimension</c>, hover interactions
     ///     take place across all categories per dimension.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverOnEnum
     {

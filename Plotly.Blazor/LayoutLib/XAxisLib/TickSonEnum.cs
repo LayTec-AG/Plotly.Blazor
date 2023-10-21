@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     or <c>multicategory</c>. When set to <c>boundaries</c>, ticks and grid lines
     ///     are drawn half a category to the left/bottom of labels.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickSonEnum
     {

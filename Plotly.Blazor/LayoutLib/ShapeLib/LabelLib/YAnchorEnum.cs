@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib.LabelLib
     ///     and <c>yanchor</c> to <c>top</c> then the top-most portion of the label
     ///     text lines up with the top-most edge of the shape.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum YAnchorEnum
     {

@@ -22,7 +22,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     ///     be determined by the numerical order of the values. Similarly, the order
     ///     can be determined by the min, max, sum, mean or median of all the values.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum CategoryOrderEnum
     {

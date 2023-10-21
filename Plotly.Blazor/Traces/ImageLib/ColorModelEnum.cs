@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ImageLib
     ///     into colors. If <c>source</c> is specified, this attribute will be set to
     ///     <c>rgba256</c> otherwise it defaults to <c>rgb</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ColorModelEnum
     {

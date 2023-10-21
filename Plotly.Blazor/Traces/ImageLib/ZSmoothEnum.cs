@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ImageLib
     ///     Picks a smoothing algorithm used to smooth <c>z</c> data. This only applies
     ///     for image traces that use the <c>source</c> attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ZSmoothEnum
     {

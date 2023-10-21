@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
     ///     be treated as a number during automatic axis <c>type</c> detection. Defaults
     ///     to layout.autotypenumbers.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AutoTypeNumbersEnum
     {

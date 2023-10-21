@@ -13,7 +13,7 @@ namespace Plotly.Blazor
     /// <summary>
     ///     The Config class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Config : IEquatable<Config>
     {

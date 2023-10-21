@@ -19,7 +19,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib
     ///     on a reversed axis. Using <c>reversed</c> applies autorange on both ends
     ///     and reverses the axis direction.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AutoRangeEnum
     {

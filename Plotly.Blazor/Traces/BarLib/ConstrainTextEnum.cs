@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.BarLib
     ///     Constrain the size of text inside or outside a bar to be no larger than
     ///     the bar itself.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ConstrainTextEnum
     {

@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.ZAxisLib
     ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
     ///     of the input data. Applies only to linear axes.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum RangeModeEnum
     {

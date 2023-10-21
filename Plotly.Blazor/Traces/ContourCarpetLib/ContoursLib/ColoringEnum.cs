@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ContourCarpetLib.ContoursLib
     ///     is done on the contour lines. If <c>none</c>, no coloring is applied on
     ///     this trace.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ColoringEnum
     {

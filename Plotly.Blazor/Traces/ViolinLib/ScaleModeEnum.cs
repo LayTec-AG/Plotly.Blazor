@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
     ///     means each violin has the same (max) width <c>count</c> means the violins
     ///     are scaled by the number of sample points making up each violin.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ScaleModeEnum
     {

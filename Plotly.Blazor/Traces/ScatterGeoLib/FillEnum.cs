@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
     ///     <c>none</c>. <c>toself</c> connects the endpoints of the trace (or each
     ///     segment of the trace if it has gaps) into a closed shape.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum FillEnum
     {

@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
     /// <summary>
     ///     The Dimension class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Dimension : IEquatable<Dimension>
     {

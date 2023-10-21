@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib
     /// <summary>
     ///     The YAxis class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class YAxis : IEquatable<YAxis>
     {
@@ -227,6 +227,15 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"hoverformat")]
         public string HoverFormat { get; set;} 
+
+        /// <summary>
+        ///     Could be used to set the desired inside range of this axis (excluding the
+        ///     labels) when <c>ticklabelposition</c> of the anchored axis has <c>inside</c>.
+        ///     Not implemented for axes with <c>type</c> <c>log</c>. This would be ignored
+        ///     when <c>range</c> is provided.
+        /// </summary>
+        [JsonPropertyName(@"insiderange")]
+        public IList<object> InsideRange { get; set;} 
 
         /// <summary>
         ///     Replacement text for specific tick or hover labels. For example using {US:
@@ -862,6 +871,11 @@ namespace Plotly.Blazor.LayoutLib
                     HoverFormat.Equals(other.HoverFormat)
                 ) && 
                 (
+                    Equals(InsideRange, other.InsideRange) ||
+                    InsideRange != null && other.InsideRange != null &&
+                    InsideRange.SequenceEqual(other.InsideRange)
+                ) &&
+                (
                     LabelAlias == other.LabelAlias ||
                     LabelAlias != null &&
                     LabelAlias.Equals(other.LabelAlias)
@@ -1202,6 +1216,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (GridDash != null) hashCode = hashCode * 59 + GridDash.GetHashCode();
                 if (GridWidth != null) hashCode = hashCode * 59 + GridWidth.GetHashCode();
                 if (HoverFormat != null) hashCode = hashCode * 59 + HoverFormat.GetHashCode();
+                if (InsideRange != null) hashCode = hashCode * 59 + InsideRange.GetHashCode();
                 if (LabelAlias != null) hashCode = hashCode * 59 + LabelAlias.GetHashCode();
                 if (Layer != null) hashCode = hashCode * 59 + Layer.GetHashCode();
                 if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();

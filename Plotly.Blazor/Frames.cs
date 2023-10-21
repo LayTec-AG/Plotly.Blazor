@@ -13,7 +13,7 @@ namespace Plotly.Blazor
     /// <summary>
     ///     The Frames class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Frames : IEquatable<Frames>
     {

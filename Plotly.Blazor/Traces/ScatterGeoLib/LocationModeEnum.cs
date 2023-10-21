@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib
     ///     corresponds to features from a custom GeoJSON linked to the <c>geojson</c>
     ///     attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum LocationModeEnum
     {

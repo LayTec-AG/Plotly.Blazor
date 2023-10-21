@@ -11,7 +11,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
     /// <summary>
     ///     Sets the direction corresponding to positive angles.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum DirectionEnum
     {

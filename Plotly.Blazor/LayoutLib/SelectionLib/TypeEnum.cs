@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.SelectionLib
     ///     and (<c>x0</c>,<c>y1</c>). If <c>path</c>, draw a custom SVG path using
     ///     <c>path</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

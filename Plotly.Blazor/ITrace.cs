@@ -10,7 +10,7 @@ namespace Plotly.Blazor
     /// <summary>
     ///     The trace interface.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     public interface ITrace
     {
         /// <summary>

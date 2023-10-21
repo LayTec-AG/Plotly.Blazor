@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.PieLib.TitleLib
     ///     Specifies the location of the <c>title</c>. Note that the title&#39;s position
     ///     used to be set by the now deprecated <c>titleposition</c> attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum PositionEnum
     {

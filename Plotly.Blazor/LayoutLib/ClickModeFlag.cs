@@ -23,7 +23,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     is missing, <c>plotly_click</c> and <c>plotly_selected</c> events are not
     ///     fired.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum ClickModeFlag

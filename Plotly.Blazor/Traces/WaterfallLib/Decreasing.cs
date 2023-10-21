@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.WaterfallLib
     /// <summary>
     ///     The Decreasing class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Decreasing : IEquatable<Decreasing>
     {

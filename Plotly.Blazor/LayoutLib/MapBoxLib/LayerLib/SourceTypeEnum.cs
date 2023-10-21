@@ -11,7 +11,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     /// <summary>
     ///     Sets the source type for this layer, that is the type of the layer data.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum SourceTypeEnum
     {

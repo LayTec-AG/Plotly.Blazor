@@ -528,7 +528,7 @@ namespace Plotly.Blazor.Generator
                 Properties = properties
             };
 
-            if (classData.Properties != null && classData.Properties.Any())
+            if (classData.Properties?.Any() == true)
             {
                 Jobs.Add($"{classData.Namespace}.{classData.Name}", new Job(classData));
             }

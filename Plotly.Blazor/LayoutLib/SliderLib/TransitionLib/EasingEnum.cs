@@ -11,7 +11,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib.TransitionLib
     /// <summary>
     ///     Sets the easing function of the slider transition
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum EasingEnum
     {

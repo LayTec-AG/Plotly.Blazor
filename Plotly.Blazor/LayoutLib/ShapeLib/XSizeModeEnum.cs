@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
     ///     This way, the shape can have a fixed width while maintaining a position
     ///     relative to data or plot fraction.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XSizeModeEnum
     {

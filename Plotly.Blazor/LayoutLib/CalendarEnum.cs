@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     Sets the default calendar system to use for interpreting and displaying
     ///     dates throughout the plot.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum CalendarEnum
     {

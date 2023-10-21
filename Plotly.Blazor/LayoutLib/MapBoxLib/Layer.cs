@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib
     /// <summary>
     ///     The Layer class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Layer : IEquatable<Layer>
     {

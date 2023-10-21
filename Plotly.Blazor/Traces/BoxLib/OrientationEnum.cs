@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.BoxLib
     ///     Sets the orientation of the box(es). If <c>v</c> (<c>h</c>), the distribution
     ///     is visualized along the vertical (horizontal).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OrientationEnum
     {

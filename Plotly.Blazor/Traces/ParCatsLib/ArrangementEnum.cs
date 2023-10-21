@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
     ///     <c>freeform</c>, the categories can freely move on the plane. If <c>fixed</c>,
     ///     the categories and dimensions are stationary.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ArrangementEnum
     {

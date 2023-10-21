@@ -19,7 +19,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib.RangeBreakLib
     ///     the weekends). - { pattern: <c>hour</c>, bounds: [17, 8] }   breaks from
     ///     5pm to 8am (i.e. skips non-work hours).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum PatternEnum
     {

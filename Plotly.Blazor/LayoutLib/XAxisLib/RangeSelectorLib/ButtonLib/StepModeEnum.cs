@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib.ButtonLib
     ///     year. Month and year <c>todate</c> are currently available only for the
     ///     built-in (Gregorian) calendar.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum StepModeEnum
     {

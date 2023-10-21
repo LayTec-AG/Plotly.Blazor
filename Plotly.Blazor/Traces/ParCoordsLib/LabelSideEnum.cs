@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ParCoordsLib
     ///     Tilted labels with <c>labelangle</c> may be positioned better inside margins
     ///     when <c>labelposition</c> is set to <c>bottom</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum LabelSideEnum
     {

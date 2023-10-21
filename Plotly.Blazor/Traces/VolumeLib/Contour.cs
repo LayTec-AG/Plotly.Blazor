@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.VolumeLib
     /// <summary>
     ///     The Contour class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class Contour : IEquatable<Contour>
     {

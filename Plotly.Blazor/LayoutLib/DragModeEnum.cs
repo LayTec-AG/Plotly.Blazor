@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     apply only to scatter traces with markers or text. <c>orbit</c> and <c>turntable</c>
     ///     apply only to 3D scenes.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum DragModeEnum
     {

@@ -1,112 +1,104 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFrameworks>net6.0</TargetFrameworks>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="src\ArrayAttribute.cs" />
-    <Compile Remove="src\DateTimeConverter.cs" />
-    <Compile Remove="src\EnumConverter.cs" />
-    <Compile Remove="src\Extensions.cs" />
-    <Compile Remove="src\ImageFormat.cs" />
-    <Compile Remove="src\Interop\EventDataPoint.cs" />
-    <Compile Remove="src\Interop\RelayoutEventData.cs" />
-    <Compile Remove="src\PlotlyChart.razor.cs" />
-    <Compile Remove="src\PlotlyConverter.cs" />
-    <Compile Remove="src\PlotlyJsInterop.cs" />
-    <Compile Remove="src\PolymorphicConverter.cs" />
-    <Compile Remove="src\SubplotAttribute.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="English %28American%29.aff" />
-    <None Remove="English %28American%29.dic" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.JSInterop" Version="6.0.21" />
-    <PackageReference Include="Stubble.Core" Version="1.10.8" />
-    <PackageReference Include="WeCantSpell.Hunspell" Version="4.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="CustomDic.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="src\PlotlyChart.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="src\wwwroot\plotly-interop.js">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="src\_Imports.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\Class\Class.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\Flag\Flag.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\Enumerated\Enumerated.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\Interface\Interface.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="English %28American%29.aff">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="English %28American%29.dic">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="src\ArrayAttribute.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\DateTimeConverter.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\EnumConverter.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\Extensions.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\ImageFormat.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\Interop\EventDataPoint.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\Interop\RelayoutEventData.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\PlotlyChart.razor.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\PlotlyConverter.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\PlotlyJsInterop.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\PolymorphicConverter.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="src\SubplotAttribute.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="src\ArrayAttribute.cs" />
+		<Compile Remove="src\DateTimeConverter.cs" />
+		<Compile Remove="src\EnumConverter.cs" />
+		<Compile Remove="src\Extensions.cs" />
+		<Compile Remove="src\ImageFormat.cs" />
+		<Compile Remove="src\Interop\EventDataPoint.cs" />
+		<Compile Remove="src\Interop\RelayoutEventData.cs" />
+		<Compile Remove="src\PlotlyChart.razor.cs" />
+		<Compile Remove="src\PlotlyConverter.cs" />
+		<Compile Remove="src\PlotlyJsInterop.cs" />
+		<Compile Remove="src\PolymorphicConverter.cs" />
+		<Compile Remove="src\SubplotAttribute.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="English %28American%29.aff" />
+		<None Remove="English %28American%29.dic" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Stubble.Core"/>
+		<PackageReference Include="WeCantSpell.Hunspell" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="CustomDic.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="src\PlotlyChart.razor">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="src\wwwroot\plotly-interop.js">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="src\_Imports.razor">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Templates\Class\Class.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Templates\Flag\Flag.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Templates\Enumerated\Enumerated.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Templates\Interface\Interface.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="English %28American%29.aff">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="English %28American%29.dic">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="src\ArrayAttribute.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\DateTimeConverter.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\EnumConverter.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\Extensions.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\ImageFormat.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\Interop\EventDataPoint.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\Interop\RelayoutEventData.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\PlotlyChart.razor.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\PlotlyConverter.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\PlotlyJsInterop.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\PolymorphicConverter.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Include="src\SubplotAttribute.cs">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

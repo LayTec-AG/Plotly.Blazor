@@ -28,7 +28,7 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string PLOTLY_JS_URL = "https://cdn.plot.ly/plotly-2.26.2.min.js";
+        private const string PLOTLY_JS_URL = "https://cdn.plot.ly/plotly-2.27.0.min.js";
 
         private static SchemaRoot _schema;
         private static StubbleVisitorRenderer _stubble;
@@ -528,7 +528,7 @@ namespace Plotly.Blazor.Generator
                 Properties = properties
             };
 
-            if (classData.Properties != null && classData.Properties.Any())
+            if (classData.Properties?.Any() == true)
             {
                 Jobs.Add($"{classData.Namespace}.{classData.Name}", new Job(classData));
             }

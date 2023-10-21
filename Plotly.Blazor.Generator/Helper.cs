@@ -22,14 +22,13 @@ namespace Plotly.Blazor.Generator
         /// Dictionary to customize the pascal casing for specific words.
         /// </summary>
         /// <value>The custom words.</value>
-        private static Dictionary<string, string> CustomWords { get; set; } = File.ReadAllLines("CustomDic.txt")
+        private static Dictionary<string, string> CustomWords { get; } = File.ReadAllLines("CustomDic.txt")
             .Select(l =>
             {
                 var keyValue = l.Split('=');
                 return (keyValue[0], keyValue[1]);
             })
             .ToDictionary(k => k.Item1, v => v.Item2);
-
 
         /// <summary>
         ///     Converts the input to camelcase. Default: PascalCase
@@ -84,7 +83,7 @@ namespace Plotly.Blazor.Generator
                     .FirstOrDefault();
 
                 // If there is a suggestion, override the default
-                if (suggestions != null && suggestions.Length > 0)
+                if (suggestions?.Length > 0)
                 {
                     //var suggestions = suggestionList[maxIndex];
                     suggestion = suggestions.Where(s => !string.IsNullOrWhiteSpace(s))
@@ -92,9 +91,9 @@ namespace Plotly.Blazor.Generator
                         {
                             if (i == 0)
                             {
-                                return suppressUppercase ? s : $"{char.ToUpper(s[0])}{s.Substring(1)}";
+                                return suppressUppercase ? s : $"{char.ToUpper(s[0])}{s[1..]}";
                             }
-                            return $"{char.ToUpper(s[0])}{s.Substring(1)}";
+                            return $"{char.ToUpper(s[0])}{s[1..]}";
                         })
                         .Aggregate((s, t) => $"{s}{t}");
                 }
@@ -103,7 +102,7 @@ namespace Plotly.Blazor.Generator
                     UnknownWords.Add(input);
                 }
             }
-            return suppressUppercase ? suggestion : $"{char.ToUpper(suggestion[0])}{suggestion.Substring(1)}";
+            return suppressUppercase ? suggestion : $"{char.ToUpper(suggestion[0])}{suggestion[1..]}";
         }
 
         /// <summary>
@@ -198,7 +197,6 @@ namespace Plotly.Blazor.Generator
             }
             return sb.ToString();
         }
-
 
         /// <summary>
         ///     Splits the given string by character count. Splits only full words.

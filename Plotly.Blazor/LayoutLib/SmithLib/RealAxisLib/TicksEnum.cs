@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SmithLib.RealAxisLib
     ///     not drawn. If <c>top</c> (<c>bottom</c>), this axis&#39; are drawn above
     ///     (below) the axis line.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TicksEnum
     {

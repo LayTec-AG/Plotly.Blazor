@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     plotted over one another, you might need to set <c>opacity</c> to see them
     ///     multiple violins. Has no effect on traces that have <c>width</c> set.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ViolinModeEnum
     {

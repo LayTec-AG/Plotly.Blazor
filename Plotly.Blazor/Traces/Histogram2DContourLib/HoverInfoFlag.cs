@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
     ///     are set, no information is displayed upon hovering. But, if <c>none</c>
     ///     is set, click and hover events are still fired.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverInfoFlag

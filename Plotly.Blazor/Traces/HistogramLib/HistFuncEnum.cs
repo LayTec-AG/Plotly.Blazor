@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
     ///     histogram values are computed using the sum, the average, the minimum or
     ///     the maximum of the values lying inside each bin respectively.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum HistFuncEnum
     {

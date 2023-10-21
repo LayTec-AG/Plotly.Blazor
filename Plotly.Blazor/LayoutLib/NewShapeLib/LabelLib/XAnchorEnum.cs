@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.NewShapeLib.LabelLib
     ///     and <c>xanchor</c> to <c>right</c> then the right-most portion of the label
     ///     text lines up with the right-most edge of the new shape.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XAnchorEnum
     {

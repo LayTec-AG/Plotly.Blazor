@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     ///     Sets the vertical alignment of the symbols with respect to their associated
     ///     text.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum VAlignEnum
     {

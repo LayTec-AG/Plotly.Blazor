@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.TransitionLib
     ///     Determines whether the figure&#39;s layout or traces smoothly transitions
     ///     during updates that make both traces and layout change.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OrderingEnum
     {

@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.CarpetLib.BAxisLib
     ///     to the input data. See <c>rangemode</c> for more info. If <c>range</c> is
     ///     provided, then <c>autorange</c> is set to <c>false</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AutoRangeEnum
     {

@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     one another, you might need to set <c>opacity</c> to see them multiple boxes.
     ///     Has no effect on traces that have <c>width</c> set.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum BoxModeEnum
     {

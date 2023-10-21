@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Transforms
     ///     The Aggregate class.
     ///     Implements the <see cref="ITransform" />.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Aggregate : ITransform, IEquatable<Aggregate>

@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib.MarkerLib
     ///     along the line from the previous point to this one. With <c>up</c>, angle
     ///     0 points toward the top of the screen.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AngleRefEnum
     {

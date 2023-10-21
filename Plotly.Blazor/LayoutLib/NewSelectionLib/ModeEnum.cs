@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.NewSelectionLib
     ///     created after first mouse. By adding to and subtracting from the initial
     ///     selection, this option allows declaring extra outlines of the selection.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ModeEnum
     {

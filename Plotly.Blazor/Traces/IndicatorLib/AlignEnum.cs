@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib
     ///     this attribute has no effect if an angular gauge is displayed: in this case,
     ///     it is always centered
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AlignEnum
     {

@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
     /// <summary>
     ///     The YAxis class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Serializable]
     public class YAxis : IEquatable<YAxis>
     {

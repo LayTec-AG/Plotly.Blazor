@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.WaterfallLib
     ///     Determines which trace information appear on the graph. In the case of having
     ///     multiple waterfalls, totals are computed separately (per trace).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum TextInfoFlag

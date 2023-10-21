@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces
     ///     The Histogram2DContour class.
     ///     Implements the <see cref="ITrace" />.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Histogram2DContour : ITrace, IEquatable<Histogram2DContour>

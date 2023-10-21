@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces.FunnelLib
     ///     <c>horizontal</c> funnels, <c>autorange</c> on the <c>y-axis</c> are set
     ///     to <c>reversed</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "1.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OrientationEnum
     {

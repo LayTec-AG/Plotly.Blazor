@@ -10,6 +10,9 @@ using System.Threading;
 
 namespace Plotly.Blazor
 {
+    /// <summary>
+    ///     PlotlyChart
+    /// </summary>
     public partial class PlotlyChart
     {
         /// <summary>
@@ -168,7 +171,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task Restyle(ITrace trace, CancellationToken cancellationToken = default)
         {
-            await Restyle(trace, Data?.Select((v, index) => index).ToArray(), cancellationToken);
+            await Restyle(trace, Data?.Select((_, index) => index).ToArray(), cancellationToken);
         }
 
         /// <summary>
@@ -187,7 +190,7 @@ namespace Plotly.Blazor
         ///     Exports the given chart as a binary image string.
         ///     For example, this string can be used as src attribute for an &lt;img&gt; element.
         ///     If you use Blazor Server, make sure that the size limit of SignalR messages is large enough to process your image.
-        ///     You can set set the bufferSize in the Startup.cs or Program.cs
+        ///     You can set the bufferSize in the Startup.cs or Program.cs
         /// <code>
         ///     services
         ///        .AddServerSideBlazor()
@@ -230,7 +233,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task Restyle(ITrace trace, IEnumerable<int> indizes, CancellationToken cancellationToken = default)
         {
-            if (indizes == null || !indizes.Any())
+            if (indizes?.Any() != true)
             {
                 throw new ArgumentException("You must specifiy at least one index.");
             }
@@ -433,18 +436,18 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null, CancellationToken cancellationToken = default)
         {
-            if (indizes == null || !indizes.Any())
+            if (indizes?.Any() != true)
             {
                 throw new ArgumentException("You must specifiy at least one index.");
             }
 
             var indizesArr = indizes as int[] ?? indizes.ToArray();
-            if (x != null && x.Count() != indizesArr.Count())
+            if (x != null && x.Count() != indizesArr.Length)
             {
                 throw new ArgumentException("X must have as many elements as indizes.");
             }
 
-            if (y != null && y.Count() != indizesArr.Count())
+            if (y != null && y.Count() != indizesArr.Length)
             {
                 throw new ArgumentException("Y must have as many elements as indizes.");
             }
@@ -457,7 +460,7 @@ namespace Plotly.Blazor
                 var xArray = x as IEnumerable<object>[] ?? x.ToArray();
                 if (xArray.Length > 0)
                 {
-                    var currentXData = xArray.ElementAt(index.Index);
+                    var currentXData = xArray[index.Index];
                     var xData = currentXData as object[] ?? currentXData.ToArray();
                     if (xData.Length > 0)
                     {
@@ -473,7 +476,7 @@ namespace Plotly.Blazor
                 var yArray = y as IEnumerable<object>[] ?? y.ToArray();
                 if (yArray.Length > 0)
                 {
-                    var currentYData = yArray.ElementAt(index.Index);
+                    var currentYData = yArray[index.Index];
                     var yData = currentYData as object[] ?? currentYData.ToArray();
                     if (yData.Length > 0)
                     {
@@ -562,18 +565,18 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null, CancellationToken cancellationToken = default)
         {
-            if (indizes == null || !indizes.Any())
+            if (indizes?.Any() != true)
             {
                 throw new ArgumentException("You must specifiy at least one index.");
             }
 
             var indizesArr = indizes as int[] ?? indizes.ToArray();
-            if (x != null && x.Count() != indizesArr.Count())
+            if (x != null && x.Count() != indizesArr.Length)
             {
                 throw new ArgumentException("X must have as many elements as indizes.");
             }
 
-            if (y != null && y.Count() != indizesArr.Count())
+            if (y != null && y.Count() != indizesArr.Length)
             {
                 throw new ArgumentException("Y must have as many elements as indizes.");
             }
@@ -586,7 +589,7 @@ namespace Plotly.Blazor
                 var xArray = x as IEnumerable<object>[] ?? x.ToArray();
                 if (xArray.Length > 0)
                 {
-                    var currentXData = index < 0 ? xArray.ElementAt(xArray.Length - 1) : xArray.ElementAt(index);
+                    var currentXData = index < 0 ? xArray[^1] : xArray[index];
                     var xData = currentXData as object[] ?? currentXData.ToArray();
                     var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
                     if (xData.Length > 0)
@@ -603,7 +606,7 @@ namespace Plotly.Blazor
                 var yArray = y as IEnumerable<object>[] ?? y.ToArray();
                 if (yArray.Length > 0)
                 {
-                    var currentYData = index < 0 ? yArray.ElementAt(yArray.Length + index) : yArray.ElementAt(index);
+                    var currentYData = index < 0 ? yArray[yArray.Length + index] : yArray[index];
                     var yData = currentYData as object[] ?? currentYData.ToArray();
                     var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
                     if (yData.Length > 0)

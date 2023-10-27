@@ -1,0 +1,32 @@
+﻿@using Plotly.Blazor.Interop
+
+<MudGrid Spacing="2" Justify="Justify.FlexStart">
+    @if (HoverInfos != null && HoverInfos.Any())
+    {
+        @Content(HoverInfos.ToArray(), "Hover Event:")
+    }
+    @if (ClickInfos != null && ClickInfos.Any())
+    {
+        @Content(ClickInfos.ToArray(), "Click Event:")
+    }
+</MudGrid>
+
+@code
+{
+    [Parameter]
+    public IEnumerable<EventDataPoint> ClickInfos { get; set; }
+    
+    [Parameter]
+    public IEnumerable<EventDataPoint> HoverInfos { get; set; }
+
+    private RenderFragment Content(EventDataPoint[] dataPoints, string header)
+        => @<MudItem>
+                   <MudText>@header</MudText>
+                   <MudText>Current X: @dataPoints.First().X</MudText>
+                   <MudText>Current Y: @dataPoints.First().Y</MudText>
+                   @if (dataPoints.First().Z != null)
+                   {
+                    <MudText>Current z: @dataPoints.First().Z</MudText>
+                   }
+           </MudItem>;
+}

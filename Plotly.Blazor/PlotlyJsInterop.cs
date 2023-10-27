@@ -205,6 +205,17 @@ public static class PlotlyJsInterop
     }
 
     /// <summary>
+    ///     Can be used to subscribe click events for legend.
+    /// </summary>
+    /// <param name="jsRuntime">The js runtime.</param>
+    /// <param name="objectReference">The object reference.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public static async Task SubscribeLegendClickEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    {
+        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeLegendClickEvent", cancellationToken, objectReference, objectReference.Value.Id);
+    }
+
+    /// <summary>
     ///     Can be used to subscribe hover events for points.
     /// </summary>
     /// <param name="jsRuntime">The js runtime.</param>

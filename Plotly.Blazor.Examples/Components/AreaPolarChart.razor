@@ -1,0 +1,107 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.PolarLib
+@using Plotly.Blazor.Traces.ScatterPolarLib
+@using Font = Plotly.Blazor.LayoutLib.Font
+
+@if (!IsInitialized)
+{
+    <MudPaper>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+    </MudPaper>
+}
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    private bool IsInitialized { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = "Area Polar Chart"
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            ShowLegend = false,
+            Polar = new List<Polar>()
+            {
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        Range = new []{0,5}.OfType<object>().ToList()
+                    }
+                }
+            }
+        };
+
+
+        var trace1 = new ScatterPolar()
+        {
+            R = new[]{0, 1.5, 1.5, 0, 2.5, 2.5, 0}.OfType<object>().ToList(),
+            Theta = new[]{0, 10, 25, 0, 205, 215, 0}.OfType<object>().ToList(),
+            Mode = ModeFlag.Lines,
+            Fill = FillEnum.ToSelf,
+            FillColor = "#709BFF",
+            Line = new Line() { Color = "black" }
+        };
+    var trace2 = new ScatterPolar()
+        {
+            R = new [] {0, 3.5, 3.5, 0}.OfType<object>().ToList(),
+            Theta = new [] {0, 55, 75, 0}.OfType<object>().ToList(),
+            Mode = ModeFlag.Lines,
+            Fill = FillEnum.ToSelf,
+            FillColor = "#E4FF87",
+            Line = new Line() { Color = "black" }
+        };
+        var trace3 = new ScatterPolar()
+        {
+            R = new []{0, 4.5, 4.5, 0, 4.5, 4.5, 0}.OfType<object>().ToList(),
+            Theta = new []{0, 100, 120, 0, 305, 320, 0}.OfType<object>().ToList(),
+            Mode = ModeFlag.Lines,
+            Fill = FillEnum.ToSelf,
+            FillColor = "#FFAA70",
+            Line = new Line() { Color = "black" }
+        };
+        var trace4 = new ScatterPolar()
+        {
+            R = new []{0, 4, 4, 0}.OfType<object>().ToList(),
+            Theta = new []{0, 165, 195, 0}.OfType<object>().ToList(),
+            Mode = ModeFlag.Lines,
+            Fill = FillEnum.ToSelf,
+            FillColor = "#FFDF70",
+            Line = new Line() { Color = "black" }
+        };
+        var trace5 = new ScatterPolar()
+        {
+            R = new [] { 0, 3, 3, 0}.OfType<object>().ToList(),
+            Theta = new [] { 0, 3, 3, 0}.OfType<object>().ToList(),
+            Mode = ModeFlag.Lines,
+            Fill = FillEnum.ToSelf,
+            FillColor = "#B6FFB4",
+            Line = new Line() { Color = "black" }
+        };
+
+        data = new List<ITrace>() { trace1 , trace2, trace3, trace4, trace5 };
+
+        base.OnInitialized();
+    }
+}

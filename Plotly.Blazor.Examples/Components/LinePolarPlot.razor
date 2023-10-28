@@ -21,7 +21,6 @@
 
 <PlotlyChart style="height: 60vh; min-height: 350px" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
-
 @code
 {
     [CascadingParameter]
@@ -39,7 +38,7 @@
         {
             Title = new Title
             {
-                Text = "Line Polar Plot - Mic Patterns"
+                Text = "Line Polar Plot"
             },
             PaperBgColor = Theme.PaletteDark.Surface.ToString(),
             PlotBgColor = Theme.PaletteDark.Surface.ToString(),
@@ -58,6 +57,16 @@
                         Visible = true,
                         Color = Theme.PaletteDark.TextPrimary.ToString(),
                         Range = new []{0.0,1.0}.OfType<object>().ToList()
+                    }
+                }
+            },
+            Legend = new List<Legend>()
+            {
+                new Legend()
+                {
+                    Title = new LayoutLib.LegendLib.Title()
+                    {
+                        Text = "Mic Patterns"
                     }
                 }
             }

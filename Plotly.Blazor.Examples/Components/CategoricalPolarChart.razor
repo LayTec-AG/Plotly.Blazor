@@ -1,0 +1,173 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.PolarLib
+@using Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
+@using Plotly.Blazor.Traces.ScatterPolarLib
+@using CategoryOrderEnum = Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.CategoryOrderEnum
+@using Font = Plotly.Blazor.LayoutLib.Font
+@using ThetaUnitEnum = Plotly.Blazor.Traces.ScatterPolarLib.ThetaUnitEnum
+
+@if (!IsInitialized)
+{
+    <MudPaper>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+    </MudPaper>
+}
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    private bool IsInitialized { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = "Categorical Polar Chart"
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            ShowLegend = true,
+            Polar = new List<Polar>()
+            {
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    Domain = new Domain()
+                    {
+                        X = new []{0, 0.46}.OfType<object>().ToList(),
+                        Y = new []{0.56, 1}.OfType<object>().ToList(),
+                    },
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        Angle = 45
+                    },
+                    AngularAxis = new AngularAxis()
+                    {
+                        Direction = DirectionEnum.Clockwise,
+                        Period = 6
+                    }
+                },
+                //Polar2
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    Domain = new Domain()
+                    {
+                        X = new []{0, 0.46}.OfType<object>().ToList(),
+                        Y = new []{0, 0.44}.OfType<object>().ToList(),
+                    },
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        Angle = 180,
+                        TickAngle = -180
+                    }
+                },
+                //Polar3
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    Domain = new Domain()
+                    {
+                        X = new []{0.54, 1}.OfType<object>().ToList(),
+                        Y = new []{0.56, 1}.OfType<object>().ToList(),
+                    },
+                    Sector = new []{150, 400}.OfType<object>().ToList(),
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        Angle = -45
+                    },
+                    AngularAxis = new AngularAxis()
+                    {
+                        CategoryArray = new List<object>(){"d", "a", "c", "b"}
+                    }
+                },
+                //Polar4
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    Domain = new Domain()
+                    {
+                        X = new []{0.54, 1}.OfType<object>().ToList(),
+                        Y = new []{0, 0.44}.OfType<object>().ToList(),
+                    },
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        CategoryOrder = CategoryOrderEnum.CategoryDescending
+                    },
+                    AngularAxis = new AngularAxis()
+                    {
+                        ThetaUnit = LayoutLib.PolarLib.AngularAxisLib.ThetaUnitEnum.Radians,
+                        DTick = 0.3141592653589793
+                    }
+                }
+            }
+        };
+
+
+        var trace1 = new ScatterPolar()
+        {
+            R = new[]{5, 4, 2, 4, 5}.OfType<object>().ToList(),
+            Theta = new[]{"a", "b", "c", "d", "a"}.OfType<object>().ToList(),
+            Name = "angular categories",
+            Fill = FillEnum.ToSelf
+        };
+    var trace2 = new ScatterPolar()
+        {
+            R = new [] {"a", "b", "c", "d", "b", "f", "a"}.OfType<object>().ToList(),
+            Theta = new [] {1, 4, 2, 1.5, 1.5, 6, 5}.OfType<object>().ToList(),
+            Name = "radial categories",
+            ThetaUnit = ThetaUnitEnum.Radians,
+            Fill = FillEnum.ToSelf,
+            Subplot = "polar2"
+        };
+        var trace3 = new ScatterPolar()
+        {
+            R = new []{5, 4, 2, 4, 5}.OfType<object>().ToList(),
+            Theta = new []{"a", "b", "c", "d", "a"}.OfType<object>().ToList(),
+            Name = "angular categories (w/ categoryarray)",
+            Fill = FillEnum.ToSelf,
+            Subplot = "polar3"
+        };
+        var trace4 = new ScatterPolar()
+        {
+            R = new []{"a", "b", "c", "d", "b", "f", "a", "a"}.OfType<object>().ToList(),
+            Theta = new []{45, 90, 180, 200, 300, 15, 20, 45}.OfType<object>().ToList(),
+            Name = "radial categories (w/ category descending)",
+            Fill = FillEnum.ToSelf,
+            Subplot = "polar4"
+        };
+        var trace5 = new ScatterPolar()
+        {
+            R = new [] { 5, 4, 2, 4, 5, 5}.OfType<object>().ToList(),
+            Theta = new [] {"b", "c", "d", "e", "a", "b"}.OfType<object>().ToList(),
+            Name = "angular categories (w/ extra category)",
+            Fill = FillEnum.ToSelf
+        };
+
+        data = new List<ITrace>() { trace1 , trace2, trace3, trace4, trace5 };
+
+        base.OnInitialized();
+    }
+}

@@ -225,7 +225,7 @@ public static class PlotlyJsInterop
     {
         await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeHoverEvent", cancellationToken, objectReference, objectReference.Value.Id);
     }
-    
+
     /// <summary>
     ///     Can be used to subscribe to relayout events.
     /// </summary>

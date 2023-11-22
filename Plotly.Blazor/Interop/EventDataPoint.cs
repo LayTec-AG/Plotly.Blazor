@@ -56,7 +56,7 @@
         /// </summary>
         public object Lon { get; set; }
     }
-    
+
     /// <summary>
     ///     A single event can have one selected point.
     /// </summary>

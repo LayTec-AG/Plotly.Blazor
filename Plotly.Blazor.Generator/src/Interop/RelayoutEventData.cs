@@ -19,8 +19,7 @@ namespace Plotly.Blazor.Interop
         /// <remarks>
         ///     In some cases this may be not be set.
         /// </remarks>
-        public double[] XRange { get; set; }
-
+        public object[] XRange { get; set; }
 
         /// <summary>
         ///     The y-axis of the layout. [y0, y1].
@@ -28,6 +27,6 @@ namespace Plotly.Blazor.Interop
         /// <remarks>
         ///      In some cases this may be not be set.
         /// </remarks>
-        public double[] YRange { get; set; }
+        public object[] YRange { get; set; }
     }
 }

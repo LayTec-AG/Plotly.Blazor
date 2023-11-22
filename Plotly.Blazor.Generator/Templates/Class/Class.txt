@@ -21,7 +21,7 @@ namespace {{Namespace}}
     ///     {{.}}
     {{/Description}}
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("{{GeneratorName}}", "{{GeneratorVersion}}")]
+    [System.CodeDom.Compiler.GeneratedCode("{{GeneratorName}}", null)]
     {{#HasSpecialProperties}}
     [JsonConverter(typeof(PlotlyConverter))]
     {{/HasSpecialProperties}}

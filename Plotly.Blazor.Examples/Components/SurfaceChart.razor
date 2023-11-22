@@ -1,6 +1,7 @@
 ﻿@using Plotly.Blazor.LayoutLib
 @using System.Globalization
 @using Plotly.Blazor.Interop
+@using Plotly.Blazor.Examples.Components.Display
 @inject NavigationManager MyNavigationManager
 
 @if (!IsInitialized)
@@ -10,14 +11,10 @@
     </MudPaper>
 }
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" HoverAction="HoverAction" AfterRender="LoadData" />
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" 
+             ClickAction="ClickAction" HoverAction="HoverAction" AfterRender="LoadData" />
 
-@if (HoverInfos != null && HoverInfos.Any())
-{
-    <MudText>Current X: @HoverInfos.First().X</MudText>
-    <MudText>Current Y: @HoverInfos.First().Y</MudText>
-    <MudText>Current Z: @HoverInfos.First().Z</MudText>
-}
+<HoverClickDisplay ClickInfos="@ClickInfos" HoverInfos="@HoverInfos"/>
 
 @code
 {
@@ -29,6 +26,7 @@
     private Layout layout;
     private IList<ITrace> data;
 
+    private IEnumerable<EventDataPoint> ClickInfos { get; set; }
     private IEnumerable<EventDataPoint> HoverInfos { get; set; }
 
     private bool IsInitialized { get; set; }
@@ -81,10 +79,17 @@
             }
             IsInitialized = true;
             await chart.SubscribeHoverEvent();
+            await chart.SubscribeClickEvent();
             await InvokeAsync(StateHasChanged);
         });
     }
 
+    public void ClickAction(IEnumerable<EventDataPoint> eventData)
+    {
+        ClickInfos = eventData;
+        StateHasChanged();
+    }
+    
     public void HoverAction(IEnumerable<EventDataPoint> eventData)
     {
         HoverInfos = eventData;

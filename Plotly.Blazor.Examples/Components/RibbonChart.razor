@@ -3,6 +3,8 @@
 @using XAxis = Plotly.Blazor.LayoutLib.SceneLib.XAxis
 @using YAxis = Plotly.Blazor.LayoutLib.SceneLib.YAxis
 @using Newtonsoft.Json.Linq
+@using Plotly.Blazor.Interop
+@using Plotly.Blazor.Examples.Components.Display
 @inject NavigationManager MyNavigationManager
 
 @if (!IsInitialized)
@@ -12,7 +14,10 @@
     </MudPaper>
 }
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" AfterRender="LoadData"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" 
+             ClickAction="ClickAction" HoverAction="HoverAction" AfterRender="LoadData"/>
+
+<HoverClickDisplay ClickInfos="@ClickInfos" HoverInfos="@HoverInfos"/>
 
 @code
 {
@@ -23,6 +28,8 @@
     private Config config;
     private Layout layout;
     private IList<ITrace> data;
+    private IEnumerable<EventDataPoint> ClickInfos { get; set; }
+    private IEnumerable<EventDataPoint> HoverInfos { get; set; }
 
     private bool IsInitialized { get; set; }
     const string Url = "https://raw.githubusercontent.com/plotly/datasets/master/3d-ribbon.json";
@@ -98,6 +105,26 @@
             IsInitialized = true;
             await InvokeAsync(StateHasChanged);
         });
+        
+        SubscribeEvents();
+    }
+    
+    public void ClickAction(IEnumerable<EventDataPoint> eventData)
+    {
+        ClickInfos = eventData;
+        StateHasChanged();
+    }
+    
+    public void HoverAction(IEnumerable<EventDataPoint> eventData)
+    {
+        HoverInfos = eventData;
+        StateHasChanged();
+    }
+
+    public async void SubscribeEvents()
+    {
+        await chart.SubscribeClickEvent();
+        await chart.SubscribeHoverEvent();
     }
 
     record Ribbon(object[][] X, object[][] Y, object[][] Z, string[][] ColorScale);

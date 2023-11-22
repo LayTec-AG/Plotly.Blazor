@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     /// <summary>
     ///     The Fill class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class Fill : IEquatable<Fill>
     {

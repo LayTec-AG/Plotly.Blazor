@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Transforms
     ///     The GroupBy class.
     ///     Implements the <see cref="ITransform" />.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class GroupBy : ITransform, IEquatable<GroupBy>
     {

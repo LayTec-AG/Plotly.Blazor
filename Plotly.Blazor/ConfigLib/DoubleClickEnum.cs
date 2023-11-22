@@ -16,7 +16,7 @@ namespace Plotly.Blazor.ConfigLib
     ///     the odd double clicks resets the axis ranges to their initial values and
     ///     even double clicks set the axis ranges to their autorange values.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum DoubleClickEnum
     {

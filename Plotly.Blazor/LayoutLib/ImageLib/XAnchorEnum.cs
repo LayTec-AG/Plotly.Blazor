@@ -11,7 +11,7 @@ namespace Plotly.Blazor.LayoutLib.ImageLib
     /// <summary>
     ///     Sets the anchor for the x position
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XAnchorEnum
     {

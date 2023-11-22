@@ -86,16 +86,16 @@ public static class PlotlyJsInterop
     /// <param name="objectReference">The object reference.</param>
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values</param>
-    /// <param name="indizes">Indizes.</param>
+    /// <param name="indices">Indices.</param>
     /// <param name="max">Max Points.</param>
     /// <param name="cancellationToken">CancellationToken</param>
     public static async Task ExtendTraces(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max, CancellationToken cancellationToken)
+        DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
     {
         await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.extendTraces",
             cancellationToken,
             objectReference.Value.Id,
-            x, y, indizes, max);
+            x, y, indices, max);
     }
 
     /// <summary>
@@ -123,16 +123,16 @@ public static class PlotlyJsInterop
     /// <param name="objectReference">The object reference.</param>
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values</param>
-    /// <param name="indizes">Indizes.</param>
+    /// <param name="indices">Indices.</param>
     /// <param name="max">Max Points.</param>
     /// <param name="cancellationToken">CancellationToken</param>
     public static async Task PrependTraces(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max, CancellationToken cancellationToken)
+        DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
     {
         await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.prependTraces",
             cancellationToken,
             objectReference.Value.Id,
-            x, y, indizes, max);
+            x, y, indices, max);
     }
 
     /// <summary>
@@ -184,13 +184,24 @@ public static class PlotlyJsInterop
     /// <param name="jsRuntime">The js runtime.</param>
     /// <param name="objectReference">The object reference.</param>
     /// <param name="trace">The new trace parameter</param>
-    /// <param name="indizes">Indizes.</param>
+    /// <param name="indices">Indices.</param>
     /// <param name="cancellationToken">CancellationToken</param>
     public static async Task Restyle(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, IEnumerable<int> indizes, CancellationToken cancellationToken)
+        DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, IEnumerable<int> indices, CancellationToken cancellationToken)
     {
         await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", cancellationToken,
-            objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indizes);
+            objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indices);
+    }
+
+    /// <summary>
+    ///     Can be used to subscribe click events for legend.
+    /// </summary>
+    /// <param name="jsRuntime">The js runtime.</param>
+    /// <param name="objectReference">The object reference.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public static async Task SubscribeLegendClickEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    {
+        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeLegendClickEvent", cancellationToken, objectReference, objectReference.Value.Id);
     }
 
     /// <summary>

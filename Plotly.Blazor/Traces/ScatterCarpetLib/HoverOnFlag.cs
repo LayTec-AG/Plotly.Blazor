@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.ScatterCarpetLib
     ///     and there are no markers or text, then the default is <c>fills</c>, otherwise
     ///     it is <c>points</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverOnFlag

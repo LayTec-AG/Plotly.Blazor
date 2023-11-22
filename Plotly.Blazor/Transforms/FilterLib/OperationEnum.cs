@@ -26,7 +26,7 @@ namespace Plotly.Blazor.Transforms.FilterLib
     ///     <c>{}</c> keeps items present in a set of values <c>}{</c> keeps items not
     ///     present in a set of values
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OperationEnum
     {

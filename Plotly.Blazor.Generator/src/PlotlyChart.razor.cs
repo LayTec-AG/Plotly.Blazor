@@ -228,12 +228,12 @@ namespace Plotly.Blazor
         ///     Updates the specified traces using the provided parameter
         /// </summary>
         /// <param name = "trace">New trace parameter, create new object and assign only update value</param>
-        /// <param name = "indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+        /// <param name = "indices">indices of the traces. Use -1 e.g. to get the last one.</param>
         /// <param name = "cancellationToken">CancellationToken</param>
         /// <returns>Task</returns>
-        public async Task Restyle(ITrace trace, IEnumerable<int> indizes, CancellationToken cancellationToken = default)
+        public async Task Restyle(ITrace trace, IEnumerable<int> indices, CancellationToken cancellationToken = default)
         {
-            if (indizes?.Any() != true)
+            if (indices?.Any() != true)
             {
                 throw new ArgumentException("You must specifiy at least one index.");
             }
@@ -243,8 +243,8 @@ namespace Plotly.Blazor
                 throw new ArgumentNullException(nameof(trace));
             }
 
-            var absoluteIndizes = new List<int>();
-            foreach (var index in indizes)
+            var absoluteindices = new List<int>();
+            foreach (var index in indices)
             {
                 var absoluteIndex = index < 0 ? Data.Count + index : index;
                 if (index > Data.Count - 1)
@@ -252,16 +252,16 @@ namespace Plotly.Blazor
                     throw new ArgumentOutOfRangeException(nameof(index));
                 }
 
-                absoluteIndizes.Add(absoluteIndex);
+                absoluteindices.Add(absoluteIndex);
             }
 
             var json = JsonSerializer.Serialize(trace.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
-            foreach (var currentTrace in absoluteIndizes.Select(index => Data[index]))
+            foreach (var currentTrace in absoluteindices.Select(index => Data[index]))
             {
                 currentTrace.Populate(json, PlotlyJsInterop.SerializerOptions); // apply changes to the existing object
             }
 
-            await JsRuntime.Restyle(objectReference, trace, absoluteIndizes.ToArray(), cancellationToken);
+            await JsRuntime.Restyle(objectReference, trace, absoluteindices.ToArray(), cancellationToken);
         }
 
         /// <summary>
@@ -426,72 +426,93 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
-        ///     Extends multiple traces, determined by the indizes, with the specified arrays x, y.
+        ///     Extends multiple traces, determined by the indices, with the specified arrays x, y.
         /// </summary>
         /// <param name = "x">X-Values.</param>
         /// <param name = "y">Y-Values.</param>
-        /// <param name = "indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+        /// <param name = "indices">Indices of the traces. Use -1 e.g. to get the last one.</param>
         /// <param name = "max">Limits the number of points in the trace.</param>
         /// <param name = "cancellationToken">CancellationToken</param>
+        /// <exception cref="ArgumentException">Arguments are invalid</exception>
+        /// <exception cref="InvalidOperationException">Data lists are not initialized</exception>
         /// <returns>Task</returns>
-        public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null, CancellationToken cancellationToken = default)
+        public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max = null, CancellationToken cancellationToken = default)
         {
-            if (indizes?.Any() != true)
+            if (indices == null)
             {
-                throw new ArgumentException("You must specifiy at least one index.");
+                throw new ArgumentException("You must specify at least one index.");
             }
 
-            var indizesArr = indizes as int[] ?? indizes.ToArray();
-            if (x != null && x.Count() != indizesArr.Length)
+            var indicesArr = indices as int[] ?? indices.ToArray();
+            if (indicesArr.Length < 1)
             {
-                throw new ArgumentException("X must have as many elements as indizes.");
+                throw new ArgumentException("You must specify at least one index.");
             }
 
-            if (y != null && y.Count() != indizesArr.Length)
+            var xArr = x?.ToArray();
+            var yArr = y?.ToArray();
+
+            if (xArr != null && xArr.Length != indicesArr.Length)
             {
-                throw new ArgumentException("Y must have as many elements as indizes.");
+                throw new ArgumentException("X must have as many elements as indices.");
             }
 
-            // Add the data to the current traces
-            foreach (var index in indizesArr.Select((Value, Index) => new { Value, Index }))
+            if (yArr != null && yArr.Length != indicesArr.Length)
             {
-                var currentTrace = index.Value < 0 ? Data[Data.Count + index.Value] : Data[index.Value];
+                throw new ArgumentException("Y must have as many elements as indices.");
+            }
+
+            for (var i = 0; i < indicesArr.Length; i++)
+            {
+                var index = indicesArr[i];
+                var currentTrace = index < 0 ? Data[Data.Count + index] : Data[index];
                 var traceType = currentTrace.GetType();
-                var xArray = x as IEnumerable<object>[] ?? x.ToArray();
-                if (xArray.Length > 0)
+
+                if (xArr != null)
                 {
-                    var currentXData = xArray[index.Index];
+                    var currentXData = xArr[i];
                     var xData = currentXData as object[] ?? currentXData.ToArray();
-                    if (xData.Length > 0)
-                    {
-                        var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
-                        list.AddRange(xData);
-                        if (max != null)
-                        {
-                            traceType.GetProperty("X")?.SetValue(currentTrace, list?.TakeLast(max.Value).ToList());
-                        }
-                    }
+                    AddDataToProperty(currentTrace, traceType, "X", xData, max, false);
                 }
 
-                var yArray = y as IEnumerable<object>[] ?? y.ToArray();
-                if (yArray.Length > 0)
+                if (yArr != null)
                 {
-                    var currentYData = yArray[index.Index];
+                    var currentYData = yArr[i];
                     var yData = currentYData as object[] ?? currentYData.ToArray();
-                    if (yData.Length > 0)
-                    {
-                        var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
-                        list.AddRange(yData);
-                        if (max != null)
-                        {
-                            traceType.GetProperty("Y")?.SetValue(currentTrace, list?.TakeLast(max.Value).ToList());
-                        }
-                    }
+                    AddDataToProperty(currentTrace, traceType, "Y", yData, max, false);
                 }
             }
 
             await DataChanged.InvokeAsync(Data);
-            await JsRuntime.ExtendTraces(objectReference, x, y, indizesArr, max, cancellationToken);
+            await JsRuntime.ExtendTraces(objectReference, xArr, yArr, indicesArr, max, cancellationToken);
+        }
+
+        private static void AddDataToProperty(object currentTrace, Type traceType, string propertyName, IReadOnlyCollection<object> data, int? max, bool prepend)
+        {
+            if (data.Count <= 0)
+            {
+                return;
+            }
+
+            var list = (IList<object>)traceType.GetProperty(propertyName)?.GetValue(currentTrace) 
+                       ?? throw new InvalidOperationException($"You must first initialise the {propertyName} list before it can be expanded, e.g. by using Plotly.Update");
+
+            if (prepend)
+            {
+                list.InsertRange(0, data);
+                if (max != null)
+                {
+                    traceType.GetProperty(propertyName)?.SetValue(currentTrace, list.Take(max.Value).ToList());
+                }
+            }
+            else
+            {
+                list.AddRange(data);
+                if (max != null)
+                {
+                    traceType.GetProperty(propertyName)?.SetValue(currentTrace, list.TakeLast(max.Value).ToList());
+                }
+            }
         }
 
         /// <summary>
@@ -555,79 +576,77 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
-        ///     Prepends multiple traces, determined by the indizes, with the specified arrays x, y.
+        ///     Prepends multiple traces, determined by the indices, with the specified arrays x, y.
         /// </summary>
         /// <param name = "x">X-Values.</param>
         /// <param name = "y">Y-Values.</param>
-        /// <param name = "indizes">Indizes of the traces. Use -1 e.g. to get the last one.</param>
+        /// <param name = "indices">indices of the traces. Use -1 e.g. to get the last one.</param>
         /// <param name = "max">Limits the number of points in the trace.</param>
         /// <param name = "cancellationToken">CancellationToken</param>
+        /// <exception cref="ArgumentException">Arguments are invalid</exception>
+        /// <exception cref="InvalidOperationException">Data lists are not initialized</exception>
         /// <returns>Task</returns>
-        public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indizes, int? max = null, CancellationToken cancellationToken = default)
+        public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max = null, CancellationToken cancellationToken = default)
         {
-            if (indizes?.Any() != true)
+            if (indices == null)
             {
-                throw new ArgumentException("You must specifiy at least one index.");
+                throw new ArgumentException("You must specify at least one index.");
             }
 
-            var indizesArr = indizes as int[] ?? indizes.ToArray();
-            if (x != null && x.Count() != indizesArr.Length)
+            var indicesArr = indices as int[] ?? indices.ToArray();
+            if (indicesArr.Length < 1)
             {
-                throw new ArgumentException("X must have as many elements as indizes.");
+                throw new ArgumentException("You must specify at least one index.");
             }
 
-            if (y != null && y.Count() != indizesArr.Length)
+            var xArr = x?.ToArray();
+            var yArr = y?.ToArray();
+
+            if (xArr != null && xArr.Length != indicesArr.Length)
             {
-                throw new ArgumentException("Y must have as many elements as indizes.");
+                throw new ArgumentException("X must have as many elements as indices.");
             }
 
-            // Add the data to the current traces
-            foreach (var index in indizes)
+            if (yArr != null && yArr.Length != indicesArr.Length)
             {
-                var currentTrace = index < 0 ? Data[^index] : Data[index];
+                throw new ArgumentException("Y must have as many elements as indices.");
+            }
+
+            for (var i = 0; i < indicesArr.Length; i++)
+            {
+                var index = indicesArr[i];
+                var currentTrace = index < 0 ? Data[Data.Count + index] : Data[index];
                 var traceType = currentTrace.GetType();
-                var xArray = x as IEnumerable<object>[] ?? x.ToArray();
-                if (xArray.Length > 0)
-                {
-                    var currentXData = index < 0 ? xArray[^1] : xArray[index];
-                    var xData = currentXData as object[] ?? currentXData.ToArray();
-                    var list = (IList<object>)traceType.GetProperty("X")?.GetValue(currentTrace);
-                    if (xData.Length > 0)
-                    {
-                        list.InsertRange(0, xData);
-                    }
 
-                    if (max != null)
-                    {
-                        traceType.GetProperty("X")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
-                    }
+                if (xArr != null)
+                {
+                    var currentXData = xArr[i];
+                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "X", xData, max, true);
                 }
 
-                var yArray = y as IEnumerable<object>[] ?? y.ToArray();
-                if (yArray.Length > 0)
+                if (yArr != null)
                 {
-                    var currentYData = index < 0 ? yArray[yArray.Length + index] : yArray[index];
+                    var currentYData = yArr[i];
                     var yData = currentYData as object[] ?? currentYData.ToArray();
-                    var list = (IList<object>)traceType.GetProperty("Y")?.GetValue(currentTrace);
-                    if (yData.Length > 0)
-                    {
-                        list.InsertRange(0, yData);
-                    }
-
-                    if (max != null)
-                    {
-                        traceType.GetProperty("Y")?.SetValue(currentTrace, list?.Take(max.Value).ToList());
-                    }
+                    AddDataToProperty(currentTrace, traceType, "Y", yData, max, true);
                 }
             }
 
             await DataChanged.InvokeAsync(Data);
-            await JsRuntime.PrependTraces(objectReference, x, y, indizes, max, cancellationToken);
+            await JsRuntime.PrependTraces(objectReference, xArr, yArr, indicesArr, max, cancellationToken);
         }
 
         /// <summary>
-        ///     Defines the action that should happen when the ClickEvent is triggered.
+        ///     Defines the action that should happen when the LegendClickAction is triggered.
         ///     Objects are currently required for accomodating different plot value types
+        /// </summary>
+        [Parameter]
+        public Action<LegendEventDataPoint> LegendClickAction { get; set; }
+
+        /// <summary>
+        ///     Defines the action that should happen when the ClickEvent is triggered.
+        ///     Objects are currently required for accommodating different plot value types
         /// </summary>
         [Parameter]
         public Action<IEnumerable<EventDataPoint>> ClickAction { get; set; }
@@ -644,6 +663,17 @@ namespace Plotly.Blazor
         /// </summary>
         [Parameter]
         public Action<RelayoutEventData> RelayoutAction { get; set; }
+
+        /// <summary>
+        ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
+        ///     Objects are currently required for accommodating different plot value types.
+        /// </summary>
+        //// <param name = "eventData"></param>
+        [JSInvokable("LegendClickEvent")]
+        public void LegendClickEvent(LegendEventDataPoint eventData)
+        {
+            LegendClickAction?.Invoke(eventData);
+        }
 
         /// <summary>
         ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
@@ -674,6 +704,16 @@ namespace Plotly.Blazor
         public void RelayoutEvent(RelayoutEventData obj)
         {
             RelayoutAction?.Invoke(obj);
+        }
+
+        /// <summary>
+        ///     Subscribes to the legend click event of the chart.
+        /// </summary>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task SubscribeLegendClickEvent(CancellationToken cancellationToken = default)
+        {
+            await JsRuntime.SubscribeLegendClickEvent(objectReference, cancellationToken);
         }
 
         /// <summary>

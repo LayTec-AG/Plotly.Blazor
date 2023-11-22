@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.ColorAxisLib.ColorBarLib
     ///     options are used when <c>orientation</c> is <c>h</c>, top and bottom when
     ///     <c>orientation</c> is <c>v</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickLabelPositionEnum
     {

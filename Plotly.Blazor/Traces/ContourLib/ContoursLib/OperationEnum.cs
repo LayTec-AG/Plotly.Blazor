@@ -17,7 +17,7 @@ namespace Plotly.Blazor.Traces.ContourLib.ContoursLib
     ///     to value[1]` Open vs. closed intervals make no difference to constraint
     ///     display, but all versions are allowed for consistency with filter transforms.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OperationEnum
     {

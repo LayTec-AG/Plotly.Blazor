@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces
     ///     The Mesh3D class.
     ///     Implements the <see cref="ITrace" />.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Mesh3D : ITrace, IEquatable<Mesh3D>

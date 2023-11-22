@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.SunburstLib
     ///     and the branches sectors are taken to be the extra part not part of the
     ///     sum of the values at their leaves.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum BranchValuesEnum
     {

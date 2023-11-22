@@ -1,0 +1,76 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Interop
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             LegendClickAction="LegendClickAction" AfterRender="SubscribeEvents"/>
+
+@if (LegendInfo != null)
+{
+    <MudText>Curve number: @LegendInfo.CurveNumber</MudText>
+    <MudText>ExpandedIndex: @LegendInfo.ExpandedIndex</MudText>
+}
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;    
+    private LegendEventDataPoint LegendInfo { get; set; }
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        config = new Config
+        {
+            Responsive = true
+        };
+
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = GetType().Name
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            ShowLegend = true,
+            BarMode = BarModeEnum.Stack
+        };
+        
+        data = new List<ITrace>
+        {
+            new Bar
+            {
+                X = new List<object> { "giraffes", "orangutans", "monkeys" },
+                Y = new List<object> { 20, 14, 23 },
+                Name = "SF Zoo"
+            },
+            new Bar
+            {
+                X = new List<object> { "giraffes", "orangutans", "monkeys" },
+                Y = new List<object> { 12, 18, 29 },
+                Name = "LA Zoo"
+            }
+        };
+
+        base.OnInitialized();
+    }
+    
+    public void LegendClickAction(LegendEventDataPoint eventData)
+    {
+        LegendInfo = eventData;
+        StateHasChanged();
+    }
+
+    public async void SubscribeEvents()
+    {
+        await chart.SubscribeLegendClickEvent();
+    }
+}

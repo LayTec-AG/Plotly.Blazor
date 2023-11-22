@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
     ///     20 points and the trace is not stacked then the default is <c>lines+markers</c>.
     ///     Otherwise, <c>lines</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum ModeFlag

@@ -17,7 +17,7 @@ namespace Plotly.Blazor.Traces.FunnelLib
     ///     is too small and no bar is stacked on this one the text is moved outside.
     ///     If <c>none</c>, no text appears.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TextPositionEnum
     {

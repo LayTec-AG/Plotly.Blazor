@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.ImageLib
     ///     and <c>yref</c> are both set to <c>paper</c>, image is drawn below the entire
     ///     plot area.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum LayerEnum
     {

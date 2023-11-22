@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     shared location. With <c>overlay</c>, the bars are plotted over one another,
     ///     you might need to reduce <c>opacity</c> to see multiple bars.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum FunnelModeEnum
     {

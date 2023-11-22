@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib.ColorBarLib
     /// <summary>
     ///     The Title class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class Title : IEquatable<Title>
     {

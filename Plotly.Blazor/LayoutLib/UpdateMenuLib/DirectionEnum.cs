@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
     ///     dropdown menu or a row/column of buttons. For <c>left</c> and <c>up</c>,
     ///     the buttons will still appear in left-to-right or top-to-bottom order respectively.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum DirectionEnum
     {

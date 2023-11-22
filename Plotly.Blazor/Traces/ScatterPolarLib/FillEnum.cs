@@ -17,7 +17,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
     ///     contour lines), and behaves like <c>toself</c> if there is no trace before
     ///     it. <c>tonext</c> should not be used if one trace does not enclose the other.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum FillEnum
     {

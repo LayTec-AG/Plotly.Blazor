@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib.ColorBarLib
     ///     <c>height</c> of the plot. <c>paper</c> refers to the height of the plotting
     ///     area only.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum YRefEnum
     {

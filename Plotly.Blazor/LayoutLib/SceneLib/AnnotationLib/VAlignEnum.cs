@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.AnnotationLib
     ///     Sets the vertical alignment of the <c>text</c> within the box. Has an effect
     ///     only if an explicit height is set to override the text height.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum VAlignEnum
     {

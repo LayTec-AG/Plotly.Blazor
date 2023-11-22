@@ -15,7 +15,7 @@ namespace Plotly.Blazor.AnimationLib
     ///     which the new animation is started. If <c>afterall</c> all existing frames
     ///     are animated to completion before the new animation is started.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ModeEnum
     {

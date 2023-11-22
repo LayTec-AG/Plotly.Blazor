@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ScatterMapBoxLib.MarkerLib.ColorBarLib
     ///     of the color bar. Defaults to <c>left</c> when <c>orientation</c> is <c>v</c>
     ///     and <c>center</c> when <c>orientation</c> is <c>h</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XAnchorEnum
     {

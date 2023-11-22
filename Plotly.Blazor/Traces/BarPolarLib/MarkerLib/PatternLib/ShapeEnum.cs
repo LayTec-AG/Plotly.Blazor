@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib.PatternLib
     ///     Sets the shape of the pattern fill. By default, no pattern is used for filling
     ///     the area.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ShapeEnum
     {

@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.FunnelLib.MarkerLib.ColorBarLib
     ///     only the exponent of the first tick is shown. If <c>last</c>, only the exponent
     ///     of the last tick is shown. If <c>none</c>, no exponents appear.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ShowExponentEnum
     {

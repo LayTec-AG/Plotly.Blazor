@@ -11,7 +11,7 @@ namespace Plotly.Blazor.Traces.BarLib
     /// <summary>
     ///     Sets the calendar system to use with <c>x</c> date data.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XCalendarEnum
     {

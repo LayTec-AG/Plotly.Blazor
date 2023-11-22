@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib.LineLib
     ///     spline interpolation. The other available values correspond to step-wise
     ///     line shapes.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ShapeEnum
     {

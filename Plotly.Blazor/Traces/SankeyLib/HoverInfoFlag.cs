@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
     ///     is superseded by <c>node.hoverinfo</c> and <c>node.hoverinfo</c> for nodes
     ///     and links respectively.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverInfoFlag

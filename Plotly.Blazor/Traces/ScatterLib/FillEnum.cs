@@ -27,7 +27,7 @@ namespace Plotly.Blazor.Traces.ScatterLib
     ///     are not already consecutive, the later ones will be pushed down in the drawing
     ///     order.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum FillEnum
     {

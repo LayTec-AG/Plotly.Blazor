@@ -16,7 +16,7 @@ namespace Plotly.Blazor.LayoutLib.UniformTextLib
     ///     Please note that if the size defined by <c>minsize</c> is greater than the
     ///     font size defined by trace, then the <c>minsize</c> is used.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ModeEnum
     {

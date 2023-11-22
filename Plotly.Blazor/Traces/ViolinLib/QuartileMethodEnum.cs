@@ -20,7 +20,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
     ///     the median in both halves - Q1 is then the median of the lower half and
     ///     Q3 the median of the upper half.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum QuartileMethodEnum
     {

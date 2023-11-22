@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.ZAxisLib
     /// <summary>
     ///     The TickFormatStop class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class TickFormatStop : IEquatable<TickFormatStop>
     {

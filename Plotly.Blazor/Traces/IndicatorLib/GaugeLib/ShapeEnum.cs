@@ -11,7 +11,7 @@ namespace Plotly.Blazor.Traces.IndicatorLib.GaugeLib
     /// <summary>
     ///     Set the shape of the gauge
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ShapeEnum
     {

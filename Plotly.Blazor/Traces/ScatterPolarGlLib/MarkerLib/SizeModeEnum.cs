@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib.MarkerLib
     ///     Has an effect only if <c>marker.size</c> is set to a numerical array. Sets
     ///     the rule for which the data in <c>size</c> is converted to pixels.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum SizeModeEnum
     {

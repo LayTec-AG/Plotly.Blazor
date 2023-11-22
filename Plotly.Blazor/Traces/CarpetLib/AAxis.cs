@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.CarpetLib
     /// <summary>
     ///     The AAxis class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class AAxis : IEquatable<AAxis>
     {

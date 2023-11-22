@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
     ///     Sets the resolution of the base layers. The values have units of km/mm e.g.
     ///     110 corresponds to a scale ratio of 1:110,000,000.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ResolutionEnum
     {

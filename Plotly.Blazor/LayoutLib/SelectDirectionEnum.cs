@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     selection, <c>v</c> only vertical, <c>d</c> only diagonal and <c>any</c>
     ///     sets no limit.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum SelectDirectionEnum
     {

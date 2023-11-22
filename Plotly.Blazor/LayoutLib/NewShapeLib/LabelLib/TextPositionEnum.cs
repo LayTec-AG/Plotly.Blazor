@@ -17,7 +17,7 @@ namespace Plotly.Blazor.LayoutLib.NewShapeLib.LabelLib
     ///     <c>middle</c>, and <c>end</c>. Default: &#39;middle center&#39; for rectangles,
     ///     circles, and paths; <c>middle</c> for lines.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TextPositionEnum
     {

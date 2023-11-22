@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     be treated as a number during automatic axis <c>type</c> detection. This
     ///     is the default value; however it could be overridden for individual axes.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AutoTypeNumbersEnum
     {

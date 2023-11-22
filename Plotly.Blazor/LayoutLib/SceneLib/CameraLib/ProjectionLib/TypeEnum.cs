@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.CameraLib.ProjectionLib
     ///     Sets the projection type. The projection type could be either <c>perspective</c>
     ///     or <c>orthographic</c>. The default is <c>perspective</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

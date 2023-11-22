@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.BarPolarLib.MarkerLib.ColorBarLib
     ///     is &#39;hide past domain&#39;. In other cases the default is &#39;hide past
     ///     div&#39;.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickLabelOverflowEnum
     {

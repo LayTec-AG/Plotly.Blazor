@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
     /// <summary>
     ///     The Annotation class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class Annotation : IEquatable<Annotation>
     {

@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Transforms.AggregateLib.AggregationLib
     ///     <c>stddev</c> supports two formula variants: <c>sample</c> (normalize by
     ///     N-1) and <c>population</c> (normalize by N).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum FuncModeEnum
     {

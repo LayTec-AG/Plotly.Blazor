@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
     ///     Sets the unit of input <c>theta</c> values. Has an effect only when on <c>linear</c>
     ///     angular axes.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ThetaUnitEnum
     {

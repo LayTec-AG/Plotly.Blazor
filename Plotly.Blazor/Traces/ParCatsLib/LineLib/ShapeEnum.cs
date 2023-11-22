@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib.LineLib
     ///     Sets the shape of the paths. If <c>linear</c>, paths are composed of straight
     ///     lines. If <c>hspline</c>, paths are composed of horizontal curved splines
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ShapeEnum
     {

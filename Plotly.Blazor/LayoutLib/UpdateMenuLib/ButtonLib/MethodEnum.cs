@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib.ButtonLib
     ///     used to create a component interface and attach to updatemenu events manually
     ///     via JavaScript.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum MethodEnum
     {

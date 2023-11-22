@@ -20,7 +20,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     In this mode, spikelines are enabled by default perpendicular to the specified
     ///     axis. If false, hover interactions are disabled.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverModeEnum
     {

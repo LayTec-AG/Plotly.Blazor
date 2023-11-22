@@ -10,13 +10,6 @@
 @using ThetaUnitEnum = Plotly.Blazor.Traces.ScatterPolarLib.ThetaUnitEnum
 @using TickFont = Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TickFont
 
-@if (!IsInitialized)
-{
-    <MudPaper>
-        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
-    </MudPaper>
-}
-
 <PlotlyChart style="height: 60vh; min-height: 350px" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
 @code

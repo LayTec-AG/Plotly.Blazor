@@ -3,13 +3,6 @@
 @using Plotly.Blazor.Traces.ScatterPolarLib
 @using Font = Plotly.Blazor.LayoutLib.Font
 
-@if (!IsInitialized)
-{
-    <MudPaper>
-        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
-    </MudPaper>
-}
-
 <PlotlyChart style="height: 60vh; min-height: 350px" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
 
 @code

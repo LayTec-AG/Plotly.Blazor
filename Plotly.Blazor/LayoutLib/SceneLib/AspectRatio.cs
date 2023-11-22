@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
     /// <summary>
     ///     The AspectRatio class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Serializable]
     public class AspectRatio : IEquatable<AspectRatio>
     {

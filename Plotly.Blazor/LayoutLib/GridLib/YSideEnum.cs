@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.GridLib
     ///     edge of the grid. &#39;left plot&#39; is the leftmost plot that each y axis
     ///     is used in. <c>right</c> and &#39;right plot&#39; are similar.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YSideEnum
     {

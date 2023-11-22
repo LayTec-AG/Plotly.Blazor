@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.IcicleLib.TilingLib
     /// <summary>
     ///     Determines if the positions obtained from solver are flipped on each axis.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum FlipFlag

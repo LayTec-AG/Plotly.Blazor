@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     ///     the clicked item the sole visible item on the graph. <c>false</c> disables
     ///     legend item double-click interactions.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum ItemDoubleClickEnum
     {

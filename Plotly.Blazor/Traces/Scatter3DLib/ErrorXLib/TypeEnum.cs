@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib.ErrorXLib
     ///     correspond to the square of the underlying data. If <c>data</c>, the bar
     ///     lengths are set with data set <c>array</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

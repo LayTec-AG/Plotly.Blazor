@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ConeLib
     ///     scalar (normalized by the max u/v/w norm in the vector field) or as <c>absolute</c>
     ///     value (in the same units as the vector field).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SizeModeEnum
     {

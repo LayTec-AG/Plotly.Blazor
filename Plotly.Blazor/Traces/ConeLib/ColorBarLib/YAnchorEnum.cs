@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ConeLib.ColorBarLib
     ///     color bar. Defaults to <c>middle</c> when <c>orientation</c> is <c>v</c>
     ///     and <c>bottom</c> when <c>orientation</c> is <c>h</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YAnchorEnum
     {

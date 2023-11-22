@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ParCatsLib
     ///     dimension categories from left to right. If <c>backward</c>, sort paths
     ///     based on dimensions categories from right to left.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SortPathsEnum
     {

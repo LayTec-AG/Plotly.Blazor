@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
     ///     shape is not drawn, but can appear as a legend item (provided that the legend
     ///     itself is visible).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum VisibleEnum
     {

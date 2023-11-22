@@ -19,7 +19,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
     ///     with respect to the axes&#39; sizing mode. If <c>path</c>, draw a custom
     ///     SVG path using <c>path</c>. with respect to the axes&#39; sizing mode.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

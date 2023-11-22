@@ -17,7 +17,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     ///     is provided). if <c>grouped+reversed</c>, the items are displayed in the
     ///     opposite order as <c>grouped</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum TraceOrderFlag

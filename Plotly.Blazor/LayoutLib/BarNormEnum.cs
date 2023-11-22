@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     the value of each bar is divided by the sum of all values at that location
     ///     coordinate. <c>percent</c> is the same but multiplied by 100 to show percentages.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum BarNormEnum
     {

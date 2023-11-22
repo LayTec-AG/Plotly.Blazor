@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     <c>tickvals</c> is provided). If <c>sync</c>, the number of ticks will sync
     ///     with the overlayed axis set by <c>overlaying</c> property.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickModeEnum
     {

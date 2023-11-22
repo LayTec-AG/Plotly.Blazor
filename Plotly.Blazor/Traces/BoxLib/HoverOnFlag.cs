@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.BoxLib
     /// <summary>
     ///     Do the hover effects highlight individual boxes  or sample points or both?
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverOnFlag

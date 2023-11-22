@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib
     /// <summary>
     ///     The Gradient class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Gradient : IEquatable<Gradient>

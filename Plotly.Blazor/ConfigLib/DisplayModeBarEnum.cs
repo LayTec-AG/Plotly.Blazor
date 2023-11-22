@@ -13,7 +13,7 @@ namespace Plotly.Blazor.ConfigLib
     ///     visible. If <c>false</c>, the mode bar is always hidden. If <c>hover</c>,
     ///     the mode bar is visible while the mouse cursor is on the graph container.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum DisplayModeBarEnum
     {

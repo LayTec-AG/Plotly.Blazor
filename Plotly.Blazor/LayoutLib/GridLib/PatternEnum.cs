@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.GridLib
     ///     y axis per row. <c>independent</c> uses a new xy pair for each cell, left-to-right
     ///     across each row then iterating rows according to <c>roworder</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum PatternEnum
     {

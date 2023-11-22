@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.GridLib
     ///     bottom of the grid. &#39;bottom plot&#39; is the lowest plot that each x
     ///     axis is used in. <c>top</c> and &#39;top plot&#39; are similar.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum XSideEnum
     {

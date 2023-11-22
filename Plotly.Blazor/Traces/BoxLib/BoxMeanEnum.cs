@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.BoxLib
     ///     is also drawn. Defaults to <c>true</c> when <c>mean</c> is set. Defaults
     ///     to <c>sd</c> when <c>sd</c> is set Otherwise defaults to <c>false</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum BoxMeanEnum
     {

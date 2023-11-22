@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib
     ///     more than four times the size of the two others, where in that case the
     ///     results of <c>cube</c> are used.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum AspectModeEnum
     {

@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.HistogramLib.CumulativeLib
     ///     however it introduces a half-bin bias to the results. <c>exclude</c> makes
     ///     the opposite half-bin bias, and <c>half</c> removes it.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum CurrentBinEnum
     {

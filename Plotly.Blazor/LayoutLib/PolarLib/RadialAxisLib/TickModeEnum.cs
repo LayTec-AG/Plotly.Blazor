@@ -17,7 +17,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib
     ///     the tick text is <c>ticktext</c>. (<c>array</c> is the default value if
     ///     <c>tickvals</c> is provided).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickModeEnum
     {

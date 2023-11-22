@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib
     ///     data. If <c>normal</c>, the range is computed in relation to the extrema
     ///     of the input data (same behavior as for cartesian axes).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum RangeModeEnum
     {

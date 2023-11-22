@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
     ///     <c>x</c> position to the <c>left</c>, <c>center</c> or <c>right</c> of the
     ///     range selector.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum XAnchorEnum
     {

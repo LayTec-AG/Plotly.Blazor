@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib.TitleLib
     ///     options could be used to expand top center and top right are for horizontal
     ///     alignment legend area in both x and y sides.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SideEnum
     {

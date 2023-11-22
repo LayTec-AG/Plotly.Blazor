@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.FunnelLib
     ///     multiple funnels, percentages &amp; totals are computed separately (per
     ///     trace).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum TextInfoFlag

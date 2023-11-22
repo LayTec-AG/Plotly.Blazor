@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib.BAxisLib
     ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
     ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum ExponentFormatEnum
     {

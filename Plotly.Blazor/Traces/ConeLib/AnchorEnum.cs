@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ConeLib
     ///     <c>cm</c> denote the cone&#39;s center of mass which corresponds to 1/4
     ///     from the tail to tip.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum AnchorEnum
     {

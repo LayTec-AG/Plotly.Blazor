@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib
     ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the range
     ///     selector.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YAnchorEnum
     {

@@ -11,7 +11,7 @@ namespace Plotly.Blazor.AnimationLib
     /// <summary>
     ///     The direction in which to play the frames triggered by the animation call
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum DirectionEnum
     {

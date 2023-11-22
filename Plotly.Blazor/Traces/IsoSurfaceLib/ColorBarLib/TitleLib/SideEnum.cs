@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.ColorBarLib.TitleLib
     ///     to <c>right</c> when <c>orientation</c> if <c>h</c>. Note that the title&#39;s
     ///     location used to be set by the now deprecated <c>titleside</c> attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SideEnum
     {

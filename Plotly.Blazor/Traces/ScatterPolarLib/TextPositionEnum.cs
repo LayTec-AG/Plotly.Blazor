@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib
     ///     Sets the positions of the <c>text</c> elements with respects to the (x,y)
     ///     coordinates.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TextPositionEnum
     {

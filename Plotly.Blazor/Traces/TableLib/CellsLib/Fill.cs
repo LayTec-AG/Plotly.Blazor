@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.TableLib.CellsLib
     /// <summary>
     ///     The Fill class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Fill : IEquatable<Fill>

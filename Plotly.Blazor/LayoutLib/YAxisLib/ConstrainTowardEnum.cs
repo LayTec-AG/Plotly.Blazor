@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     ///     (default), and <c>right</c> for x axes, and <c>top</c>, <c>middle</c> (default),
     ///     and <c>bottom</c> for y axes.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum ConstrainTowardEnum
     {

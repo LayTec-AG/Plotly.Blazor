@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     ///     by increasing the <c>range</c>, or by decreasing the <c>domain</c>. Default
     ///     is <c>domain</c> for axes containing image traces, <c>range</c> otherwise.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum ConstrainEnum
     {

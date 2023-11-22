@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.FunnelAreaLib.TitleLib
     ///     Specifies the location of the <c>title</c>. Note that the title&#39;s position
     ///     used to be set by the now deprecated <c>titleposition</c> attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum PositionEnum
     {

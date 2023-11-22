@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.BoxLib
     ///     is set. Defaults to <c>all</c> under the q1/median/q3 signature. Otherwise
     ///     defaults to <c>outliers</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum BoxPointsEnum
     {

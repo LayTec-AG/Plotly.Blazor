@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.NewShapeLib
     ///     the draw to be either horizontal or vertical. <c>horizontal</c> allows horizontal
     ///     extend. <c>vertical</c> allows vertical extend.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum DrawDirectionEnum
     {

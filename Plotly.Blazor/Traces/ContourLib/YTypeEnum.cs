@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ContourLib
     ///     y coordinates are given by <c>y0</c> and <c>dy</c> (the default behavior
     ///     when <c>y</c> is not provided)
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YTypeEnum
     {

@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.AnnotationLib
     ///     whereas for paper-referenced with no arrow, the anchor picked corresponds
     ///     to the closest side.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YAnchorEnum
     {

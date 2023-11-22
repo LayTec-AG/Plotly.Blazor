@@ -10,7 +10,7 @@ namespace Plotly.Blazor
     /// <summary>
     ///     The transform interface.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     public interface ITransform
     {
         /// <summary>

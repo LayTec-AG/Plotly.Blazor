@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
     ///     Sets the orientation of the violin(s). If <c>v</c> (<c>h</c>), the distribution
     ///     is visualized along the vertical (horizontal).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum OrientationEnum
     {

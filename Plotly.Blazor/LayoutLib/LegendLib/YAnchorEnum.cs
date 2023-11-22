@@ -16,7 +16,7 @@ namespace Plotly.Blazor.LayoutLib.LegendLib
     ///     greater than or equal to 2/3 and anchors legends with respect to their middle
     ///     otherwise.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YAnchorEnum
     {

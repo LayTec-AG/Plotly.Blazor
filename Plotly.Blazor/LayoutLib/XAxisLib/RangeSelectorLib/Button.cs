@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib.RangeSelectorLib
     /// <summary>
     ///     The Button class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Serializable]
     public class Button : IEquatable<Button>
     {

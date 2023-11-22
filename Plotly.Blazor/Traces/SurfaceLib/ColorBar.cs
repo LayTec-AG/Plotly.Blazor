@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.SurfaceLib
     /// <summary>
     ///     The ColorBar class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Serializable]
     public class ColorBar : IEquatable<ColorBar>
     {

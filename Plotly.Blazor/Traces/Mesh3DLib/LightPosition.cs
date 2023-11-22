@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.Mesh3DLib
     /// <summary>
     ///     The LightPosition class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Serializable]
     public class LightPosition : IEquatable<LightPosition>
     {

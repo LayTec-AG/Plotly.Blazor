@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.IcicleLib.MarkerLib.ColorBarLib
     ///     constant color direction) is set in units of plot <c>fraction</c> or in
     ///     <c>pixels</c>. Use <c>thickness</c> to set the value.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum ThicknessModeEnum
     {

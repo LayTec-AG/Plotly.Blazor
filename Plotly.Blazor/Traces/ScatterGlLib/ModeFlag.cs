@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
     /// <summary>
     ///     Determines the drawing mode for this scatter trace.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum ModeFlag

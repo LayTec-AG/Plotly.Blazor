@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.FunnelLib
     ///     Determines if texts are kept at center or start/end points in <c>textposition</c>
     ///     <c>inside</c> mode.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum InsideTextAnchorEnum
     {

@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ContourLib.ContoursLib
     ///     with the invalid region shaded as specified by the <c>operation</c> and
     ///     <c>value</c> parameters.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

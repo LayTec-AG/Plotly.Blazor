@@ -11,7 +11,7 @@ namespace Plotly.Blazor.Traces.HeatMapLib
     /// <summary>
     ///     Sets the calendar system to use with <c>y</c> date data.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YCalendarEnum
     {

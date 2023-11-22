@@ -15,7 +15,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib
     /// <summary>
     ///     The Line class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Line : IEquatable<Line>

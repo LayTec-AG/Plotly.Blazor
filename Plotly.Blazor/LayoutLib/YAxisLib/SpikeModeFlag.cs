@@ -16,7 +16,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     ///     If <c>marker</c>, then a marker dot is drawn on the axis the series is plotted
     ///     on
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum SpikeModeFlag

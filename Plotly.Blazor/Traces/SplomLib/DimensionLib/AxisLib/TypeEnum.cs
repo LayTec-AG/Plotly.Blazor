@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.SplomLib.DimensionLib.AxisLib
     ///     that the axis <c>type</c> values set in layout take precedence over this
     ///     attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

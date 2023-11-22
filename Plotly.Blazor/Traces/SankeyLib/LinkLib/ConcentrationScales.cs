@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.SankeyLib.LinkLib
     /// <summary>
     ///     The ConcentrationScales class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Serializable]
     public class ConcentrationScales : IEquatable<ConcentrationScales>
     {

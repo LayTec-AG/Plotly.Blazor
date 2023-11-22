@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.SliderLib.StepLib
     ///     This may be used to create a component interface and attach to slider events
     ///     manually via JavaScript.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum MethodEnum
     {

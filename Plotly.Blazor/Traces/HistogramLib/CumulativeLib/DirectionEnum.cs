@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.HistogramLib.CumulativeLib
     ///     sum all prior bins, so the result increases from left to right. If <c>decreasing</c>
     ///     we sum later bins so the result decreases from left to right.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum DirectionEnum
     {

@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.GridLib
     ///     Is the first row the top or the bottom? Note that columns are always enumerated
     ///     from left to right.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum RowOrderEnum
     {

@@ -17,7 +17,7 @@ namespace Plotly.Blazor.Traces.IsoSurfaceLib.SurfaceLib
     ///     <c>B</c>, <c>C</c>, <c>D</c> and <c>E</c> may also be used to reduce the
     ///     number of triangles on the iso-surfaces and creating other patterns of interest.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum PatternFlag

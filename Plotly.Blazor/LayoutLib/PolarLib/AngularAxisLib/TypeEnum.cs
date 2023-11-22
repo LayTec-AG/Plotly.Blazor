@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
     ///     the unit in which axis value are shown. If *category, use <c>period</c>
     ///     to set the number of integer coordinates around polar axis.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

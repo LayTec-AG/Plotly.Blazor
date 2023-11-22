@@ -19,7 +19,7 @@ namespace Plotly.Blazor.Traces.CarpetLib.BAxisLib
     ///     that attribute will be identical to the <c>trace</c> mode. The unspecified
     ///     categories will follow the categories in <c>categoryarray</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum CategoryOrderEnum
     {

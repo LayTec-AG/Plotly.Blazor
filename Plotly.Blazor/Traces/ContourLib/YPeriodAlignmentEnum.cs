@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ContourLib
     ///     Only relevant when the axis <c>type</c> is <c>date</c>. Sets the alignment
     ///     of data points on the y axis.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum YPeriodAlignmentEnum
     {

@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ScatterGeoLib.MarkerLib
     ///     0 points toward the top of the screen. With <c>north</c>, angle 0 points
     ///     north based on the current map projection.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum AngleRefEnum
     {

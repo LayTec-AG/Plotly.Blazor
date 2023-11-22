@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.BoxLib
     /// <summary>
     ///     The Marker class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Serializable]
     public class Marker : IEquatable<Marker>
     {

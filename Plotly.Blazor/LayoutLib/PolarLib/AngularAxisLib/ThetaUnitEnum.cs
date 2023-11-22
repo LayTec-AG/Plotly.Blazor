@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
     ///     Sets the format unit of the formatted <c>theta</c> values. Has an effect
     ///     only when <c>angularaxis.type</c> is <c>linear</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum ThetaUnitEnum
     {

@@ -14,7 +14,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     When set to <c>period</c>, tick labels are drawn in the middle of the period
     ///     between ticks.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickLabelModeEnum
     {

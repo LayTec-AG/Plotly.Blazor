@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.Mesh3DLib
     ///     of the Delaunay triangulation. It has an effect if <c>i</c>, <c>j</c>, <c>k</c>
     ///     are not provided and <c>alphahull</c> is set to indicate Delaunay triangulation.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum DelaunaYAxisEnum
     {

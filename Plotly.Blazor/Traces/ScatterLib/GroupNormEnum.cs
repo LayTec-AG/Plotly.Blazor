@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.ScatterLib
     ///     percentages. If there are multiple subplots, or multiple <c>stackgroup</c>s
     ///     on one subplot, each will be normalized within its own set.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum GroupNormEnum
     {

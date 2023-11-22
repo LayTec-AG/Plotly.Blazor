@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
     ///     to its maximum value. For custom span settings, use mode <c>manual</c> and
     ///     fill in the <c>span</c> attribute.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SpanModeEnum
     {

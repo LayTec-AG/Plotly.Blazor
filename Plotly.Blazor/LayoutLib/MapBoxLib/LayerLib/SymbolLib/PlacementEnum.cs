@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib
     ///     the line of the geometry If <c>placement</c> is <c>line-center</c>, the
     ///     label is placed on the center of the geometry
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum PlacementEnum
     {

@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     Determines whether a x (y) axis is positioned at the <c>bottom</c> (<c>left</c>)
     ///     or <c>top</c> (<c>right</c>) of the plotting area.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SideEnum
     {

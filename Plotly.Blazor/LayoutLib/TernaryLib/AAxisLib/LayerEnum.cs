@@ -16,7 +16,7 @@ namespace Plotly.Blazor.LayoutLib.TernaryLib.AAxisLib
     ///     with <c>cliponaxis</c> set to <c>false</c> to show markers and/or text nodes
     ///     above this axis.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum LayerEnum
     {

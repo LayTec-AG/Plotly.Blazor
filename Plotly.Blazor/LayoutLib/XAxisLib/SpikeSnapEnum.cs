@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     Determines whether spikelines are stuck to the cursor or to the closest
     ///     datapoints.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum SpikeSnapEnum
     {

@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.ViolinLib.HoverLabelLib
     ///     Sets the horizontal alignment of the text content within hover label box.
     ///     Has an effect only if the hover label text spans more two or more lines
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
     public enum AlignEnum
     {

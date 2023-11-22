@@ -56,14 +56,14 @@
         /// </summary>
         public object Lon { get; set; }
     }
-    
+
     /// <summary>
     ///     A single event can have one selected point.
     /// </summary>
     public class LegendEventDataPoint
     {
         /// <summary>
-        //      The zero-based point number. Can be used to identify the trace.
+        ///      The zero-based point number. Can be used to identify the trace.
         /// </summary>
         public object CurveNumber { get; set; }
 

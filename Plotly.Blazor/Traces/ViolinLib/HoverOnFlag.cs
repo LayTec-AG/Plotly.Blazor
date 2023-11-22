@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ViolinLib
     ///     Do the hover effects highlight individual violins or sample points or the
     ///     kernel density estimate or any combination of them?
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverOnFlag

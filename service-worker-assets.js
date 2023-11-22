@@ -145,7 +145,7 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-\/980zkBB0dR\/ACYXpwSj7i0WboCfD0gzzWOn2gp+kv8=",
+      "hash": "sha256-ODD+vLuR0f1Cy9fqGv7u+xpGcD1gnVJ6\/fDsPJLKY0g=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
@@ -153,7 +153,7 @@
       "url": "_framework\/dotnet.native.8.0.0.izqc6d27f9.js"
     },
     {
-      "hash": "sha256-iBbh9RzS4Lx4jBHBLDsWgwmFC1RWeqdM5S1r4AX\/eeE=",
+      "hash": "sha256-nzurXlXTzk1Mz6mdAL2bxpx8hEIS8qVpILx5cfK9mEQ=",
       "url": "_framework\/dotnet.native.wasm.br"
     },
     {
@@ -233,11 +233,11 @@
       "url": "_framework\/Newtonsoft.Json.wasm.br"
     },
     {
-      "hash": "sha256-W794b+Tt4\/Ldya+z6\/jgpGGlAqIlXrXdbjMxOBbv+mE=",
+      "hash": "sha256-sWU2k3flQ8Bk7PLZUH3VCyU\/PRrs3IvC9zK5nqE3EQE=",
       "url": "_framework\/Plotly.Blazor.Examples.wasm.br"
     },
     {
-      "hash": "sha256-aQFFf7eM\/0eDrcNUd80URxBDMFC+kYnSAVCdleOjLIs=",
+      "hash": "sha256-v4DaFVGsm+atpGKPLRgrx01ZDZKvIfno6251gITJjSI=",
       "url": "_framework\/Plotly.Blazor.wasm.br"
     },
     {
@@ -425,7 +425,7 @@
       "url": "_content\/Plotly.Blazor\/plotly-interop.js"
     },
     {
-      "hash": "sha256-lXwG1Af3hPEJOnNT2no9Wob5BZDfRHvIMeydqzFesmc=",
+      "hash": "sha256-CuQbC3AjCNeCoPS5r7Gnv+HFDF3V3GtPEPP+mIVDkS4=",
       "url": "_content\/Plotly.Blazor\/plotly-latest.min.js"
     },
     {
@@ -437,5 +437,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "90SY2wNS"
+  "version": "AzU1tD8L"
 };

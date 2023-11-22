@@ -25,7 +25,7 @@
     <PackageVersion Condition="'$(TargetFramework)' == 'net7.0'" Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.12" />
     <PackageVersion Condition="'$(TargetFramework)' == 'net7.0'" Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.12" PrivateAssets="all" />
     
-    <PackageVersion Include="MudBlazor" Version="6.11.0" />
+    <PackageVersion Include="MudBlazor" Version="6.11.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
 

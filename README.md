@@ -1,7 +1,6 @@
 # Plotly.Blazor
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/build.yml?branch=main&label=Build)
-![Publish Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/publish.yml?branch=main&label=Publish)
 [![Examples Status](https://img.shields.io/github/actions/workflow/status/LayTec-AG/Plotly.Blazor/pages%2Fpages-build-deployment?label=Examples)](https://laytec-ag.github.io/Plotly.Blazor)
 [![NuGet Status](https://img.shields.io/nuget/v/Plotly.Blazor)](https://www.nuget.org/packages/Plotly.Blazor/) 
 [![Forks](https://img.shields.io/github/forks/LayTec-AG/Plotly.Blazor)](https://github.com/LayTec-AG/Plotly.Blazor/network/members)

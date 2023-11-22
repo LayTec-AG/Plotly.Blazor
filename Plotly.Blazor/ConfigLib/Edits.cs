@@ -13,7 +13,7 @@ namespace Plotly.Blazor.ConfigLib
     /// <summary>
     ///     The Edits class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class Edits : IEquatable<Edits>
     {

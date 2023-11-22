@@ -18,7 +18,7 @@ namespace Plotly.Blazor.Traces.IcicleLib.TilingLib
     ///     is <c>h</c> and <c>tiling.flip</c> is <c>x</c>, the root nodes appear at
     ///     the right.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OrientationEnum
     {

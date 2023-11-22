@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.IcicleLib.MarkerLib.ColorBarLib
     ///     last tick is displayed with a suffix. If <c>none</c>, tick prefixes are
     ///     hidden.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ShowTickPrefixEnum
     {

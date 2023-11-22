@@ -11,7 +11,7 @@ namespace Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib.GradientLib
     /// <summary>
     ///     Sets the type of gradient used to fill the markers
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

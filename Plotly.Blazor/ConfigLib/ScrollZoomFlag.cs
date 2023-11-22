@@ -15,7 +15,7 @@ namespace Plotly.Blazor.ConfigLib
     ///     do not have zoombox via pan), but turned off by default for cartesian subplots.
     ///     Set <c>scrollZoom</c> to <c>false</c> to disable scrolling for all subplots.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum ScrollZoomFlag

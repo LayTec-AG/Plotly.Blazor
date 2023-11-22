@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
     /// <summary>
     ///     The Contours class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class Contours : IEquatable<Contours>
     {

@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.ContourLib
     ///     x coordinates are given by <c>x0</c> and <c>dx</c> (the default behavior
     ///     when <c>x</c> is not provided).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum XTypeEnum
     {

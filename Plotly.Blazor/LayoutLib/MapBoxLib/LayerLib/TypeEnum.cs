@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     ///     With <c>sourcetype</c> set to <c>raster</c> or <c><c>image</c></c>, only
     ///     the <c>raster</c> value is allowed.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

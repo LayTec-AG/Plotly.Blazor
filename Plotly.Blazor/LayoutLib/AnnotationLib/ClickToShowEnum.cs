@@ -21,7 +21,7 @@ namespace Plotly.Blazor.LayoutLib.AnnotationLib
     ///     label markers though, <c>standoff</c> is preferred over <c>xclick</c> and
     ///     <c>yclick</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum ClickToShowEnum
     {

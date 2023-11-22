@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib
     /// <summary>
     ///     The HoverLabel class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class HoverLabel : IEquatable<HoverLabel>
     {

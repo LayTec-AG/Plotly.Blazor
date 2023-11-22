@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     /// <summary>
     ///     The Symbol class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class Symbol : IEquatable<Symbol>
     {

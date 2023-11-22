@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib.ColorBarLib
     /// <summary>
     ///     The TickFont class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class TickFont : IEquatable<TickFont>
     {

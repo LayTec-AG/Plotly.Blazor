@@ -14,7 +14,7 @@ namespace Plotly.Blazor.Traces.TableLib.HeaderLib
     ///     one or more &lt;br&gt; HTML tags) or if an explicit width is set to override
     ///     the text width.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum AlignEnum
     {

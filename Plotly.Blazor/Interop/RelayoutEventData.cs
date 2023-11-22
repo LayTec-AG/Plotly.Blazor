@@ -14,22 +14,20 @@ namespace Plotly.Blazor.Interop
     public class RelayoutEventData
     {
         /// <summary>
-        ///     The x-axis of the layout. [x0, x1]. This may not be set.
+        ///     The x-axis of the layout. [x0, x1]
         /// </summary>
         /// <remarks>
-        ///     Array of objects to be compatible to multiple data types.
-        ///     Has to be casted manually.
+        ///     In some cases this may be not be set.
         /// </remarks>
-        public object[] XRange { get; set; }
+        public double[] XRange { get; set; }
 
 
         /// <summary>
-        ///     The y-axis of the layout. [y0, y1]. This may not be set.
+        ///     The y-axis of the layout. [y0, y1].
         /// </summary>
         /// <remarks>
-        ///     Array of objects to be compatible to multiple data types.
-        ///     Has to be casted manually.
+        ///      In some cases this may be not be set.
         /// </remarks>
-        public object[] YRange { get; set; }
+        public double[] YRange { get; set; }
     }
 }

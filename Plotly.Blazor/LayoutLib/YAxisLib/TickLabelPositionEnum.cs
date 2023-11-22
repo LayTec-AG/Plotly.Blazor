@@ -17,7 +17,7 @@ namespace Plotly.Blazor.LayoutLib.YAxisLib
     ///     linked by <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside
     ///     labels would be added by autorange, so that the scales could match.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TickLabelPositionEnum
     {

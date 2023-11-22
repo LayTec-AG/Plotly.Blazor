@@ -15,7 +15,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
     /// <summary>
     ///     The AngularAxis class.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Serializable]
     public class AngularAxis : IEquatable<AngularAxis>
     {

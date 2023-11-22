@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.YAxisLib
     ///     Sets the axis type. By default, plotly attempts to determined the axis type
     ///     by looking into the data of the traces that referenced the axis in question.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

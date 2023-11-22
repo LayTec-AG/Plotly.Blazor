@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.YAxisLib
     ///     is a date axis. This does not set the calendar for interpreting data on
     ///     this axis, that&#39;s specified in the trace or via the global <c>layout.calendar</c>
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum CalendarEnum
     {

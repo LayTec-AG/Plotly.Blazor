@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.SankeyLib.NodeLib
     ///     or <c>skip</c> are set, no information is displayed upon hovering. But,
     ///     if <c>none</c> is set, click and hover events are still fired.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum HoverInfoEnum
     {

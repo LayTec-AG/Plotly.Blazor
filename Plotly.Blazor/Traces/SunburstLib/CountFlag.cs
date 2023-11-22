@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.SunburstLib
     ///     Determines default for <c>values</c> when it is not provided, by inferring
     ///     a 1 for each of the <c>leaves</c> and/or <c>branches</c>, otherwise 0.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [Flags]
     [JsonConverter(typeof(EnumConverter))]
     public enum CountFlag

@@ -12,7 +12,7 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib.PatternLib
     ///     Determines whether <c>marker.color</c> should be used as a default to <c>bgcolor</c>
     ///     or a <c>fgcolor</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum FillModeEnum
     {

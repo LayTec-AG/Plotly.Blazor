@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Traces.ScatterLib
     ///     With <c>v</c> (<c>h</c>), the y (x) values of subsequent traces are added.
     ///     Also affects the default value of <c>fill</c>.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum OrientationEnum
     {

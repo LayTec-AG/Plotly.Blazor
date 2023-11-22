@@ -12,7 +12,7 @@ namespace Plotly.Blazor.LayoutLib.UpdateMenuLib
     ///     Determines whether the buttons are accessible via a dropdown menu or whether
     ///     the buttons are stacked horizontally or vertically
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TypeEnum
     {

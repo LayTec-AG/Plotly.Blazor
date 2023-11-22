@@ -13,7 +13,7 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.YAxisLib
     ///     not drawn. If <c>outside</c> (<c>inside</c>), this axis&#39; are drawn outside
     ///     (inside) the axis lines.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum TicksEnum
     {

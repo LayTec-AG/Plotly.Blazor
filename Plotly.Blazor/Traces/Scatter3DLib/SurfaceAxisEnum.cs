@@ -13,7 +13,7 @@ namespace Plotly.Blazor.Traces.Scatter3DLib
     ///     <c>1</c>, <c>2</c>, the scatter points are filled with a Delaunay surface
     ///     about the x, y, z respectively.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.0.0")]
+    [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", "4.0.1.0")]
     [JsonConverter(typeof(EnumConverter))]
     public enum SurfaceAxisEnum
     {

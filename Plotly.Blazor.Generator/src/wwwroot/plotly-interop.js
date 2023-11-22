@@ -62,8 +62,6 @@
     subscribeLegendClickEvent: function (dotNetObj, id) {
         var plot = document.getElementById(id);
         plot.on('plotly_legendclick', function (data) {
-            console.log("title: " + data.layout.title.text + " curveNumber:" + data.curveNumber + " expandedIndex:" + data.expandedIndex)
-            
             dotNetObj.invokeMethodAsync('LegendClickEvent', {
                 CurveNumber: data.curveNumber,
                 ExpandedIndex: data.expandedIndex

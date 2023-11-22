@@ -638,6 +638,13 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     Defines the action that should happen when the LegendClickAction is triggered.
+        ///     Objects are currently required for accomodating different plot value types
+        /// </summary>
+        [Parameter]
+        public Action<LegendEventDataPoint> LegendClickAction { get; set; }
+
+        /// <summary>
         ///     Defines the action that should happen when the ClickEvent is triggered.
         ///     Objects are currently required for accommodating different plot value types
         /// </summary>
@@ -656,6 +663,17 @@ namespace Plotly.Blazor
         /// </summary>
         [Parameter]
         public Action<RelayoutEventData> RelayoutAction { get; set; }
+
+        /// <summary>
+        ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
+        ///     Objects are currently required for accommodating different plot value types.
+        /// </summary>
+        //// <param name = "eventData"></param>
+        [JSInvokable("LegendClickEvent")]
+        public void LegendClickEvent(LegendEventDataPoint eventData)
+        {
+            LegendClickAction?.Invoke(eventData);
+        }
 
         /// <summary>
         ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
@@ -686,6 +704,16 @@ namespace Plotly.Blazor
         public void RelayoutEvent(RelayoutEventData obj)
         {
             RelayoutAction?.Invoke(obj);
+        }
+
+        /// <summary>
+        ///     Subscribes to the legend click event of the chart.
+        /// </summary>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task SubscribeLegendClickEvent(CancellationToken cancellationToken = default)
+        {
+            await JsRuntime.SubscribeLegendClickEvent(objectReference, cancellationToken);
         }
 
         /// <summary>

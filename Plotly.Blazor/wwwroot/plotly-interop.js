@@ -59,6 +59,17 @@
     downloadImage: function (id, format, height, width, filename) {
         return window.Plotly.downloadImage(id, { format: format, height: height, width: width, filename: filename });
     },
+    subscribeLegendClickEvent: function (dotNetObj, id) {
+        var plot = document.getElementById(id);
+        plot.on('plotly_legendclick', function (data) {
+            console.log("title: " + data.layout.title.text + " curveNumber:" + data.curveNumber + " expandedIndex:" + data.expandedIndex)
+            
+           dotNetObj.invokeMethodAsync('LegendClickEvent', {
+               CurveNumber: data.curveNumber,
+               ExpandedIndex: data.expandedIndex
+           })
+        })
+    },
     subscribeClickEvent: function (dotNetObj, id) {
         var plot = document.getElementById(id);
         plot.on('plotly_click', function (data) {

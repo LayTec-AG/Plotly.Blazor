@@ -1,0 +1,137 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.PolarLib
+@using Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib
+@using Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib
+@using Plotly.Blazor.Traces.ScatterPolarLib
+@using Plotly.Blazor.Traces.ScatterPolarLib.MarkerLib
+@using CategoryOrderEnum = Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.CategoryOrderEnum
+@using Font = Plotly.Blazor.LayoutLib.Font
+@using Line = Plotly.Blazor.Traces.ScatterPolarLib.Line
+@using ThetaUnitEnum = Plotly.Blazor.Traces.ScatterPolarLib.ThetaUnitEnum
+@using TickFont = Plotly.Blazor.LayoutLib.PolarLib.RadialAxisLib.TickFont
+
+@if (!IsInitialized)
+{
+    <MudPaper>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+    </MudPaper>
+}
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Layout="layout" @bind-Data="data" @ref="chart"/>
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    private bool IsInitialized { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        layout = new Layout
+        {
+            Title = new Title
+            {
+                Text = "Polar Chart Directions"
+            },
+            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+            Font = new Font
+            {
+                Color = Theme.PaletteDark.TextPrimary.ToString()
+            },
+            ShowLegend = true,
+            Polar = new List<Polar>()
+            {
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    Domain = new Domain()
+                    {
+                        X = new []{0,0.4}.OfType<object>().ToList(),
+                        Y = new []{0,1}.OfType<object>().ToList(),
+                    },
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        TickFont = new TickFont()
+                        {
+                            Size = 8
+                        }
+                    },
+                    AngularAxis = new AngularAxis()
+                    {
+                        Direction = DirectionEnum.Counterclockwise,
+                        Rotation = 90,
+                        TickFont = new LayoutLib.PolarLib.AngularAxisLib.TickFont()
+                        {
+                            Size = 8
+                        }
+                    }
+                },
+                //Polar2
+                new Polar()
+                {
+                    BgColor = Theme.PaletteDark.Surface.ToString(),
+                    Domain = new Domain()
+                    {
+                        X = new []{0.6,1}.OfType<object>().ToList(),
+                        Y = new []{0,1}.OfType<object>().ToList(),
+                    },
+                    RadialAxis = new RadialAxis()
+                    {
+                        Visible = true,
+                        Color = Theme.PaletteDark.TextPrimary.ToString(),
+                        TickFont = new TickFont()
+                        {
+                            Size = 8
+                        }
+                    },
+                    AngularAxis = new AngularAxis()
+                    {
+                        Direction = DirectionEnum.Clockwise,
+                        TickFont = new LayoutLib.PolarLib.AngularAxisLib.TickFont()
+                        {
+                            Size = 8
+                        }
+                    }
+                },
+            }
+        };
+
+
+        var trace1 = CreatScatterPolar("Counterclockwise", "polar");
+        var trace2 = CreatScatterPolar("Clockwise", "polar2");
+        
+        data = new List<ITrace>() { trace1 , trace2 };
+
+        base.OnInitialized();
+    }
+
+    private static ScatterPolar CreatScatterPolar(string name, string polar)
+    {
+        return new ScatterPolar()
+        {
+            R = new[]{1,2,3,4,5}.OfType<object>().ToList(),
+            Theta = new[]{0,90,180,360,0}.OfType<object>().ToList(),
+            Name = name,
+            Mode = ModeFlag.Lines | ModeFlag.Markers,
+            Line = new Line()
+            {
+                Color = "#ff66ab"
+            },
+            Marker = new Marker()
+            {
+                Color = "#8090c7",
+                Symbol = SymbolEnum.Square,
+                Size = 8
+            },
+            Subplot = polar
+        };
+    }
+}

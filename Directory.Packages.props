@@ -28,7 +28,7 @@
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="PublishSPAforGitHubPages.Build" Version="2.1.0" />
     <PackageVersion Include="Stubble.Core" Version="1.10.8" />
-    <PackageVersion Include="WeCantSpell.Hunspell" Version="4.1.0" />
+    <PackageVersion Include="WeCantSpell.Hunspell" Version="5.0.0" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="nunit" Version="3.14.0" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />

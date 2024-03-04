@@ -1,13 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using Plotly.Blazor.Traces;
 
 namespace Plotly.Blazor.Examples
 {
     public static class Helper
     {
-        private static Random Random => new Random();
+        private static Random Random => new();
+
+        /// <summary>
+        ///     Adds data to an IList.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="items"></param>
+        public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)
+        {
+            if (list == null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            if (list is List<T> asList)
+            {
+                asList.AddRange(items);
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    list.Add(item);
+                }
+            }
+        }
 
         /// <summary>
         ///     Generates the data.

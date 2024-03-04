@@ -38,7 +38,7 @@ Using .NET CLI
 dotnet add package Plotly.Blazor
 ```
 
-Add the following lines to your _Layout.cshtml **above** the `_/framework/blazor.webassembly.js` or `_/framework/blazor.server.js`
+**If you are using 4.1.0 or lower**, then add the following lines to your _Layout.cshtml **above** the `_/framework/blazor.webassembly.js` or `_/framework/blazor.server.js`
 
 ```razor
 <script src="_content/Plotly.Blazor/plotly-latest.min.js" type="text/javascript"></script>

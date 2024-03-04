@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -11,11 +12,23 @@ namespace Plotly.Blazor;
 /// <summary>
 ///     Allows JsInterop functionality for Plotly.js
 /// </summary>
-public static class PlotlyJsInterop
+public class PlotlyJsInterop
 {
-    // Use custom jsInterop functions to prevent exceptions caused by circle references in the return value
-    // Should be fixed in future blazor wasm releases
-    private const string PlotlyInterop = "plotlyInterop";
+    private const string InteropPath = "/_content/Plotly.Blazor/plotly-interop.js";
+    private readonly DotNetObjectReference<PlotlyChart> dotNetObj;
+    private readonly Lazy<Task<IJSObjectReference>> moduleTask;
+
+    /// <summary>
+    ///     Creates a new instance of <see cref="PlotlyJsInterop"/>.
+    /// </summary>
+    /// <param name="jsRuntime"></param>
+    /// <param name="chart"></param>
+    public PlotlyJsInterop(IJSRuntime jsRuntime, PlotlyChart chart)
+    {
+        dotNetObj = DotNetObjectReference.Create(chart);
+        moduleTask = new Lazy<Task<IJSObjectReference>>(
+            () => jsRuntime.InvokeAsync<IJSObjectReference>("import", InteropPath).AsTask());
+    }
 
     internal static readonly JsonSerializerOptions SerializerOptions = new()
     {
@@ -33,68 +46,63 @@ public static class PlotlyJsInterop
     /// <summary>
     ///     Can be used to add a new trace.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="trace">The trace data.</param>
     /// <param name="index">The optional index, where to add the trace.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task AddTrace(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, int? index, CancellationToken cancellationToken)
+    public async Task AddTrace(ITrace trace, int? index, CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.addTrace",
+        var jsRuntime = await moduleTask.Value;
+        await jsRuntime.InvokeVoidAsync("addTrace",
             cancellationToken,
-            objectReference.Value.Id,
+            dotNetObj.Value.Id,
             trace?.PrepareJsInterop(SerializerOptions), index);
     }
 
     /// <summary>
     ///     Can be used to delete a trace.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="index">The index of the trace, which should be removed.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task DeleteTrace(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, int index, CancellationToken cancellationToken)
+    public async Task DeleteTrace(int index, CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.deleteTrace",
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("deleteTrace",
             cancellationToken,
-            objectReference.Value.Id, index);
+            dotNetObj.Value.Id, index);
     }
 
     /// <summary>
     ///     Can be used to download the chart as an image.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="format">Format of the image.</param>
     /// <param name="height">Height of the image.</param>
     /// <param name="width">Width of the image.</param>
     /// <param name="fileName">Name od the image file.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task<string> DownloadImage(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, ImageFormat format, uint height, uint width, string fileName, CancellationToken cancellationToken)
+    public async Task<string> DownloadImage(ImageFormat format, uint height, uint width, string fileName, CancellationToken cancellationToken)
     {
-        return await jsRuntime.InvokeAsync<string>($"{PlotlyInterop}.downloadImage", cancellationToken,
-            objectReference.Value.Id, format, height, width, fileName);
+        var jsRuntime = await moduleTask.Value;
+
+        return await jsRuntime.InvokeAsync<string>("downloadImage", cancellationToken,
+            dotNetObj.Value.Id, format, height, width, fileName);
     }
 
     /// <summary>
     ///     Can be used to add data to an existing trace.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values</param>
     /// <param name="indices">Indices.</param>
     /// <param name="max">Max Points.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task ExtendTraces(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
+    public async Task ExtendTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.extendTraces",
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("extendTraces",
             cancellationToken,
-            objectReference.Value.Id,
+            dotNetObj.Value.Id,
             x, y, indices, max);
     }
 
@@ -102,154 +110,166 @@ public static class PlotlyJsInterop
     ///     Draws a new plot in an div element, overwriting any existing plot.
     ///     To update an existing plot in a div, it is much more efficient to use <see cref="React" /> than to overwrite it.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task NewPlot(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task NewPlot(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.newPlot",
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("newPlot",
             cancellationToken,
-            objectReference.Value.Id,
-            objectReference.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
-            objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions),
-            objectReference.Value.Config?.PrepareJsInterop(SerializerOptions),
-            objectReference.Value.Frames?.PrepareJsInterop(SerializerOptions));
+            dotNetObj.Value.Id,
+            dotNetObj.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
+            dotNetObj.Value.Layout?.PrepareJsInterop(SerializerOptions),
+            dotNetObj.Value.Config?.PrepareJsInterop(SerializerOptions),
+            dotNetObj.Value.Frames?.PrepareJsInterop(SerializerOptions));
     }
 
     /// <summary>
     ///     Can be used to prepend data to an existing trace.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values</param>
     /// <param name="indices">Indices.</param>
     /// <param name="max">Max Points.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task PrependTraces(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
+    public async Task PrependTraces(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.prependTraces",
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("prependTraces",
             cancellationToken,
-            objectReference.Value.Id,
+            dotNetObj.Value.Id,
             x, y, indices, max);
     }
 
     /// <summary>
     ///     Can be used to purge a chart.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task Purge(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task Purge(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.purge", cancellationToken, objectReference.Value.Id);
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("purge", cancellationToken, dotNetObj.Value.Id);
     }
 
     /// <summary>
     ///     Can be used in its place to create a plot, but when called again on the same div will update it far more
     ///     efficiently than <see cref="NewPlot" />.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task React(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task React(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.react",
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("react",
             cancellationToken,
-            objectReference.Value.Id,
-            objectReference.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
-            objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions),
-            objectReference.Value.Config?.PrepareJsInterop(SerializerOptions),
-            objectReference.Value.Frames?.PrepareJsInterop(SerializerOptions));
+            dotNetObj.Value.Id,
+            dotNetObj.Value.Data?.Select(trace => trace?.PrepareJsInterop(SerializerOptions)),
+            dotNetObj.Value.Layout?.PrepareJsInterop(SerializerOptions),
+            dotNetObj.Value.Config?.PrepareJsInterop(SerializerOptions),
+            dotNetObj.Value.Frames?.PrepareJsInterop(SerializerOptions));
     }
 
     /// <summary>
     ///     An efficient means of updating the layout object of an existing plot.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task Relayout(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task Relayout(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.relayout",
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("relayout",
             cancellationToken,
-            objectReference.Value.Id,
-            objectReference.Value.Layout?.PrepareJsInterop(SerializerOptions));
+            dotNetObj.Value.Id,
+            dotNetObj.Value.Layout?.PrepareJsInterop(SerializerOptions));
+    }
+
+    /// <summary>
+    ///     An efficient means of updating the layout object of an existing plot.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public async Task Relayout<T>(T value, CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("relayout",
+            cancellationToken,
+            dotNetObj.Value.Id,
+            value?.PrepareJsInterop(SerializerOptions));
     }
 
     /// <summary>
     ///     Can be used to add data to an existing trace.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="trace">The new trace parameter</param>
     /// <param name="indices">Indices.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task Restyle(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, ITrace trace, IEnumerable<int> indices, CancellationToken cancellationToken)
+    public async Task Restyle(ITrace trace, IEnumerable<int> indices, CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.restyle", cancellationToken,
-            objectReference.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indices);
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("restyle", cancellationToken,
+            dotNetObj.Value.Id, trace?.PrepareJsInterop(SerializerOptions), indices);
     }
 
     /// <summary>
     ///     Can be used to subscribe click events for legend.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task SubscribeLegendClickEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task SubscribeLegendClickEvent(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeLegendClickEvent", cancellationToken, objectReference, objectReference.Value.Id);
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeLegendClickEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
     }
 
     /// <summary>
     ///     Can be used to subscribe click events for points.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task SubscribeClickEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task SubscribeClickEvent(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeClickEvent", cancellationToken, objectReference, objectReference.Value.Id);
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeClickEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
     }
 
     /// <summary>
     ///     Can be used to subscribe hover events for points.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task SubscribeHoverEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task SubscribeHoverEvent(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeHoverEvent", cancellationToken, objectReference, objectReference.Value.Id);
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeHoverEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
     }
 
     /// <summary>
     ///     Can be used to subscribe to relayout events.
     /// </summary>
-    /// <param name="jsRuntime"></param>
-    /// <param name="objectReference"></param>
     /// <param name="cancellationToken"></param>
-    public static async Task SubscribeRelayoutEvent(this IJSRuntime jsRuntime, DotNetObjectReference<PlotlyChart> objectReference, CancellationToken cancellationToken)
+    public async Task SubscribeRelayoutEvent(CancellationToken cancellationToken)
     {
-        await jsRuntime.InvokeVoidAsync($"{PlotlyInterop}.subscribeRelayoutEvent", cancellationToken, objectReference, objectReference.Value.Id);
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeRelayoutEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
     }
 
     /// <summary>
     ///     Can be used to export the chart as a static image and returns a binary string of the exported image.
     /// </summary>
-    /// <param name="jsRuntime">The js runtime.</param>
-    /// <param name="objectReference">The object reference.</param>
     /// <param name="format">Format of the image.</param>
     /// <param name="height">Height of the image.</param>
     /// <param name="width">Width of the image.</param>
     /// <returns>Binary string of the exported image.</returns>
     /// <param name="cancellationToken">CancellationToken</param>
-    public static async Task<string> ToImage(this IJSRuntime jsRuntime,
-        DotNetObjectReference<PlotlyChart> objectReference, ImageFormat format, uint height, uint width, CancellationToken cancellationToken)
+    public async Task<string> ToImage(ImageFormat format, uint height, uint width, CancellationToken cancellationToken)
     {
-        return await jsRuntime.InvokeAsync<string>($"{PlotlyInterop}.toImage", cancellationToken, objectReference.Value.Id, format, height, width);
+        var jsRuntime = await moduleTask.Value;
+
+        return await jsRuntime.InvokeAsync<string>("toImage", cancellationToken, dotNetObj.Value.Id, format, height, width);
     }
 }

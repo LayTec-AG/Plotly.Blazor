@@ -6,11 +6,9 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-#pragma warning disable 1591
-
 namespace Plotly.Blazor
 {
-    public static class Extensions
+    internal static class Extensions
     {
         /// <summary>
         ///     Adds data to an IList.

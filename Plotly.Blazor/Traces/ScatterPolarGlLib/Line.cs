@@ -30,12 +30,6 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
         public Plotly.Blazor.Traces.ScatterPolarGlLib.LineLib.DashEnum? Dash { get; set;} 
 
         /// <summary>
-        ///     Determines the line shape. The values correspond to step-wise line shapes.
-        /// </summary>
-        [JsonPropertyName(@"shape")]
-        public Plotly.Blazor.Traces.ScatterPolarGlLib.LineLib.ShapeEnum? Shape { get; set;} 
-
-        /// <summary>
         ///     Sets the line width (in px).
         /// </summary>
         [JsonPropertyName(@"width")]
@@ -67,11 +61,6 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
                     Dash.Equals(other.Dash)
                 ) && 
                 (
-                    Shape == other.Shape ||
-                    Shape != null &&
-                    Shape.Equals(other.Shape)
-                ) && 
-                (
                     Width == other.Width ||
                     Width != null &&
                     Width.Equals(other.Width)
@@ -86,7 +75,6 @@ namespace Plotly.Blazor.Traces.ScatterPolarGlLib
                 var hashCode = 41;
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
-                if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 return hashCode;
             }

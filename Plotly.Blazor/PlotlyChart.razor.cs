@@ -88,17 +88,25 @@ namespace Plotly.Blazor
         [Parameter]
         public Action AfterRender { get; set; }
 
-        /// <summary>
-        ///     Can be used later to invoke methods from javaScript to .NET.
-        /// </summary>
-        private DotNetObjectReference<PlotlyChart> objectReference;
+        [Inject]
+        private IJSRuntime JsRuntime { get; set; }
+        private PlotlyJsInterop Interop { get; set; }
+
         /// <inheritdoc/>
         protected override bool ShouldRender() => false;
+
+        /// <inheritdoc />
+        protected override void OnInitialized()
+        {
+            Interop = new PlotlyJsInterop(JsRuntime, this);
+            base.OnInitialized();
+        }
+
         /// <inheritdoc/>
         public override async Task SetParametersAsync(ParameterView parameters)
         {
             await base.SetParametersAsync(parameters);
-            objectReference ??= DotNetObjectReference.Create(this);
+
             if (string.IsNullOrWhiteSpace(Id))
             {
                 var random = new Random();
@@ -150,7 +158,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task React(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.React(objectReference, cancellationToken);
+            await Interop.React(cancellationToken);
         }
 
         /// <summary>
@@ -160,7 +168,26 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task Relayout(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.Relayout(objectReference, cancellationToken);
+            await Interop.Relayout(cancellationToken);
+        }
+
+        /// <summary>
+        ///     Updates the chart layout partially using the given <paramref name="value"/> properties.
+        ///     <paramref name="value"/> can be an anonymous type.
+        /// </summary>
+        /// <param name="value">Partial update values</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task Relayout<T>(T value, CancellationToken cancellationToken = default)
+        {
+            if (value.Equals(default)) return;
+
+            Layout ??= new Layout();
+
+            var json = JsonSerializer.Serialize(value.PrepareJsInterop(PlotlyJsInterop.SerializerOptions));
+            Layout.Populate(json, PlotlyJsInterop.SerializerOptions); // apply changes to the existing object
+
+            await Interop.Relayout(value, cancellationToken);
         }
 
         /// <summary>
@@ -207,7 +234,7 @@ namespace Plotly.Blazor
         /// <returns>A binary string of the exported image</returns>
         public async Task<string> ToImage(ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
         {
-            return await JsRuntime.ToImage(objectReference, format, height, width, cancellationToken);
+            return await Interop.ToImage(format, height, width, cancellationToken);
         }
 
         /// <summary>
@@ -221,7 +248,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task DownloadImage(ImageFormat format, uint height, uint width, string fileName, CancellationToken cancellationToken = default)
         {
-            await JsRuntime.DownloadImage(objectReference, format, height, width, fileName, cancellationToken);
+            await Interop.DownloadImage(format, height, width, fileName, cancellationToken);
         }
 
         /// <summary>
@@ -261,7 +288,7 @@ namespace Plotly.Blazor
                 currentTrace.Populate(json, PlotlyJsInterop.SerializerOptions); // apply changes to the existing object
             }
 
-            await JsRuntime.Restyle(objectReference, trace, absoluteindices.ToArray(), cancellationToken);
+            await Interop.Restyle(trace, absoluteindices.ToArray(), cancellationToken);
         }
 
         /// <summary>
@@ -281,7 +308,7 @@ namespace Plotly.Blazor
         /// <returns></returns>
         public async Task NewPlot(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.NewPlot(objectReference, cancellationToken);
+            await Interop.NewPlot(cancellationToken);
         }
 
         /// <summary>
@@ -311,7 +338,7 @@ namespace Plotly.Blazor
             }
 
             await DataChanged.InvokeAsync(Data);
-            await JsRuntime.AddTrace(objectReference, trace, index, cancellationToken);
+            await Interop.AddTrace(trace, index, cancellationToken);
         }
 
         /// <summary>
@@ -362,7 +389,7 @@ namespace Plotly.Blazor
 
             Data.RemoveAt(index);
             await DataChanged.InvokeAsync(Data);
-            await JsRuntime.DeleteTrace(objectReference, index, cancellationToken);
+            await Interop.DeleteTrace(index, cancellationToken);
         }
 
         /// <summary>
@@ -484,7 +511,7 @@ namespace Plotly.Blazor
             }
 
             await DataChanged.InvokeAsync(Data);
-            await JsRuntime.ExtendTraces(objectReference, xArr, yArr, indicesArr, max, cancellationToken);
+            await Interop.ExtendTraces(xArr, yArr, indicesArr, max, cancellationToken);
         }
 
         private static void AddDataToProperty(object currentTrace, Type traceType, string propertyName, IReadOnlyCollection<object> data, int? max, bool prepend)
@@ -494,7 +521,7 @@ namespace Plotly.Blazor
                 return;
             }
 
-            var list = (IList<object>)traceType.GetProperty(propertyName)?.GetValue(currentTrace) 
+            var list = (IList<object>)traceType.GetProperty(propertyName)?.GetValue(currentTrace)
                        ?? throw new InvalidOperationException($"You must first initialise the {propertyName} list before it can be expanded, e.g. by using Plotly.Update");
 
             if (prepend)
@@ -634,7 +661,7 @@ namespace Plotly.Blazor
             }
 
             await DataChanged.InvokeAsync(Data);
-            await JsRuntime.PrependTraces(objectReference, xArr, yArr, indicesArr, max, cancellationToken);
+            await Interop.PrependTraces(xArr, yArr, indicesArr, max, cancellationToken);
         }
 
         /// <summary>
@@ -713,7 +740,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task SubscribeLegendClickEvent(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.SubscribeLegendClickEvent(objectReference, cancellationToken);
+            await Interop.SubscribeLegendClickEvent(cancellationToken);
         }
 
         /// <summary>
@@ -723,7 +750,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task SubscribeClickEvent(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.SubscribeClickEvent(objectReference, cancellationToken);
+            await Interop.SubscribeClickEvent(cancellationToken);
         }
 
         /// <summary>
@@ -733,7 +760,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task SubscribeHoverEvent(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.SubscribeHoverEvent(objectReference, cancellationToken);
+            await Interop.SubscribeHoverEvent(cancellationToken);
         }
 
         /// <summary>
@@ -743,7 +770,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task SubscribeRelayoutEvent(CancellationToken cancellationToken = default)
         {
-            await JsRuntime.SubscribeRelayoutEvent(objectReference, cancellationToken);
+            await Interop.SubscribeRelayoutEvent(cancellationToken);
         }
 
         /// <summary>
@@ -773,13 +800,7 @@ namespace Plotly.Blazor
             await ConfigChanged.InvokeAsync(Config);
             Frames.Clear();
             await FramesChanged.InvokeAsync(Frames);
-            await JsRuntime.Purge(objectReference, cancellationToken);
-        }
-
-        /// <inheritdoc/>
-        public void Dispose()
-        {
-            objectReference?.Dispose();
+            await Interop.Purge(cancellationToken);
         }
     }
 }

@@ -54,6 +54,13 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.AutoRangeOptions AutoRangeOptions { get; set;} 
 
         /// <summary>
+        ///     When <c>tickangle</c> is set to <c>auto</c>, it will be set to the first
+        ///     angle in this array that is large enough to prevent label overlap.
+        /// </summary>
+        [JsonPropertyName(@"autotickangles")]
+        public IList<object> AutoTickAngles { get; set;} 
+
+        /// <summary>
         ///     Using <c>strict</c> a numeric string in trace data is not converted to a
         ///     number. Using &#39;convert types&#39; a numeric string in trace data may
         ///     be treated as a number during automatic axis <c>type</c> detection. Defaults
@@ -768,6 +775,11 @@ namespace Plotly.Blazor.LayoutLib
                     AutoRangeOptions.Equals(other.AutoRangeOptions)
                 ) && 
                 (
+                    Equals(AutoTickAngles, other.AutoTickAngles) ||
+                    AutoTickAngles != null && other.AutoTickAngles != null &&
+                    AutoTickAngles.SequenceEqual(other.AutoTickAngles)
+                ) &&
+                (
                     AutoTypeNumbers == other.AutoTypeNumbers ||
                     AutoTypeNumbers != null &&
                     AutoTypeNumbers.Equals(other.AutoTypeNumbers)
@@ -1189,6 +1201,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
                 if (AutoRange != null) hashCode = hashCode * 59 + AutoRange.GetHashCode();
                 if (AutoRangeOptions != null) hashCode = hashCode * 59 + AutoRangeOptions.GetHashCode();
+                if (AutoTickAngles != null) hashCode = hashCode * 59 + AutoTickAngles.GetHashCode();
                 if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
                 if (CategoryArray != null) hashCode = hashCode * 59 + CategoryArray.GetHashCode();

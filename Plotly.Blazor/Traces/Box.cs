@@ -598,7 +598,7 @@ namespace Plotly.Blazor.Traces
         ///     Sets the upper fence values. There should be as many items as the number
         ///     of boxes desired. This attribute has effect only under the q1/median/q3
         ///     signature. If <c>upperfence</c> is not provided but a sample (in <c>y</c>
-        ///     or <c>x</c>) is set, we compute the lower as the last sample point above
+        ///     or <c>x</c>) is set, we compute the upper as the last sample point above
         ///     1.5 times the IQR.
         /// </summary>
         [JsonPropertyName(@"upperfence")]

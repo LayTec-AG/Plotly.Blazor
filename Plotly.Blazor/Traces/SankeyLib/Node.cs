@@ -21,6 +21,13 @@ namespace Plotly.Blazor.Traces.SankeyLib
     public class Node : IEquatable<Node>
     {
         /// <summary>
+        ///     Sets the alignment method used to position the nodes along the horizontal
+        ///     axis.
+        /// </summary>
+        [JsonPropertyName(@"align")]
+        public Plotly.Blazor.Traces.SankeyLib.NodeLib.AlignEnum? Align { get; set;} 
+
+        /// <summary>
         ///     Sets the <c>node</c> color. It can be a single value, or an array for specifying
         ///     color for each <c>node</c>. If <c>node.color</c> is omitted, then the default
         ///     <c>Plotly</c> color palette will be cycled through to have a variety of
@@ -209,6 +216,11 @@ namespace Plotly.Blazor.Traces.SankeyLib
 
             return 
                 (
+                    Align == other.Align ||
+                    Align != null &&
+                    Align.Equals(other.Align)
+                ) && 
+                (
                     Color == other.Color ||
                     Color != null &&
                     Color.Equals(other.Color)
@@ -316,6 +328,7 @@ namespace Plotly.Blazor.Traces.SankeyLib
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (Align != null) hashCode = hashCode * 59 + Align.GetHashCode();
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (ColorArray != null) hashCode = hashCode * 59 + ColorArray.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();

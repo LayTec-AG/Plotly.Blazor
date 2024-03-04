@@ -327,3 +327,6 @@ quartiles=quartiles
 sdmultiple=sdMultiple
 autorangeoptions=autoRangeOptions
 includesrc=includeSrc
+hovercolorsrc=hoverColorSrc
+autotickangles=autoTickAngles
+barcornerradius=barCornerRadius

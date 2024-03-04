@@ -122,6 +122,15 @@ namespace Plotly.Blazor.Traces.HistogramLib
         public string ColorSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the rounding of corners. May be an integer number of pixels, or a percentage
+        ///     of bar width (as a string ending in %). Defaults to <c>layout.barcornerradius</c>.
+        ///     In stack or relative barmode, the first trace to set cornerradius is used
+        ///     for the whole stack.
+        /// </summary>
+        [JsonPropertyName(@"cornerradius")]
+        public object CornerRadius { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Line.
         /// </summary>
         [JsonPropertyName(@"line")]
@@ -239,6 +248,11 @@ namespace Plotly.Blazor.Traces.HistogramLib
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
+                    CornerRadius == other.CornerRadius ||
+                    CornerRadius != null &&
+                    CornerRadius.Equals(other.CornerRadius)
+                ) && 
+                (
                     Line == other.Line ||
                     Line != null &&
                     Line.Equals(other.Line)
@@ -292,6 +306,7 @@ namespace Plotly.Blazor.Traces.HistogramLib
                 if (ColorBar != null) hashCode = hashCode * 59 + ColorBar.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (CornerRadius != null) hashCode = hashCode * 59 + CornerRadius.GetHashCode();
                 if (Line != null) hashCode = hashCode * 59 + Line.GetHashCode();
                 if (Opacity != null) hashCode = hashCode * 59 + Opacity.GetHashCode();
                 if (OpacityArray != null) hashCode = hashCode * 59 + OpacityArray.GetHashCode();

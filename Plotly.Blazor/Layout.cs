@@ -21,6 +21,13 @@ namespace Plotly.Blazor
     public class Layout : IEquatable<Layout>
     {
         /// <summary>
+        ///     Sets the rounding of bar corners. May be an integer number of pixels, or
+        ///     a percentage of bar width (as a string ending in %).
+        /// </summary>
+        [JsonPropertyName(@"barcornerradius")]
+        public object BarCornerRadius { get; set;} 
+
+        /// <summary>
         ///     Sets the gap (in plot fraction) between bars of adjacent location coordinates.
         /// </summary>
         [JsonPropertyName(@"bargap")]
@@ -734,6 +741,11 @@ namespace Plotly.Blazor
 
             return 
                 (
+                    BarCornerRadius == other.BarCornerRadius ||
+                    BarCornerRadius != null &&
+                    BarCornerRadius.Equals(other.BarCornerRadius)
+                ) && 
+                (
                     BarGap == other.BarGap ||
                     BarGap != null &&
                     BarGap.Equals(other.BarGap)
@@ -1176,6 +1188,7 @@ namespace Plotly.Blazor
             unchecked // Overflow is fine, just wrap
             {
                 var hashCode = 41;
+                if (BarCornerRadius != null) hashCode = hashCode * 59 + BarCornerRadius.GetHashCode();
                 if (BarGap != null) hashCode = hashCode * 59 + BarGap.GetHashCode();
                 if (BarGroupGap != null) hashCode = hashCode * 59 + BarGroupGap.GetHashCode();
                 if (BarMode != null) hashCode = hashCode * 59 + BarMode.GetHashCode();

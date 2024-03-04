@@ -68,6 +68,31 @@ namespace Plotly.Blazor.Traces.SankeyLib
         public string CustomDataSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the <c>link</c> hover color. It can be a single value, or an array
+        ///     for specifying hover colors for each <c>link</c>. If <c>link.hovercolor</c>
+        ///     is omitted, then by default, links will become slightly more opaque when
+        ///     hovered over.
+        /// </summary>
+        [JsonPropertyName(@"hovercolor")]
+        public object HoverColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the <c>link</c> hover color. It can be a single value, or an array
+        ///     for specifying hover colors for each <c>link</c>. If <c>link.hovercolor</c>
+        ///     is omitted, then by default, links will become slightly more opaque when
+        ///     hovered over.
+        /// </summary>
+        [JsonPropertyName(@"hovercolor")]
+        [Array]
+        public IList<object> HoverColorArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>hovercolor</c>.
+        /// </summary>
+        [JsonPropertyName(@"hovercolorsrc")]
+        public string HoverColorSrc { get; set;} 
+
+        /// <summary>
         ///     Determines which trace information appear when hovering links. If <c>none</c>
         ///     or <c>skip</c> are set, no information is displayed upon hovering. But,
         ///     if <c>none</c> is set, click and hover events are still fired.
@@ -245,6 +270,21 @@ namespace Plotly.Blazor.Traces.SankeyLib
                     CustomDataSrc.Equals(other.CustomDataSrc)
                 ) && 
                 (
+                    HoverColor == other.HoverColor ||
+                    HoverColor != null &&
+                    HoverColor.Equals(other.HoverColor)
+                ) && 
+                (
+                    Equals(HoverColorArray, other.HoverColorArray) ||
+                    HoverColorArray != null && other.HoverColorArray != null &&
+                    HoverColorArray.SequenceEqual(other.HoverColorArray)
+                ) &&
+                (
+                    HoverColorSrc == other.HoverColorSrc ||
+                    HoverColorSrc != null &&
+                    HoverColorSrc.Equals(other.HoverColorSrc)
+                ) && 
+                (
                     HoverInfo == other.HoverInfo ||
                     HoverInfo != null &&
                     HoverInfo.Equals(other.HoverInfo)
@@ -329,6 +369,9 @@ namespace Plotly.Blazor.Traces.SankeyLib
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
                 if (CustomData != null) hashCode = hashCode * 59 + CustomData.GetHashCode();
                 if (CustomDataSrc != null) hashCode = hashCode * 59 + CustomDataSrc.GetHashCode();
+                if (HoverColor != null) hashCode = hashCode * 59 + HoverColor.GetHashCode();
+                if (HoverColorArray != null) hashCode = hashCode * 59 + HoverColorArray.GetHashCode();
+                if (HoverColorSrc != null) hashCode = hashCode * 59 + HoverColorSrc.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
                 if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();

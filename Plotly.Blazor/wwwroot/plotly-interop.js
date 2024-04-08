@@ -1,4 +1,4 @@
-﻿import '/_content/Plotly.Blazor/plotly-latest.min.js';
+﻿import './plotly-latest.min.js';
 
 export function newPlot(id, data = [], layout = {}, config = {}, frames = []) {
     window.Plotly.newPlot(id, data, layout, config, frames);

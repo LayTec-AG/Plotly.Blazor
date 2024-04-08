@@ -71,6 +71,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.GroupTitleFont GroupTitleFont { get; set;} 
 
         /// <summary>
+        ///     Sets the indentation (in px) of the legend entries.
+        /// </summary>
+        [JsonPropertyName(@"indentation")]
+        public decimal? Indentation { get; set;} 
+
+        /// <summary>
         ///     Determines the behavior on legend item click. <c>toggle</c> toggles the
         ///     visibility of the item clicked on the graph. <c>toggleothers</c> makes the
         ///     clicked item the sole visible item on the graph. <c>false</c> disables legend
@@ -271,6 +277,11 @@ namespace Plotly.Blazor.LayoutLib
                     GroupTitleFont.Equals(other.GroupTitleFont)
                 ) && 
                 (
+                    Indentation == other.Indentation ||
+                    Indentation != null &&
+                    Indentation.Equals(other.Indentation)
+                ) && 
+                (
                     ItemClick == other.ItemClick ||
                     ItemClick != null &&
                     ItemClick.Equals(other.ItemClick)
@@ -371,6 +382,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (GroupClick != null) hashCode = hashCode * 59 + GroupClick.GetHashCode();
                 if (GroupTitleFont != null) hashCode = hashCode * 59 + GroupTitleFont.GetHashCode();
+                if (Indentation != null) hashCode = hashCode * 59 + Indentation.GetHashCode();
                 if (ItemClick != null) hashCode = hashCode * 59 + ItemClick.GetHashCode();
                 if (ItemDoubleClick != null) hashCode = hashCode * 59 + ItemDoubleClick.GetHashCode();
                 if (ItemSizing != null) hashCode = hashCode * 59 + ItemSizing.GetHashCode();

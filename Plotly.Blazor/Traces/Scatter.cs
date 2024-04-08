@@ -110,10 +110,18 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     Sets the fill color. Defaults to a half-transparent variant of the line
-        ///     color, marker color, or marker line color, whichever is available.
+        ///     color, marker color, or marker line color, whichever is available. If fillgradient
+        ///     is specified, fillcolor is ignored except for setting the background color
+        ///     of the hover label, if any.
         /// </summary>
         [JsonPropertyName(@"fillcolor")]
         public object FillColor { get; set;} 
+
+        /// <summary>
+        ///     Sets a fill gradient. If not specified, the fillcolor is used instead.
+        /// </summary>
+        [JsonPropertyName(@"fillgradient")]
+        public Plotly.Blazor.Traces.ScatterLib.FillGradient FillGradient { get; set;} 
 
         /// <summary>
         ///     Sets the pattern within the marker.
@@ -803,6 +811,11 @@ namespace Plotly.Blazor.Traces
                     FillColor.Equals(other.FillColor)
                 ) && 
                 (
+                    FillGradient == other.FillGradient ||
+                    FillGradient != null &&
+                    FillGradient.Equals(other.FillGradient)
+                ) && 
+                (
                     FillPattern == other.FillPattern ||
                     FillPattern != null &&
                     FillPattern.Equals(other.FillPattern)
@@ -1167,6 +1180,7 @@ namespace Plotly.Blazor.Traces
                 if (ErrorY != null) hashCode = hashCode * 59 + ErrorY.GetHashCode();
                 if (Fill != null) hashCode = hashCode * 59 + Fill.GetHashCode();
                 if (FillColor != null) hashCode = hashCode * 59 + FillColor.GetHashCode();
+                if (FillGradient != null) hashCode = hashCode * 59 + FillGradient.GetHashCode();
                 if (FillPattern != null) hashCode = hashCode * 59 + FillPattern.GetHashCode();
                 if (GroupNorm != null) hashCode = hashCode * 59 + GroupNorm.GetHashCode();
                 if (HoverInfo != null) hashCode = hashCode * 59 + HoverInfo.GetHashCode();

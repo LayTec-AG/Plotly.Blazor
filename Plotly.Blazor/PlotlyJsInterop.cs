@@ -30,10 +30,6 @@ public class PlotlyJsInterop
             () => jsRuntime.InvokeAsync<IJSObjectReference>("import", InteropPath).AsTask());
     }
 
-    //// Use custom jsInterop functions to prevent exceptions caused by circle references in the return value
-    //// Should be fixed in future blazor wasm releases
-    //private const string PlotlyInterop = "plotlyInterop";
-
     internal static readonly JsonSerializerOptions SerializerOptions = new()
     {
         PropertyNamingPolicy = null,

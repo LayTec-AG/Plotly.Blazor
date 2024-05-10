@@ -173,7 +173,7 @@ public class PlotlyJsInterop
     {
         var jsRuntime = await moduleTask.Value;
 
-        await jsRuntime.InvokeVoidAsync("prependTraces",
+        await jsRuntime.InvokeVoidAsync("prependTraces3D",
             cancellationToken,
             dotNetObj.Value.Id,
             x, y, z, indices, max);

@@ -7,6 +7,7 @@
 <MudDrawer @bind-Open="@open" ClipMode="DrawerClipMode.Never" Breakpoint="Breakpoint.Xl" Elevation="0" Variant="@DrawerVariant.Responsive">
     <MudNavMenu>
         <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}")">Scatter</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}Scatter3DPage")">Scatter3D</MudNavLink>
         <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}live-data")">Live Data</MudNavLink>
         <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}bar")">Bar</MudNavLink>
         <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}pie")">Pie</MudNavLink>

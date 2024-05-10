@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Plotly.Blazor.Traces;
+using Plotly.Blazor.Traces.Scatter3DLib.ProjectionLib;
 
 namespace Plotly.Blazor.Examples
 {
@@ -80,6 +81,37 @@ namespace Plotly.Blazor.Examples
             }
 
             return (x, y);
+        }
+        
+        
+        /// <summary>
+        ///     Generates the data.
+        /// </summary>
+        /// <param name="startIndex">The start index.</param>
+        /// <param name="stopIndex">Index of the stop.</param>
+        /// <param name="method">The method.</param>
+        /// <returns>
+        ///     System.ValueTuple&lt;List&lt;System.Nullable&lt;System.Double&gt;&gt;, List&lt;System.Nullable&lt;
+        ///     System.Double&gt;&gt;, List&lt;System.Nullable&lt;System.Double&gt;&gt;&gt;.
+        /// </returns>
+        public static (List<object> X, List<object> Y, List<object> Z) GenerateData3D(int startIndex, int stopIndex,
+            GenerateMethod method = GenerateMethod.Sin)
+        {
+            var x = new List<object>();
+            var y = new List<object>();
+            var z = new List<object>();
+
+            var start = Math.Min(startIndex, stopIndex);
+            var stop = Math.Max(startIndex, stopIndex);
+
+            for (var i = start; i < stop; i++)
+            {
+                x.Add(MathF.Sin(i));
+                y.Add(MathF.Cos(i));
+                z.Add(i);
+            }
+
+            return (x, y, z);
         }
 
         private static double Randomize(this int number, GenerateMethod method = GenerateMethod.Sin)

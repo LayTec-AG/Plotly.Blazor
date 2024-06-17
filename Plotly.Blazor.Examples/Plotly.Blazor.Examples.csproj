@@ -1,38 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<GHPages>true</GHPages>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" />
-		<PackageReference Include="MudBlazor" />
-		<PackageReference Include="Newtonsoft.Json" />
-		<PackageReference Include="PublishSPAforGitHubPages.Build" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
-	</ItemGroup>
-	<ItemGroup>
-		<Content Update="wwwroot\2011_february_aa_flight_paths.csv">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Update="wwwroot\js\highlight.min.js">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Content>
-		<Content Update="wwwroot\js\interop.js">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Content>
-		<Content Update="wwwroot\mt_bruno_elevation.csv">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="wwwroot\css\highlight\" />
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+        <GHPages>true</GHPages>
+        <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" />
+        <PackageReference Include="MudBlazor" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="PublishSPAforGitHubPages.Build" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Update="wwwroot\2011_february_aa_flight_paths.csv">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\js\highlight.min.js">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\js\interop.js">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Content>
+        <Content Update="wwwroot\mt_bruno_elevation.csv">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="wwwroot\css\highlight\" />
+    </ItemGroup>
 </Project>

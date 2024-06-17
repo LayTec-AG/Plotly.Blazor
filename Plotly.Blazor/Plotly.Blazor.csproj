@@ -1,39 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
-		<RazorLangVersion>3.0</RazorLangVersion>
-		<Authors>sean-laytec</Authors>
-		<Company>LayTec AG</Company>
-		<RepositoryUrl>https://github.com/LayTec-AG/Plotly.Blazor.git</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageTags>blazor plotly charting-library</PackageTags>
-		<PackageProjectUrl>https://github.com/LayTec-AG/Plotly.Blazor</PackageProjectUrl>
-		<Description>Plotly.Blazor is a wrapper for plotly.js. Built on top of d3.js and stack.gl, plotly.js is a high-level, declarative charting library. It ships with over 40 chart types, including 3D charts, statistical graphs, and SVG maps. plotly.js is free and open source and you can view the source, report issues or contribute on GitHub.</Description>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols Condition=" '$(DebugType)' != 'embedded' ">true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<EnableNETAnalyzers>false</EnableNETAnalyzers>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Microsoft.CSharp"/>
-		<PackageReference Include="Microsoft.AspNetCore.Components"/>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web"/>
-	</ItemGroup>
-	<ItemGroup>
-		<Content Update="wwwroot\plotly-interop-2.33.0.js">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Update="wwwroot\plotly-2.33.0.min">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <RazorLangVersion>3.0</RazorLangVersion>
+        <Authors>sean-laytec</Authors>
+        <Company>LayTec AG</Company>
+        <RepositoryUrl>https://github.com/LayTec-AG/Plotly.Blazor.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>blazor plotly charting-library</PackageTags>
+        <PackageProjectUrl>https://github.com/LayTec-AG/Plotly.Blazor</PackageProjectUrl>
+        <Description>Plotly.Blazor is a wrapper for plotly.js. Built on top of d3.js and stack.gl, plotly.js is a high-level, declarative charting library. It ships with over 40 chart types, including 3D charts, statistical graphs, and SVG maps. plotly.js is free and open source and you can view the source, report issues or contribute on GitHub.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols Condition=" '$(DebugType)' != 'embedded' ">true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EnableNETAnalyzers>false</EnableNETAnalyzers>
+        <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CSharp" />
+        <PackageReference Include="Microsoft.AspNetCore.Components" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Update="wwwroot\**\*.*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>

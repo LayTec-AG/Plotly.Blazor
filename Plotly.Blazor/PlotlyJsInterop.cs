@@ -15,6 +15,9 @@ namespace Plotly.Blazor;
 public class PlotlyJsInterop
 {
     private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-2.33.0.js";
+    private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-2.33.0.min.js";
+    private const string PlotlyBasicPath = "./_content/Plotly.Blazor/plotly-basic-1.58.5.min.js";
+
     private readonly DotNetObjectReference<PlotlyChart> dotNetObj;
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
@@ -23,11 +26,20 @@ public class PlotlyJsInterop
     /// </summary>
     /// <param name="jsRuntime"></param>
     /// <param name="chart"></param>
-    public PlotlyJsInterop(IJSRuntime jsRuntime, PlotlyChart chart)
+    /// <param name="useBasicVersion"></param>
+    public PlotlyJsInterop(IJSRuntime jsRuntime, PlotlyChart chart, bool useBasicVersion)
     {
         dotNetObj = DotNetObjectReference.Create(chart);
-        moduleTask = new Lazy<Task<IJSObjectReference>>(
-            () => jsRuntime.InvokeAsync<IJSObjectReference>("import", InteropPath).AsTask());
+        moduleTask = new(LoadModulesAsync(jsRuntime, useBasicVersion));
+    }
+
+    private static async Task<IJSObjectReference> LoadModulesAsync(IJSRuntime jsRuntime, bool useBasicVersion)
+    {
+        var jsObject = await jsRuntime.InvokeAsync<IJSObjectReference>("import", InteropPath);
+
+        await jsObject.InvokeVoidAsync("importScript", "plotly-import", useBasicVersion ? PlotlyBasicPath : PlotlyPath);
+
+        return jsObject;
     }
 
     internal static readonly JsonSerializerOptions SerializerOptions = new()
@@ -105,13 +117,14 @@ public class PlotlyJsInterop
             dotNetObj.Value.Id,
             x, y, indices, max);
     }
-    
-    
+
+
     /// <summary>
     ///     Can be used to add data to an existing trace.
     /// </summary>
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values</param>
+    /// <param name="z"></param>
     /// <param name="indices">Indices.</param>
     /// <param name="max">Max Points.</param>
     /// <param name="cancellationToken">CancellationToken</param>
@@ -160,12 +173,13 @@ public class PlotlyJsInterop
             dotNetObj.Value.Id,
             x, y, indices, max);
     }
-    
+
     /// <summary>
     ///     Can be used to prepend data to an existing 3D trace.
     /// </summary>
     /// <param name="x">X-Values.</param>
     /// <param name="y">Y-Values</param>
+    /// <param name="z"></param>
     /// <param name="indices">Indices.</param>
     /// <param name="max">Max Points.</param>
     /// <param name="cancellationToken">CancellationToken</param>

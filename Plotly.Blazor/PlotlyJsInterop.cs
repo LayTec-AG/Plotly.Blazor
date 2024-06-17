@@ -105,6 +105,25 @@ public class PlotlyJsInterop
             dotNetObj.Value.Id,
             x, y, indices, max);
     }
+    
+    
+    /// <summary>
+    ///     Can be used to add data to an existing trace.
+    /// </summary>
+    /// <param name="x">X-Values.</param>
+    /// <param name="y">Y-Values</param>
+    /// <param name="indices">Indices.</param>
+    /// <param name="max">Max Points.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public async Task ExtendTraces3D(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<IEnumerable<object>> z, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("extendTraces3D",
+            cancellationToken,
+            dotNetObj.Value.Id,
+            x, y, z, indices, max);
+    }
 
     /// <summary>
     ///     Draws a new plot in an div element, overwriting any existing plot.
@@ -140,6 +159,24 @@ public class PlotlyJsInterop
             cancellationToken,
             dotNetObj.Value.Id,
             x, y, indices, max);
+    }
+    
+    /// <summary>
+    ///     Can be used to prepend data to an existing 3D trace.
+    /// </summary>
+    /// <param name="x">X-Values.</param>
+    /// <param name="y">Y-Values</param>
+    /// <param name="indices">Indices.</param>
+    /// <param name="max">Max Points.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public async Task PrependTraces3D(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<IEnumerable<object>> z, IEnumerable<int> indices, int? max, CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("prependTraces3D",
+            cancellationToken,
+            dotNetObj.Value.Id,
+            x, y, z, indices, max);
     }
 
     /// <summary>

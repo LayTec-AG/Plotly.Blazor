@@ -20,6 +20,25 @@ export function extendTraces(id, x, y, indizes, max) {
         window.Plotly.extendTraces(id, data, indizes);
     }
 }
+
+export function extendTraces3D(id, x, y, z, indizes, max) {
+    var data = {};
+    if (x != null) {
+        data["x"] = x;
+    }
+    if (y != null) {
+        data["y"] = y;
+    }
+    if (z != null) {
+        data["z"] = z;
+    }
+    
+    if (max != null) {
+        window.Plotly.extendTraces(id, data, indizes, max);
+    } else {
+        window.Plotly.extendTraces(id, data, indizes);
+    }
+}
 export function prependTraces(id, x = null, y = null, indizes = [0], max) {
     var data = {};
     if (x != null) {
@@ -28,6 +47,26 @@ export function prependTraces(id, x = null, y = null, indizes = [0], max) {
     if (y != null) {
         data["y"] = y;
     }
+    if (max != null) {
+        window.Plotly.prependTraces(id, data, indizes, max);
+    }
+    else {
+        window.Plotly.prependTraces(id, data, indizes);
+    }
+}
+
+export function prependTraces3D(id, x = null, y = null, z = null, indizes = [0], max) {
+    var data = {};
+    if (x != null) {
+        data["x"] = x;
+    }
+    if (y != null) {
+        data["y"] = y;
+    }
+    if (z != null) {
+        data["z"] = z;
+    }
+    
     if (max != null) {
         window.Plotly.prependTraces(id, data, indizes, max);
     }

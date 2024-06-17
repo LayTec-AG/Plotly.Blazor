@@ -221,6 +221,9 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
         var y1 = data["yaxis.range[0]"]
         var y2 = data["yaxis.range[1]"]
 
+        var z1 = data["zaxis.range[0]"]
+        var z2 = data["zaxis.range[1]"]
+
         var result = {};
 
         if (x1 && x2) {
@@ -230,6 +233,11 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
         if (y1 && y2) {
             result.YRange = [y1, y2];
         }
+
+        if (z1 && z2) {
+            result.ZRange = [z1, z2];
+        }
+
         dotNetObj.invokeMethodAsync('RelayoutEvent', result);
     });
 }

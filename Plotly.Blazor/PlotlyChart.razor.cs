@@ -22,6 +22,12 @@ namespace Plotly.Blazor
         public string Id { get; set; }
 
         /// <summary>
+        ///     Set to true, when the basic minified version of plotly.js should be used.
+        /// </summary>
+        [Parameter]
+        public bool UseBasicVersion { get; set; }
+
+        /// <summary>
         ///     Data of the charts.
         /// </summary>
         [Parameter]
@@ -98,7 +104,7 @@ namespace Plotly.Blazor
         /// <inheritdoc />
         protected override void OnInitialized()
         {
-            Interop = new PlotlyJsInterop(JsRuntime, this);
+            Interop = new PlotlyJsInterop(JsRuntime, this, UseBasicVersion);
             base.OnInitialized();
         }
 

@@ -1,4 +1,35 @@
-﻿import './plotly-2.33.0.min.js';
+﻿const scriptCache = new Map();
+
+export async function importScript(id, scriptUrl) {
+    return new Promise((resolve, reject) => {
+        // Check if already exists
+        var existingElement = document.getElementById(id);
+        if (existingElement) {
+            // Double check, if the src has changed
+            if (existingElement.dataset.originalSrc === scriptUrl) {
+                resolve();
+                return;
+            } else {
+                // Remove if different src
+                existingElement.remove();
+            }
+        }
+
+        // Load script dynamically by adding it to the head
+        const script = document.createElement('script');
+        script.id = id;
+        script.src = scriptUrl;
+        script.dataset.originalSrc = scriptUrl;
+        script.type = 'text/javascript';
+        script.async = true;
+        script.onload = () => {
+            scriptCache.set(id, scriptUrl);
+            resolve();
+        };
+        script.onerror = (error) => reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
+        document.head.appendChild(script);
+    });
+}
 
 export function newPlot(id, data = [], layout = {}, config = {}, frames = []) {
     window.Plotly.newPlot(id, data, layout, config, frames);
@@ -32,7 +63,7 @@ export function extendTraces3D(id, x, y, z, indizes, max) {
     if (z != null) {
         data["z"] = z;
     }
-    
+
     if (max != null) {
         window.Plotly.extendTraces(id, data, indizes, max);
     } else {
@@ -66,7 +97,7 @@ export function prependTraces3D(id, x = null, y = null, z = null, indizes = [0],
     if (z != null) {
         data["z"] = z;
     }
-    
+
     if (max != null) {
         window.Plotly.prependTraces(id, data, indizes, max);
     }

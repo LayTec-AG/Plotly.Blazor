@@ -8,11 +8,10 @@
     <MudPaper Class="d-flex flex-column overflow-x-auto pa-4 gap-4" Height="100vh">
         @foreach (var pageInfo in pageInfos)
         {
-            var uri = new Uri(NavManager.Uri);
-            var color = uri.AbsolutePath.TrimStart('/').Equals(pageInfo.Page.TrimStart('/')) ? Color.Primary : Color.Default;
-            var href = $"{NavManager.BaseUri}{pageInfo.Page}";
+            var uri = NavManager.BaseUri + pageInfo.Page;
+            var color = NavManager.Uri.Equals(uri, StringComparison.InvariantCultureIgnoreCase) ? Color.Primary : Color.Default;
 
-            <MudLink Class="d-flex" Color="@color" Typo="Typo.h4" Href="@href">@pageInfo.Title</MudLink>
+            <MudLink Class="d-flex" Color="@color" Typo="Typo.h4" Href="@uri">@pageInfo.Title</MudLink>
         }
     </MudPaper>
     

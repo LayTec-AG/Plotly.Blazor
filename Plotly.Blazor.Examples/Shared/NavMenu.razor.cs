@@ -56,7 +56,8 @@ namespace Plotly.Blazor.Examples.Shared
             new() { Page = "hover", Title = "Hover Event" },
             new() { Page = "click", Title = "Click Event" },
             new() { Page = "legendclick", Title = "Legend Click Event" },
-            new() { Page = "relayout", Title = "Relayout Event" }
+            new() { Page = "relayout", Title = "Relayout Event" },
+            new() { Page = "selected", Title = "Selected Event" }
         };
 
         private void OpenOrCloseDrawer()

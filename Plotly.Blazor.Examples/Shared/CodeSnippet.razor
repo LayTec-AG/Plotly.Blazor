@@ -14,7 +14,14 @@
         {
             if (firstRender)
             {
-                Code = await CodeHttpClient.GetStringAsync(Url);
+                try
+                {
+                    Code = await CodeHttpClient.GetStringAsync(Url);
+                }
+                catch
+                {
+                    // ignore
+                }
                 StateHasChanged();
             }
             await JsRunTime.InvokeVoidAsync("onBlazorReady");

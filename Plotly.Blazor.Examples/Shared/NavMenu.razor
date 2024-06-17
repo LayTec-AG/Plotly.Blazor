@@ -5,31 +5,15 @@
 </MudPaper>
 
 <MudDrawer @bind-Open="@open" ClipMode="DrawerClipMode.Never" Breakpoint="Breakpoint.Xl" Elevation="0" Variant="@DrawerVariant.Responsive">
-    <MudNavMenu>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}")">Scatter</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}Scatter3DPage")">Scatter3D</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}live-data")">Live Data</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}bar")">Bar</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}pie")">Pie</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}box")">Box</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}candlestick")">Candlestick</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}multipleaxes")">Multiple Axes</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}shapes")">Shapes</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}map")">Map</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}surface")">Surface</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}ribbon")">Ribbon</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}heatmap")">HeatMap</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}scattergl")">ScatterGl</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}indicator")">Indicator</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}smith")">Smith</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}line-polar")">Line Polar</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}area-polar")">Area Polar</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}categorical-polar")">Categorical Polar</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}direction-polar")">Polar Direction</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}sector-polar")">Polar Sector</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}hover")">Hover Event</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}click")">Click Event</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}legendclick")">Legend Click Event</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="@($"{NavManager.BaseUri}relayout")">Relayout Event</MudNavLink>
-    </MudNavMenu>
+    <MudPaper Class="d-flex flex-column overflow-x-auto pa-4 gap-4" Height="100vh">
+        @foreach (var pageInfo in pageInfos)
+        {
+            var uri = new Uri(NavManager.Uri);
+            var color = uri.AbsolutePath.TrimStart('/').Equals(pageInfo.Page.TrimStart('/')) ? Color.Primary : Color.Default;
+            var href = $"{NavManager.BaseUri}{pageInfo.Page}";
+
+            <MudLink Class="d-flex" Color="@color" Typo="Typo.h4" Href="@href">@pageInfo.Title</MudLink>
+        }
+    </MudPaper>
+    
 </MudDrawer>

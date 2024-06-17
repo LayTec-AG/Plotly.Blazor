@@ -948,6 +948,13 @@ namespace Plotly.Blazor
         public Action<IEnumerable<EventDataPoint>> HoverAction { get; set; }
 
         /// <summary>
+        ///     Defines the action that should happen when the SelectedEvent is triggered.
+        ///     Objects are currently required for accommodating different plot value types
+        /// </summary>
+        [Parameter]
+        public Action<IEnumerable<EventDataPoint>> SelectedAction { get; set; }
+
+        /// <summary>
         ///     Defines the action that should happen when the RelayoutEvent is triggered.
         /// </summary>
         [Parameter]
@@ -987,6 +994,17 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     Method which is called by JSRuntime once a you selected plot points, to invoke the passed in SelectedAction.
+        ///     Objects are currently required for accommodating different plot value types.
+        /// </summary>
+        /// <param name = "eventData"></param>
+        [JSInvokable("SelectedEvent")]
+        public void SelectedEvent(IEnumerable<EventDataPoint> eventData)
+        {
+            SelectedAction?.Invoke(eventData);
+        }
+
+        /// <summary>
         ///     Method which is called by JSRuntime when the chart's layout has changed.
         /// </summary>
         [JSInvokable("RelayoutEvent")]
@@ -1023,6 +1041,16 @@ namespace Plotly.Blazor
         public async Task SubscribeHoverEvent(CancellationToken cancellationToken = default)
         {
             await Interop.SubscribeHoverEvent(cancellationToken);
+        }
+
+        /// <summary>
+        ///     Subscribes to the selected event of the chart.
+        /// </summary>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task SubscribeSelectedEvent(CancellationToken cancellationToken = default)
+        {
+            await Interop.SubscribeSelectedEvent(cancellationToken);
         }
 
         /// <summary>

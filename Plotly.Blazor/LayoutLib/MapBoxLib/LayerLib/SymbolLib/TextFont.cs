@@ -45,6 +45,19 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib
         [JsonPropertyName(@"size")]
         public decimal? Size { get; set;} 
 
+        /// <summary>
+        ///     Sets whether a font should be styled with a normal or italic face from its
+        ///     family.
+        /// </summary>
+        [JsonPropertyName(@"style")]
+        public Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib.TextFontLib.StyleEnum? Style { get; set;} 
+
+        /// <summary>
+        ///     Sets the weight (or boldness) of the font.
+        /// </summary>
+        [JsonPropertyName(@"weight")]
+        public int? Weight { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -74,6 +87,16 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib
                     Size == other.Size ||
                     Size != null &&
                     Size.Equals(other.Size)
+                ) && 
+                (
+                    Style == other.Style ||
+                    Style != null &&
+                    Style.Equals(other.Style)
+                ) && 
+                (
+                    Weight == other.Weight ||
+                    Weight != null &&
+                    Weight.Equals(other.Weight)
                 );
         }
 
@@ -86,6 +109,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib.SymbolLib
                 if (Color != null) hashCode = hashCode * 59 + Color.GetHashCode();
                 if (Family != null) hashCode = hashCode * 59 + Family.GetHashCode();
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
+                if (Style != null) hashCode = hashCode * 59 + Style.GetHashCode();
+                if (Weight != null) hashCode = hashCode * 59 + Weight.GetHashCode();
                 return hashCode;
             }
         }

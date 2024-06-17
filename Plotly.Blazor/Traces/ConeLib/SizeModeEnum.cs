@@ -11,7 +11,8 @@ namespace Plotly.Blazor.Traces.ConeLib
     /// <summary>
     ///     Determines whether <c>sizeref</c> is set as a <c>scaled</c> (i.e unitless)
     ///     scalar (normalized by the max u/v/w norm in the vector field) or as <c>absolute</c>
-    ///     value (in the same units as the vector field).
+    ///     value (in the same units as the vector field). To display sizes in actual
+    ///     vector length use <c>raw</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
@@ -20,6 +21,8 @@ namespace Plotly.Blazor.Traces.ConeLib
         [EnumMember(Value=@"scaled")]
         Scaled = 0,
         [EnumMember(Value=@"absolute")]
-        Absolute
+        Absolute,
+        [EnumMember(Value=@"raw")]
+        Raw
     }
 }

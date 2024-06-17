@@ -29,10 +29,10 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web"/>
 	</ItemGroup>
 	<ItemGroup>
-		<Content Update="wwwroot\plotly-interop.js">
+		<Content Update="wwwroot\plotly-interop-2.33.0.js">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
-		<Content Update="wwwroot\plotly-latest.min.js">
+		<Content Update="wwwroot\plotly-2.33.0.min">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>

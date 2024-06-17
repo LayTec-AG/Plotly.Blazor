@@ -9,7 +9,8 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.ShapeLib
 {
     /// <summary>
-    ///     Specifies whether shapes are drawn below or above traces.
+    ///     Specifies whether shapes are drawn below gridlines (<c>below</c>), between
+    ///     gridlines and traces (<c>between</c>) or above traces (<c>above</c>).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
@@ -18,6 +19,8 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
         [EnumMember(Value=@"above")]
         Above = 0,
         [EnumMember(Value=@"below")]
-        Below
+        Below,
+        [EnumMember(Value=@"between")]
+        Between
     }
 }

@@ -79,6 +79,52 @@ namespace Plotly.Blazor.Traces.WaterfallLib
         public string FamilySrc { get; set;} 
 
         /// <summary>
+        ///     Sets the kind of decoration line(s) with text, such as an <c>under</c>,
+        ///     <c>over</c> or <c>through</c> as well as combinations e.g. <c>under+over</c>,
+        ///     etc.
+        /// </summary>
+        [JsonPropertyName(@"lineposition")]
+        public Plotly.Blazor.Traces.WaterfallLib.TextFontLib.LinePositionFlag? LinePosition { get; set;} 
+
+        /// <summary>
+        ///     Sets the kind of decoration line(s) with text, such as an <c>under</c>,
+        ///     <c>over</c> or <c>through</c> as well as combinations e.g. <c>under+over</c>,
+        ///     etc.
+        /// </summary>
+        [JsonPropertyName(@"lineposition")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.WaterfallLib.TextFontLib.LinePositionFlag?> LinePositionArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>lineposition</c>.
+        /// </summary>
+        [JsonPropertyName(@"linepositionsrc")]
+        public string LinePositionSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape and color of the shadow behind text. <c>auto</c> places minimal
+        ///     shadow and applies contrast text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
+        ///     for additional options.
+        /// </summary>
+        [JsonPropertyName(@"shadow")]
+        public string Shadow { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape and color of the shadow behind text. <c>auto</c> places minimal
+        ///     shadow and applies contrast text font color. See https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow
+        ///     for additional options.
+        /// </summary>
+        [JsonPropertyName(@"shadow")]
+        [Array]
+        public IList<string> ShadowArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>shadow</c>.
+        /// </summary>
+        [JsonPropertyName(@"shadowsrc")]
+        public string ShadowSrc { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Size.
         /// </summary>
         [JsonPropertyName(@"size")]
@@ -96,6 +142,86 @@ namespace Plotly.Blazor.Traces.WaterfallLib
         /// </summary>
         [JsonPropertyName(@"sizesrc")]
         public string SizeSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets whether a font should be styled with a normal or italic face from its
+        ///     family.
+        /// </summary>
+        [JsonPropertyName(@"style")]
+        public Plotly.Blazor.Traces.WaterfallLib.TextFontLib.StyleEnum? Style { get; set;} 
+
+        /// <summary>
+        ///     Sets whether a font should be styled with a normal or italic face from its
+        ///     family.
+        /// </summary>
+        [JsonPropertyName(@"style")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.WaterfallLib.TextFontLib.StyleEnum?> StyleArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>style</c>.
+        /// </summary>
+        [JsonPropertyName(@"stylesrc")]
+        public string StyleSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets capitalization of text. It can be used to make text appear in all-uppercase
+        ///     or all-lowercase, or with each word capitalized.
+        /// </summary>
+        [JsonPropertyName(@"textcase")]
+        public Plotly.Blazor.Traces.WaterfallLib.TextFontLib.TextCaseEnum? TextCase { get; set;} 
+
+        /// <summary>
+        ///     Sets capitalization of text. It can be used to make text appear in all-uppercase
+        ///     or all-lowercase, or with each word capitalized.
+        /// </summary>
+        [JsonPropertyName(@"textcase")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.WaterfallLib.TextFontLib.TextCaseEnum?> TextCaseArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>textcase</c>.
+        /// </summary>
+        [JsonPropertyName(@"textcasesrc")]
+        public string TextCaseSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the variant of the font.
+        /// </summary>
+        [JsonPropertyName(@"variant")]
+        public Plotly.Blazor.Traces.WaterfallLib.TextFontLib.VariantEnum? Variant { get; set;} 
+
+        /// <summary>
+        ///     Sets the variant of the font.
+        /// </summary>
+        [JsonPropertyName(@"variant")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.WaterfallLib.TextFontLib.VariantEnum?> VariantArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>variant</c>.
+        /// </summary>
+        [JsonPropertyName(@"variantsrc")]
+        public string VariantSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the weight (or boldness) of the font.
+        /// </summary>
+        [JsonPropertyName(@"weight")]
+        public int? Weight { get; set;} 
+
+        /// <summary>
+        ///     Sets the weight (or boldness) of the font.
+        /// </summary>
+        [JsonPropertyName(@"weight")]
+        [Array]
+        public IList<int?> WeightArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>weight</c>.
+        /// </summary>
+        [JsonPropertyName(@"weightsrc")]
+        public string WeightSrc { get; set;} 
 
         /// <inheritdoc />
         public override bool Equals(object obj)
@@ -143,6 +269,36 @@ namespace Plotly.Blazor.Traces.WaterfallLib
                     FamilySrc.Equals(other.FamilySrc)
                 ) && 
                 (
+                    LinePosition == other.LinePosition ||
+                    LinePosition != null &&
+                    LinePosition.Equals(other.LinePosition)
+                ) && 
+                (
+                    Equals(LinePositionArray, other.LinePositionArray) ||
+                    LinePositionArray != null && other.LinePositionArray != null &&
+                    LinePositionArray.SequenceEqual(other.LinePositionArray)
+                ) &&
+                (
+                    LinePositionSrc == other.LinePositionSrc ||
+                    LinePositionSrc != null &&
+                    LinePositionSrc.Equals(other.LinePositionSrc)
+                ) && 
+                (
+                    Shadow == other.Shadow ||
+                    Shadow != null &&
+                    Shadow.Equals(other.Shadow)
+                ) && 
+                (
+                    Equals(ShadowArray, other.ShadowArray) ||
+                    ShadowArray != null && other.ShadowArray != null &&
+                    ShadowArray.SequenceEqual(other.ShadowArray)
+                ) &&
+                (
+                    ShadowSrc == other.ShadowSrc ||
+                    ShadowSrc != null &&
+                    ShadowSrc.Equals(other.ShadowSrc)
+                ) && 
+                (
                     Size == other.Size ||
                     Size != null &&
                     Size.Equals(other.Size)
@@ -156,6 +312,66 @@ namespace Plotly.Blazor.Traces.WaterfallLib
                     SizeSrc == other.SizeSrc ||
                     SizeSrc != null &&
                     SizeSrc.Equals(other.SizeSrc)
+                ) && 
+                (
+                    Style == other.Style ||
+                    Style != null &&
+                    Style.Equals(other.Style)
+                ) && 
+                (
+                    Equals(StyleArray, other.StyleArray) ||
+                    StyleArray != null && other.StyleArray != null &&
+                    StyleArray.SequenceEqual(other.StyleArray)
+                ) &&
+                (
+                    StyleSrc == other.StyleSrc ||
+                    StyleSrc != null &&
+                    StyleSrc.Equals(other.StyleSrc)
+                ) && 
+                (
+                    TextCase == other.TextCase ||
+                    TextCase != null &&
+                    TextCase.Equals(other.TextCase)
+                ) && 
+                (
+                    Equals(TextCaseArray, other.TextCaseArray) ||
+                    TextCaseArray != null && other.TextCaseArray != null &&
+                    TextCaseArray.SequenceEqual(other.TextCaseArray)
+                ) &&
+                (
+                    TextCaseSrc == other.TextCaseSrc ||
+                    TextCaseSrc != null &&
+                    TextCaseSrc.Equals(other.TextCaseSrc)
+                ) && 
+                (
+                    Variant == other.Variant ||
+                    Variant != null &&
+                    Variant.Equals(other.Variant)
+                ) && 
+                (
+                    Equals(VariantArray, other.VariantArray) ||
+                    VariantArray != null && other.VariantArray != null &&
+                    VariantArray.SequenceEqual(other.VariantArray)
+                ) &&
+                (
+                    VariantSrc == other.VariantSrc ||
+                    VariantSrc != null &&
+                    VariantSrc.Equals(other.VariantSrc)
+                ) && 
+                (
+                    Weight == other.Weight ||
+                    Weight != null &&
+                    Weight.Equals(other.Weight)
+                ) && 
+                (
+                    Equals(WeightArray, other.WeightArray) ||
+                    WeightArray != null && other.WeightArray != null &&
+                    WeightArray.SequenceEqual(other.WeightArray)
+                ) &&
+                (
+                    WeightSrc == other.WeightSrc ||
+                    WeightSrc != null &&
+                    WeightSrc.Equals(other.WeightSrc)
                 );
         }
 
@@ -171,9 +387,27 @@ namespace Plotly.Blazor.Traces.WaterfallLib
                 if (Family != null) hashCode = hashCode * 59 + Family.GetHashCode();
                 if (FamilyArray != null) hashCode = hashCode * 59 + FamilyArray.GetHashCode();
                 if (FamilySrc != null) hashCode = hashCode * 59 + FamilySrc.GetHashCode();
+                if (LinePosition != null) hashCode = hashCode * 59 + LinePosition.GetHashCode();
+                if (LinePositionArray != null) hashCode = hashCode * 59 + LinePositionArray.GetHashCode();
+                if (LinePositionSrc != null) hashCode = hashCode * 59 + LinePositionSrc.GetHashCode();
+                if (Shadow != null) hashCode = hashCode * 59 + Shadow.GetHashCode();
+                if (ShadowArray != null) hashCode = hashCode * 59 + ShadowArray.GetHashCode();
+                if (ShadowSrc != null) hashCode = hashCode * 59 + ShadowSrc.GetHashCode();
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 if (SizeArray != null) hashCode = hashCode * 59 + SizeArray.GetHashCode();
                 if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
+                if (Style != null) hashCode = hashCode * 59 + Style.GetHashCode();
+                if (StyleArray != null) hashCode = hashCode * 59 + StyleArray.GetHashCode();
+                if (StyleSrc != null) hashCode = hashCode * 59 + StyleSrc.GetHashCode();
+                if (TextCase != null) hashCode = hashCode * 59 + TextCase.GetHashCode();
+                if (TextCaseArray != null) hashCode = hashCode * 59 + TextCaseArray.GetHashCode();
+                if (TextCaseSrc != null) hashCode = hashCode * 59 + TextCaseSrc.GetHashCode();
+                if (Variant != null) hashCode = hashCode * 59 + Variant.GetHashCode();
+                if (VariantArray != null) hashCode = hashCode * 59 + VariantArray.GetHashCode();
+                if (VariantSrc != null) hashCode = hashCode * 59 + VariantSrc.GetHashCode();
+                if (Weight != null) hashCode = hashCode * 59 + Weight.GetHashCode();
+                if (WeightArray != null) hashCode = hashCode * 59 + WeightArray.GetHashCode();
+                if (WeightSrc != null) hashCode = hashCode * 59 + WeightSrc.GetHashCode();
                 return hashCode;
             }
         }

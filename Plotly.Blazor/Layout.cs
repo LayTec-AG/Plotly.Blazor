@@ -457,6 +457,17 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.HoverModeEnum? HoverMode { get; set;} 
 
         /// <summary>
+        ///     Determines expansion of hover effects to other subplots If <c>single</c>
+        ///     just the axis pair of the primary point is included without overlaying subplots.
+        ///     If <c>overlaying</c> all subplots using the main axis and occupying the
+        ///     same space are included. If <c>axis</c>, also include stacked subplots using
+        ///     the same axis when <c>hovermode</c> is set to <c>x</c>, &#39;x unified&#39;,
+        ///     <c>y</c> or &#39;y unified&#39;.
+        /// </summary>
+        [JsonPropertyName(@"hoversubplots")]
+        public Plotly.Blazor.LayoutLib.HoverSubplotsEnum? HoverSubplots { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the Images.
         /// </summary>
         [JsonPropertyName(@"images")]
@@ -1006,6 +1017,11 @@ namespace Plotly.Blazor
                     HoverMode.Equals(other.HoverMode)
                 ) && 
                 (
+                    HoverSubplots == other.HoverSubplots ||
+                    HoverSubplots != null &&
+                    HoverSubplots.Equals(other.HoverSubplots)
+                ) && 
+                (
                     Equals(Images, other.Images) ||
                     Images != null && other.Images != null &&
                     Images.SequenceEqual(other.Images)
@@ -1241,6 +1257,7 @@ namespace Plotly.Blazor
                 if (HoverDistance != null) hashCode = hashCode * 59 + HoverDistance.GetHashCode();
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
                 if (HoverMode != null) hashCode = hashCode * 59 + HoverMode.GetHashCode();
+                if (HoverSubplots != null) hashCode = hashCode * 59 + HoverSubplots.GetHashCode();
                 if (Images != null) hashCode = hashCode * 59 + Images.GetHashCode();
                 if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
                 if (MapBox != null) hashCode = hashCode * 59 + MapBox.GetHashCode();

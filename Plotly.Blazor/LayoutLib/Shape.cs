@@ -46,7 +46,8 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.ShapeLib.Label Label { get; set;} 
 
         /// <summary>
-        ///     Specifies whether shapes are drawn below or above traces.
+        ///     Specifies whether shapes are drawn below gridlines (<c>below</c>), between
+        ///     gridlines and traces (<c>between</c>) or above traces (<c>above</c>).
         /// </summary>
         [JsonPropertyName(@"layer")]
         public Plotly.Blazor.LayoutLib.ShapeLib.LayerEnum? Layer { get; set;} 

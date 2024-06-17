@@ -519,6 +519,14 @@ namespace Plotly.Blazor.Traces
         [JsonPropertyName(@"yaxis")]
         public string YAxis { get; set;} 
 
+        /// <summary>
+        ///     Sets the layer on which this trace is displayed, relative to other SVG traces
+        ///     on the same subplot. SVG traces with higher <c>zorder</c> appear in front
+        ///     of those with lower <c>zorder</c>.
+        /// </summary>
+        [JsonPropertyName(@"zorder")]
+        public int? ZOrder { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -823,6 +831,11 @@ namespace Plotly.Blazor.Traces
                     YAxis == other.YAxis ||
                     YAxis != null &&
                     YAxis.Equals(other.YAxis)
+                ) && 
+                (
+                    ZOrder == other.ZOrder ||
+                    ZOrder != null &&
+                    ZOrder.Equals(other.ZOrder)
                 );
         }
 
@@ -890,6 +903,7 @@ namespace Plotly.Blazor.Traces
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (XAxis != null) hashCode = hashCode * 59 + XAxis.GetHashCode();
                 if (YAxis != null) hashCode = hashCode * 59 + YAxis.GetHashCode();
+                if (ZOrder != null) hashCode = hashCode * 59 + ZOrder.GetHashCode();
                 return hashCode;
             }
         }

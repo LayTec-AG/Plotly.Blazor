@@ -423,6 +423,31 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     Extends a trace, determined by the index, with the specified object x, y, z.
+        /// </summary>
+        /// <param name = "x">X-Value.</param>
+        /// <param name = "y">Y-Value.</param>
+        /// <param name="z">Z-Value.</param>
+        /// <param name = "index">Index of the trace. Use -1 e.g. to get the last one.</param>
+        /// <param name = "max">Limits the number of points in the trace.</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task ExtendTrace3D(object x, object y, object z, int index, int? max = null, CancellationToken cancellationToken = default)
+        {
+            if (x == null && y == null && z == null)
+            {
+                return;
+            }
+            
+            IEnumerable<object> xList = x == null ? null : new[] {x};
+            IEnumerable<object> yList = y == null ? null : new[] {y};
+            IEnumerable<object> zList = z == null ? null : new[] {z};
+            
+            await ExtendTrace3D(xList, yList, zList, index, max, cancellationToken);
+            
+        }
+
+        /// <summary>
         ///     Extends a trace, determined by the index  with the specified arrays x, y.
         /// </summary>
         /// <param name = "x">X-Values.</param>
@@ -451,6 +476,32 @@ namespace Plotly.Blazor
                 await ExtendTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
             }
         }
+
+
+        /// <summary>
+        ///     Extends a trace, determined by the index  with the specified arrays x, y, z.
+        /// </summary>
+        /// <param name = "x">X-Values.</param>
+        /// <param name = "y">Y-Values.</param>
+        /// <param name="z">Y-Values.</param>
+        /// <param name = "index">Index of the trace. Use -1 e.g. to get the last one.</param>
+        /// <param name = "max">Limits the number of points in the trace.</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task ExtendTrace3D(IEnumerable<object> x, IEnumerable<object> y, IEnumerable<object> z, int index, int? max = null, CancellationToken cancellationToken = default)
+        {
+            if (x == null && y == null && z == null)
+            {
+                return;
+            }
+
+            IEnumerable<IEnumerable<object>> xList = x == null ? null : new[] {x};
+            IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] {y};
+            IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] {z};
+            
+            await ExtendTraces3D(xList, yList, zList, new[] { index }, max, cancellationToken);
+        }
+        
 
         /// <summary>
         ///     Extends multiple traces, determined by the indices, with the specified arrays x, y.
@@ -514,6 +565,84 @@ namespace Plotly.Blazor
             await Interop.ExtendTraces(xArr, yArr, indicesArr, max, cancellationToken);
         }
 
+        /// <summary>
+        ///     Extends multiple traces, determined by the indices, with the specified arrays x, y, z.
+        /// </summary>
+        /// <param name = "x">X-Values.</param>
+        /// <param name = "y">Y-Values.</param>
+        /// <param name = "z">Z-Values.</param>
+        /// <param name = "indices">Indices of the traces. Use -1 e.g. to get the last one.</param>
+        /// <param name = "max">Limits the number of points in the trace.</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <exception cref="ArgumentException">Arguments are invalid</exception>
+        /// <exception cref="InvalidOperationException">Data lists are not initialized</exception>
+        /// <returns>Task</returns>
+        public async Task ExtendTraces3D(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<IEnumerable<object>> z,
+            IEnumerable<int> indices, int? max = null, CancellationToken cancellationToken = default)
+        {
+            if (indices == null)
+            {
+                throw new ArgumentException("You must specify at least one index.");
+            }
+
+            var indicesArr = indices as int[] ?? indices.ToArray();
+            if (indicesArr.Length < 1)
+            {
+                throw new ArgumentException("You must specify at least one index.");
+            }
+
+            var xArr = x?.ToArray();
+            var yArr = y?.ToArray();
+            var zArr = z?.ToArray();
+
+            if (xArr != null && xArr.Length != indicesArr.Length)
+            {
+                throw new ArgumentException("X must have as many elements as indices.");
+            }
+
+            if (yArr != null && yArr.Length != indicesArr.Length)
+            {
+                throw new ArgumentException("Y must have as many elements as indices.");
+            }
+            
+            if (zArr != null && zArr.Length != indicesArr.Length)
+            {
+                throw new ArgumentException("Z must have as many elements as indices.");
+            }
+
+            for (var i = 0; i < indicesArr.Length; i++)
+            {
+                var index = indicesArr[i];
+                var currentTrace = index < 0 ? Data[Data.Count + index] : Data[index];
+                var traceType = currentTrace.GetType();
+
+                if (xArr != null)
+                {
+                    var currentXData = xArr[i];
+                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "X", xData, max, false);
+                }
+
+                if (yArr != null)
+                {
+                    var currentYData = yArr[i];
+                    var yData = currentYData as object[] ?? currentYData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "Y", yData, max, false);
+                }
+                
+                if (zArr != null)
+                {
+                    var currentYData = zArr[i];
+                    var zData = currentYData as object[] ?? currentYData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "Z", zData, max, false);
+                }
+            }
+
+            await DataChanged.InvokeAsync(Data);
+            await Interop.ExtendTraces3D(xArr, yArr, zArr, indicesArr, max, cancellationToken);
+        }
+
+
         private static void AddDataToProperty(object currentTrace, Type traceType, string propertyName, IReadOnlyCollection<object> data, int? max, bool prepend)
         {
             if (data.Count <= 0)
@@ -541,6 +670,7 @@ namespace Plotly.Blazor
                 }
             }
         }
+        
 
         /// <summary>
         ///     Prepends a trace, determined by the index, with the specified object x, y.
@@ -571,6 +701,31 @@ namespace Plotly.Blazor
                 await PrependTrace(new[] { x }, new[] { y }, index, max, cancellationToken);
             }
         }
+        
+        /// <summary>
+        ///     Prepends a trace, determined by the index, with the specified object x, y, z.
+        /// </summary>
+        /// <param name = "x">X-Value.</param>
+        /// <param name = "y">Y-Value.</param>
+        /// /// <param name = "z">Y-Value.</param>
+        /// <param name = "index">Index of the trace. Use -1 e.g. to get the last one.</param>
+        /// <param name = "max">Limits the number of points in the trace.</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task PrependTrace3D(object x, object y, object z, int index, int? max = null, CancellationToken cancellationToken = default)
+        {
+            if (x == null && y == null && z == null)
+            {
+                return;
+            }
+            
+            IEnumerable<object> xList = x == null ? null : new[] {x};
+            IEnumerable<object> yList = y == null ? null : new[] {y};
+            IEnumerable<object> zList = z == null ? null : new[] {z};
+            
+            await PrependTrace3D(xList, yList, zList, index, max, cancellationToken);
+
+        }
 
         /// <summary>
         ///     Prepends a trace, determined by the index, with the specified arrays x, y.
@@ -600,6 +755,30 @@ namespace Plotly.Blazor
             {
                 await PrependTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
             }
+        }
+        
+        /// <summary>
+        ///     Prepends a trace, determined by the index, with the specified arrays x, y, z.
+        /// </summary>
+        /// <param name = "x">X-Values.</param>
+        /// <param name = "y">Y-Values.</param>
+        /// <param name = "z">Z-Values.</param>
+        /// <param name = "index">Index of the trace. Use -1 e.g. to get the last one.</param>
+        /// <param name = "max">Limits the number of points in the trace.</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task PrependTrace3D(IEnumerable<object> x, IEnumerable<object> y, IEnumerable<object> z, int index, int? max = null, CancellationToken cancellationToken = default)
+        {
+            if (x == null && y == null && z == null)
+            {
+                return;
+            }
+            
+            IEnumerable<IEnumerable<object>> xList = x == null ? null : new[] {x};
+            IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] {y};
+            IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] {z};
+
+            await PrependTraces3D(xList, yList, zList, new[] { index }, max, cancellationToken);
         }
 
         /// <summary>
@@ -662,6 +841,83 @@ namespace Plotly.Blazor
 
             await DataChanged.InvokeAsync(Data);
             await Interop.PrependTraces(xArr, yArr, indicesArr, max, cancellationToken);
+        }
+        
+        
+        /// <summary>
+        ///     Prepends multiple traces, determined by the indices, with the specified arrays x, y, z.
+        /// </summary>
+        /// <param name = "x">X-Values.</param>
+        /// <param name = "y">Y-Values.</param>
+        /// <param name = "z">Z-Values.</param>
+        /// <param name = "indices">indices of the traces. Use -1 e.g. to get the last one.</param>
+        /// <param name = "max">Limits the number of points in the trace.</param>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <exception cref="ArgumentException">Arguments are invalid</exception>
+        /// <exception cref="InvalidOperationException">Data lists are not initialized</exception>
+        /// <returns>Task</returns>
+        public async Task PrependTraces3D(IEnumerable<IEnumerable<object>> x, IEnumerable<IEnumerable<object>> y, IEnumerable<IEnumerable<object>> z, IEnumerable<int> indices, int? max = null, CancellationToken cancellationToken = default)
+        {
+            if (indices == null)
+            {
+                throw new ArgumentException("You must specify at least one index.");
+            }
+
+            var indicesArr = indices as int[] ?? indices.ToArray();
+            if (indicesArr.Length < 1)
+            {
+                throw new ArgumentException("You must specify at least one index.");
+            }
+
+            var xArr = x?.ToArray();
+            var yArr = y?.ToArray();
+            var zArr = z?.ToArray();
+
+            if (xArr != null && xArr.Length != indicesArr.Length)
+            {
+                throw new ArgumentException("X must have as many elements as indices.");
+            }
+
+            if (yArr != null && yArr.Length != indicesArr.Length)
+            {
+                throw new ArgumentException("Y must have as many elements as indices.");
+            }
+            
+            if (zArr != null && zArr.Length != indicesArr.Length)
+            {
+                throw new ArgumentException("Y must have as many elements as indices.");
+            }
+
+            for (var i = 0; i < indicesArr.Length; i++)
+            {
+                var index = indicesArr[i];
+                var currentTrace = index < 0 ? Data[Data.Count + index] : Data[index];
+                var traceType = currentTrace.GetType();
+
+                if (xArr != null)
+                {
+                    var currentXData = xArr[i];
+                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "X", xData, max, true);
+                }
+
+                if (yArr != null)
+                {
+                    var currentYData = yArr[i];
+                    var yData = currentYData as object[] ?? currentYData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "Y", yData, max, true);
+                }
+                
+                if (zArr != null)
+                {
+                    var currentZData = zArr[i];
+                    var zData = currentZData as object[] ?? currentZData.ToArray();
+                    AddDataToProperty(currentTrace, traceType, "Z", zData, max, true);
+                }
+            }
+
+            await DataChanged.InvokeAsync(Data);
+            await Interop.PrependTraces3D(xArr, yArr, zArr, indicesArr, max, cancellationToken);
         }
 
         /// <summary>

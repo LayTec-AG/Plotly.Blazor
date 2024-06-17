@@ -48,7 +48,8 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.NewShapeLib.Label Label { get; set;} 
 
         /// <summary>
-        ///     Specifies whether new shapes are drawn below or above traces.
+        ///     Specifies whether new shapes are drawn below gridlines (<c>below</c>), between
+        ///     gridlines and traces (<c>between</c>) or above traces (<c>above</c>).
         /// </summary>
         [JsonPropertyName(@"layer")]
         public Plotly.Blazor.LayoutLib.NewShapeLib.LayerEnum? Layer { get; set;} 

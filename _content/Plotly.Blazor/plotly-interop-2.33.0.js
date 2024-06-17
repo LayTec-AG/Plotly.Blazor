@@ -1,4 +1,35 @@
-﻿import './plotly-latest.min.js';
+﻿const scriptCache = new Map();
+
+export async function importScript(id, scriptUrl) {
+    return new Promise((resolve, reject) => {
+        // Check if already exists
+        var existingElement = document.getElementById(id);
+        if (existingElement) {
+            // Double check, if the src has changed
+            if (existingElement.dataset.originalSrc === scriptUrl) {
+                resolve();
+                return;
+            } else {
+                // Remove if different src
+                existingElement.remove();
+            }
+        }
+
+        // Load script dynamically by adding it to the head
+        const script = document.createElement('script');
+        script.id = id;
+        script.src = scriptUrl;
+        script.dataset.originalSrc = scriptUrl;
+        script.type = 'text/javascript';
+        script.async = true;
+        script.onload = () => {
+            scriptCache.set(id, scriptUrl);
+            resolve();
+        };
+        script.onerror = (error) => reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
+        document.head.appendChild(script);
+    });
+}
 
 export function newPlot(id, data = [], layout = {}, config = {}, frames = []) {
     window.Plotly.newPlot(id, data, layout, config, frames);
@@ -20,6 +51,25 @@ export function extendTraces(id, x, y, indizes, max) {
         window.Plotly.extendTraces(id, data, indizes);
     }
 }
+
+export function extendTraces3D(id, x, y, z, indizes, max) {
+    var data = {};
+    if (x != null) {
+        data["x"] = x;
+    }
+    if (y != null) {
+        data["y"] = y;
+    }
+    if (z != null) {
+        data["z"] = z;
+    }
+
+    if (max != null) {
+        window.Plotly.extendTraces(id, data, indizes, max);
+    } else {
+        window.Plotly.extendTraces(id, data, indizes);
+    }
+}
 export function prependTraces(id, x = null, y = null, indizes = [0], max) {
     var data = {};
     if (x != null) {
@@ -28,6 +78,26 @@ export function prependTraces(id, x = null, y = null, indizes = [0], max) {
     if (y != null) {
         data["y"] = y;
     }
+    if (max != null) {
+        window.Plotly.prependTraces(id, data, indizes, max);
+    }
+    else {
+        window.Plotly.prependTraces(id, data, indizes);
+    }
+}
+
+export function prependTraces3D(id, x = null, y = null, z = null, indizes = [0], max) {
+    var data = {};
+    if (x != null) {
+        data["x"] = x;
+    }
+    if (y != null) {
+        data["y"] = y;
+    }
+    if (z != null) {
+        data["z"] = z;
+    }
+
     if (max != null) {
         window.Plotly.prependTraces(id, data, indizes, max);
     }
@@ -151,6 +221,9 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
         var y1 = data["yaxis.range[0]"]
         var y2 = data["yaxis.range[1]"]
 
+        var z1 = data["zaxis.range[0]"]
+        var z2 = data["zaxis.range[1]"]
+
         var result = {};
 
         if (x1 && x2) {
@@ -160,6 +233,11 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
         if (y1 && y2) {
             result.YRange = [y1, y2];
         }
+
+        if (z1 && z2) {
+            result.ZRange = [z1, z2];
+        }
+
         dotNetObj.invokeMethodAsync('RelayoutEvent', result);
     });
 }

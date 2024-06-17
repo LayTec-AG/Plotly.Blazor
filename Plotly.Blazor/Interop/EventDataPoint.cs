@@ -11,9 +11,9 @@
         public int TraceIndex { get; set; }
 
         /// <summary>
-        ///     The zero based index of the point.
+        ///     The zero based index as an object to be compatible to multiple data types.
         /// </summary>
-        public int PointIndex { get; set; }
+        public object PointIndex { get; set; }
 
         /// <summary>
         ///     The zero-based point number. Can be used to identify the point in combination with CurveNumber.

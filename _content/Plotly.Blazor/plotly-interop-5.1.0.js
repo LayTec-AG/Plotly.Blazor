@@ -139,6 +139,42 @@ export function subscribeLegendClickEvent(dotNetObj, id) {
         })
     })
 }
+export function subscribeSelectedEvent(dotNetObj, id) {
+    var plot = document.getElementById(id);
+    plot.on('plotly_selected', function (data) {
+        dotNetObj.invokeMethodAsync('SelectedEvent',
+            data.points.map(function (d) {
+                if (d.x != null) {
+                    return ({
+                        TraceIndex: d.fullData.index,
+                        PointIndex: d.pointIndex,
+                        PointNumber: d.pointNumber,
+                        CurveNumber: d.curveNumber,
+                        Text: d.text,
+                        X: d.x,
+                        Y: d.y,
+                        Z: d.z,
+                        Lat: d.lat,
+                        Lon: d.lon
+                    });
+                }
+                else {
+                    return ({
+                        TraceIndex: d.fullData.index,
+                        PointIndex: d.pointIndex,
+                        PointNumber: d.pointNumber,
+                        CurveNumber: d.curveNumber,
+                        Text: d.text,
+                        X: d.value,
+                        Y: d.label,
+                        Z: null,
+                        Lat: d.lat,
+                        Lon: d.lon
+                    });
+                }
+            }));
+    })
+}
 export function subscribeClickEvent(dotNetObj, id) {
     var plot = document.getElementById(id);
     plot.on('plotly_click', function (data) {
@@ -213,16 +249,16 @@ export function subscribeHoverEvent(dotNetObj, id) {
 }
 export function subscribeRelayoutEvent(dotNetObj, id) {
     var plot = document.getElementById(id);
-    plot.on('plotly_relayout', function (data) {
+    plot.on('plotly_relayout', function (eventdata) {
 
-        var x1 = data["xaxis.range[0]"];
-        var x2 = data["xaxis.range[1]"];
+        var x1 = eventdata["xaxis.range[0]"];
+        var x2 = eventdata["xaxis.range[1]"];
 
-        var y1 = data["yaxis.range[0]"]
-        var y2 = data["yaxis.range[1]"]
+        var y1 = eventdata["yaxis.range[0]"];
+        var y2 = eventdata["yaxis.range[1]"];
 
-        var z1 = data["zaxis.range[0]"]
-        var z2 = data["zaxis.range[1]"]
+        var z1 = eventdata["zaxis.range[0]"];
+        var z2 = eventdata["zaxis.range[1]"];
 
         var result = {};
 
@@ -238,6 +274,19 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
             result.ZRange = [z1, z2];
         }
 
+        result.RawData = eventdata;
+
         dotNetObj.invokeMethodAsync('RelayoutEvent', result);
+    });
+}
+
+export function subscribeRestyleEvent(dotNetObj, id) {
+    var plot = document.getElementById(id);
+    plot.on('plotly_restyle', function (eventdata) {
+        var result = {};
+        result.Changes = eventdata[0];
+        result.Indices = eventdata[1];
+
+        dotNetObj.invokeMethodAsync('RestyleEvent', result);
     });
 }

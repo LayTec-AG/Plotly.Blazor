@@ -370,6 +370,14 @@ namespace Plotly.Blazor.Traces
         public IList<object> ZMin { get; set;} 
 
         /// <summary>
+        ///     Sets the layer on which this trace is displayed, relative to other SVG traces
+        ///     on the same subplot. SVG traces with higher <c>zorder</c> appear in front
+        ///     of those with lower <c>zorder</c>.
+        /// </summary>
+        [JsonPropertyName(@"zorder")]
+        public int? ZOrder { get; set;} 
+
+        /// <summary>
         ///     Picks a smoothing algorithm used to smooth <c>z</c> data. This only applies
         ///     for image traces that use the <c>source</c> attribute.
         /// </summary>
@@ -598,6 +606,11 @@ namespace Plotly.Blazor.Traces
                     ZMin.SequenceEqual(other.ZMin)
                 ) &&
                 (
+                    ZOrder == other.ZOrder ||
+                    ZOrder != null &&
+                    ZOrder.Equals(other.ZOrder)
+                ) && 
+                (
                     ZSmooth == other.ZSmooth ||
                     ZSmooth != null &&
                     ZSmooth.Equals(other.ZSmooth)
@@ -655,6 +668,7 @@ namespace Plotly.Blazor.Traces
                 if (Z != null) hashCode = hashCode * 59 + Z.GetHashCode();
                 if (ZMax != null) hashCode = hashCode * 59 + ZMax.GetHashCode();
                 if (ZMin != null) hashCode = hashCode * 59 + ZMin.GetHashCode();
+                if (ZOrder != null) hashCode = hashCode * 59 + ZOrder.GetHashCode();
                 if (ZSmooth != null) hashCode = hashCode * 59 + ZSmooth.GetHashCode();
                 if (ZSrc != null) hashCode = hashCode * 59 + ZSrc.GetHashCode();
                 return hashCode;

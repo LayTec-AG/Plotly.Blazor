@@ -97,6 +97,65 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
         [JsonPropertyName(@"sizesrc")]
         public string SizeSrc { get; set;} 
 
+        /// <summary>
+        ///     Sets whether a font should be styled with a normal or italic face from its
+        ///     family.
+        /// </summary>
+        [JsonPropertyName(@"style")]
+        public Plotly.Blazor.Traces.ScatterGlLib.TextFontLib.StyleEnum? Style { get; set;} 
+
+        /// <summary>
+        ///     Sets whether a font should be styled with a normal or italic face from its
+        ///     family.
+        /// </summary>
+        [JsonPropertyName(@"style")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterGlLib.TextFontLib.StyleEnum?> StyleArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>style</c>.
+        /// </summary>
+        [JsonPropertyName(@"stylesrc")]
+        public string StyleSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the variant of the font.
+        /// </summary>
+        [JsonPropertyName(@"variant")]
+        public Plotly.Blazor.Traces.ScatterGlLib.TextFontLib.VariantEnum? Variant { get; set;} 
+
+        /// <summary>
+        ///     Sets the variant of the font.
+        /// </summary>
+        [JsonPropertyName(@"variant")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterGlLib.TextFontLib.VariantEnum?> VariantArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>variant</c>.
+        /// </summary>
+        [JsonPropertyName(@"variantsrc")]
+        public string VariantSrc { get; set;} 
+
+        /// <summary>
+        ///     Sets the weight (or boldness) of the font.
+        /// </summary>
+        [JsonPropertyName(@"weight")]
+        public Plotly.Blazor.Traces.ScatterGlLib.TextFontLib.WeightEnum? Weight { get; set;} 
+
+        /// <summary>
+        ///     Sets the weight (or boldness) of the font.
+        /// </summary>
+        [JsonPropertyName(@"weight")]
+        [Array]
+        public IList<Plotly.Blazor.Traces.ScatterGlLib.TextFontLib.WeightEnum?> WeightArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>weight</c>.
+        /// </summary>
+        [JsonPropertyName(@"weightsrc")]
+        public string WeightSrc { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -156,6 +215,51 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                     SizeSrc == other.SizeSrc ||
                     SizeSrc != null &&
                     SizeSrc.Equals(other.SizeSrc)
+                ) && 
+                (
+                    Style == other.Style ||
+                    Style != null &&
+                    Style.Equals(other.Style)
+                ) && 
+                (
+                    Equals(StyleArray, other.StyleArray) ||
+                    StyleArray != null && other.StyleArray != null &&
+                    StyleArray.SequenceEqual(other.StyleArray)
+                ) &&
+                (
+                    StyleSrc == other.StyleSrc ||
+                    StyleSrc != null &&
+                    StyleSrc.Equals(other.StyleSrc)
+                ) && 
+                (
+                    Variant == other.Variant ||
+                    Variant != null &&
+                    Variant.Equals(other.Variant)
+                ) && 
+                (
+                    Equals(VariantArray, other.VariantArray) ||
+                    VariantArray != null && other.VariantArray != null &&
+                    VariantArray.SequenceEqual(other.VariantArray)
+                ) &&
+                (
+                    VariantSrc == other.VariantSrc ||
+                    VariantSrc != null &&
+                    VariantSrc.Equals(other.VariantSrc)
+                ) && 
+                (
+                    Weight == other.Weight ||
+                    Weight != null &&
+                    Weight.Equals(other.Weight)
+                ) && 
+                (
+                    Equals(WeightArray, other.WeightArray) ||
+                    WeightArray != null && other.WeightArray != null &&
+                    WeightArray.SequenceEqual(other.WeightArray)
+                ) &&
+                (
+                    WeightSrc == other.WeightSrc ||
+                    WeightSrc != null &&
+                    WeightSrc.Equals(other.WeightSrc)
                 );
         }
 
@@ -174,6 +278,15 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
                 if (Size != null) hashCode = hashCode * 59 + Size.GetHashCode();
                 if (SizeArray != null) hashCode = hashCode * 59 + SizeArray.GetHashCode();
                 if (SizeSrc != null) hashCode = hashCode * 59 + SizeSrc.GetHashCode();
+                if (Style != null) hashCode = hashCode * 59 + Style.GetHashCode();
+                if (StyleArray != null) hashCode = hashCode * 59 + StyleArray.GetHashCode();
+                if (StyleSrc != null) hashCode = hashCode * 59 + StyleSrc.GetHashCode();
+                if (Variant != null) hashCode = hashCode * 59 + Variant.GetHashCode();
+                if (VariantArray != null) hashCode = hashCode * 59 + VariantArray.GetHashCode();
+                if (VariantSrc != null) hashCode = hashCode * 59 + VariantSrc.GetHashCode();
+                if (Weight != null) hashCode = hashCode * 59 + Weight.GetHashCode();
+                if (WeightArray != null) hashCode = hashCode * 59 + WeightArray.GetHashCode();
+                if (WeightSrc != null) hashCode = hashCode * 59 + WeightSrc.GetHashCode();
                 return hashCode;
             }
         }

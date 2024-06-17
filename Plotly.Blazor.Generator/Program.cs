@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -28,7 +29,9 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string PLOTLY_JS_URL = "https://cdn.plot.ly/plotly-2.30.1.min.js";
+        private const string VERSION = "2.33.0";
+        private static string PLOTLY_FILE_NAME => $"plotly-{VERSION}.min.js";
+        private static string PLOTLY_JS_URL => "https://cdn.plot.ly/" + PLOTLY_FILE_NAME;
 
         private static SchemaRoot _schema;
         private static StubbleVisitorRenderer _stubble;
@@ -79,9 +82,11 @@ namespace Plotly.Blazor.Generator
                 "https://raw.githubusercontent.com/plotly/plotly.js/master/dist/plot-schema.json");
 
             // Write latest .js-File
-            var outputDir = @".\src\wwwroot";
+            const string outputDir = @".\src\wwwroot";
+
             Directory.CreateDirectory(outputDir);
-            await File.WriteAllTextAsync($"{outputDir}\\plotly-latest.min.js",
+
+            await File.WriteAllTextAsync($"{outputDir}\\{PLOTLY_FILE_NAME}",
                 await httpClient.GetStringAsync(PLOTLY_JS_URL));
 
             var serializerOptions = new JsonSerializerOptions
@@ -89,6 +94,7 @@ namespace Plotly.Blazor.Generator
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 PropertyNameCaseInsensitive = true
             };
+
             return JsonSerializer.Deserialize<SchemaRoot>(schemaJson, serializerOptions);
         }
 

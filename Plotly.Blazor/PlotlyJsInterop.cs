@@ -14,7 +14,7 @@ namespace Plotly.Blazor;
 /// </summary>
 public class PlotlyJsInterop
 {
-    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop.js";
+    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-2.33.0.js";
     private readonly DotNetObjectReference<PlotlyChart> dotNetObj;
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 

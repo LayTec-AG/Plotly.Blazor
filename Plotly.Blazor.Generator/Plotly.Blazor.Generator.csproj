@@ -22,7 +22,7 @@
 		<None Remove="English %28American%29.dic" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Stubble.Core"/>
+		<PackageReference Include="Stubble.Core" />
 		<PackageReference Include="WeCantSpell.Hunspell" />
 	</ItemGroup>
 	<ItemGroup>
@@ -33,7 +33,7 @@
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="src\wwwroot\plotly-interop.js">
+		<None Update="src\wwwroot\plotly-interop-2.33.0.js">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

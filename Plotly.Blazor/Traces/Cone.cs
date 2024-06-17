@@ -369,7 +369,8 @@ namespace Plotly.Blazor.Traces
         /// <summary>
         ///     Determines whether <c>sizeref</c> is set as a <c>scaled</c> (i.e unitless)
         ///     scalar (normalized by the max u/v/w norm in the vector field) or as <c>absolute</c>
-        ///     value (in the same units as the vector field).
+        ///     value (in the same units as the vector field). To display sizes in actual
+        ///     vector length use <c>raw</c>.
         /// </summary>
         [JsonPropertyName(@"sizemode")]
         public Plotly.Blazor.Traces.ConeLib.SizeModeEnum? SizeMode { get; set;} 
@@ -380,7 +381,8 @@ namespace Plotly.Blazor.Traces
         ///     internally) corresponds to the minimum <c>time</c> to travel across two
         ///     successive x/y/z positions at the average velocity of those two successive
         ///     positions. All cones in a given trace use the same factor. With <c>sizemode</c>
-        ///     set to <c>scaled</c>, <c>sizeref</c> is unitless, its default value is <c>0.5</c>
+        ///     set to <c>raw</c>, its default value is <c>1</c>. With <c>sizemode</c> set
+        ///     to <c>scaled</c>, <c>sizeref</c> is unitless, its default value is <c>0.5</c>.
         ///     With <c>sizemode</c> set to <c>absolute</c>, <c>sizeref</c> has the same
         ///     units as the u/v/w vector field, its the default value is half the sample&#39;s
         ///     maximum vector norm.

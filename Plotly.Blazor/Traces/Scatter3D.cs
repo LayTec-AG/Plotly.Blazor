@@ -360,7 +360,7 @@ namespace Plotly.Blazor.Traces
         public IList<string> TextArray { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the TextFont.
+        ///     Sets the text font.
         /// </summary>
         [JsonPropertyName(@"textfont")]
         public Plotly.Blazor.Traces.Scatter3DLib.TextFont TextFont { get; set;} 

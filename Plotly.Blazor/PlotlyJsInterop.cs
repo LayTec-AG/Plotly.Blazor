@@ -321,6 +321,17 @@ public class PlotlyJsInterop
     }
 
     /// <summary>
+    ///     Can be used to subscribe to restyle events.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    public async Task SubscribeRestyleEvent(CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeRestyleEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
+    }
+
+    /// <summary>
     ///     Can be used to export the chart as a static image and returns a binary string of the exported image.
     /// </summary>
     /// <param name="format">Format of the image.</param>

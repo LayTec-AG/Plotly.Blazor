@@ -948,10 +948,23 @@ namespace Plotly.Blazor
         public Action<IEnumerable<EventDataPoint>> HoverAction { get; set; }
 
         /// <summary>
+        ///     Defines the action that should happen when the SelectedEvent is triggered.
+        ///     Objects are currently required for accommodating different plot value types
+        /// </summary>
+        [Parameter]
+        public Action<IEnumerable<EventDataPoint>> SelectedAction { get; set; }
+
+        /// <summary>
         ///     Defines the action that should happen when the RelayoutEvent is triggered.
         /// </summary>
         [Parameter]
         public Action<RelayoutEventData> RelayoutAction { get; set; }
+
+        /// <summary>
+        ///     Defines the action that should happen when the RestyleEvent is triggered.
+        /// </summary>
+        [Parameter]
+        public Action<RestyleEventData> RestyleAction { get; set; }
 
         /// <summary>
         ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
@@ -987,12 +1000,32 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     Method which is called by JSRuntime once a you selected plot points, to invoke the passed in SelectedAction.
+        ///     Objects are currently required for accommodating different plot value types.
+        /// </summary>
+        /// <param name = "eventData"></param>
+        [JSInvokable("SelectedEvent")]
+        public void SelectedEvent(IEnumerable<EventDataPoint> eventData)
+        {
+            SelectedAction?.Invoke(eventData);
+        }
+
+        /// <summary>
         ///     Method which is called by JSRuntime when the chart's layout has changed.
         /// </summary>
         [JSInvokable("RelayoutEvent")]
         public void RelayoutEvent(RelayoutEventData obj)
         {
             RelayoutAction?.Invoke(obj);
+        }
+
+        /// <summary>
+        ///     Method which is called by JSRuntime when the chart's layout has changed.
+        /// </summary>
+        [JSInvokable("RestyleEvent")]
+        public void RestyleEvent(RestyleEventData obj)
+        {
+            RestyleAction?.Invoke(obj);
         }
 
         /// <summary>
@@ -1026,6 +1059,16 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     Subscribes to the selected event of the chart.
+        /// </summary>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task SubscribeSelectedEvent(CancellationToken cancellationToken = default)
+        {
+            await Interop.SubscribeSelectedEvent(cancellationToken);
+        }
+
+        /// <summary>
         ///     Subscribes to the relayout event of the chart.
         /// </summary>
         /// <param name = "cancellationToken">CancellationToken</param>
@@ -1033,6 +1076,16 @@ namespace Plotly.Blazor
         public async Task SubscribeRelayoutEvent(CancellationToken cancellationToken = default)
         {
             await Interop.SubscribeRelayoutEvent(cancellationToken);
+        }
+
+        /// <summary>
+        ///     Subscribes to the restyle event of the chart.
+        /// </summary>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task SubscribeRestyleEvent(CancellationToken cancellationToken = default)
+        {
+            await Interop.SubscribeRestyleEvent(cancellationToken);
         }
 
         /// <summary>

@@ -1,6 +1,8 @@
-﻿namespace Plotly.Blazor.Interop
-{
+﻿using System.Collections.Generic;
+using System.Text.Json;
 
+namespace Plotly.Blazor.Interop
+{
     /// <summary>
     ///     This class is used to parse the event data from the relayout jsinterop action.
     /// </summary>
@@ -29,5 +31,10 @@
         ///      In some cases this may be not be set.
         /// </remarks>
         public object[] ZRange { get; set; }
+
+        /// <summary>
+        ///     Returns a dictionary of all updated properties including their new value.
+        /// </summary>
+        public IDictionary<string, JsonElement> RawData { get; set; }
     }
 }

@@ -961,6 +961,12 @@ namespace Plotly.Blazor
         public Action<RelayoutEventData> RelayoutAction { get; set; }
 
         /// <summary>
+        ///     Defines the action that should happen when the RestyleEvent is triggered.
+        /// </summary>
+        [Parameter]
+        public Action<RestyleEventData> RestyleAction { get; set; }
+
+        /// <summary>
         ///     Method which is called by JSRuntime once a plot has been clicked, to invoke the passed in ClickAction.
         ///     Objects are currently required for accommodating different plot value types.
         /// </summary>
@@ -1014,6 +1020,15 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        ///     Method which is called by JSRuntime when the chart's layout has changed.
+        /// </summary>
+        [JSInvokable("RestyleEvent")]
+        public void RestyleEvent(RestyleEventData obj)
+        {
+            RestyleAction?.Invoke(obj);
+        }
+
+        /// <summary>
         ///     Subscribes to the legend click event of the chart.
         /// </summary>
         /// <param name = "cancellationToken">CancellationToken</param>
@@ -1061,6 +1076,16 @@ namespace Plotly.Blazor
         public async Task SubscribeRelayoutEvent(CancellationToken cancellationToken = default)
         {
             await Interop.SubscribeRelayoutEvent(cancellationToken);
+        }
+
+        /// <summary>
+        ///     Subscribes to the restyle event of the chart.
+        /// </summary>
+        /// <param name = "cancellationToken">CancellationToken</param>
+        /// <returns>Task</returns>
+        public async Task SubscribeRestyleEvent(CancellationToken cancellationToken = default)
+        {
+            await Interop.SubscribeRestyleEvent(cancellationToken);
         }
 
         /// <summary>

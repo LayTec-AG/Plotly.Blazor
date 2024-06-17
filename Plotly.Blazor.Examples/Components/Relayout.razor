@@ -1,18 +1,34 @@
 ﻿@using Plotly.Blazor.Interop
 @using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.LayoutLib.YAxisLib
 @using Plotly.Blazor.Traces.ScatterLib
+@using TypeEnum = Plotly.Blazor.LayoutLib.ShapeLib.TypeEnum
+@using System.Text.Json
 <PlotlyChart style="height: 60vh; min-height: 350px"
-@bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
-             RelayoutAction="RelayoutAction" AfterRender="Init" />
+             @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             RelayoutAction="RelayoutAction" RestyleAction="RestyleAction" AfterRender="Init" />
 
-@if (relayoutData?.XRange?.Count() == 2)
+<br />
+<MudText Typo="Typo.h4">Latest updated relayout properties: </MudText>
+
+@if (relayoutData?.RawData != null)
 {
-    <MudText>X: @relayoutData.XRange[0], @relayoutData.XRange[1]</MudText>
+    @foreach (var item in relayoutData.RawData)
+    {
+        <MudText>(Key: @(item.Key), Value: @(item.Value.ToString()))</MudText>
+    }
 }
 
-@if (relayoutData?.YRange?.Count() == 2)
+<br />
+<MudText Typo="Typo.h4">Latest updated restyle properties: </MudText>
+
+@if (restyleData?.Changes != null)
 {
-    <MudText>Y: @relayoutData.YRange[0], @relayoutData.YRange[1]</MudText>
+    <MudText>Updated Traces: [@(string.Join(", ", restyleData.Indices))]</MudText>
+    @foreach (var item in restyleData.Changes)
+    {
+        <MudText>(Key: @(item.Key), Value: @(item.Value.ToString()))</MudText>
+    }
 }
 
 @code
@@ -25,6 +41,7 @@
     private Layout layout;
     private IList<ITrace> data;
     private RelayoutEventData relayoutData;
+    private RestyleEventData restyleData;
 
     /// <inheritdoc />
     protected override void OnInitialized()
@@ -32,39 +49,75 @@
         var startDate = DateTime.Now;
 
         config = new Config
-        {
-            Responsive = true
-        };
+            {
+                Responsive = true,
+                Editable = true
+            };
 
         layout = new Layout
-        {
-            Title = new Title
             {
-                Text = "Scatter with Relayout Event"
-            },
-            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
-            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
-            Font = new Font
-            {
-                Color = Theme.PaletteDark.TextPrimary.ToString()
-            },
-            YAxis = new List<YAxis>
+                Title = new Title
+                {
+                    Text = "Scatter with Relayout Event"
+                },
+                PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+                PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+                Font = new Font
+                {
+                    Color = Theme.PaletteDark.TextPrimary.ToString()
+                },
+                Shapes = new List<Shape>()
             {
                 new()
                 {
-                    Title = new LayoutLib.YAxisLib.Title { Text = "Scatter Unit" }
+                    Type = TypeEnum.Rect,
+                    X0 = 20,
+                    X1 = 40,
+                    Y0 = 0,
+                    Y1 = 1,
+                    XRef = "x",
+                    YRef = "paper",
+                    Line = new()
+                    {
+                        Width = 0
+                    },
+                    FillColor = "rgba(84,166,143,1)",
+                    Opacity = 0.3m
+                },
+                new()
+                {
+                    Type = TypeEnum.Rect,
+                    X0 = 60,
+                    X1 = 80,
+                    Y0 = 0,
+                    Y1 = 1,
+                    XRef = "x",
+                    YRef = "paper",
+                    Line = new()
+                    {
+                        Width = 0
+                    },
+                    FillColor = "rgba(84,166,143,1)",
+                    Opacity = 0.3m
                 }
             }
-        };
+            };
 
         data = new List<ITrace>
         {
             new Scatter
             {
-                Name = "ScatterTrace",
+                Name = "Sin",
                 Mode = ModeFlag.Lines | ModeFlag.Markers,
-                X = Enumerable.Range(0, 100).Select(i =>  startDate + TimeSpan.FromHours(i)).Cast<object>().ToList(),
+                X = Enumerable.Range(0, 100).Cast<object>().ToList(),
                 Y = Helper.GenerateData(0, 100).Y
+            },
+            new Scatter
+            {
+                Name = "Cos",
+                Mode = ModeFlag.Lines | ModeFlag.Markers,
+                X = Enumerable.Range(0, 100).Cast<object>().ToList(),
+                Y = Helper.GenerateData(0, 100, GenerateMethod.Cos).Y,
             }
         };
 
@@ -74,11 +127,18 @@
     private async void Init()
     {
         await chart.SubscribeRelayoutEvent();
+        await chart.SubscribeRestyleEvent();
     }
 
-    public void RelayoutAction(RelayoutEventData data)
+    public void RelayoutAction(RelayoutEventData eventData)
     {
-        relayoutData = data;
+        relayoutData = eventData;
+        StateHasChanged();
+    }
+
+    public void RestyleAction(RestyleEventData eventData)
+    {
+        restyleData = eventData;
         StateHasChanged();
     }
 }

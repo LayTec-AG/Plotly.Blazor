@@ -299,6 +299,17 @@ public class PlotlyJsInterop
     }
 
     /// <summary>
+    ///     Can be used to subscribe selected events for points.
+    /// </summary>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public async Task SubscribeSelectedEvent(CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeSelectedEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
+    }
+
+    /// <summary>
     ///     Can be used to subscribe to relayout events.
     /// </summary>
     /// <param name="cancellationToken"></param>
@@ -307,6 +318,17 @@ public class PlotlyJsInterop
         var jsRuntime = await moduleTask.Value;
 
         await jsRuntime.InvokeVoidAsync("subscribeRelayoutEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
+    }
+
+    /// <summary>
+    ///     Can be used to subscribe to restyle events.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    public async Task SubscribeRestyleEvent(CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("subscribeRestyleEvent", cancellationToken, dotNetObj, dotNetObj.Value.Id);
     }
 
     /// <summary>

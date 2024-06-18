@@ -145,15 +145,15 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-+UDF52I1JHr8mO05et1gD5ATKsv5LXBP0DLRQEzvzTI=",
+      "hash": "sha256-pIXPJBjG2itARX38PflvR+p+\/9vz0Kj3QQnWhgQvgbw=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
-      "hash": "sha256-FY184qmbFOoVmL0vdr56kKdrXZumwlObeJx0OqRCZGM=",
+      "hash": "sha256-pfVGGBZPwG2vFybJHSmyg+2bVn4X4Pl4yKGBhk87OLw=",
       "url": "_framework\/dotnet.native.8.0.6.izqc6d27f9.js"
     },
     {
-      "hash": "sha256-pxBPNSvfzn3Pon86VtoSYgAoiIUChv9qcEzMbD8OoqI=",
+      "hash": "sha256-a5IcRyUXLhiV1b9ONLoshWf3R6qBINIRJNegF5vcXqU=",
       "url": "_framework\/dotnet.native.wasm.br"
     },
     {
@@ -233,7 +233,7 @@
       "url": "_framework\/Newtonsoft.Json.wasm.br"
     },
     {
-      "hash": "sha256-HjvMNeJx55BIlPMNxeREUUYkhi2JhUVi\/n2b0fJYzpI=",
+      "hash": "sha256-ZPuTbyG8Ard6tvcEAr4ySJfse+WSW8Iy5WcGXGkCDw8=",
       "url": "_framework\/Plotly.Blazor.Examples.wasm.br"
     },
     {
@@ -301,7 +301,7 @@
       "url": "_framework\/System.Linq.Expressions.wasm.br"
     },
     {
-      "hash": "sha256-5zBO2Jz43JQdPJZLMxyIOHicGXBOkdCcd6u8Ck9CJ7M=",
+      "hash": "sha256-bey6yetMr+BrlCEFffynYfZFboDAw5KYbNSaEElWaWg=",
       "url": "_framework\/System.Linq.wasm.br"
     },
     {
@@ -321,7 +321,7 @@
       "url": "_framework\/System.ObjectModel.wasm.br"
     },
     {
-      "hash": "sha256-MIiUOCyd9lQ+oP8Sh1owswDR55vwpnTjBgxZzGoZWjg=",
+      "hash": "sha256-yC8v5P0SKDsZkn9Xcc3gC4JwNhlfvzhfJut3ZwfChGg=",
       "url": "_framework\/System.Private.CoreLib.wasm.br"
     },
     {
@@ -381,7 +381,7 @@
       "url": "_framework\/System.Text.Encoding.Extensions.wasm.br"
     },
     {
-      "hash": "sha256-91SWOuLeWfP1Fsoqr+MvqVc6y4GItN0mxI3268Wiia0=",
+      "hash": "sha256-rFI3olxVVZ2ieQf2GXff5Db7Soa0r+Sku+X7tNPzzTc=",
       "url": "_framework\/System.Text.Encodings.Web.wasm.br"
     },
     {
@@ -445,5 +445,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "TARTdy11"
+  "version": "kbvCn1GU"
 };

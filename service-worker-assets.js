@@ -145,7 +145,7 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-pIXPJBjG2itARX38PflvR+p+\/9vz0Kj3QQnWhgQvgbw=",
+      "hash": "sha256-O\/UuNbbMBPGfphp7AeswLNba50Im1HZzhGpXnNqV5yA=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
@@ -233,11 +233,11 @@
       "url": "_framework\/Newtonsoft.Json.wasm.br"
     },
     {
-      "hash": "sha256-ZPuTbyG8Ard6tvcEAr4ySJfse+WSW8Iy5WcGXGkCDw8=",
+      "hash": "sha256-P9x\/WVB2HXFDsrquPepgVNgrxHbOSl5VWgcVyjcK6QQ=",
       "url": "_framework\/Plotly.Blazor.Examples.wasm.br"
     },
     {
-      "hash": "sha256-cp2\/LG6dpF1mxXX0laETGsBQ414snCuGElwtDdBW+NA=",
+      "hash": "sha256-0PbgAZbCkXQXQZEG\/larAJZCjjzUA2ArKd4TadNTw4A=",
       "url": "_framework\/Plotly.Blazor.wasm.br"
     },
     {
@@ -433,8 +433,8 @@
       "url": "_content\/Plotly.Blazor\/plotly-basic-1.58.5.min.js"
     },
     {
-      "hash": "sha256-adq1OdGup65cnJ92RewhFJHxpFvluaNnNElGSJMbhUU=",
-      "url": "_content\/Plotly.Blazor\/plotly-interop-5.1.0.js"
+      "hash": "sha256-1ID1pKYm1pQVDnlYsF62XuUXU5E1efZmAYSSKDeOjw8=",
+      "url": "_content\/Plotly.Blazor\/plotly-interop-5.1.1.js"
     },
     {
       "hash": "sha256-wX1LB4yuBRFM4fmdSsH6jBlCch9uCHXV9uFTxnz2blQ=",
@@ -445,5 +445,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "kbvCn1GU"
+  "version": "vZ3IdcI2"
 };

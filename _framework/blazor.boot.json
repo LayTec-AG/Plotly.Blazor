@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Plotly.Blazor.Examples",
   "resources": {
-    "hash": "sha256-eAO3e3NkX9e/CddNbFmBrZLNr2x2i7WA4gJrttBKO88=",
+    "hash": "sha256-dFO9ignVjLSpz+YeAvW5UsRrKfD9mEgdwm6M0k5JnWA=",
     "jsModuleNative": {
       "dotnet.native.8.0.6.izqc6d27f9.js": "sha256-pfVGGBZPwG2vFybJHSmyg+2bVn4X4Pl4yKGBhk87OLw="
     },
@@ -36,8 +36,8 @@
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-nJo9AftA2/mHxtXapqHsgjzQgIHOpue2DnVtxkgTSME=",
       "MudBlazor.wasm": "sha256-C+DeDD6axcsTfO8KZMgfOJUPncfl0SLoA62E4TP3KY8=",
       "Newtonsoft.Json.wasm": "sha256-GlXMWKvDs45M2pACoR3Y4Qh8mcrOZGljqmvJY+6JZ5s=",
-      "Plotly.Blazor.Examples.wasm": "sha256-kEhgqKY+ErsD2C+UrqEnnvlwisdfVKTucKMOSG6wSwI=",
-      "Plotly.Blazor.wasm": "sha256-ilb2aCwZeXaFzBgP+ZWIXP3e5F7zydzKF1Hxv8IORzU=",
+      "Plotly.Blazor.Examples.wasm": "sha256-jfdUDojrBOKuw0K6CRjC4k5jS90/jtqEsSVcN9BI00w=",
+      "Plotly.Blazor.wasm": "sha256-dZKT2Ltk2KnXY9gv+OGCzkOErKLZntNTyvF/mShBuQs=",
       "System.Collections.Concurrent.wasm": "sha256-pYEYQbN+eGKQNojqoFcNWFJX2ABIrKOZvSy3EvDvkAU=",
       "System.Collections.Immutable.wasm": "sha256-nEBqy90KLVIxFjR505DuD9KuN0xZMESD1uI7/aOyLDo=",
       "System.Collections.NonGeneric.wasm": "sha256-vavuiaugT6jap1zmRTI5UEV4dbz3087iGwueAHrqFFw=",

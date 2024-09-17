@@ -31,8 +31,12 @@ export async function importScript(id, scriptUrl) {
     });
 }
 
-function onPlotlyReady(callback) {
-    if (plotlyReady) {
+function onPlotlyReady(divId, callback) {
+    //check the plot has not been derendered before attempting to do anything
+    if (document.getElementById(divId) == null) {
+        return;
+    }
+    else if (plotlyReady) {
         callback();
     } else {
         plotlyReadyCallbacks.push(callback);
@@ -40,19 +44,19 @@ function onPlotlyReady(callback) {
 }
 
 export function newPlot(id, data = [], layout = {}, config = {}, frames = []) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         window.Plotly.newPlot(id, data, layout, config, frames);
     });
 }
 
 export function react(id, data = [], layout = {}, config = {}, frames = []) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         window.Plotly.react(id, data, layout, config, frames);
     });
 }
 
 export function extendTraces(id, x, y, indices, max) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var data = {};
         if (x != null) {
             data["x"] = x;
@@ -69,7 +73,7 @@ export function extendTraces(id, x, y, indices, max) {
 }
 
 export function extendTraces3D(id, x, y, z, indices, max) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var data = {};
         if (x != null) {
             data["x"] = x;
@@ -90,7 +94,7 @@ export function extendTraces3D(id, x, y, z, indices, max) {
 }
 
 export function prependTraces(id, x = null, y = null, indices = [0], max) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var data = {};
         if (x != null) {
             data["x"] = x;
@@ -108,7 +112,7 @@ export function prependTraces(id, x = null, y = null, indices = [0], max) {
 }
 
 export function prependTraces3D(id, x = null, y = null, z = null, indices = [0], max) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var data = {};
         if (x != null) {
             data["x"] = x;
@@ -130,7 +134,7 @@ export function prependTraces3D(id, x = null, y = null, z = null, indices = [0],
 }
 
 export function addTrace(id, data = {}, index = null) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         if (index != null) {
             window.Plotly.addTraces(id, [data], [index]);
         } else {
@@ -140,32 +144,32 @@ export function addTrace(id, data = {}, index = null) {
 }
 
 export function deleteTrace(id, index) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         window.Plotly.deleteTraces(id, index);
     });
 }
 
 export function purge(id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         window.Plotly.purge(id);
     });
 }
 
 export function relayout(id, layout = {}) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         window.Plotly.relayout(id, layout);
     });
 }
 
 export function restyle(id, data, indices) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         window.Plotly.restyle(id, data, indices);
     });
 }
 
 export function toImage(id, format, height, width) {
     return new Promise((resolve) => {
-        onPlotlyReady(() => {
+        onPlotlyReady(id, () => {
             resolve(window.Plotly.toImage(id, { format: format, height: height, width: width }));
         });
     });
@@ -173,14 +177,14 @@ export function toImage(id, format, height, width) {
 
 export function downloadImage(id, format, height, width, filename) {
     return new Promise((resolve) => {
-        onPlotlyReady(() => {
+        onPlotlyReady(id, () => {
             resolve(window.Plotly.downloadImage(id, { format: format, height: height, width: width, filename: filename }));
         });
     });
 }
 
 export function subscribeLegendClickEvent(dotNetObj, id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var plot = document.getElementById(id);
         plot.on('plotly_legendclick', function (data) {
             dotNetObj.invokeMethodAsync('LegendClickEvent', {
@@ -192,7 +196,7 @@ export function subscribeLegendClickEvent(dotNetObj, id) {
 }
 
 export function subscribeSelectedEvent(dotNetObj, id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var plot = document.getElementById(id);
         plot.on('plotly_selected', function (data) {
             dotNetObj.invokeMethodAsync('SelectedEvent',
@@ -215,7 +219,7 @@ export function subscribeSelectedEvent(dotNetObj, id) {
 }
 
 export function subscribeClickEvent(dotNetObj, id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var plot = document.getElementById(id);
         plot.on('plotly_click', function (data) {
             dotNetObj.invokeMethodAsync('ClickEvent',
@@ -238,7 +242,7 @@ export function subscribeClickEvent(dotNetObj, id) {
 }
 
 export function subscribeHoverEvent(dotNetObj, id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var plot = document.getElementById(id);
         plot.on('plotly_hover', function (data) {
             dotNetObj.invokeMethodAsync('HoverEvent',
@@ -261,7 +265,7 @@ export function subscribeHoverEvent(dotNetObj, id) {
 }
 
 export function subscribeRelayoutEvent(dotNetObj, id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var plot = document.getElementById(id);
         plot.on('plotly_relayout', function (eventdata) {
             var x1 = eventdata["xaxis.range[0]"];
@@ -295,7 +299,7 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
 }
 
 export function subscribeRestyleEvent(dotNetObj, id) {
-    onPlotlyReady(() => {
+    onPlotlyReady(id, () => {
         var plot = document.getElementById(id);
         plot.on('plotly_restyle', function (eventdata) {
             var result = {};

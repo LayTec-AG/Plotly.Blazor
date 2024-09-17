@@ -33,7 +33,7 @@
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="src\wwwroot\plotly-interop-5.1.1.js">
+        <None Update="src\wwwroot\plotly-interop-5.1.2.js">
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>

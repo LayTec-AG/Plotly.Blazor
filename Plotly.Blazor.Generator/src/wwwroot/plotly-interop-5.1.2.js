@@ -2,12 +2,26 @@
 let plotlyReady = false;
 const plotlyReadyCallbacks = [];
 
+function checkPlotlyReady(resolve) {
+    if (window.Plotly) {
+        plotlyReadyCallbacks.forEach(callback => callback());
+        plotlyReadyCallbacks.length = 0;
+        resolve();
+    } else {
+        setTimeout(() => checkPlotlyReady(resolve), 10);
+    }
+}
+
 export async function importScript(id, scriptUrl) {
     return new Promise((resolve, reject) => {
         var existingElement = document.getElementById(id);
         if (existingElement) {
             if (existingElement.dataset.originalSrc === scriptUrl) {
-                resolve();
+                if (window.Plotly) {
+                    resolve();
+                } else {
+                    checkPlotlyReady(resolve);
+                }
                 return;
             } else {
                 existingElement.remove();
@@ -19,12 +33,8 @@ export async function importScript(id, scriptUrl) {
         script.src = scriptUrl;
         script.dataset.originalSrc = scriptUrl;
         script.type = 'text/javascript';
-        script.async = true;
         script.onload = () => {
-            scriptCache.set(id, scriptUrl);
-            plotlyReady = true;
-            plotlyReadyCallbacks.forEach(callback => callback());
-            resolve();
+            checkPlotlyReady(resolve);
         };
         script.onerror = (error) => reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
         document.head.appendChild(script);
@@ -32,7 +42,7 @@ export async function importScript(id, scriptUrl) {
 }
 
 function onPlotlyReady(callback) {
-    if (plotlyReady) {
+    if (window.Plotly) {
         callback();
     } else {
         plotlyReadyCallbacks.push(callback);

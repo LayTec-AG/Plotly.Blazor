@@ -362,6 +362,8 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ScatterMapBoxLib.Stream Stream { get; set;} 
 
         /// <summary>
+        ///     mapbox subplots and traces are deprecated! Please consider switching to
+        ///     <c>map</c> subplots and traces. Learn more at: https://plotly.com/javascript/maplibre-migration/
         ///     Sets a reference between this trace&#39;s data coordinates and a mapbox
         ///     subplot. If <c>mapbox</c> (the default value), the data refer to <c>layout.mapbox</c>.
         ///     If <c>mapbox2</c>, the data refer to <c>layout.mapbox2</c>, and so on.

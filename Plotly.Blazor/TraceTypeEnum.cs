@@ -27,6 +27,8 @@ namespace Plotly.Blazor
         Carpet,
         [EnumMember(Value=@"choropleth")]
         Choropleth,
+        [EnumMember(Value=@"choroplethmap")]
+        ChoroplethMap,
         [EnumMember(Value=@"choroplethmapbox")]
         ChoroplethMapBox,
         [EnumMember(Value=@"cone")]
@@ -35,6 +37,8 @@ namespace Plotly.Blazor
         Contour,
         [EnumMember(Value=@"contourcarpet")]
         ContourCarpet,
+        [EnumMember(Value=@"densitymap")]
+        DensityMap,
         [EnumMember(Value=@"densitymapbox")]
         DensityMapBox,
         [EnumMember(Value=@"funnel")]
@@ -83,6 +87,8 @@ namespace Plotly.Blazor
         ScatterGeo,
         [EnumMember(Value=@"scattergl")]
         ScatterGl,
+        [EnumMember(Value=@"scattermap")]
+        ScatterMap,
         [EnumMember(Value=@"scattermapbox")]
         ScatterMapBox,
         [EnumMember(Value=@"scatterpolar")]

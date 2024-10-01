@@ -20,7 +20,8 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
     ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
     ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
     ///     be determined by the numerical order of the values. Similarly, the order
-    ///     can be determined by the min, max, sum, mean or median of all the values.
+    ///     can be determined by the min, max, sum, mean, geometric mean or median of
+    ///     all the values.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]
@@ -54,6 +55,10 @@ namespace Plotly.Blazor.LayoutLib.XAxisLib
         MeanAscending,
         [EnumMember(Value=@"mean descending")]
         MeanDescending,
+        [EnumMember(Value=@"geometric mean ascending")]
+        GeometricMeanAscending,
+        [EnumMember(Value=@"geometric mean descending")]
+        GeometricMeanDescending,
         [EnumMember(Value=@"median ascending")]
         MedianAscending,
         [EnumMember(Value=@"median descending")]

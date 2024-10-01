@@ -49,6 +49,12 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.TitleLib.Pad Pad { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Subtitle.
+        /// </summary>
+        [JsonPropertyName(@"subtitle")]
+        public Plotly.Blazor.LayoutLib.TitleLib.Subtitle Subtitle { get; set;} 
+
+        /// <summary>
         ///     Sets the plot&#39;s title. Note that before the existence of <c>title.text</c>,
         ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
         ///     itself. This behavior has been deprecated.
@@ -138,6 +144,11 @@ namespace Plotly.Blazor.LayoutLib
                     Pad.Equals(other.Pad)
                 ) && 
                 (
+                    Subtitle == other.Subtitle ||
+                    Subtitle != null &&
+                    Subtitle.Equals(other.Subtitle)
+                ) && 
+                (
                     Text == other.Text ||
                     Text != null &&
                     Text.Equals(other.Text)
@@ -183,6 +194,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (AutoMargin != null) hashCode = hashCode * 59 + AutoMargin.GetHashCode();
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (Pad != null) hashCode = hashCode * 59 + Pad.GetHashCode();
+                if (Subtitle != null) hashCode = hashCode * 59 + Subtitle.GetHashCode();
                 if (Text != null) hashCode = hashCode * 59 + Text.GetHashCode();
                 if (X != null) hashCode = hashCode * 59 + X.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();

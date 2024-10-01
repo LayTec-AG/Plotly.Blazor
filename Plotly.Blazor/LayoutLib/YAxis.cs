@@ -16,6 +16,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     The YAxis class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
+    [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class YAxis : IEquatable<YAxis>
     {
@@ -111,7 +112,8 @@ namespace Plotly.Blazor.LayoutLib
         ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
         ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
         ///     be determined by the numerical order of the values. Similarly, the order
-        ///     can be determined by the min, max, sum, mean or median of all the values.
+        ///     can be determined by the min, max, sum, mean, geometric mean or median of
+        ///     all the values.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
         public Plotly.Blazor.LayoutLib.YAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 
@@ -579,6 +581,37 @@ namespace Plotly.Blazor.LayoutLib
         public IList<Plotly.Blazor.LayoutLib.YAxisLib.TickFormatStop> TickFormatStops { get; set;} 
 
         /// <summary>
+        ///     Only for axes with <c>type</c> <c>date</c> or <c>linear</c>. Instead of
+        ///     drawing the major tick label, draw the label for the minor tick that is
+        ///     n positions away from the major tick. E.g. to always draw the label for
+        ///     the minor tick before each major tick, choose <c>ticklabelindex</c> -1.
+        ///     This is useful for date axes with <c>ticklabelmode</c> <c>period</c> if
+        ///     you want to label the period that ends with each major tick instead of the
+        ///     period that begins there.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelindex")]
+        public int? TickLabelIndex { get; set;} 
+
+        /// <summary>
+        ///     Only for axes with <c>type</c> <c>date</c> or <c>linear</c>. Instead of
+        ///     drawing the major tick label, draw the label for the minor tick that is
+        ///     n positions away from the major tick. E.g. to always draw the label for
+        ///     the minor tick before each major tick, choose <c>ticklabelindex</c> -1.
+        ///     This is useful for date axes with <c>ticklabelmode</c> <c>period</c> if
+        ///     you want to label the period that ends with each major tick instead of the
+        ///     period that begins there.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelindex")]
+        [Array]
+        public IList<int?> TickLabelIndexArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>ticklabelindex</c>.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelindexsrc")]
+        public string TickLabelIndexSrc { get; set;} 
+
+        /// <summary>
         ///     Determines where tick labels are drawn with respect to their corresponding
         ///     ticks and grid lines. Only has an effect for axes of <c>type</c> <c>date</c>
         ///     When set to <c>period</c>, tick labels are drawn in the middle of the period
@@ -608,6 +641,27 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"ticklabelposition")]
         public Plotly.Blazor.LayoutLib.YAxisLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
+
+        /// <summary>
+        ///     Shifts the tick labels by the specified number of pixels in parallel to
+        ///     the axis. Positive values move the labels in the positive direction of the
+        ///     axis.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelshift")]
+        public int? TickLabelShift { get; set;} 
+
+        /// <summary>
+        ///     Sets the standoff distance (in px) between the axis tick labels and their
+        ///     default position. A positive <c>ticklabelstandoff</c> moves the labels farther
+        ///     away from the plot area if <c>ticklabelposition</c> is <c>outside</c>, and
+        ///     deeper into the plot area if <c>ticklabelposition</c> is <c>inside</c>.
+        ///     A negative <c>ticklabelstandoff</c> works in the opposite direction, moving
+        ///     outside ticks towards the plot area and inside ticks towards the outside.
+        ///     If the negative value is large enough, inside ticks can even end up outside
+        ///     and vice versa.
+        /// </summary>
+        [JsonPropertyName(@"ticklabelstandoff")]
+        public int? TickLabelStandoff { get; set;} 
 
         /// <summary>
         ///     Sets the spacing between tick labels as compared to the spacing between
@@ -1088,6 +1142,21 @@ namespace Plotly.Blazor.LayoutLib
                     TickFormatStops.SequenceEqual(other.TickFormatStops)
                 ) &&
                 (
+                    TickLabelIndex == other.TickLabelIndex ||
+                    TickLabelIndex != null &&
+                    TickLabelIndex.Equals(other.TickLabelIndex)
+                ) && 
+                (
+                    Equals(TickLabelIndexArray, other.TickLabelIndexArray) ||
+                    TickLabelIndexArray != null && other.TickLabelIndexArray != null &&
+                    TickLabelIndexArray.SequenceEqual(other.TickLabelIndexArray)
+                ) &&
+                (
+                    TickLabelIndexSrc == other.TickLabelIndexSrc ||
+                    TickLabelIndexSrc != null &&
+                    TickLabelIndexSrc.Equals(other.TickLabelIndexSrc)
+                ) && 
+                (
                     TickLabelMode == other.TickLabelMode ||
                     TickLabelMode != null &&
                     TickLabelMode.Equals(other.TickLabelMode)
@@ -1101,6 +1170,16 @@ namespace Plotly.Blazor.LayoutLib
                     TickLabelPosition == other.TickLabelPosition ||
                     TickLabelPosition != null &&
                     TickLabelPosition.Equals(other.TickLabelPosition)
+                ) && 
+                (
+                    TickLabelShift == other.TickLabelShift ||
+                    TickLabelShift != null &&
+                    TickLabelShift.Equals(other.TickLabelShift)
+                ) && 
+                (
+                    TickLabelStandoff == other.TickLabelStandoff ||
+                    TickLabelStandoff != null &&
+                    TickLabelStandoff.Equals(other.TickLabelStandoff)
                 ) && 
                 (
                     TickLabelStep == other.TickLabelStep ||
@@ -1270,9 +1349,14 @@ namespace Plotly.Blazor.LayoutLib
                 if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
                 if (TickFormat != null) hashCode = hashCode * 59 + TickFormat.GetHashCode();
                 if (TickFormatStops != null) hashCode = hashCode * 59 + TickFormatStops.GetHashCode();
+                if (TickLabelIndex != null) hashCode = hashCode * 59 + TickLabelIndex.GetHashCode();
+                if (TickLabelIndexArray != null) hashCode = hashCode * 59 + TickLabelIndexArray.GetHashCode();
+                if (TickLabelIndexSrc != null) hashCode = hashCode * 59 + TickLabelIndexSrc.GetHashCode();
                 if (TickLabelMode != null) hashCode = hashCode * 59 + TickLabelMode.GetHashCode();
                 if (TickLabelOverflow != null) hashCode = hashCode * 59 + TickLabelOverflow.GetHashCode();
                 if (TickLabelPosition != null) hashCode = hashCode * 59 + TickLabelPosition.GetHashCode();
+                if (TickLabelShift != null) hashCode = hashCode * 59 + TickLabelShift.GetHashCode();
+                if (TickLabelStandoff != null) hashCode = hashCode * 59 + TickLabelStandoff.GetHashCode();
                 if (TickLabelStep != null) hashCode = hashCode * 59 + TickLabelStep.GetHashCode();
                 if (TickLen != null) hashCode = hashCode * 59 + TickLen.GetHashCode();
                 if (TickMode != null) hashCode = hashCode * 59 + TickMode.GetHashCode();

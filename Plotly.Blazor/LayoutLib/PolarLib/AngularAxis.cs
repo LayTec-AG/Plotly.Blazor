@@ -53,7 +53,8 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     categories will follow the categories in <c>categoryarray</c>. Set <c>categoryorder</c>
         ///     to &#39;total ascending&#39; or &#39;total descending&#39; if order should
         ///     be determined by the numerical order of the values. Similarly, the order
-        ///     can be determined by the min, max, sum, mean or median of all the values.
+        ///     can be determined by the min, max, sum, mean, geometric mean or median of
+        ///     all the values.
         /// </summary>
         [JsonPropertyName(@"categoryorder")]
         public Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib.CategoryOrderEnum? CategoryOrder { get; set;} 

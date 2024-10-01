@@ -11,7 +11,7 @@ namespace Plotly.Blazor.ConfigLib
 {
     /// <summary>
     ///     Determines whether mouse wheel or two-finger scroll zooms is enable. Turned
-    ///     on by default for gl3d, geo and mapbox subplots (as these subplot types
+    ///     on by default for gl3d, geo, mapbox and map subplots (as these subplot types
     ///     do not have zoombox via pan), but turned off by default for cartesian subplots.
     ///     Set <c>scrollZoom</c> to <c>false</c> to disable scrolling for all subplots.
     /// </summary>
@@ -31,6 +31,8 @@ namespace Plotly.Blazor.ConfigLib
         [EnumMember(Value=@"geo")]
         Geo = 16,
         [EnumMember(Value=@"mapbox")]
-        MapBox = 32
+        MapBox = 32,
+        [EnumMember(Value=@"map")]
+        Map = 64
     }
 }

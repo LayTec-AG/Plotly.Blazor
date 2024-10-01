@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace Plotly.Blazor.Tests
 {
@@ -140,7 +141,7 @@ namespace Plotly.Blazor.Tests
             };
             var expected = "{\"testFlag\":\"enum1\\u002Benum2\"}";
             var actual = JsonSerializer.Serialize(testObject, serializerOptions);
-            Assert.AreEqual(expected, actual,  "Joining the flags failed!");
+            Assert.That(actual, Is.EqualTo(expected));
 
             // Test "all" value
             testObject = new TestClass
@@ -149,7 +150,7 @@ namespace Plotly.Blazor.Tests
             };
             expected = "{\"testFlag\":\"all\"}";
             actual = JsonSerializer.Serialize(testObject, serializerOptions);
-            Assert.AreEqual(expected, actual, "Read/Write the 'all' flag failed!");
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -162,7 +163,7 @@ namespace Plotly.Blazor.Tests
             };
             var expectedJson = "{\"testEnum\":\"default\"}";
             var actualJson = JsonSerializer.Serialize(testObj, serializerOptions);
-            Assert.AreEqual(expectedJson, actualJson, "Serializing enum with custom EnumMemberAttribute failed!");
+            Assert.That(actualJson, Is.EqualTo(expectedJson));
 
             // Test read, write for other value 
             testObj = new TestClass
@@ -170,7 +171,7 @@ namespace Plotly.Blazor.Tests
                 TestEnum = TestEnum.Enum2
             };
             var actual = JsonSerializer.Deserialize<TestClass>(JsonSerializer.Serialize(testObj, serializerOptions));
-            Assert.AreEqual(testObj.TestEnum, actual.TestEnum, "Read/Write the enum failed!");
+            Assert.That(testObj.TestEnum, Is.EqualTo(actual.TestEnum), "Read/Write the enum failed!");
         }
 
         [Test]
@@ -206,26 +207,26 @@ namespace Plotly.Blazor.Tests
             var interfaceProperty = deserialized.GetProperty("InterfaceProperty");
             var abstractProperty = deserialized.GetProperty("AbstractProperty");
 
-            Assert.IsNotNull(interfaceProperty.GetProperty("testProperty"));
-            Assert.IsNotNull(interfaceProperty.GetProperty("testProperty2"));
+            ClassicAssert.IsNotNull(interfaceProperty.GetProperty("testProperty"));
+            ClassicAssert.IsNotNull(interfaceProperty.GetProperty("testProperty2"));
 
-            Assert.IsNotNull(abstractProperty.GetProperty("testProperty"));
-            Assert.IsNotNull(abstractProperty.GetProperty("testProperty2"));
+            ClassicAssert.IsNotNull(abstractProperty.GetProperty("testProperty"));
+            ClassicAssert.IsNotNull(abstractProperty.GetProperty("testProperty2"));
         }
 
         [Test]
         public void DateTimeConverterTest()
         {
-            Assert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31), serializerOptions));
-            Assert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31, 12, 0, 0), serializerOptions));
+            ClassicAssert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31), serializerOptions));
+            ClassicAssert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31, 12, 0, 0), serializerOptions));
         }
 
 
         [Test]
         public void DateTimeOffsetConverterTest()
         {
-            Assert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31)), serializerOptions));
-            Assert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31, 12, 0, 0)), serializerOptions));
+            ClassicAssert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31)), serializerOptions));
+            ClassicAssert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31, 12, 0, 0)), serializerOptions));
         }
     }
 }

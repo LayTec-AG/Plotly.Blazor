@@ -33,7 +33,7 @@
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="src\wwwroot\plotly-interop-5.1.2.js">
+        <None Update="src\wwwroot\plotly-interop-5.2.0.js">
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -67,5 +67,14 @@
         <None Include="src\**\*.*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageVersion Update="GitVersion.MsBuild" Version="6.0.2" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Update="GitVersion.MsBuild">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 </Project>

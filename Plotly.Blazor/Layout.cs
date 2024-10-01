@@ -481,6 +481,13 @@ namespace Plotly.Blazor
         public IList<Plotly.Blazor.LayoutLib.Legend> Legend { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the Map.
+        /// </summary>
+        [JsonPropertyName(@"map")]
+        [Subplot]
+        public IList<Plotly.Blazor.LayoutLib.Map> Map { get; set;} 
+
+        /// <summary>
         ///     Gets or sets the MapBox.
         /// </summary>
         [JsonPropertyName(@"mapbox")]
@@ -1032,6 +1039,11 @@ namespace Plotly.Blazor
                     Legend.SequenceEqual(other.Legend)
                 ) &&
                 (
+                    Equals(Map, other.Map) ||
+                    Map != null && other.Map != null &&
+                    Map.SequenceEqual(other.Map)
+                ) &&
+                (
                     Equals(MapBox, other.MapBox) ||
                     MapBox != null && other.MapBox != null &&
                     MapBox.SequenceEqual(other.MapBox)
@@ -1260,6 +1272,7 @@ namespace Plotly.Blazor
                 if (HoverSubplots != null) hashCode = hashCode * 59 + HoverSubplots.GetHashCode();
                 if (Images != null) hashCode = hashCode * 59 + Images.GetHashCode();
                 if (Legend != null) hashCode = hashCode * 59 + Legend.GetHashCode();
+                if (Map != null) hashCode = hashCode * 59 + Map.GetHashCode();
                 if (MapBox != null) hashCode = hashCode * 59 + MapBox.GetHashCode();
                 if (Margin != null) hashCode = hashCode * 59 + Margin.GetHashCode();
                 if (Meta != null) hashCode = hashCode * 59 + Meta.GetHashCode();

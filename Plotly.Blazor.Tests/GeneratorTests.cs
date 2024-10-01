@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using Plotly.Blazor.Traces;
 using Plotly.Blazor.Traces.ScatterLib;
 using Plotly.Blazor.Traces.ScatterLib.ErrorXLib;
@@ -60,17 +61,17 @@ namespace Plotly.Blazor.Tests
                 }
             };
 
-            Assert.IsFalse(referenceScatter.Equals(null));
+            ClassicAssert.IsFalse(referenceScatter.Equals(null));
 
-            Assert.IsTrue(referenceScatter.Equals(equalScatter));
-            Assert.IsTrue(equalScatter.Equals(referenceScatter));
-            Assert.IsTrue(referenceScatter == equalScatter);
-            Assert.IsFalse(referenceScatter != equalScatter);
+            ClassicAssert.IsTrue(referenceScatter.Equals(equalScatter));
+            ClassicAssert.IsTrue(equalScatter.Equals(referenceScatter));
+            ClassicAssert.IsTrue(referenceScatter == equalScatter);
+            ClassicAssert.IsFalse(referenceScatter != equalScatter);
 
-            Assert.IsFalse(referenceScatter.Equals(notEqualScatter));
-            Assert.IsFalse(notEqualScatter.Equals(referenceScatter));
-            Assert.IsFalse(referenceScatter == notEqualScatter);
-            Assert.IsTrue(referenceScatter != notEqualScatter);
+            ClassicAssert.IsFalse(referenceScatter.Equals(notEqualScatter));
+            ClassicAssert.IsFalse(notEqualScatter.Equals(referenceScatter));
+            ClassicAssert.IsFalse(referenceScatter == notEqualScatter);
+            ClassicAssert.IsTrue(referenceScatter != notEqualScatter);
         }
 
     }

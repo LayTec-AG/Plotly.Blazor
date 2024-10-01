@@ -273,7 +273,8 @@ namespace Plotly.Blazor.LayoutLib
         ///     Sets the text associated with this annotation. Plotly uses a subset of HTML
         ///     tags to do things like newline (&lt;br&gt;), bold (&lt;b&gt;&lt;/b&gt;),
         ///     italics (&lt;i&gt;&lt;/i&gt;), hyperlinks (&lt;a href=<c>...</c>&gt;&lt;/a&gt;).
-        ///     Tags &lt;em&gt;, &lt;sup&gt;, &lt;sub&gt; &lt;span&gt; are also supported.
+        ///     Tags &lt;em&gt;, &lt;sup&gt;, &lt;sub&gt;, &lt;s&gt;, &lt;u&gt; &lt;span&gt;
+        ///     are also supported.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 

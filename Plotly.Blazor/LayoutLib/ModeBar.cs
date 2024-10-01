@@ -80,14 +80,15 @@ namespace Plotly.Blazor.LayoutLib
         ///     <c>lasso</c>, <c>lasso2d</c>, <c>orbitRotation</c>, <c>orbitrotation</c>,
         ///     <c>pan</c>, <c>pan2d</c>, <c>pan3d</c>, <c>reset</c>, <c>resetCameraDefault3d</c>,
         ///     <c>resetCameraLastSave3d</c>, <c>resetGeo</c>, <c>resetSankeyGroup</c>,
-        ///     <c>resetScale2d</c>, <c>resetViewMapbox</c>, <c>resetViews</c>, <c>resetcameradefault</c>,
-        ///     <c>resetcameralastsave</c>, <c>resetsankeygroup</c>, <c>resetscale</c>,
-        ///     <c>resetview</c>, <c>resetviews</c>, <c>select</c>, <c>select2d</c>, <c>sendDataToCloud</c>,
-        ///     <c>senddatatocloud</c>, <c>tableRotation</c>, <c>tablerotation</c>, <c>toImage</c>,
-        ///     <c>toggleHover</c>, <c>toggleSpikelines</c>, <c>togglehover</c>, <c>togglespikelines</c>,
-        ///     <c>toimage</c>, <c>zoom</c>, <c>zoom2d</c>, <c>zoom3d</c>, <c>zoomIn2d</c>,
-        ///     <c>zoomInGeo</c>, <c>zoomInMapbox</c>, <c>zoomOut2d</c>, <c>zoomOutGeo</c>,
-        ///     <c>zoomOutMapbox</c>, <c>zoomin</c>, <c>zoomout</c>.
+        ///     <c>resetScale2d</c>, <c>resetViewMap</c>, <c>resetViewMapbox</c>, <c>resetViews</c>,
+        ///     <c>resetcameradefault</c>, <c>resetcameralastsave</c>, <c>resetsankeygroup</c>,
+        ///     <c>resetscale</c>, <c>resetview</c>, <c>resetviews</c>, <c>select</c>, <c>select2d</c>,
+        ///     <c>sendDataToCloud</c>, <c>senddatatocloud</c>, <c>tableRotation</c>, <c>tablerotation</c>,
+        ///     <c>toImage</c>, <c>toggleHover</c>, <c>toggleSpikelines</c>, <c>togglehover</c>,
+        ///     <c>togglespikelines</c>, <c>toimage</c>, <c>zoom</c>, <c>zoom2d</c>, <c>zoom3d</c>,
+        ///     <c>zoomIn2d</c>, <c>zoomInGeo</c>, <c>zoomInMap</c>, <c>zoomInMapbox</c>,
+        ///     <c>zoomOut2d</c>, <c>zoomOutGeo</c>, <c>zoomOutMap</c>, <c>zoomOutMapbox</c>,
+        ///     <c>zoomin</c>, <c>zoomout</c>.
         /// </summary>
         [JsonPropertyName(@"remove")]
         public string Remove { get; set;} 
@@ -99,14 +100,15 @@ namespace Plotly.Blazor.LayoutLib
         ///     <c>lasso</c>, <c>lasso2d</c>, <c>orbitRotation</c>, <c>orbitrotation</c>,
         ///     <c>pan</c>, <c>pan2d</c>, <c>pan3d</c>, <c>reset</c>, <c>resetCameraDefault3d</c>,
         ///     <c>resetCameraLastSave3d</c>, <c>resetGeo</c>, <c>resetSankeyGroup</c>,
-        ///     <c>resetScale2d</c>, <c>resetViewMapbox</c>, <c>resetViews</c>, <c>resetcameradefault</c>,
-        ///     <c>resetcameralastsave</c>, <c>resetsankeygroup</c>, <c>resetscale</c>,
-        ///     <c>resetview</c>, <c>resetviews</c>, <c>select</c>, <c>select2d</c>, <c>sendDataToCloud</c>,
-        ///     <c>senddatatocloud</c>, <c>tableRotation</c>, <c>tablerotation</c>, <c>toImage</c>,
-        ///     <c>toggleHover</c>, <c>toggleSpikelines</c>, <c>togglehover</c>, <c>togglespikelines</c>,
-        ///     <c>toimage</c>, <c>zoom</c>, <c>zoom2d</c>, <c>zoom3d</c>, <c>zoomIn2d</c>,
-        ///     <c>zoomInGeo</c>, <c>zoomInMapbox</c>, <c>zoomOut2d</c>, <c>zoomOutGeo</c>,
-        ///     <c>zoomOutMapbox</c>, <c>zoomin</c>, <c>zoomout</c>.
+        ///     <c>resetScale2d</c>, <c>resetViewMap</c>, <c>resetViewMapbox</c>, <c>resetViews</c>,
+        ///     <c>resetcameradefault</c>, <c>resetcameralastsave</c>, <c>resetsankeygroup</c>,
+        ///     <c>resetscale</c>, <c>resetview</c>, <c>resetviews</c>, <c>select</c>, <c>select2d</c>,
+        ///     <c>sendDataToCloud</c>, <c>senddatatocloud</c>, <c>tableRotation</c>, <c>tablerotation</c>,
+        ///     <c>toImage</c>, <c>toggleHover</c>, <c>toggleSpikelines</c>, <c>togglehover</c>,
+        ///     <c>togglespikelines</c>, <c>toimage</c>, <c>zoom</c>, <c>zoom2d</c>, <c>zoom3d</c>,
+        ///     <c>zoomIn2d</c>, <c>zoomInGeo</c>, <c>zoomInMap</c>, <c>zoomInMapbox</c>,
+        ///     <c>zoomOut2d</c>, <c>zoomOutGeo</c>, <c>zoomOutMap</c>, <c>zoomOutMapbox</c>,
+        ///     <c>zoomin</c>, <c>zoomout</c>.
         /// </summary>
         [JsonPropertyName(@"remove")]
         [Array]

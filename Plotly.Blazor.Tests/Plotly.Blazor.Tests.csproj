@@ -4,12 +4,21 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="FluentAssertions"/>
+		<PackageReference Include="FluentAssertions" />
 		<PackageReference Include="nunit" />
 		<PackageReference Include="NUnit3TestAdapter" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageVersion Update="GitVersion.MsBuild" Version="6.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="GitVersion.MsBuild">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
 	</ItemGroup>
 </Project>

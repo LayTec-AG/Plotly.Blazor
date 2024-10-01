@@ -184,11 +184,27 @@ namespace Plotly.Blazor.LayoutLib
         public object X0 { get; set;} 
 
         /// <summary>
+        ///     Shifts <c>x0</c> away from the center of the category when <c>xref</c> is
+        ///     a <c>category</c> or <c>multicategory</c> axis. -0.5 corresponds to the
+        ///     start of the category and 0.5 corresponds to the end of the category.
+        /// </summary>
+        [JsonPropertyName(@"x0shift")]
+        public decimal? X0Shift { get; set;} 
+
+        /// <summary>
         ///     Sets the shape&#39;s end x position. See <c>type</c> and <c>xsizemode</c>
         ///     for more info.
         /// </summary>
         [JsonPropertyName(@"x1")]
         public object X1 { get; set;} 
+
+        /// <summary>
+        ///     Shifts <c>x1</c> away from the center of the category when <c>xref</c> is
+        ///     a <c>category</c> or <c>multicategory</c> axis. -0.5 corresponds to the
+        ///     start of the category and 0.5 corresponds to the end of the category.
+        /// </summary>
+        [JsonPropertyName(@"x1shift")]
+        public decimal? X1Shift { get; set;} 
 
         /// <summary>
         ///     Only relevant in conjunction with <c>xsizemode</c> set to <c>pixel</c>.
@@ -236,11 +252,27 @@ namespace Plotly.Blazor.LayoutLib
         public object Y0 { get; set;} 
 
         /// <summary>
+        ///     Shifts <c>y0</c> away from the center of the category when <c>yref</c> is
+        ///     a <c>category</c> or <c>multicategory</c> axis. -0.5 corresponds to the
+        ///     start of the category and 0.5 corresponds to the end of the category.
+        /// </summary>
+        [JsonPropertyName(@"y0shift")]
+        public decimal? Y0Shift { get; set;} 
+
+        /// <summary>
         ///     Sets the shape&#39;s end y position. See <c>type</c> and <c>ysizemode</c>
         ///     for more info.
         /// </summary>
         [JsonPropertyName(@"y1")]
         public object Y1 { get; set;} 
+
+        /// <summary>
+        ///     Shifts <c>y1</c> away from the center of the category when <c>yref</c> is
+        ///     a <c>category</c> or <c>multicategory</c> axis. -0.5 corresponds to the
+        ///     start of the category and 0.5 corresponds to the end of the category.
+        /// </summary>
+        [JsonPropertyName(@"y1shift")]
+        public decimal? Y1Shift { get; set;} 
 
         /// <summary>
         ///     Only relevant in conjunction with <c>ysizemode</c> set to <c>pixel</c>.
@@ -391,9 +423,19 @@ namespace Plotly.Blazor.LayoutLib
                     X0.Equals(other.X0)
                 ) && 
                 (
+                    X0Shift == other.X0Shift ||
+                    X0Shift != null &&
+                    X0Shift.Equals(other.X0Shift)
+                ) && 
+                (
                     X1 == other.X1 ||
                     X1 != null &&
                     X1.Equals(other.X1)
+                ) && 
+                (
+                    X1Shift == other.X1Shift ||
+                    X1Shift != null &&
+                    X1Shift.Equals(other.X1Shift)
                 ) && 
                 (
                     XAnchor == other.XAnchor ||
@@ -416,9 +458,19 @@ namespace Plotly.Blazor.LayoutLib
                     Y0.Equals(other.Y0)
                 ) && 
                 (
+                    Y0Shift == other.Y0Shift ||
+                    Y0Shift != null &&
+                    Y0Shift.Equals(other.Y0Shift)
+                ) && 
+                (
                     Y1 == other.Y1 ||
                     Y1 != null &&
                     Y1.Equals(other.Y1)
+                ) && 
+                (
+                    Y1Shift == other.Y1Shift ||
+                    Y1Shift != null &&
+                    Y1Shift.Equals(other.Y1Shift)
                 ) && 
                 (
                     YAnchor == other.YAnchor ||
@@ -462,12 +514,16 @@ namespace Plotly.Blazor.LayoutLib
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (X0 != null) hashCode = hashCode * 59 + X0.GetHashCode();
+                if (X0Shift != null) hashCode = hashCode * 59 + X0Shift.GetHashCode();
                 if (X1 != null) hashCode = hashCode * 59 + X1.GetHashCode();
+                if (X1Shift != null) hashCode = hashCode * 59 + X1Shift.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
                 if (XSizeMode != null) hashCode = hashCode * 59 + XSizeMode.GetHashCode();
                 if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
+                if (Y0Shift != null) hashCode = hashCode * 59 + Y0Shift.GetHashCode();
                 if (Y1 != null) hashCode = hashCode * 59 + Y1.GetHashCode();
+                if (Y1Shift != null) hashCode = hashCode * 59 + Y1Shift.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
                 if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
                 if (YSizeMode != null) hashCode = hashCode * 59 + YSizeMode.GetHashCode();

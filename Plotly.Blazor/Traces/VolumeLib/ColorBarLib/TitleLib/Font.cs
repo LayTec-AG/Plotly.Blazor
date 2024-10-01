@@ -31,7 +31,7 @@ namespace Plotly.Blazor.Traces.VolumeLib.ColorBarLib.TitleLib
         ///     available on the system. The Chart Studio Cloud (at https://chart-studio.plotly.com
         ///     or on-premise) generates images on a server, where only a select number
         ///     of fonts are installed and supported. These include <c>Arial</c>, <c>Balto</c>,
-        ///     &#39;Courier New&#39;, &#39;Droid Sans&#39;,, &#39;Droid Serif&#39;, &#39;Droid
+        ///     &#39;Courier New&#39;, &#39;Droid Sans&#39;, &#39;Droid Serif&#39;, &#39;Droid
         ///     Sans Mono&#39;, &#39;Gravitas One&#39;, &#39;Old Standard TT&#39;, &#39;Open
         ///     Sans&#39;, <c>Overpass</c>, &#39;PT Sans Narrow&#39;, <c>Raleway</c>, &#39;Times
         ///     New Roman&#39;.

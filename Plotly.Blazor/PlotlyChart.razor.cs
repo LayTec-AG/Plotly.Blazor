@@ -252,17 +252,20 @@ namespace Plotly.Blazor
         ///             layout = Layout,
         ///             config = Config
         ///          };
+        ///          
+        ///  var Interop = new PlotlyJsInterop(this.JsRunTime, new PlotlyChart(), true);
         /// </code>
         /// </summary>
+        /// <param name="plotlyJsInterop"></param>
         /// <param name="chartData">The chart data.</param>
         /// <param name="format">The image format.</param>
         /// <param name="height">The image height.</param>
         /// <param name="width">The image width.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The image as a base64 encoded string.</returns>
-        public async Task<string> ToImage(object chartData, ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
+        public static async Task<string> ToImage(PlotlyJsInterop plotlyJsInterop, object chartData, ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
         {
-            return await Interop.ToImage(JsonSerializer.Serialize(chartData, PlotlyJsInterop.SerializerOptions), format, height, width, cancellationToken);
+            return await plotlyJsInterop.ToImage(JsonSerializer.Serialize(chartData, PlotlyJsInterop.SerializerOptions), format, height, width, cancellationToken);
         }
 
         /// <summary>

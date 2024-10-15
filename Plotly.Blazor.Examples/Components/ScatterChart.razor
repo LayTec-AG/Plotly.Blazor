@@ -106,16 +106,16 @@
 
     private async Task ExportImageStatic()
     {
-        dynamic chartData = new
+        var chartDefinition = new ChartDefinition
         {
-            data = this.chart.Data,
-            layout = this.chart.Layout,
-            config = this.chart.Config
+            Data = this.chart.Data,
+            Layout = this.chart.Layout,
+            Config = this.chart.Config
         };
 
         var interop = new PlotlyJsInterop(this.JsRunTime, new PlotlyChart(), true);
 
-        imgSource = await PlotlyChart.ToImage(interop, chartData, ImageFormat.Png, 400, 800);
+        imgSource = await PlotlyChart.ToImage(interop, chartDefinition, ImageFormat.Png, 400, 800);
     }
 
     private async Task DownloadImage()

@@ -244,28 +244,21 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
-        /// Converts the chart data to an image.
+        /// Exports the given chart as a binary image string.
         /// <code>
-        ///  dynamic chartData = new
-        ///          {
-        ///             data = Data.ToList(),
-        ///             layout = Layout,
-        ///             config = Config
-        ///          };
-        ///          
-        ///  var Interop = new PlotlyJsInterop(this.JsRunTime, new PlotlyChart(), true);
+        ///  
         /// </code>
         /// </summary>
-        /// <param name="plotlyJsInterop"></param>
-        /// <param name="chartData">The chart data.</param>
+        /// <param name="plotlyJsInterop">A PlotlyJsInterop instance to be used for interop</param>
+        /// <param name="chartDefinition">The chart definition (data, config, layout).</param>
         /// <param name="format">The image format.</param>
         /// <param name="height">The image height.</param>
         /// <param name="width">The image width.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The image as a base64 encoded string.</returns>
-        public static async Task<string> ToImage(PlotlyJsInterop plotlyJsInterop, object chartData, ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
+        public static async Task<string> ToImage(PlotlyJsInterop plotlyJsInterop, ChartDefinition chartDefinition, ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
         {
-            return await plotlyJsInterop.ToImage(JsonSerializer.Serialize(chartData, PlotlyJsInterop.SerializerOptions), format, height, width, cancellationToken);
+            return await plotlyJsInterop.ToImage(chartDefinition, format, height, width, cancellationToken);
         }
 
         /// <summary>

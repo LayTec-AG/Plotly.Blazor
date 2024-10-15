@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -345,4 +346,22 @@ public class PlotlyJsInterop
 
         return await jsRuntime.InvokeAsync<string>("toImage", cancellationToken, dotNetObj.Value.Id, format, height, width);
     }
+
+    /// <summary>
+    ///     Can be used to export the chart as a static image and returns a binary string of the exported image.
+    /// </summary>
+    /// <param name="chartData">The chart data to be exported.</param>
+    /// <param name="format">Format of the image.</param>
+    /// <param name="height">Height of the image.</param>
+    /// <param name="width">Width of the image.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    /// <returns>Binary string of the exported image.</returns>
+    public async Task<string> ToImage(object chartData, ImageFormat format, uint height, uint width, CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        using var sr = new StringReader((string)chartData);
+
+        return await jsRuntime.InvokeAsync<string>("toImageFromChartData", cancellationToken, JsonSerializer.Deserialize<object>(sr.ReadToEnd()), format, height, width);
+    }
 }

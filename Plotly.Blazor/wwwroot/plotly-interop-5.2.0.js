@@ -43,6 +43,14 @@ function onPlotlyReady(divId, callback) {
     }
 }
 
+function onPlotlyReadyFromChartData(callback) {
+    if (plotlyReady) {
+        callback();
+    } else {
+        plotlyReadyCallbacks.push(callback);
+    }
+}
+
 export function newPlot(id, data = [], layout = {}, config = {}, frames = []) {
     onPlotlyReady(id, () => {
         window.Plotly.newPlot(id, data, layout, config, frames);
@@ -171,6 +179,14 @@ export function toImage(id, format, height, width) {
     return new Promise((resolve) => {
         onPlotlyReady(id, () => {
             resolve(window.Plotly.toImage(id, { format: format, height: height, width: width }));
+        });
+    });
+}
+
+export function toImageFromChartData(chartData, format, height, width) {
+    return new Promise((resolve) => {
+        onPlotlyReadyFromChartData(() => {
+            resolve(window.Plotly.toImage(chartData, { format: format, height: height, width: width }));
         });
     });
 }

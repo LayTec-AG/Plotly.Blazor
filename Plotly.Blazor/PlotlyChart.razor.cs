@@ -1,12 +1,12 @@
+using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using Plotly.Blazor.Interop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using System.Text.Json;
-using Plotly.Blazor.Interop;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Plotly.Blazor
 {
@@ -244,6 +244,24 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
+        /// Exports the given chart as a binary image string.
+        /// <code>
+        ///  
+        /// </code>
+        /// </summary>
+        /// <param name="plotlyJsInterop">A PlotlyJsInterop instance to be used for interop</param>
+        /// <param name="chartDefinition">The chart definition (data, config, layout).</param>
+        /// <param name="format">The image format.</param>
+        /// <param name="height">The image height.</param>
+        /// <param name="width">The image width.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>The image as a base64 encoded string.</returns>
+        public static async Task<string> ToImage(PlotlyJsInterop plotlyJsInterop, ChartDefinition chartDefinition, ImageFormat format, uint height, uint width, CancellationToken cancellationToken = default)
+        {
+            return await plotlyJsInterop.ToImage(chartDefinition, format, height, width, cancellationToken);
+        }
+
+        /// <summary>
         ///     Can be used to download the chart as an image.
         /// </summary>
         /// <param name = "format">Format of the image.</param>
@@ -444,13 +462,13 @@ namespace Plotly.Blazor
             {
                 return;
             }
-            
-            IEnumerable<object> xList = x == null ? null : new[] {x};
-            IEnumerable<object> yList = y == null ? null : new[] {y};
-            IEnumerable<object> zList = z == null ? null : new[] {z};
-            
+
+            IEnumerable<object> xList = x == null ? null : new[] { x };
+            IEnumerable<object> yList = y == null ? null : new[] { y };
+            IEnumerable<object> zList = z == null ? null : new[] { z };
+
             await ExtendTrace3D(xList, yList, zList, index, max, cancellationToken);
-            
+
         }
 
         /// <summary>
@@ -501,13 +519,13 @@ namespace Plotly.Blazor
                 return;
             }
 
-            IEnumerable<IEnumerable<object>> xList = x == null ? null : new[] {x};
-            IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] {y};
-            IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] {z};
-            
+            IEnumerable<IEnumerable<object>> xList = x == null ? null : new[] { x };
+            IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] { y };
+            IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] { z };
+
             await ExtendTraces3D(xList, yList, zList, new[] { index }, max, cancellationToken);
         }
-        
+
 
         /// <summary>
         ///     Extends multiple traces, determined by the indices, with the specified arrays x, y.
@@ -610,7 +628,7 @@ namespace Plotly.Blazor
             {
                 throw new ArgumentException("Y must have as many elements as indices.");
             }
-            
+
             if (zArr != null && zArr.Length != indicesArr.Length)
             {
                 throw new ArgumentException("Z must have as many elements as indices.");
@@ -635,7 +653,7 @@ namespace Plotly.Blazor
                     var yData = currentYData as object[] ?? currentYData.ToArray();
                     AddDataToProperty(currentTrace, traceType, "Y", yData, max, false);
                 }
-                
+
                 if (zArr != null)
                 {
                     var currentYData = zArr[i];
@@ -676,7 +694,7 @@ namespace Plotly.Blazor
                 }
             }
         }
-        
+
 
         /// <summary>
         ///     Prepends a trace, determined by the index, with the specified object x, y.
@@ -707,7 +725,7 @@ namespace Plotly.Blazor
                 await PrependTrace(new[] { x }, new[] { y }, index, max, cancellationToken);
             }
         }
-        
+
         /// <summary>
         ///     Prepends a trace, determined by the index, with the specified object x, y, z.
         /// </summary>
@@ -724,11 +742,11 @@ namespace Plotly.Blazor
             {
                 return;
             }
-            
-            IEnumerable<object> xList = x == null ? null : new[] {x};
-            IEnumerable<object> yList = y == null ? null : new[] {y};
-            IEnumerable<object> zList = z == null ? null : new[] {z};
-            
+
+            IEnumerable<object> xList = x == null ? null : new[] { x };
+            IEnumerable<object> yList = y == null ? null : new[] { y };
+            IEnumerable<object> zList = z == null ? null : new[] { z };
+
             await PrependTrace3D(xList, yList, zList, index, max, cancellationToken);
 
         }
@@ -762,7 +780,7 @@ namespace Plotly.Blazor
                 await PrependTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
             }
         }
-        
+
         /// <summary>
         ///     Prepends a trace, determined by the index, with the specified arrays x, y, z.
         /// </summary>
@@ -779,10 +797,10 @@ namespace Plotly.Blazor
             {
                 return;
             }
-            
-            IEnumerable<IEnumerable<object>> xList = x == null ? null : new[] {x};
-            IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] {y};
-            IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] {z};
+
+            IEnumerable<IEnumerable<object>> xList = x == null ? null : new[] { x };
+            IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] { y };
+            IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] { z };
 
             await PrependTraces3D(xList, yList, zList, new[] { index }, max, cancellationToken);
         }
@@ -848,8 +866,8 @@ namespace Plotly.Blazor
             await DataChanged.InvokeAsync(Data);
             await Interop.PrependTraces(xArr, yArr, indicesArr, max, cancellationToken);
         }
-        
-        
+
+
         /// <summary>
         ///     Prepends multiple traces, determined by the indices, with the specified arrays x, y, z.
         /// </summary>
@@ -888,7 +906,7 @@ namespace Plotly.Blazor
             {
                 throw new ArgumentException("Y must have as many elements as indices.");
             }
-            
+
             if (zArr != null && zArr.Length != indicesArr.Length)
             {
                 throw new ArgumentException("Y must have as many elements as indices.");
@@ -913,7 +931,7 @@ namespace Plotly.Blazor
                     var yData = currentYData as object[] ?? currentYData.ToArray();
                     AddDataToProperty(currentTrace, traceType, "Y", yData, max, true);
                 }
-                
+
                 if (zArr != null)
                 {
                     var currentZData = zArr[i];

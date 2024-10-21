@@ -345,4 +345,20 @@ public class PlotlyJsInterop
 
         return await jsRuntime.InvokeAsync<string>("toImage", cancellationToken, dotNetObj.Value.Id, format, height, width);
     }
+
+    /// <summary>
+    ///     Can be used to export the chart as a static image and returns a binary string of the exported image.
+    /// </summary>
+    /// <param name="chartDefinition">The chart definition to be exported.</param>
+    /// <param name="format">Format of the image.</param>
+    /// <param name="height">Height of the image.</param>
+    /// <param name="width">Width of the image.</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    /// <returns>Binary string of the exported image.</returns>
+    public async Task<string> ToImage(ChartDefinition chartDefinition, ImageFormat format, uint height, uint width, CancellationToken cancellationToken)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        return await jsRuntime.InvokeAsync<string>("toImageFromChartData", cancellationToken, chartDefinition.PrepareJsInterop(SerializerOptions), format, height, width);
+    }
 }

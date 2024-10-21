@@ -33,7 +33,7 @@ export async function importScript(id, scriptUrl) {
 
 function onPlotlyReady(divId, callback) {
     //check the plot has not been derendered before attempting to do anything
-    if (document.getElementById(divId) == null) {
+    if (divId != null && document.getElementById(divId) == null) {
         return;
     }
     else if (plotlyReady) {
@@ -171,6 +171,14 @@ export function toImage(id, format, height, width) {
     return new Promise((resolve) => {
         onPlotlyReady(id, () => {
             resolve(window.Plotly.toImage(id, { format: format, height: height, width: width }));
+        });
+    });
+}
+
+export function toImageFromChartData(chartData, format, height, width) {
+    return new Promise((resolve) => {
+        onPlotlyReady(null, () => {
+            resolve(window.Plotly.toImage(chartData, { format: format, height: height, width: width }));
         });
     });
 }

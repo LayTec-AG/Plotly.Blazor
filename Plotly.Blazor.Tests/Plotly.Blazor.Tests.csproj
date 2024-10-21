@@ -12,13 +12,4 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Plotly.Blazor\Plotly.Blazor.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <PackageVersion Update="GitVersion.MsBuild" Version="6.0.2" />
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Update="GitVersion.MsBuild">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-	  </PackageReference>
-	</ItemGroup>
 </Project>

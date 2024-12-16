@@ -1,8 +1,11 @@
-﻿@using Plotly.Blazor.LayoutLib
+﻿@using System.Text.Json.Nodes
+@using MudBlazor
+@using Plotly.Blazor.LayoutLib
 @using Plotly.Blazor.LayoutLib.SceneLib
+@using System.Text.Json
+@using Plotly.Blazor.Traces
 @using XAxis = Plotly.Blazor.LayoutLib.SceneLib.XAxis
 @using YAxis = Plotly.Blazor.LayoutLib.SceneLib.YAxis
-@using Newtonsoft.Json.Linq
 @using Plotly.Blazor.Interop
 @using Plotly.Blazor.Examples.Components.Display
 @inject NavigationManager MyNavigationManager
@@ -10,14 +13,14 @@
 @if (!IsInitialized)
 {
     <MudPaper>
-        <MudProgressLinear Color="Color.Primary" Indeterminate="true"/>
+        <MudProgressLinear Color="Color.Primary" Indeterminate="true" />
     </MudPaper>
 }
 
-<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" 
-             ClickAction="ClickAction" HoverAction="HoverAction" AfterRender="LoadData"/>
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart"
+             ClickAction="ClickAction" HoverAction="HoverAction" AfterRender="LoadData" />
 
-<HoverClickDisplay ClickInfos="@ClickInfos" HoverInfos="@HoverInfos"/>
+<HoverClickDisplay ClickInfos="@ClickInfos" HoverInfos="@HoverInfos" />
 
 @code
 {
@@ -39,27 +42,27 @@
     protected override void OnInitialized()
     {
         config = new Config
-        {
-            ShowLink = false,
-            Responsive = true,
-            DisplayLogo = false
-        };
+            {
+                ShowLink = false,
+                Responsive = true,
+                DisplayLogo = false
+            };
 
         layout = new Layout
-        {
-            Title = new Title
             {
-                Text = GetType().Name
-            },
-            PaperBgColor = Theme.PaletteDark.Surface.ToString(),
-            PlotBgColor = Theme.PaletteDark.Surface.ToString(),
-            Font = new Font
-            {
-                Color = Theme.PaletteDark.TextPrimary.ToString()
-            },
-            ShowLegend = false,
-            Scene = new[]
-            {
+                Title = new Title
+                {
+                    Text = GetType().Name
+                },
+                PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+                PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+                Font = new Font
+                {
+                    Color = Theme.PaletteDark.TextPrimary.ToString()
+                },
+                ShowLegend = false,
+                Scene = new[]
+                {
                 new Scene
                 {
                     XAxis = new XAxis { Title = new LayoutLib.SceneLib.XAxisLib.Title { Text = "Sample #" } },
@@ -67,7 +70,7 @@
                     ZAxis = new ZAxis { Title = new LayoutLib.SceneLib.ZAxisLib.Title { Text = "OD" } }
                 }
             }
-        };
+            };
 
         data = new List<ITrace>();
         base.OnInitialized();
@@ -82,13 +85,23 @@
                 BaseAddress = new Uri(MyNavigationManager.BaseUri)
             };
 
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
             var jsonResponse = await client.GetStringAsync(Url);
-            var jsonObject = JObject.Parse(jsonResponse);
-            var results = jsonObject["data"]?.Children().ToList();
 
-            if (!results?.Any() ?? true) return;
+            var jsonDocument = JsonDocument.Parse(jsonResponse);
+            var results = jsonDocument.RootElement
+                .GetProperty("data")
+                .EnumerateArray()
+                .Select(element => element.Deserialize<Ribbon>(options))
+                .ToList();
 
-            foreach (var ribbon in results.Select(obj => obj.ToObject<Ribbon>()))
+            if (results == null || !results.Any()) return;
+
+            foreach (var ribbon in results)
             {
                 await InvokeAsync(async () => await chart.AddTrace(new Surface
                 {
@@ -102,19 +115,20 @@
                 // Add the delay to keep the UI responsive
                 await Task.Delay(10);
             }
+
             IsInitialized = true;
             await InvokeAsync(StateHasChanged);
         });
-        
+
         SubscribeEvents();
     }
-    
+
     public void ClickAction(IEnumerable<EventDataPoint> eventData)
     {
         ClickInfos = eventData;
         StateHasChanged();
     }
-    
+
     public void HoverAction(IEnumerable<EventDataPoint> eventData)
     {
         HoverInfos = eventData;

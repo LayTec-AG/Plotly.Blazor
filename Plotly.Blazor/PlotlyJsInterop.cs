@@ -14,8 +14,8 @@ namespace Plotly.Blazor;
 /// </summary>
 public class PlotlyJsInterop
 {
-    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-5.3.0.js";
-    private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-2.35.2.min.js";
+    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-5.4.0.js";
+    private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-2.35.3.min.js";
     private const string PlotlyBasicPath = "./_content/Plotly.Blazor/plotly-basic-1.58.5.min.js";
 
     private readonly DotNetObjectReference<PlotlyChart> dotNetObj;
@@ -220,6 +220,26 @@ public class PlotlyJsInterop
             dotNetObj.Value.Layout?.PrepareJsInterop(SerializerOptions),
             dotNetObj.Value.Config?.PrepareJsInterop(SerializerOptions),
             dotNetObj.Value.Frames?.PrepareJsInterop(SerializerOptions));
+    }
+
+    /// <summary>
+    ///     This function has comparable performance to <see cref="React"/> and is faster than redrawing the whole plot with <see cref="NewPlot"/> .
+    ///     An efficient means of updating both the data array and layout object in an existing plot, basically a combination of <see cref="Restyle"/> and <see cref="Relayout"/>.
+    /// </summary>
+    /// <param name="dataUpdate">The data update, can be an anonymous type or a new trace object.</param>
+    /// <param name="layoutUpdate">The layout update, can be an anonymous type or a new layout object.</param>
+    /// <param name="indices">The traces to update</param>
+    /// <param name="cancellationToken">CancellationToken</param>
+    public async Task Update(object dataUpdate = default, object layoutUpdate = default, IEnumerable<int> indices = default, CancellationToken cancellationToken = default)
+    {
+        var jsRuntime = await moduleTask.Value;
+
+        await jsRuntime.InvokeVoidAsync("update",
+            cancellationToken,
+            dotNetObj.Value.Id,
+            dataUpdate?.PrepareJsInterop(),
+            layoutUpdate?.PrepareJsInterop(),
+            indices?.PrepareJsInterop(SerializerOptions));
     }
 
     /// <summary>

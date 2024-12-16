@@ -316,13 +316,16 @@ namespace Plotly.Blazor
         }
 
         /// <summary>
-        ///     Same as <see cref = "React"/>.
+        ///     This function has comparable performance to <see cref="React"/> and is faster than redrawing the whole plot with <see cref="NewPlot"/> .
+        ///     An efficient means of updating both the data array and layout object in an existing plot, basically a combination of <see cref="Restyle"/> and <see cref="Relayout"/>.
         /// </summary>
-        /// <param name = "cancellationToken">CancellationToken</param>
-        /// <returns>Task</returns>
-        public async Task Update(CancellationToken cancellationToken = default)
+        /// <param name="dataUpdate">The data update, can be an anonymous type or a new trace object.</param>
+        /// <param name="layoutUpdate">The layout update, can be an anonymous type or a new layout object.</param>
+        /// <param name="indices">The traces to update</param>
+        /// <param name="cancellationToken">CancellationToken</param>
+        public async Task Update(object dataUpdate = default, object layoutUpdate = default, IEnumerable<int> indices = default, CancellationToken cancellationToken = default)
         {
-            await React(cancellationToken);
+            await Interop.Update(dataUpdate, layoutUpdate, indices, cancellationToken);
         }
 
         /// <summary>

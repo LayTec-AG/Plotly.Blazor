@@ -66,7 +66,7 @@ namespace Plotly.Blazor
                     string.Equals(p.Name, $"{propertyName}Array", StringComparison.OrdinalIgnoreCase));
 
                 var subplotProperty = subplotProperties.FirstOrDefault(p =>
-                    Regex.IsMatch(propertyName, $"{p.Name}\\d*", RegexOptions.IgnoreCase));
+                    Regex.IsMatch(propertyName, $"^{p.Name}\\d*", RegexOptions.IgnoreCase));
 
                 var otherProperty = otherProperties.FirstOrDefault(p =>
                     string.Equals(p.Name, propertyName, StringComparison.OrdinalIgnoreCase));

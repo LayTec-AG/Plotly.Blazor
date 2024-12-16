@@ -59,6 +59,20 @@ namespace Plotly.Blazor.Tests
 
         [Subplot]
         public IList<TestClass> Items { get; set; }
+        
+        // ensure that the regex does not match "items"
+        [JsonPropertyName("notItems")]
+        public string NotItems { get; set; }
+    }
+
+    [JsonConverter(typeof(PlotlyConverter))]
+    public class TestSubplotClass2
+    {
+        [JsonPropertyName("someItems")]
+        public string SomeItems { get; set; }
+
+        [Subplot]
+        public IList<TestClass> Items { get; set; }
     }
 
     public class TestPolymorphicClass
@@ -182,7 +196,12 @@ namespace Plotly.Blazor.Tests
                 TestProperty = "Test",
                 TestProperty2 = "Test2",
                 TestProperty3 = "Test3",
-                Items = new []{new TestClass{TestFlag = TestFlag.All}, new TestClass()},
+                Items = new []
+                {
+	                new TestClass{TestFlag = TestFlag.All}, 
+	                new TestClass()
+                },
+                NotItems = "Test4"
             };
 
             var serialized = JsonSerializer.Serialize(expected, serializerOptions);

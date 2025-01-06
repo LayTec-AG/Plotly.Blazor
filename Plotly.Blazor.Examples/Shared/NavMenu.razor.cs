@@ -34,6 +34,7 @@ namespace Plotly.Blazor.Examples.Shared
         {
             new() { Page = "", Title = "Scatter"},
             new() { Page = "scatter-3d", Title = "Scatter3D" },
+            new() { Page = "scatter-update", Title = "Scatter Update"},
             new() { Page = "live-data", Title = "Live Data" },
             new() { Page = "bar", Title = "Bar" },
             new() { Page = "pie", Title = "Pie" },

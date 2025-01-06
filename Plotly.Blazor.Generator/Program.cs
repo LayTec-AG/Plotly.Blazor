@@ -28,7 +28,7 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string VERSION = "2.35.2";
+        private const string VERSION = "2.35.3";
         private static string PLOTLY_FILE_NAME => $"plotly-{VERSION}.min.js";
         private static string PLOTLY_JS_URL => "https://cdn.plot.ly/" + PLOTLY_FILE_NAME;
 
@@ -78,7 +78,7 @@ namespace Plotly.Blazor.Generator
             using var httpClient = new HttpClient();
 
             var schemaJson = await httpClient.GetStringAsync(
-                "https://raw.githubusercontent.com/plotly/plotly.js/master/dist/plot-schema.json");
+                "https://raw.githubusercontent.com/plotly/plotly.js/v2/dist/plot-schema.json");
 
             // Write latest .js-File
             const string outputDir = @".\src\wwwroot";

@@ -1,0 +1,90 @@
+﻿@using Plotly.Blazor.LayoutLib
+@using Plotly.Blazor.Traces.ScatterLib
+
+<PlotlyChart style="height: 60vh; min-height: 350px" @bind-Config="config" @bind-Layout="layout" @bind-Data="data" @ref="chart" />
+<br />
+<div class="d-flex gap-1 justify-end">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Update">Update</MudButton>
+</div>
+
+
+@code
+{
+    [CascadingParameter]
+    private MudTheme Theme { get; set; }
+
+    private PlotlyChart chart;
+    private Config config;
+    private Layout layout;
+    private IList<ITrace> data;
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        config = new()
+            {
+                Responsive = true
+            };
+
+        layout = new()
+            {
+                Title = new()
+                {
+                    Text = GetType().Name
+                },
+                PaperBgColor = Theme.PaletteDark.Surface.ToString(),
+                PlotBgColor = Theme.PaletteDark.Surface.ToString(),
+                Font = new()
+                {
+                    Color = Theme.PaletteDark.TextPrimary.ToString()
+                },
+                YAxis = new List<YAxis>
+            {
+                new()
+                {
+                    Title = new() { Text = "Scatter Unit" }
+                }
+            }
+            };
+
+        data = GenerateData(2).ToList();
+
+        base.OnInitialized();
+    }
+
+    private IEnumerable<ITrace> GenerateData(int count)
+    {
+        for (var i = 0; i < count; i++)
+        {
+            var (x, y) = Helper.GenerateData(0, 100);
+
+            yield return new Scatter
+                {
+                    Name = $"ScatterTrace{i + 1}",
+                    Mode = ModeFlag.Lines | ModeFlag.Markers,
+                    X = x,
+                    Y = y
+                };
+        }
+    }
+
+    private async Task Update()
+    {
+        var layoutUpdate = new Layout()
+            {
+                Title = new()
+                {
+                    Text = "Red Scatter"
+                }
+            };
+
+        var dataUpdate = new
+        {
+            line = new { color = "red" }
+        };
+
+        var traceIndicesToUpdate = new[] { 0 };
+
+        await chart.Update(dataUpdate, layoutUpdate, traceIndicesToUpdate);
+    }
+}

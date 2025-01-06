@@ -2,9 +2,17 @@
 let plotlyReady = false;
 const plotlyReadyCallbacks = [];
 
-
 export async function importScript(id, scriptUrl) {
-    if (typeof Plotly === "undefined") {
+    return new Promise((resolve, reject) => {
+        var existingElement = document.getElementById(id);
+        if (existingElement) {
+            if (existingElement.dataset.originalSrc === scriptUrl) {
+                resolve();
+                return;
+            } else {
+                existingElement.remove();
+            }
+        }
 
         // Temporarily disable AMD
         const originalDefine = window.define;
@@ -16,7 +24,7 @@ export async function importScript(id, scriptUrl) {
         script.dataset.originalSrc = scriptUrl;
         script.type = 'text/javascript';
         script.async = true;
-        
+
         script.onload = () => {
             window.define = originalDefine; //restore AMD
             scriptCache.set(id, scriptUrl);
@@ -29,7 +37,7 @@ export async function importScript(id, scriptUrl) {
             reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
         };
         document.head.appendChild(script);
-    }
+    });
 }
 
 function onPlotlyReady(divId, callback) {

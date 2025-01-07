@@ -14,19 +14,28 @@ export async function importScript(id, scriptUrl) {
             }
         }
 
+        // Temporarily disable AMD
+        const originalDefine = window.define;
+        window.define = undefined;
+
         const script = document.createElement('script');
         script.id = id;
         script.src = scriptUrl;
         script.dataset.originalSrc = scriptUrl;
         script.type = 'text/javascript';
         script.async = true;
+
         script.onload = () => {
+            window.define = originalDefine; //restore AMD
             scriptCache.set(id, scriptUrl);
             plotlyReady = true;
             plotlyReadyCallbacks.forEach(callback => callback());
             resolve();
         };
-        script.onerror = (error) => reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
+        script.onerror = (error) => {
+            window.define = originalDefine; //restore AMD
+            reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
+        };
         document.head.appendChild(script);
     });
 }

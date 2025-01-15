@@ -140,12 +140,18 @@ namespace Plotly.Blazor
 
         public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var token = reader.TokenType;
-
-            if (token == JsonTokenType.String)
+            return reader.TokenType switch
             {
-                var enumString = reader.GetString();
+	            JsonTokenType.True or JsonTokenType.False    => ResolveEnumFromString(reader.GetBoolean().ToString()),
+	            JsonTokenType.String                         => ResolveEnumFromString(reader.GetString()),
+	            JsonTokenType.Number when allowIntegerValues => ResolveEnumFromNumber(reader),
+	            _                                            => throw new JsonException($"The token type '{reader.TokenType}' is not handled")
+            };
+            
+            #region
 
+            T ResolveEnumFromString(string enumString)
+            {
                 // Case sensitive search attempted first.
                 if (transformedToRaw.TryGetValue(enumString, out var enumInfo))
                 {
@@ -197,77 +203,222 @@ namespace Plotly.Blazor
                     return (T) Enum.ToObject(enumType, enumItem.Value.RawValue);
                 }
 
-                throw new JsonException($"Unknown value {enumString}.");
+                throw new JsonException($"The value '{enumString}' does not correspond to any types of {typeof(T).Name}");
             }
 
-            if (token != JsonTokenType.Number || !allowIntegerValues)
+            T ResolveEnumFromNumber(Utf8JsonReader reader)
             {
-                throw new JsonException();
+	            switch (enumTypeCode)
+	            {
+	                // Switch cases ordered by expected frequency.
+	                case TypeCode.Int32:
+	                    if (reader.TryGetInt32(out var int32))
+	                    {
+	                        return (T) Enum.ToObject(enumType, int32);
+	                    }
+
+	                    break;
+	                case TypeCode.UInt32:
+	                    if (reader.TryGetUInt32(out var uint32))
+	                    {
+	                        return (T) Enum.ToObject(enumType, uint32);
+	                    }
+
+	                    break;
+	                case TypeCode.UInt64:
+	                    if (reader.TryGetUInt64(out var uint64))
+	                    {
+	                        return (T) Enum.ToObject(enumType, uint64);
+	                    }
+
+	                    break;
+	                case TypeCode.Int64:
+	                    if (reader.TryGetInt64(out var int64))
+	                    {
+	                        return (T) Enum.ToObject(enumType, int64);
+	                    }
+
+	                    break;
+
+	                case TypeCode.SByte:
+	                    if (reader.TryGetSByte(out var byte8))
+	                    {
+	                        return (T) Enum.ToObject(enumType, byte8);
+	                    }
+
+	                    break;
+	                case TypeCode.Byte:
+	                    if (reader.TryGetByte(out var ubyte8))
+	                    {
+	                        return (T) Enum.ToObject(enumType, ubyte8);
+	                    }
+
+	                    break;
+	                case TypeCode.Int16:
+	                    if (reader.TryGetInt16(out var int16))
+	                    {
+	                        return (T) Enum.ToObject(enumType, int16);
+	                    }
+
+	                    break;
+	                case TypeCode.UInt16:
+	                    if (reader.TryGetUInt16(out var uint16))
+	                    {
+	                        return (T) Enum.ToObject(enumType, uint16);
+	                    }
+
+	                    break;
+	            }
+	            
+	            throw new JsonException();
             }
 
-            switch (enumTypeCode)
-            {
-                // Switch cases ordered by expected frequency.
-                case TypeCode.Int32:
-                    if (reader.TryGetInt32(out var int32))
-                    {
-                        return (T) Enum.ToObject(enumType, int32);
-                    }
+            #endregion
+            
+            // if (token == JsonTokenType.True || token == JsonTokenType.False)
+            // {
+	           //  var enumString = reader.GetBoolean().ToString();
+            //
+	           //  // Case sensitive search attempted first.
+	           //  if (transformedToRaw.TryGetValue(enumString, out var enumInfo))
+	           //  {
+		          //   return (T) Enum.ToObject(enumType, enumInfo.RawValue);
+	           //  }
+	           //  
+	           //  // Case insensitive search attempted second.
+	           //  foreach (var enumItem in transformedToRaw.Where(enumItem =>
+		          //            string.Equals(enumItem.Key, enumString, StringComparison.OrdinalIgnoreCase)))
+	           //  {
+		          //   return (T) Enum.ToObject(enumType, enumItem.Value.RawValue);
+	           //  }
+            // }
 
-                    break;
-                case TypeCode.UInt32:
-                    if (reader.TryGetUInt32(out var uint32))
-                    {
-                        return (T) Enum.ToObject(enumType, uint32);
-                    }
-
-                    break;
-                case TypeCode.UInt64:
-                    if (reader.TryGetUInt64(out var uint64))
-                    {
-                        return (T) Enum.ToObject(enumType, uint64);
-                    }
-
-                    break;
-                case TypeCode.Int64:
-                    if (reader.TryGetInt64(out var int64))
-                    {
-                        return (T) Enum.ToObject(enumType, int64);
-                    }
-
-                    break;
-
-                case TypeCode.SByte:
-                    if (reader.TryGetSByte(out var byte8))
-                    {
-                        return (T) Enum.ToObject(enumType, byte8);
-                    }
-
-                    break;
-                case TypeCode.Byte:
-                    if (reader.TryGetByte(out var ubyte8))
-                    {
-                        return (T) Enum.ToObject(enumType, ubyte8);
-                    }
-
-                    break;
-                case TypeCode.Int16:
-                    if (reader.TryGetInt16(out var int16))
-                    {
-                        return (T) Enum.ToObject(enumType, int16);
-                    }
-
-                    break;
-                case TypeCode.UInt16:
-                    if (reader.TryGetUInt16(out var uint16))
-                    {
-                        return (T) Enum.ToObject(enumType, uint16);
-                    }
-
-                    break;
-            }
-
-            throw new JsonException();
+//             if (token == JsonTokenType.String)
+//             {
+//                 var enumString = reader.GetString();
+//
+//                 // Case sensitive search attempted first.
+//                 if (transformedToRaw.TryGetValue(enumString, out var enumInfo))
+//                 {
+//                     return (T) Enum.ToObject(enumType, enumInfo.RawValue);
+//                 }
+//
+//                 if (isFlags)
+//                 {
+//                     ulong calculatedValue = 0;
+//
+// #if NETSTANDARD2_0
+// 					string[] flagValues = enumString.Split(s_Split, StringSplitOptions.None);
+// #else
+//                     var flagValues = enumString.Split("+");
+// #endif
+//                     foreach (var flagValue in flagValues)
+//                     {
+//                         // Case sensitive search attempted first.
+//                         if (transformedToRaw.TryGetValue(flagValue, out enumInfo))
+//                         {
+//                             calculatedValue |= enumInfo.RawValue;
+//                         }
+//                         else
+//                         {
+//                             // Case insensitive search attempted second.
+//                             var matched = false;
+//                             foreach (var enumItem in transformedToRaw.Where(enumItem =>
+//                                 string.Equals(enumItem.Key, flagValue, StringComparison.OrdinalIgnoreCase)))
+//                             {
+//                                 calculatedValue |= enumItem.Value.RawValue;
+//                                 matched = true;
+//                                 break;
+//                             }
+//
+//                             if (!matched)
+//                             {
+//                                 throw new JsonException($"Unknown flag value {flagValue}.");
+//                             }
+//                         }
+//                     }
+//
+//                     return (T) Enum.ToObject(enumType, calculatedValue);
+//                 }
+//
+//                 // Case insensitive search attempted second.
+//                 foreach (var enumItem in transformedToRaw.Where(enumItem =>
+//                     string.Equals(enumItem.Key, enumString, StringComparison.OrdinalIgnoreCase)))
+//                 {
+//                     return (T) Enum.ToObject(enumType, enumItem.Value.RawValue);
+//                 }
+//
+//                 throw new JsonException($"Unknown value {enumString}.");
+//             }
+//
+//             if (token != JsonTokenType.Number || !allowIntegerValues)
+//             {
+//                 throw new JsonException();
+//             }
+//
+//             switch (enumTypeCode)
+//             {
+//                 // Switch cases ordered by expected frequency.
+//                 case TypeCode.Int32:
+//                     if (reader.TryGetInt32(out var int32))
+//                     {
+//                         return (T) Enum.ToObject(enumType, int32);
+//                     }
+//
+//                     break;
+//                 case TypeCode.UInt32:
+//                     if (reader.TryGetUInt32(out var uint32))
+//                     {
+//                         return (T) Enum.ToObject(enumType, uint32);
+//                     }
+//
+//                     break;
+//                 case TypeCode.UInt64:
+//                     if (reader.TryGetUInt64(out var uint64))
+//                     {
+//                         return (T) Enum.ToObject(enumType, uint64);
+//                     }
+//
+//                     break;
+//                 case TypeCode.Int64:
+//                     if (reader.TryGetInt64(out var int64))
+//                     {
+//                         return (T) Enum.ToObject(enumType, int64);
+//                     }
+//
+//                     break;
+//
+//                 case TypeCode.SByte:
+//                     if (reader.TryGetSByte(out var byte8))
+//                     {
+//                         return (T) Enum.ToObject(enumType, byte8);
+//                     }
+//
+//                     break;
+//                 case TypeCode.Byte:
+//                     if (reader.TryGetByte(out var ubyte8))
+//                     {
+//                         return (T) Enum.ToObject(enumType, ubyte8);
+//                     }
+//
+//                     break;
+//                 case TypeCode.Int16:
+//                     if (reader.TryGetInt16(out var int16))
+//                     {
+//                         return (T) Enum.ToObject(enumType, int16);
+//                     }
+//
+//                     break;
+//                 case TypeCode.UInt16:
+//                     if (reader.TryGetUInt16(out var uint16))
+//                     {
+//                         return (T) Enum.ToObject(enumType, uint16);
+//                     }
+//
+//                     break;
+//             }
+//
+//             throw new JsonException();
         }
 
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)

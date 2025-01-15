@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using Plotly.Blazor.LayoutLib.XAxisLib;
 
 namespace Plotly.Blazor.Tests
 {
@@ -101,7 +103,9 @@ namespace Plotly.Blazor.Tests
         [EnumMember(Value="default")]
         Enum1,
         [EnumMember(Value="notDefault")]
-        Enum2
+        Enum2,
+        [EnumMember(Value=@"true")]
+        True,
     }
 
     /// <summary>
@@ -120,8 +124,10 @@ namespace Plotly.Blazor.Tests
         EnumTwo = 4,
         [EnumMember(Value="enum3")]
         EnumThree = 8,
+        [EnumMember(Value="false")]
+        False = 16,
         [EnumMember(Value="all")]
-        All = EnumOne | EnumTwo | EnumThree
+        All = EnumOne | EnumTwo | EnumThree | False
     }
 
     public class ConverterTests
@@ -141,7 +147,7 @@ namespace Plotly.Blazor.Tests
                 Converters = { new DateTimeConverter(), new DateTimeOffsetConverter()}
             };
         }
-
+        
         /// <summary>
         /// Defines the test method FlagConverterTest.
         /// </summary>
@@ -151,41 +157,45 @@ namespace Plotly.Blazor.Tests
             // Test default serialization with EnumMemberAttribute
             var testObject = new TestClass
             {
-                TestFlag = TestFlag.EnumOne | TestFlag.EnumTwo
+                TestFlag = TestFlag.EnumOne | TestFlag.EnumTwo | TestFlag.False
             };
-            var expected = "{\"testFlag\":\"enum1\\u002Benum2\"}";
+            var expected = "{\"testFlag\":\"enum1\\u002Benum2\\u002Bfalse\"}";
             var actual = JsonSerializer.Serialize(testObject, serializerOptions);
             Assert.That(actual, Is.EqualTo(expected));
 
             // Test "all" value
             testObject = new TestClass
             {
-                TestFlag = TestFlag.EnumOne | TestFlag.EnumTwo | TestFlag.EnumThree
+                TestFlag = TestFlag.EnumOne | TestFlag.EnumTwo | TestFlag.EnumThree | TestFlag.False
             };
             expected = "{\"testFlag\":\"all\"}";
             actual = JsonSerializer.Serialize(testObject, serializerOptions);
             Assert.That(actual, Is.EqualTo(expected));
         }
-
-        [Test]
-        public void EnumConvertingTest()
+        
+        [TestCase(TestEnum.Enum1, "{\"testEnum\":\"default\"}")]
+        [TestCase(TestEnum.True, "{\"testEnum\":true}")]
+        public void EnumSerializationTest(
+	        TestEnum testEnum,
+	        string expectedJson)
         {
-            // Test default serialization with EnumMemberAttribute
             var testObj = new TestClass
             {
-                TestEnum = 0
+                TestEnum = testEnum
             };
-            var expectedJson = "{\"testEnum\":\"default\"}";
+            
             var actualJson = JsonSerializer.Serialize(testObj, serializerOptions);
             Assert.That(actualJson, Is.EqualTo(expectedJson));
+        }
 
-            // Test read, write for other value 
-            testObj = new TestClass
-            {
-                TestEnum = TestEnum.Enum2
-            };
-            var actual = JsonSerializer.Deserialize<TestClass>(JsonSerializer.Serialize(testObj, serializerOptions));
-            Assert.That(testObj.TestEnum, Is.EqualTo(actual.TestEnum), "Read/Write the enum failed!");
+        [TestCase("{\"testEnum\":\"notDefault\"}", TestEnum.Enum2)]
+        [TestCase("{\"testEnum\":true}", TestEnum.True)]
+        public void EnumDeserializationTest(
+	        string json,
+	        TestEnum expectedEnum)
+        {
+            var actual = JsonSerializer.Deserialize<TestClass>(json, serializerOptions);
+            Assert.That(expectedEnum, Is.EqualTo(actual.TestEnum), "Read/Write the enum failed!");
         }
 
         [Test]

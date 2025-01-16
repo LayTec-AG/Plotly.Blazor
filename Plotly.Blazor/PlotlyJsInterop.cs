@@ -14,7 +14,7 @@ namespace Plotly.Blazor;
 /// </summary>
 public class PlotlyJsInterop
 {
-    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-5.4.0.js";
+    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-5.4.1.js";
     private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-2.35.3.min.js";
     private const string PlotlyBasicPath = "./_content/Plotly.Blazor/plotly-basic-1.58.5.min.js";
 

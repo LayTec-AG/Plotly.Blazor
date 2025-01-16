@@ -14,19 +14,28 @@ export async function importScript(id, scriptUrl) {
             }
         }
 
+        // Temporarily disable AMD
+        const originalDefine = window.define;
+        window.define = undefined;
+
         const script = document.createElement('script');
         script.id = id;
         script.src = scriptUrl;
         script.dataset.originalSrc = scriptUrl;
         script.type = 'text/javascript';
         script.async = true;
+
         script.onload = () => {
+            window.define = originalDefine; //restore AMD
             scriptCache.set(id, scriptUrl);
             plotlyReady = true;
             plotlyReadyCallbacks.forEach(callback => callback());
             resolve();
         };
-        script.onerror = (error) => reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
+        script.onerror = (error) => {
+            window.define = originalDefine; //restore AMD
+            reject(new Error(`Failed to load script ${scriptUrl}: ${error.message}`));
+        };
         document.head.appendChild(script);
     });
 }
@@ -293,15 +302,15 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
         var plot = document.getElementById(id);
 
         plot.on('plotly_relayout', function (eventdata) {
-            var x = eventdata["xaxis.range"];
+            var x = eventdata["xaxis.range"] ?? eventdata.xaxis?.range;
             var x1 = eventdata["xaxis.range[0]"];
             var x2 = eventdata["xaxis.range[1]"];
 
-            var y = eventdata["yaxis.range"];
-            var y1 = eventdata["yaxis.range[0]"];
+            var y = eventdata["yaxis.range"] ?? eventdata.yaxis?.range;
+            var y1 = eventdata["yaxis.range[0]"] 
             var y2 = eventdata["yaxis.range[1]"];
 
-            var z = eventdata["zaxis.range"];
+            var z = eventdata["zaxis.range"] ?? eventdata.zaxis?.range;
             var z1 = eventdata["zaxis.range[0]"];
             var z2 = eventdata["zaxis.range[1]"];
 

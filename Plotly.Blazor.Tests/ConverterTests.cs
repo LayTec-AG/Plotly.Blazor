@@ -8,6 +8,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using Plotly.Blazor.LayoutLib.XAxisLib;
+using Plotly.Blazor.Traces;
 
 namespace Plotly.Blazor.Tests
 {
@@ -39,25 +40,37 @@ namespace Plotly.Blazor.Tests
 
         [Array]
         [JsonPropertyName("testProperty")]
-        public IList<string> TestPropertyArray { get; set; }
+        public IList<string> TestPropertyArray { get; init; }
 
         [JsonPropertyName("testProperty2")]
         public string TestProperty2 { get; set; }
 
         [JsonPropertyName("testProperty2")]
         [Array]
-#pragma warning disable CA1822 // Mark members as static
-        public IList<string> TestProperty2Array => new List<string>();
-#pragma warning restore CA1822 // Mark members as static
+        public IList<string> TestProperty2Array { get; init; }
 
         [JsonPropertyName("testProperty3")]
         public string TestProperty3 { get; set; }
 
         [JsonPropertyName("testProperty3")]
         [Array]
-#pragma warning disable CA1822 // Mark members as static
         public IList<string> TestProperty3Array => new List<string>();
-#pragma warning restore CA1822 // Mark members as static
+
+        [JsonPropertyName("testProperty4")]
+        public string TestProperty4 { get; set; }
+        
+        [JsonPropertyName("testProperty4")]
+        [Array]
+        public IList<object> TestProperty4Array { get; init; }
+        
+        [JsonPropertyName("testProperty5")]
+        public object TestProperty5 { get; set; }
+        
+        [JsonPropertyName("testProperty6")]
+        public decimal? TestProperty6 { get; set; }
+        
+        [JsonPropertyName("testProperty7")]
+        public bool? TestProperty7 { get; set; }
 
         [Subplot]
         public IList<TestClass> Items { get; set; }
@@ -204,11 +217,19 @@ namespace Plotly.Blazor.Tests
             var expected = new TestSubplotClass
             {
                 TestProperty = "Test",
-                TestProperty2 = "Test2",
-                TestProperty3 = "Test3",
+                TestProperty2Array = new List<string>() { "abc", null, "1.23", "true" }, //array version of Property2
+                TestProperty3 = "Test3", //scalar version of Property3
+                
+                // TODO - I'll work on another converter to handle deserialization to object & IList<object>
+                // currently these end up being converted to JsonElement which won't work in Plotly.js
+                // TestProperty4Array = new List<object>() { 1.23, null, 4.56 },
+                // TestProperty5 = 1.23m,
+                
+                TestProperty6 = 4.56m,
+                TestProperty7 = true,
                 Items = new []
                 {
-	                new TestClass{TestFlag = TestFlag.All}, 
+	                new TestClass{ TestFlag = TestFlag.All }, 
 	                new TestClass()
                 },
                 NotItems = "Test4"

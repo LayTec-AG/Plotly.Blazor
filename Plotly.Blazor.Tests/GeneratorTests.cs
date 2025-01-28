@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using Plotly.Blazor.Traces;

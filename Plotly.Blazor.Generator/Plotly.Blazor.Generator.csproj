@@ -35,10 +35,10 @@
 
     <!-- Plotly Files-->
     <ItemGroup>
-        <None Include="..\Plotly.Blazor\wwwroot\plotly-basic-1.58.5.min.js" Link="src\wwwroot\plotly-basic-1.58.5.min.js" >
+        <None Include="..\Plotly.Blazor\wwwroot\plotly-basic-3.0.0.min.js" Link="src\wwwroot\plotly-basic-3.0.0.min.js" >
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-5.4.1.js" Link="src\wwwroot\plotly-interop-5.4.1.js">
+        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-6.0.0.js" Link="src\wwwroot\plotly-interop-6.0.0.js">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\_Imports.razor" Link="src\_Imports.razor">
@@ -69,6 +69,9 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\Interop\RestyleEventData.cs" Link="src\Interop\RestyleEventData.cs" >
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="..\Plotly.Blazor\ObjectTypeResolverConverter.cs" Link="src\ObjectTypeResolverConverter.cs" >
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\PlotlyChart.razor" Link="src\PlotlyChart.razor">

@@ -364,12 +364,6 @@ namespace Plotly.Blazor.Traces
         public string TextTemplate { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Transforms.
-        /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
-
-        /// <summary>
         ///     Transposes the z data.
         /// </summary>
         [JsonPropertyName(@"transpose")]
@@ -860,11 +854,6 @@ namespace Plotly.Blazor.Traces
                     TextTemplate.Equals(other.TextTemplate)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
                     Transpose == other.Transpose ||
                     Transpose != null &&
                     Transpose.Equals(other.Transpose)
@@ -1087,7 +1076,6 @@ namespace Plotly.Blazor.Traces
                 if (TextFont != null) hashCode = hashCode * 59 + TextFont.GetHashCode();
                 if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
                 if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (Transpose != null) hashCode = hashCode * 59 + Transpose.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();

@@ -11,8 +11,7 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib.ColorBarLib.TitleLib
     /// <summary>
     ///     Determines the location of color bar&#39;s title with respect to the color
     ///     bar. Defaults to <c>top</c> when <c>orientation</c> if <c>v</c> and  defaults
-    ///     to <c>right</c> when <c>orientation</c> if <c>h</c>. Note that the title&#39;s
-    ///     location used to be set by the now deprecated <c>titleside</c> attribute.
+    ///     to <c>right</c> when <c>orientation</c> if <c>h</c>.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]

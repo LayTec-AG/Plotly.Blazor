@@ -204,12 +204,6 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ParCatsLib.TickFont TickFont { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Transforms.
-        /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
-
-        /// <summary>
         ///     Assign an id to this trace, Use this to provide object constancy between
         ///     traces during animations and transitions.
         /// </summary>
@@ -367,11 +361,6 @@ namespace Plotly.Blazor.Traces
                     TickFont.Equals(other.TickFont)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
                     UId == other.UId ||
                     UId != null &&
                     UId.Equals(other.UId)
@@ -416,7 +405,6 @@ namespace Plotly.Blazor.Traces
                 if (SortPaths != null) hashCode = hashCode * 59 + SortPaths.GetHashCode();
                 if (Stream != null) hashCode = hashCode * 59 + Stream.GetHashCode();
                 if (TickFont != null) hashCode = hashCode * 59 + TickFont.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();

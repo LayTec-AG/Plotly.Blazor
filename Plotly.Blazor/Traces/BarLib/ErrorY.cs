@@ -47,7 +47,7 @@ namespace Plotly.Blazor.Traces.BarLib
         public string ArraySrc { get; set;} 
 
         /// <summary>
-        ///     Sets the stoke color of the error bars.
+        ///     Sets the stroke color of the error bars.
         /// </summary>
         [JsonPropertyName(@"color")]
         public object Color { get; set;} 

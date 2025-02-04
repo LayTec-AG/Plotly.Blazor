@@ -363,10 +363,11 @@ namespace Plotly.Blazor.Traces
 
         /// <summary>
         ///     mapbox subplots and traces are deprecated! Please consider switching to
-        ///     <c>map</c> subplots and traces. Learn more at: https://plotly.com/javascript/maplibre-migration/
-        ///     Sets a reference between this trace&#39;s data coordinates and a mapbox
-        ///     subplot. If <c>mapbox</c> (the default value), the data refer to <c>layout.mapbox</c>.
-        ///     If <c>mapbox2</c>, the data refer to <c>layout.mapbox2</c>, and so on.
+        ///     <c>map</c> subplots and traces. Learn more at: https://plotly.com/python/maplibre-migration/
+        ///     as well as https://plotly.com/javascript/maplibre-migration/ Sets a reference
+        ///     between this trace&#39;s data coordinates and a mapbox subplot. If <c>mapbox</c>
+        ///     (the default value), the data refer to <c>layout.mapbox</c>. If <c>mapbox2</c>,
+        ///     the data refer to <c>layout.mapbox2</c>, and so on.
         /// </summary>
         [JsonPropertyName(@"subplot")]
         public string Subplot { get; set;} 
@@ -450,12 +451,6 @@ namespace Plotly.Blazor.Traces
         /// </summary>
         [JsonPropertyName(@"texttemplatesrc")]
         public string TextTemplateSrc { get; set;} 
-
-        /// <summary>
-        ///     Gets or sets the Transforms.
-        /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
 
         /// <summary>
         ///     Assign an id to this trace, Use this to provide object constancy between
@@ -761,11 +756,6 @@ namespace Plotly.Blazor.Traces
                     TextTemplateSrc.Equals(other.TextTemplateSrc)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
                     UId == other.UId ||
                     UId != null &&
                     UId.Equals(other.UId)
@@ -843,7 +833,6 @@ namespace Plotly.Blazor.Traces
                 if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
                 if (TextTemplateArray != null) hashCode = hashCode * 59 + TextTemplateArray.GetHashCode();
                 if (TextTemplateSrc != null) hashCode = hashCode * 59 + TextTemplateSrc.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Unselected != null) hashCode = hashCode * 59 + Unselected.GetHashCode();

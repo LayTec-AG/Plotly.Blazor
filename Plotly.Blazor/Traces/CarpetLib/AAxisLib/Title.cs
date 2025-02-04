@@ -18,24 +18,20 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets this axis&#39; title font. Note that the title&#39;s font used to be
-        ///     set by the now deprecated <c>titlefont</c> attribute.
+        ///     Sets this axis&#39; title font.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.CarpetLib.AAxisLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
         ///     An additional amount by which to offset the title from the tick labels,
-        ///     given in pixels. Note that this used to be set by the now deprecated <c>titleoffset</c>
-        ///     attribute.
+        ///     given in pixels.
         /// </summary>
         [JsonPropertyName(@"offset")]
         public decimal? Offset { get; set;} 
 
         /// <summary>
-        ///     Sets the title of this axis. Note that before the existence of <c>title.text</c>,
-        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
-        ///     itself. This behavior has been deprecated.
+        ///     Sets the title of this axis.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 

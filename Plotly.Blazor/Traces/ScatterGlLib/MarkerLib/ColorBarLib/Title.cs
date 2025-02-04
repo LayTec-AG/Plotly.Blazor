@@ -18,8 +18,7 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib.ColorBarLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets this color bar&#39;s title font. Note that the title&#39;s font used
-        ///     to be set by the now deprecated <c>titlefont</c> attribute.
+        ///     Sets this color bar&#39;s title font.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.ScatterGlLib.MarkerLib.ColorBarLib.TitleLib.Font Font { get; set;} 
@@ -27,16 +26,13 @@ namespace Plotly.Blazor.Traces.ScatterGlLib.MarkerLib.ColorBarLib
         /// <summary>
         ///     Determines the location of color bar&#39;s title with respect to the color
         ///     bar. Defaults to <c>top</c> when <c>orientation</c> if <c>v</c> and  defaults
-        ///     to <c>right</c> when <c>orientation</c> if <c>h</c>. Note that the title&#39;s
-        ///     location used to be set by the now deprecated <c>titleside</c> attribute.
+        ///     to <c>right</c> when <c>orientation</c> if <c>h</c>.
         /// </summary>
         [JsonPropertyName(@"side")]
         public Plotly.Blazor.Traces.ScatterGlLib.MarkerLib.ColorBarLib.TitleLib.SideEnum? Side { get; set;} 
 
         /// <summary>
-        ///     Sets the title of the color bar. Note that before the existence of <c>title.text</c>,
-        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
-        ///     itself. This behavior has been deprecated.
+        ///     Sets the title of the color bar.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 

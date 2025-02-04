@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
-using Plotly.Blazor.LayoutLib.XAxisLib;
 
 namespace Plotly.Blazor.Tests
 {
@@ -39,25 +37,28 @@ namespace Plotly.Blazor.Tests
 
         [Array]
         [JsonPropertyName("testProperty")]
-        public IList<string> TestPropertyArray { get; set; }
+        public IList<string> TestPropertyArray { get; init; }
 
         [JsonPropertyName("testProperty2")]
         public string TestProperty2 { get; set; }
 
         [JsonPropertyName("testProperty2")]
         [Array]
-#pragma warning disable CA1822 // Mark members as static
-        public IList<string> TestProperty2Array => new List<string>();
-#pragma warning restore CA1822 // Mark members as static
+        public IList<string> TestProperty2Array { get; init; }
 
         [JsonPropertyName("testProperty3")]
         public string TestProperty3 { get; set; }
 
         [JsonPropertyName("testProperty3")]
         [Array]
-#pragma warning disable CA1822 // Mark members as static
         public IList<string> TestProperty3Array => new List<string>();
-#pragma warning restore CA1822 // Mark members as static
+
+        [JsonPropertyName("testProperty4")]
+        public string TestProperty4 { get; set; }
+        
+        [JsonPropertyName("testProperty4")]
+        [Array]
+        public IList<object> TestProperty4Array { get; init; }
 
         [Subplot]
         public IList<TestClass> Items { get; set; }
@@ -66,21 +67,12 @@ namespace Plotly.Blazor.Tests
         [JsonPropertyName("notItems")]
         public string NotItems { get; set; }
     }
-
-    [JsonConverter(typeof(PlotlyConverter))]
-    public class TestSubplotClass2
-    {
-        [JsonPropertyName("someItems")]
-        public string SomeItems { get; set; }
-
-        [Subplot]
-        public IList<TestClass> Items { get; set; }
-    }
-
+    
     public class TestPolymorphicClass
     {
         [JsonConverter(typeof(PolymorphicConverter))]
         public ITestClass InterfaceProperty { get; set; }
+        
         [JsonConverter(typeof(PolymorphicConverter))]
         public TestClassAbstract AbstractProperty { get; set; }
     }
@@ -129,6 +121,13 @@ namespace Plotly.Blazor.Tests
         [EnumMember(Value="all")]
         All = EnumOne | EnumTwo | EnumThree | False
     }
+    
+    class ClassToTestObjectDeserialization
+    {
+	    public object ParameterA { get; init; }
+	        
+	    public IList<object> ParameterB { get; init; }
+    }
 
     public class ConverterTests
     {
@@ -144,7 +143,7 @@ namespace Plotly.Blazor.Tests
             {
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 PropertyNamingPolicy = null,
-                Converters = { new DateTimeConverter(), new DateTimeOffsetConverter()}
+                Converters = { new DateTimeConverter(), new DateTimeOffsetConverter() }
             };
         }
         
@@ -204,18 +203,18 @@ namespace Plotly.Blazor.Tests
             var expected = new TestSubplotClass
             {
                 TestProperty = "Test",
-                TestProperty2 = "Test2",
-                TestProperty3 = "Test3",
+                TestProperty2Array = new List<string>() { "abc", null, "1.23", "true" }, //array version of Property2
+                TestProperty3 = "Test3", //scalar version of Property3
                 Items = new []
                 {
-	                new TestClass{TestFlag = TestFlag.All}, 
+	                new TestClass{ TestFlag = TestFlag.All }, 
 	                new TestClass()
                 },
                 NotItems = "Test4"
             };
 
             var serialized = JsonSerializer.Serialize(expected, serializerOptions);
-            var actual = JsonSerializer.Deserialize<TestSubplotClass>(serialized);
+            var actual = JsonSerializer.Deserialize<TestSubplotClass>(serialized, serializerOptions);
 
             expected.Should().BeEquivalentTo(actual);
         }
@@ -249,13 +248,120 @@ namespace Plotly.Blazor.Tests
             ClassicAssert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31), serializerOptions));
             ClassicAssert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTime(2020, 5, 31, 12, 0, 0), serializerOptions));
         }
-
-
+        
         [Test]
         public void DateTimeOffsetConverterTest()
         {
             ClassicAssert.AreEqual("\"2020-05-31\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31)), serializerOptions));
             ClassicAssert.AreEqual("\"2020-05-31 12:00:00\"" , JsonSerializer.Serialize(new DateTimeOffset(new DateTime(2020, 5, 31, 12, 0, 0)), serializerOptions));
+        }
+        
+        /*
+         * ObjectTypeResolverConverter
+         */
+        
+        [TestCase("{\"ParameterA\":10,\"ParameterB\":[10,20,null,0]}", 10, new object [] { 10, 20, null, 0 })]
+        [TestCase("{\"ParameterA\":1.23456,\"ParameterB\":[1.23,4.56,null,7]}", 1.23456, new object [] { 1.23, 4.56, null, 7 })]
+        [TestCase("{\"ParameterA\":true,\"ParameterB\":[true,false,null,true]}", true, new object [] { true, false, null, true })]
+        [TestCase("{\"ParameterA\":\"abc\",\"ParameterB\":[\"abc\",\"def\",null,\"ghi\"]}", "abc", new object [] { "abc", "def", null, "ghi", })]
+        public void ShouldRoundtripPrimitiveTypes(
+	        string json,
+	        object expectedParameterValue,
+	        IList<object> expectedParameterValues)
+        {
+	        var options = new JsonSerializerOptions()
+	        {
+		        Converters = { new ObjectTypeResolverConverter() }
+	        };
+	        
+	        var expected = new ClassToTestObjectDeserialization()
+	        {
+		        ParameterA = expectedParameterValue,
+		        ParameterB = expectedParameterValues
+	        };
+	        
+	        var actual = JsonSerializer.Deserialize<ClassToTestObjectDeserialization>(json, options);
+	        expected.Should().BeEquivalentTo(actual);
+
+	        var roundTrippedJson = JsonSerializer.Serialize(expected, options);
+	        json.Should().Match(roundTrippedJson);
+        }
+        
+        [Test]
+        public void ShouldDeserializeComplexTypesToDictionary()
+        {
+	        var options = new JsonSerializerOptions()
+	        {
+		        Converters = { new ObjectTypeResolverConverter() }
+	        };
+
+	        var json = "{\"ParameterA\":{\"PropertyA\":\"abc\",\"PropertyB\":true},\"ParameterB\":[{\"PropertyA\":\"def\",\"PropertyB\":2},{\"PropertyA\":\"ghi\",\"PropertyB\":1.23}]}";
+	        
+	        var expectedObject = new ClassToTestObjectDeserialization()
+	        {
+		        ParameterA = new Dictionary<string, object>()
+		        {
+			        ["PropertyA"] = "abc",
+			        ["PropertyB"] = true,
+		        },
+		        ParameterB = new List<object>()
+		        {
+			        new Dictionary<string, object>()
+			        {
+				        ["PropertyA"] = "def",
+				        ["PropertyB"] = 2,
+			        },
+			        new Dictionary<string, object>()
+			        {
+				        ["PropertyA"] = "ghi",
+				        ["PropertyB"] = 1.23m,
+			        },
+		        }
+	        };
+
+	        var actualObject = JsonSerializer.Deserialize<ClassToTestObjectDeserialization>(json, options);
+	        expectedObject.Should().BeEquivalentTo(actualObject);
+	        
+	        var roundTrippedJson = JsonSerializer.Serialize(expectedObject, options);
+	        json.Should().Match(roundTrippedJson);
+        }
+        
+        [Test]
+        public void ShouldRoundTripLists()
+        {
+	        var options = new JsonSerializerOptions()
+	        {
+		        Converters = { new ObjectTypeResolverConverter() }
+	        };
+
+	        var json = "{\"ParameterA\":{\"PropertyA\":\"abc\",\"PropertyB\":true},\"ParameterB\":[{\"PropertyA\":\"def\",\"PropertyB\":2},null,1.23,\"abc\",true]}";
+	        
+	        var expectedObject = new ClassToTestObjectDeserialization()
+	        {
+		        ParameterA = new Dictionary<string, object>()
+		        {
+			        ["PropertyA"] = "abc",
+			        ["PropertyB"] = true,
+		        },
+		        ParameterB = new List<object>()
+		        {
+			        new Dictionary<string, object>()
+			        {
+				        ["PropertyA"] = "def",
+				        ["PropertyB"] = 2,
+			        },
+			        null,
+			        1.23m,
+			        "abc",
+			        true
+		        }
+	        };
+
+	        var actualObject = JsonSerializer.Deserialize<ClassToTestObjectDeserialization>(json, options);
+	        expectedObject.Should().BeEquivalentTo(actualObject);
+	        
+	        var roundTrippedJson = JsonSerializer.Serialize(expectedObject, options);
+	        json.Should().Match(roundTrippedJson);
         }
     }
 }

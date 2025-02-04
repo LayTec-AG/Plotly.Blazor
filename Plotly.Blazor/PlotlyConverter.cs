@@ -34,114 +34,118 @@ namespace Plotly.Blazor
     public class PlotlyConverter<T> : JsonConverter<T>
     {
         public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            if (reader.TokenType != JsonTokenType.StartObject)
-            {
-                throw new JsonException("Expected startObject.");
-            }
+		{
+		    if (reader.TokenType != JsonTokenType.StartObject)
+		    {
+		        throw new JsonException("Expected startObject.");
+		    }
 
-            var allProperties = typeToConvert.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy).Where(p => p.CanWrite).ToList();
+		    var allProperties = typeToConvert
+		        .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy)
+		        .Where(p => p.CanWrite)
+		        .ToList();
 
-            var arrayProperties = allProperties.Where(p => p.GetCustomAttribute<ArrayAttribute>() != null).ToArray();
-            var subplotProperties = allProperties.Where(p => p.GetCustomAttribute<SubplotAttribute>() != null && p.PropertyType.GetGenericTypeDefinition() == typeof(IList<>)).ToArray();
-            var otherProperties = allProperties.Where(p => p.GetCustomAttribute<SubplotAttribute>() == null && p.GetCustomAttribute<ArrayAttribute>() == null).ToArray();
+		    var arrayProperties = allProperties
+		        .Where(p => p.GetCustomAttribute<ArrayAttribute>() != null)
+		        .ToArray();
+		    var subplotProperties = allProperties
+		        .Where(p => p.GetCustomAttribute<SubplotAttribute>() != null && 
+		                    p.PropertyType.GetGenericTypeDefinition() == typeof(IList<>))
+		        .ToArray();
+		    var otherProperties = allProperties
+		        .Where(p => p.GetCustomAttribute<SubplotAttribute>() == null && 
+		                    p.GetCustomAttribute<ArrayAttribute>() == null)
+		        .ToArray();
 
-            var result = (T)Activator.CreateInstance(typeToConvert);
+		    var result = (T)Activator.CreateInstance(typeToConvert);
 
-            while (reader.Read())
-            {
-                if (reader.TokenType == JsonTokenType.EndObject)
-                {
-                    return result;
-                }
+		    while (reader.Read())
+		    {
+		        if (reader.TokenType == JsonTokenType.EndObject)
+		        {
+		            return result;
+		        }
 
-                if (reader.TokenType != JsonTokenType.PropertyName)
-                {
-                    throw new JsonException("Expected propertyName.");
-                }
+		        if (reader.TokenType != JsonTokenType.PropertyName)
+		        {
+		            throw new JsonException("Expected propertyName.");
+		        }
 
-                var propertyName = reader.GetString();
+		        var propertyName = reader.GetString()!;
+		        
+		        // Advance to the property's value
+		        reader.Read(); 
 
-                var arrayProperty = arrayProperties.FirstOrDefault(p =>
-                    string.Equals(p.Name, $"{propertyName}Array", StringComparison.OrdinalIgnoreCase));
+		        var arrayProperty = arrayProperties.FirstOrDefault(p =>
+		            string.Equals(p.Name, $"{propertyName}Array", StringComparison.OrdinalIgnoreCase));
 
-                var subplotProperty = subplotProperties.FirstOrDefault(p =>
-                    Regex.IsMatch(propertyName, $"^{p.Name}\\d*", RegexOptions.IgnoreCase));
+		        var subplotProperty = subplotProperties.FirstOrDefault(p =>
+		            Regex.IsMatch(propertyName, $"^{p.Name}\\d*", RegexOptions.IgnoreCase));
 
-                var otherProperty = otherProperties.FirstOrDefault(p =>
-                    string.Equals(p.Name, propertyName, StringComparison.OrdinalIgnoreCase));
+		        var otherProperty = otherProperties.FirstOrDefault(p =>
+		            string.Equals(p.Name, propertyName, StringComparison.OrdinalIgnoreCase));
 
+                // Determine if it's an "array" property which could be either a single value or an array
+		        if (arrayProperty != null)
+		        {
+		            if (reader.TokenType == JsonTokenType.StartArray)
+		            {
+		                var type = arrayProperty.PropertyType;
+		                arrayProperty.SetValue(result, JsonSerializer.Deserialize(ref reader, type, options));
+		            }
+		            
+		            // Otherwise, find and set the scalar version of the property
+		            else
+		            {
+		                var standalonePropertyName = Regex.Match(arrayProperty.Name, "(.*?)Array").Groups[1].Value;
+		                var standaloneProperty = otherProperties.FirstOrDefault(p =>
+		                    string.Equals(standalonePropertyName, p.Name, StringComparison.OrdinalIgnoreCase));
+		                if (standaloneProperty == null)
+		                    throw new JsonException("The array property is missing its single counterpart.");
 
-                // Determine if its an "array" property which could be either a single object or an array
-                if (arrayProperty != null)
-                {
-                    // If its an array property, check if it start with an array token type
-                    if (reader.TokenType == JsonTokenType.StartArray)
-                    {
-                        var type = arrayProperty.PropertyType;
-                        arrayProperty.SetValue(result, JsonSerializer.Deserialize(ref reader, type, options));
-                    }
-                    // Otherwise set the standalone value instead of the array property
-                    else
-                    {
+		                var type = standaloneProperty.PropertyType;
+		                standaloneProperty.SetValue(result, JsonSerializer.Deserialize(ref reader, type, options));
+		            }
+		        }
+		        else if (subplotProperty != null)
+		        {
+		            // Get the current index
+		            var match = Regex.Match(propertyName, $"{subplotProperty.Name}(\\d*)", RegexOptions.IgnoreCase);
+		            int index = int.TryParse(match.Groups[1].Value, out int parsedIndex) ? parsedIndex - 1 : 0;
 
-                        var standalonePropertyName = Regex.Match(arrayProperty.Name, "(.*?)Array").Groups[1].Value;
-                        var standaloneProperty =
-                            otherProperties.FirstOrDefault(p => string.Equals(standalonePropertyName, p.Name, StringComparison.OrdinalIgnoreCase));
-                        if (standaloneProperty == null)
-                            throw new JsonException("The array property is missing its single counterpart.");
+                    // Create a list, if a list does not exist yet
+		            if (subplotProperty.GetValue(result) == null)
+		            {
+		                var constructedListType = typeof(List<>).MakeGenericType(subplotProperty.PropertyType.GenericTypeArguments[0]);
+		                subplotProperty.SetValue(result, Activator.CreateInstance(constructedListType));
+		            }
 
-                        var type = standaloneProperty.PropertyType;
-                        standaloneProperty.SetValue(result, JsonSerializer.Deserialize(ref reader, type, options));
-                    }
-
-                }
-                else if (subplotProperty != null)
-                {
-                    // Get the current index
-                    var match = Regex.Match(propertyName, $"{subplotProperty.Name}(\\d*)", RegexOptions.IgnoreCase);
-                    int index;
-                    index = int.TryParse(match.Groups[1].Value, out index) ? index - 1 : 0;
-
-                    // Create a list, if a list does not exists yet
-                    if (subplotProperty.GetValue(result) == null)
-                    {
-                        var constructedListType = typeof(List<>).MakeGenericType(subplotProperty.PropertyType.GenericTypeArguments[0]);
-                        subplotProperty.SetValue(result, Activator.CreateInstance(constructedListType));
-                    }
-
-                    var list = subplotProperty.GetValue(result);
-                    var underlyingType = subplotProperty.PropertyType.GetGenericArguments()[0];
+		            var list = (IList)subplotProperty.GetValue(result);
+		            var underlyingType = subplotProperty.PropertyType.GetGenericArguments()[0];
 
                     // Fill the list with nulls, if not enough elements are present
-                    while (((IList)list)?.Count < index)
-                    {
-                        list.GetType().GetMethod("Add")?.Invoke(list, new object[]{null});
-                    }
+		            while (list.Count <= index)
+		            {
+		                list.Add(null);
+		            }
 
-                    list?.GetType().GetMethod("Insert")?.Invoke(list,
-                        new[]
-                        {
-                            index,
-                            JsonSerializer.Deserialize(ref reader, underlyingType, options)
-                        });
+		            list[index] = JsonSerializer.Deserialize(ref reader, underlyingType, options);
+		        }
+		        else if (otherProperty != null)
+		        {
+		            var type = otherProperty.PropertyType;
+		            otherProperty.SetValue(result, JsonSerializer.Deserialize(ref reader, type, options));
+		        }
+		        else
+		        {
+		            // ignore unknown/read-only properties
+		            reader.Skip();
+		        }
+		    }
 
-                }
-                else if (otherProperty != null)
-                {
-                    var type = otherProperty.PropertyType;
-                    otherProperty.SetValue(result, JsonSerializer.Deserialize(ref reader, type, options));
-                }
-                else
-                {
-                    // ignore unknown/read-only properties
-                    reader.Skip();
-                }
-            }
-
-            throw new JsonException();
-        }
-
+		    throw new JsonException();
+		}
+        
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
             var type = value.GetType();

@@ -12,24 +12,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup .NET 6.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
-      - name: Setup .NET 7.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '7.0.x'
-      - name: Setup .NET 8.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '8.0.x'
-      - name: Setup .NET 9.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '9.0.x'
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
-      - name: Test with dotnet
-        run: dotnet test
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: | 
+          6.0.x
+          7.0.x
+          8.0.x
+          9.0.x
+    - name: Build with .NET
+      run: dotnet build --configuration Release
+    - name: Test with .NET
+      run: dotnet test

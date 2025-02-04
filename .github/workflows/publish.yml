@@ -29,7 +29,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
+         with:
+          fetch-depth: 0
       - name: Pack nuget package
         run: dotnet pack ./Plotly.Blazor/Plotly.Blazor.csproj --configuration Release /p:ContinuousIntegrationBuild=true
         env:

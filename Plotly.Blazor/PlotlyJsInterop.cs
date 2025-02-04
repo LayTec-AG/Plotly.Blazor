@@ -14,9 +14,9 @@ namespace Plotly.Blazor;
 /// </summary>
 public class PlotlyJsInterop
 {
-    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-5.4.1.js";
-    private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-2.35.3.min.js";
-    private const string PlotlyBasicPath = "./_content/Plotly.Blazor/plotly-basic-1.58.5.min.js";
+    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-6.0.0.js";
+    private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-3.0.0.min.js";
+    private const string PlotlyBasicPath = "./_content/Plotly.Blazor/plotly-basic-3.0.0.min.js";
 
     private readonly DotNetObjectReference<PlotlyChart> dotNetObj;
     private readonly Lazy<Task<IJSObjectReference>> moduleTask;
@@ -49,7 +49,6 @@ public class PlotlyJsInterop
         Converters =
         {
             new PolymorphicConverter<ITrace>(),
-            new PolymorphicConverter<ITransform>(),
             new DateTimeConverter(),
             new DateTimeOffsetConverter()
         }

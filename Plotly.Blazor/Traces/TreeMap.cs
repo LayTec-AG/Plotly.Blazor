@@ -439,12 +439,6 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.TreeMapLib.Tiling Tiling { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Transforms.
-        /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
-
-        /// <summary>
         ///     Assign an id to this trace, Use this to provide object constancy between
         ///     traces during animations and transitions.
         /// </summary>
@@ -750,11 +744,6 @@ namespace Plotly.Blazor.Traces
                     Tiling.Equals(other.Tiling)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
                     UId == other.UId ||
                     UId != null &&
                     UId.Equals(other.UId)
@@ -836,7 +825,6 @@ namespace Plotly.Blazor.Traces
                 if (TextTemplateArray != null) hashCode = hashCode * 59 + TextTemplateArray.GetHashCode();
                 if (TextTemplateSrc != null) hashCode = hashCode * 59 + TextTemplateSrc.GetHashCode();
                 if (Tiling != null) hashCode = hashCode * 59 + Tiling.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Values != null) hashCode = hashCode * 59 + Values.GetHashCode();

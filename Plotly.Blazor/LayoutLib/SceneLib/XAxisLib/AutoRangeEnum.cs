@@ -20,22 +20,22 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.XAxisLib
     ///     and reverses the axis direction.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
-	[JsonConverter(typeof(EnumConverter))]
-	public enum AutoRangeEnum
-	{
-	    [EnumMember(Value=@"true")]
-	    True = 0,
-	    [EnumMember(Value=@"False")]
-	    False,
-	    [EnumMember(Value=@"reversed")]
-	    Reversed,
-	    [EnumMember(Value=@"min reversed")]
-	    MinReversed,
-	    [EnumMember(Value=@"max reversed")]
-	    MaxReversed,
-	    [EnumMember(Value=@"min")]
-	    Min,
-	    [EnumMember(Value=@"max")]
-	    Max
-	}
+    [JsonConverter(typeof(EnumConverter))]
+    public enum AutoRangeEnum
+    {
+        [EnumMember(Value=@"true")]
+        True = 0,
+        [EnumMember(Value=@"False")]
+        False,
+        [EnumMember(Value=@"reversed")]
+        Reversed,
+        [EnumMember(Value=@"min reversed")]
+        MinReversed,
+        [EnumMember(Value=@"max reversed")]
+        MaxReversed,
+        [EnumMember(Value=@"min")]
+        Min,
+        [EnumMember(Value=@"max")]
+        Max
+    }
 }

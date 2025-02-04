@@ -32,8 +32,7 @@ namespace Plotly.Blazor.LayoutLib
         public bool? AutoMargin { get; set;} 
 
         /// <summary>
-        ///     Sets the title font. Note that the title&#39;s font used to be customized
-        ///     by the now deprecated <c>titlefont</c> attribute.
+        ///     Sets the title font.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.TitleLib.Font Font { get; set;} 
@@ -55,9 +54,7 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.TitleLib.Subtitle Subtitle { get; set;} 
 
         /// <summary>
-        ///     Sets the plot&#39;s title. Note that before the existence of <c>title.text</c>,
-        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
-        ///     itself. This behavior has been deprecated.
+        ///     Sets the plot&#39;s title.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 

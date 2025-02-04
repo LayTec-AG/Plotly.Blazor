@@ -497,12 +497,6 @@ namespace Plotly.Blazor.Traces
         public Plotly.Blazor.Traces.ScatterPolarGlLib.ThetaUnitEnum? ThetaUnit { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Transforms.
-        /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
-
-        /// <summary>
         ///     Assign an id to this trace, Use this to provide object constancy between
         ///     traces during animations and transitions.
         /// </summary>
@@ -831,11 +825,6 @@ namespace Plotly.Blazor.Traces
                     ThetaUnit.Equals(other.ThetaUnit)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
                     UId == other.UId ||
                     UId != null &&
                     UId.Equals(other.UId)
@@ -918,7 +907,6 @@ namespace Plotly.Blazor.Traces
                 if (Theta0 != null) hashCode = hashCode * 59 + Theta0.GetHashCode();
                 if (ThetaSrc != null) hashCode = hashCode * 59 + ThetaSrc.GetHashCode();
                 if (ThetaUnit != null) hashCode = hashCode * 59 + ThetaUnit.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Unselected != null) hashCode = hashCode * 59 + Unselected.GetHashCode();

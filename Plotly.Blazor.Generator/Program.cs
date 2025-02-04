@@ -28,7 +28,7 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string VERSION = "2.35.3";
+        private const string VERSION = "3.0.0";
         private static string PLOTLY_FILE_NAME => $"plotly-{VERSION}.min.js";
         private static string PLOTLY_JS_URL => "https://cdn.plot.ly/" + PLOTLY_FILE_NAME;
 
@@ -56,7 +56,7 @@ namespace Plotly.Blazor.Generator
                 })
                 .Build();
 
-            Parallel.Invoke(CreateAnimation, CreateTransforms, CreateFrames, CreateLayout, CreateConfig, CreateTraces);
+            Parallel.Invoke(CreateAnimation, CreateFrames, CreateLayout, CreateConfig, CreateTraces);
 
             foreach (var (key, value) in Jobs)
             {
@@ -78,7 +78,7 @@ namespace Plotly.Blazor.Generator
             using var httpClient = new HttpClient();
 
             var schemaJson = await httpClient.GetStringAsync(
-                "https://raw.githubusercontent.com/plotly/plotly.js/v2/dist/plot-schema.json");
+                "https://raw.githubusercontent.com/plotly/plotly.js/master/dist/plot-schema.json");
 
             // Write latest .js-File
             const string outputDir = @".\src\wwwroot";
@@ -167,90 +167,6 @@ namespace Plotly.Blazor.Generator
             }
 
             AddClassJob("Layout", traceLayoutAttributes, NAMESPACE);
-        }
-
-        #endregion
-
-        #region Transforms
-
-        private static void CreateTransforms()
-        {
-            // Generate all nested classes
-            foreach (var (transformKey, transformValue) in _schema.Transforms)
-            {
-                foreach (var (key, value) in transformValue.Attributes)
-                {
-                    if (!value.TryToObject<AttributeDescription>(out var attributeDescription))
-                    {
-                        continue;
-                    }
-
-                    AddJob(key, attributeDescription,
-                        $"{NAMESPACE}.Transforms.{transformKey.ToDotNetFriendlyName(_dictionary)}Lib");
-                }
-            }
-
-            CreateTransformInterfaceJob();
-            CreateTransformTypeJob();
-            CreateTransformsJobs();
-        }
-
-        private static void CreateTransformInterfaceJob()
-        {
-            var interfaceData = new InterfaceData
-            {
-                Name = "ITransform",
-                Namespace = NAMESPACE,
-                Description = new[] {"The transform interface."},
-                Properties = new List<Property>
-                {
-                    new Property
-                    {
-                        PropertyDescription = new[] {"The type of the transform."},
-                        TypeName = "TransformTypeEnum?",
-                        PropertyName = "Type",
-                        DisplayName = "type",
-                        IsReadOnly = true,
-                        IsInherited = true
-                    }
-                }
-            };
-            Jobs.Add($"{interfaceData.Namespace}.{interfaceData.Name}", new Job(interfaceData));
-        }
-
-        private static void CreateTransformTypeJob()
-        {
-            var typeEnumData = new EnumeratedData
-            {
-                Name = "TransformTypeEnum",
-                Namespace = NAMESPACE,
-                Description = new[] {"Determines the type of the transform."},
-                Values = _schema.Transforms.Select(keyValue => new EnumeratedValue
-                {
-                    DisplayName = keyValue.Key,
-                    EnumName = keyValue.Key.ToDotNetFriendlyName(_dictionary)
-                })
-            };
-            Jobs.Add($"{typeEnumData.Namespace}.{typeEnumData.Name}", new Job(typeEnumData));
-        }
-
-        private static void CreateTransformsJobs()
-        {
-            foreach (var (transformKey, transformValue) in _schema.Transforms)
-            {
-                var friendlyName = transformKey.ToDotNetFriendlyName(_dictionary);
-                var typeProperty = new Property
-                {
-                    DisplayName = "type",
-                    PropertyName = "Type",
-                    TypeName = "TransformTypeEnum?",
-                    IsReadOnly = true,
-                    DefaultValue = $"TransformTypeEnum.{friendlyName}",
-                    IsInherited = true
-                };
-                AddClassJob(transformKey, transformValue.Attributes, $"{NAMESPACE}.Transforms", "ITransform",
-                    new[] {typeProperty});
-            }
         }
 
         #endregion

@@ -493,12 +493,6 @@ namespace Plotly.Blazor.Traces
         public string TextTemplate { get; set;} 
 
         /// <summary>
-        ///     Gets or sets the Transforms.
-        /// </summary>
-        [JsonPropertyName(@"transforms")]
-        public IList<ITransform> Transforms { get; set;} 
-
-        /// <summary>
         ///     Assign an id to this trace, Use this to provide object constancy between
         ///     traces during animations and transitions.
         /// </summary>
@@ -925,11 +919,6 @@ namespace Plotly.Blazor.Traces
                     TextTemplate.Equals(other.TextTemplate)
                 ) && 
                 (
-                    Equals(Transforms, other.Transforms) ||
-                    Transforms != null && other.Transforms != null &&
-                    Transforms.SequenceEqual(other.Transforms)
-                ) &&
-                (
                     UId == other.UId ||
                     UId != null &&
                     UId.Equals(other.UId)
@@ -1077,7 +1066,6 @@ namespace Plotly.Blazor.Traces
                 if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
                 if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
                 if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
-                if (Transforms != null) hashCode = hashCode * 59 + Transforms.GetHashCode();
                 if (UId != null) hashCode = hashCode * 59 + UId.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
                 if (Unselected != null) hashCode = hashCode * 59 + Unselected.GetHashCode();

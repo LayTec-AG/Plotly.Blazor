@@ -18,24 +18,19 @@ namespace Plotly.Blazor.Traces.PieLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets the font used for <c>title</c>. Note that the title&#39;s font used
-        ///     to be set by the now deprecated <c>titlefont</c> attribute.
+        ///     Sets the font used for <c>title</c>.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.Traces.PieLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Specifies the location of the <c>title</c>. Note that the title&#39;s position
-        ///     used to be set by the now deprecated <c>titleposition</c> attribute.
+        ///     Specifies the location of the <c>title</c>.
         /// </summary>
         [JsonPropertyName(@"position")]
         public Plotly.Blazor.Traces.PieLib.TitleLib.PositionEnum? Position { get; set;} 
 
         /// <summary>
-        ///     Sets the title of the chart. If it is empty, no title is displayed. Note
-        ///     that before the existence of <c>title.text</c>, the title&#39;s contents
-        ///     used to be defined as the <c>title</c> attribute itself. This behavior has
-        ///     been deprecated.
+        ///     Sets the title of the chart. If it is empty, no title is displayed.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 

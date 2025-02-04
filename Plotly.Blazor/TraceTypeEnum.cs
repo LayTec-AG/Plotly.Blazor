@@ -47,8 +47,6 @@ namespace Plotly.Blazor
         FunnelArea,
         [EnumMember(Value=@"heatmap")]
         HeatMap,
-        [EnumMember(Value=@"heatmapgl")]
-        HeatMapGl,
         [EnumMember(Value=@"histogram")]
         Histogram,
         [EnumMember(Value=@"histogram2d")]
@@ -73,8 +71,6 @@ namespace Plotly.Blazor
         ParCoords,
         [EnumMember(Value=@"pie")]
         Pie,
-        [EnumMember(Value=@"pointcloud")]
-        PointCloud,
         [EnumMember(Value=@"sankey")]
         Sankey,
         [EnumMember(Value=@"scatter")]

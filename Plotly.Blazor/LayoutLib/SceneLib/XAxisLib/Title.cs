@@ -18,16 +18,13 @@ namespace Plotly.Blazor.LayoutLib.SceneLib.XAxisLib
     public class Title : IEquatable<Title>
     {
         /// <summary>
-        ///     Sets this axis&#39; title font. Note that the title&#39;s font used to be
-        ///     customized by the now deprecated <c>titlefont</c> attribute.
+        ///     Sets this axis&#39; title font.
         /// </summary>
         [JsonPropertyName(@"font")]
         public Plotly.Blazor.LayoutLib.SceneLib.XAxisLib.TitleLib.Font Font { get; set;} 
 
         /// <summary>
-        ///     Sets the title of this axis. Note that before the existence of <c>title.text</c>,
-        ///     the title&#39;s contents used to be defined as the <c>title</c> attribute
-        ///     itself. This behavior has been deprecated.
+        ///     Sets the title of this axis.
         /// </summary>
         [JsonPropertyName(@"text")]
         public string Text { get; set;} 

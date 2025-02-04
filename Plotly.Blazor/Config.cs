@@ -93,12 +93,6 @@ namespace Plotly.Blazor
         public decimal? FrameMargins { get; set;} 
 
         /// <summary>
-        ///     Set global transform to be applied to all traces with no specification needed
-        /// </summary>
-        [JsonPropertyName(@"globalTransforms")]
-        public object GlobalTransforms { get; set;} 
-
-        /// <summary>
         ///     Sets the text appearing in the <c>showLink</c> link.
         /// </summary>
         [JsonPropertyName(@"linkText")]
@@ -182,8 +176,7 @@ namespace Plotly.Blazor
         public int? NotifyOnLogging { get; set;} 
 
         /// <summary>
-        ///     Set the pixel ratio during WebGL image export. This config option was formerly
-        ///     named <c>plot3dPixelRatio</c> which is now deprecated.
+        ///     Set the pixel ratio during WebGL image export.
         /// </summary>
         [JsonPropertyName(@"plotGlPixelRatio")]
         public decimal? PlotGlPixelRatio { get; set;} 
@@ -392,11 +385,6 @@ namespace Plotly.Blazor
                     FrameMargins.Equals(other.FrameMargins)
                 ) && 
                 (
-                    GlobalTransforms == other.GlobalTransforms ||
-                    GlobalTransforms != null &&
-                    GlobalTransforms.Equals(other.GlobalTransforms)
-                ) && 
-                (
                     LinkText == other.LinkText ||
                     LinkText != null &&
                     LinkText.Equals(other.LinkText)
@@ -554,7 +542,6 @@ namespace Plotly.Blazor
                 if (EditSelection != null) hashCode = hashCode * 59 + EditSelection.GetHashCode();
                 if (FillFrame != null) hashCode = hashCode * 59 + FillFrame.GetHashCode();
                 if (FrameMargins != null) hashCode = hashCode * 59 + FrameMargins.GetHashCode();
-                if (GlobalTransforms != null) hashCode = hashCode * 59 + GlobalTransforms.GetHashCode();
                 if (LinkText != null) hashCode = hashCode * 59 + LinkText.GetHashCode();
                 if (Locale != null) hashCode = hashCode * 59 + Locale.GetHashCode();
                 if (Locales != null) hashCode = hashCode * 59 + Locales.GetHashCode();

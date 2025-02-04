@@ -1,8 +1,8 @@
 ﻿<CascadingValue Value="Theme">
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
         </Found>
         <NotFound>
             <PageTitle>Not found</PageTitle>
@@ -11,14 +11,144 @@
             </LayoutView>
         </NotFound>
     </Router>
-    
-    <MudThemeProvider Theme="Theme" IsDarkMode="true" />
-    <MudDialogProvider />
-    <MudSnackbarProvider />
+
+    <MudThemeProvider Theme="Theme" IsDarkMode="true"/>
+    <MudDialogProvider/>
+    <MudSnackbarProvider/>
 </CascadingValue>
 
 @code
 {
+#if NET8_0_OR_GREATER
+    public MudTheme Theme { get; set; } = new()
+    {
+        PaletteLight = new()
+        {
+            Black = "#272c34ff",
+            Primary = "#0078d7",
+            Secondary = "#FEB16B",
+            Success = "#A4D266",
+            Warning = "#FEB16B",
+            Dark = "#303030",
+            Info = "#4889CD",
+            Error = "#EA4F52",
+            Surface = "#f0f0f0",
+            Background = "#f0f0f0",
+            BackgroundGray = "#f5f5f5ff",
+            DrawerBackground = "#f0f0f0",
+            DrawerText = "#424242ff",
+            DrawerIcon = "#616161ff",
+            AppbarBackground = "#0078d7",
+            AppbarText = "#ffffffff",
+            TextPrimary = "#424242ff",
+            TextSecondary = "#00000089",
+            ActionDefault = "#00000089",
+            ActionDisabled = "#00000042",
+            ActionDisabledBackground = "#0000001e",
+            Divider = "#e0e0e0ff",
+            DividerLight = "#000000cc",
+            TableLines = "#e0e0e0ff",
+            LinesDefault = "#0000001e",
+            LinesInputs = "#bdbdbdff",
+            TextDisabled = "#00000060"
+        },
+        PaletteDark = new()
+        {
+            Black = "#000000",
+            Primary = "#54A68F",
+            Secondary = "#FEB16B",
+            Success = "#A4D266",
+            Warning = "#FEB16B",
+            Dark = "#303030",
+            Info = "#4889CD",
+            Error = "#EA4F52",
+            Surface = "#303030",
+            Background = "#212121",
+            BackgroundGray = "#303030",
+            DrawerBackground = "#303030",
+            DrawerText = "#FFFFFF",
+            DrawerIcon = "#FFFFFF",
+            AppbarBackground = "#303030",
+            AppbarText = "#FFFFFF",
+            TextPrimary = "#FFFFFF",
+            TextSecondary = "#FFFFFF",
+            ActionDefault = "#adadb1",
+            ActionDisabled = "rgba(255,255,255, 0.26)",
+            ActionDisabledBackground = "rgba(255,255,255, 0.12)",
+            Divider = "rgba(255,255,255, 0.12)",
+            DividerLight = "rgba(255,255,255, 0.06)",
+            TableLines = "rgba(255,255,255, 0.12)",
+            LinesDefault = "rgba(255,255,255, 0.12)",
+            LinesInputs = "rgba(255,255,255, 0.3)",
+            TextDisabled = "rgba(255,255,255, 0.2)"
+        },
+        Typography = new()
+        {
+            Default = new DefaultTypography
+            {
+                FontSize = "1em"
+            },
+            Body1 = new Body1Typography
+            {
+                FontSize = "1em"
+            },
+            Body2 = new Body2Typography
+            {
+                FontSize = ".83em"
+            },
+            Caption = new CaptionTypography
+            {
+                FontSize = "1.12em",
+                FontWeight = "550"
+            },
+            Overline = new OverlineTypography
+            {
+                FontSize = "1.12em",
+                FontWeight = "550"
+            },
+            H1 = new H1Typography
+            {
+                FontSize = "2em",
+                FontWeight = "700"
+            },
+            H2 = new H2Typography
+            {
+                FontSize = "1.5em",
+                FontWeight = "650"
+            },
+            H3 = new H3Typography
+            {
+                FontSize = "1.17em",
+                FontWeight = "600"
+            },
+            H4 = new H4Typography
+            {
+                FontSize = "1.12em",
+                FontWeight = "550"
+            },
+            H5 = new H5Typography
+            {
+                FontSize = ".83em",
+                FontWeight = "500"
+            },
+            H6 = new H6Typography
+            {
+                FontSize = ".75em",
+                FontWeight = "450"
+            },
+            Subtitle1 = new Subtitle1Typography
+            {
+                FontSize = "3em",
+                FontWeight = "650"
+            },
+            Subtitle2 = new Subtitle2Typography
+            {
+                FontSize = "1.17em",
+                FontWeight = "600"
+            }
+        }
+    };
+#else
     public MudTheme Theme { get; set; } = new()
         {
             Palette = new PaletteLight
@@ -147,4 +277,6 @@
                 }
             }
         };
+#endif
+
 }

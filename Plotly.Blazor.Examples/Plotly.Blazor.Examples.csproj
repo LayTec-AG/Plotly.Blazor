@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <GHPages>true</GHPages>
@@ -34,5 +34,14 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="wwwroot\css\highlight\" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageVersion Update="GitVersion.MsBuild" Version="6.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Update="GitVersion.MsBuild">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 </Project>

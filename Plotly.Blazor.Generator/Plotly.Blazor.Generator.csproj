@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Stubble.Core" />
@@ -35,7 +35,7 @@
 
     <!-- Plotly Files-->
     <ItemGroup>
-        <None Include="..\Plotly.Blazor\wwwroot\plotly-basic-3.0.0.min.js" Link="src\wwwroot\plotly-basic-3.0.0.min.js" >
+        <None Include="..\Plotly.Blazor\wwwroot\plotly-basic-3.0.0.min.js" Link="src\wwwroot\plotly-basic-3.0.0.min.js">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-6.0.0.js" Link="src\wwwroot\plotly-interop-6.0.0.js">
@@ -44,7 +44,7 @@
         <None Include="..\Plotly.Blazor\_Imports.razor" Link="src\_Imports.razor">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\ArrayAttribute.cs" Link="src\ArrayAttribute.cs" >
+        <None Include="..\Plotly.Blazor\ArrayAttribute.cs" Link="src\ArrayAttribute.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\ChartDefinition.cs" Link="src\ChartDefinition.cs">
@@ -53,7 +53,7 @@
         <None Include="..\Plotly.Blazor\DateTimeConverter.cs" Link="src\DateTimeConverter.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\EnumConverter.cs" Link="src\EnumConverter.cs" >
+        <None Include="..\Plotly.Blazor\EnumConverter.cs" Link="src\EnumConverter.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\Extensions.cs" Link="src\Extensions.cs">
@@ -65,32 +65,41 @@
         <None Include="..\Plotly.Blazor\Interop\EventDataPoint.cs" Link="src\Interop\EventDataPoint.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\Interop\RelayoutEventData.cs" Link="src\Interop\RelayoutEventData.cs" >
+        <None Include="..\Plotly.Blazor\Interop\RelayoutEventData.cs" Link="src\Interop\RelayoutEventData.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\Interop\RestyleEventData.cs" Link="src\Interop\RestyleEventData.cs" >
+        <None Include="..\Plotly.Blazor\Interop\RestyleEventData.cs" Link="src\Interop\RestyleEventData.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\ObjectTypeResolverConverter.cs" Link="src\ObjectTypeResolverConverter.cs" >
+        <None Include="..\Plotly.Blazor\ObjectTypeResolverConverter.cs" Link="src\ObjectTypeResolverConverter.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\PlotlyChart.razor" Link="src\PlotlyChart.razor">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\PlotlyChart.razor.cs" Link="src\PlotlyChart.razor.cs" >
+        <None Include="..\Plotly.Blazor\PlotlyChart.razor.cs" Link="src\PlotlyChart.razor.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\PlotlyConverter.cs" Link="src\PlotlyConverter.cs" >
+        <None Include="..\Plotly.Blazor\PlotlyConverter.cs" Link="src\PlotlyConverter.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\PlotlyJsInterop.cs" Link="src\PlotlyJsInterop.cs" >
+        <None Include="..\Plotly.Blazor\PlotlyJsInterop.cs" Link="src\PlotlyJsInterop.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\PolymorphicConverter.cs" Link="src\PolymorphicConverter.cs" >
+        <None Include="..\Plotly.Blazor\PolymorphicConverter.cs" Link="src\PolymorphicConverter.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\SubplotAttribute.cs" Link="src\SubplotAttribute.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageVersion Update="GitVersion.MsBuild" Version="6.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Update="GitVersion.MsBuild">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 </Project>

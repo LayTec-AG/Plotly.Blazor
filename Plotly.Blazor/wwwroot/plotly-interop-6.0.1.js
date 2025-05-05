@@ -30,6 +30,7 @@ export async function importScript(id, scriptUrl) {
             scriptCache.set(id, scriptUrl);
             plotlyReady = true;
             plotlyReadyCallbacks.forEach(callback => callback());
+            plotlyReadyCallbacks.length = 0;
             resolve();
         };
         script.onerror = (error) => {

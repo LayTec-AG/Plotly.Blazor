@@ -38,7 +38,7 @@
         <None Include="..\Plotly.Blazor\wwwroot\plotly-basic-3.0.0.min.js" Link="src\wwwroot\plotly-basic-3.0.0.min.js">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-6.0.0.js" Link="src\wwwroot\plotly-interop-6.0.0.js">
+        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-6.0.1.js" Link="src\wwwroot\plotly-interop-6.0.1.js">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\_Imports.razor" Link="src\_Imports.razor">

@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    if: ${{ github.event_name == 'push' }}
+    permissions: write-all
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ env.RELEASE_VERSION }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.2.0
+        with:
+          node-version: "lts/*"
+
+      - name: Install Semantic Release Plugins
+        run: npm i @semantic-release/changelog @semantic-release/exec -D
+
+      - name: Run Semantic Release
+        id: semver
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx semantic-release
+
+  build-and-publish:
+    needs: release
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_VERSION: ${{ needs.release.outputs.version }}
+    steps:
+      - name: Determine release version
+        run: |
+          if [[ ${{ github.event_name }} == "workflow_dispatch" ]]; then
+            echo "This workflow was manually called, set version to 0.0.0-githash"
+            echo "RELEASE_VERSION=$(echo 0.0.0-${{ github.sha }})" >> "$GITHUB_ENV"
+          fi
+
+      - name: Print version
+        run: echo "VERSION=${{ env.RELEASE_VERSION }}"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Pack NuGet package
+        run: |
+          dotnet pack -p:PackageVersion=${{ env.RELEASE_VERSION }} -c Release -o ./out
+
+      - name: Publish NuGet package
+        run: |
+          dotnet nuget push out/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/Keiron-Printing-Technologies/index.json
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.RELEASE_VERSION }}
+          files: |
+            out/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

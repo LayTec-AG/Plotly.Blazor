@@ -1,29 +1,36 @@
 name: Build
+
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main # Default release branch
-      - develop
-      - 'releases/**'
-    paths:
-      - 'Plotly.Blazor/**' 
+  pull_request:
+    branches: [ "master" ]
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    permissions: write-all
+    env:
+      SOLUTION_FILE: "Plotly.Blazor.sln"
+      
+    runs-on: [ self-hosted, linux, x64 ]
+  
     steps:
     - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
+      env:
+        DOTNET_INSTALL_DIR: "./.dotnet"
       with:
         dotnet-version: | 
           6.0.x
           7.0.x
           8.0.x
           9.0.x
+          
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.SOLUTION_FILE }}
+      
     - name: Build with .NET
-      run: dotnet build --configuration Release
+      run: dotnet build --no-restore --configuration Release ${{ env.SOLUTION_FILE }}
+      
     - name: Test with .NET
-      run: dotnet test
+      run: dotnet test ${{ env.SOLUTION_FILE }}

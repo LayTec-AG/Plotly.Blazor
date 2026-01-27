@@ -10,17 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-       - uses: actions/checkout@v4
+       - uses: actions/checkout@v6
          with:
           fetch-depth: 0
        - name: Setup .NET
-         uses: actions/setup-dotnet@v4
+         uses: actions/setup-dotnet@v5
          with:
           dotnet-version: | 
-           6.0.x
-           7.0.x
            8.0.x
            9.0.x
+           10.0.x
        - name: Build with .NET
          run: dotnet build --configuration Release
        - name: Test with .NET
@@ -29,17 +28,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: | 
-           6.0.x
-           7.0.x
            8.0.x
            9.0.x
+           10.0.x
       - name: Pack nuget package
         run: dotnet pack ./Plotly.Blazor/Plotly.Blazor.csproj --configuration Release /p:ContinuousIntegrationBuild=true
         env:

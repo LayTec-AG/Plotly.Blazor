@@ -10,7 +10,7 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
 {
     /// <summary>
     ///     If <c>normal</c>, the range is computed in relation to the extrema of the
-    ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
+    ///     input data. If <c>tozero</c>, the range extends to 0, regardless of the
     ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
     ///     of the input data.
     /// </summary>

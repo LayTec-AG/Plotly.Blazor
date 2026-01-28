@@ -83,6 +83,29 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
         public Plotly.Blazor.Traces.SunburstLib.MarkerLib.PatternLib.FillModeEnum? FillMode { get; set;} 
 
         /// <summary>
+        ///     Sets a custom path for pattern fill. Use with no <c>shape</c> or <c>solidity</c>,
+        ///     provide an SVG path string for the regions of the square from (0,0) to (<c>size</c>,<c>size</c>)
+        ///     to color.
+        /// </summary>
+        [JsonPropertyName(@"path")]
+        public string Path { get; set;} 
+
+        /// <summary>
+        ///     Sets a custom path for pattern fill. Use with no <c>shape</c> or <c>solidity</c>,
+        ///     provide an SVG path string for the regions of the square from (0,0) to (<c>size</c>,<c>size</c>)
+        ///     to color.
+        /// </summary>
+        [JsonPropertyName(@"path")]
+        [Array]
+        public IList<string> PathArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>path</c>.
+        /// </summary>
+        [JsonPropertyName(@"pathsrc")]
+        public string PathSrc { get; set;} 
+
+        /// <summary>
         ///     Sets the shape of the pattern fill. By default, no pattern is used for filling
         ///     the area.
         /// </summary>
@@ -205,6 +228,21 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
                     FillMode.Equals(other.FillMode)
                 ) && 
                 (
+                    Path == other.Path ||
+                    Path != null &&
+                    Path.Equals(other.Path)
+                ) && 
+                (
+                    Equals(PathArray, other.PathArray) ||
+                    PathArray != null && other.PathArray != null &&
+                    PathArray.SequenceEqual(other.PathArray)
+                ) &&
+                (
+                    PathSrc == other.PathSrc ||
+                    PathSrc != null &&
+                    PathSrc.Equals(other.PathSrc)
+                ) && 
+                (
                     Shape == other.Shape ||
                     Shape != null &&
                     Shape.Equals(other.Shape)
@@ -265,6 +303,9 @@ namespace Plotly.Blazor.Traces.SunburstLib.MarkerLib
                 if (FgColorSrc != null) hashCode = hashCode * 59 + FgColorSrc.GetHashCode();
                 if (FgOpacity != null) hashCode = hashCode * 59 + FgOpacity.GetHashCode();
                 if (FillMode != null) hashCode = hashCode * 59 + FillMode.GetHashCode();
+                if (Path != null) hashCode = hashCode * 59 + Path.GetHashCode();
+                if (PathArray != null) hashCode = hashCode * 59 + PathArray.GetHashCode();
+                if (PathSrc != null) hashCode = hashCode * 59 + PathSrc.GetHashCode();
                 if (Shape != null) hashCode = hashCode * 59 + Shape.GetHashCode();
                 if (ShapeArray != null) hashCode = hashCode * 59 + ShapeArray.GetHashCode();
                 if (ShapeSrc != null) hashCode = hashCode * 59 + ShapeSrc.GetHashCode();

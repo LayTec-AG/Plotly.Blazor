@@ -58,6 +58,13 @@ namespace Plotly.Blazor.LayoutLib
         [JsonPropertyName(@"namelength")]
         public int? NameLength { get; set;} 
 
+        /// <summary>
+        ///     Sets whether or not to show the hover label arrow/triangle pointing to the
+        ///     data point.
+        /// </summary>
+        [JsonPropertyName(@"showarrow")]
+        public bool? ShowArrow { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -102,6 +109,11 @@ namespace Plotly.Blazor.LayoutLib
                     NameLength == other.NameLength ||
                     NameLength != null &&
                     NameLength.Equals(other.NameLength)
+                ) && 
+                (
+                    ShowArrow == other.ShowArrow ||
+                    ShowArrow != null &&
+                    ShowArrow.Equals(other.ShowArrow)
                 );
         }
 
@@ -117,6 +129,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (Font != null) hashCode = hashCode * 59 + Font.GetHashCode();
                 if (GroupTitleFont != null) hashCode = hashCode * 59 + GroupTitleFont.GetHashCode();
                 if (NameLength != null) hashCode = hashCode * 59 + NameLength.GetHashCode();
+                if (ShowArrow != null) hashCode = hashCode * 59 + ShowArrow.GetHashCode();
                 return hashCode;
             }
         }

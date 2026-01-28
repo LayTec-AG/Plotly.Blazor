@@ -78,8 +78,8 @@ namespace Plotly.Blazor.Traces.ScatterGlLib
         public int? TraceRefMinus { get; set;} 
 
         /// <summary>
-        ///     Determines the rule used to generate the error bars. If *constant`, the
-        ///     bar lengths are of a constant value. Set this constant in <c>value</c>.
+        ///     Determines the rule used to generate the error bars. If <c>constant</c>,
+        ///     the bar lengths are of a constant value. Set this constant in <c>value</c>.
         ///     If <c>percent</c>, the bar lengths correspond to a percentage of underlying
         ///     data. Set this percentage in <c>value</c>. If <c>sqrt</c>, the bar lengths
         ///     correspond to the square of the underlying data. If <c>data</c>, the bar

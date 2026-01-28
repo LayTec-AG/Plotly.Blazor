@@ -101,7 +101,12 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         ///     Determines a formatting rule for the tick exponents. For example, consider
         ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
         ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
-        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B. <c>SI</c> uses prefixes
+        ///     from <c>femto</c> f (10^-15) to <c>tera</c> T (10^12). &#39;SI extended&#39;
+        ///     covers instead the full SI range from <c>quecto</c> q (10^-30) to <c>quetta</c>
+        ///     Q (10^30). If <c>SI</c> or &#39;SI extended&#39; is used and the exponent
+        ///     is beyond the above ranges, the formatting rule will automatically be switched
+        ///     to the power notation.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
         public Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
@@ -179,6 +184,14 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
         /// </summary>
         [JsonPropertyName(@"minexponent")]
         public decimal? MinExponent { get; set;} 
+
+        /// <summary>
+        ///     Determines how minor log labels are displayed. If &#39;small digits&#39;,
+        ///     small digits i.e. 2 or 5 are displayed. If <c>complete</c>, complete digits
+        ///     are displayed. If <c>none</c>, no labels are displayed.
+        /// </summary>
+        [JsonPropertyName(@"minorloglabels")]
+        public Plotly.Blazor.LayoutLib.PolarLib.AngularAxisLib.MinorLogLabelsEnum? MinorLogLabels { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -514,6 +527,11 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                     MinExponent.Equals(other.MinExponent)
                 ) && 
                 (
+                    MinorLogLabels == other.MinorLogLabels ||
+                    MinorLogLabels != null &&
+                    MinorLogLabels.Equals(other.MinorLogLabels)
+                ) && 
+                (
                     NTicks == other.NTicks ||
                     NTicks != null &&
                     NTicks.Equals(other.NTicks)
@@ -693,6 +711,7 @@ namespace Plotly.Blazor.LayoutLib.PolarLib
                 if (LineColor != null) hashCode = hashCode * 59 + LineColor.GetHashCode();
                 if (LineWidth != null) hashCode = hashCode * 59 + LineWidth.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
+                if (MinorLogLabels != null) hashCode = hashCode * 59 + MinorLogLabels.GetHashCode();
                 if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
                 if (Period != null) hashCode = hashCode * 59 + Period.GetHashCode();
                 if (Rotation != null) hashCode = hashCode * 59 + Rotation.GetHashCode();

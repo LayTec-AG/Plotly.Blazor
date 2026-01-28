@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.LegendLib
 {
     /// <summary>
-    ///     Sets the legend&#39;s vertical position anchor This anchor binds the <c>y</c>
+    ///     Sets the legend&#39;s vertical position anchor. This anchor binds the <c>y</c>
     ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the legend.
     ///     Value <c>auto</c> anchors legends at their bottom for <c>y</c> values less
     ///     than or equal to 1/3, anchors legends to at their top for <c>y</c> values

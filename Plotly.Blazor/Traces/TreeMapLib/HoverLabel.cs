@@ -112,6 +112,13 @@ namespace Plotly.Blazor.Traces.TreeMapLib
         [JsonPropertyName(@"namelengthsrc")]
         public string NameLengthSrc { get; set;} 
 
+        /// <summary>
+        ///     Sets whether or not to show the hover label arrow/triangle pointing to the
+        ///     data point.
+        /// </summary>
+        [JsonPropertyName(@"showarrow")]
+        public bool? ShowArrow { get; set;} 
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
@@ -191,6 +198,11 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                     NameLengthSrc == other.NameLengthSrc ||
                     NameLengthSrc != null &&
                     NameLengthSrc.Equals(other.NameLengthSrc)
+                ) && 
+                (
+                    ShowArrow == other.ShowArrow ||
+                    ShowArrow != null &&
+                    ShowArrow.Equals(other.ShowArrow)
                 );
         }
 
@@ -213,6 +225,7 @@ namespace Plotly.Blazor.Traces.TreeMapLib
                 if (NameLength != null) hashCode = hashCode * 59 + NameLength.GetHashCode();
                 if (NameLengthArray != null) hashCode = hashCode * 59 + NameLengthArray.GetHashCode();
                 if (NameLengthSrc != null) hashCode = hashCode * 59 + NameLengthSrc.GetHashCode();
+                if (ShowArrow != null) hashCode = hashCode * 59 + ShowArrow.GetHashCode();
                 return hashCode;
             }
         }

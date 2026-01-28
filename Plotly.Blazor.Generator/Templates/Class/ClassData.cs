@@ -10,7 +10,7 @@ namespace Plotly.Blazor.Generator.Templates.Class
     {
         private IEnumerable<string> description;
 
-        private IList<Property> properties = new List<Property>();
+        private IList<Property> properties = [];
 
         /// <summary>
         ///     Gets or sets the interface.

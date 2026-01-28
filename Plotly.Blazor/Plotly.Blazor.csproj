@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-        <RazorLangVersion>3.0</RazorLangVersion>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
         <Authors>sean-laytec</Authors>
         <Company>LayTec AG</Company>
         <RepositoryUrl>https://github.com/LayTec-AG/Plotly.Blazor.git</RepositoryUrl>
@@ -25,7 +24,6 @@
         <DocumentationFile>Plotly.Blazor.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.CSharp" />
         <PackageReference Include="Microsoft.AspNetCore.Components" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
     </ItemGroup>
@@ -33,14 +31,5 @@
         <Content Update="wwwroot\**\*.*">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-    </ItemGroup>
-    <ItemGroup>
-      <PackageVersion Update="GitVersion.MsBuild" Version="6.1.0" />
-    </ItemGroup>
-    <ItemGroup>
-      <PackageReference Update="GitVersion.MsBuild">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      </PackageReference>
     </ItemGroup>
 </Project>

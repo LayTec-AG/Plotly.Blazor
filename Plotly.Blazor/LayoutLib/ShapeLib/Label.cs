@@ -73,10 +73,22 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
         ///     datetimes, while all other variable values use values in ms. Finally, the
         ///     template string has access to variables <c>x0</c>, <c>x1</c>, <c>y0</c>,
         ///     <c>y1</c>, <c>slope</c>, <c>dx</c>, <c>dy</c>, <c>width</c>, <c>height</c>,
-        ///     <c>length</c>, <c>xcenter</c> and <c>ycenter</c>.
+        ///     <c>length</c>, <c>xcenter</c> and <c>ycenter</c>. Variables that can&#39;t
+        ///     be found will be replaced with the specifier. For example, a template of
+        ///     &quot;data: %{x}, %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot;
+        ///     if x is 1 and y is missing. Variables with an undefined value will be replaced
+        ///     with the fallback value.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         public string TextTemplate { get; set;} 
+
+        /// <summary>
+        ///     Fallback string that&#39;s displayed when a variable referenced in a template
+        ///     is missing. If the boolean value <c>false</c> is passed in, the specifier
+        ///     with the missing variable will be displayed.
+        /// </summary>
+        [JsonPropertyName(@"texttemplatefallback")]
+        public object TextTemplateFallback { get; set;} 
 
         /// <summary>
         ///     Sets the label&#39;s horizontal position anchor This anchor binds the specified
@@ -144,6 +156,11 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
                     TextTemplate.Equals(other.TextTemplate)
                 ) && 
                 (
+                    TextTemplateFallback == other.TextTemplateFallback ||
+                    TextTemplateFallback != null &&
+                    TextTemplateFallback.Equals(other.TextTemplateFallback)
+                ) && 
+                (
                     XAnchor == other.XAnchor ||
                     XAnchor != null &&
                     XAnchor.Equals(other.XAnchor)
@@ -167,6 +184,7 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
                 if (TextAngle != null) hashCode = hashCode * 59 + TextAngle.GetHashCode();
                 if (TextPosition != null) hashCode = hashCode * 59 + TextPosition.GetHashCode();
                 if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
+                if (TextTemplateFallback != null) hashCode = hashCode * 59 + TextTemplateFallback.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
                 return hashCode;

@@ -145,13 +145,16 @@ namespace Plotly.Blazor.Traces
         ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
-        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
-        ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
-        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
-        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
-        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        ///     on the date formatting syntax. Variables that can&#39;t be found will be
+        ///     replaced with the specifier. For example, a template of &quot;data: %{x},
+        ///     %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot; if x is 1
+        ///     and y is missing. Variables with an undefined value will be replaced with
+        ///     the fallback value. The variables available in <c>hovertemplate</c> are
+        ///     the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, all attributes that can be specified per-point (the ones that
+        ///     are &#39;arrayOk: true&#39;) are available.  Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;%{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
@@ -169,17 +172,28 @@ namespace Plotly.Blazor.Traces
         ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
-        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
-        ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
-        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
-        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
-        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        ///     on the date formatting syntax. Variables that can&#39;t be found will be
+        ///     replaced with the specifier. For example, a template of &quot;data: %{x},
+        ///     %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot; if x is 1
+        ///     and y is missing. Variables with an undefined value will be replaced with
+        ///     the fallback value. The variables available in <c>hovertemplate</c> are
+        ///     the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, all attributes that can be specified per-point (the ones that
+        ///     are &#39;arrayOk: true&#39;) are available.  Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;%{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         [Array]
         public IList<string> HoverTemplateArray { get; set;} 
+
+        /// <summary>
+        ///     Fallback string that&#39;s displayed when a variable referenced in a template
+        ///     is missing. If the boolean value <c>false</c> is passed in, the specifier
+        ///     with the missing variable will be displayed.
+        /// </summary>
+        [JsonPropertyName(@"hovertemplatefallback")]
+        public object HoverTemplateFallback { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
@@ -261,11 +275,13 @@ namespace Plotly.Blazor.Traces
         public decimal? LegendWidth { get; set;} 
 
         /// <summary>
-        ///     Determines the set of locations used to match entries in <c>locations</c>
-        ///     to regions on the map. Values <c>ISO-3</c>, <c>USA-states</c>, &#39;country
-        ///     names&#39; correspond to features on the base map and value <c>geojson-id</c>
-        ///     corresponds to features from a custom GeoJSON linked to the <c>geojson</c>
-        ///     attribute.
+        ///     The library used by the &#39;country names&#39; <c>locationmode</c> option
+        ///     is changing in an upcoming version. Country names in existing plots may
+        ///     not work in the new version. Determines the set of locations used to match
+        ///     entries in <c>locations</c> to regions on the map. Values <c>ISO-3</c>,
+        ///     <c>USA-states</c>, &#39;country names&#39; correspond to features on the
+        ///     base map and value <c>geojson-id</c> corresponds to features from a custom
+        ///     GeoJSON linked to the <c>geojson</c> attribute.
         /// </summary>
         [JsonPropertyName(@"locationmode")]
         public Plotly.Blazor.Traces.ChoroplethLib.LocationModeEnum? LocationMode { get; set;} 
@@ -569,6 +585,11 @@ namespace Plotly.Blazor.Traces
                     HoverTemplateArray.SequenceEqual(other.HoverTemplateArray)
                 ) &&
                 (
+                    HoverTemplateFallback == other.HoverTemplateFallback ||
+                    HoverTemplateFallback != null &&
+                    HoverTemplateFallback.Equals(other.HoverTemplateFallback)
+                ) && 
+                (
                     HoverTemplateSrc == other.HoverTemplateSrc ||
                     HoverTemplateSrc != null &&
                     HoverTemplateSrc.Equals(other.HoverTemplateSrc)
@@ -782,6 +803,7 @@ namespace Plotly.Blazor.Traces
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
                 if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
                 if (HoverTemplateArray != null) hashCode = hashCode * 59 + HoverTemplateArray.GetHashCode();
+                if (HoverTemplateFallback != null) hashCode = hashCode * 59 + HoverTemplateFallback.GetHashCode();
                 if (HoverTemplateSrc != null) hashCode = hashCode * 59 + HoverTemplateSrc.GetHashCode();
                 if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
                 if (HoverTextArray != null) hashCode = hashCode * 59 + HoverTextArray.GetHashCode();

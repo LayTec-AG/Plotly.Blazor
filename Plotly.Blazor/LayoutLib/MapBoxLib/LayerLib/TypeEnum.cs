@@ -15,8 +15,8 @@ namespace Plotly.Blazor.LayoutLib.MapBoxLib.LayerLib
     ///     but note that <c>line</c> and <c>fill</c> are not compatible with Point
     ///     GeoJSON geometries. With <c>sourcetype</c> set to <c>vector</c>, the following
     ///     values are allowed:  <c>circle</c>, <c>line</c>, <c>fill</c> and <c>symbol</c>.
-    ///     With <c>sourcetype</c> set to <c>raster</c> or <c><c>image</c></c>, only
-    ///     the <c>raster</c> value is allowed.
+    ///     With <c>sourcetype</c> set to <c>raster</c> or <c>image</c>, only the <c>raster</c>
+    ///     value is allowed.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]

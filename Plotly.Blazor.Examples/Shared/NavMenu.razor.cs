@@ -30,8 +30,8 @@ namespace Plotly.Blazor.Examples.Shared
             public string Title { get; set; }
         }
 
-        private List<PageInfo> pageInfos = new()
-        {
+        private List<PageInfo> pageInfos =
+        [
             new() { Page = "", Title = "Scatter"},
             new() { Page = "scatter-3d", Title = "Scatter3D" },
             new() { Page = "scatter-update", Title = "Scatter Update"},
@@ -59,7 +59,7 @@ namespace Plotly.Blazor.Examples.Shared
             new() { Page = "legendclick", Title = "Legend Click Event" },
             new() { Page = "relayout", Title = "Relayout & Restyle Event" },
             new() { Page = "selected", Title = "Selected Event" }
-        };
+        ];
 
         private void OpenOrCloseDrawer()
         {

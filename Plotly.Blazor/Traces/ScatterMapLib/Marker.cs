@@ -227,7 +227,7 @@ namespace Plotly.Blazor.Traces.ScatterMapLib
         public string SizeSrc { get; set;} 
 
         /// <summary>
-        ///     Sets the marker symbol. Full list: https://www.map.com/maki-icons/ Note
+        ///     Sets the marker symbol. Full list: https://www.mapbox.com/maki-icons/ Note
         ///     that the array <c>marker.color</c> and <c>marker.size</c> are only available
         ///     for <c>circle</c> symbols.
         /// </summary>
@@ -235,7 +235,7 @@ namespace Plotly.Blazor.Traces.ScatterMapLib
         public string Symbol { get; set;} 
 
         /// <summary>
-        ///     Sets the marker symbol. Full list: https://www.map.com/maki-icons/ Note
+        ///     Sets the marker symbol. Full list: https://www.mapbox.com/maki-icons/ Note
         ///     that the array <c>marker.color</c> and <c>marker.size</c> are only available
         ///     for <c>circle</c> symbols.
         /// </summary>

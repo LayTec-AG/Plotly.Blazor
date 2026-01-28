@@ -9,11 +9,13 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.ScatterGeoLib
 {
     /// <summary>
-    ///     Determines the set of locations used to match entries in <c>locations</c>
-    ///     to regions on the map. Values <c>ISO-3</c>, <c>USA-states</c>, &#39;country
-    ///     names&#39; correspond to features on the base map and value <c>geojson-id</c>
-    ///     corresponds to features from a custom GeoJSON linked to the <c>geojson</c>
-    ///     attribute.
+    ///     The library used by the &#39;country names&#39; <c>locationmode</c> option
+    ///     is changing in an upcoming version. Country names in existing plots may
+    ///     not work in the new version. Determines the set of locations used to match
+    ///     entries in <c>locations</c> to regions on the map. Values <c>ISO-3</c>,
+    ///     <c>USA-states</c>, &#39;country names&#39; correspond to features on the
+    ///     base map and value <c>geojson-id</c> corresponds to features from a custom
+    ///     GeoJSON linked to the <c>geojson</c> attribute.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]

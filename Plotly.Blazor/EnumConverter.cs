@@ -120,8 +120,8 @@ namespace Plotly.Blazor
             var builtInNames = enumType.GetEnumNames();
             var builtInValues = enumType.GetEnumValues();
 
-            rawToTransformed = new Dictionary<ulong, EnumInfo>();
-            transformedToRaw = new Dictionary<string, EnumInfo>();
+            rawToTransformed = [];
+            transformedToRaw = [];
 
             for (var i = 0; i < builtInNames.Length; i++)
             {

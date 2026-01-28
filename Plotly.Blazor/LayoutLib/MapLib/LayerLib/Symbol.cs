@@ -18,7 +18,7 @@ namespace Plotly.Blazor.LayoutLib.MapLib.LayerLib
     public class Symbol : IEquatable<Symbol>
     {
         /// <summary>
-        ///     Sets the symbol icon image (map.layer.layout.icon-image). Full list: https://www.map.com/maki-icons/
+        ///     Sets the symbol icon image (map.layer.layout.icon-image). Full list: https://www.mapbox.com/maki-icons/
         /// </summary>
         [JsonPropertyName(@"icon")]
         public string Icon { get; set;} 

@@ -16,7 +16,7 @@ namespace Plotly.Blazor.Generator
         /// Gets or sets the unknown words, found while using the dictionary.
         /// </summary>
         /// <value>The unknown words.</value>
-        public static List<string> UnknownWords { get; set; } = new List<string>();
+        public static List<string> UnknownWords { get; set; } = [];
 
         /// <summary>
         /// Dictionary to customize the pascal casing for specific words.
@@ -64,9 +64,9 @@ namespace Plotly.Blazor.Generator
             var suggestion = input;
 
             // Check for custom dictionary!
-            if (CustomWords.ContainsKey(input))
+            if (CustomWords.TryGetValue(input, out var word))
             {
-                suggestion = CustomWords[input];
+                suggestion = word;
             }
 
             // Suggest something new if a spell check failed and no uppercase chars are included
@@ -274,6 +274,8 @@ namespace Plotly.Blazor.Generator
                 .Aggregate(@".\src\".ReplaceDirectorySeparatorChar(), (s1, s2) => $"{s1}\\{s2}".ReplaceDirectorySeparatorChar());
         }
 
+        private static readonly JsonSerializerOptions Options = new() { PropertyNameCaseInsensitive = true };
+
         /// <summary>
         ///     Converts a JsonElement to an object.
         /// </summary>
@@ -283,7 +285,7 @@ namespace Plotly.Blazor.Generator
         public static T ToObject<T>(this JsonElement element)
         {
             var json = element.GetRawText();
-            return JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<T>(json, Options);
         }
 
         /// <summary>

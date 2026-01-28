@@ -95,11 +95,11 @@ namespace Plotly.Blazor.Traces.Histogram2DContourLib
 
         /// <summary>
         ///     Sets the value or values of the constraint boundary. When <c>operation</c>
-        ///     is set to one of the comparison values (=,&lt;,&gt;=,&gt;,&lt;=) <c>value</c>
-        ///     is expected to be a number. When <c>operation</c> is set to one of the interval
-        ///     values ([],(),[),(],][,)(,](,)[) <c>value</c> is expected to be an array
-        ///     of two numbers where the first is the lower bound and the second is the
-        ///     upper bound.
+        ///     is set to one of the comparison values (<c>=,&lt;,&gt;=,&gt;,&lt;=</c>)
+        ///     <c>value</c> is expected to be a number. When <c>operation</c> is set to
+        ///     one of the interval values (<c>[],(),[),(],][,)(,](,)[</c>) <c>value</c>
+        ///     is expected to be an array of two numbers where the first is the lower bound
+        ///     and the second is the upper bound.
         /// </summary>
         [JsonPropertyName(@"value")]
         public object Value { get; set;} 

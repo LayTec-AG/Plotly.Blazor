@@ -113,7 +113,16 @@ namespace Plotly.Blazor.Traces.CandlestickLib
         public string NameLengthSrc { get; set;} 
 
         /// <summary>
-        ///     Show hover information (open, close, high, low) in separate labels.
+        ///     Sets whether or not to show the hover label arrow/triangle pointing to the
+        ///     data point.
+        /// </summary>
+        [JsonPropertyName(@"showarrow")]
+        public bool? ShowArrow { get; set;} 
+
+        /// <summary>
+        ///     Show hover information (open, close, high, low) in separate labels, rather
+        ///     than a single unified label. Default: <c>false</c>. When set to <c>true</c>,
+        ///     <c>hovertemplate</c> is ignored.
         /// </summary>
         [JsonPropertyName(@"split")]
         public bool? Split { get; set;} 
@@ -199,6 +208,11 @@ namespace Plotly.Blazor.Traces.CandlestickLib
                     NameLengthSrc.Equals(other.NameLengthSrc)
                 ) && 
                 (
+                    ShowArrow == other.ShowArrow ||
+                    ShowArrow != null &&
+                    ShowArrow.Equals(other.ShowArrow)
+                ) && 
+                (
                     Split == other.Split ||
                     Split != null &&
                     Split.Equals(other.Split)
@@ -224,6 +238,7 @@ namespace Plotly.Blazor.Traces.CandlestickLib
                 if (NameLength != null) hashCode = hashCode * 59 + NameLength.GetHashCode();
                 if (NameLengthArray != null) hashCode = hashCode * 59 + NameLengthArray.GetHashCode();
                 if (NameLengthSrc != null) hashCode = hashCode * 59 + NameLengthSrc.GetHashCode();
+                if (ShowArrow != null) hashCode = hashCode * 59 + ShowArrow.GetHashCode();
                 if (Split != null) hashCode = hashCode * 59 + Split.GetHashCode();
                 return hashCode;
             }

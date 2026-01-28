@@ -110,6 +110,19 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? ItemWidth { get; set;} 
 
         /// <summary>
+        ///     Sets the max height (in px) of the legend, or max height ratio (reference
+        ///     height * ratio) if less than or equal to 1. Default value is: 0.5 for horizontal
+        ///     legends; 1 for vertical legends. The minimum allowed height is 30px. For
+        ///     a ratio of 0.5, the legend will take up to 50% of the reference height before
+        ///     displaying a scrollbar. The reference height is the full layout height with
+        ///     the following exception: vertically oriented legends with a <c>yref</c>
+        ///     of `<c>paper</c>, located to the side of the plot. In this case, the reference
+        ///     height is the plot height.
+        /// </summary>
+        [JsonPropertyName(@"maxheight")]
+        public decimal? MaxHeight { get; set;} 
+
+        /// <summary>
         ///     Sets the orientation of the legend.
         /// </summary>
         [JsonPropertyName(@"orientation")]
@@ -203,7 +216,7 @@ namespace Plotly.Blazor.LayoutLib
         public decimal? Y { get; set;} 
 
         /// <summary>
-        ///     Sets the legend&#39;s vertical position anchor This anchor binds the <c>y</c>
+        ///     Sets the legend&#39;s vertical position anchor. This anchor binds the <c>y</c>
         ///     position to the <c>top</c>, <c>middle</c> or <c>bottom</c> of the legend.
         ///     Value <c>auto</c> anchors legends at their bottom for <c>y</c> values less
         ///     than or equal to 1/3, anchors legends to at their top for <c>y</c> values
@@ -302,6 +315,11 @@ namespace Plotly.Blazor.LayoutLib
                     ItemWidth.Equals(other.ItemWidth)
                 ) && 
                 (
+                    MaxHeight == other.MaxHeight ||
+                    MaxHeight != null &&
+                    MaxHeight.Equals(other.MaxHeight)
+                ) && 
+                (
                     Orientation == other.Orientation ||
                     Orientation != null &&
                     Orientation.Equals(other.Orientation)
@@ -387,6 +405,7 @@ namespace Plotly.Blazor.LayoutLib
                 if (ItemDoubleClick != null) hashCode = hashCode * 59 + ItemDoubleClick.GetHashCode();
                 if (ItemSizing != null) hashCode = hashCode * 59 + ItemSizing.GetHashCode();
                 if (ItemWidth != null) hashCode = hashCode * 59 + ItemWidth.GetHashCode();
+                if (MaxHeight != null) hashCode = hashCode * 59 + MaxHeight.GetHashCode();
                 if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
                 if (TraceGroupGap != null) hashCode = hashCode * 59 + TraceGroupGap.GetHashCode();

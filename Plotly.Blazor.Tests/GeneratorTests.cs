@@ -20,12 +20,12 @@ namespace Plotly.Blazor.Tests
                 ClipOnAxis = true,
                 DX = new decimal(1.23),
                 Fill = FillEnum.ToNext,
-                HoverTemplateArray = new List<string> {"123", "456"},
+                HoverTemplateArray = ["123", "456"],
                 CustomDataSrc = "123",
                 ErrorX = new ErrorX
                 {
                     CopyYStyle = true,
-                    Array = new List<object>(),
+                    Array = [],
                     Type = TypeEnum.Constant
                 }
             };
@@ -35,12 +35,12 @@ namespace Plotly.Blazor.Tests
                 ClipOnAxis = true,
                 DX = new decimal(1.23),
                 Fill = FillEnum.ToNext,
-                HoverTemplateArray = new List<string> {"123", "456"},
+                HoverTemplateArray = ["123", "456"],
                 CustomDataSrc = "123",
                 ErrorX = new ErrorX
                 {
                     CopyYStyle = true,
-                    Array = new List<object>(),
+                    Array = [],
                     Type = TypeEnum.Constant
                 }
             };
@@ -50,12 +50,12 @@ namespace Plotly.Blazor.Tests
                 ClipOnAxis = null,
                 DX = new decimal(1.23),
                 Fill = FillEnum.ToNext,
-                HoverTemplateArray = new List<string> {"123", "456"},
+                HoverTemplateArray = ["123", "456"],
                 CustomDataSrc = "123",
                 ErrorX = new ErrorX
                 {
                     CopyYStyle = true,
-                    Array = new List<object>(),
+                    Array = [],
                     Type = TypeEnum.Constant
                 }
             };

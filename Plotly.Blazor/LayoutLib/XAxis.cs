@@ -184,7 +184,12 @@ namespace Plotly.Blazor.LayoutLib
         ///     Determines a formatting rule for the tick exponents. For example, consider
         ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
         ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
-        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B. <c>SI</c> uses prefixes
+        ///     from <c>femto</c> f (10^-15) to <c>tera</c> T (10^12). &#39;SI extended&#39;
+        ///     covers instead the full SI range from <c>quecto</c> q (10^-30) to <c>quetta</c>
+        ///     Q (10^30). If <c>SI</c> or &#39;SI extended&#39; is used and the exponent
+        ///     is beyond the above ranges, the formatting rule will automatically be switched
+        ///     to the power notation.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
         public Plotly.Blazor.LayoutLib.XAxisLib.ExponentFormatEnum? ExponentFormat { get; set;} 
@@ -309,6 +314,14 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.Minor Minor { get; set;} 
 
         /// <summary>
+        ///     Determines how minor log labels are displayed. If &#39;small digits&#39;,
+        ///     small digits i.e. 2 or 5 are displayed. If <c>complete</c>, complete digits
+        ///     are displayed. If <c>none</c>, no labels are displayed.
+        /// </summary>
+        [JsonPropertyName(@"minorloglabels")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.MinorLogLabelsEnum? MinorLogLabels { get; set;} 
+
+        /// <summary>
         ///     Determines if the axis lines or/and ticks are mirrored to the opposite side
         ///     of the plotting area. If <c>true</c>, the axis lines are mirrored. If <c>ticks</c>,
         ///     the axis lines and ticks are mirrored. If <c>false</c>, mirroring is disable.
@@ -317,6 +330,14 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"mirror")]
         public Plotly.Blazor.LayoutLib.XAxisLib.MirrorEnum? Mirror { get; set;} 
+
+        /// <summary>
+        ///     Disables certain modebar buttons for this axis. <c>autoscale</c> disables
+        ///     the autoscale buttons, <c>zoominout</c> disables the zoom-in and zoom-out
+        ///     buttons.
+        /// </summary>
+        [JsonPropertyName(@"modebardisable")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ModeBarDisableFlag? ModeBarDisable { get; set;} 
 
         /// <summary>
         ///     Specifies the maximum number of ticks for the particular axis. The actual
@@ -363,7 +384,7 @@ namespace Plotly.Blazor.LayoutLib
 
         /// <summary>
         ///     If <c>normal</c>, the range is computed in relation to the extrema of the
-        ///     input data. If <c>tozero</c>`, the range extends to 0, regardless of the
+        ///     input data. If <c>tozero</c>, the range extends to 0, regardless of the
         ///     input data If <c>nonnegative</c>, the range is non-negative, regardless
         ///     of the input data. Applies only to linear axes.
         /// </summary>
@@ -623,13 +644,14 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelOverflowEnum? TickLabelOverflow { get; set;} 
 
         /// <summary>
-        ///     Determines where tick labels are drawn with respect to the axis Please note
-        ///     that top or bottom has no effect on x axes or when <c>ticklabelmode</c>
-        ///     is set to <c>period</c>. Similarly left or right has no effect on y axes
-        ///     or when <c>ticklabelmode</c> is set to <c>period</c>. Has no effect on <c>multicategory</c>
-        ///     axes or when <c>tickson</c> is set to <c>boundaries</c>. When used on axes
-        ///     linked by <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside
-        ///     labels would be added by autorange, so that the scales could match.
+        ///     Determines where tick labels are drawn with respect to the axis. Please
+        ///     note that top or bottom has no effect on x axes or when <c>ticklabelmode</c>
+        ///     is set to <c>period</c> or when <c>tickson</c> is set to <c>boundaries</c>.
+        ///     Similarly, left or right has no effect on y axes or when <c>ticklabelmode</c>
+        ///     is set to <c>period</c> or when <c>tickson</c> is set to <c>boundaries</c>.
+        ///     Has no effect on <c>multicategory</c> axes. When used on axes linked by
+        ///     <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside labels
+        ///     would be added by autorange, so that the scales could match.
         /// </summary>
         [JsonPropertyName(@"ticklabelposition")]
         public Plotly.Blazor.LayoutLib.XAxisLib.TickLabelPositionEnum? TickLabelPosition { get; set;} 
@@ -768,6 +790,12 @@ namespace Plotly.Blazor.LayoutLib
         public object UiRevision { get; set;} 
 
         /// <summary>
+        ///     Gets or sets the UnifiedHoverTitle.
+        /// </summary>
+        [JsonPropertyName(@"unifiedhovertitle")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.UnifiedHoverTitle UnifiedHoverTitle { get; set;} 
+
+        /// <summary>
         ///     A single toggle to hide the axis while preserving interaction like dragging.
         ///     Default is true when a cheater plot is present on the axis, otherwise false
         /// </summary>
@@ -786,6 +814,16 @@ namespace Plotly.Blazor.LayoutLib
         /// </summary>
         [JsonPropertyName(@"zerolinecolor")]
         public object ZeroLineColor { get; set;} 
+
+        /// <summary>
+        ///     Sets the layer on which this zeroline is displayed. If &#39;above traces&#39;,
+        ///     this zeroline is displayed above all the subplot&#39;s traces If &#39;below
+        ///     traces&#39;, this zeroline is displayed below all the subplot&#39;s traces,
+        ///     but above the grid lines. Limitation: <c>zerolinelayer</c> currently has
+        ///     no effect if the <c>zorder</c> property is set on any trace.
+        /// </summary>
+        [JsonPropertyName(@"zerolinelayer")]
+        public Plotly.Blazor.LayoutLib.XAxisLib.ZeroLineLayerEnum? ZeroLineLayer { get; set;} 
 
         /// <summary>
         ///     Sets the width (in px) of the zero line.
@@ -974,9 +1012,19 @@ namespace Plotly.Blazor.LayoutLib
                     Minor.Equals(other.Minor)
                 ) && 
                 (
+                    MinorLogLabels == other.MinorLogLabels ||
+                    MinorLogLabels != null &&
+                    MinorLogLabels.Equals(other.MinorLogLabels)
+                ) && 
+                (
                     Mirror == other.Mirror ||
                     Mirror != null &&
                     Mirror.Equals(other.Mirror)
+                ) && 
+                (
+                    ModeBarDisable == other.ModeBarDisable ||
+                    ModeBarDisable != null &&
+                    ModeBarDisable.Equals(other.ModeBarDisable)
                 ) && 
                 (
                     NTicks == other.NTicks ||
@@ -1249,6 +1297,11 @@ namespace Plotly.Blazor.LayoutLib
                     UiRevision.Equals(other.UiRevision)
                 ) && 
                 (
+                    UnifiedHoverTitle == other.UnifiedHoverTitle ||
+                    UnifiedHoverTitle != null &&
+                    UnifiedHoverTitle.Equals(other.UnifiedHoverTitle)
+                ) && 
+                (
                     Visible == other.Visible ||
                     Visible != null &&
                     Visible.Equals(other.Visible)
@@ -1262,6 +1315,11 @@ namespace Plotly.Blazor.LayoutLib
                     ZeroLineColor == other.ZeroLineColor ||
                     ZeroLineColor != null &&
                     ZeroLineColor.Equals(other.ZeroLineColor)
+                ) && 
+                (
+                    ZeroLineLayer == other.ZeroLineLayer ||
+                    ZeroLineLayer != null &&
+                    ZeroLineLayer.Equals(other.ZeroLineLayer)
                 ) && 
                 (
                     ZeroLineWidth == other.ZeroLineWidth ||
@@ -1309,7 +1367,9 @@ namespace Plotly.Blazor.LayoutLib
                 if (MinAllowed != null) hashCode = hashCode * 59 + MinAllowed.GetHashCode();
                 if (MinExponent != null) hashCode = hashCode * 59 + MinExponent.GetHashCode();
                 if (Minor != null) hashCode = hashCode * 59 + Minor.GetHashCode();
+                if (MinorLogLabels != null) hashCode = hashCode * 59 + MinorLogLabels.GetHashCode();
                 if (Mirror != null) hashCode = hashCode * 59 + Mirror.GetHashCode();
+                if (ModeBarDisable != null) hashCode = hashCode * 59 + ModeBarDisable.GetHashCode();
                 if (NTicks != null) hashCode = hashCode * 59 + NTicks.GetHashCode();
                 if (Overlaying != null) hashCode = hashCode * 59 + Overlaying.GetHashCode();
                 if (Position != null) hashCode = hashCode * 59 + Position.GetHashCode();
@@ -1364,9 +1424,11 @@ namespace Plotly.Blazor.LayoutLib
                 if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
                 if (Type != null) hashCode = hashCode * 59 + Type.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();
+                if (UnifiedHoverTitle != null) hashCode = hashCode * 59 + UnifiedHoverTitle.GetHashCode();
                 if (Visible != null) hashCode = hashCode * 59 + Visible.GetHashCode();
                 if (ZeroLine != null) hashCode = hashCode * 59 + ZeroLine.GetHashCode();
                 if (ZeroLineColor != null) hashCode = hashCode * 59 + ZeroLineColor.GetHashCode();
+                if (ZeroLineLayer != null) hashCode = hashCode * 59 + ZeroLineLayer.GetHashCode();
                 if (ZeroLineWidth != null) hashCode = hashCode * 59 + ZeroLineWidth.GetHashCode();
                 return hashCode;
             }

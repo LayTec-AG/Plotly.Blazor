@@ -137,13 +137,16 @@ namespace Plotly.Blazor.Traces
         ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
-        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
-        ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
-        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
-        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
-        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        ///     on the date formatting syntax. Variables that can&#39;t be found will be
+        ///     replaced with the specifier. For example, a template of &quot;data: %{x},
+        ///     %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot; if x is 1
+        ///     and y is missing. Variables with an undefined value will be replaced with
+        ///     the fallback value. The variables available in <c>hovertemplate</c> are
+        ///     the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, all attributes that can be specified per-point (the ones that
+        ///     are &#39;arrayOk: true&#39;) are available.  Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;%{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         public string HoverTemplate { get; set;} 
@@ -161,17 +164,28 @@ namespace Plotly.Blazor.Traces
         ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
         ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
-        ///     on the date formatting syntax. The variables available in <c>hovertemplate</c>
-        ///     are the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
-        ///     Additionally, every attributes that can be specified per-point (the ones
-        ///     that are &#39;arrayOk: true&#39;) are available.  Anything contained in
-        ///     tag <c>&lt;extra&gt;</c> is displayed in the secondary box, for example
-        ///     <c>&lt;extra&gt;{fullData.name}&lt;/extra&gt;</c>. To hide the secondary
-        ///     box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
+        ///     on the date formatting syntax. Variables that can&#39;t be found will be
+        ///     replaced with the specifier. For example, a template of &quot;data: %{x},
+        ///     %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot; if x is 1
+        ///     and y is missing. Variables with an undefined value will be replaced with
+        ///     the fallback value. The variables available in <c>hovertemplate</c> are
+        ///     the ones emitted as event data described at this link https://plotly.com/javascript/plotlyjs-events/#event-data.
+        ///     Additionally, all attributes that can be specified per-point (the ones that
+        ///     are &#39;arrayOk: true&#39;) are available.  Anything contained in tag <c>&lt;extra&gt;</c>
+        ///     is displayed in the secondary box, for example <c>&lt;extra&gt;%{fullData.name}&lt;/extra&gt;</c>.
+        ///     To hide the secondary box completely, use an empty tag <c>&lt;extra&gt;&lt;/extra&gt;</c>.
         /// </summary>
         [JsonPropertyName(@"hovertemplate")]
         [Array]
         public IList<string> HoverTemplateArray { get; set;} 
+
+        /// <summary>
+        ///     Fallback string that&#39;s displayed when a variable referenced in a template
+        ///     is missing. If the boolean value <c>false</c> is passed in, the specifier
+        ///     with the missing variable will be displayed.
+        /// </summary>
+        [JsonPropertyName(@"hovertemplatefallback")]
+        public object HoverTemplateFallback { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for <c>hovertemplate</c>.
@@ -438,37 +452,53 @@ namespace Plotly.Blazor.Traces
         public string TextSrc { get; set;} 
 
         /// <summary>
-        ///     Template string used for rendering the information text that appear on points.
-        ///     Note that this will override <c>textinfo</c>. Variables are inserted using
-        ///     %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted using
-        ///     d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price: %{y:$.2f}&quot;.
-        ///     https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the
-        ///     formatting syntax. Dates are formatted using d3-time-format&#39;s syntax
-        ///     %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     Template string used for rendering the information text that appears on
+        ///     points. Note that this will override <c>textinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
-        ///     on the date formatting syntax. Every attributes that can be specified per-point
-        ///     (the ones that are &#39;arrayOk: true&#39;) are available. Finally, the
-        ///     template string has access to variables <c>r</c>, <c>theta</c> and <c>text</c>.
+        ///     on the date formatting syntax. Variables that can&#39;t be found will be
+        ///     replaced with the specifier. For example, a template of &quot;data: %{x},
+        ///     %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot; if x is 1
+        ///     and y is missing. Variables with an undefined value will be replaced with
+        ///     the fallback value. All attributes that can be specified per-point (the
+        ///     ones that are &#39;arrayOk: true&#39;) are available. Finally, the template
+        ///     string has access to variables <c>r</c>, <c>theta</c> and <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         public string TextTemplate { get; set;} 
 
         /// <summary>
-        ///     Template string used for rendering the information text that appear on points.
-        ///     Note that this will override <c>textinfo</c>. Variables are inserted using
-        ///     %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted using
-        ///     d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price: %{y:$.2f}&quot;.
-        ///     https://github.com/d3/d3-format/tree/v1.4.5#d3-format for details on the
-        ///     formatting syntax. Dates are formatted using d3-time-format&#39;s syntax
-        ///     %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
+        ///     Template string used for rendering the information text that appears on
+        ///     points. Note that this will override <c>textinfo</c>. Variables are inserted
+        ///     using %{variable}, for example &quot;y: %{y}&quot;. Numbers are formatted
+        ///     using d3-format&#39;s syntax %{variable:d3-format}, for example &quot;Price:
+        ///     %{y:$.2f}&quot;. https://github.com/d3/d3-format/tree/v1.4.5#d3-format for
+        ///     details on the formatting syntax. Dates are formatted using d3-time-format&#39;s
+        ///     syntax %{variable|d3-time-format}, for example &quot;Day: %{2019-01-01|%A}&quot;.
         ///     https://github.com/d3/d3-time-format/tree/v2.2.3#locale_format for details
-        ///     on the date formatting syntax. Every attributes that can be specified per-point
-        ///     (the ones that are &#39;arrayOk: true&#39;) are available. Finally, the
-        ///     template string has access to variables <c>r</c>, <c>theta</c> and <c>text</c>.
+        ///     on the date formatting syntax. Variables that can&#39;t be found will be
+        ///     replaced with the specifier. For example, a template of &quot;data: %{x},
+        ///     %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot; if x is 1
+        ///     and y is missing. Variables with an undefined value will be replaced with
+        ///     the fallback value. All attributes that can be specified per-point (the
+        ///     ones that are &#39;arrayOk: true&#39;) are available. Finally, the template
+        ///     string has access to variables <c>r</c>, <c>theta</c> and <c>text</c>.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         [Array]
         public IList<string> TextTemplateArray { get; set;} 
+
+        /// <summary>
+        ///     Fallback string that&#39;s displayed when a variable referenced in a template
+        ///     is missing. If the boolean value <c>false</c> is passed in, the specifier
+        ///     with the missing variable will be displayed.
+        /// </summary>
+        [JsonPropertyName(@"texttemplatefallback")]
+        public object TextTemplateFallback { get; set;} 
 
         /// <summary>
         ///     Sets the source reference on Chart Studio Cloud for <c>texttemplate</c>.
@@ -636,6 +666,11 @@ namespace Plotly.Blazor.Traces
                     HoverTemplateArray != null && other.HoverTemplateArray != null &&
                     HoverTemplateArray.SequenceEqual(other.HoverTemplateArray)
                 ) &&
+                (
+                    HoverTemplateFallback == other.HoverTemplateFallback ||
+                    HoverTemplateFallback != null &&
+                    HoverTemplateFallback.Equals(other.HoverTemplateFallback)
+                ) && 
                 (
                     HoverTemplateSrc == other.HoverTemplateSrc ||
                     HoverTemplateSrc != null &&
@@ -817,6 +852,11 @@ namespace Plotly.Blazor.Traces
                     TextTemplateArray.SequenceEqual(other.TextTemplateArray)
                 ) &&
                 (
+                    TextTemplateFallback == other.TextTemplateFallback ||
+                    TextTemplateFallback != null &&
+                    TextTemplateFallback.Equals(other.TextTemplateFallback)
+                ) && 
+                (
                     TextTemplateSrc == other.TextTemplateSrc ||
                     TextTemplateSrc != null &&
                     TextTemplateSrc.Equals(other.TextTemplateSrc)
@@ -885,6 +925,7 @@ namespace Plotly.Blazor.Traces
                 if (HoverOn != null) hashCode = hashCode * 59 + HoverOn.GetHashCode();
                 if (HoverTemplate != null) hashCode = hashCode * 59 + HoverTemplate.GetHashCode();
                 if (HoverTemplateArray != null) hashCode = hashCode * 59 + HoverTemplateArray.GetHashCode();
+                if (HoverTemplateFallback != null) hashCode = hashCode * 59 + HoverTemplateFallback.GetHashCode();
                 if (HoverTemplateSrc != null) hashCode = hashCode * 59 + HoverTemplateSrc.GetHashCode();
                 if (HoverText != null) hashCode = hashCode * 59 + HoverText.GetHashCode();
                 if (HoverTextArray != null) hashCode = hashCode * 59 + HoverTextArray.GetHashCode();
@@ -921,6 +962,7 @@ namespace Plotly.Blazor.Traces
                 if (TextSrc != null) hashCode = hashCode * 59 + TextSrc.GetHashCode();
                 if (TextTemplate != null) hashCode = hashCode * 59 + TextTemplate.GetHashCode();
                 if (TextTemplateArray != null) hashCode = hashCode * 59 + TextTemplateArray.GetHashCode();
+                if (TextTemplateFallback != null) hashCode = hashCode * 59 + TextTemplateFallback.GetHashCode();
                 if (TextTemplateSrc != null) hashCode = hashCode * 59 + TextTemplateSrc.GetHashCode();
                 if (Theta != null) hashCode = hashCode * 59 + Theta.GetHashCode();
                 if (Theta0 != null) hashCode = hashCode * 59 + Theta0.GetHashCode();

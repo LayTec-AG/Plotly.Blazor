@@ -1,4 +1,12 @@
-﻿using System;
+﻿using Plotly.Blazor.Generator.Schema;
+using Plotly.Blazor.Generator.Templates;
+using Plotly.Blazor.Generator.Templates.Class;
+using Plotly.Blazor.Generator.Templates.Enumerated;
+using Plotly.Blazor.Generator.Templates.Flag;
+using Plotly.Blazor.Generator.Templates.Interface;
+using Stubble.Core;
+using Stubble.Core.Builders;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,14 +16,6 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Plotly.Blazor.Generator.Schema;
-using Plotly.Blazor.Generator.Templates;
-using Plotly.Blazor.Generator.Templates.Class;
-using Plotly.Blazor.Generator.Templates.Enumerated;
-using Plotly.Blazor.Generator.Templates.Flag;
-using Plotly.Blazor.Generator.Templates.Interface;
-using Stubble.Core;
-using Stubble.Core.Builders;
 using WeCantSpell.Hunspell;
 using FlagValue = Plotly.Blazor.Generator.Templates.Flag.FlagValue;
 
@@ -28,9 +28,13 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string VERSION = "3.0.0";
+        private const string VERSION = "3.3.1";
+
         private static string PLOTLY_FILE_NAME => $"plotly-{VERSION}.min.js";
+        private static string PLOTLY_BASIC_FILE_NAME => $"plotly-basic-{VERSION}.min.js";
+
         private static string PLOTLY_JS_URL => "https://cdn.plot.ly/" + PLOTLY_FILE_NAME;
+        private static string PLOTLY_BASIC_JS_URL => "https://cdn.plot.ly/" + PLOTLY_BASIC_FILE_NAME;
 
         private static SchemaRoot _schema;
         private static StubbleVisitorRenderer _stubble;
@@ -85,8 +89,8 @@ namespace Plotly.Blazor.Generator
 
             Directory.CreateDirectory(outputDir);
 
-            await File.WriteAllTextAsync($"{outputDir}\\{PLOTLY_FILE_NAME}",
-                await httpClient.GetStringAsync(PLOTLY_JS_URL));
+            await System.IO.File.WriteAllTextAsync($"{outputDir}\\{PLOTLY_FILE_NAME}", await httpClient.GetStringAsync(PLOTLY_JS_URL));
+            await System.IO.File.WriteAllTextAsync($"{outputDir}\\{PLOTLY_BASIC_FILE_NAME}", await httpClient.GetStringAsync(PLOTLY_BASIC_JS_URL));
 
             var serializerOptions = new JsonSerializerOptions
             {
@@ -187,8 +191,8 @@ namespace Plotly.Blazor.Generator
                 Name = "ITrace",
                 Namespace = $"{NAMESPACE}",
                 Description = new[] {"The trace interface."},
-                Properties = new List<Property>
-                {
+                Properties =
+                [
                     new Property
                     {
                         PropertyDescription = new[] {"The type of the trace."},
@@ -198,7 +202,7 @@ namespace Plotly.Blazor.Generator
                         IsReadOnly = true,
                         IsInherited = true
                     }
-                }
+                ]
             };
 
             Jobs.Add($"{interfaceData.Namespace}.{interfaceData.Name}", new Job(interfaceData));

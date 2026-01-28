@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.Traces.BoxLib
 {
     /// <summary>
-    ///     Do the hover effects highlight individual boxes  or sample points or both?
+    ///     Do the hover effects highlight individual boxes or sample points or both?
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [Flags]

@@ -51,7 +51,7 @@ namespace Plotly.Blazor.Tests
 
         [JsonPropertyName("testProperty3")]
         [Array]
-        public IList<string> TestProperty3Array => new List<string>();
+        public IList<string> TestProperty3Array => [];
 
         [JsonPropertyName("testProperty4")]
         public string TestProperty4 { get; set; }
@@ -203,7 +203,7 @@ namespace Plotly.Blazor.Tests
             var expected = new TestSubplotClass
             {
                 TestProperty = "Test",
-                TestProperty2Array = new List<string>() { "abc", null, "1.23", "true" }, //array version of Property2
+                TestProperty2Array = ["abc", null, "1.23", "true"], //array version of Property2
                 TestProperty3 = "Test3", //scalar version of Property3
                 Items = new []
                 {
@@ -304,9 +304,9 @@ namespace Plotly.Blazor.Tests
 			        ["PropertyA"] = "abc",
 			        ["PropertyB"] = true,
 		        },
-		        ParameterB = new List<object>()
-		        {
-			        new Dictionary<string, object>()
+		        ParameterB =
+                [
+                    new Dictionary<string, object>()
 			        {
 				        ["PropertyA"] = "def",
 				        ["PropertyB"] = 2,
@@ -316,7 +316,7 @@ namespace Plotly.Blazor.Tests
 				        ["PropertyA"] = "ghi",
 				        ["PropertyB"] = 1.23m,
 			        },
-		        }
+		        ]
 	        };
 
 	        var actualObject = JsonSerializer.Deserialize<ClassToTestObjectDeserialization>(json, options);
@@ -343,9 +343,9 @@ namespace Plotly.Blazor.Tests
 			        ["PropertyA"] = "abc",
 			        ["PropertyB"] = true,
 		        },
-		        ParameterB = new List<object>()
-		        {
-			        new Dictionary<string, object>()
+		        ParameterB =
+                [
+                    new Dictionary<string, object>()
 			        {
 				        ["PropertyA"] = "def",
 				        ["PropertyB"] = 2,
@@ -354,7 +354,7 @@ namespace Plotly.Blazor.Tests
 			        1.23m,
 			        "abc",
 			        true
-		        }
+		        ]
 	        };
 
 	        var actualObject = JsonSerializer.Deserialize<ClassToTestObjectDeserialization>(json, options);

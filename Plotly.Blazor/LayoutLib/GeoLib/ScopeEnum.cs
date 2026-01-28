@@ -19,12 +19,16 @@ namespace Plotly.Blazor.LayoutLib.GeoLib
         World = 0,
         [EnumMember(Value=@"africa")]
         Africa,
+        [EnumMember(Value=@"antarctica")]
+        Antarctica,
         [EnumMember(Value=@"asia")]
         Asia,
         [EnumMember(Value=@"europe")]
         Europe,
         [EnumMember(Value=@"north america")]
         NorthAmerica,
+        [EnumMember(Value=@"oceania")]
+        Oceania,
         [EnumMember(Value=@"south america")]
         SouthAmerica,
         [EnumMember(Value=@"usa")]

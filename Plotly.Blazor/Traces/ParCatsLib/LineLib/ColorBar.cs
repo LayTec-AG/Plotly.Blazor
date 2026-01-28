@@ -65,7 +65,12 @@ namespace Plotly.Blazor.Traces.ParCatsLib.LineLib
         ///     Determines a formatting rule for the tick exponents. For example, consider
         ///     the number 1,000,000,000. If <c>none</c>, it appears as 1,000,000,000. If
         ///     <c>e</c>, 1e+9. If <c>E</c>, 1E+9. If <c>power</c>, 1x10^9 (with 9 in a
-        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B.
+        ///     super script). If <c>SI</c>, 1G. If <c>B</c>, 1B. <c>SI</c> uses prefixes
+        ///     from <c>femto</c> f (10^-15) to <c>tera</c> T (10^12). &#39;SI extended&#39;
+        ///     covers instead the full SI range from <c>quecto</c> q (10^-30) to <c>quetta</c>
+        ///     Q (10^30). If <c>SI</c> or &#39;SI extended&#39; is used and the exponent
+        ///     is beyond the above ranges, the formatting rule will automatically be switched
+        ///     to the power notation.
         /// </summary>
         [JsonPropertyName(@"exponentformat")]
         public Plotly.Blazor.Traces.ParCatsLib.LineLib.ColorBarLib.ExponentFormatEnum? ExponentFormat { get; set;} 

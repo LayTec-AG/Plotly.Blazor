@@ -29,6 +29,8 @@ namespace Plotly.Blazor.Traces.CarpetLib.AAxisLib
         [EnumMember(Value=@"power")]
         Power,
         [EnumMember(Value=@"SI")]
-        SI
+        SI,
+        [EnumMember(Value=@"SI extended")]
+        SIExtended
     }
 }

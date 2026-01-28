@@ -9,13 +9,14 @@ using System.Runtime.Serialization;
 namespace Plotly.Blazor.LayoutLib.YAxisLib
 {
     /// <summary>
-    ///     Determines where tick labels are drawn with respect to the axis Please note
-    ///     that top or bottom has no effect on x axes or when <c>ticklabelmode</c>
-    ///     is set to <c>period</c>. Similarly left or right has no effect on y axes
-    ///     or when <c>ticklabelmode</c> is set to <c>period</c>. Has no effect on <c>multicategory</c>
-    ///     axes or when <c>tickson</c> is set to <c>boundaries</c>. When used on axes
-    ///     linked by <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside
-    ///     labels would be added by autorange, so that the scales could match.
+    ///     Determines where tick labels are drawn with respect to the axis. Please
+    ///     note that top or bottom has no effect on x axes or when <c>ticklabelmode</c>
+    ///     is set to <c>period</c> or when <c>tickson</c> is set to <c>boundaries</c>.
+    ///     Similarly, left or right has no effect on y axes or when <c>ticklabelmode</c>
+    ///     is set to <c>period</c> or when <c>tickson</c> is set to <c>boundaries</c>.
+    ///     Has no effect on <c>multicategory</c> axes. When used on axes linked by
+    ///     <c>matches</c> or <c>scaleanchor</c>, no extra padding for inside labels
+    ///     would be added by autorange, so that the scales could match.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]

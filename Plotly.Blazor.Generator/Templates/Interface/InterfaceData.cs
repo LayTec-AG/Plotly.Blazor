@@ -11,6 +11,6 @@ namespace Plotly.Blazor.Generator.Templates.Interface
         ///     Gets or sets the properties.
         /// </summary>
         /// <value>The properties.</value>
-        public List<Property> Properties { get; set; } = new List<Property>();
+        public List<Property> Properties { get; set; } = [];
     }
 }

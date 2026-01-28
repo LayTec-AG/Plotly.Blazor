@@ -122,7 +122,7 @@ namespace Plotly.Blazor
 
             if (Data == null)
             {
-                Data = new List<ITrace>();
+                Data = [];
                 await DataChanged.InvokeAsync(Data);
             }
 
@@ -140,7 +140,7 @@ namespace Plotly.Blazor
 
             if (Frames == null)
             {
-                Frames = new List<Frames>();
+                Frames = [];
                 await FramesChanged.InvokeAsync(Frames);
             }
         }
@@ -317,7 +317,7 @@ namespace Plotly.Blazor
 
         /// <summary>
         ///     This function has comparable performance to <see cref="React"/> and is faster than redrawing the whole plot with <see cref="NewPlot"/> .
-        ///     An efficient means of updating both the data array and layout object in an existing plot, basically a combination of <see cref="Restyle"/> and <see cref="Relayout"/>.
+        ///     An efficient means of updating both the data array and layout object in an existing plot, basically a combination of Restyle and <see cref="Relayout"/>.
         /// </summary>
         /// <param name="dataUpdate">The data update, can be an anonymous type or a new trace object.</param>
         /// <param name="layoutUpdate">The layout update, can be an anonymous type or a new layout object.</param>
@@ -348,7 +348,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task AddTrace(ITrace trace, int? index = null, CancellationToken cancellationToken = default)
         {
-            Data ??= new List<ITrace>();
+            Data ??= [];
             if (index == null)
             {
                 Data.Add(trace);

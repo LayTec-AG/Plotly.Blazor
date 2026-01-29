@@ -14,10 +14,10 @@ The advantage of this wrapper is that the plotly scheme itself is used to genera
 
 ### Prerequisites
 
-To create Blazor Server Apps, install the latest version of Visual Studio 2019 with the ASP.NET and web development workload.
-For Blazor WebAssembly you need at least Visual Studio 2019 16.6+.
+To create Blazor Server Apps, install the latest version of Visual Studio with the ASP.NET and web development workload.
 Another alternative would be to use Visual Studio code. Click [here](https://docs.microsoft.com/en-us/aspnet/core/blazor/get-started?view=aspnetcore-3.1&tabs=visual-studio-code) for more information.
 
+**Plotly.Blazor with version >= 7.0.0 requires .NET 8 or higher.**
 **Plotly.Blazor with version >= 2.0.0 requires .NET 6 or higher.**
 
 
@@ -36,13 +36,6 @@ Install-Package Plotly.Blazor
 Using .NET CLI
 ```cmd
 dotnet add package Plotly.Blazor
-```
-
-**If you are using 4.1.0 or lower**, then add the following lines to your _Layout.cshtml **above** the `_/framework/blazor.webassembly.js` or `_/framework/blazor.server.js`
-
-```razor
-<script src="_content/Plotly.Blazor/plotly-latest.min.js" type="text/javascript"></script>
-<script src="_content/Plotly.Blazor/plotly-interop.js" type="text/javascript"></script>
 ```
 
 **Add the following lines to your _Imports.razor**

@@ -355,3 +355,6 @@ modebardisable=modeBarDisable
 unifiedhovertitle=unifiedHoverTitle
 zerolinelayer=zeroLineLayer
 zoominout=zoomInOut
+titledoubleclick=titleDoubleClick
+xrefsrc=xRefSrc
+yrefsrc=yRefSrc

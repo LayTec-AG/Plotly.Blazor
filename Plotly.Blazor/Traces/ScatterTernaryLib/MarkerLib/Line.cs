@@ -116,6 +116,29 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
         public string ColorSrc { get; set;} 
 
         /// <summary>
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        /// </summary>
+        [JsonPropertyName(@"dash")]
+        public string Dash { get; set;} 
+
+        /// <summary>
+        ///     Sets the dash style of lines. Set to a dash type string (<c>solid</c>, <c>dot</c>,
+        ///     <c>dash</c>, <c>longdash</c>, <c>dashdot</c>, or <c>longdashdot</c>) or
+        ///     a dash length list in px (eg <c>5px,10px,2px,2px</c>).
+        /// </summary>
+        [JsonPropertyName(@"dash")]
+        [Array]
+        public IList<string> DashArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>dash</c>.
+        /// </summary>
+        [JsonPropertyName(@"dashsrc")]
+        public string DashSrc { get; set;} 
+
+        /// <summary>
         ///     Reverses the color mapping if true. Has an effect only if in <c>marker.line.color</c>
         ///     is set to a numerical array. If true, <c>marker.line.cmin</c> will correspond
         ///     to the last color in the array and <c>marker.line.cmax</c> will correspond
@@ -209,6 +232,21 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
                     ColorSrc.Equals(other.ColorSrc)
                 ) && 
                 (
+                    Dash == other.Dash ||
+                    Dash != null &&
+                    Dash.Equals(other.Dash)
+                ) && 
+                (
+                    Equals(DashArray, other.DashArray) ||
+                    DashArray != null && other.DashArray != null &&
+                    DashArray.SequenceEqual(other.DashArray)
+                ) &&
+                (
+                    DashSrc == other.DashSrc ||
+                    DashSrc != null &&
+                    DashSrc.Equals(other.DashSrc)
+                ) && 
+                (
                     ReverseScale == other.ReverseScale ||
                     ReverseScale != null &&
                     ReverseScale.Equals(other.ReverseScale)
@@ -246,6 +284,9 @@ namespace Plotly.Blazor.Traces.ScatterTernaryLib.MarkerLib
                 if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
                 if (ColorSrc != null) hashCode = hashCode * 59 + ColorSrc.GetHashCode();
+                if (Dash != null) hashCode = hashCode * 59 + Dash.GetHashCode();
+                if (DashArray != null) hashCode = hashCode * 59 + DashArray.GetHashCode();
+                if (DashSrc != null) hashCode = hashCode * 59 + DashSrc.GetHashCode();
                 if (ReverseScale != null) hashCode = hashCode * 59 + ReverseScale.GetHashCode();
                 if (Width != null) hashCode = hashCode * 59 + Width.GetHashCode();
                 if (WidthArray != null) hashCode = hashCode * 59 + WidthArray.GetHashCode();

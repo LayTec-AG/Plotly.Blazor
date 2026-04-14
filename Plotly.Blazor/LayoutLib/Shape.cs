@@ -3,8 +3,10 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json.Serialization;
 
@@ -14,6 +16,7 @@ namespace Plotly.Blazor.LayoutLib
     ///     The Shape class.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
+    [JsonConverter(typeof(PlotlyConverter))]
     [Serializable]
     public class Shape : IEquatable<Shape>
     {
@@ -226,10 +229,42 @@ namespace Plotly.Blazor.LayoutLib
         ///     refers to the distance in fractions of the domain length from the left of
         ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
         ///     of the second x  axis and a x position of 0.5 refers to the point between
-        ///     the left and the right of the domain of the second x axis.
+        ///     the left and the right of the domain of the second x axis. If an array of
+        ///     axis IDs is provided, each <c>x</c> value will refer to the corresponding
+        ///     axis, e.g., [<c>x</c>, <c>x2</c>] for a rectangle, line, or circle means
+        ///     <c>x0</c> uses the <c>x</c> axis and <c>x1</c> uses the <c>x2</c> axis.
+        ///     Path shapes using an array should have one entry for each x coordinate in
+        ///     the string.
         /// </summary>
         [JsonPropertyName(@"xref")]
         public string XRef { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape&#39;s x coordinate axis. If set to a x axis id (e.g. <c>x</c>
+        ///     or <c>x2</c>), the <c>x</c> position refers to a x coordinate. If set to
+        ///     <c>paper</c>, the <c>x</c> position refers to the distance from the left
+        ///     of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the left (right). If set to a x axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the left of
+        ///     the domain of that axis: e.g., &#39;x2 domain&#39; refers to the domain
+        ///     of the second x  axis and a x position of 0.5 refers to the point between
+        ///     the left and the right of the domain of the second x axis. If an array of
+        ///     axis IDs is provided, each <c>x</c> value will refer to the corresponding
+        ///     axis, e.g., [<c>x</c>, <c>x2</c>] for a rectangle, line, or circle means
+        ///     <c>x0</c> uses the <c>x</c> axis and <c>x1</c> uses the <c>x2</c> axis.
+        ///     Path shapes using an array should have one entry for each x coordinate in
+        ///     the string.
+        /// </summary>
+        [JsonPropertyName(@"xref")]
+        [Array]
+        public IList<string> XRefArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>xref</c>.
+        /// </summary>
+        [JsonPropertyName(@"xrefsrc")]
+        public string XRefSrc { get; set;} 
 
         /// <summary>
         ///     Sets the shapes&#39;s sizing mode along the x axis. If set to <c>scaled</c>,
@@ -239,7 +274,8 @@ namespace Plotly.Blazor.LayoutLib
         ///     x position in terms of data or plot fraction but <c>x0</c>, <c>x1</c> and
         ///     x coordinates within <c>path</c> are pixels relative to <c>xanchor</c>.
         ///     This way, the shape can have a fixed width while maintaining a position
-        ///     relative to data or plot fraction.
+        ///     relative to data or plot fraction. Note: <c>xsizemode</c> <c>pixel</c> is
+        ///     not supported when <c>xref</c> is an array.
         /// </summary>
         [JsonPropertyName(@"xsizemode")]
         public Plotly.Blazor.LayoutLib.ShapeLib.XSizeModeEnum? XSizeMode { get; set;} 
@@ -294,10 +330,42 @@ namespace Plotly.Blazor.LayoutLib
         ///     refers to the distance in fractions of the domain length from the bottom
         ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
         ///     of the second y  axis and a y position of 0.5 refers to the point between
-        ///     the bottom and the top of the domain of the second y axis.
+        ///     the bottom and the top of the domain of the second y axis. If an array of
+        ///     axis IDs is provided, each <c>y</c> value will refer to the corresponding
+        ///     axis, e.g., [<c>y</c>, <c>y2</c>] for a rectangle, line, or circle means
+        ///     <c>y0</c> uses the <c>y</c> axis and <c>y1</c> uses the <c>y2</c> axis.
+        ///     Path shapes using an array should have one entry for each y coordinate in
+        ///     the string.
         /// </summary>
         [JsonPropertyName(@"yref")]
         public string YRef { get; set;} 
+
+        /// <summary>
+        ///     Sets the shape&#39;s y coordinate axis. If set to a y axis id (e.g. <c>y</c>
+        ///     or <c>y2</c>), the <c>y</c> position refers to a y coordinate. If set to
+        ///     <c>paper</c>, the <c>y</c> position refers to the distance from the bottom
+        ///     of the plotting area in normalized coordinates where <c>0</c> (<c>1</c>)
+        ///     corresponds to the bottom (top). If set to a y axis ID followed by <c>domain</c>
+        ///     (separated by a space), the position behaves like for <c>paper</c>, but
+        ///     refers to the distance in fractions of the domain length from the bottom
+        ///     of the domain of that axis: e.g., &#39;y2 domain&#39; refers to the domain
+        ///     of the second y  axis and a y position of 0.5 refers to the point between
+        ///     the bottom and the top of the domain of the second y axis. If an array of
+        ///     axis IDs is provided, each <c>y</c> value will refer to the corresponding
+        ///     axis, e.g., [<c>y</c>, <c>y2</c>] for a rectangle, line, or circle means
+        ///     <c>y0</c> uses the <c>y</c> axis and <c>y1</c> uses the <c>y2</c> axis.
+        ///     Path shapes using an array should have one entry for each y coordinate in
+        ///     the string.
+        /// </summary>
+        [JsonPropertyName(@"yref")]
+        [Array]
+        public IList<string> YRefArray { get; set;} 
+
+        /// <summary>
+        ///     Sets the source reference on Chart Studio Cloud for <c>yref</c>.
+        /// </summary>
+        [JsonPropertyName(@"yrefsrc")]
+        public string YRefSrc { get; set;} 
 
         /// <summary>
         ///     Sets the shapes&#39;s sizing mode along the y axis. If set to <c>scaled</c>,
@@ -307,7 +375,8 @@ namespace Plotly.Blazor.LayoutLib
         ///     y position in terms of data or plot fraction but <c>y0</c>, <c>y1</c> and
         ///     y coordinates within <c>path</c> are pixels relative to <c>yanchor</c>.
         ///     This way, the shape can have a fixed height while maintaining a position
-        ///     relative to data or plot fraction.
+        ///     relative to data or plot fraction. Note: <c>ysizemode</c> <c>pixel</c> is
+        ///     not supported when <c>yref</c> is an array.
         /// </summary>
         [JsonPropertyName(@"ysizemode")]
         public Plotly.Blazor.LayoutLib.ShapeLib.YSizeModeEnum? YSizeMode { get; set;} 
@@ -448,6 +517,16 @@ namespace Plotly.Blazor.LayoutLib
                     XRef.Equals(other.XRef)
                 ) && 
                 (
+                    Equals(XRefArray, other.XRefArray) ||
+                    XRefArray != null && other.XRefArray != null &&
+                    XRefArray.SequenceEqual(other.XRefArray)
+                ) &&
+                (
+                    XRefSrc == other.XRefSrc ||
+                    XRefSrc != null &&
+                    XRefSrc.Equals(other.XRefSrc)
+                ) && 
+                (
                     XSizeMode == other.XSizeMode ||
                     XSizeMode != null &&
                     XSizeMode.Equals(other.XSizeMode)
@@ -481,6 +560,16 @@ namespace Plotly.Blazor.LayoutLib
                     YRef == other.YRef ||
                     YRef != null &&
                     YRef.Equals(other.YRef)
+                ) && 
+                (
+                    Equals(YRefArray, other.YRefArray) ||
+                    YRefArray != null && other.YRefArray != null &&
+                    YRefArray.SequenceEqual(other.YRefArray)
+                ) &&
+                (
+                    YRefSrc == other.YRefSrc ||
+                    YRefSrc != null &&
+                    YRefSrc.Equals(other.YRefSrc)
                 ) && 
                 (
                     YSizeMode == other.YSizeMode ||
@@ -519,6 +608,8 @@ namespace Plotly.Blazor.LayoutLib
                 if (X1Shift != null) hashCode = hashCode * 59 + X1Shift.GetHashCode();
                 if (XAnchor != null) hashCode = hashCode * 59 + XAnchor.GetHashCode();
                 if (XRef != null) hashCode = hashCode * 59 + XRef.GetHashCode();
+                if (XRefArray != null) hashCode = hashCode * 59 + XRefArray.GetHashCode();
+                if (XRefSrc != null) hashCode = hashCode * 59 + XRefSrc.GetHashCode();
                 if (XSizeMode != null) hashCode = hashCode * 59 + XSizeMode.GetHashCode();
                 if (Y0 != null) hashCode = hashCode * 59 + Y0.GetHashCode();
                 if (Y0Shift != null) hashCode = hashCode * 59 + Y0Shift.GetHashCode();
@@ -526,6 +617,8 @@ namespace Plotly.Blazor.LayoutLib
                 if (Y1Shift != null) hashCode = hashCode * 59 + Y1Shift.GetHashCode();
                 if (YAnchor != null) hashCode = hashCode * 59 + YAnchor.GetHashCode();
                 if (YRef != null) hashCode = hashCode * 59 + YRef.GetHashCode();
+                if (YRefArray != null) hashCode = hashCode * 59 + YRefArray.GetHashCode();
+                if (YRefSrc != null) hashCode = hashCode * 59 + YRefSrc.GetHashCode();
                 if (YSizeMode != null) hashCode = hashCode * 59 + YSizeMode.GetHashCode();
                 return hashCode;
             }

@@ -35,7 +35,7 @@
 
     <!-- Plotly Files-->
     <ItemGroup>
-        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-7.0.0.js" Link="src\wwwroot\plotly-interop-7.0.0.js">
+        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-7.1.0.js" Link="src\wwwroot\plotly-interop-7.1.0.js">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\_Imports.razor" Link="src\_Imports.razor">
@@ -89,5 +89,14 @@
         <None Include="..\Plotly.Blazor\SubplotAttribute.cs" Link="src\SubplotAttribute.cs">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageVersion Update="GitVersion.MsBuild" Version="6.7.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Update="GitVersion.MsBuild">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Plotly.Blazor.Interop;
 using System;
@@ -13,7 +13,7 @@ namespace Plotly.Blazor
     /// <summary>
     ///     PlotlyChart
     /// </summary>
-    public partial class PlotlyChart
+    public partial class PlotlyChart : IAsyncDisposable, IDisposable
     {
         /// <summary>
         ///     Id of the div element.
@@ -216,7 +216,7 @@ namespace Plotly.Blazor
         /// <returns>Task</returns>
         public async Task Restyle(ITrace trace, int index, CancellationToken cancellationToken = default)
         {
-            await Restyle(trace, new[] { index }, cancellationToken);
+            await Restyle(trace, [index], cancellationToken);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Plotly.Blazor
                 currentTrace.Populate(json, PlotlyJsInterop.SerializerOptions); // apply changes to the existing object
             }
 
-            await Interop.Restyle(trace, absoluteindices.ToArray(), cancellationToken);
+            await Interop.Restyle(trace, [.. absoluteindices], cancellationToken);
         }
 
         /// <summary>
@@ -437,15 +437,15 @@ namespace Plotly.Blazor
 
             if (x == null)
             {
-                await ExtendTrace(null, new[] { y }, index, max, cancellationToken);
+                await ExtendTrace(null, [y], index, max, cancellationToken);
             }
             else if (y == null)
             {
-                await ExtendTrace(new[] { x }, null, index, max, cancellationToken);
+                await ExtendTrace([x], null, index, max, cancellationToken);
             }
             else
             {
-                await ExtendTrace(new[] { x }, new[] { y }, index, max, cancellationToken);
+                await ExtendTrace([x], [y], index, max, cancellationToken);
             }
         }
 
@@ -492,15 +492,15 @@ namespace Plotly.Blazor
 
             if (x == null)
             {
-                await ExtendTraces(null, new[] { y }, new[] { index }, max, cancellationToken);
+                await ExtendTraces(null, [y], [index], max, cancellationToken);
             }
             else if (y == null)
             {
-                await ExtendTraces(new[] { x }, null, new[] { index }, max, cancellationToken);
+                await ExtendTraces([x], null, [index], max, cancellationToken);
             }
             else
             {
-                await ExtendTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
+                await ExtendTraces([x], [y], [index], max, cancellationToken);
             }
         }
 
@@ -526,7 +526,7 @@ namespace Plotly.Blazor
             IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] { y };
             IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] { z };
 
-            await ExtendTraces3D(xList, yList, zList, new[] { index }, max, cancellationToken);
+            await ExtendTraces3D(xList, yList, zList, [index], max, cancellationToken);
         }
 
 
@@ -548,7 +548,7 @@ namespace Plotly.Blazor
                 throw new ArgumentException("You must specify at least one index.");
             }
 
-            var indicesArr = indices as int[] ?? indices.ToArray();
+            var indicesArr = indices as int[] ?? [.. indices];
             if (indicesArr.Length < 1)
             {
                 throw new ArgumentException("You must specify at least one index.");
@@ -576,14 +576,14 @@ namespace Plotly.Blazor
                 if (xArr != null)
                 {
                     var currentXData = xArr[i];
-                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    var xData = currentXData as object[] ?? [.. currentXData];
                     AddDataToProperty(currentTrace, traceType, "X", xData, max, false);
                 }
 
                 if (yArr != null)
                 {
                     var currentYData = yArr[i];
-                    var yData = currentYData as object[] ?? currentYData.ToArray();
+                    var yData = currentYData as object[] ?? [.. currentYData];
                     AddDataToProperty(currentTrace, traceType, "Y", yData, max, false);
                 }
             }
@@ -612,7 +612,7 @@ namespace Plotly.Blazor
                 throw new ArgumentException("You must specify at least one index.");
             }
 
-            var indicesArr = indices as int[] ?? indices.ToArray();
+            var indicesArr = indices as int[] ?? [.. indices];
             if (indicesArr.Length < 1)
             {
                 throw new ArgumentException("You must specify at least one index.");
@@ -646,21 +646,21 @@ namespace Plotly.Blazor
                 if (xArr != null)
                 {
                     var currentXData = xArr[i];
-                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    var xData = currentXData as object[] ?? [.. currentXData];
                     AddDataToProperty(currentTrace, traceType, "X", xData, max, false);
                 }
 
                 if (yArr != null)
                 {
                     var currentYData = yArr[i];
-                    var yData = currentYData as object[] ?? currentYData.ToArray();
+                    var yData = currentYData as object[] ?? [.. currentYData];
                     AddDataToProperty(currentTrace, traceType, "Y", yData, max, false);
                 }
 
                 if (zArr != null)
                 {
                     var currentYData = zArr[i];
-                    var zData = currentYData as object[] ?? currentYData.ToArray();
+                    var zData = currentYData as object[] ?? [.. currentYData];
                     AddDataToProperty(currentTrace, traceType, "Z", zData, max, false);
                 }
             }
@@ -717,15 +717,15 @@ namespace Plotly.Blazor
 
             if (x == null)
             {
-                await PrependTrace(null, new[] { y }, index, max, cancellationToken);
+                await PrependTrace(null, [y], index, max, cancellationToken);
             }
             else if (y == null)
             {
-                await PrependTrace(new[] { x }, null, index, max, cancellationToken);
+                await PrependTrace([x], null, index, max, cancellationToken);
             }
             else
             {
-                await PrependTrace(new[] { x }, new[] { y }, index, max, cancellationToken);
+                await PrependTrace([x], [y], index, max, cancellationToken);
             }
         }
 
@@ -772,15 +772,15 @@ namespace Plotly.Blazor
 
             if (x == null)
             {
-                await PrependTraces(null, new[] { y }, new[] { index }, max, cancellationToken);
+                await PrependTraces(null, [y], [index], max, cancellationToken);
             }
             else if (y == null)
             {
-                await PrependTraces(new[] { x }, null, new[] { index }, max, cancellationToken);
+                await PrependTraces([x], null, [index], max, cancellationToken);
             }
             else
             {
-                await PrependTraces(new[] { x }, new[] { y }, new[] { index }, max, cancellationToken);
+                await PrependTraces([x], [y], [index], max, cancellationToken);
             }
         }
 
@@ -805,7 +805,7 @@ namespace Plotly.Blazor
             IEnumerable<IEnumerable<object>> yList = y == null ? null : new[] { y };
             IEnumerable<IEnumerable<object>> zList = z == null ? null : new[] { z };
 
-            await PrependTraces3D(xList, yList, zList, new[] { index }, max, cancellationToken);
+            await PrependTraces3D(xList, yList, zList, [index], max, cancellationToken);
         }
 
         /// <summary>
@@ -826,7 +826,7 @@ namespace Plotly.Blazor
                 throw new ArgumentException("You must specify at least one index.");
             }
 
-            var indicesArr = indices as int[] ?? indices.ToArray();
+            var indicesArr = indices as int[] ?? [.. indices];
             if (indicesArr.Length < 1)
             {
                 throw new ArgumentException("You must specify at least one index.");
@@ -854,14 +854,14 @@ namespace Plotly.Blazor
                 if (xArr != null)
                 {
                     var currentXData = xArr[i];
-                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    var xData = currentXData as object[] ?? [.. currentXData];
                     AddDataToProperty(currentTrace, traceType, "X", xData, max, true);
                 }
 
                 if (yArr != null)
                 {
                     var currentYData = yArr[i];
-                    var yData = currentYData as object[] ?? currentYData.ToArray();
+                    var yData = currentYData as object[] ?? [.. currentYData];
                     AddDataToProperty(currentTrace, traceType, "Y", yData, max, true);
                 }
             }
@@ -890,7 +890,7 @@ namespace Plotly.Blazor
                 throw new ArgumentException("You must specify at least one index.");
             }
 
-            var indicesArr = indices as int[] ?? indices.ToArray();
+            var indicesArr = indices as int[] ?? [.. indices];
             if (indicesArr.Length < 1)
             {
                 throw new ArgumentException("You must specify at least one index.");
@@ -924,21 +924,21 @@ namespace Plotly.Blazor
                 if (xArr != null)
                 {
                     var currentXData = xArr[i];
-                    var xData = currentXData as object[] ?? currentXData.ToArray();
+                    var xData = currentXData as object[] ?? [.. currentXData];
                     AddDataToProperty(currentTrace, traceType, "X", xData, max, true);
                 }
 
                 if (yArr != null)
                 {
                     var currentYData = yArr[i];
-                    var yData = currentYData as object[] ?? currentYData.ToArray();
+                    var yData = currentYData as object[] ?? [.. currentYData];
                     AddDataToProperty(currentTrace, traceType, "Y", yData, max, true);
                 }
 
                 if (zArr != null)
                 {
                     var currentZData = zArr[i];
-                    var zData = currentZData as object[] ?? currentZData.ToArray();
+                    var zData = currentZData as object[] ?? [.. currentZData];
                     AddDataToProperty(currentTrace, traceType, "Z", zData, max, true);
                 }
             }
@@ -1137,6 +1137,21 @@ namespace Plotly.Blazor
             Frames.Clear();
             await FramesChanged.InvokeAsync(Frames);
             await Interop.Purge(cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            DisposeAsync().AsTask().GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc />
+        public async ValueTask DisposeAsync()
+        {
+            if (Interop is not null)
+            {
+                await Interop.DisposeAsync();
+            }
         }
     }
 }

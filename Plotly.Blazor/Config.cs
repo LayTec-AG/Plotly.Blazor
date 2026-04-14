@@ -40,6 +40,12 @@ namespace Plotly.Blazor
         public Plotly.Blazor.ConfigLib.DisplayModeBarEnum? DisplayModeBar { get; set;} 
 
         /// <summary>
+        ///     Determines whether or not notifier is displayed.
+        /// </summary>
+        [JsonPropertyName(@"displayNotifier")]
+        public bool? DisplayNotifier { get; set;} 
+
+        /// <summary>
         ///     Sets the double click interaction mode. Has an effect only in cartesian
         ///     plots. If <c>false</c>, double click is disable. If <c>reset</c>, double
         ///     click resets the axis ranges to their initial values. If <c>autosize</c>,
@@ -350,6 +356,11 @@ namespace Plotly.Blazor
                     DisplayModeBar.Equals(other.DisplayModeBar)
                 ) && 
                 (
+                    DisplayNotifier == other.DisplayNotifier ||
+                    DisplayNotifier != null &&
+                    DisplayNotifier.Equals(other.DisplayNotifier)
+                ) && 
+                (
                     DoubleClick == other.DoubleClick ||
                     DoubleClick != null &&
                     DoubleClick.Equals(other.DoubleClick)
@@ -535,6 +546,7 @@ namespace Plotly.Blazor
                 if (AutoSizable != null) hashCode = hashCode * 59 + AutoSizable.GetHashCode();
                 if (DisplayLogo != null) hashCode = hashCode * 59 + DisplayLogo.GetHashCode();
                 if (DisplayModeBar != null) hashCode = hashCode * 59 + DisplayModeBar.GetHashCode();
+                if (DisplayNotifier != null) hashCode = hashCode * 59 + DisplayNotifier.GetHashCode();
                 if (DoubleClick != null) hashCode = hashCode * 59 + DoubleClick.GetHashCode();
                 if (DoubleClickDelay != null) hashCode = hashCode * 59 + DoubleClickDelay.GetHashCode();
                 if (Editable != null) hashCode = hashCode * 59 + Editable.GetHashCode();

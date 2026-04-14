@@ -28,7 +28,7 @@ namespace Plotly.Blazor.Generator
     internal class Program
     {
         private const string NAMESPACE = "Plotly.Blazor";
-        private const string VERSION = "3.3.1";
+        private const string VERSION = "3.5.0";
 
         private static string PLOTLY_FILE_NAME => $"plotly-{VERSION}.min.js";
         private static string PLOTLY_BASIC_FILE_NAME => $"plotly-basic-{VERSION}.min.js";

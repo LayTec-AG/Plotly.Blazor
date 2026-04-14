@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using AwesomeAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using Plotly.Blazor.Traces;

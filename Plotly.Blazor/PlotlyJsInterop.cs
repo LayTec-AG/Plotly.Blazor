@@ -12,26 +12,21 @@ namespace Plotly.Blazor;
 /// <summary>
 ///     Allows JsInterop functionality for Plotly.js
 /// </summary>
-public class PlotlyJsInterop
+/// <remarks>
+///     Creates a new instance of <see cref="PlotlyJsInterop"/>.
+/// </remarks>
+/// <param name="jsRuntime"></param>
+/// <param name="chart"></param>
+/// <param name="useBasicVersion"></param>
+public class PlotlyJsInterop(IJSRuntime jsRuntime, PlotlyChart chart, bool useBasicVersion) : IAsyncDisposable, IDisposable
 {
-    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-7.0.0.js";
+    private const string InteropPath = "./_content/Plotly.Blazor/plotly-interop-7.1.0.js";
     private const string PlotlyPath = "./_content/Plotly.Blazor/plotly-3.5.0.min.js";
     private const string PlotlyBasicPath = "./_content/Plotly.Blazor/plotly-basic-3.5.0.min.js";
 
-    private readonly DotNetObjectReference<PlotlyChart> dotNetObj;
-    private readonly Lazy<Task<IJSObjectReference>> moduleTask;
-
-    /// <summary>
-    ///     Creates a new instance of <see cref="PlotlyJsInterop"/>.
-    /// </summary>
-    /// <param name="jsRuntime"></param>
-    /// <param name="chart"></param>
-    /// <param name="useBasicVersion"></param>
-    public PlotlyJsInterop(IJSRuntime jsRuntime, PlotlyChart chart, bool useBasicVersion)
-    {
-        dotNetObj = DotNetObjectReference.Create(chart);
-        moduleTask = new(LoadModulesAsync(jsRuntime, useBasicVersion));
-    }
+    private readonly DotNetObjectReference<PlotlyChart> dotNetObj = DotNetObjectReference.Create(chart);
+    private readonly Lazy<Task<IJSObjectReference>> moduleTask = new(LoadModulesAsync(jsRuntime, useBasicVersion));
+    private bool disposed;
 
     private static async Task<IJSObjectReference> LoadModulesAsync(IJSRuntime jsRuntime, bool useBasicVersion)
     {
@@ -379,5 +374,65 @@ public class PlotlyJsInterop
         var jsRuntime = await moduleTask.Value;
 
         return await jsRuntime.InvokeAsync<string>("toImageFromChartData", cancellationToken, chartDefinition.PrepareJsInterop(SerializerOptions), format, height, width);
-    }
+    }
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+        DisposeAsyncCore().AsTask().GetAwaiter().GetResult();
+    }
+
+    /// <inheritdoc />
+    public async ValueTask DisposeAsync()
+    {
+        await DisposeAsyncCore();
+    }
+
+    private async ValueTask DisposeAsyncCore()
+    {
+        if (disposed)
+        {
+            return;
+        }
+
+        disposed = true;
+        var chartId = dotNetObj?.Value.Id;
+
+        if (moduleTask?.IsValueCreated == true)
+        {
+            IJSObjectReference jsRuntime = null;
+
+            try
+            {
+                jsRuntime = await moduleTask.Value;
+            }
+            catch
+            {
+                // ignore
+            }
+
+            if (jsRuntime != null)
+            {
+                try
+                {
+                    await jsRuntime.InvokeVoidAsync("purge", chartId);
+                }
+                catch
+                {
+                    // ignore
+                }
+
+                try
+                {
+                    await jsRuntime.DisposeAsync();
+                }
+                catch
+                {
+                    // ignore
+                }
+            }
+        }
+
+        dotNetObj?.Dispose();
+    }
 }

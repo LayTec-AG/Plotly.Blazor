@@ -35,7 +35,7 @@
 
     <!-- Plotly Files-->
     <ItemGroup>
-        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-7.0.0.js" Link="src\wwwroot\plotly-interop-7.0.0.js">
+        <None Include="..\Plotly.Blazor\wwwroot\plotly-interop-7.1.0.js" Link="src\wwwroot\plotly-interop-7.1.0.js">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Plotly.Blazor\_Imports.razor" Link="src\_Imports.razor">

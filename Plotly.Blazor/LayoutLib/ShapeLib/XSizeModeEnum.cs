@@ -16,7 +16,8 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
     ///     x position in terms of data or plot fraction but <c>x0</c>, <c>x1</c> and
     ///     x coordinates within <c>path</c> are pixels relative to <c>xanchor</c>.
     ///     This way, the shape can have a fixed width while maintaining a position
-    ///     relative to data or plot fraction.
+    ///     relative to data or plot fraction. Note: <c>xsizemode</c> <c>pixel</c> is
+    ///     not supported when <c>xref</c> is an array.
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]

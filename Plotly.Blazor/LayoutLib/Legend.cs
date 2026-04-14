@@ -135,6 +135,27 @@ namespace Plotly.Blazor.LayoutLib
         public Plotly.Blazor.LayoutLib.LegendLib.Title Title { get; set;} 
 
         /// <summary>
+        ///     Determines the behavior on legend title click. <c>toggle</c> toggles the
+        ///     visibility of all items in the legend. <c>toggleothers</c> toggles the visibility
+        ///     of all other legends. <c>false</c> disables legend title click interactions.
+        ///     Defaults to <c>toggle</c> when there are multiple legends, <c>false</c>
+        ///     otherwise. Not supported for legends containing pie and pie-like traces.
+        /// </summary>
+        [JsonPropertyName(@"titleclick")]
+        public Plotly.Blazor.LayoutLib.LegendLib.TitleClickEnum? TitleClick { get; set;} 
+
+        /// <summary>
+        ///     Determines the behavior on legend title double-click. <c>toggle</c> toggles
+        ///     the visibility of all items in the legend. <c>toggleothers</c> toggles the
+        ///     visibility of all other legends. <c>false</c> disables legend title double-click
+        ///     interactions. Defaults to <c>toggleothers</c> when there are multiple legends,
+        ///     <c>false</c> otherwise. Not supported for legends containing pie and pie-like
+        ///     traces.
+        /// </summary>
+        [JsonPropertyName(@"titledoubleclick")]
+        public Plotly.Blazor.LayoutLib.LegendLib.TitleDoubleClickEnum? TitleDoubleClick { get; set;} 
+
+        /// <summary>
         ///     Sets the amount of vertical space (in px) between legend groups.
         /// </summary>
         [JsonPropertyName(@"tracegroupgap")]
@@ -330,6 +351,16 @@ namespace Plotly.Blazor.LayoutLib
                     Title.Equals(other.Title)
                 ) && 
                 (
+                    TitleClick == other.TitleClick ||
+                    TitleClick != null &&
+                    TitleClick.Equals(other.TitleClick)
+                ) && 
+                (
+                    TitleDoubleClick == other.TitleDoubleClick ||
+                    TitleDoubleClick != null &&
+                    TitleDoubleClick.Equals(other.TitleDoubleClick)
+                ) && 
+                (
                     TraceGroupGap == other.TraceGroupGap ||
                     TraceGroupGap != null &&
                     TraceGroupGap.Equals(other.TraceGroupGap)
@@ -408,6 +439,8 @@ namespace Plotly.Blazor.LayoutLib
                 if (MaxHeight != null) hashCode = hashCode * 59 + MaxHeight.GetHashCode();
                 if (Orientation != null) hashCode = hashCode * 59 + Orientation.GetHashCode();
                 if (Title != null) hashCode = hashCode * 59 + Title.GetHashCode();
+                if (TitleClick != null) hashCode = hashCode * 59 + TitleClick.GetHashCode();
+                if (TitleDoubleClick != null) hashCode = hashCode * 59 + TitleDoubleClick.GetHashCode();
                 if (TraceGroupGap != null) hashCode = hashCode * 59 + TraceGroupGap.GetHashCode();
                 if (TraceOrder != null) hashCode = hashCode * 59 + TraceOrder.GetHashCode();
                 if (UiRevision != null) hashCode = hashCode * 59 + UiRevision.GetHashCode();

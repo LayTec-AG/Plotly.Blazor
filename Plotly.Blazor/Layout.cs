@@ -320,6 +320,15 @@ namespace Plotly.Blazor
         public Plotly.Blazor.LayoutLib.CalendarEnum? Calendar { get; set;} 
 
         /// <summary>
+        ///     If true, <c>plotly_click</c> events will fire for any click position within
+        ///     the plot area, not just over traces. When clicking where there is no trace
+        ///     data, the event will have an empty <c>points</c> array but will include
+        ///     <c>xvals</c> and <c>yvals</c> with click coordinates in data space.
+        /// </summary>
+        [JsonPropertyName(@"clickanywhere")]
+        public bool? ClickAnywhere { get; set;} 
+
+        /// <summary>
         ///     Determines the mode of single click interactions. <c>event</c> is the default
         ///     value and emits the <c>plotly_click</c> event. In addition this mode emits
         ///     the <c>plotly_selected</c> event in drag modes <c>lasso</c> and <c>select</c>,
@@ -423,6 +432,15 @@ namespace Plotly.Blazor
         /// </summary>
         [JsonPropertyName(@"hidesources")]
         public bool? HideSources { get; set;} 
+
+        /// <summary>
+        ///     If true, <c>plotly_hover</c> events will fire for any cursor position within
+        ///     the plot area, not just over traces. When the cursor is not over a trace,
+        ///     the event will have an empty <c>points</c> array but will include <c>xvals</c>
+        ///     and <c>yvals</c> with cursor coordinates in data space.
+        /// </summary>
+        [JsonPropertyName(@"hoveranywhere")]
+        public bool? HoverAnywhere { get; set;} 
 
         /// <summary>
         ///     Sets the default distance (in pixels) to look for data to add hover labels
@@ -944,6 +962,11 @@ namespace Plotly.Blazor
                     Calendar.Equals(other.Calendar)
                 ) && 
                 (
+                    ClickAnywhere == other.ClickAnywhere ||
+                    ClickAnywhere != null &&
+                    ClickAnywhere.Equals(other.ClickAnywhere)
+                ) && 
+                (
                     ClickMode == other.ClickMode ||
                     ClickMode != null &&
                     ClickMode.Equals(other.ClickMode)
@@ -1007,6 +1030,11 @@ namespace Plotly.Blazor
                     HideSources == other.HideSources ||
                     HideSources != null &&
                     HideSources.Equals(other.HideSources)
+                ) && 
+                (
+                    HoverAnywhere == other.HoverAnywhere ||
+                    HoverAnywhere != null &&
+                    HoverAnywhere.Equals(other.HoverAnywhere)
                 ) && 
                 (
                     HoverDistance == other.HoverDistance ||
@@ -1253,6 +1281,7 @@ namespace Plotly.Blazor
                 if (AutoSize != null) hashCode = hashCode * 59 + AutoSize.GetHashCode();
                 if (AutoTypeNumbers != null) hashCode = hashCode * 59 + AutoTypeNumbers.GetHashCode();
                 if (Calendar != null) hashCode = hashCode * 59 + Calendar.GetHashCode();
+                if (ClickAnywhere != null) hashCode = hashCode * 59 + ClickAnywhere.GetHashCode();
                 if (ClickMode != null) hashCode = hashCode * 59 + ClickMode.GetHashCode();
                 if (ColorAxis != null) hashCode = hashCode * 59 + ColorAxis.GetHashCode();
                 if (ColorScale != null) hashCode = hashCode * 59 + ColorScale.GetHashCode();
@@ -1266,6 +1295,7 @@ namespace Plotly.Blazor
                 if (Grid != null) hashCode = hashCode * 59 + Grid.GetHashCode();
                 if (Height != null) hashCode = hashCode * 59 + Height.GetHashCode();
                 if (HideSources != null) hashCode = hashCode * 59 + HideSources.GetHashCode();
+                if (HoverAnywhere != null) hashCode = hashCode * 59 + HoverAnywhere.GetHashCode();
                 if (HoverDistance != null) hashCode = hashCode * 59 + HoverDistance.GetHashCode();
                 if (HoverLabel != null) hashCode = hashCode * 59 + HoverLabel.GetHashCode();
                 if (HoverMode != null) hashCode = hashCode * 59 + HoverMode.GetHashCode();

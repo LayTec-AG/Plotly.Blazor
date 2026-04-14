@@ -15,7 +15,9 @@ namespace Plotly.Blazor.Traces.ChoroplethLib
     ///     entries in <c>locations</c> to regions on the map. Values <c>ISO-3</c>,
     ///     <c>USA-states</c>, &#39;country names&#39; correspond to features on the
     ///     base map and value <c>geojson-id</c> corresponds to features from a custom
-    ///     GeoJSON linked to the <c>geojson</c> attribute.
+    ///     GeoJSON linked to the <c>geojson</c> attribute. <c>USA-states</c> accepts
+    ///     both two-letter abbreviations (e.g. <c>CA</c>) and full state names (e.g.
+    ///     <c>California</c>).
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCode("Plotly.Blazor.Generator", null)]
     [JsonConverter(typeof(EnumConverter))]

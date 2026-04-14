@@ -73,11 +73,11 @@ namespace Plotly.Blazor.LayoutLib.ShapeLib
         ///     datetimes, while all other variable values use values in ms. Finally, the
         ///     template string has access to variables <c>x0</c>, <c>x1</c>, <c>y0</c>,
         ///     <c>y1</c>, <c>slope</c>, <c>dx</c>, <c>dy</c>, <c>width</c>, <c>height</c>,
-        ///     <c>length</c>, <c>xcenter</c> and <c>ycenter</c>. Variables that can&#39;t
-        ///     be found will be replaced with the specifier. For example, a template of
-        ///     &quot;data: %{x}, %{y}&quot; will result in a value of &quot;data: 1, %{y}&quot;
-        ///     if x is 1 and y is missing. Variables with an undefined value will be replaced
-        ///     with the fallback value.
+        ///     <c>length</c>, <c>xcenter</c>, <c>ycenter</c>, <c>simpleXVariables</c> and
+        ///     <c>simpleYVariables</c>. Variables that can&#39;t be found will be replaced
+        ///     with the specifier. For example, a template of &quot;data: %{x}, %{y}&quot;
+        ///     will result in a value of &quot;data: 1, %{y}&quot; if x is 1 and y is missing.
+        ///     Variables with an undefined value will be replaced with the fallback value.
         /// </summary>
         [JsonPropertyName(@"texttemplate")]
         public string TextTemplate { get; set;} 

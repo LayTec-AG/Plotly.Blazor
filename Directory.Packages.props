@@ -16,7 +16,7 @@
     <PackageVersion Include="NUnit" Version="4.5.1" />
     <PackageVersion Include="NUnit3TestAdapter" Version="6.2.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
-    <PackageVersion Include="MudBlazor" Version="9.3.0" />
+    <PackageVersion Include="MudBlazor" Version="9.7.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Condition="'$(TargetFramework)' == 'net8.0'" Include="Microsoft.AspNetCore.Components" Version="8.0.25" />

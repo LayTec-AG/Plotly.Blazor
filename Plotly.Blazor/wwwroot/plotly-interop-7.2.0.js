@@ -319,19 +319,19 @@ export function subscribeRelayoutEvent(dotNetObj, id) {
 
             if (x) {
                 result.XRange = x;
-            } else if (x1 && x2) {
+            } else if (x1 !== undefined && x2 !== undefined) {
                 result.XRange = [x1, x2];
             }
 
             if (y) {
                 result.YRange = y;
-            } else if (y1 && y2) {
+            } else if (y1 !== undefined && y2 !== undefined) {
                 result.YRange = [y1, y2];
             }
 
             if (z) {
                 result.ZRange = z;
-            } else if (z1 && z2) {
+            } else if (z1 !== undefined && z2 !== undefined) {
                 result.ZRange = [z1, z2];
             }
 

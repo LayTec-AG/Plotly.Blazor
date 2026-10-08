@@ -135,30 +135,17 @@ namespace Plotly.Blazor
                     continue;
                 }
 
-                if (property.GetType().IsClass &&
-                    property.PropertyType.Assembly.FullName == typeof(T).Assembly.FullName)
+                if (property.PropertyType.IsClass &&
+                    property.PropertyType.Assembly.FullName == obj.GetType().Assembly.FullName)
                 {
-                    var mapMethod = typeof(Extensions).GetMethod("Populate");
-                    if (mapMethod == null)
+                    var child = property.GetValue(obj);
+                    if (child == null)
                     {
-                        throw new NullReferenceException(nameof(mapMethod));
+                        child = Activator.CreateInstance(property.PropertyType);
                     }
 
-                    var genericMethod = mapMethod.MakeGenericMethod(property.GetValue(newObj).GetType());
-                    var obj2 = genericMethod.Invoke(null,
-                        new[]
-                        {
-                            property.GetValue(newObj), JsonSerializer.Serialize(property.GetValue(newObj).ToString())
-                        });
-
-                    foreach (var property2 in obj2.GetType().GetProperties())
-                    {
-                        if (property2.GetValue(obj2) != null)
-                        {
-                            property?.GetValue(obj)?.GetType()?.GetProperty(property2.Name)
-                                ?.SetValue(property.GetValue(obj), property2.GetValue(obj2));
-                        }
-                    }
+                    Populate(child, JsonSerializer.Serialize(property.GetValue(newObj), options), options);
+                    property.SetValue(obj, child);
                 }
                 else
                 {

@@ -221,6 +221,7 @@ namespace Plotly.Blazor
                     {
                         if (!options.DefaultIgnoreCondition.HasFlag(JsonIgnoreCondition.WhenWritingNull))
                         {
+                            writer.WritePropertyName(propertyName);
                             writer.WriteNullValue();
                         }
                         continue;
